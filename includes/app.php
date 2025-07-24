@@ -5,6 +5,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '/../includes/.env');
 $dotenv->safeLoad();
 
 
+
 require 'funciones.php';
 require 'database.php';
 

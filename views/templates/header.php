@@ -12,6 +12,9 @@
 
 
     <link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
+<link rel="stylesheet" href="<?= $url ?>/assets/css/app.css">
+
+
 
     <link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
