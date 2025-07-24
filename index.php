@@ -28,10 +28,30 @@ require_once __DIR__ . '/includes/app.php';
 
 
 use MVC\Router;
-
+use Controllers\ApiTest;
+use Controllers\ApiPedidos;
+use Controllers\Subirexcel;
+use Controllers\ApiMaquinas;
+use Controllers\ApiProductos;
+use Controllers\AreaController;
 use Controllers\AuthController;
 use Controllers\AdminController;
 
+use Controllers\PapelController;
+use Controllers\ClienteController;
+use Controllers\EstimarController;
+use Controllers\MaquinaController;
+use Controllers\CartoneraController;
+use Controllers\ComercialController;
+use Controllers\ControlController;
+use Controllers\CotizadorController;
+use Controllers\PlanificoController;
+use Controllers\FinancieroController;
+use Controllers\ProduccionController;
+use Controllers\MateriaPrimaController;
+use Controllers\EstadisticaProdController;
+use Controllers\SistemasController;
+use Model\MateriaPrima;
 
 $router = new Router();
 
