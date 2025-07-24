@@ -79,6 +79,7 @@
 
                     <form action="index.html">
                         <div class="form-group position-relative has-icon-left mb-4">
+                            <label for="email">Email</label>
                             <input 
                                 type="text"
                                 name="email"
