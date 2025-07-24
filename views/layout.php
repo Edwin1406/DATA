@@ -4,7 +4,6 @@
             include_once __DIR__ .'/templates/header.php';
         ?>
 
-
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -653,15 +652,10 @@
             </footer>
         </div>
     </div>
+
     
+ <?php 
+            include_once __DIR__ .'/templates/footer.php';
+        ?>
 
-    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
-    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
-
-    <script src="/assets/js/main.js"></script>
-</body>
-
-</html>
+    
