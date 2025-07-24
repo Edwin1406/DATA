@@ -7,6 +7,9 @@
     <title>NUEVA VERSION</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- ICONOS -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.svg">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/assets/css/bootstrap.css">
 <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
