@@ -49,14 +49,25 @@
 
                     <form action="index.html">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control form-control-xl" placeholder="email">
+                            <label for="email">Email:</label>
+                            <input 
+                                type="text" 
+                                id="email" 
+                                name="email"
+                                class="form-control form-control-xl"
+                                placeholder="email">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <label for="password">Password:</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password"
+                                class="form-control form-control-xl" 
+                                placeholder="password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
