@@ -1,72 +1,4 @@
-<main class="auth">
-    <h2 class="auth__heading"><?php echo $titulo ?? '' ?></h2>
-    <p class="auth__texto">Registrate en sitio web </p>
-
-    <?php require_once __DIR__. '/../templates/alertas.php'; ?>
-
-    <form method="POST" action="/registro" class="formulario">
-        <div class="formulario__campo">
-            <label for="nombre"  class="formulario__label">Nombre</label>
-            <input 
-                type="text" 
-                name="nombre" 
-                class="formulario__input" 
-                placeholder="Tu nombre" 
-                id="nombre"
-                value="<?php echo $usuario->nombre ?? '' ?>"
-                >
-        </div>
-        <div class="formulario__campo">
-            <label for="apellido"  class="formulario__label">Apellido</label>
-            <input 
-                type="text" 
-                name="apellido" 
-                class="formulario__input" 
-                placeholder="Tu apellido" 
-                id="apellido"
-                value="<?php echo $usuario->apellido ?? '' ?>"
-                >
-
-        <div class="formulario__campo">
-            <label for="email"  class="formulario__label">Email</label>
-            <input 
-                type="email" 
-                name="email" 
-                class="formulario__input" 
-                placeholder="Tu Email" 
-                id="email"
-                value="<?php echo $usuario->email ?? '' ?>"
-                >
-        </div>
-        <div class="formulario__campo">
-            <label for="password"  class="formulario__label">Password</label>
-            <input 
-                type="password" 
-                name="password" 
-                class="formulario__input" 
-                placeholder="Tu password" 
-                id="password"
-                >
-        </div>
-        <div class="formulario__campo">
-            <label for="password2"  class="formulario__label">Repita su contraseña</label>
-            <input 
-                type="password" 
-                name="password2" 
-                class="formulario__input" 
-                placeholder="Repite tu password" 
-                id="password2"
-                >
-        </div>
-        <input type="submit" value="Crear Cuenta" class="formulario__submit">
-    </form>
-    <div class="acciones">
-        <a href="/" class="acciones__enlace">Ya tienes cuenta ? Iniciar Sesión</a>
-        <a href="/olvide" class="acciones__enlace">Olvide mi password</a>
-    </div>
-</main>
-
-
+<!--  -->
 
  <div id="auth">
 
@@ -80,71 +12,24 @@
                     <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
 
                     <form action="index.html">
-
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="nombre">Nombre:</label>
-                            <input 
-                                type="text" 
-                                id="nombre" 
-                                name="nombre"
-                                class="form-control form-control-xl" 
-                                placeholder="Nombre">
+                            <input type="text" class="form-control form-control-xl" placeholder="Email">
                             <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
-                            </div>
-                        </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="apellido">Apellido:</label>
-                            <input 
-                                type="text" 
-                                id="apellido" 
-                                name="apellido"
-                                class="form-control form-control-xl" 
-                                placeholder="Apellido">
-                            <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
-                            </div>
-                        </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="email">Email:</label>
-                            <input 
-                                type="text"
-                                name="email"
-                                id="email"
-                                class="form-control form-control-xl" 
-                                placeholder="Email">
-                            <div class="form-control-icon"></div>
                                 <i class="bi bi-envelope"></i>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="password">Password:</label>
+                            <input type="text" class="form-control form-control-xl" placeholder="Username">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-xl" placeholder="Password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
-
-
-
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-xl" placeholder="Confirm Password">
                             <div class="form-control-icon">
