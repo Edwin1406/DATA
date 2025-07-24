@@ -12,7 +12,7 @@
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
 
-                    <form action="index.html">
+                    <form action="/" method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <label for="email">Email:</label>
                             <input 
