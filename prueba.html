@@ -1,0 +1,376 @@
+<style>
+    /* Estilo general de la tabla */
+    .tabla-mejorada {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+    
+    /* Encabezado de la tabla */
+    .tabla-mejorada thead {
+        background-color: #f4f4f4;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    .tabla-mejorada th {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+    
+    /* Cuerpo de la tabla */
+    .tabla-mejorada td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 13px;
+    }
+    
+    /* Alternar colores en las filas */
+    .tabla-mejorada tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+    
+    .tabla-mejorada tbody tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+    
+    /* Hover efecto para filas */
+    .tabla-mejorada tbody tr:hover {
+        background-color: #eaf4fb;
+    }
+    
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .tabla-mejorada {
+            font-size: 12px;
+        }
+    
+        .tabla-mejorada th,
+        .tabla-mejorada td {
+            padding: 8px;
+        }
+    }
+    </style>
+
+
+<label for="filtroTest">Filtrar por Test:</label>
+<select id="filtroTest">
+    <option value="">Selecciona un tipo de Test</option>
+    <option value="150-B">150-B</option>
+    <option value="150-C">150-C</option>
+    <option value="175-C">175-C</option>
+    <option value="250-C">250-C</option>
+</select>
+<button id="filtrarBtn">Filtrar</button>
+
+    
+    <table class="tabla-mejorada">
+        <thead>
+            <tr>
+                <th>Bobina</th>
+                <th>Pedidos</th>
+                <th>Largos</th>
+                <th>Anchos</th>
+                <th>Suma (Anchos)</th>
+                <th>Refile</th>
+                <th>Cantidad P1</th>
+                <th>Cantidad P2</th>
+                <th>Total Cantidad</th>
+                <th>Cavidad</th>
+                <th>Corte Pedido 1</th>
+                <th>Corte Pedido 2</th>
+                <th>Metros Lineales</th>
+                <th>Cantidad restante P2</th>
+                <th>Acciones</th>
+              
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+    
+    document.getElementById('filtrarBtn').addEventListener('click', async () => {
+    const filtroSeleccionado = document.getElementById('filtroTest').value; // Obtener el valor seleccionado
+    if (!filtroSeleccionado) {
+        alert('Por favor, selecciona un tipo de Test para filtrar.');
+        return;
+    }
+
+    try {
+        const pedidos = await Cj(); // Cargar todos los pedidos
+        const pedidosPorTipo = await separarPedidosPorTipo(pedidos);
+        const resultadosFiltrados = await procesarPedidos(pedidosPorTipo[filtroSeleccionado]); // Filtrar según la selección
+        mostrarResultadosEnTabla(resultadosFiltrados); // Mostrar los resultados en la tabla
+    } catch (error) {
+        console.error('Error al filtrar los pedidos:', error);
+    }
+});
+
+    
+    const bobinas = [1880, 1700, 1500, 1300, 1200, 1100];
+    const refile = 30;
+    
+    async function filtradoPendientes() {
+        const url = 'https://megawebsistem.com/admin/api/productos';
+        const response = await fetch(url);
+        const pedidos = await response.json();
+        return pedidos.filter(pedido => pedido.estado_pedido === "pendiente");
+    }
+    
+    function extraerDimensiones(nombreProducto) {
+        const regexDimensiones = /(\d+)\s*[Xx]\s*(\d+)\s*[Xx]?\s*(\d+)?\s*(CM|cm)?/;
+        const regexTipo = /\b(K\/K|B\/B|T\/T|B\/k)\b/i;
+        const regexTest = /\b(?:TEST|T)?\s?(\d{3})\b(?!.*\d{3})/i;
+        const regexFlauta = /\bFLAUTA (C|B)\b/i;
+    
+        const [_, largo, ancho, alto = 'N/A'] = regexDimensiones.exec(nombreProducto) || [];
+        const tipo = (regexTipo.exec(nombreProducto) || [])[1] || 'N/A';
+        const test = (regexTest.exec(nombreProducto) || [])[1] || 'N/A';
+        const flauta = (regexFlauta.exec(nombreProducto) || [])[1] || 'C';
+    
+        return { largo, ancho, alto, tipo, test, flauta };
+    }
+    
+    async function Cj() {
+        const pedidosPendientes = await filtradoPendientes();
+        const productosCJ = [];
+        const productosPL = [];
+    
+        pedidosPendientes.forEach(pedido => {
+            const dimensiones = extraerDimensiones(pedido.nombre_producto);
+            if (dimensiones.alto !== "N/A") {
+                productosCJ.push({
+                    ...pedido,
+                    largo: (2 * parseFloat(dimensiones.alto)) + parseFloat(dimensiones.largo) + 8,
+                    ancho: (2 * parseFloat(dimensiones.alto)) + parseFloat(dimensiones.ancho) + 10 + 4,
+                    tipo: dimensiones.tipo,
+                    test: dimensiones.test,
+                    flauta: dimensiones.flauta
+                });
+            } else {
+                productosPL.push({
+                    ...pedido,
+                    largo: parseFloat(dimensiones.largo),
+                    ancho: parseFloat(dimensiones.ancho),
+                    tipo: dimensiones.tipo,
+                    test: dimensiones.test,
+                    flauta: dimensiones.flauta
+                });
+            }
+        });
+    
+        return [...productosCJ, ...productosPL];
+    }
+    
+    async function separarPedidosPorTipo(pedidos) {
+        return pedidos.reduce((acc, pedido) => {
+            const key = `${pedido.test}-${pedido.flauta}`;
+            if (!acc[key]) acc[key] = [];
+            acc[key].push(pedido);
+            return acc;
+        }, {});
+    }
+    
+    async function procesarPedidos(pedidos) {
+        let pedidosAnchos = pedidos.map(pedido => ({
+            ancho: parseFloat(pedido.ancho),
+            largo: parseFloat(pedido.largo),
+            id: pedido.id,
+            cantidad: parseInt(pedido.cantidad),
+            pedido
+        }));
+    
+        const resultados = [];
+        while (pedidosAnchos.length > 0) {
+            const mejorCombinacion = encontrarMejorCombinacion(pedidosAnchos, bobinas, refile);
+            if (mejorCombinacion) {
+                resultados.push(mejorCombinacion);
+                pedidosAnchos = pedidosAnchos.filter(p => !mejorCombinacion.pedidos.includes(p));
+            } else {
+                break;
+            }
+        }
+    
+        return resultados;
+    }
+
+
+
+
+
+const cavidad = [1, 2,3,4];
+
+function encontrarMejorCombinacion(pedidos, bobinas, refile) {
+    let mejorCombinacion = null;
+
+    function procesarPedidos(pedidos, bobinas) {
+        let mejorCombinacionLocal = null;
+        pedidos.sort((a, b) => b.ancho - a.ancho || a.cantidad - b.cantidad);
+
+        for (const bobina of bobinas) {
+            const disponible = bobina - refile;
+
+            for (let i = 0; i < pedidos.length; i++) {
+                const pedidoActual = pedidos[i];
+
+                for (let j = i + 1; j < pedidos.length; j++) {
+                    const otroPedido = pedidos[j];
+                    const suma = pedidoActual.ancho + otroPedido.ancho;
+
+                    if (suma <= disponible) {
+                        let pedido1 = pedidoActual;
+                        let pedido2 = otroPedido;
+
+                        // Reorganizar si es necesario
+                        if (pedido2.cantidad < pedido1.cantidad) {
+                            [pedido1, pedido2] = [pedido2, pedido1];
+                        }
+
+                        const sobrante = disponible - suma;
+                        const metrosLineales = (pedido1.cantidad * pedido1.largo) / 1000;
+                        const corte2 = metrosLineales / (pedido2.largo / 1000);
+
+                        // Verificar si hay negativos e invertir
+                        if (corte2 < 0) continue;
+
+                        if (!mejorCombinacionLocal || sobrante < mejorCombinacionLocal.sobrante) {
+                            mejorCombinacionLocal = {
+                                bobina,
+                                pedidos: [pedido1, pedido2],
+                                suma,
+                                sobrante,
+                                cavidad: "1<br>1",
+                                corteP1: pedido1.cantidad,
+                                corteP2: Math.max(0, parseInt(corte2)),
+                                metrosLineales,
+                            };
+                        }
+                    }
+                }
+
+                if (pedidoActual.ancho <= disponible) {
+                    const sobrante = disponible - pedidoActual.ancho;
+
+                    if (!mejorCombinacionLocal || sobrante < mejorCombinacionLocal.sobrante) {
+                        mejorCombinacionLocal = {
+                            bobina,
+                            pedidos: [pedidoActual],
+                            suma: pedidoActual.ancho,
+                            sobrante,
+                            cavidad: 1,
+                            corteP1: pedidoActual.cantidad,
+                            corteP2: 0,
+                            metrosLineales: (pedidoActual.cantidad * pedidoActual.largo) / 1000
+                        };
+                    }
+                }
+            }
+        }
+
+        return mejorCombinacionLocal;
+    }
+
+    const mejorCombinacionResultante = procesarPedidos(pedidos, bobinas);
+
+    if (mejorCombinacionResultante) {
+        mejorCombinacion = mejorCombinacionResultante;
+
+        const pedidosRestantes = mejorCombinacion.pedidos.map((pedido, index) => {
+            const cantidadRestante = index === 1
+                ? pedido.cantidad - mejorCombinacion.corteP2
+                : pedido.cantidad - mejorCombinacion.corteP1;
+
+            if (cantidadRestante > 0) {
+                return { ...pedido, cantidad: cantidadRestante };
+            }
+            return null;
+        }).filter(p => p !== null);
+
+        pedidos.push(...pedidosRestantes);
+    }
+
+    return mejorCombinacion;
+}
+
+
+
+
+
+
+
+
+
+
+
+function mostrarResultadosEnTabla(resultados) {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = '';
+
+    resultados.forEach(resultado => {
+        const tr = document.createElement('tr');
+        const pedido1 = resultado.pedidos[0] || {};
+        const pedido2 = resultado.pedidos[1] || {};
+
+        tr.innerHTML = `
+            <td>${resultado.bobina}</td>
+            <td>
+                ${resultado.pedidos.map((p, index) => 
+                    `Pedido ${index + 1}: ${p.pedido.nombre_producto}, ID: ${p.pedido.id}`
+                ).join('<br>')}
+            </td>
+            <td>${resultado.pedidos.map(p => p.largo).join('<br>')}</td>
+            <td>${resultado.pedidos.map(p => p.ancho).join('<br>')}</td>
+            <td>${resultado.suma}</td>
+            <td class="sobrante">${resultado.sobrante}</td>
+            <td>${pedido1.cantidad || 0}</td>
+            <td>${pedido2.cantidad || 0}</td>
+            <td>${resultado.pedidos.reduce((total, p) => total + p.cantidad, 0)}</td>
+            <td>${resultado.cavidad}</td>
+            <td>${resultado.corteP1 || 0}</td>
+            <td>${resultado.corteP2 || 0}</td>
+            <td>${resultado.metrosLineales.toFixed(2)}</td>
+            <td class="restante">${pedido2.cantidad - resultado.corteP2 || 0}</td>
+            <td>
+                <button onclick="alert('Editar pedido 1')">Editar P1</button>
+                <button onclick="alert('Editar pedido 2')">Editar P2</button>
+            </td>
+            
+        `;
+
+        // Colorear el sobrante según la condición
+        const sobranteCelda = tr.querySelector('.sobrante');
+        if (resultado.sobrante < 170) {
+            sobranteCelda.style.backgroundColor = 'green';
+            sobranteCelda.style.color = 'white';
+        } else {
+            sobranteCelda.style.backgroundColor = 'red';
+            sobranteCelda.style.color = 'white';
+        } 
+
+        if (pedido2.cantidad - resultado.corteP2 > 0) {
+            const restanteCelda = tr.querySelector('.restante');
+            restanteCelda.style.backgroundColor = 'red';
+            restanteCelda.style.color = 'white';
+        } else {
+            const restanteCelda = tr.querySelector('.restante');
+            restanteCelda.style.backgroundColor = 'green';
+            restanteCelda.style.color = 'white';
+        }
+        
+
+
+
+
+        tbody.appendChild(tr);
+    });
+}
+
+
+
+
+</script>

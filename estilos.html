@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Comercial y Corrugador</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+            width: 45%;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filters label, .filters select {
+            margin-right: 10px;
+        }
+        #chart {
+            margin-top: 20px;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Relación entre Comercial y Corrugador</h1> -->
+
+    <div class="filters">
+        <label for="filter-ancho">Filtrar por Ancho:</label>
+        <select id="filter-ancho">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="filter-gramaje">Filtrar por Gramaje:</label>
+        <select id="filter-gramaje">
+            <option value="">Todos</option>
+        </select>
+
+        <button id="apply-filters">Aplicar Filtros</button>
+    </div>
+
+    <div class="table-container">
+        <div>
+            <h2>Pedidos (Comercial)</h2>
+            <table id="comercial-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Ancho (mm)</th>
+                        <th>Gramaje (g/m²)</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div>
+            <h2>Existencias (Corrugador)</h2>
+            <table id="corrugador-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Ancho (mm)</th>
+                        <th>Gramaje (g/m²)</th>
+                        <th>Existencias</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="chart"></div>
+
+    <script>
+        async function fetchData(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Error en la solicitud');
+                return await response.json();
+            } catch (error) {
+                console.error('Error al obtener los datos:', error);
+                return [];
+            }
+        }
+
+        function populateTables(comercialData, corrugadorData) {
+            const comercialTable = document.querySelector('#comercial-table tbody');
+            const corrugadorTable = document.querySelector('#corrugador-table tbody');
+
+            comercialTable.innerHTML = '';
+            corrugadorTable.innerHTML = '';
+
+            // Rellenar la tabla de comercial
+            comercialData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.producto}</td>
+                    <td>${item.ancho}</td>
+                    <td>${item.gramaje}</td>
+                    <td>${item.cantidad}</td>
+                    <td>${item.estado}</td>
+                `;
+                comercialTable.appendChild(row);
+            });
+ 
+
+            // Rellenar la tabla de corrugador
+            corrugadorData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.descripcion}</td>
+                    <td>${item.ancho}</td>
+                    <td>${item.gramaje}</td>
+                    <td>${item.existencia}</td>
+                `;
+                corrugadorTable.appendChild(row);
+            });
+        }
+
+        function generateChart(comercialData, corrugadorData) {
+            const categories = comercialData.map(item => `Pedido ${item.id}`);
+            const cantidades = comercialData.map(item => item.cantidad);
+            const existencias = comercialData.map(pedido => {
+                const match = corrugadorData.find(
+                    item => item.ancho === pedido.ancho && item.gramaje === pedido.gramaje
+                );
+                return match ? match.existencia : 0;
+            });
+
+            const options = {
+                chart: {
+                    type: 'bar'
+                },
+                series: [
+                    {
+                        name: 'Cantidad Pedida',
+                        data: cantidades
+                    },
+                    {
+                        name: 'Existencias',
+                        data: existencias
+                    }
+                ],
+                xaxis: {
+                    categories: categories
+                },
+                title: {
+                    text: 'Comparación de Cantidades y Existencias'
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+        }
+
+        function applyFilters(comercialData, corrugadorData) {
+            const filterAncho = document.getElementById('filter-ancho').value;
+            const filterGramaje = document.getElementById('filter-gramaje').value;
+
+            const filteredComercial = comercialData.filter(item => 
+                (filterAncho === '' || item.ancho === filterAncho) &&
+                (filterGramaje === '' || item.gramaje === filterGramaje)
+            );
+
+            const filteredCorrugador = corrugadorData.filter(item => 
+                (filterAncho === '' || item.ancho === filterAncho) &&
+                (filterGramaje === '' || item.gramaje === filterGramaje)
+            );
+
+            populateTables(filteredComercial, filteredCorrugador);
+            generateChart(filteredComercial, filteredCorrugador);
+        }
+
+        async function init() {
+            const comercialData = await fetchData('https://megawebsistem.com/admin/api/apicomercial');
+            const corrugadorData = await fetchData('https://megawebsistem.com/admin/api/apicorrugador2');
+
+            // Poblar selectores de filtros
+            const uniqueAnchos = [...new Set([...comercialData.map(item => item.ancho), ...corrugadorData.map(item => item.ancho)])];
+            const uniqueGramajes = [...new Set([...comercialData.map(item => item.gramaje), ...corrugadorData.map(item => item.gramaje)])];
+
+            const filterAnchoSelect = document.getElementById('filter-ancho');
+            const filterGramajeSelect = document.getElementById('filter-gramaje');
+
+            uniqueAnchos.forEach(ancho => {
+                const option = document.createElement('option');
+                option.value = ancho;
+                option.textContent = ancho;
+                filterAnchoSelect.appendChild(option);
+            });
+
+            uniqueGramajes.forEach(gramaje => {
+                const option = document.createElement('option');
+                option.value = gramaje;
+                option.textContent = gramaje;
+                filterGramajeSelect.appendChild(option);
+            });
+
+            document.getElementById('apply-filters').addEventListener('click', () => applyFilters(comercialData, corrugadorData));
+
+            populateTables(comercialData, corrugadorData);
+            generateChart(comercialData, corrugadorData);
+        }
+
+        init();
+    </script>
+</body>
+</html>
