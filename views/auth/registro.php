@@ -74,8 +74,8 @@
                     <div class="auth-logo">
                         <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
                     </div>
-                    <h1 class="auth-title">Sign Up</h1>
-                    <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+                    <h1 class="auth-title">Registro</h1>
+                    <p class="auth-subtitle mb-5">Regístrate para obtener acceso completo.</p>
 
                     <form method="POST" action="/registro">
                         <div class="form-group position-relative has-icon-left mb-4">
