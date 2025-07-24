@@ -77,7 +77,7 @@
                     <h1 class="auth-title">Sign Up</h1>
                     <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
 
-                    <form action="index.html">
+                    <form method="POST" action="/registro">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <label for="nombre">Nombre:</label>
                             <input 
@@ -140,12 +140,6 @@
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
-
-
-
-
-
-
 
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
                     </form>
