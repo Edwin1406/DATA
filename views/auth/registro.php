@@ -87,7 +87,7 @@
                                 class="form-control form-control-xl"
                                 placeholder="Nombre">
                             <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
+                                <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -99,7 +99,7 @@
                                 class="form-control form-control-xl"
                                 placeholder="Apellido">
                             <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
+                                <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
