@@ -1,21 +1,21 @@
-<header class="dashboard__header">
-    <div class="dashboard__header-grid">
-        <a href="">
-            <h2 class="dashboard__logo">
-                
-               MEGASTOCK
-            </h2>
-        </a>
-        <nav class="dashboard__nav"> 
-            
-        <?php if (isset($_SESSION['email'])): ?>
 
-            <form method="POST" action="/logout" class="dashboard__form">
-            <p class="dashboard__submit--name fa fa-user"> <?php repeatSession(); ?> </p>
-            <input type="submit" value="Cerrar Sesión" class="dashboard__submit--logout">
-            </form>
-        <?php endif; ?>
-        </nav>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUEVA VERSION</title>
 
-</header>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- ICONOS -->
+    <link rel="icon" type="image/x-icon" href="/src/img/logo2.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/assets/css/bootstrap.css">
+<link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
+<link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+
+</head>
