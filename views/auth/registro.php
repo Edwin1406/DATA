@@ -79,7 +79,31 @@
 
                     <form action="index.html">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <label for="email">Email</label>
+                            <label for="nombre">Nombre:</label>
+                            <input 
+                                type="text"
+                                name="nombre"
+                                id="nombre"
+                                class="form-control form-control-xl"
+                                placeholder="Nombre">
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <label for="apellido">Apellido:</label>
+                            <input 
+                                type="text"
+                                name="apellido"
+                                id="apellido"
+                                class="form-control form-control-xl"
+                                placeholder="Apellido">
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <label for="email">Email:</label>
                             <input 
                                 type="text"
                                 name="email"
@@ -91,6 +115,7 @@
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
+                            <label for="username">Username:</label>
                             <input 
                                 type="text"
                                 name="username"
