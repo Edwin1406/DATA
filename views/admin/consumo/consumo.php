@@ -33,7 +33,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" method="POST" action="/admin/produccion/papel/crear">
+                                    <form class="form" method="POST" action="/admin/consumo">
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
@@ -49,21 +49,21 @@
                                                         placeholder="Last Name" name="last_name">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
+                                            <!-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="city-column">City</label>
                                                     <input type="text" id="city-column" class="form-control"
                                                         placeholder="City" name="city">
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
+                                            </div> -->
+                                            <!-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="country-floating">Country</label>
                                                     <input type="text" id="country-floating" class="form-control"
                                                         name="country" placeholder="Country">
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
+                                            </div> -->
+                                            <!-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="company-column">Company</label>
                                                     <input type="text" id="company-column" class="form-control"
@@ -76,16 +76,8 @@
                                                     <input type="email" id="email-id-column" class="form-control"
                                                         name="email" placeholder="Email">
                                                 </div>
-                                            </div>
-                                            <div class="form-group col-12">
-                                                <div class='form-check'>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" id="checkbox5"
-                                                            class='form-check-input' name="remember" value="1" checked>
-                                                        <label for="checkbox5">Remember Me</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </div> -->
+                                         
                                             <div class="col-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
