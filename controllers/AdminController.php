@@ -36,9 +36,16 @@ class AdminController
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $consumo->sincronizar($_POST);
-            debuguear($consumo);
+            $alertas = $consumo->validar();
+            if (empty($alertas)) {
+                $consumo->guardar();
+                header('Location: /admin/consumo');
+            }
+        } else {
+            $alertas = [];
+            
         }
-        
+
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
            
