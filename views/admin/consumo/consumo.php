@@ -56,14 +56,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Registro de Papel</h4>
-                                <!-- alertas  -->
-                                <?php if (!empty($alertas)) : ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <?php foreach ($alertas as $alerta) : ?>
-                                            <p><?php echo $alerta; ?></p>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+                                   <?php include_once __DIR__ . '/../../../templates/alertas.php'  ?>
+
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
