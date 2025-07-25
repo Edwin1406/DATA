@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Prueba;
 use MVC\Router;
 
 
@@ -31,12 +32,19 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
+
+        $consumo = new Prueba();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $consumo->sincronizar($_POST);
+            debuguear($consumo);
+        }
+
+
+
+   
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
-            'nombre' => $nombre,
-            'email' => $email
+           
         ]);
     }
 
