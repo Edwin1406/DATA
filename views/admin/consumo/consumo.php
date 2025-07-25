@@ -35,12 +35,19 @@
 <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
 <script>
     window.addEventListener('DOMContentLoaded', function () {
+        // Mostrar el toast
         var toastEl = document.getElementById('toastExito');
         var toast = new bootstrap.Toast(toastEl);
         toast.show();
+
+        // Quitar el parámetro ?exito=1 de la URL sin recargar
+        const url = new URL(window.location);
+        url.searchParams.delete('exito');
+        window.history.replaceState({}, document.title, url.toString());
     });
 </script>
 <?php endif; ?>
+
 
 
             <!-- // Basic multiple Column Form section start -->
