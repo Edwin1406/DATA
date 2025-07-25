@@ -32,7 +32,7 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
-
+        $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $consumo->sincronizar($_POST);
@@ -51,6 +51,7 @@ class AdminController
 
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
+            'alertas' => $alertas,
            
         ]);
     }
