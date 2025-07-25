@@ -59,8 +59,15 @@
                                    
      <?php if (!empty($alertas)) : ?>
     <?php foreach ($alertas as $tipo => $mensajes) : ?>
+        <?php 
+            // Mapeamos los tipos de alerta para que se ajusten al estilo de Bootstrap
+            $bootstrapClass = $tipo === 'error' ? 'danger' : $tipo;
+        ?>
         <?php foreach ($mensajes as $mensaje) : ?>
-            <div class="alert alert-<?php echo $tipo === 'error' ? 'danger' : $tipo; ?>" role="alert">
+            <div class="alert alert-<?php echo $bootstrapClass; ?> d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Error:">
+                    <use xlink:href="#exclamation-triangle-fill"/>
+                </svg>
                 <?php echo $mensaje; ?>
             </div>
         <?php endforeach; ?>
