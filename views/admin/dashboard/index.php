@@ -581,7 +581,7 @@
                                     </div> -->
 
 <div class="text-truncate" style="max-width: 150px;">
-  <h6 class="text-muted mb-0">@<?php echo $usuario; ?></h6>
+  <h6 class="text-muted mb-0">@<?php echo $email; ?></h6>
 </div>
 
 
