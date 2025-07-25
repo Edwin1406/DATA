@@ -36,7 +36,7 @@ class AdminController
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $consumo->sincronizar($_POST);
-            DEBUGUEAR($consumo); // Para ver los datos que se envían
+            // DEBUGUEAR($consumo); // Para ver los datos que se envían
             $alertas = $consumo->validar();
             if (empty($alertas)) {
                 $consumo->guardar();
