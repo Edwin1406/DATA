@@ -1,6 +1,8 @@
 
-<?php include_once(__DIR__ . '/../templates/admin-header.php'); ?>
 
-<h2>hola</h2>
+ <?php include __DIR__ . '/views/admin/consumo/consumo.php';?>      
+            <?php $contenido = ob_get_clean(); ?>
 
-<?php include_once(__DIR__ . '/../templates/admin-sidebar.php'); ?>
+<?php include __DIR__ . '/views/admin/admin-layout.php'?>
+
+    

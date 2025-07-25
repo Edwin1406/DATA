@@ -1,10 +1,8 @@
 
 
- <?php 
- ob_start();
- include __DIR__ . '/views/admin/consumo/consumo.php';?>      
-            <?php $contenido = ob_get_clean(); ?>
+ <?php include_once __DIR__ .'/templates/admin-header.php';?>      
+            <?php echo $contenido; ?>
 
-<?php include __DIR__ . '/views/admin/admin-layout.php'?>
+<?php include_once __DIR__ .'/templates/admin-sidebar.php';?>
 
     
