@@ -1,3 +1,7 @@
+
+                                   <?php include_once __DIR__ . '/../../templates/sidebar.php'  ?>
+
+
 <div id="app">
 
     <div id="main">
