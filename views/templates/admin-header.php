@@ -20,5 +20,5 @@
 
 </head>
 
-<?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
+<?php include_once __DIR__ . '/sidebar-only.php'; ?>
 
