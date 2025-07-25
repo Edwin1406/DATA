@@ -57,14 +57,15 @@
                             <div class="card-header">
                                 <h4 class="card-title">Registro de Papel</h4>
                                    
-                                <!-- alertas  -->
-                                <?php if (!empty($alertas)) : ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <?php foreach ($alertas as $alerta) : ?>
-                                            <p><?php echo $alerta; ?></p>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+                         <?php if (!empty($alertas)) : ?>
+    <?php foreach ($alertas as $tipo => $mensajes) : ?>
+        <?php foreach ($mensajes as $mensaje) : ?>
+            <div class="alert alert-<?php echo $tipo; ?>" role="alert">
+                <?php echo $mensaje; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 
                             </div>
                             <div class="card-content">
