@@ -37,6 +37,8 @@ class Router
         } else {
             // ruta error 404
             // include __DIR__ . "/views/admin/error404/404.php";
+            echo "Ruta no encontrada";
+            http_response_code(404);
 
         }
     }
