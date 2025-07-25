@@ -38,10 +38,7 @@ class AdminController
             $consumo->sincronizar($_POST);
             debuguear($consumo);
         }
-
-
-
-   
+        
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
            
