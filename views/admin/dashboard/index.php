@@ -575,10 +575,8 @@
                                     <div class="avatar avatar-xl">
                                         <img src="/assets/images/faces/1.jpg" alt="Face 1">
                                     </div>
-                                    <div class="ms-1 name ">
+                                    <div class="ms-0 name ">
                                         <h5 class="font-bold"><?php echo $nombre; ?></h5>
-                                        <br>
-                                        <br>
                                         <h6 class="text-muted mb-0 .fs-6 small"><?php echo $email; ?></h6>
                                     </div>
                                 </div>
