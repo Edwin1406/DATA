@@ -23,6 +23,7 @@
                     <h1 class="error-title">EXTRAVIADO</h1>
                     <p class='fs-5 text-gray-600'>La página que estás buscando no se encontró.</p>
                     <a href="/admin/index" class="btn btn-lg btn-outline-primary mt-3">Volver al inicio</a>
+                    <br>
                 </div>
             </div>
         </div>
