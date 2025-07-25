@@ -33,7 +33,7 @@ class AdminController
         }
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
-        $router->render('admin/dashboard/consumo', [
+        $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
             'email' => $email
