@@ -577,7 +577,7 @@
                                     </div>
                                     <div class="ms-4 name text-truncate">
                                         <h5 class="font-bold"><?php echo $nombre; ?></h5>
-                                        <h6 class="text-muted mb-0  font-size-small"><?php echo $email; ?></h6>
+                                        <h6 class="text-muted mb-0  .fs-6 small"><?php echo $email; ?></h6>
                                     </div>
                                 </div>
                             </div>
