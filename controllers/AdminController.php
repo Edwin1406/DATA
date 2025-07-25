@@ -15,10 +15,12 @@ class AdminController
         }
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
         // debuguear($nombre);
         $router->render('admin/dashboard/index' , [
             'titulo' => 'MEGASTOCK-DESARROLLO',
-            'nombre' => $nombre
+            'nombre' => $nombre,
+            'email' => $email
         ]);
     }
 
