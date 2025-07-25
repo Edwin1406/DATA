@@ -37,16 +37,16 @@
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-column">First Name</label>
-                                                    <input type="text" id="first-name-column" class="form-control"
-                                                        placeholder="First Name" name="first_name">
+                                                    <label for="name">First Name</label>
+                                                    <input type="text" id="name" class="form-control"
+                                                        placeholder="First Name" name="name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="last-name-column">Last Name</label>
-                                                    <input type="text" id="last-name-column" class="form-control"
-                                                        placeholder="Last Name" name="last_name">
+                                                    <label for="last">Last Name</label>
+                                                    <input type="text" id="last" class="form-control"
+                                                        placeholder="Last Name" name="last">
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-6 col-12">
