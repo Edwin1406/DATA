@@ -575,18 +575,15 @@
                                     <div class="avatar avatar-xl">
                                         <img src="/assets/images/faces/1.jpg" alt="Face 1">
                                     </div>
-                                    <!-- <div class="ms-3 name">
-                                        <h6 class="text-muted mb-0">@johnduckysadsadasdasdasdasdas</h6>
-                                    </div> -->
+                                    <div class="ms-3 name">
+                                        <h5 class="font-bold"><?php echo $nombre; ?></h5>
+                                        <h6 class="text-muted mb-0 text-truncate">@johnduckysadsadasdasdasdasdas</h6>
+                                    </div>
+
+
+
+
                                     
-                                    <div class="text-truncate" style="max-width: 150px;">
-    <h5 class="font-bold"><?php echo $nombre; ?></h5>
-</div>
-<h6 class="text-muted mb-0 "><?php echo $email; ?></h6>
-
-
-
-
                                 </div>
                             </div>
                         </div>
