@@ -13,6 +13,9 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        debuguear($nombre);
         $router->render('admin/dashboard/index' , [
             'titulo' => 'MEGASTOCK-DESARROLLO'
         ]);
