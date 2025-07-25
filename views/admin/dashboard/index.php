@@ -11,12 +11,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- Sidebar Menu -->
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="/admin/index" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -355,8 +356,13 @@
 
                     </ul>
                 </div>
+
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
+            <!-- End of Sidebar -->
+
+
+
         </div>
         <div id="main">
             <header class="mb-3">
@@ -368,6 +374,7 @@
             <div class="page-heading">
                 <h3>ESTADISTICAS DEL PERFIL </h3>
             </div>
+
             <div class="page-content">
                 <section class="row">
                     <div class="col-12 col-lg-9">
