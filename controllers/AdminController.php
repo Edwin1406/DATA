@@ -15,9 +15,10 @@ class AdminController
         }
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
-        debuguear($nombre);
+        // debuguear($nombre);
         $router->render('admin/dashboard/index' , [
-            'titulo' => 'MEGASTOCK-DESARROLLO'
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre
         ]);
     }
 
