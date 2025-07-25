@@ -1,5 +1,5 @@
 
-                                   <?php include_once __DIR__ . '/../../templates/sidebar.php'  ?>
+                                   <?php include_once __DIR__ . '/../../templates/sidebar-only.php'  ?>
 
 
 <div id="app">
