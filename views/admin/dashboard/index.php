@@ -577,6 +577,8 @@
                                     </div>
                                     <div class="ms-1 name ">
                                         <h5 class="font-bold"><?php echo $nombre; ?></h5>
+                                        <br>
+                                        <br>
                                         <h6 class="text-muted mb-0 .fs-6 small"><?php echo $email; ?></h6>
                                     </div>
                                 </div>
