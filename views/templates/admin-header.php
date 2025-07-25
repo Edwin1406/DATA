@@ -20,5 +20,4 @@
 
 </head>
 
-<?php include_once __DIR__ . '/sidebar-only.php'; ?>
 
