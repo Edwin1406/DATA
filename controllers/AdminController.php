@@ -40,7 +40,9 @@ class AdminController
             $alertas = $consumo->validar();
             if (empty($alertas)) {
                 $consumo->guardar();
-                header('Location: /admin/consumo');
+                // header('Location: /admin/consumo');
+                    header('Location: /admin/consumo?exito=1');
+
             }
         } else {
             $alertas = [];
