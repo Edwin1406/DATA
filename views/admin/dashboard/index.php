@@ -26,11 +26,11 @@
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Components</span>
+                                <span>PRODUCCIÓN</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="component-alert.html">Alert</a>
+                                    <a href="component-alert.html">Consumo Papel</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="component-badge.html">Badge</a>
@@ -378,6 +378,7 @@
             <div class="page-content">
                 <section class="row">
                     <div class="col-12 col-lg-9">
+                        <!-- Profile Statistics -->
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
@@ -448,6 +449,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- End of Profile Statistics -->
+
+                        <!-- Profile Visit -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -460,6 +464,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- End of Profile Visit -->
+
+                        <!-- Latest Comments -->
                         <div class="row">
                             <div class="col-12 col-xl-4">
                                 <div class="card">
