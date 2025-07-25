@@ -13,7 +13,7 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Input</h3>
+                            <h3>Conusmo de papel</h3>
                             <p class="text-subtitle text-muted">Give textual form controls like input upgrade with
                                 custom styles,
                                 sizing, focus states, and more.</p>
@@ -78,141 +78,9 @@
                     </div>
                 </section>
 
-                <!-- Input Style start -->
-                <section id="input-style">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Input Styles</h4>
-                                </div>
+             
 
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>To set rounded border to input box, use <code>.round</code> class and
-                                                to set square border to input box, use <code>.sqaure</code> class
-                                                alongwith
-                                                <code>.form-control</code> class.
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="roundText">Rounded Input</label>
-                                                <input type="text" id="roundText" class="form-control round"
-                                                    placeholder="Rounded Input">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="squareText">Square Input</label>
-                                                <input type="text" id="squareText" class="form-control square"
-                                                    placeholder="Square Input">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Input Style end -->
 
-                <!-- Horizontal Input start -->
-                <section id="horizontal-input">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Horizontal Input</h4>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>To make label in center of form-control, use <code>.col-form-label</code>
-                                                class with
-                                                <code>&lt;label&gt;</code> element. This is default bootstrap class.
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row align-items-center">
-                                                <div class="col-lg-2 col-3">
-                                                    <label class="col-form-label">First Name</label>
-                                                </div>
-                                                <div class="col-lg-10 col-9">
-                                                    <input type="text" id="first-name" class="form-control" name="fname"
-                                                        placeholder="First Name">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row align-items-center">
-                                                <div class="col-lg-2 col-3">
-                                                    <label class="col-form-label">Last Name</label>
-                                                </div>
-                                                <div class="col-lg-10 col-9">
-                                                    <input type="text" id="last-name" class="form-control" name="fname"
-                                                        placeholder="Last Name">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Horizontal Input end -->
-
-                <!-- Basic File Browser start -->
-                <section id="input-file-browser">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">File Input</h4>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="mb-3">
-                                                <label for="formFile" class="form-label">Default file input
-                                                    example</label>
-                                                <input class="form-control" type="file" id="formFile">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="formFileMultiple" class="form-label">Multiple files input
-                                                    example</label>
-                                                <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="formFileDisabled" class="form-label">Disabled file input
-                                                    example</label>
-                                                <input class="form-control" type="file" id="formFileDisabled" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-
-                                            <div class="mb-3">
-                                                <label for="formFileSm" class="form-label">Small file input
-                                                    example</label>
-                                                <input class="form-control form-control-sm" id="formFileSm" type="file">
-                                            </div>
-                                            <div>
-                                                <label for="formFileLg" class="form-label">Large file input
-                                                    example</label>
-                                                <input class="form-control form-control-lg" id="formFileLg" type="file">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Basic File Browser end -->
 
                 <!-- Input with Icons start -->
                 <section id="input-with-icons">
