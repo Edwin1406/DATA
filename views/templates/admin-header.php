@@ -19,3 +19,6 @@
 <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
 
 </head>
+
+      <?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
+
