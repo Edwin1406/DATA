@@ -4,7 +4,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="/admin/index"><img src="/src/img/logo2.png" alt="Logo" srcset="">MEGASTOCK</a>
+                            <a href="/admin/index"><img src="" alt="Logo" srcset="">MEGASTOCK</a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
