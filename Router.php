@@ -36,7 +36,7 @@ class Router
             call_user_func($fn, $this);
         } else {
             // ruta error 404
-            include __DIR__ . "/views/admin/error404/404.php";
+            // include __DIR__ . "/views/admin/error404/404.php";
 
         }
     }
@@ -53,7 +53,7 @@ class Router
         $url_actual = $_SERVER['REQUEST_URI'] ?? '/';
         
        
-        debuguear($url_actual);
+        // debuguear($url_actual);
 
         if(str_contains($url_actual,'/admin')){
             include __DIR__ . "/views/admin-layout.php";
