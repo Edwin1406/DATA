@@ -28,8 +28,14 @@ class AdminController
     // error 404
     public static function error404(Router $router)
     {
-        echo 'Esta es la página de error 404d.';
-        exit();
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        $router->render('admin/error404', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'error' => 'Página no encontrada'
+        ]);
     }
     
 }
