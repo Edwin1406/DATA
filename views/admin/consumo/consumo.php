@@ -1,3 +1,7 @@
+
+<h2 class="dashboard__heading"> <?php echo $titulo ?> </h2>
+
+
 <div id="app">
 
     <div id="main">
