@@ -569,20 +569,19 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
-                      <div class="card" style="max-width: 100%; overflow: hidden;">
-    <div class="card-body py-4 px-5">
-        <div class="d-flex align-items-center">
-            <div class="avatar avatar-xl flex-shrink-0">
-                <img src="/assets/images/faces/1.jpg" alt="Face 1" style="width: 100%; height: auto; object-fit: cover;">
-            </div>
-            <div class="ms-4 name" style="min-width: 0;">
-                <h5 class="font-bold mb-1 text-truncate" style="max-width: 200px;"><?php echo $nombre; ?></h5>
-                <h6 class="text-muted mb-0 text-truncate" style="max-width: 200px;">@johnduckysadsadasdasdasdasdasdas</h6>
-            </div>
-        </div>
-    </div>
-</div>
-
+                        <div class="card">
+                            <div class="card-body py-4 px-5">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-xl">
+                                        <img src="/assets/images/faces/1.jpg" alt="Face 1">
+                                    </div>
+                                    <div class="ms-4 name">
+                                        <h5 class="font-bold"><?php echo $nombre; ?></h5>
+                                        <h6 class="text-muted mb-0 text-truncate">@<?php echo $email; ?></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-header">
                                 <h4>Recent Messages</h4>
