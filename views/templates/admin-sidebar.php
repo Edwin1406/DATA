@@ -1,15 +1,8 @@
 
     <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-      <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
-<script src="/assets/js/pages/form-editor.js"></script>
-<script src="/assets/js/pages/ui-apexchart.js"></script>
-<script src="/assets/js/pages/ui-chartjs.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-
-    <!-- <script src="/assets/vendors/apexcharts/apexcharts.js"></script> -->
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="/assets/js/pages/dashboard.js"></script>
 
     <script src="/assets/js/main.js"></script>
