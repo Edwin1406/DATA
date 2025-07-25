@@ -84,6 +84,12 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 $router->get('/admin/index', [AdminController::class, 'index']);
 
 
+
+// Dashboard
+$router->get('/admin/consumo', [AdminController::class, 'consumo']);
+
+
+
 $router->comprobarRutas();
 
 

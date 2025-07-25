@@ -24,6 +24,31 @@ class AdminController
         ]);
     }
 
+    // consumo
+    public static function consumo(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $router->render('admin/dashboard/consumo', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
 
     // error 404
     public static function error404(Router $router)

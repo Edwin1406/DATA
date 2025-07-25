@@ -30,7 +30,7 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="component-alert.html">Consumo Papel</a>
+                                    <a href="/admin/consumo">Consumo Papel</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="component-badge.html">Badge</a>
