@@ -1,3 +1,3 @@
 
-    <h2>hola</h2>
+<?php echo $contenido; ?>
 
