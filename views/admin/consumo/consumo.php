@@ -6,9 +6,7 @@ ob_start();
 
 <!-- Aquí va TODO el contenido HTML de consumo (el formulario) -->
 
-<?php
-$contenido = ob_get_clean();
-require_once __DIR__ . '/templates/admin-layout.php';
+
 ?>
 
 
