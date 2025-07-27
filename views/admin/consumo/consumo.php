@@ -11,10 +11,9 @@
 
     <div id="main">
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
+   <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
         <div class="page-heading">
             <div class="page-title">
                 <div class="row">
