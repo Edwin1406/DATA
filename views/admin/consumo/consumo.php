@@ -8,7 +8,7 @@ ob_start();
 
 <?php
 $contenido = ob_get_clean();
-include_once __DIR__ . '/../../templates/layout.php';
+require_once __DIR__ . '/../../templates/layout.php';
 ?>
 
 
