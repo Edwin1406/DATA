@@ -1,5 +1,11 @@
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+  // Código JS que manipula elementos del DOM
+});
 
+
+</script>
 
 <div id="app">
 
