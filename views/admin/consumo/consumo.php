@@ -1,19 +1,9 @@
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-  // Código JS que manipula elementos del DOM
-});
-
-
-</script>
+<?php include_once __DIR__ . '../../templates/sidebar-only.php'; ?>
 
 <div id="app">
 
     <div id="main">
-
-   <div class="toggler">
-                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                        </div>
         <div class="page-heading">
             <div class="page-title">
                 <div class="row">
