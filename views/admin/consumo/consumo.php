@@ -1,16 +1,4 @@
 
-<?php 
-$titulo = "Registro de Papel"; 
-ob_start();
-?>
-
-<!-- Aquí va TODO el contenido HTML de consumo (el formulario) -->
-
-
-
-<div id="app">
-
-    <div id="main">
         <div class="page-heading">
             <div class="page-title">
                 <div class="row">
@@ -131,16 +119,4 @@ ob_start();
             <!-- // Basic multiple Column Form section end -->
         </div>
 
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-start">
-                    <p>2025 &copy; EDWIN DIAZ</p>
-                </div>
-                <div class="float-end">
-                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                            href="http://.com">A. Saugi</a></p>
-                </div>
-            </div>
-        </footer>
-    </div>
-</div>
+   
