@@ -1,6 +1,15 @@
 
-<?php require_once __DIR__ . '/../../templates/sidebar-only.php'; ?>
-    <?php require_once __DIR__ . '/../../templates/admin-header.php'; ?>
+<?php 
+$titulo = "Registro de Papel"; 
+ob_start();
+?>
+
+<!-- Aquí va TODO el contenido HTML de consumo (el formulario) -->
+
+<?php
+$contenido = ob_get_clean();
+include_once __DIR__ . '/../../templates/layout.php';
+?>
 
 
 <div id="app">
