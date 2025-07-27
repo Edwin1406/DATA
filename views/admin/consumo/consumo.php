@@ -125,7 +125,18 @@
             <!-- // Basic multiple Column Form section end -->
         </div>
 
-   
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const burgerBtn = document.querySelector('.burger-btn');
+  if (burgerBtn) {
+    burgerBtn.addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.toggle('active');
+    });
+  }
+});
+
+   </script>
+
 
 <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
