@@ -1,5 +1,7 @@
 
 <?php require_once __DIR__ . '/../../templates/sidebar-only.php'; ?>
+    <?php require_once __DIR__ . '/../../templates/admin-header.php'; ?>
+
 
 <div id="app">
 
