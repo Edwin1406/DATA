@@ -7,8 +7,6 @@ ob_start();
 <!-- Aquí va TODO el contenido HTML de consumo (el formulario) -->
 
 
-?>
-
 
 <div id="app">
 
