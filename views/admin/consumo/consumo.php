@@ -1,10 +1,3 @@
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/assets/css/bootstrap.css">
-<link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
-<link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-<link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-<link rel="stylesheet" href="/assets/css/app.css">
-<link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
         <div class="page-heading">
             <div class="page-title">
                 <div class="row">
@@ -124,24 +117,3 @@
 
             <!-- // Basic multiple Column Form section end -->
         </div>
-
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-  const burgerBtn = document.querySelector('.burger-btn');
-  if (burgerBtn) {
-    burgerBtn.addEventListener('click', () => {
-      document.querySelector('.sidebar').classList.toggle('active');
-    });
-  }
-});
-
-   </script>
-
-
-<script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="/assets/js/pages/dashboard.js"></script>
-
-<script src="/assets/js/main.js"></script>
