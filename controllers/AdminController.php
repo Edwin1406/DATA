@@ -14,6 +14,8 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
+            $usuariosConectados = self::contarUsuariosConectados();
+
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
@@ -21,7 +23,8 @@ class AdminController
         $router->render('admin/dashboard/index' , [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
-            'email' => $email
+            'email' => $email,
+            'usuariosConectados' => $usuariosConectados
         ]);
     }
 
@@ -64,7 +67,19 @@ class AdminController
 
 
 
+private static function contarUsuariosConectados()
+{
+    $path = ini_get("session.save_path");
+    if (empty($path)) $path = sys_get_temp_dir();
 
+    $cuenta = 0;
+    foreach (glob("$path/sess_*") as $file) {
+        if (filemtime($file) + ini_get("session.gc_maxlifetime") > time()) {
+            $cuenta++;
+        }
+    }
+    return $cuenta;
+}
 
 
 
