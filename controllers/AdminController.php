@@ -66,14 +66,6 @@ class AdminController
 
 
 
-    public static function cerrarSesion(Router $router)
-    {
-        session_start();
-        $_SESSION = [];
-        session_destroy();
-        header('Location: /');
-        exit;
-    }
 
 
 
