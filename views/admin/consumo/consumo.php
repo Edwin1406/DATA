@@ -1,3 +1,9 @@
+        
+        <script>
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+
+        </script>
         <div class="page-heading">
             <div class="page-title">
                 <div class="row">
