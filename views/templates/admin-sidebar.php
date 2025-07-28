@@ -27,6 +27,7 @@ if (strpos($currentPath, '/admin/index') !== false) {
 
 
 <script src="/assets/js/main.js"></script>
+ <script src="/assets/vendors/choices.js/choices.min.js"></script>
 </body>
 
 </html>
