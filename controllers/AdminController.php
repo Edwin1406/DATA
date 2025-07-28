@@ -66,20 +66,14 @@ class AdminController
 
 
 
- public static function cerrarSesion(Router $router)
-{
-    session_start();
-
-    // Opcional: limpiar variables de sesión
-    $_SESSION = [];
-
-    // Destruir sesión
-    session_destroy();
-
-    // Redirigir al login o página de inicio
-    header('Location: /');
-    exit;
-}
+    public static function cerrarSesion(Router $router)
+    {
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+        header('Location: /');
+        exit;
+    }
 
 
 
