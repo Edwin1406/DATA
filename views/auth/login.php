@@ -8,7 +8,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+                        <a href="index.html"><img src="/src/img/logo2.png" alt="Logo"></a>
                     </div>
                     <h1 class="auth-title">Acceso.</h1>
                     <p class="auth-subtitle mb-5">Inicie sesión con los datos que ingresó durante el registro.</p>
