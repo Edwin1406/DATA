@@ -142,3 +142,8 @@
 
     <!-- // Basic multiple Column Form section end -->
 </div>
+
+
+<link rel="stylesheet" href="/assets/extensions/choices.js/public/assets/styles/choices.css">
+<script src="/assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+<script src="/assets/static/js/pages/form-element-select.js"></script>
