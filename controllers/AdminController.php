@@ -74,7 +74,7 @@ private static function contarUsuariosConectados()
 
     $cuenta = 0;
     foreach (glob("$path/sess_*") as $file) {
-        if (filemtime($file) + ini_get("session.gc_maxlifetime",10) > time()) {
+        if (filemtime($file) + ini_get("session.gc_maxlifetime") > time()) {
             $cuenta++;
         }
     }
