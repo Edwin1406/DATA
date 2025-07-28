@@ -16,9 +16,8 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html"><?php echo $nombre; ?></a></li>
                                 <!--  cerrar sesión -->
-                                <form action="/cerrarSesion" method="POST">
-                                    <button type="submit" class="btn btn-link">Cerrar Sesión</button>
-                                </form>
+                                <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
+                             
                             </ol>
                         </nav>
                     </div>
