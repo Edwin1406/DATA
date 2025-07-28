@@ -230,3 +230,4 @@
 
             <!-- // Basic multiple Column Form section end -->
         </div>
+ <script src="/assets/vendors/choices.js/choices.min.js"></script>
