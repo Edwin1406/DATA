@@ -34,6 +34,10 @@ class AdminController
         }
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
+      //cerrar sesión 
+      
+
+
         $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -62,6 +66,16 @@ class AdminController
 
 
 
+    public static function cerrarSesion(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // Cerrar sesión
+        session_destroy();
+        header('Location: /');
+    }
 
 
 
