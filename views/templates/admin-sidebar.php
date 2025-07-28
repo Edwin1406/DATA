@@ -18,7 +18,7 @@
 <script src="/assets/js/pages/dashboard.js"></script> -->
 <?php
 $currentPath = $_SERVER['REQUEST_URI'];
-if (strpos($currentPath, '/admin/index') !== false) {
+if (strpos($currentPath, '/admin/idex') !== false) {
     echo '<script src="/assets/vendors/apexcharts/apexcharts.js"></script>';
     echo '<script src="/assets/js/pages/dashboard.js"></script>';
 }
