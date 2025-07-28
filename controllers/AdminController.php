@@ -67,14 +67,32 @@ class AdminController
 
 
 
-private static function contarUsuariosConectados()
-{
+// private static function contarUsuariosConectados()
+// {
+//     $path = ini_get("session.save_path");
+//     if (empty($path)) $path = sys_get_temp_dir();
+
+//     $cuenta = 0;
+//     foreach (glob("$path/sess_*") as $file) {
+//         if (filemtime($file) + ini_get("session.gc_maxlifetime",10) > time()) {
+//             $cuenta++;
+//         }
+//     }
+//     return $cuenta;
+// }
+
+
+// Establece el tiempo de vida de la sesión a 5 minutos (300 segundos)
+
+function contarUsuariosConectados() {
+    ini_set("session.gc_maxlifetime", 300);
     $path = ini_get("session.save_path");
     if (empty($path)) $path = sys_get_temp_dir();
 
     $cuenta = 0;
     foreach (glob("$path/sess_*") as $file) {
-        if (filemtime($file) + ini_get("session.gc_maxlifetime",10) > time()) {
+        // Considera activa solo la sesión con actividad en los últimos 5 minutos
+        if (filemtime($file) + 300 > time()) {
             $cuenta++;
         }
     }
