@@ -14,8 +14,15 @@
 <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="/assets/js/pages/dashboard.js"></script>
+<!-- <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+<script src="/assets/js/pages/dashboard.js"></script> -->
+<?php
+$currentPath = $_SERVER['REQUEST_URI'];
+if (strpos($currentPath, '/admin/dashboard') !== false) {
+    echo '<script src="/assets/vendors/apexcharts/apexcharts.js"></script>';
+    echo '<script src="/assets/js/pages/dashboard.js"></script>';
+}
+?>
 
 
 
