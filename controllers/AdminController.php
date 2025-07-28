@@ -32,6 +32,8 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
         $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,7 +54,7 @@ class AdminController
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'alertas' => $alertas,
-           
+            'nombre' => $nombre
         ]);
     }
 
