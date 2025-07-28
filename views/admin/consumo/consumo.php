@@ -16,7 +16,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html"><?php echo $nombre; ?></a></li>
                                 <!--  cerrar sesión -->
-                                <li class="breadcrumb-item"><a href="/cerrar-sesion">Cerrar Sesión</a></li>
+                                <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
                              
                             </ol>
                         </nav>

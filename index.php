@@ -72,7 +72,7 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
 
 // cerrar sesión
-$router->post('/cerrar-sesion', [AuthController::class, 'logout']);
+$router->post('/cerrarSesion', [AuthController::class, 'cerrarSesion']);
 
 
 
