@@ -44,9 +44,21 @@
                      });
                  </script>
              <?php endif; ?>
+             <?php if (isset($_GET['editado']) && $_GET['editado'] == '1') : ?>
+                 <script>
+                     window.addEventListener('DOMContentLoaded', function() {
+                         // Mostrar el toast
+                         var toastEl = document.getElementById('toastEditado');
+                         var toast = new bootstrap.Toast(toastEl);
+                         toast.show();
 
-
-
+                         // Quitar el parámetro ?editado=1 de la URL sin recargar
+                         const url = new URL(window.location);
+                         url.searchParams.delete('editado');
+                         window.history.replaceState({}, document.title, url.toString());
+                     });
+                 </script>
+             <?php endif; ?>
 
          </div>
      </div>
