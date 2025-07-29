@@ -34,24 +34,28 @@ class Prueba extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->fecha = $args['fecha'] ?? '';
         $this->turno = $args['turno'] ?? '';
-        $this->personal = $args['personal'] ?? [];
-        $this->producto = $args['producto'] ?? '';
+        // $this->personal = $args['personal'] ?? [];
+      
+
+        // Si viene como array (desde formulario), convertir a string
+        if (isset($args['personal'])) {
+            if (is_array($args['personal'])) {
+                $this->personal = $args['personal'];
+            } else {
+                $this->personal = [$args['personal']]; // Asegurarse de que sea un array
+            }
+        } else {
+            $this->personal = [];
+        }
+
+  $this->producto = $args['producto'] ?? '';
         $this->medidas = $args['medidas'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->hora_inicio = $args['hora_inicio'] ?? '';
         $this->hora_fin = $args['hora_fin'] ?? '';
         $this->total_horas = $args['total_horas'] ?? '';
 
-        // Si viene como array (desde formulario), convertir a string
-        // if (isset($args['personal'])) {
-        //     if (is_array($args['personal'])) {
-        //         $this->personal = $args['personal'];
-        //     } else {
-        //         $this->personal = [$args['personal']]; // Asegurarse de que sea un array
-        //     }
-        // } else {
-        //     $this->personal = [];
-        // }
+
     }
 
 
