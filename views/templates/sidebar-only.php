@@ -41,11 +41,6 @@
                      </a>
                      <ul class="submenu ">
 
-
-
-
-
-
                      <?php if($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
 
                          <li class="sidebar-item  has-sub">
@@ -59,6 +54,10 @@
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumo">Tabla Consumo</a>
+                                 </li>
+                               
+                                 <li class="submenu-item ">
+                                     <a href="/admin/consumo_general">Registro Consumo General</a>
                                  </li>
                                
                              </ul>

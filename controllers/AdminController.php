@@ -137,6 +137,34 @@ public static function tablaConsumo(Router $router)
 
 
 
+    // CONSUMO GENERAL
+    public static function consumo_general(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $consumos = Prueba::all();
+        // debuguear($consumos);
+
+        $router->render('admin/consumo/consumo_general', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'consumos' => $consumos
+        ]);
+        
+    }
+
+
+
+
+
+
 
 
 

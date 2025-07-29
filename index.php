@@ -70,17 +70,35 @@ $router->get('/admin/consumo', [AdminController::class, 'consumo']);
 $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
 
+// consmo general
+$router->get('/admin/consumo_general', [AdminController::class, 'consumo_general']);
+$router->post('/admin/consumo_general', [AdminController::class, 'consumo_general']);
+
+
+
+
+
+
 
 // tabla de consumo
 $router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
+
+
+
+
 
 
 // eliminar consumo
 $router->post('/admin/eliminarConsumo', [AdminController::class, 'eliminarConsumo']);
 
 
-// cerrar sesión
 
+
+
+
+
+
+// cerrar sesión
 $router->get('/cerrarSesion', [AuthController::class, 'cerrarSesion']);
 
 
