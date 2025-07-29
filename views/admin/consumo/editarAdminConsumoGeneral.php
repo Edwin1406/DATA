@@ -1,4 +1,3 @@
-
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
@@ -53,7 +52,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONSUMO  GENERAL</h4>
+                        <h4 class="card-title">REGISTRO DE CONSUMO GENERAL</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
@@ -74,13 +73,13 @@
                                                 <option value="TROQUEL" <?= $consumoGeneral->tipo_maquina === 'TROQUEL' ? 'selected' : '' ?>>TROQUEL</option>
                                                 <option value="FLEXOGRAFICA" <?= $consumoGeneral->tipo_maquina === 'FLEXOGRAFICA' ? 'selected' : '' ?>>FLEXOGRAFICA</option>
                                                 <option value="PRE-PRINTER" <?= $consumoGeneral->tipo_maquina === 'PRE-PRINTER' ? 'selected' : '' ?>>PRE-PRINTER</option>
-                                                 <option value="DOBLADO" <?= $consumoGeneral->tipo_maquina === 'DOBLADO' ? 'selected' : '' ?>>DOBLADO</option>
-                                                  <option value="CORTE CEJA" <?= $consumoGeneral->tipo_maquina === 'CORTE CEJA' ? 'selected' : '' ?>>CORTE CEJA</option>
-                                                   <option value="CONVERTIDOR" <?= $consumoGeneral->tipo_maquina === 'CONVERTIDOR' ? 'selected' : '' ?>>CONVERTIDOR</option>
-                                                    <option value="GUILLLOTINA LAMINA" <?= $consumoGeneral->tipo_maquina === 'GUILLLOTINA LAMINA' ? 'selected' : '' ?>>GUILLLOTINA LAMINA</option>
-                                                     <option value="GUILLOTINA PAPEL" <?= $consumoGeneral->tipo_maquina === 'GUILLOTINA PAPEL' ? 'selected' : '' ?>>GUILLOTINA PAPEL</option>
-                                                      <option value="EMPAQUE" <?= $consumoGeneral->tipo_maquina === 'EMPAQUE' ? 'selected' : '' ?>>EMPAQUE</option>
-                                                         <option value="BODEGA" <?= $consumoGeneral->tipo_maquina === 'BODEGA' ? 'selected' : '' ?>>BODEGA</option>
+                                                <option value="DOBLADO" <?= $consumoGeneral->tipo_maquina === 'DOBLADO' ? 'selected' : '' ?>>DOBLADO</option>
+                                                <option value="CORTE CEJA" <?= $consumoGeneral->tipo_maquina === 'CORTE CEJA' ? 'selected' : '' ?>>CORTE CEJA</option>
+                                                <option value="CONVERTIDOR" <?= $consumoGeneral->tipo_maquina === 'CONVERTIDOR' ? 'selected' : '' ?>>CONVERTIDOR</option>
+                                                <option value="GUILLLOTINA LAMINA" <?= $consumoGeneral->tipo_maquina === 'GUILLLOTINA LAMINA' ? 'selected' : '' ?>>GUILLLOTINA LAMINA</option>
+                                                <option value="GUILLOTINA PAPEL" <?= $consumoGeneral->tipo_maquina === 'GUILLOTINA PAPEL' ? 'selected' : '' ?>>GUILLOTINA PAPEL</option>
+                                                <option value="EMPAQUE" <?= $consumoGeneral->tipo_maquina === 'EMPAQUE' ? 'selected' : '' ?>>EMPAQUE</option>
+                                                <option value="BODEGA" <?= $consumoGeneral->tipo_maquina === 'BODEGA' ? 'selected' : '' ?>>BODEGA</option>
 
                                             </select>
                                         </div>
@@ -95,7 +94,7 @@
                                                 value="<?= htmlspecialchars($consumoGeneral->total_general ?? '') ?>">
                                         </div>
                                     </div>
-                                   
+
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
