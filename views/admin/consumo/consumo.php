@@ -74,13 +74,13 @@
                                                 placeholder="First Name" name="name">
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last">Last Name</label>
                                             <input type="text" id="last" class="form-control"
                                                 placeholder="Last Name" name="last">
                                         </div>
-                                    </div> -->
+                                    </div>
 
 <!-- 
                                     <section class="multiple-choices">
