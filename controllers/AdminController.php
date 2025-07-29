@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Intervention\Image\Constraint;
+use Model\Consumo_general;
 use Model\Prueba;
 use MVC\Router;
 
@@ -147,7 +149,7 @@ public static function tablaConsumo(Router $router)
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
-        $consumo_general = new Prueba();
+        $consumo_general = new Consumo_general;
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tipo_maquina = $_POST['tipo_maquina'] ?? '';
