@@ -39,10 +39,20 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Graiden</td>
-                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                        <td>076 4820 8838</td>
-                                        <td>Offenburg</td>
+                                          <?php foreach ($consumos as $consumo): ?>
+            <tr>
+                <td><?= $consumo->fecha ?></td>
+                <td><?= $consumo->turno ?></td>
+                <td><?= $consumo->personal ?></td>
+                <td><?= $consumo->producto ?></td>
+                <td><?= $consumo->medidas ?></td>
+                <td><?= $consumo->cantidad ?></td>
+                <td><?= $consumo->hora_inicio ?></td>
+                <td><?= $consumo->hora_fin ?></td>
+                <td><?= $consumo->total_horas ?></td>
+                <td><?= $consumo->x_hora ?></td>
+            </tr>
+        <?php endforeach; ?>
                                         <td>
                                             <span class="badge bg-success">Active</span>
                                         </td>
