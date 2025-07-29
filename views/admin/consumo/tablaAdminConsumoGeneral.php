@@ -44,7 +44,7 @@
                      });
                  </script>
              <?php endif; ?>
-             <?php if (isset($_GET['editado']) && $_GET['editado'] == '1') : ?>
+             <?php if (isset($_GET['editado']) && $_GET['editado'] == '3') : ?>
                  <script>
                      window.addEventListener('DOMContentLoaded', function() {
                          // Mostrar el toast

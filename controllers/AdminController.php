@@ -282,7 +282,7 @@ class AdminController
 
             if (empty($alertas)) {
                 $consumoGeneral->guardar();
-                header('Location: /admin/tablaAdminConsumoGeneral?editado=1');
+                header('Location: /admin/tablaAdminConsumoGeneral?editado=3');
             }
         } else {
             $id = $_GET['id'] ?? null;
