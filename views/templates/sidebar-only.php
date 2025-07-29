@@ -135,5 +135,10 @@
     function cargarContenido(url) {
         // Aquí puedes agregar la lógica para cargar contenido dinámico
         console.log("Cargando contenido desde: " + url);
+
+        // ahora llevame a la url
+        window.location.href = url;
+        
+
     }
  </script>
