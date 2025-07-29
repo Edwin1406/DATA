@@ -131,35 +131,13 @@
  </div>
 
  <script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Restaurar estado
-    const menuExpandido = localStorage.getItem("menuExpandido");
-    if (menuExpandido) {
-        const item = document.querySelector(`[data-menu="${menuExpandido}"]`);
-        if (item) {
-            item.classList.add("active"); // el li
-            const submenu = item.querySelector(".submenu");
-            if (submenu) submenu.classList.add("show");
-        }
-    }
+  document.getElementById('linkConsumo').addEventListener('click', function(e) {
+    e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
+    // Aquí pones lo que quieres hacer al hacer clic
+    console.log("Enlace clickeado, sin recargar");
 
-    // Guardar estado al hacer clic
-    document.querySelectorAll(".sidebar-item.has-sub").forEach(item => {
-        const link = item.querySelector("a");
-        const text = link.innerText.trim();
-        item.setAttribute("data-menu", text);
-
-        link.addEventListener("click", () => {
-            localStorage.setItem("menuExpandido", text);
-        });
-    });
+    // Si usas AJAX o cambias el contenido dinámicamente, puedes cargar aquí
+    // Por ejemplo: cargarContenido('/admin/consumo');
 });
-</script>
-<style>
-    .submenu.show {
-    display: block;
-}
-.submenu {
-    display: none;
-}
-</style>
+
+ </script>
