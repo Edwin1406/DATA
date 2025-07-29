@@ -34,6 +34,7 @@
                              <th>Hora Fin</th>
                              <th>Total Horas</th>
                              <th>x Hora</th>
+                                <th>Acciones</th>
                          </tr>
                      </thead>
                      <tbody>
@@ -48,7 +49,17 @@
                                  <td><?= $consumo->hora_inicio ?></td>
                                  <td><?= $consumo->hora_fin ?></td>
                                  <td><?= $consumo->total_horas ?></td>
-                                 <td><?= $consumo->x_hora ?></td>
+                                <td><?= $consumo->x_hora ?></td>
+                                    <td>
+                                        <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary">Editar</a>
+                                        <form action="/admin/eliminarConsumo" method="POST" style="display:inline;">
+                                            <input type="hidden" name="id" value="<?= $consumo->id ?>">
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+
+
+
                              </tr>
                          <?php endforeach; ?>
                      </tbody>
