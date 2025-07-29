@@ -238,7 +238,7 @@ class AdminController
         // debuguear($consumosGenerales);
 
         $router->render('admin/consumo/tablaAdminConsumoGeneral', [
-            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'titulo' => 'MEGASTOCK-DESARROLLO-TABLA ADMIN CONSUMO GENERAL',
             'nombre' => $nombre,
             'email' => $email,
             'consumosGenerales' => $consumosGenerales
@@ -296,7 +296,7 @@ class AdminController
         }
 
         $router->render('admin/consumo/editarAdminConsumoGeneral', [
-            'titulo' => 'MEGASTOCK-DESARROLLO-TABLA ADMIN CONSUMO GENERAL',
+            'titulo' => 'MEGASTOCK-DESARROLLO',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
