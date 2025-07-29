@@ -201,11 +201,29 @@ public static function tablaConsumoGeneral(Router $router)
 
 
 
+// ELIMINAR CONSUMO GENERAL
+public static function eliminarConsumoGeneral(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+    }
 
-
-
-
-
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'] ?? null;
+        if ($id) {
+            $consumoGeneral = Consumo_general::find($id);
+            if ($consumoGeneral) {
+                $consumoGeneral->eliminar();
+                header('Location: /admin/tablaConsumoGeneral?exito=1');
+            } else {
+                header('Location: /admin/tablaConsumoGeneral?error=1');
+            }
+        } else {
+            header('Location: /admin/tablaConsumoGeneral?error=1');
+        }
+    }
+}
 
 
 
