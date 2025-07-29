@@ -80,7 +80,7 @@
                      </a>
                      <ul class="submenu ">
                          <li class="submenu-item ">
-                             <a href="/admin/habilitar_consumo_general">Habilitar Consumo General</a>
+                             <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
                          </li>
                          <li class="submenu-item ">
                              <a href="extra-component-sweetalert.html">Sweet Alert</a>
