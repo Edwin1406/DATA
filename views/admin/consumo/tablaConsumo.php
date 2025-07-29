@@ -50,9 +50,11 @@
                                  <td><?= $consumo->hora_fin ?></td>
                                  <td><?= $consumo->total_horas ?></td>
                                 <td><?= $consumo->x_hora ?></td>
+                                <!-- los botones en horizontal -->
+
                                     <td>
                                         <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary">Editar</a>
-                                        <form action="/admin/eliminarConsumo" method="POST" style="display:flex;">
+                                        <form action="/admin/eliminarConsumo" method="POST" style="display:inline;">
                                             <input type="hidden" name="id" value="<?= $consumo->id ?>">
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
