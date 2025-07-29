@@ -263,7 +263,11 @@ public static function editarAdminConsumoGeneral(Router $router)
        $id = $_GET['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
-        debuguear($id);
+        if (!$id) {
+            header('Location: /admin/tablaAdminConsumoGeneral?error=1');
+        }
+
+        // debuguear($id);
 
 
     // NOMBRE DE LA PERSONA LOGEADA
@@ -271,8 +275,7 @@ public static function editarAdminConsumoGeneral(Router $router)
     $email = $_SESSION['email'];
 
     $alertas = [];
-    $consumoGeneral = new Consumo_general;
-
+    $consumoGeneral = Consumo_general::find($id);
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $consumoGeneral->sincronizar($_POST);
         // sin espacio en blanco
