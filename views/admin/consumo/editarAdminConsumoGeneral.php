@@ -95,16 +95,17 @@
                                         </div>
                                     </div>
 
-
+                                    <!-- select en accion  -->
                                     <div class="col-md-6 col-12">
+                                        <label for="accion">Escoja la accion</label>
                                         <div class="form-group">
-                                            <label for="accion">ACCION</label>
-                                            <input type="text" id="accion" class="form-control"
-                                                placeholder="Accion" name="accion"
-                                                value="<?= htmlspecialchars($consumoGeneral->accion ?? '') ?>" >
+                                            <select class="form-select" name="accion" id="accion">
+                                                <option value="" disabled selected>Seleccione una acción</option>
+                                                <option value="1" <?= $consumoGeneral->accion === '1' ? 'selected' : '' ?>>Habilitar</option>
+                                                <option value="0" <?= $consumoGeneral->accion === '0' ? 'selected' : '' ?>>Deshabilitar</option>
+                                            </select>
                                         </div>
                                     </div>
-
 
 
                                     <div class="col-12 d-flex justify-content-end">
