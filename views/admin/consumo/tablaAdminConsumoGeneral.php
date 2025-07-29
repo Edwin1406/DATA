@@ -29,36 +29,34 @@
                      </div>
                  </div>
              </div>
-             <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
-                 <script>
-                     window.addEventListener('DOMContentLoaded', function() {
-                         // Mostrar el toast
-                         var toastEl = document.getElementById('toastExito');
-                         var toast = new bootstrap.Toast(toastEl);
-                         toast.show();
+   <?php
+$toastId = null;
 
-                         // Quitar el parámetro ?exito=1 de la URL sin recargar
-                         const url = new URL(window.location);
-                         url.searchParams.delete('exito');
-                         window.history.replaceState({}, document.title, url.toString());
-                     });
-                 </script>
-             <?php endif; ?>
-             <?php if (isset($_GET['editado']) && $_GET['editado'] == '3') : ?>
-                 <script>
-                     window.addEventListener('DOMContentLoaded', function() {
-                         // Mostrar el toast
-                         var toastEl = document.getElementById('toastEditado');
-                         var toast = new bootstrap.Toast(toastEl);
-                         toast.show();
+if (isset($_GET['exito']) && $_GET['exito'] == '1') {
+    $toastId = 'toastExito';
+    $paramToRemove = 'exito';
+} elseif (isset($_GET['editado']) && $_GET['editado'] == '3') {
+    $toastId = 'toastEditado';
+    $paramToRemove = 'editado';
+}
+?>
 
-                         // Quitar el parámetro ?editado=1 de la URL sin recargar
-                         const url = new URL(window.location);
-                         url.searchParams.delete('editado');
-                         window.history.replaceState({}, document.title, url.toString());
-                     });
-                 </script>
-             <?php endif; ?>
+<?php if ($toastId) : ?>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var toastEl = document.getElementById('<?php echo $toastId; ?>');
+            if (toastEl) {
+                var toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            }
+
+            const url = new URL(window.location);
+            url.searchParams.delete('<?php echo $paramToRemove; ?>');
+            window.history.replaceState({}, document.title, url.toString());
+        });
+    </script>
+<?php endif; ?>
+
 
          </div>
      </div>
