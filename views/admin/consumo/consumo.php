@@ -83,14 +83,14 @@
                                     </div>
 
 
-                                        <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last">Last Name</label>
                                             <input type="text" id="last" class="form-control"
                                                 placeholder="Last Name" name="last">
                                         </div>
                                     </div>
-<!-- 
+                                    <!-- 
                                     <section class="multiple-choices">
                                         <div class="row">
                                             <div class="col-12">
@@ -100,34 +100,40 @@
                                                     </div> -->
 
 
-                                                    <div class="card-content">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                           
-                                                                <div class="col-md-6 mb-4">
-                                                                    <h6>Escoja los last name</h6>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
 
-                                                                    <!-- nombre multiple -->
-                                                                    <div class="form-group">
-                                                                        <select class="choices form-select select-light-danger"
-                                                                            multiple="multiple" name="last[]">
-                                                                            <option  value="square">Square</option>
-                                                                            <option value="rectangle" >Rectangle</option>
-                                                                            <option value="rombo">Rombo</option>
-                                                                            <option value="romboid">Romboid</option>
-                                                                            <option value="trapeze">Trapeze</option>
-                                                                            <option value="traible" >Triangle</option>
-                                                                            <option value="polygon">Polygon</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <h6>Escoja los last name</h6>
+
+                                                    <!-- nombre multiple -->
+                                                    <div class="form-group">
+                                                        <select class="choices form-select select-light-danger"
+                                                            multiple="multiple" name="last[]">
+                                                            <option value="square">Square</option>
+                                                            <option value="rectangle">Rectangle</option>
+                                                            <option value="rombo">Rombo</option>
+                                                            <option value="romboid">Romboid</option>
+                                                            <option value="trapeze">Trapeze</option>
+                                                            <option value="traible">Triangle</option>
+                                                            <option value="polygon">Polygon</option>
+                                                        </select>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="last">Last Name</label>
+                                            <input type="text" id="last" class="form-control"
+                                                placeholder="Last Name" name="last">
+                                        </div>
+                                    </div>
 
 
-
-<!-- 
+                                    <!-- 
                                                 </div>
                                             </div>
                                         </div>
