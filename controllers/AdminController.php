@@ -270,6 +270,7 @@ public static function editarAdminConsumoGeneral(Router $router)
         $consumoGeneral->sincronizar($_POST);
         // sin espacio en blanco
         $consumoGeneral->tipo_maquina = trim($consumoGeneral->tipo_maquina);
+        // debuguear($consumoGeneral);
         $alertas = $consumoGeneral->validar();
 
         if (empty($alertas)) {
