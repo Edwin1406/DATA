@@ -131,8 +131,13 @@
  </div>
 
  <script>
-     document.getElementById('linkConsumo').addEventListener('click', function() {
-         // Aquí puedes agregar la lógica que desees al hacer clic en "Registro Empaque"
-         console.log('Registro Empaque clicked');
-     });
+  document.getElementById('linkConsumo').addEventListener('click', function(e) {
+    e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
+    // Aquí pones lo que quieres hacer al hacer clic
+    console.log("Enlace clickeado, sin recargar");
+
+    // Si usas AJAX o cambias el contenido dinámicamente, puedes cargar aquí
+    // Por ejemplo: cargarContenido('/admin/consumo');
+});
+
  </script>
