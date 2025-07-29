@@ -133,11 +133,8 @@
  <script>
   document.getElementById('linkConsumo').addEventListener('click', function(e) {
     e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
-    // Aquí pones lo que quieres hacer al hacer clic
-    console.log("Enlace clickeado, sin recargar");
-
-    // Si usas AJAX o cambias el contenido dinámicamente, puedes cargar aquí
-    // Por ejemplo: cargarContenido('/admin/consumo');
+    // ahora puedes hacer lo que necesites, como cargar contenido dinámico
+    window.location.href = '/admin/consumo'; // Redirige a la URL deseada
 });
 
  </script>
