@@ -99,7 +99,7 @@ public static function tablaConsumo(Router $router)
 
     $consumos = Prueba::all();
 
-    $router->render('admin/consumo/tabla_consumo', [
+    $router->render('admin/consumo/tablaConsumo', [
         'titulo' => 'MEGASTOCK-DESARROLLO',
         'nombre' => $nombre,
         'email' => $email,

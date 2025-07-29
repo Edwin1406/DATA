@@ -72,7 +72,7 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
 
 // tabla de consumo
-$router->get('/admin/tabla_consumo', [AdminController::class, 'tablaConsumo']); 
+$router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
 
 
 
