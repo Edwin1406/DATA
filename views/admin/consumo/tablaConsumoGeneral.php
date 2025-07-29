@@ -59,6 +59,7 @@
                  <table class="table table-striped" id="table1">
                      <thead>
                          <tr>
+                             <th class="fs-6" style="min-width: 150px;">Id</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo Maqina</th>
                              <th class="fs-6" style="min-width: 80px;">Total General</th>
                              <th class="fs-6" style="min-width: 160px;">Fecha</th>
@@ -69,6 +70,7 @@
                      <tbody>
                          <?php foreach ($consumosGenerales as $consumosGeneral): ?>
                              <tr>
+                                 <td><?= $consumosGeneral->id ?></td>
                                  <td><?= $consumosGeneral->tipo_maquina ?></td>
                                  <td><?= $consumosGeneral->total_general ?></td>
                                  <td><?= $consumosGeneral->created_at ?></td>
