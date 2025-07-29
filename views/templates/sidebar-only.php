@@ -52,12 +52,13 @@
                                  <li class="submenu-item ">
                                      <a href="/admin/consumo">Registro Empaque</a>
                                  </li>
-                                 <li class="submenu-item ">
-                                     <a href="/admin/tablaConsumo">Tabla Consumo</a>
-                                 </li>
+                             
                                
                                  <li class="submenu-item ">
                                      <a href="/admin/consumo_general">Registro Consumo General</a>
+                                 </li>
+                                     <li class="submenu-item ">
+                                     <a href="/admin/tablaConsumo">Tabla Consumo</a>
                                  </li>
                                
                              </ul>
