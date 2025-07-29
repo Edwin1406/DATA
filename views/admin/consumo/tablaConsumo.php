@@ -28,7 +28,9 @@
                              <th>Turno</th>
                              <th>Personal</th>
                              <th>Producto</th>
-                             <th>Medidas</th>
+                             <!-- <th>Medidas</th> -->
+                              <td><?= htmlspecialchars($consumo->medidas, ENT_QUOTES, 'UTF-8') ?></td>
+
                              <th>Cantidad</th>
                              <th>Hora Inicio</th>
                              <th>Hora Fin</th>
@@ -64,14 +66,6 @@
  <script>
      document.addEventListener("DOMContentLoaded", function() {
          const dataTable = new simpleDatatables.DataTable("#table1");
-        //  QUIEROQ UE ESTE EN ESPAÑOL
-         dataTable.on("datatable.init", function() {
-             dataTable.options.labels = {
-                 placeholder: "Buscar...",
-                 perPage: "{select} registros por página",
-                 noRows: "No se encontraron registros",
-                 info: "Mostrando {start} a {end} de {rows} registros"
-             };
-         });
+         
      });
  </script>
