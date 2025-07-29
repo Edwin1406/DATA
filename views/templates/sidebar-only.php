@@ -41,7 +41,7 @@
                              </a>
                              <ul class="submenu ">
                                  <li class="submenu-item ">
-                                     <a  onclick="cargarContenido('/admin/consumo'); return false;">Registro Empaque</a>
+                                     <a href="/admin/consumo">Registro Empaque</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumo">Tabla Consumo</a>
@@ -130,15 +130,4 @@
 
  </div>
 
- <script>
-
-    function cargarContenido(url) {
-        // Aquí puedes agregar la lógica para cargar contenido dinámico
-        console.log("Cargando contenido desde: " + url);
-
-        // ahora llevame a la url
-        window.location.href = url;
-        
-
-    }
- </script>
+ 
