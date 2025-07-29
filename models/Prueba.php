@@ -3,15 +3,20 @@
 namespace Model;
 
 class Prueba extends ActiveRecord {    
-    protected static $tabla = 'prueba';
-    protected static $columnasDB = ['id', 'name', 'last'];
+    protected static $tabla = 'control_empaque';
+    protected static $columnasDB = ['id', 'fecha', 'turno','personal', 'producto','medidas', 'cantidad','hora_inicio','hora_fin','total_horas'];
 
 
     public ?int $id;
-    public string $name;
-    // public string $last;
-    // En tu modelo Prueba
-    public array $last = [];
+    public string $fecha = '';
+    public string $turno = '';
+    public array $personal = [];
+    public string $producto = '';
+    public string $medidas = '';
+    public string $cantidad = '';
+    public string $hora_inicio = '';
+    public string $hora_fin = '';
+    public string $total_horas = '';
 
 
 
@@ -25,28 +30,57 @@ class Prueba extends ActiveRecord {
 
     public function __construct(array $args = []) {
         $this->id = $args['id'] ?? null;
-        $this->name = $args['name'] ?? '';
-        
+        $this->fecha = $args['fecha'] ?? '';
+        $this->turno = $args['turno'] ?? '';
+        $this->personal = $args['personal'] ?? [];
+        $this->producto = $args['producto'] ?? '';
+        $this->medidas = $args['medidas'] ?? '';
+        $this->cantidad = $args['cantidad'] ?? '';
+        $this->hora_inicio = $args['hora_inicio'] ?? '';
+        $this->hora_fin = $args['hora_fin'] ?? '';
+        $this->total_horas = $args['total_horas'] ?? '';
+
         // Si viene como array (desde formulario), convertir a string
-        if (isset($args['last'])) {
-            if (is_array($args['last'])) {
-                $this->last = $args['last'];
-            } else {
-                $this->last = [$args['last']]; // Asegurarse de que sea un array
-            }
-        } else {
-            $this->last = [];
-        }
+        // if (isset($args['personal'])) {
+        //     if (is_array($args['personal'])) {
+        //         $this->personal = $args['personal'];
+        //     } else {
+        //         $this->personal = [$args['personal']]; // Asegurarse de que sea un array
+        //     }
+        // } else {
+        //     $this->personal = [];
+        // }
     }
 
 
 
     public function validar(): array {
-        if (!$this->name) {
-            self::$alertas['error'][] = 'El Nombre es Obligatorio';
+        if (!$this->fecha) {
+            self::$alertas['error'][] = 'La Fecha es Obligatoria';
         }
-        if (!$this->last) {
-            self::$alertas['error'][] = 'El Apellido es Obligatorio';
+        if (!$this->turno) {
+            self::$alertas['error'][] = 'El Turno es Obligatorio';
+        }
+        if (!$this->personal) {
+            self::$alertas['error'][] = 'El Personal es Obligatorio';
+        }
+        if (!$this->producto) {
+            self::$alertas['error'][] = 'El Producto es Obligatorio';
+        }
+        if (!$this->medidas) {
+            self::$alertas['error'][] = 'La Medida es Obligatoria';
+        }
+        if (!$this->cantidad) {
+            self::$alertas['error'][] = 'La Cantidad es Obligatoria';
+        }
+        if (!$this->hora_inicio) {
+            self::$alertas['error'][] = 'La Hora de Inicio es Obligatoria';
+        }
+        if (!$this->hora_fin) {
+            self::$alertas['error'][] = 'La Hora de Fin es Obligatoria';
+        }
+        if (!$this->total_horas) {
+            self::$alertas['error'][] = 'El Total de Horas es Obligatorio';
         }
         return self::$alertas;
     }
