@@ -37,16 +37,15 @@
                  <li class="sidebar-item  has-sub">
                      <a href="#" class='sidebar-link'>
                          <i class="bi bi-stack"></i>
-                         <span>PRODUCCIÓN</span>
+                         <span>Producción</span>
                      </a>
                      <ul class="submenu ">
 
                      <?php if($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-
                          <li class="sidebar-item  has-sub">
                              <a href="#" class='sidebar-link'>
                                  <i class="bi bi-stack"></i>
-                                 <span>CONTROL</span>
+                                 <span>Control</span>
                              </a >
                              <ul class="submenu ">
                                  <li class="submenu-item ">
@@ -67,9 +66,7 @@
 
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Consumo Papel</a>
-                         </li>
-                        
-                        
+                         </li>                        
                      </ul>
                  </li>
 
