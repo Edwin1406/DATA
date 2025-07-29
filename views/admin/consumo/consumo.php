@@ -67,13 +67,36 @@
                         <div class="card-body">
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
+
+                                    <!-- fecha -->
+
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">First Name</label>
-                                            <input type="text" id="name" class="form-control"
-                                                placeholder="First Name" name="name">
+                                            <label for="fecha">Fecha</label>
+                                            <input type="date" id="fecha" class="form-control"
+                                                placeholder="Fecha" name="fecha">
                                         </div>
                                     </div>
+                                    <!-- turno -->
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="turno">Turno</label>
+                                            <input type="number" id="turno" class="form-control"
+                                                placeholder="Turno" name="turno">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="last">Last Name</label>
+                                            <input type="text" id="last" class="form-control"
+                                                placeholder="Last Name" name="last">
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last">Last Name</label>
@@ -84,48 +107,23 @@
 
 
                                     <div class="col-md-6 col-12">
+
+                                        <label for="last">Last Name</label>
+                                        <!-- nombre multiple -->
                                         <div class="form-group">
-                                            <label for="last">Last Name</label>
-                                            <input type="text" id="last" class="form-control"
-                                                placeholder="Last Name" name="last">
+                                            <select class="choices form-select select-light-danger"
+                                                multiple="multiple" name="last[]">
+                                                <option value="square">Square</option>
+                                                <option value="rectangle">Rectangle</option>
+                                                <option value="rombo">Rombo</option>
+                                                <option value="romboid">Romboid</option>
+                                                <option value="trapeze">Trapeze</option>
+                                                <option value="traible">Triangle</option>
+                                                <option value="polygon">Polygon</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <!-- 
-                                    <section class="multiple-choices">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h4 class="card-title">Multiple choices</h4>
-                                                    </div> -->
 
-
-                                    <!-- <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="row"> -->
-
-                                                <div class="col-md-6 col-12">
-                                                    <!-- <h6>Escoja los last name</h6> -->
-                                                                                                <label for="last">Last Name</label>
-
-
-                                                    <!-- nombre multiple -->
-                                                    <div class="form-group">
-                                                        <select class="choices form-select select-light-danger"
-                                                            multiple="multiple" name="last[]">
-                                                            <option value="square">Square</option>
-                                                            <option value="rectangle">Rectangle</option>
-                                                            <option value="rombo">Rombo</option>
-                                                            <option value="romboid">Romboid</option>
-                                                            <option value="trapeze">Trapeze</option>
-                                                            <option value="traible">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            <!-- </div>
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last">Last Name</label>
@@ -134,45 +132,6 @@
                                         </div>
                                     </div>
 
-
-                                    <!-- 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section> -->
-
-
-
-
-
-                                    <!-- <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="city-column">City</label>
-                                                    <input type="text" id="city-column" class="form-control"
-                                                        placeholder="City" name="city">
-                                                </div>
-                                            </div> -->
-                                    <!-- <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="country-floating">Country</label>
-                                                    <input type="text" id="country-floating" class="form-control"
-                                                        name="country" placeholder="Country">
-                                                </div>
-                                            </div> -->
-                                    <!-- <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="company-column">Company</label>
-                                                    <input type="text" id="company-column" class="form-control"
-                                                        name="company" placeholder="Company">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="email-id-column">Email</label>
-                                                    <input type="email" id="email-id-column" class="form-control"
-                                                        name="email" placeholder="Email">
-                                                </div>
-                                            </div> -->
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
@@ -187,5 +146,4 @@
         </div>
     </section>
 
-    <!-- // Basic multiple Column Form section end -->
 </div>
