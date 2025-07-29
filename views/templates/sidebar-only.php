@@ -39,6 +39,38 @@
                         <span>PRODUCCIÓN</span>
                     </a>
                     <ul class="submenu">
+                              <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-stack"></i>
+                        <span>PRODUCCIÓN</span>
+                    </a>
+                    <ul class="submenu">
+
+                        <!-- Submenú: Consumo Papel -->
+                        <li class="submenu-item has-sub">
+                            <a href="#" class="submenu-link">Consumo Papel</a>
+                            <ul class="submenu sub-submenu">
+                                <li class="submenu-item">
+                                    <a href="/admin/consumo/registro">Registro</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="/admin/consumo/reporte">Reporte</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="/admin/consumo/historial">Historial</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Otros ítems de PRODUCCIÓN -->
+                        <li class="submenu-item">
+                            <a href="component-badge.html">Badge</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="component-button.html">Button</a>
+                        </li>
+                    </ul>
+                </li>
 
                         <!-- Submenú: Consumo Papel -->
                         <li class="submenu-item has-sub">
