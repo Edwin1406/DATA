@@ -147,17 +147,29 @@ public static function tablaConsumo(Router $router)
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
+        $consumo_general = new Prueba();
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tipo_maquina = $_POST['tipo_maquina'] ?? '';
+            $consumo_general->sincronizar($_POST);
+            debuguear($consumo_general); // Para ver los datos que se envían
+            $alertas = $consumo_general->validar();
 
-        $consumos = Prueba::all();
-        // debuguear($consumos);
+            if (empty($alertas)) {
+                $consumo_general->guardar();
+                header('Location: /admin/consumo_general?exito=1');
+            }
+        } else {
+            $alertas = [];
+        }
 
         $router->render('admin/consumo/consumo_general', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
             'email' => $email,
-            'consumos' => $consumos
+          
         ]);
-        
+
     }
 
 
