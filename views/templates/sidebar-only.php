@@ -155,3 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+<style>
+    .submenu.show {
+    display: block;
+}
+.submenu {
+    display: none;
+}
+</style>
