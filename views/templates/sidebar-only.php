@@ -34,6 +34,8 @@
                      </a>
                      <ul class="submenu ">
 
+                     <?php if($userRole === 'admin') { ?>
+
                          <li class="sidebar-item  has-sub">
                              <a href="#" class='sidebar-link'>
                                  <i class="bi bi-stack"></i>
@@ -84,6 +86,8 @@
                                  </li>
                              </ul>
                          </li>
+                        <?php } ?>
+                        
 
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Consumo Papel</a>
