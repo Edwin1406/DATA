@@ -100,11 +100,11 @@
                                                     </div> -->
 
 
-                                    <div class="card-content">
+                                    <!-- <div class="card-content">
                                         <div class="card-body">
-                                            <div class="row">
+                                            <div class="row"> -->
 
-                                                <div class="col-md-6 mb-4">
+                                                <div class="col-md-6 col-12">
                                                     <h6>Escoja los last name</h6>
 
                                                     <!-- nombre multiple -->
@@ -121,10 +121,10 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <!-- </div>
                                         </div>
-                                    </div>
-    <div class="col-md-6 col-12">
+                                    </div> -->
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last">Last Name</label>
                                             <input type="text" id="last" class="form-control"
