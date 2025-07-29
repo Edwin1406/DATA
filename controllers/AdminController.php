@@ -260,7 +260,11 @@ public static function editarAdminConsumoGeneral(Router $router)
         header('Location: /');
     }
 
-        $id = $_GET['id'];
+       $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        debuguear($id);
+
 
     // NOMBRE DE LA PERSONA LOGEADA
     $nombre = $_SESSION['nombre'];
