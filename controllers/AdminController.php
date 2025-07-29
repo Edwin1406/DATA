@@ -48,10 +48,6 @@ class AdminController
             // if (isset($_POST['personal']) && is_array($_POST['personal'])) {
             //     $_POST['personal'] = implode(',', $_POST['personal']);
             // }
-             if (isset($_POST['personal']) && is_array($_POST['personal'])) {
-            $_POST['personal'] = implode(' - ', $_POST['personal']);
-        }
-
             $consumo->sincronizar($_POST);
             $consumo->sacarTotalHoras();
 

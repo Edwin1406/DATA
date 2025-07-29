@@ -22,12 +22,6 @@ class Prueba extends ActiveRecord {
 
 
 
-    // public function __construct(array $args = [])
-    // {
-    //     $this->id = $args['id'] ?? null;
-    //     $this->name = $args['name'] ?? '';
-    //     $this->last = $args['last'] ?? '';
-    // }
 
 
     public function __construct(array $args = []) {
