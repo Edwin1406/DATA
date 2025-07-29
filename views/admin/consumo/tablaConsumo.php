@@ -18,6 +18,36 @@
                      </ol>
                  </nav>
              </div>
+
+             <div class="toast-container position-fixed top-0 end-0 p-3">
+                 <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                     <div class="d-flex">
+                         <div class="toast-body">
+                             ¡Registro guardado exitosamente!
+                         </div>
+                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                     </div>
+                 </div>
+             </div>
+             <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
+                 <script>
+                     window.addEventListener('DOMContentLoaded', function() {
+                         // Mostrar el toast
+                         var toastEl = document.getElementById('toastExito');
+                         var toast = new bootstrap.Toast(toastEl);
+                         toast.show();
+
+                         // Quitar el parámetro ?exito=1 de la URL sin recargar
+                         const url = new URL(window.location);
+                         url.searchParams.delete('exito');
+                         window.history.replaceState({}, document.title, url.toString());
+                     });
+                 </script>
+             <?php endif; ?>
+
+
+
+
          </div>
      </div>
      <section class="section">
