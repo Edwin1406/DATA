@@ -280,9 +280,8 @@
 <!-- JS de SimpleDatatables -->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" defer></script>
 
-            
-   <script>
-        // Simple Datatable
-        let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
-    </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dataTable = new simpleDatatables.DataTable("#miTabla");
+  });
+</script>
