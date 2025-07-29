@@ -71,6 +71,11 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
 
 
+// tabla de consumo
+$router->get('/admin/tabla_consumo', [AdminController::class, 'tablaConsumo']); 
+
+
+
 // cerrar sesión
 
 $router->get('/cerrarSesion', [AuthController::class, 'cerrarSesion']);

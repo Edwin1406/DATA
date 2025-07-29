@@ -86,7 +86,26 @@ class AdminController
 
 
 
+// tabla de consumo
+public static function tablaConsumo(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+    }
+    // NOMBRE DE LA PERSONA LOGEADA
+    $nombre = $_SESSION['nombre'];
+    $email = $_SESSION['email'];
 
+    $consumos = Prueba::all();
+
+    $router->render('admin/consumo/tabla_consumo', [
+        'titulo' => 'MEGASTOCK-DESARROLLO',
+        'nombre' => $nombre,
+        'email' => $email,
+        'consumos' => $consumos
+    ]);
+}
 
 
 
