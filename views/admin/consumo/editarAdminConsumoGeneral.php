@@ -59,7 +59,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/consumo_general">
+                            <form class="form" method="POST" action="/admin/editarAdminConsumoGeneral">
                                 <div class="row">
 
                                     <!-- operador SELECCIONAR NO MULTIPLE -->
