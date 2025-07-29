@@ -41,7 +41,7 @@
                              </a>
                              <ul class="submenu ">
                                  <li class="submenu-item ">
-                                     <a href="/admin/consumo">Consumo Papel</a>
+                                     <a href="/admin/consumo">Registro Empaque</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumo">Tabla Consumo</a>
