@@ -133,8 +133,10 @@
  <script>
   document.getElementById('linkConsumo').addEventListener('click', function(e) {
     e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
-    // ahora puedes hacer lo que necesites, como cargar contenido dinámico
-    window.location.href = '/admin/consumo'; // Redirige a la URL deseada
+    // ahora que me lleve a la rl 
+    window.location.href = '/admin/consumo';
+
+    
 });
 
  </script>
