@@ -105,7 +105,9 @@
                                             <div class="row"> -->
 
                                                 <div class="col-md-6 col-12">
-                                                    <h6>Escoja los last name</h6>
+                                                    <!-- <h6>Escoja los last name</h6> -->
+                                                                                                <label for="last">Last Name</label>
+
 
                                                     <!-- nombre multiple -->
                                                     <div class="form-group">
