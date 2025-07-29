@@ -59,7 +59,7 @@
                  <table class="table table-striped" id="table1">
                      <thead>
                          <tr>
-                             <th class="fs-6" style="min-width: 150px;">Id</th>
+                             <th class="fs-6" style="min-width: 60px;">Id</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo Maqina</th>
                              <th class="fs-6" style="min-width: 80px;">Total General</th>
                              <th class="fs-6" style="min-width: 160px;">Fecha</th>
