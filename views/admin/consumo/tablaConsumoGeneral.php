@@ -91,7 +91,7 @@
                                              <button
                                                  type="submit"
                                                  class="btn btn-danger btn-sm"
-                                                 <?= ($consumosGeneral->acciones == 1) ? '' : 'disabled' ?>>
+                                                 <?= ($consumosGeneral->accion == 1) ? '' : 'disabled' ?>>
                                                  Eliminar
                                              </button>
                                          </form>
