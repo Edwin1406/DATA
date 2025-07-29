@@ -96,6 +96,17 @@
                                     </div>
 
 
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="accion">ACCION</label>
+                                            <input type="text" id="accion" class="form-control"
+                                                placeholder="Accion" name="accion"
+                                                value="<?= htmlspecialchars($consumoGeneral->accion ?? '') ?>" >
+                                        </div>
+                                    </div>
+
+
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
