@@ -53,9 +53,6 @@
                                 <td><?= $consumo->x_hora ?></td>
                             </tr>
                             <?php endforeach; ?>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
                         </tr>
                    </tbody>
                  </table>
