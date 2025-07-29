@@ -44,7 +44,7 @@
                                      <a href="/admin/consumo">Consumo Papel</a>
                                  </li>
                                  <li class="submenu-item ">
-                                     <a href="component-badge.html">Badge</a>
+                                     <a href="/admin/tablaConsumo">Tabla Consumo</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="component-breadcrumb.html">Breadcrumb</a>
