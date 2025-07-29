@@ -124,20 +124,45 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="last">Last Name</label>
-                                            <input type="text" id="last" class="form-control"
-                                                placeholder="Last Name" name="last">
+                                            <label for="medidas">Medida</label>
+                                            <input type="text" id="medidas" class="form-control"
+                                                placeholder="Medida" name="medidas">
+                                        </div>
+                                    </div>
+                                    <!-- hora de inicio  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="hora_inicio">Hora de Inicio</label>
+                                            <input type="time" id="hora_inicio" class="form-control"
+                                                placeholder="Hora de Inicio" name="hora_inicio">
                                         </div>
                                     </div>
 
+                                    <!-- hora de fin  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="hora_fin">Hora de Fin</label>
+                                            <input type="time" id="hora_fin" class="form-control"
+                                                placeholder="Hora de Fin" name="hora_fin">
+                                        </div>
+                                    </div>
+
+                                    <!-- cantidad  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad</label>
+                                            <input type="number" id="cantidad" class="form-control"
+                                                placeholder="Cantidad" name="cantidad">
+                                        </div>
+                                    </div>
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
                                     </div>
                                 </div>
                             </form>
