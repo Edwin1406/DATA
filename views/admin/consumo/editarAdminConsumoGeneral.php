@@ -101,8 +101,8 @@
                                         <div class="form-group">
                                             <select class="form-select" name="accion" id="accion">
                                                 <option value="" disabled selected>Seleccione una acción</option>
-                                                <option value="1" <?= $consumoGeneral->accion === '1' ? 'selected' : '' ?>>Habilitar</option>
-                                                <option value="0" <?= $consumoGeneral->accion === '0' ? 'selected' : '' ?>>Deshabilitar</option>
+                                                <option value="1" <?= $consumoGeneral->accion === '1' ? 'selected' : '' ?>>Habilitado</option>
+                                                <option value="0" <?= $consumoGeneral->accion === '0' ? 'selected' : '' ?>>Deshabilitado</option>
                                             </select>
                                         </div>
                                     </div>
