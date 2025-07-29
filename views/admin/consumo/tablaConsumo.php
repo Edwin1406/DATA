@@ -22,7 +22,7 @@
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
-                     <thead>
+                     <!-- <thead>
                          <tr >
                              <th class="fs-6">Fecha</th>
                              <th class="fs-6">Turno</th>
@@ -36,7 +36,23 @@
                              <th class="fs-6">x Hora</th>
                              <th class="fs-6">Acciones</th>
                          </tr>
-                     </thead>
+                     </thead> -->
+                     <thead>
+    <tr>
+        <th class="fs-6" style="min-width: 90px;">Fecha</th>
+        <th class="fs-6" style="min-width: 60px;">Turno</th>
+        <th class="fs-6" style="min-width: 160px;">Personal</th>
+        <th class="fs-6" style="min-width: 100px;">Producto</th>
+        <th class="fs-6" style="min-width: 80px;">Medidas</th>
+        <th class="fs-6" style="min-width: 90px;">Cantidad</th>
+        <th class="fs-6" style="min-width: 100px;">Hora Inicio</th>
+        <th class="fs-6" style="min-width: 90px;">Hora Fin</th>
+        <th class="fs-6" style="min-width: 110px;">Total Horas</th>
+        <th class="fs-6" style="min-width: 80px;">x Hora</th>
+        <th class="fs-6" style="min-width: 100px;">Acciones</th>
+    </tr>
+</thead>
+
                      <tbody>
                          <?php foreach ($consumos as $consumo): ?>
                              <tr>
