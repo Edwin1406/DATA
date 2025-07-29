@@ -259,6 +259,9 @@ public static function editarAdminConsumoGeneral(Router $router)
     if (!isset($_SESSION['email'])) {
         header('Location: /');
     }
+
+        $id = $_GET['id'];
+
     // NOMBRE DE LA PERSONA LOGEADA
     $nombre = $_SESSION['nombre'];
     $email = $_SESSION['email'];
