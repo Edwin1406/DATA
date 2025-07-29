@@ -18,7 +18,7 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 Simple Datatable
+                 tabla de consumo
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
