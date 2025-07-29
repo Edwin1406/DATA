@@ -189,7 +189,7 @@ public static function tablaConsumoGeneral(Router $router)
     $email = $_SESSION['email'];
 
     $consumosGenerales = Consumo_general::all();
-    debuguear($consumosGenerales);
+    // debuguear($consumosGenerales);
 
     $router->render('admin/consumo/tablaConsumoGeneral', [
         'titulo' => 'MEGASTOCK-DESARROLLO',
