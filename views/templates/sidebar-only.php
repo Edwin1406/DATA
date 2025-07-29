@@ -131,13 +131,40 @@
  </div>
 
  <script>
-  document.getElementById('linkConsumo').addEventListener('click', function(e) {
-    e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
-    // Aquí pones lo que quieres hacer al hacer clic
-    console.log("Enlace clickeado, sin recargar");
-
-    // Si usas AJAX o cambias el contenido dinámicamente, puedes cargar aquí
-    // Por ejemplo: cargarContenido('/admin/consumo');
+document.querySelectorAll('.sidebar-item.has-sub > a').forEach(link => {
+    link.addEventListener('click', function () {
+        localStorage.setItem('menu_abierto', this.textContent.trim());
+    });
 });
+
+document.querySelectorAll('.submenu-item > a').forEach(link => {
+    link.addEventListener('click', function () {
+        localStorage.setItem('submenu_activo', this.getAttribute('href'));
+    });
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+    const menuAbierto = localStorage.getItem('menu_abierto');
+    const submenuActivo = localStorage.getItem('submenu_activo');
+
+    if (menuAbierto) {
+        document.querySelectorAll('.sidebar-item.has-sub').forEach(item => {
+            if (item.querySelector('a').textContent.trim() === menuAbierto) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    if (submenuActivo) {
+        document.querySelectorAll('.submenu-item > a').forEach(item => {
+            if (item.getAttribute('href') === submenuActivo) {
+                item.parentElement.classList.add('active');
+                item.closest('.has-sub').classList.add('active');
+            }
+        });
+    }
+});
+
+
 
  </script>
