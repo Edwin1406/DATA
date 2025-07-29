@@ -74,10 +74,9 @@
                                  <td><?= $consumosGeneral->created_at ?></td>
                                
                                  <!-- los botones en horizontal -->
-
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/editarConsumo?id=<?= $consumosGeneral->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarConsumo" method="POST">
                                              <input type="hidden" name="id" value="<?= $consumo->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
