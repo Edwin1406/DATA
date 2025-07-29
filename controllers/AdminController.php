@@ -238,7 +238,8 @@ class AdminController
         // debuguear($consumosGenerales);
 
         $router->render('admin/consumo/tablaAdminConsumoGeneral', [
-            'titulo' => 'MEGASTOCK-DESARROLLO-TABLA ADMIN CONSUMO GENERAL',
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA ADMIN CONSUMO GENERAL',
             'nombre' => $nombre,
             'email' => $email,
             'consumosGenerales' => $consumosGenerales

@@ -8,7 +8,7 @@
          <div class="row">
              <div class="col-12 col-md-6 order-md-1 order-last">
                  <h3><?php echo $titulo; ?></h3>
-                 <p class="text-subtitle text-muted">Resumen de <?php echo $titulo; ?></p>
+                 <p class="text-subtitle text-muted">Resumen de <?php echo $subtitulo; ?></p>
              </div>
              <div class="col-12 col-md-6 order-md-2 order-first">
                  <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
