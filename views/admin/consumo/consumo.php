@@ -112,11 +112,11 @@
                                                                         <select class="choices form-select select-light-danger"
                                                                             multiple="multiple" name="last[]">
                                                                             <option  value="square">Square</option>
-                                                                            <option value="rectangle" selected>Rectangle</option>
+                                                                            <option value="rectangle" >Rectangle</option>
                                                                             <option value="rombo">Rombo</option>
                                                                             <option value="romboid">Romboid</option>
                                                                             <option value="trapeze">Trapeze</option>
-                                                                            <option value="traible" selected>Triangle</option>
+                                                                            <option value="traible" >Triangle</option>
                                                                             <option value="polygon">Polygon</option>
                                                                         </select>
                                                                     </div>
