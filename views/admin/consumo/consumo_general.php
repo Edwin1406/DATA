@@ -68,6 +68,7 @@
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
                                         <div class="form-group">
                                             <select class="form-select" name="tipo_maquina" id="tipo_maquina">
+                                                <option value="" disabled selected>Seleccione tipo de máquina</option>
                                                 <option value="CORRUGADOR">CORRUGADOR</option>
                                                 <option value="MICRO">MICRO</option>
                                                 <option value="TROQUEL">TROQUEL</option>
