@@ -131,40 +131,27 @@
  </div>
 
  <script>
-document.querySelectorAll('.sidebar-item.has-sub > a').forEach(link => {
-    link.addEventListener('click', function () {
-        localStorage.setItem('menu_abierto', this.textContent.trim());
-    });
-});
-
-document.querySelectorAll('.submenu-item > a').forEach(link => {
-    link.addEventListener('click', function () {
-        localStorage.setItem('submenu_activo', this.getAttribute('href'));
-    });
-});
-
-window.addEventListener('DOMContentLoaded', function () {
-    const menuAbierto = localStorage.getItem('menu_abierto');
-    const submenuActivo = localStorage.getItem('submenu_activo');
-
-    if (menuAbierto) {
-        document.querySelectorAll('.sidebar-item.has-sub').forEach(item => {
-            if (item.querySelector('a').textContent.trim() === menuAbierto) {
-                item.classList.add('active');
-            }
-        });
+document.addEventListener("DOMContentLoaded", function () {
+    // Restaurar estado
+    const menuExpandido = localStorage.getItem("menuExpandido");
+    if (menuExpandido) {
+        const item = document.querySelector(`[data-menu="${menuExpandido}"]`);
+        if (item) {
+            item.classList.add("active"); // el li
+            const submenu = item.querySelector(".submenu");
+            if (submenu) submenu.classList.add("show");
+        }
     }
 
-    if (submenuActivo) {
-        document.querySelectorAll('.submenu-item > a').forEach(item => {
-            if (item.getAttribute('href') === submenuActivo) {
-                item.parentElement.classList.add('active');
-                item.closest('.has-sub').classList.add('active');
-            }
+    // Guardar estado al hacer clic
+    document.querySelectorAll(".sidebar-item.has-sub").forEach(item => {
+        const link = item.querySelector("a");
+        const text = link.innerText.trim();
+        item.setAttribute("data-menu", text);
+
+        link.addEventListener("click", () => {
+            localStorage.setItem("menuExpandido", text);
         });
-    }
+    });
 });
-
-
-
- </script>
+</script>
