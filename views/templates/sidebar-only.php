@@ -81,18 +81,7 @@
                          <li class="submenu-item ">
                              <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
                          </li>
-                         <li class="submenu-item ">
-                             <a href="extra-component-sweetalert.html">Sweet Alert</a>
-                         </li>
-                         <li class="submenu-item ">
-                             <a href="extra-component-toastify.html">Toastify</a>
-                         </li>
-                         <li class="submenu-item ">
-                             <a href="extra-component-rating.html">Rating</a>
-                         </li>
-                         <li class="submenu-item ">
-                             <a href="extra-component-divider.html">Divider</a>
-                         </li>
+                      
                      </ul>
                  </li>
 

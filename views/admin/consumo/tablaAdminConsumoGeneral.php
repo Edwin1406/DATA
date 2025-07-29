@@ -95,16 +95,6 @@
                                  <td><?= $consumosGeneral->total_general ?></td>
                                  <td><?= $consumosGeneral->created_at ?></td>
 
-                                 <!-- los botones en horizontal -->
-                                 <!-- <td>
-                                     <div class="d-flex gap-1">
-                                         <a href="/admin/editarConsumo?id=<?= $consumosGeneral->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <form action="/admin/eliminarConsumo" method="POST">
-                                             <input type="hidden" name="id" value="<?= $consumosGeneral->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                         </form>
-                                     </div>
-                                 </td> -->
                                  <td>
                                      <div class="d-flex gap-1">
                                          <a href="/admin/editarAdminConsumoGeneral?id=<?= $consumosGeneral->id ?>" class="btn btn-primary btn-sm">Editar</a>
