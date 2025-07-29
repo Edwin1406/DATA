@@ -22,36 +22,21 @@
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
-                     <!-- <thead>
-                         <tr >
-                             <th class="fs-6">Fecha</th>
-                             <th class="fs-6">Turno</th>
-                             <th class="fs-6">Personal</th>
-                             <th class="fs-6">Producto</th>
-                             <th class="fs-6">Medidas</th>
-                             <th class="fs-6">Cantidad</th>
-                             <th class="fs-6">Hora Inicio</th>
-                             <th class="fs-6">Hora Fin</th>
-                             <th class="fs-6">Total Horas</th>
-                             <th class="fs-6">x Hora</th>
-                             <th class="fs-6">Acciones</th>
-                         </tr>
-                     </thead> -->
                      <thead>
-    <tr>
-        <th class="fs-6" style="min-width: 90px;">Fecha</th>
-        <th class="fs-6" style="min-width: 80px;">Turno</th>
-        <th class="fs-6" style="min-width: 160px;">Personal</th>
-        <th class="fs-6" style="min-width: 100px;">Producto</th>
-        <th class="fs-6" style="min-width: 93px;">Medidas</th>
-        <th class="fs-6" style="min-width: 98px;">Cantidad</th>
-        <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
-        <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
-        <th class="fs-6" style="min-width: 118px;">Total Horas</th>
-        <th class="fs-6" style="min-width: 85px;">x Hora</th>
-        <th class="fs-6" style="min-width: 100px;">Acciones</th>
-    </tr>
-</thead>
+                         <tr>
+                             <th class="fs-6" style="min-width: 90px;">Fecha</th>
+                             <th class="fs-6" style="min-width: 80px;">Turno</th>
+                             <th class="fs-6" style="min-width: 160px;">Personal</th>
+                             <th class="fs-6" style="min-width: 100px;">Producto</th>
+                             <th class="fs-6" style="min-width: 93px;">Medidas</th>
+                             <th class="fs-6" style="min-width: 98px;">Cantidad</th>
+                             <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
+                             <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
+                             <th class="fs-6" style="min-width: 118px;">Total Horas</th>
+                             <th class="fs-6" style="min-width: 85px;">x Hora</th>
+                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
+                         </tr>
+                     </thead>
 
                      <tbody>
                          <?php foreach ($consumos as $consumo): ?>
@@ -78,9 +63,6 @@
                                      </div>
                                  </td>
 
-
-
-
                              </tr>
                          <?php endforeach; ?>
                      </tbody>
@@ -95,8 +77,10 @@
      document.addEventListener("DOMContentLoaded", function() {
          const dataTable = new simpleDatatables.DataTable("#table1", {
              scrollX: true,
-             columnDefs: [
-                 { width: "110px", targets: [6, 7, 8] } // índices de columnas Hora Inicio, Hora Fin, Total Horas
+             columnDefs: [{
+                     width: "110px",
+                     targets: [6, 7, 8]
+                 } // índices de columnas Hora Inicio, Hora Fin, Total Horas
              ]
          });
      });
