@@ -99,7 +99,9 @@ $router->post('/admin/eliminarConsumoGeneral', [AdminController::class, 'elimina
 
 
 
-
+// EDITAR CONSUMO GENERAL
+$router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
+$router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 
 
 
