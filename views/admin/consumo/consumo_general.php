@@ -53,7 +53,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL EMPAQUE</h4>
+                        <h4 class="card-title">REGISTRO DE CONSUMO  GENERAL</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
@@ -63,59 +63,24 @@
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
 
-                                    <!-- fecha -->
-
+                                    <!-- operador SELECCIONAR NO MULTIPLE -->
                                     <div class="col-md-6 col-12">
+                                        <label for="tipo_maquina">Escoja tipo_maquina</label>
                                         <div class="form-group">
-                                            <label for="fecha">Fecha</label>
-                                            <input type="date" id="fecha" class="form-control"
-                                                placeholder="Fecha" name="fecha">
-                                        </div>
-                                    </div>
-                                    <!-- turno -->
+                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina">
+                                                <option value="CORRUGADOR">CORRUGADOR</option>
+                                                <option value="MICRO">MICRO</option>
+                                                <option value="TROQUEL">TROQUEL</option>
+                                                <option value="FLEXOGRAFICA">FLEXOGRAFICA</option>
+                                                <option value="PRE-PRINTER">PRE-PRINTER</option>
+                                                 <option value="DOBLADO">DOBLADO</option>
+                                                  <option value="CORTE CEJA">CORTE CEJA</option>
+                                                   <option value="CONVERTIDOR">CONVERTIDOR</option>
+                                                    <option value="GUILLLOTINA LAMINA">GUILLLOTINA LAMINA</option>
+                                                     <option value="GUILLOTINA PAPEL">GUILLOTINA PAPEL</option>
+                                                      <option value="EMPAQUE">EMPAQUE</option>
+                                                         <option value="BODEGA">BODEGA</option>
 
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="turno">Turno</label>
-                                            <input type="number" id="turno" class="form-control"
-                                                placeholder="Turno" name="turno">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6 col-12">
-
-                                        <label for="personal">Escoja el Personal</label>
-                                        <!-- nombre multiple -->
-                                        <div class="form-group">
-                                            <select class="choices form-select select-light-danger"
-                                                multiple="multiple" name="personal[]">
-                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
-                                                <option value="JOSE PEREZ">JOSE PEREZ</option>
-                                                <option value="MARIA LOPEZ">MARIA LOPEZ</option>
-                                                <option value="ANA GARCIA">ANA GARCIA</option>
-                                                <option value="CARLOS MARTINEZ">CARLOS MARTINEZ</option>
-                                                <option value="LUIS HERNANDEZ">LUIS HERNANDEZ</option>
-                                                <option value="LAURA GUTIERREZ">LAURA GUTIERREZ</option>
-                                                <option value="JULIAN RAMIREZ">JULIAN RAMIREZ</option>
-                                                <option value="SANDRA TORO">SANDRA TORO</option>
-                                                <option value="ANDRES MORALES">ANDRES MORALES</option>
-                                                <option value="PAOLA REYES">PAOLA REYES</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
-                                    <div class="col-md-6 col-12">
-                                        <label for="producto">Escoja el Producto</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="producto">
-                                                <option value="PRODUCTO 1">PRODUCTO 1</option>
-                                                <option value="PRODUCTO 2">PRODUCTO 2</option>
-                                                <option value="PRODUCTO 3">PRODUCTO 3</option>
-                                                <option value="PRODUCTO 4">PRODUCTO 4</option>
-                                                <option value="PRODUCTO 5">PRODUCTO 5</option>
                                             </select>
                                         </div>
                                     </div>
@@ -123,37 +88,12 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="medidas">Medida</label>
-                                            <input type="text" id="medidas" class="form-control"
-                                                placeholder="Medida" name="medidas">
+                                            <label for="total_general">TOTAL GENERAL</label>
+                                            <input type="text" id="total_general" class="form-control"
+                                                placeholder="Total General" name="total_general">
                                         </div>
                                     </div>
-                                    <!-- hora de inicio  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_inicio">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control"
-                                                placeholder="Hora de Inicio" name="hora_inicio">
-                                        </div>
-                                    </div>
-
-                                    <!-- hora de fin  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control"
-                                                placeholder="Hora de Fin" name="hora_fin">
-                                        </div>
-                                    </div>
-
-                                    <!-- cantidad  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad">Cantidad</label>
-                                            <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad">
-                                        </div>
-                                    </div>
+                                   
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
