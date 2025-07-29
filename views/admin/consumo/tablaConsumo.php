@@ -40,14 +40,14 @@
                      <thead>
     <tr>
         <th class="fs-6" style="min-width: 90px;">Fecha</th>
-        <th class="fs-6" style="min-width: 90px;">Turno</th>
+        <th class="fs-6" style="min-width: 80px;">Turno</th>
         <th class="fs-6" style="min-width: 160px;">Personal</th>
         <th class="fs-6" style="min-width: 100px;">Producto</th>
-        <th class="fs-6" style="min-width: 80px;">Medidas</th>
-        <th class="fs-6" style="min-width: 90px;">Cantidad</th>
-        <th class="fs-6" style="min-width: 100px;">Hora Inicio</th>
-        <th class="fs-6" style="min-width: 90px;">Hora Fin</th>
-        <th class="fs-6" style="min-width: 110px;">Total Horas</th>
+        <th class="fs-6" style="min-width: 85px;">Medidas</th>
+        <th class="fs-6" style="min-width: 95px;">Cantidad</th>
+        <th class="fs-6" style="min-width: 105px;">Hora Inicio</th>
+        <th class="fs-6" style="min-width: 95px;">Hora Fin</th>
+        <th class="fs-6" style="min-width: 115px;">Total Horas</th>
         <th class="fs-6" style="min-width: 80px;">x Hora</th>
         <th class="fs-6" style="min-width: 100px;">Acciones</th>
     </tr>
