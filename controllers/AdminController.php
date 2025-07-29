@@ -296,7 +296,7 @@ class AdminController
         }
 
         $router->render('admin/consumo/editarAdminConsumoGeneral', [
-            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'titulo' => 'MEGASTOCK-DESARROLLO-TABLA ADMIN CONSUMO GENERAL',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
