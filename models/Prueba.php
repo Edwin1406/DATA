@@ -9,7 +9,10 @@ class Prueba extends ActiveRecord {
 
     public ?int $id;
     public string $name;
-    public string $last;
+    // public string $last;
+    // En tu modelo Prueba
+public array $last = [];
+
 
 
     public function __construct(array $args = [])

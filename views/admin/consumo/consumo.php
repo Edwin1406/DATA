@@ -101,11 +101,6 @@
                                                                     </p>
 
                                                                     <!-- nombre multiple -->
-                                                            
-
-
-
-
                                                                     <div class="form-group">
                                                                         <select class="choices form-select select-light-danger"
                                                                             multiple="multiple" name="last[]">
