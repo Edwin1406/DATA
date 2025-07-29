@@ -131,13 +131,24 @@
  </div>
 
  <script>
-  document.getElementById('linkConsumo').addEventListener('click', function(e) {
-    e.preventDefault(); // 👈 Evita que el enlace haga la navegación completa
-    // Aquí pones lo que quieres hacer al hacer clic
-    console.log("Enlace clickeado, sin recargar");
+document.getElementById('linkConsumo').addEventListener('click', function(e) {
+  e.preventDefault();
+  console.log("Enlace clickeado, sin recargar");
 
-    // Si usas AJAX o cambias el contenido dinámicamente, puedes cargar aquí
-    // Por ejemplo: cargarContenido('/admin/consumo');
+  fetch('/admin/consumo')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al cargar el contenido');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('contenido').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 });
+
 
  </script>
