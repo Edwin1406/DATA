@@ -43,12 +43,12 @@
         <th class="fs-6" style="min-width: 80px;">Turno</th>
         <th class="fs-6" style="min-width: 160px;">Personal</th>
         <th class="fs-6" style="min-width: 100px;">Producto</th>
-        <th class="fs-6" style="min-width: 90px;">Medidas</th>
-        <th class="fs-6" style="min-width: 95px;">Cantidad</th>
-        <th class="fs-6" style="min-width: 105px;">Hora Inicio</th>
-        <th class="fs-6" style="min-width: 95px;">Hora Fin</th>
-        <th class="fs-6" style="min-width: 115px;">Total Horas</th>
-        <th class="fs-6" style="min-width: 80px;">x Hora</th>
+        <th class="fs-6" style="min-width: 93px;">Medidas</th>
+        <th class="fs-6" style="min-width: 98px;">Cantidad</th>
+        <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
+        <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
+        <th class="fs-6" style="min-width: 118px;">Total Horas</th>
+        <th class="fs-6" style="min-width: 85px;">x Hora</th>
         <th class="fs-6" style="min-width: 100px;">Acciones</th>
     </tr>
 </thead>
