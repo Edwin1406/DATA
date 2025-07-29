@@ -109,6 +109,31 @@ public static function tablaConsumo(Router $router)
 }
 
 
+    // Eliminar consumo
+    public static function eliminarConsumo(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $consumo = Prueba::find($id);
+                if ($consumo) {
+                    $consumo->eliminar();
+                    header('Location: /admin/tablaConsumo?exito=1');
+                } else {
+                    header('Location: /admin/tablaConsumo?error=1');
+                }
+            } else {
+                header('Location: /admin/tablaConsumo?error=1');
+            }
+        }
+    }
+
+
 
 
 

@@ -65,7 +65,6 @@
                          </li>
                         <?php } ?>
 
-
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Consumo Papel</a>
                          </li>

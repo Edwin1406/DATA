@@ -75,6 +75,9 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 $router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
 
 
+// eliminar consumo
+$router->post('/admin/eliminarConsumo', [AdminController::class, 'eliminarConsumo']);
+
 
 // cerrar sesión
 
