@@ -41,7 +41,7 @@
                              </a>
                              <ul class="submenu ">
                                  <li class="submenu-item ">
-                                     <a href="/admin/consumo"  id="linkConsumo">Registro Empaque</a>
+                                     <a  onclick="cargarContenido('/admin/consumo'); return false;">Registro Empaque</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumo">Tabla Consumo</a>
@@ -130,25 +130,4 @@
 
  </div>
 
- <script>
-document.getElementById('linkConsumo').addEventListener('click', function(e) {
-  e.preventDefault();
-  console.log("Enlace clickeado, sin recargar");
-
-  fetch('/admin/consumo')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al cargar el contenido');
-      }
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById('contenido').innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-});
-
-
- </script>
+ 
