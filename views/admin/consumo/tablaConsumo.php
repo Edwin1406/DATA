@@ -282,6 +282,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const dataTable = new simpleDatatables.DataTable("#miTabla");
+    const dataTable = new simpleDatatables.DataTable("#table1");
   });
 </script>
