@@ -1,3 +1,10 @@
+ 
+ <?php
+   
+    $userEmail = $_SESSION['email'] ?? 'No disponible'; // Asignar
+    ?>
+ 
+ 
  <header class="mb-3">
      <a href="#" class="burger-btn d-block d-xl-none">
          <i class="bi bi-justify fs-3"></i>
@@ -34,7 +41,12 @@
                      </a>
                      <ul class="submenu ">
 
-                     <?php if($userRole === 'admin') { ?>
+
+
+
+
+
+                     <?php if($userEmail === 'control@megaecuador.com') { ?>
 
                          <li class="sidebar-item  has-sub">
                              <a href="#" class='sidebar-link'>
@@ -87,7 +99,7 @@
                              </ul>
                          </li>
                         <?php } ?>
-                        
+
 
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Consumo Papel</a>
