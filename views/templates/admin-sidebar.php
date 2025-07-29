@@ -4,8 +4,8 @@
             <p>2025 &copy; EDWIN DIAZ</p>
         </div>
         <div class="float-end">
-            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                    href="">A. Saugi</a></p>
+            <p>En <span class="text-danger"><i class="bi bi-heart"></i></span> Desarrollo <a
+                    href="">MEGASTOCK</a></p>
         </div>
     </div>
 </footer>
