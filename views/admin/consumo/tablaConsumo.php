@@ -18,7 +18,7 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 tabla de consumo
+                 Tabla de consumo
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
@@ -52,7 +52,6 @@
                              </tr>
                          <?php endforeach; ?>
                      </tbody>
-
                  </table>
              </div>
          </div>
