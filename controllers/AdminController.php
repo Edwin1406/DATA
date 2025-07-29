@@ -48,8 +48,8 @@ class AdminController
             // if (isset($_POST['personal']) && is_array($_POST['personal'])) {
             //     $_POST['personal'] = implode(',', $_POST['personal']);
             // }
-            $consumo->sacarTotalHoras();
             $consumo->sincronizar($_POST);
+            $consumo->sacarTotalHoras();
 
             
             // Calcular productividad cada 15 minutos
