@@ -28,9 +28,7 @@
                              <th>Turno</th>
                              <th>Personal</th>
                              <th>Producto</th>
-                             <!-- <th>Medidas</th> -->
-                              <td><?= htmlspecialchars($consumo->medidas, ENT_QUOTES, 'UTF-8') ?></td>
-
+                             <th>Medidas</th>
                              <th>Cantidad</th>
                              <th>Hora Inicio</th>
                              <th>Hora Fin</th>
