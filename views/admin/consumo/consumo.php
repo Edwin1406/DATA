@@ -91,21 +91,40 @@
 
                                     <div class="col-md-6 col-12">
 
-                                        <label for="last">Last Name</label>
+                                        <label for="personal">Escoja el Personal</label>
                                         <!-- nombre multiple -->
                                         <div class="form-group">
                                             <select class="choices form-select select-light-danger"
-                                                multiple="multiple" name="last[]">
-                                                <option value="square">Square</option>
-                                                <option value="rectangle">Rectangle</option>
-                                                <option value="rombo">Rombo</option>
-                                                <option value="romboid">Romboid</option>
-                                                <option value="trapeze">Trapeze</option>
-                                                <option value="traible">Triangle</option>
-                                                <option value="polygon">Polygon</option>
+                                                multiple="multiple" name="personal[]">
+                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
+                                                <option value="JOSE PEREZ">JOSE PEREZ</option>
+                                                <option value="MARIA LOPEZ">MARIA LOPEZ</option>
+                                                <option value="ANA GARCIA">ANA GARCIA</option>
+                                                <option value="CARLOS MARTINEZ">CARLOS MARTINEZ</option>
+                                                <option value="LUIS HERNANDEZ">LUIS HERNANDEZ</option>
+                                                <option value="LAURA GUTIERREZ">LAURA GUTIERREZ</option>
+                                                <option value="JULIAN RAMIREZ">JULIAN RAMIREZ</option>
+                                                <option value="SANDRA TORO">SANDRA TORO</option>
+                                                <option value="ANDRES MORALES">ANDRES MORALES</option>
+                                                <option value="PAOLA REYES">PAOLA REYES</option>
                                             </select>
                                         </div>
                                     </div>
+
+                                    <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
+                                    <div class="col-md-6 col-12">
+                                        <label for="producto">Escoja el Producto</label>
+                                        <div class="form-group">
+                                            <select class="form-select" name="producto">
+                                                <option value="PRODUCTO 1">PRODUCTO 1</option>
+                                                <option value="PRODUCTO 2">PRODUCTO 2</option>
+                                                <option value="PRODUCTO 3">PRODUCTO 3</option>
+                                                <option value="PRODUCTO 4">PRODUCTO 4</option>
+                                                <option value="PRODUCTO 5">PRODUCTO 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
