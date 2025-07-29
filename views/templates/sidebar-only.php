@@ -130,4 +130,10 @@
 
  </div>
 
- 
+ <script>
+
+    function cargarContenido(url) {
+        // Aquí puedes agregar la lógica para cargar contenido dinámico
+        console.log("Cargando contenido desde: " + url);
+    }
+ </script>
