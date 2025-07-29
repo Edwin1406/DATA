@@ -41,7 +41,7 @@
                              </a>
                              <ul class="submenu ">
                                  <li class="submenu-item ">
-                                     <a href="/admin/consumo">Registro Empaque</a>
+                                     <a href="/admin/consumo"  id="linkConsumo">Registro Empaque</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumo">Tabla Consumo</a>
@@ -129,3 +129,10 @@
 
 
  </div>
+
+ <script>
+     document.getElementById('linkConsumo').addEventListener('click', function() {
+         // Aquí puedes agregar la lógica que desees al hacer clic en "Registro Empaque"
+         console.log('Registro Empaque clicked');
+     });
+ </script>
