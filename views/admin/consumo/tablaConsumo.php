@@ -9,7 +9,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html"> <?php echo $nombre; ?></a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                                            <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
                                 </ol>
                             </nav>
                         </div>
