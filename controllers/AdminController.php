@@ -252,6 +252,51 @@ public static function tablaAdminConsumoGeneral(Router $router)
 
 
 
+// EDITAR CONSUMO GENERAL
+public static function editarAdminConsumoGeneral(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+    }
+    // NOMBRE DE LA PERSONA LOGEADA
+    $nombre = $_SESSION['nombre'];
+    $email = $_SESSION['email'];
+
+    $alertas = [];
+    $consumoGeneral = new Consumo_general;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $consumoGeneral->sincronizar($_POST);
+        $alertas = $consumoGeneral->validar();
+
+        if (empty($alertas)) {
+            $consumoGeneral->guardar();
+            header('Location: /admin/tablaAdminConsumoGeneral?exito=1');
+        }
+    } else {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $consumoGeneral = Consumo_general::find($id);
+            if (!$consumoGeneral) {
+                header('Location: /admin/tablaAdminConsumoGeneral?error=1');
+            }
+        } else {
+            header('Location: /admin/tablaAdminConsumoGeneral?error=1');
+        }
+    }
+
+    $router->render('admin/consumo/editarAdminConsumoGeneral', [
+        'titulo' => 'MEGASTOCK-DESARROLLO',
+        'alertas' => $alertas,
+        'nombre' => $nombre,
+        'email' => $email,
+        'consumoGeneral' => $consumoGeneral
+    ]);
+}
+
+
+
 
 
 private static function contarUsuariosConectados()
