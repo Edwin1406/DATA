@@ -107,9 +107,6 @@
                                                                 <div class="col-md-6 mb-4">
                                                                     <h6>Escoja los last name</h6>
 
-                                                                    <p>Use <code>.select-light-{colorName}</code> class for light background
-                                                                    </p>
-
                                                                     <!-- nombre multiple -->
                                                                     <div class="form-group">
                                                                         <select class="choices form-select select-light-danger"
