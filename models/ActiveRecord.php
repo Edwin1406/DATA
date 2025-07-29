@@ -91,14 +91,32 @@ class ActiveRecord {
    
 
 
-    public function sanitizarAtributos() {
-        $atributos = $this->atributos();
-        $sanitizado = [];
-        foreach($atributos as $key => $value) {
-            $sanitizado[$key] = self::$db->escape_string($value ?? '');
+    // public function sanitizarAtributos() {
+    //     $atributos = $this->atributos();
+    //     $sanitizado = [];
+    //     foreach($atributos as $key => $value) {
+    //         $sanitizado[$key] = self::$db->escape_string($value ?? '');
+    //     }
+    //     return $sanitizado;
+    // }
+
+    protected function sanitizarAtributos(): array {
+    $atributos = [];
+    foreach (static::$columnasDB as $columna) {
+        if ($columna === 'id') continue;
+        
+        $valor = $this->$columna;
+
+        // Si el valor es un array, convertirlo a string separado por comas
+        if (is_array($valor)) {
+            $valor = implode(',', $valor);
         }
-        return $sanitizado;
+
+        $atributos[$columna] = self::$db->escape_string($valor);
     }
+    return $atributos;
+}
+
     
     
 
