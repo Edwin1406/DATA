@@ -43,7 +43,7 @@
         <th class="fs-6" style="min-width: 80px;">Turno</th>
         <th class="fs-6" style="min-width: 160px;">Personal</th>
         <th class="fs-6" style="min-width: 100px;">Producto</th>
-        <th class="fs-6" style="min-width: 85px;">Medidas</th>
+        <th class="fs-6" style="min-width: 90px;">Medidas</th>
         <th class="fs-6" style="min-width: 95px;">Cantidad</th>
         <th class="fs-6" style="min-width: 105px;">Hora Inicio</th>
         <th class="fs-6" style="min-width: 95px;">Hora Fin</th>
