@@ -23,7 +23,7 @@
              <div class="card-body">
                  <table class="table table-striped" id="table1">
                      <thead>
-                         <tr>
+                         <tr class="font-size-6">
                              <th>Fecha</th>
                              <th>Turno</th>
                              <th>Personal</th>
@@ -34,7 +34,7 @@
                              <th>Hora Fin</th>
                              <th>Total Horas</th>
                              <th>x Hora</th>
-                                <th>Acciones</th>
+                             <th>Acciones</th>
                          </tr>
                      </thead>
                      <tbody>
@@ -49,18 +49,18 @@
                                  <td><?= $consumo->hora_inicio ?></td>
                                  <td><?= $consumo->hora_fin ?></td>
                                  <td><?= $consumo->total_horas ?></td>
-                                <td><?= $consumo->x_hora ?></td>
-                                <!-- los botones en horizontal -->
+                                 <td><?= $consumo->x_hora ?></td>
+                                 <!-- los botones en horizontal -->
 
                                  <td>
-    <div class="d-flex gap-1">
-        <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
-        <form action="/admin/eliminarConsumo" method="POST">
-            <input type="hidden" name="id" value="<?= $consumo->id ?>">
-            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-        </form>
-    </div>
-</td>
+                                     <div class="d-flex gap-1">
+                                         <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <form action="/admin/eliminarConsumo" method="POST">
+                                             <input type="hidden" name="id" value="<?= $consumo->id ?>">
+                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                         </form>
+                                     </div>
+                                 </td>
 
 
 
