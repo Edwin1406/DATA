@@ -23,18 +23,18 @@
              <div class="card-body">
                  <table class="table table-striped" id="table1">
                      <thead>
-                         <tr class="font-size-6">
-                             <th>Fecha</th>
-                             <th>Turno</th>
-                             <th>Personal</th>
-                             <th>Producto</th>
-                             <th>Medidas</th>
-                             <th>Cantidad</th>
-                             <th>Hora Inicio</th>
-                             <th>Hora Fin</th>
-                             <th>Total Horas</th>
-                             <th>x Hora</th>
-                             <th>Acciones</th>
+                         <tr >
+                             <th class="fs-6">Fecha</th>
+                             <th class="fs-6">Turno</th>
+                             <th class="fs-6">Personal</th>
+                             <th class="fs-6">Producto</th>
+                             <th class="fs-6">Medidas</th>
+                             <th class="fs-6">Cantidad</th>
+                             <th class="fs-6">Hora Inicio</th>
+                             <th class="fs-6">Hora Fin</th>
+                             <th class="fs-6">Total Horas</th>
+                             <th class="fs-6">x Hora</th>
+                             <th class="fs-6">Acciones</th>
                          </tr>
                      </thead>
                      <tbody>
