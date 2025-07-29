@@ -4,7 +4,7 @@
             <p>2025 &copy; EDWIN DIAZ</p>
         </div>
         <div class="float-end">
-            <p>En <span class="text-danger"><i class="bi bi-heart"></i></span> Desarrollo <a
+            <p>En <span class="text-danger"></span> Desarrollo <a
                     href="">MEGASTOCK</a></p>
         </div>
     </div>
