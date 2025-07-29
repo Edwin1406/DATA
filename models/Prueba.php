@@ -15,11 +15,28 @@ public array $last = [];
 
 
 
-    public function __construct(array $args = [])
-    {
+    // public function __construct(array $args = [])
+    // {
+    //     $this->id = $args['id'] ?? null;
+    //     $this->name = $args['name'] ?? '';
+    //     $this->last = $args['last'] ?? '';
+    // }
+
+
+    public function __construct(array $args = []) {
         $this->id = $args['id'] ?? null;
         $this->name = $args['name'] ?? '';
-        $this->last = $args['last'] ?? '';
+        
+        // Si viene como array (desde formulario), convertir a string
+        if (isset($args['last'])) {
+            if (is_array($args['last'])) {
+                $this->last = implode(',', $args['last']);
+            } else {
+                $this->last = $args['last'];
+            }
+        } else {
+            $this->last = '';
+        }
     }
 
 
