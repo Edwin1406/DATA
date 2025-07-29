@@ -44,11 +44,26 @@ class AdminController
         $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            if (isset($_POST['personal']) && is_array($_POST['personal'])) {
+                $_POST['personal'] = implode(',', $_POST['personal']);
+            }
             $consumo->sincronizar($_POST);
+            $consumo->sacarTotalHoras();
 
-            if (isset($_POST['last']) && is_array($_POST['last'])) {
-        $_POST['last'] = implode(',', $_POST['last']);
-    }
+            
+            // Calcular productividad cada 15 minutos
+            $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
+            $minutos_trabajados = $consumo->total_horas * 60;
+
+            if ($cantidad > 0 && $minutos_trabajados > 0) {
+                // $control->x_hora = ($cantidad / $minutos_trabajados) * 15;
+                $consumo->x_hora = round(($cantidad / $minutos_trabajados) * 15);
+
+            } else {
+                $consumo->x_hora = 0;
+            }
+
             // DEBUGUEAR($consumo); // Para ver los datos que se envían
             $alertas = $consumo->validar();
             if (empty($alertas)) {
@@ -68,6 +83,24 @@ class AdminController
             'nombre' => $nombre
         ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
