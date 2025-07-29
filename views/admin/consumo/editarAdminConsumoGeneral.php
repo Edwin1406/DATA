@@ -91,7 +91,7 @@
                                             <label for="total_general">TOTAL GENERAL</label>
                                             <input type="text" id="total_general" class="form-control"
                                                 placeholder="Total General" name="total_general"
-                                                value="<?= htmlspecialchars($consumoGeneral->total_general ?? '') ?>">
+                                                value="<?= htmlspecialchars($consumoGeneral->total_general ?? '') ?>" disabled>
                                         </div>
                                     </div>
 
