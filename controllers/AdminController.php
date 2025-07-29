@@ -154,7 +154,7 @@ public static function tablaConsumo(Router $router)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tipo_maquina = $_POST['tipo_maquina'] ?? '';
             $consumo_general->sincronizar($_POST);
-            debuguear($consumo_general); // Para ver los datos que se envían
+            // debuguear($consumo_general); 
             $alertas = $consumo_general->validar();
 
             if (empty($alertas)) {
