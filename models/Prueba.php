@@ -11,7 +11,7 @@ class Prueba extends ActiveRecord {
     public string $name;
     // public string $last;
     // En tu modelo Prueba
-public array $last = [];
+    public array $last = [];
 
 
 
@@ -30,14 +30,15 @@ public array $last = [];
         // Si viene como array (desde formulario), convertir a string
         if (isset($args['last'])) {
             if (is_array($args['last'])) {
-                $this->last = implode(',', $args['last']);
-            } else {
                 $this->last = $args['last'];
+            } else {
+                $this->last = [$args['last']]; // Asegurarse de que sea un array
             }
         } else {
-            $this->last = '';
+            $this->last = [];
         }
     }
+
 
 
     public function validar(): array {
