@@ -74,6 +74,16 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 $router->get('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 $router->post('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 
+
+
+
+
+
+
+
+// TABLAS
+// tabla de consumo
+$router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
 // TABLA CONSUMO GENERAL
 $router->get('/admin/tablaConsumoGeneral', [AdminController::class, 'tablaConsumoGeneral']);
 
@@ -81,19 +91,11 @@ $router->get('/admin/tablaConsumoGeneral', [AdminController::class, 'tablaConsum
 
 
 
-
-
-
-// tabla de consumo
-$router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
-
-
-
-
-
-
+// ELIMINAR
 // eliminar consumo
 $router->post('/admin/eliminarConsumo', [AdminController::class, 'eliminarConsumo']);
+// ELIMINAR CONSUMO GENERAL
+$router->post('/admin/eliminarConsumoGeneral', [AdminController::class, 'eliminarConsumoGeneral']);
 
 
 
