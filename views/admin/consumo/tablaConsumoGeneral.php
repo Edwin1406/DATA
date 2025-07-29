@@ -53,39 +53,26 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 Tabla de consumo
+                 Tabla de consumo general
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
                      <thead>
                          <tr>
-                             <th class="fs-6" style="min-width: 90px;">Fecha</th>
-                             <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 160px;">Personal</th>
-                             <th class="fs-6" style="min-width: 100px;">Producto</th>
-                             <th class="fs-6" style="min-width: 93px;">Medidas</th>
-                             <th class="fs-6" style="min-width: 98px;">Cantidad</th>
-                             <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
-                             <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
-                             <th class="fs-6" style="min-width: 118px;">Total Horas</th>
-                             <th class="fs-6" style="min-width: 85px;">x Hora</th>
+                             <th class="fs-6" style="min-width: 90px;">Tipo Maqina</th>
+                             <th class="fs-6" style="min-width: 80px;">Total General</th>
+                             <th class="fs-6" style="min-width: 160px;">Fecha</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($consumos as $consumo): ?>
+                         <?php foreach ($consumosGenerales as $consumosGeneral): ?>
                              <tr>
-                                 <td><?= $consumo->fecha ?></td>
-                                 <td><?= $consumo->turno ?></td>
-                                 <td><?= $consumo->personal ?></td>
-                                 <td><?= $consumo->producto ?></td>
-                                 <td><?= $consumo->medidas ?></td>
-                                 <td><?= $consumo->cantidad ?></td>
-                                 <td><?= $consumo->hora_inicio ?></td>
-                                 <td><?= $consumo->hora_fin ?></td>
-                                 <td><?= $consumo->total_horas ?></td>
-                                 <td><?= $consumo->x_hora ?></td>
+                                 <td><?= $consumosGeneral->tipo_maquina ?></td>
+                                 <td><?= $consumosGeneral->total_general ?></td>
+                                 <td><?= $consumosGeneral->fecha ?></td>
+                               
                                  <!-- los botones en horizontal -->
 
                                  <td>
