@@ -71,7 +71,7 @@
                              <tr>
                                  <td><?= $consumosGeneral->tipo_maquina ?></td>
                                  <td><?= $consumosGeneral->total_general ?></td>
-                                 <td><?= $consumosGeneral->fecha ?></td>
+                                 <td><?= $consumosGeneral->created_at ?></td>
                                
                                  <!-- los botones en horizontal -->
 
