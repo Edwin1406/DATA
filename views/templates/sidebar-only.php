@@ -80,7 +80,7 @@
                      </a>
                      <ul class="submenu ">
                          <li class="submenu-item ">
-                             <a href="extra-component-avatar.html">Avatar</a>
+                             <a href="extra-component-avatar.html">Habilitar Consmo General</a>
                          </li>
                          <li class="submenu-item ">
                              <a href="extra-component-sweetalert.html">Sweet Alert</a>
