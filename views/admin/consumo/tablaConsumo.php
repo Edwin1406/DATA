@@ -52,13 +52,16 @@
                                 <td><?= $consumo->x_hora ?></td>
                                 <!-- los botones en horizontal -->
 
-                                    <td>
-                                        <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary">Editar</a>
-                                        <form action="/admin/eliminarConsumo" method="POST" style="display:inline;">
-                                            <input type="hidden" name="id" value="<?= $consumo->id ?>">
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                    </td>
+                                 <td>
+    <div class="d-flex gap-1">
+        <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
+        <form action="/admin/eliminarConsumo" method="POST">
+            <input type="hidden" name="id" value="<?= $consumo->id ?>">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+    </div>
+</td>
+
 
 
 
