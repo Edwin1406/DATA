@@ -66,7 +66,7 @@
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
                                         <div class="form-group">
-                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina">
+                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina" disabled>
                                                 <option value="" disabled selected>Seleccione tipo de máquina</option>
                                                 <option value="CORRUGADOR" <?= $consumoGeneral->tipo_maquina === 'CORRUGADOR' ? 'selected' : '' ?>>CORRUGADOR</option>
                                                 <option value="MICRO" <?= $consumoGeneral->tipo_maquina === 'MICRO' ? 'selected' : '' ?>>MICRO</option>
