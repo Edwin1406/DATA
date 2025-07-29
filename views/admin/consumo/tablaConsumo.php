@@ -24,10 +24,16 @@
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
+                                        <th>Fecha</th>
+                                        <th>Turno</th>
+                                        <th>Personal</th>
+                                        <th>Producto</th>
+                                        <th>Medidas</th>
+                                        <th>Cantidad</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Hora Fin</th>
+                                        <th>Total Horas</th>
+                                        <th>Pago por Hora</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
