@@ -64,5 +64,14 @@
  <script>
      document.addEventListener("DOMContentLoaded", function() {
          const dataTable = new simpleDatatables.DataTable("#table1");
+        //  QUIEROQ UE ESTE EN ESPAÑOL
+         dataTable.on("datatable.init", function() {
+             dataTable.options.labels = {
+                 placeholder: "Buscar...",
+                 perPage: "{select} registros por página",
+                 noRows: "No se encontraron registros",
+                 info: "Mostrando {start} a {end} de {rows} registros"
+             };
+         });
      });
  </script>
