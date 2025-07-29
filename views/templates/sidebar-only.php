@@ -1,10 +1,9 @@
- 
  <?php
-   
+
     $userEmail = $_SESSION['email'] ?? 'No disponible'; // Asignar
     ?>
- 
- 
+
+
  <header class="mb-3">
      <a href="#" class="burger-btn d-block d-xl-none">
          <i class="bi bi-justify fs-3"></i>
@@ -41,32 +40,36 @@
                      </a>
                      <ul class="submenu ">
 
-                     <?php if($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-                         <li class="sidebar-item  has-sub">
-                             <a href="#" class='sidebar-link'>
-                                 <i class="bi bi-stack"></i>
-                                 <span>Control</span>
-                             </a >
-                             <ul class="submenu ">
-                                 <li class="submenu-item ">
-                                     <a href="/admin/consumo">Registro Empaque</a>
-                                 </li>
-                             
-                               
-                                 <li class="submenu-item ">
-                                     <a href="/admin/consumo_general">Registro Consumo General</a>
-                                 </li>
+                         <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                             <li class="sidebar-item  has-sub">
+                                 <a href="#" class='sidebar-link'>
+                                     <i class="bi bi-stack"></i>
+                                     <span>Control</span>
+                                 </a>
+                                 <ul class="submenu ">
                                      <li class="submenu-item ">
-                                     <a href="/admin/tablaConsumo">Tabla Consumo</a>
-                                 </li>
-                               
-                             </ul>
-                         </li>
-                        <?php } ?>
+                                         <a href="/admin/consumo">Registro Empaque</a>
+                                     </li>
+
+
+                                     <li class="submenu-item ">
+                                         <a href="/admin/consumo_general">Registro Consumo General</a>
+                                     </li>
+                                     <li class="submenu-item ">
+                                         <a href="/admin/tablaConsumo">Tabla Consumo</a>
+                                     </li>
+
+                                       <li class="submenu-item ">
+                                         <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                                     </li>
+
+                                 </ul>
+                             </li>
+                         <?php } ?>
 
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Consumo Papel</a>
-                         </li>                        
+                         </li>
                      </ul>
                  </li>
 
@@ -106,5 +109,3 @@
 
 
  </div>
-
- 

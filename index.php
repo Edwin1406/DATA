@@ -74,6 +74,10 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 $router->get('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 $router->post('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 
+// TABLA CONSUMO GENERAL
+$router->get('/admin/tablaConsumoGeneral', [AdminController::class, 'tablaConsumoGeneral']);
+
+
 
 
 
