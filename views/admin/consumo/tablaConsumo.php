@@ -33,7 +33,7 @@
                              <th>Hora Inicio</th>
                              <th>Hora Fin</th>
                              <th>Total Horas</th>
-                             <th>Pago por Hora</th>
+                             <th>x Hora</th>
                          </tr>
                      </thead>
                      <tbody>
