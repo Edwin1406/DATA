@@ -25,6 +25,7 @@ if (strpos($currentPath, '/admin/index') !== false) {
 ?>
 
 
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
 
 <script src="/assets/js/main.js"></script>
  <script src="/assets/vendors/choices.js/choices.min.js"></script>
