@@ -104,7 +104,7 @@ public static function tablaConsumo(Router $router)
         'titulo' => 'MEGASTOCK-DESARROLLO',
         'nombre' => $nombre,
         'email' => $email,
-        // 'consumos' => $consumos
+        'consumos' => $consumos
     ]);
 }
 
