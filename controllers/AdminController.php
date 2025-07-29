@@ -97,7 +97,8 @@ public static function tablaConsumo(Router $router)
     $nombre = $_SESSION['nombre'];
     $email = $_SESSION['email'];
 
-    // $consumos = Prueba::all();
+    $consumos = Prueba::all();
+    debuguear($consumos);
 
     $router->render('admin/consumo/tablaConsumo', [
         'titulo' => 'MEGASTOCK-DESARROLLO',
