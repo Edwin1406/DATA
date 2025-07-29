@@ -274,11 +274,6 @@
                 </section>
             </div>
 
-<!-- CSS de SimpleDatatables -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" />
-
-<!-- JS de SimpleDatatables -->
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" defer></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
