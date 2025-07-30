@@ -13,7 +13,7 @@
              <div class="col-12 col-md-6 order-md-2 order-first">
                  <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                      <ol class="breadcrumb">
-                         <li class="breadcrumb-item"><a > <?php echo $nombre; ?></a></li>
+                         <li class="breadcrumb-item"><a> <?php echo $nombre; ?></a></li>
                          <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
                      </ol>
                  </nav>
@@ -44,12 +44,22 @@
                      });
                  </script>
              <?php endif; ?>
-
-
-
-
          </div>
      </div>
+
+     <section class="section">
+         <div class="card">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/consumo">Registro Troquel</a>
+                 </li>
+             </ul>
+         </div>
+     </section>
+                     
+
+
+
      <section class="section">
          <div class="card">
              <div class="card-header">

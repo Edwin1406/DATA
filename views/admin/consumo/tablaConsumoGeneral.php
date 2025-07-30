@@ -60,12 +60,6 @@
                  <li class="nav-item">
                      <a class="nav-link active" href="/admin/consumo_general">Registro Consumo General</a>
                  </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="/admin/consumo_perfil">Profile</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="/admin/contacto">Contact</a>
-                 </li>
              </ul>
          </div>
      </section>
