@@ -103,17 +103,24 @@
 
  </div>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const submenuLinks = document.querySelectorAll('.sidebar-link[href="#"]');
+        const currentUrl = window.location.pathname;
+        const submenuItems = document.querySelectorAll('.submenu-item a');
 
-        submenuLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const parent = this.closest('.sidebar-item');
-                parent.classList.toggle('active');
-            });
+        submenuItems.forEach(link => {
+            if (link.getAttribute('href') === currentUrl) {
+                link.classList.add('dashboard__enlace--actual'); // clase que marca el enlace activo
+
+                // Activar todos los elementos padre hasta llegar al .sidebar-item
+                let parent = link.closest('.sidebar-item');
+                while (parent) {
+                    if (parent.classList.contains('sidebar-item')) {
+                        parent.classList.add('active');
+                    }
+                    parent = parent.parentElement.closest('.sidebar-item');
+                }
+            }
         });
     });
 </script>
