@@ -5,18 +5,6 @@
 </header> -->
 
 
-<!-- porqe cuando pongo este id id="contenido-dinamico" se me quitan los estilos -->
-
-<!-- haz una condicion para que si existe el id "contenido-dinamico" se le apliquen los estilos correspondientes -->
-
-<?php if (isset($contenido_dinamico) && $contenido_dinamico): ?>
-    <style>
-        #contenido-dinamico {
-            /* Estilos específicos para el contenido dinámico */
-        }
-    </style>
-<?php endif; ?>
-
 
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
