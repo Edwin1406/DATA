@@ -78,9 +78,10 @@ $router->post('/admin/consumo_general', [AdminController::class, 'consumo_genera
 $router->get('/admin/control_troquel', [ControlController::class, 'control_troquel']);
 $router->post('/admin/control_troquel', [ControlController::class, 'control_troquel']);
 
-// eliminar consumo troquel
-$router->post('/admin/eliminarConsumoTroquel', [ControlController::class, 'eliminarConsumoTroquel']);
 
+// diseño
+$router->get('/admin/diseño/crearDiseño', [AdminController::class, 'crearDiseño']);
+$router->post('/admin/diseño/crearDiseño', [AdminController::class, 'crearDiseño']);
 
 
 
@@ -108,6 +109,9 @@ $router->get('/admin/tablaConsumoTroquel', [ControlController::class, 'tablaCons
 $router->post('/admin/eliminarConsumo', [AdminController::class, 'eliminarConsumo']);
 // ELIMINAR CONSUMO GENERAL
 $router->post('/admin/eliminarConsumoGeneral', [AdminController::class, 'eliminarConsumoGeneral']);
+
+// eliminar consumo troquel
+$router->post('/admin/eliminarConsumoTroquel', [ControlController::class, 'eliminarConsumoTroquel']);
 
 
 
