@@ -60,6 +60,14 @@
     </ul>
 </li>
 
+<style>
+
+    .menu-item--abierto .submenu {
+    display: block; /* o visible según tu sistema */
+}
+
+</style>
+
 
                                      <li class="submenu-item ">
                                          <a href="/admin/consumo_general">Registro Consumo General</a>
