@@ -7,7 +7,7 @@ use MVC\Router;
 
 class DiseñoController
 {
-    public static function crearDiseño(Router $router)
+    public static function crearDiseno(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
