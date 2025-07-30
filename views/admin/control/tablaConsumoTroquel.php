@@ -87,7 +87,7 @@
                                  <td><?= $contro->cantidad_separadores ?></td>
                                  <td><?= $contro->cantidad_cajas ?></td>
                                  <td><?= $contro->cantidad_papel ?></td>
-                                 <td><?= $contro->cantidad_desperdicio ?></td>
+                                 <td><?= $contro->desperdicio_kg ?></td>
                                 
                                  <!-- los botones en horizontal -->
 
