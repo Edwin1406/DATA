@@ -54,7 +54,13 @@
 
 
 
-             <ul class="nav nav-tabs">
+            
+
+
+
+     </div>
+
+      <ul class="nav nav-tabs">
                  <li class="nav-item">
                      <a class="nav-link active" href="/admin/consumo_general">Home</a>
                  </li>
@@ -65,10 +71,6 @@
                      <a class="nav-link" href="/admin/contacto">Contact</a>
                  </li>
              </ul>
-
-
-
-     </div>
      <section class="section">
          <div class="card">
              <div class="card-header">
