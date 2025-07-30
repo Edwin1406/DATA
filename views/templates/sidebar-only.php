@@ -105,30 +105,15 @@
 
 
 <script>
-    // Espera a que el DOM cargue completamente
     document.addEventListener('DOMContentLoaded', function () {
-        // Selecciona todos los enlaces que tienen href="#" dentro del menú
         const submenuLinks = document.querySelectorAll('.sidebar-link[href="#"]');
 
         submenuLinks.forEach(link => {
             link.addEventListener('click', function (event) {
-                event.preventDefault(); // Evita que la página se recargue
-                const parentItem = this.parentElement;
-
-                // Alterna la clase para mostrar/ocultar el submenú
-                parentItem.classList.toggle('active'); 
+                event.preventDefault();
+                const parent = this.closest('.sidebar-item');
+                parent.classList.toggle('active');
             });
         });
     });
 </script>
-<style>
-
-.submenu {
-    display: none;
-}
-.sidebar-item.active > .submenu {
-    display: block;
-}
-
-
-</style>
