@@ -3,7 +3,8 @@
         <i class="bi bi-justify fs-3"></i>
     </a>
 </header> -->
-
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
