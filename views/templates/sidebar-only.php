@@ -93,18 +93,18 @@
                       <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
-                             <span>Administrativo</span>
+                             <span>Diseño</span>
                          </a>
                          <ul class="submenu ">
                              <li class="submenu-item ">
-                                 <a href="/admin/tablaAdminConsumoGeneral"><i class="bi bi-arrow-right"> </i>Habilitar Consumo General</a>
+                                 <a href="/admin/diseño/crear"><i class="bi bi-arrow-right"> </i>Crear Diseño</a>
                              </li>
 
                          </ul>
                      </li>
 
 
-             </ul>
+             <!-- </ul> -->
          </div>
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
