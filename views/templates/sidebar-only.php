@@ -5,9 +5,13 @@
 
 
  <header class="py-2">
-     <a href="#" class="burger-btn d-block d-xl-none">
+     <!-- <a href="#" class="burger-btn d-block d-xl-none">
          <i class="bi bi-justify fs-3"></i>
-     </a>
+     </a> -->
+     <a href="#" class="burger-btn d-block d-xl-none">
+    <i class="bi bi-justify fs-3"></i>
+</a>
+
  </header>
  <div id="sidebar" class="active">
      <div class="sidebar-wrapper active">
