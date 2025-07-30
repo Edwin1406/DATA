@@ -55,7 +55,7 @@
                                  <a href="/admin/consumo_general"><i class="bi bi-arrow-right"> </i>Registro Consumo General</a>
                              </li>
 
-                             <li class="submenu-item ">
+                             <li class="submenu-item .btn .btn-outline-{color} ">
                                  <a href="/admin/control_troquel"><i class="bi bi-arrow-right"> </i>Registro Troquel</a>
                              </li>
                              <li class="sidebar-title"><b><i class="bi bi-table"></i> Tablas</b></li>
