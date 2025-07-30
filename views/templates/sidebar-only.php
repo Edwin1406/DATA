@@ -97,7 +97,7 @@
                          </a>
                          <ul class="submenu ">
                              <li class="submenu-item ">
-                                 <a href="/admin/diseño/crearDiseño"><i class="bi bi-arrow-right"> </i>Crear Diseño</a>
+                                 <a href="/admin/diseno/crearDiseno"><i class="bi bi-arrow-right"> </i>Crear Diseño</a>
                              </li>
 
                          </ul>
