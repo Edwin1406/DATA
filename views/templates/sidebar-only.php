@@ -55,6 +55,8 @@
                              <li class="submenu-item ">
                                  <a href="/admin/control_troquel">Registro Troquel</a>
                              </li>
+                                                     <li class="sidebar-title">TABLAS</li>
+
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
                              </li>
@@ -69,8 +71,6 @@
                      <?php }  ?>
 
                  </li>
-
-
                  <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
