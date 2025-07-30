@@ -38,7 +38,7 @@ class ControlController
             $control->golpes_maquina_hora = 0;
         }
 
-        debuguear($control);
+        // debuguear($control);
 
             $alertas = $control->validar();
             if (empty($alertas)) {
