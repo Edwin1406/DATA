@@ -42,7 +42,7 @@
                      </a>
                      <ul class="submenu ">
 
-                         <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                         <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
                              <li class="sidebar-item  has-sub">
                                  <a href="#" class='sidebar-link'>
                                      <i class="bi bi-stack"></i>
