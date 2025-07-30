@@ -74,6 +74,9 @@ $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 $router->get('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 $router->post('/admin/consumo_general', [AdminController::class, 'consumo_general']);
 
+//  control_troquel
+$router->get('/admin/control_troquel', [AdminController::class, 'control_troquel']);
+$router->post('/admin/control_troquel', [AdminController::class, 'control_troquel']);
 
 
 
