@@ -47,9 +47,9 @@
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Iniciar Sesión</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">¿No tienes una cuenta? <a href="/registro"
+                        <p class="text-gray-600">¿No tienes una cuenta? <a href="#"
                                 class="font-bold">Regístrate</a>.</p>
-                        <p><a class="font-bold" href="auth-forgot-password.html">¿Olvidaste tu contraseña?</a>.</p>
+                        <p><a class="font-bold" href="#">¿Olvidaste tu contraseña?</a>.</p>
                     </div>
                 </div>
             </div>
