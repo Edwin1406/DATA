@@ -281,8 +281,8 @@
     </div>
 <?php } else { ?>
     <div class="page-heading">
-        <h3>Acceso Denegado</h3>
-        <p class="text-subtitle text-muted">No tienes permiso para acceder a esta página.</p>
+        <h3>Bienvenido <?php echo $nombre; ?></h3>
+        <p class="text-subtitle text-muted"><?php echo $email; ?></p>
     </div>
 
 <?php } ?>
