@@ -32,35 +32,35 @@
             const contentContainer = document.querySelector('#contenido-dinamico');
 
             // Función para cargar contenido dinámicamente
-            function cargarContenido(url, agregarAlHistorial = true) {
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error(`Error al cargar: ${response.status}`);
-                        return response.text();
-                    })
-                    .then(html => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(html, 'text/html');
-                        const newContent = doc.querySelector('#contenido-dinamico');
+      function cargarContenido(url, agregarAlHistorial = true) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) throw new Error(`Error al cargar: ${response.status}`);
+            return response.text();
+        })
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newContent = doc.querySelector('#contenido-dinamico');
 
-                        if (newContent) {
-                            contentContainer.innerHTML = newContent.innerHTML;
+            if (newContent && newContent.innerHTML.trim() !== '') {
+                // Solo reemplaza si hay contenido válido
+                contentContainer.innerHTML = newContent.innerHTML;
 
-                            // Agregar a historial si es navegación por click
-                            if (agregarAlHistorial) {
-                                window.history.pushState(null, '', url);
-                            }
+                if (agregarAlHistorial) {
+                    window.history.pushState(null, '', url);
+                }
 
-                            // Vuelve a marcar los menús activos
-                            activarSidebar(url);
-                        } else {
-                            console.warn('No se encontró #contenido-dinamico en la respuesta.');
-                        }
-                    })
-                    .catch(err => {
-                        console.error('Error al cargar contenido:', err);
-                    });
+                activarSidebar(url);
+            } else {
+                console.warn('No se encontró contenido válido en #contenido-dinamico. No se reemplaza.');
             }
+        })
+        .catch(err => {
+            console.error('Error al cargar contenido:', err);
+        });
+}
+
 
             // Función para interceptar clicks en enlaces del sidebar
             function interceptarEnlaces() {
