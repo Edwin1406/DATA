@@ -46,6 +46,7 @@
                              <li class="submenu-item ">
                                  <a href="/admin/consumo">Registro Empaque</a>
                              </li>
+<!-- icono de flecha -->
 
 
                              <li class="submenu-item ">
@@ -55,7 +56,8 @@
                              <li class="submenu-item ">
                                  <a href="/admin/control_troquel">Registro Troquel</a>
                              </li>
-                                <li class="sidebar-title"><b>-Tablas </b></li>
+                                <li class="sidebar-title"><b><i class="bi bi-arrow-right"></i>
+Tablas </b></li>
 
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
