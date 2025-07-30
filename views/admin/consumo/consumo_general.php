@@ -49,7 +49,7 @@
          <div class="card">
              <ul class="nav nav-tabs">
                  <li class="nav-item">
-                     <a class="nav-link active" href="/admin/consumo_general">Registro Consumo General</a>
+                     <a class="nav-link active" href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="/admin/consumo_perfil">Profile</a>
