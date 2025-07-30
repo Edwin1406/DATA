@@ -6,7 +6,7 @@ use MVC\Router;
 
 class ControlController
 {
-    public static function controlTroquel(Router $router)
+    public static function control_troquel(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
