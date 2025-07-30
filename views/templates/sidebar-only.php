@@ -51,7 +51,7 @@
                                  <ul class="submenu ">
 
                                      <li class="submenu-item ">
-                                         <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
+                                         <a href="/admin/consumo">Registro Empaque</a>
                                      </li>
 
 
@@ -78,7 +78,26 @@
                          <?php } ?>
 
                          <li class="submenu-item ">
-                             <a href="">/</a>
+                             <a href="/admin/consumo">Registro Empaque</a>
+                         </li>
+
+
+                         <li class="submenu-item ">
+                             <a href="/admin/consumo_general">Registro Consumo General</a>
+                         </li>
+
+                         <li class="submenu-item ">
+                             <a href="/admin/control_troquel">Registro Troquel</a>
+                         </li>
+                         <li class="submenu-item ">
+                             <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
+                         </li>
+
+                         <li class="submenu-item ">
+                             <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                         </li>
+                         <li class="submenu-item ">
+                             <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
                          </li>
                      </ul>
                  </li>
