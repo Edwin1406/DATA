@@ -49,21 +49,23 @@
 
                                         <!-- como hacer para que no se cierre el submenu al hacer clic en un enlace -->
 
-                                        <script>
-                                            document.addEventListener('DOMContentLoaded', function () {
-                                                const submenuItems = document.querySelectorAll('.submenu-item > a');
+                                        <!-- no me dirige cuando doy clic en un enlace -->
 
-                                                submenuItems.forEach(item => {
-                                                    item.addEventListener('click', function (e) {
-                                                        e.preventDefault();
-                                                        const submenu = this.nextElementSibling;
-                                                        if (submenu) {
-                                                            submenu.classList.toggle('active');
-                                                        }
-                                                    });
-                                                });
-                                            });
-                                        </script>
+                                     <script>
+                                         document.addEventListener('DOMContentLoaded', function () {
+                                             const submenuItems = document.querySelectorAll('.submenu-item > a');
+
+                                             submenuItems.forEach(item => {
+                                                 item.addEventListener('click', function (e) {
+                                                     e.preventDefault();
+                                                     const submenu = this.nextElementSibling;
+                                                     if (submenu) {
+                                                         submenu.classList.toggle('active');
+                                                     }
+                                                 });
+                                             });
+                                         });
+                                     </script>
 
 
                                         <li class="submenu-item ">
