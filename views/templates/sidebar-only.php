@@ -44,30 +44,29 @@
                          <ul class="submenu ">
 
                              <li class="submenu-item ">
-                                 <a href="/admin/consumo">Registro Empaque</a>
+                                 <a href="/admin/consumo"><i class="bi bi-arrow-right"></i>Registro Empaque</a>
                              </li>
-<!-- icono de flecha -->
+                             <!-- icono de flecha -->
 
 
                              <li class="submenu-item ">
-                                 <a href="/admin/consumo_general">Registro Consumo General</a>
+                                 <a href="/admin/consumo_general"><i class="bi bi-arrow-right"></i>Registro Consumo General</a>
                              </li>
 
                              <li class="submenu-item ">
-                                 <a href="/admin/control_troquel">Registro Troquel</a>
+                                 <a href="/admin/control_troquel"><i class="bi bi-arrow-right"></i>Registro Troquel</a>
                              </li>
-                                <li class="sidebar-title"><b><i class="bi bi-arrow-right"></i>
-Tablas </b></li>
+                             <li class="sidebar-title"><b><i class="bi bi-table"></i> Tablas</b></li>
 
                              <li class="submenu-item ">
-                                 <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
+                                 <a href="/admin/tablaConsumo"><i class="bi bi-arrow-right"></i>Tabla Consumo Empaque</a>
                              </li>
 
                              <li class="submenu-item ">
-                                 <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                                 <a href="/admin/tablaConsumoGeneral"><i class="bi bi-arrow-right"></i>Tabla Consumo General</a>
                              </li>
                              <li class="submenu-item ">
-                                 <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
+                                 <a href="/admin/tablaConsumoTroquel"><i class="bi bi-arrow-right"></i>Tabla Consumo Troquel</a>
                              </li>
                          </ul>
                      <?php }  ?>
