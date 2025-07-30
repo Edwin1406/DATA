@@ -45,6 +45,21 @@
         </script>
     <?php endif; ?>
 
+     <section class="section">
+         <div class="card">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/consumo_general">Registro Consumo General</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/consumo_perfil">Profile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/contacto">Contact</a>
+                 </li>
+             </ul>
+         </div>
+     </section>
 
 
     <!-- // Basic multiple Column Form section start -->
@@ -55,8 +70,6 @@
                     <div class="card-header">
                         <h4 class="card-title">REGISTRO DE CONSUMO  GENERAL</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
-
-
                     </div>
                     <div class="card-content">
                         <div class="card-body">

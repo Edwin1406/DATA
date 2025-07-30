@@ -54,9 +54,9 @@
 
      </div>
 
-<section class="section">
-    <div class="card">
-         <ul class="nav nav-tabs">
+     <section class="section">
+         <div class="card">
+             <ul class="nav nav-tabs">
                  <li class="nav-item">
                      <a class="nav-link active" href="/admin/consumo_general">Registro Consumo General</a>
                  </li>
@@ -67,10 +67,8 @@
                      <a class="nav-link" href="/admin/contacto">Contact</a>
                  </li>
              </ul>
-
-    </div>
-
-</section>
+         </div>
+     </section>
 
 
 
