@@ -96,7 +96,7 @@ $router->get('/admin/tablaConsumoGeneral', [AdminController::class, 'tablaConsum
 $router->get('/admin/tablaAdminConsumoGeneral', [AdminController::class, 'tablaAdminConsumoGeneral']);
 
 // tabla consumo troquel
-$router->get('/admin/tablaConsumoTroquel', [AdminController::class, 'tablaConsumoTroquel']);
+$router->get('/admin/tablaConsumoTroquel', [ControlController::class, 'tablaConsumoTroquel']);
 
 
 
