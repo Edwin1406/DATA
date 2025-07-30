@@ -50,22 +50,24 @@
                                         <!-- como hacer para que no se cierre el submenu al hacer clic en un enlace -->
 
                                         <!-- no me dirige cuando doy clic en un enlace -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const submenuItems = document.querySelectorAll('.submenu-item > a');
 
-                                     <script>
-                                         document.addEventListener('DOMContentLoaded', function () {
-                                             const submenuItems = document.querySelectorAll('.submenu-item > a');
+    submenuItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+            const submenu = this.nextElementSibling;
 
-                                             submenuItems.forEach(item => {
-                                                 item.addEventListener('click', function (e) {
-                                                     e.preventDefault();
-                                                     const submenu = this.nextElementSibling;
-                                                     if (submenu) {
-                                                         submenu.classList.toggle('active');
-                                                     }
-                                                 });
-                                             });
-                                         });
-                                     </script>
+            // Solo prevenir el enlace si existe un submenú
+            if (submenu && submenu.classList.contains('submenu')) {
+                e.preventDefault();
+                submenu.classList.toggle('active');
+            }
+        });
+    });
+});
+</script>
+
 
 
                                         <li class="submenu-item ">
