@@ -26,14 +26,14 @@
              <ul class="menu">
                  <li class="sidebar-title">Menu</li>
 
-                   <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-                 <li class="sidebar-item active ">
-                     <a href="/admin/index" class='sidebar-link'>
-                         <i class="bi bi-grid-fill"></i>
-                         <span>Dashboard</span>
-                     </a>
-                 </li>
-                    <?php } ?>
+                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                     <li class="sidebar-item active ">
+                         <a href="/admin/index" class='sidebar-link'>
+                             <i class="bi bi-grid-fill"></i>
+                             <span>Dashboard</span>
+                         </a>
+                     </li>
+                 <?php } ?>
 
                  <li class="sidebar-item  has-sub">
                      <a href="#" class='sidebar-link'>
@@ -50,9 +50,9 @@
                                  </a>
                                  <ul class="submenu ">
 
-                                        <li class="submenu-item ">
-                                            <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
-                                        </li>
+                                     <li class="submenu-item ">
+                                         <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
+                                     </li>
 
 
                                      <li class="submenu-item ">
@@ -83,18 +83,23 @@
                      </ul>
                  </li>
 
-                 <li class="sidebar-item  has-sub">
-                     <a href="#" class='sidebar-link'>
-                         <i class="bi bi-collection-fill"></i>
-                         <span>Administrativo</span>
-                     </a>
-                     <ul class="submenu ">
-                         <li class="submenu-item ">
-                             <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
-                         </li>
+                 
+                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                     <li class="sidebar-item  has-sub">
+                         <a href="#" class='sidebar-link'>
+                             <i class="bi bi-collection-fill"></i>
+                             <span>Administrativo</span>
+                         </a>
+                         <ul class="submenu ">
+                             <li class="submenu-item ">
+                                 <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
+                             </li>
 
-                     </ul>
-                 </li>
+                         </ul>
+                     </li>
+                 <?php } ?>
+
+
              </ul>
          </div>
 
