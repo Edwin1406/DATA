@@ -55,7 +55,7 @@
                              <li class="submenu-item ">
                                  <a href="/admin/control_troquel">Registro Troquel</a>
                              </li>
-                                                     <li class="sidebar-title">TABLAS</li>
+                                <li class="sidebar-title"><b>TABLAS </b></li>
 
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
