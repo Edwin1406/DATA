@@ -72,6 +72,7 @@ class ControlController
 
         $router->render('admin/control/tablaConsumoTroquel', [
             'titulo' => 'Tabla Consumo Troquel',
+            'subtitulo' => 'Consumo Troquel',
             'nombre' => $nombre,
             'email' => $email
         ]);
