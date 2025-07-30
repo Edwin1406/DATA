@@ -83,7 +83,7 @@
                      </ul>
                  </li>
 
-                 
+
                  <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
