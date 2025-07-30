@@ -3,6 +3,11 @@
         <i class="bi bi-justify fs-3"></i>
     </a>
 </header> -->
+ <?php
+
+    $userEmail = $_SESSION['email'] ?? 'No disponible'; // Asignar
+    ?>
+
 
  <div id="sidebar" class="active">
      <div class="sidebar-wrapper active">
