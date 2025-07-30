@@ -82,7 +82,7 @@
                          </a>
                          <ul class="submenu ">
                              <li class="submenu-item ">
-                                 <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
+                                 <a href="/admin/tablaAdminConsumoGeneral"><i class="bi bi-arrow-right"> </i>Habilitar Consumo General</a>
                              </li>
 
                          </ul>
