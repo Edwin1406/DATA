@@ -101,7 +101,7 @@
                                     <div class="col-md-6 col-12">
                                         <label for="operador">Escoja el Operador</label>
                                         <div class="form-group">
-                                            <select class="form-select" name="operador">
+                                            <select class="form-select" name="operador" id="operador">
                                                 <option value="Luis Govea">Luis Govea</option>
                                                 <option value="Guillermo Bonilla">Guillermo Bonilla</option>
                                             </select>
@@ -129,27 +129,49 @@
                                         </div>
                                     </div>
 
-
-                                    
-
-
-
-
-                                    <!-- hora de fin  -->
+                                    <!-- cambios de medida  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control"
-                                                placeholder="Hora de Fin" name="hora_fin">
+                                            <label for="cambios_medida">Cambios de Medida</label>
+                                            <input type="number" id="cambios_medida" class="form-control"
+                                                placeholder="Cambios de Medida" name="cambios_medida">
                                         </div>
                                     </div>
 
-                                    <!-- cantidad  -->
+                                    <!-- cantidad separadores  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad">Cantidad</label>
-                                            <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad">
+                                            <label for="cantidad_separadores">Cantidad Separadores</label>
+                                            <input type="number" id="cantidad_separadores" class="form-control"
+                                                placeholder="Cantidad Separadores" name="cantidad_separadores">
+                                        </div>
+                                    </div>
+
+                                    <!-- cantidad cajas  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="cantidad_cajas">Cantidad Cajas</label>
+                                            <input type="number" id="cantidad_cajas" class="form-control"
+                                                placeholder="Cantidad Cajas" name="cantidad_cajas">
+                                        </div>
+                                    </div>
+
+                                    <!-- cantidad papel  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="cantidad_papel">Cantidad Papel</label>
+                                            <input type="number" id="cantidad_papel" class="form-control"
+                                                placeholder="Cantidad Papel" name="cantidad_papel">
+
+                                        </div>
+                                    </div>
+
+                                    <!-- desperdicio kg  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="desperdicio_kg">Desperdicio Kg</label>
+                                            <input type="number" id="desperdicio_kg" class="form-control"
+                                                placeholder="Desperdicio Kg" name="desperdicio_kg">
                                         </div>
                                     </div>
 
