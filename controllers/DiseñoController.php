@@ -20,7 +20,7 @@ class DiseñoController
 
         // Aquí puedes agregar la lógica para crear un diseño
 
-        $router->render('admin/diseño/crearDiseno', [
+        $router->render('admin/diseno/crearDiseno', [
             'titulo' => 'Crear Diseño',
             'nombre' => $nombre,
             'email' => $email,
