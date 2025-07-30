@@ -84,6 +84,29 @@ class ControlController
 
 
 
+    // eliminar consumo troquel
+    public static function eliminarConsumoTroquel()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $control = ControlTroquel::find($id);
+            if ($control) {
+                $resultado = $control->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/tablaConsumoTroquel?exito=1');
+                } else {
+                    header('Location: /admin/tablaConsumoTroquel?error=1');
+                }
+            } else {
+                header('Location: /admin/tablaConsumoTroquel?error=1');
+            }
+        }
+    }
 
 
 

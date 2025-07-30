@@ -78,6 +78,9 @@ $router->post('/admin/consumo_general', [AdminController::class, 'consumo_genera
 $router->get('/admin/control_troquel', [ControlController::class, 'control_troquel']);
 $router->post('/admin/control_troquel', [ControlController::class, 'control_troquel']);
 
+// eliminar consumo troquel
+$router->post('/admin/eliminarConsumoTroquel', [ControlController::class, 'eliminarConsumoTroquel']);
+
 
 
 
