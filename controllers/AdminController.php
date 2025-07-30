@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Intervention\Image\Constraint;
+
 use Model\Consumo_general;
 use Model\Prueba;
 use MVC\Router;

@@ -15,8 +15,6 @@ class ControlController
         }
 
         $control = new ControlTroquel;
-
-
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
@@ -24,21 +22,20 @@ class ControlController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $control->sincronizar($_POST);
             // debuguear($control);
-             if ($control->horas_programadas > 0) {
-            // Convertir solo para el cálculo
-            $horasDecimal = $control->convertirHorasADecimal($control->horas_programadas);
-            
-            // Validar que el resultado de conversión sea mayor a 0
-            if ($horasDecimal > 0) {
-                $control->golpes_maquina_hora = $control->golpes_maquina / $horasDecimal;
+            if ($control->horas_programadas > 0) {
+                // Convertir solo para el cálculo
+                $horasDecimal = $control->convertirHorasADecimal($control->horas_programadas);
+
+                if ($horasDecimal > 0) {
+                    $control->golpes_maquina_hora = $control->golpes_maquina / $horasDecimal;
+                } else {
+                    $control->golpes_maquina_hora = 0;
+                }
             } else {
                 $control->golpes_maquina_hora = 0;
             }
-        } else {
-            $control->golpes_maquina_hora = 0;
-        }
 
-        // debuguear($control);
+            // debuguear($control);
 
             $alertas = $control->validar();
             if (empty($alertas)) {
@@ -59,4 +56,3 @@ class ControlController
         ]);
     }
 }
-
