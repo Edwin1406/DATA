@@ -26,7 +26,7 @@
              <ul class="menu">
                  <li class="sidebar-title">Menu</li>
 
-                   <?php if ($userEmail === 'produccion@megaecuador.com') { ?>
+                   <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
                  <li class="sidebar-item active ">
                      <a href="/admin/index" class='sidebar-link'>
                          <i class="bi bi-grid-fill"></i>
