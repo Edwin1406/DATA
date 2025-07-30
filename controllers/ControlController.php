@@ -55,4 +55,33 @@ class ControlController
             'alertas' => $alertas
         ]);
     }
+
+
+    // tabla consumo troquel
+    public static function tablaConsumoTroquel(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $control = new ControlTroquel;
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $router->render('admin/control/tablaConsumoTroquel', [
+            'titulo' => 'Tabla Consumo Troquel',
+            'nombre' => $nombre,
+            'email' => $email
+        ]);
+    }
+
+
+
+
+
+
+
+
 }

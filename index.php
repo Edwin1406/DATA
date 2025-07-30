@@ -84,6 +84,9 @@ $router->post('/admin/control_troquel', [ControlController::class, 'control_troq
 
 
 
+
+
+
 // TABLAS
 // tabla de consumo
 $router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']); 
@@ -91,6 +94,9 @@ $router->get('/admin/tablaConsumo', [AdminController::class, 'tablaConsumo']);
 $router->get('/admin/tablaConsumoGeneral', [AdminController::class, 'tablaConsumoGeneral']);
 // tabla admin consumo general
 $router->get('/admin/tablaAdminConsumoGeneral', [AdminController::class, 'tablaAdminConsumoGeneral']);
+
+// tabla consumo troquel
+$router->get('/admin/tablaConsumoTroquel', [AdminController::class, 'tablaConsumoTroquel']);
 
 
 

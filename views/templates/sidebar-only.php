@@ -62,8 +62,11 @@
                                          <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
                                      </li>
 
-                                       <li class="submenu-item ">
+                                     <li class="submenu-item ">
                                          <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                                     </li>
+                                     <li class="submenu-item ">
+                                         <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
                                      </li>
 
                                  </ul>
@@ -85,7 +88,7 @@
                          <li class="submenu-item ">
                              <a href="/admin/tablaAdminConsumoGeneral">Habilitar Consumo General</a>
                          </li>
-                      
+
                      </ul>
                  </li>
              </ul>
