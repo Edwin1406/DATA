@@ -3,8 +3,8 @@
 
 <div id="app">
     
+    <?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
     <div id="main">
-        <?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
 
         <?php echo $contenido; ?>
         <?php include_once __DIR__ . '/templates/admin-sidebar.php'; ?>
