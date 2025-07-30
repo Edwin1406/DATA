@@ -42,6 +42,8 @@
                      </a>
                      <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
                          <ul class="submenu ">
+                             <li class="sidebar-title"><b><i class="bi bi-table"></i> Registros</b></li>
+
 
                              <li class="submenu-item ">
                                  <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
