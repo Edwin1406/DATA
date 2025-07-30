@@ -50,15 +50,15 @@
         </script>
     <?php endif; ?>
 
-  <section class="section">
-         <div class="card">
-             <ul class="nav nav-tabs">
-                 <li class="nav-item">
-                     <a class="nav-link active" href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
-                 </li>
-             </ul>
-         </div>
-     </section>
+    <section class="section">
+        <div class="card">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
+                </li>
+            </ul>
+        </div>
+    </section>
 
 
     <!-- // Basic multiple Column Form section start -->
@@ -108,8 +108,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                
-                                   
+
+
                                     <!-- hora de inicio  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
