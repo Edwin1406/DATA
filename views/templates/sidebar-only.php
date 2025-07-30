@@ -46,9 +46,29 @@
                                      <span>Control</span>
                                  </a>
                                  <ul class="submenu ">
-                                     <li class="submenu-item ">
-                                         <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
-                                     </li>
+
+                                        <!-- como hacer para que no se cierre el submenu al hacer clic en un enlace -->
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function () {
+                                                const submenuItems = document.querySelectorAll('.submenu-item > a');
+
+                                                submenuItems.forEach(item => {
+                                                    item.addEventListener('click', function (e) {
+                                                        e.preventDefault();
+                                                        const submenu = this.nextElementSibling;
+                                                        if (submenu) {
+                                                            submenu.classList.toggle('active');
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+
+                                        <li class="submenu-item ">
+                                            <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
+                                        </li>
 
 
                                      <li class="submenu-item ">
