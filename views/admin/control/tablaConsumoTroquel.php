@@ -84,10 +84,10 @@
                                  <td><?= $contro->golpes_maquina ?></td>
                                  <td><?= $contro->golpes_maquina_hora ?></td>
                                  <td><?= $contro->cambios_medida ?></td>
-                                 <td><?= $contro->separadores ?></td>
-                                 <td><?= $contro->cajas ?></td>
-                                 <td><?= $contro->papel ?></td>
-                                 <td><?= $contro->desperdicio ?></td>
+                                 <td><?= $contro->cantidad_separadores ?></td>
+                                 <td><?= $contro->cantidad_cajas ?></td>
+                                 <td><?= $contro->cantidad_papel ?></td>
+                                 <td><?= $contro->cantidad_desperdicio ?></td>
                                 
                                  <!-- los botones en horizontal -->
 
