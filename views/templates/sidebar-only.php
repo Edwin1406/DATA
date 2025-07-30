@@ -47,7 +47,7 @@
                                  </a>
                                  <ul class="submenu ">
                                      <li class="submenu-item ">
-                                         <a href="/admin/consumo">Registro Empaque</a>
+                                         <a  class="<?php echo ($titulo === 'Registro Empaque') ? 'active' : ''; ?>"  href="/admin/consumo">Registro Empaque</a>
                                      </li>
 
 
