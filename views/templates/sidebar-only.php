@@ -25,12 +25,15 @@
          <div class="sidebar-menu">
              <ul class="menu">
                  <li class="sidebar-title">Menu</li>
+
+                   <?php if ($userEmail === 'produccion@megaecuador.com') { ?>
                  <li class="sidebar-item active ">
                      <a href="/admin/index" class='sidebar-link'>
                          <i class="bi bi-grid-fill"></i>
                          <span>Dashboard</span>
                      </a>
                  </li>
+                    <?php } ?>
 
                  <li class="sidebar-item  has-sub">
                      <a href="#" class='sidebar-link'>
