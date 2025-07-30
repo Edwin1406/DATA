@@ -19,7 +19,7 @@ class ControlController
 
         // Aquí podrías cargar los datos necesarios para el control de troquel
 
-        $router->render('admin/control_troquel', [
+        $router->render('admin/control/control_troquel', [
             'titulo' => 'Control Troquel',
             'nombre' => $nombre,
             'email' => $email,
