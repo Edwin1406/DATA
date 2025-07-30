@@ -41,33 +41,33 @@
                          <span>Producción</span>
                      </a>
                      <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
-                     <ul class="submenu ">
+                         <ul class="submenu ">
 
-                         <li class="submenu-item ">
-                             <a href="/admin/consumo">Registro Empaque</a>
-                         </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/consumo">Registro Empaque</a>
+                             </li>
 
 
-                         <li class="submenu-item ">
-                             <a href="/admin/consumo_general">Registro Consumo General</a>
-                         </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/consumo_general">Registro Consumo General</a>
+                             </li>
 
-                         <li class="submenu-item ">
-                             <a href="/admin/control_troquel">Registro Troquel</a>
-                         </li>
-                         <li class="submenu-item ">
-                             <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
-                         </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/control_troquel">Registro Troquel</a>
+                             </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
+                             </li>
 
-                         <li class="submenu-item ">
-                             <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
-                         </li>
-                         <li class="submenu-item ">
-                             <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
-                         </li>
-                     </ul>
-                        <?php }  ?>
-                          
+                             <li class="submenu-item ">
+                                 <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                             </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
+                             </li>
+                         </ul>
+                     <?php }  ?>
+
                  </li>
 
 
@@ -85,15 +85,8 @@
                          </ul>
                      </li>
                  <?php } ?>
-
-
              </ul>
          </div>
-
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
-     <!-- End of Sidebar -->
-
-
-
  </div>
