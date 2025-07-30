@@ -83,7 +83,7 @@
                                  <td><?= $contro->horas_programadas ?></td>
                                  <td><?= $contro->golpes_maquina ?></td>
                                  <td><?= $contro->golpes_maquina_hora ?></td>
-                                 <td><?= $contro->cambio_medida ?></td>
+                                 <td><?= $contro->cambios_medida ?></td>
                                  <td><?= $contro->separadores ?></td>
                                  <td><?= $contro->cajas ?></td>
                                  <td><?= $contro->papel ?></td>
