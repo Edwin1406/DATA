@@ -44,12 +44,21 @@
                      });
                  </script>
              <?php endif; ?>
-
-
-
-
          </div>
      </div>
+
+     <section class="section">
+         <div class="card">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/control_troquel">Registro Consumo Troquel</a>
+                 </li>
+             </ul>
+         </div>
+     </section>
+
+
+
      <section class="section">
          <div class="card">
              <div class="card-header">
