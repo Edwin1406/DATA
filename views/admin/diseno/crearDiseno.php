@@ -77,104 +77,86 @@
                             <form class="form" method="POST" action="/admin/diseno/crearDiseno">
                                 <div class="row">
 
-                                    <!-- fecha -->
 
+
+
+
+
+                                    <!-- NOMBRE DEL CLIENTE -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="fecha">Fecha</label>
-                                            <input type="date" id="fecha" class="form-control"
-                                                placeholder="Fecha" name="fecha">
-                                        </div>
-                                    </div>
-                                    <!-- turno -->
-
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="turnos">Turno</label>
-                                            <input type="number" id="turnos" class="form-control"
-                                                placeholder="Turno" name="turnos">
+                                            <label for="nombre_cliente">Nombre del Cliente</label>
+                                            <input type="text" id="nombre_cliente" class="form-control"
+                                                placeholder="Nombre del Cliente" name="nombre_cliente">
                                         </div>
                                     </div>
 
 
-                                    <!-- OPERADOR SELECCIONAR NO MULTIPLE -->
+                                    <!-- NOMBRE DEL PROVEEDOR -->
+
                                     <div class="col-md-6 col-12">
-                                        <label for="operador">Escoja el Operador</label>
                                         <div class="form-group">
-                                            <select class="form-select" name="operador" id="operador">
-                                                <option value="Luis Govea">Luis Govea</option>
-                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
+                                            <label for="nombre_proveedor">Nombre del Proveedor</label>
+                                            <input type="text" id="nombre_proveedor" class="form-control"
+                                                placeholder="Nombre del Proveedor" name="nombre_proveedor">
+                                        </div>
+                                    </div>
+
+                                    <!-- NOMBRE DEL PRODUCTO -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="nombre_producto">Nombre del Producto</label>
+                                            <input type="text" id="nombre_producto" class="form-control"
+                                                placeholder="Nombre del Producto" name="nombre_producto">
+                                        </div>
+                                    </div>
+
+                                    <!-- COD. PRODUCTO -->
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="codigo_producto">Código del Producto</label>
+                                            <input type="text" id="codigo_producto" class="form-control"
+                                                placeholder="Código del Producto" name="codigo_producto">
+                                        </div>
+                                    </div>
+
+                                    <!-- estado enviado,pausado,terminado-->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="estado">Estado</label>
+                                            <select class="form-select" name="estado" id="estado">
+                                                <option value="Enviado">Enviado</option>
+                                                <option value="Pausado">Pausado</option>
+                                                <option value="Terminado">Terminado</option>
+                                                
                                             </select>
                                         </div>
                                     </div>
 
+                               
 
-                                    <!-- hora de inicio  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="horas_programadas">Hora Programadas</label>
-                                            <input type="time" id="horas_programadas" class="form-control"
-                                                placeholder="Hora Programadas" name="horas_programadas">
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Subir Pdf</h5>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <p class="card-text">Using the basic file uploader up, upload here to see how
+                                                        <code>.imgbb-filepond</code>-based basic file uploader look. You must use
+                                                        <code>name=image</code> or by FormData fieldName for your
+                                                        input <code>type=file</code> to upload in imgBB.
+                                                    </p>
+                                                    <!-- imgBB file uploader -->
+                                                    <input type="file" name="image" class="imgbb-filepond">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
 
-
-                                    <!-- golpes maquina  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="golpes_maquina">Golpes Maquina</label>
-                                            <input type="number" id="golpes_maquina" class="form-control"
-                                                placeholder="Golpes Maquina" name="golpes_maquina">
-                                        </div>
-                                    </div>
-
-                                    <!-- cambios de medida  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cambios_medida">Cambios de Medida</label>
-                                            <input type="number" id="cambios_medida" class="form-control"
-                                                placeholder="Cambios de Medida" name="cambios_medida">
-                                        </div>
-                                    </div>
-
-                                    <!-- cantidad separadores  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_separadores">Cantidad Separadores</label>
-                                            <input type="number" id="cantidad_separadores" class="form-control"
-                                                placeholder="Cantidad Separadores" name="cantidad_separadores">
-                                        </div>
-                                    </div>
-
-                                    <!-- cantidad cajas  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_cajas">Cantidad Cajas</label>
-                                            <input type="number" id="cantidad_cajas" class="form-control"
-                                                placeholder="Cantidad Cajas" name="cantidad_cajas">
-                                        </div>
-                                    </div>
-
-                                    <!-- cantidad papel  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_papel">Cantidad Papel</label>
-                                            <input type="number" id="cantidad_papel" class="form-control"
-                                                placeholder="Cantidad Papel" name="cantidad_papel">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- desperdicio kg  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio Kg</label>
-                                            <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio Kg" name="desperdicio_kg">
-                                        </div>
-                                    </div>
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
