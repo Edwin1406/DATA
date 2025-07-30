@@ -51,12 +51,12 @@
          <div class="card">
              <ul class="nav nav-tabs">
                  <li class="nav-item">
-                     <a class="nav-link active" href="/admin/consumo">Registro Troquel</a>
+                     <a class="nav-link active" href="/admin/consumo">Registro Empaque</a>
                  </li>
              </ul>
          </div>
      </section>
-                     
+
 
 
 
