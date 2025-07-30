@@ -74,7 +74,8 @@ class ControlController
             'titulo' => 'Tabla Consumo Troquel',
             'subtitulo' => 'Consumo Troquel',
             'nombre' => $nombre,
-            'email' => $email
+            'email' => $email,
+            'control' => $control
         ]);
     }
 

@@ -61,38 +61,41 @@
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 160px;">Personal</th>
-                             <th class="fs-6" style="min-width: 100px;">Producto</th>
-                             <th class="fs-6" style="min-width: 93px;">Medidas</th>
-                             <th class="fs-6" style="min-width: 98px;">Cantidad</th>
-                             <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
-                             <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
-                             <th class="fs-6" style="min-width: 118px;">Total Horas</th>
-                             <th class="fs-6" style="min-width: 85px;">x Hora</th>
+                             <th class="fs-6" style="min-width: 160px;">Operador</th>
+                             <th class="fs-6" style="min-width: 100px;">Horas Programadas</th>
+                             <th class="fs-6" style="min-width: 93px;">Golpes Máquina</th>
+                             <th class="fs-6" style="min-width: 98px;">Golpes Maquina x hora</th>
+                             <th class="fs-6" style="min-width: 110px;">Cambio Medida</th>
+                             <th class="fs-6" style="min-width: 98px;">Separadores</th>
+                             <th class="fs-6" style="min-width: 118px;">Cajas</th>
+                             <th class="fs-6" style="min-width: 85px;">Papel</th>
+                             <th class="fs-6" style="min-width: 100px;">Desperdicio</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($consumos as $consumo): ?>
+                         <?php foreach ($control as $contro): ?>
                              <tr>
-                                 <td><?= $consumo->fecha ?></td>
-                                 <td><?= $consumo->turno ?></td>
-                                 <td><?= $consumo->personal ?></td>
-                                 <td><?= $consumo->producto ?></td>
-                                 <td><?= $consumo->medidas ?></td>
-                                 <td><?= $consumo->cantidad ?></td>
-                                 <td><?= $consumo->hora_inicio ?></td>
-                                 <td><?= $consumo->hora_fin ?></td>
-                                 <td><?= $consumo->total_horas ?></td>
-                                 <td><?= $consumo->x_hora ?></td>
+                                 <td><?= $contro->fecha ?></td>
+                                 <td><?= $contro->turno ?></td>
+                                 <td><?= $contro->operador ?></td>
+                                 <td><?= $contro->horas_programadas ?></td>
+                                 <td><?= $contro->golpes_maquina ?></td>
+                                 <td><?= $contro->golpes_maquina_hora ?></td>
+                                 <td><?= $contro->cambio_medida ?></td>
+                                 <td><?= $contro->separadores ?></td>
+                                 <td><?= $contro->cajas ?></td>
+                                 <td><?= $contro->papel ?></td>
+                                 <td><?= $contro->desperdicio ?></td>
+                                
                                  <!-- los botones en horizontal -->
 
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarConsumo" method="POST">
-                                             <input type="hidden" name="id" value="<?= $consumo->id ?>">
+                                             <input type="hidden" name="id" value="<?= $contro->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
