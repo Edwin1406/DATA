@@ -44,7 +44,7 @@ class ControlController
             if (empty($alertas)) {
                 $resultado = $control->guardar();
                 if ($resultado) {
-                    header('Location: /admin/control_troquel');
+                    header('Location: /admin/control_troquel?exito=1');
                 }
             }
         } else {
