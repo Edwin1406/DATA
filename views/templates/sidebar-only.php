@@ -102,25 +102,3 @@
 
 
  </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const currentUrl = window.location.pathname;
-        const submenuItems = document.querySelectorAll('.submenu-item a');
-
-        submenuItems.forEach(link => {
-            if (link.getAttribute('href') === currentUrl) {
-                link.classList.add('dashboard__enlace--actual'); // clase que marca el enlace activo
-
-                // Activar todos los elementos padre hasta llegar al .sidebar-item
-                let parent = link.closest('.sidebar-item');
-                while (parent) {
-                    if (parent.classList.contains('sidebar-item')) {
-                        parent.classList.add('active');
-                    }
-                    parent = parent.parentElement.closest('.sidebar-item');
-                }
-            }
-        });
-    });
-</script>
