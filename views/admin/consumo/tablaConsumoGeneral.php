@@ -21,7 +21,7 @@
                      </ol>
                  </nav>
              </div>
-           <div class="col-md-6">
+
              <ul class="nav nav-tabs">
                  <li class="nav-item">
                      <a class="nav-link active" href="/admin/consumo_general">Home</a>
@@ -33,7 +33,6 @@
                      <a class="nav-link" href="/admin/contacto">Contact</a>
                  </li>
              </ul>
-              </div>
 
              <div class="toast-container position-fixed top-0 end-0 p-3">
                  <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
