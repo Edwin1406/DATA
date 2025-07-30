@@ -53,15 +53,15 @@
     <?php endif; ?>
 
 
-  <section class="section">
-         <div class="card">
-             <ul class="nav nav-tabs">
-                 <li class="nav-item">
-                     <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
-                 </li>
-             </ul>
-         </div>
-     </section>
+    <section class="section">
+        <div class="card">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
+                </li>
+            </ul>
+        </div>
+    </section>
 
     <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
@@ -185,4 +185,3 @@
     </section>
 
 </div>
-
