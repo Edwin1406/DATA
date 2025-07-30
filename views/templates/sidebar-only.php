@@ -54,6 +54,10 @@
                                      <li class="submenu-item ">
                                          <a href="/admin/consumo_general">Registro Consumo General</a>
                                      </li>
+
+                                     <li class="submenu-item ">
+                                         <a href="/admin/control_troquel">Registro Troquel</a>
+                                     </li>
                                      <li class="submenu-item ">
                                          <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
                                      </li>
