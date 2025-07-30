@@ -46,27 +46,9 @@
                                      <span>Control</span>
                                  </a>
                                  <ul class="submenu ">
-                                     <!-- <li class="submenu-item ">
+                                     <li class="submenu-item ">
                                          <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
-                                     </li> -->
-
-                                     <li class="menu-item <?php echo pagina_actual_admin('/admin/consumo') ? 'menu-item--abierto' : '' ?>">
-    <a href="#" class="menu-toggle">Control</a>
-    <ul class="submenu">
-        <li class="submenu-item">
-            <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
-        </li>
-        <!-- Más opciones -->
-    </ul>
-</li>
-
-<style>
-
-    .menu-item--abierto .submenu {
-    display: block; /* o visible según tu sistema */
-}
-
-</style>
+                                     </li>
 
 
                                      <li class="submenu-item ">
