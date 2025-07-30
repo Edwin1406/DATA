@@ -47,35 +47,6 @@
                                  </a>
                                  <ul class="submenu ">
 
-                                        <!-- como hacer para que no se cierre el submenu al hacer clic en un enlace -->
-
-                                        <!-- no me dirige cuando doy clic en un enlace -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const submenuItems = document.querySelectorAll('.submenu-item > a');
-
-    submenuItems.forEach(item => {
-        item.addEventListener('click', function (e) {
-            const submenu = this.nextElementSibling;
-
-            // Si hay submenú, toggle y evitar navegación
-            if (submenu && submenu.classList.contains('submenu')) {
-                e.preventDefault();
-                submenu.classList.toggle('active');
-            }
-
-            // Si el href es "#", evitar navegación completamente
-            if (this.getAttribute('href') === '#') {
-                e.preventDefault();
-            }
-        });
-    });
-});
-</script>
-
-
-
-
                                         <li class="submenu-item ">
                                             <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' : '' ?>" href="/admin/consumo">Registro Empaque</a>
                                         </li>
@@ -131,3 +102,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
  </div>
+
+
+<script>
+    // Espera a que el DOM cargue completamente
+    document.addEventListener('DOMContentLoaded', function () {
+        // Selecciona todos los enlaces que tienen href="#" dentro del menú
+        const submenuLinks = document.querySelectorAll('.sidebar-link[href="#"]');
+
+        submenuLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Evita que la página se recargue
+                const parentItem = this.parentElement;
+
+                // Alterna la clase para mostrar/ocultar el submenú
+                parentItem.classList.toggle('active'); 
+            });
+        });
+    });
+</script>
+<style>
+
+.submenu {
+    display: none;
+}
+.sidebar-item.active > .submenu {
+    display: block;
+}
+
+
+</style>
