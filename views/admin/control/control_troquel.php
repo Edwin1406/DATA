@@ -65,7 +65,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/consumo">
+                            <form class="form" method="POST" action="/admin/control_troquel">
                                 <div class="row">
 
                                     <!-- fecha -->
@@ -82,65 +82,58 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="turno">Turno</label>
-                                            <input type="number" id="turno" class="form-control"
-                                                placeholder="Turno" name="turno">
+                                            <label for="turnos">Turno</label>
+                                            <input type="number" id="turnos" class="form-control"
+                                                placeholder="Turno" name="turnos">
                                         </div>
                                     </div>
 
-
+                                    <!-- area -->
                                     <div class="col-md-6 col-12">
-
-                                        <label for="personal">Escoja el Personal</label>
-                                        <!-- nombre multiple -->
                                         <div class="form-group">
-                                            <select class="choices form-select select-light-danger"
-                                                multiple="multiple" name="personal[]">
-                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
-                                                <option value="JOSE PEREZ">JOSE PEREZ</option>
-                                                <option value="MARIA LOPEZ">MARIA LOPEZ</option>
-                                                <option value="ANA GARCIA">ANA GARCIA</option>
-                                                <option value="CARLOS MARTINEZ">CARLOS MARTINEZ</option>
-                                                <option value="LUIS HERNANDEZ">LUIS HERNANDEZ</option>
-                                                <option value="LAURA GUTIERREZ">LAURA GUTIERREZ</option>
-                                                <option value="JULIAN RAMIREZ">JULIAN RAMIREZ</option>
-                                                <option value="SANDRA TORO">SANDRA TORO</option>
-                                                <option value="ANDRES MORALES">ANDRES MORALES</option>
-                                                <option value="PAOLA REYES">PAOLA REYES</option>
+                                            <label for="area">Area</label>
+                                            <input type="text" id="area" class="form-control"
+                                                placeholder="Area" name="area">
+                                        </div>
+                                    </div>
+
+                                    <!-- OPERADOR SELECCIONAR NO MULTIPLE -->
+                                    <div class="col-md-6 col-12">
+                                        <label for="operador">Escoja el Operador</label>
+                                        <div class="form-group">
+                                            <select class="form-select" name="operador">
+                                                <option value="Luis Govea">Luis Govea</option>
+                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
                                             </select>
                                         </div>
                                     </div>
-
-                                    <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
-                                    <div class="col-md-6 col-12">
-                                        <label for="producto">Escoja el Producto</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="producto">
-                                                <option value="PRODUCTO 1">PRODUCTO 1</option>
-                                                <option value="PRODUCTO 2">PRODUCTO 2</option>
-                                                <option value="PRODUCTO 3">PRODUCTO 3</option>
-                                                <option value="PRODUCTO 4">PRODUCTO 4</option>
-                                                <option value="PRODUCTO 5">PRODUCTO 5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="medidas">Medida</label>
-                                            <input type="text" id="medidas" class="form-control"
-                                                placeholder="Medida" name="medidas">
-                                        </div>
-                                    </div>
+                                
+                                   
                                     <!-- hora de inicio  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="hora_inicio">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control"
-                                                placeholder="Hora de Inicio" name="hora_inicio">
+                                            <label for="horas_programadas">Hora Programadas</label>
+                                            <input type="time" id="horas_programadas" class="form-control"
+                                                placeholder="Hora Programadas" name="horas_programadas">
                                         </div>
                                     </div>
+
+
+
+                                    <!-- golpes maquina  -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="golpes_maquina">Golpes Maquina</label>
+                                            <input type="number" id="golpes_maquina" class="form-control"
+                                                placeholder="Golpes Maquina" name="golpes_maquina">
+                                        </div>
+                                    </div>
+
+
+                                    
+
+
+
 
                                     <!-- hora de fin  -->
                                     <div class="col-md-6 col-12">
