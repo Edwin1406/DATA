@@ -61,10 +61,10 @@
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 160px;">Operador</th>
+                             <th class="fs-6" style="min-width: 155px;">Operador</th>
                              <th class="fs-6" style="min-width: 100px;">Horas Programadas</th>
                              <th class="fs-6" style="min-width: 93px;">Golpes Máquina</th>
-                             <th class="fs-6" style="min-width: 98px;">Golpes Maquina x hora</th>
+                             <th class="fs-6" style="min-width: 98px;">Golpes x hora</th>
                              <th class="fs-6" style="min-width: 110px;">Cambio Medida</th>
                              <th class="fs-6" style="min-width: 98px;">Separadores</th>
                              <th class="fs-6" style="min-width: 118px;">Cajas</th>
