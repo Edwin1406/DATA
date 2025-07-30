@@ -3,17 +3,7 @@
         <i class="bi bi-justify fs-3"></i>
     </a>
 </header> -->
- <ul class="nav nav-tabs">
-     <li class="nav-item">
-         <a class="nav-link active" href="/admin/consumo_general">Home</a>
-     </li>
-     <li class="nav-item">
-         <a class="nav-link" href="/admin/consumo_perfil">Profile</a>
-     </li>
-     <li class="nav-item">
-         <a class="nav-link" href="/admin/contacto">Contact</a>
-     </li>
- </ul>
+
 
 
  <div class="page-heading">
@@ -31,6 +21,18 @@
                      </ol>
                  </nav>
              </div>
+
+             <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/consumo_general">Home</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/consumo_perfil">Profile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/contacto">Contact</a>
+                 </li>
+             </ul>
 
              <div class="toast-container position-fixed top-0 end-0 p-3">
                  <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
