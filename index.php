@@ -32,6 +32,7 @@ use MVC\Router;
 use Controllers\AuthController;
 use Controllers\AdminController;
 use Controllers\ControlController;
+use Controllers\DiseñoController;
 
 $router = new Router();
 
@@ -80,8 +81,8 @@ $router->post('/admin/control_troquel', [ControlController::class, 'control_troq
 
 
 // diseño
-$router->get('/admin/diseño/crearDiseño', [AdminController::class, 'crearDiseño']);
-$router->post('/admin/diseño/crearDiseño', [AdminController::class, 'crearDiseño']);
+$router->get('/admin/diseño/crearDiseno', [DiseñoController::class, 'crearDiseno']);
+$router->post('/admin/diseño/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 
 
 
