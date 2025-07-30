@@ -66,8 +66,8 @@
                              <th class="fs-6" style="min-width: 93px;">Golpes Máquina</th>
                              <th class="fs-6" style="min-width: 98px;">Golpes x hora</th>
                              <th class="fs-6" style="min-width: 110px;">Cambio Medida</th>
-                             <th class="fs-6" style="min-width: 100px;">Separadores</th>
-                             <th class="fs-6" style="min-width: 90px;">Cajas</th>
+                             <th class="fs-6" style="min-width: 110px;">Separadores</th>
+                             <th class="fs-6" style="min-width: 80px;">Cajas</th>
                              <th class="fs-6" style="min-width: 85px;">Papel</th>
                              <th class="fs-6" style="min-width: 100px;">Desperdicio</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
