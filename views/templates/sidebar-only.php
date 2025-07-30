@@ -40,42 +40,8 @@
                          <i class="bi bi-stack"></i>
                          <span>Producción</span>
                      </a>
+                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
                      <ul class="submenu ">
-
-                         <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
-                             <li class="sidebar-item  has-sub">
-                                 <a href="#" class='sidebar-link'>
-                                     <i class="bi bi-stack"></i>
-                                     <span>Control</span>
-                                 </a>
-                                 <ul class="submenu ">
-
-                                     <li class="submenu-item ">
-                                         <a href="/admin/consumo">Registro Empaque</a>
-                                     </li>
-
-
-                                     <li class="submenu-item ">
-                                         <a href="/admin/consumo_general">Registro Consumo General</a>
-                                     </li>
-
-                                     <li class="submenu-item ">
-                                         <a href="/admin/control_troquel">Registro Troquel</a>
-                                     </li>
-                                     <li class="submenu-item ">
-                                         <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
-                                     </li>
-
-                                     <li class="submenu-item ">
-                                         <a href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
-                                     </li>
-                                     <li class="submenu-item ">
-                                         <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
-                                     </li>
-
-                                 </ul>
-                             </li>
-                         <?php } ?>
 
                          <li class="submenu-item ">
                              <a href="/admin/consumo">Registro Empaque</a>
@@ -100,6 +66,8 @@
                              <a href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
                          </li>
                      </ul>
+                        <?php }  ?>
+                          
                  </li>
 
 
