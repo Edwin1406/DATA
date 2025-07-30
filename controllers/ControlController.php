@@ -23,17 +23,40 @@ class ControlController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $control->sincronizar($_POST);
-            debuguear($control);
+            // debuguear($control);
+             if ($control->horas_programadas > 0) {
+            // Convertir solo para el cálculo
+            $horasDecimal = $control->convertirHorasADecimal($control->horas_programadas);
+            
+            // Validar que el resultado de conversión sea mayor a 0
+            if ($horasDecimal > 0) {
+                $control->golpes_maquina_hora = $control->golpes_maquina / $horasDecimal;
+            } else {
+                $control->golpes_maquina_hora = 0;
+            }
+        } else {
+            $control->golpes_maquina_hora = 0;
         }
 
+        debuguear($control);
 
-
-        // Aquí podrías cargar los datos necesarios para el control de troquel
+            $alertas = $control->validar();
+            if (empty($alertas)) {
+                $resultado = $control->guardar();
+                if ($resultado) {
+                    header('Location: /admin/control_troquel');
+                }
+            }
+        } else {
+            $alertas = [];
+        }
 
         $router->render('admin/control/control_troquel', [
             'titulo' => 'Control Troquel',
             'nombre' => $nombre,
             'email' => $email,
+            'alertas' => $alertas
         ]);
     }
 }
+
