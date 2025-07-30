@@ -4,12 +4,12 @@
 <div id="app">
 
     <div id="main">
-        <div id="contenido-dinamico">
+        
             <?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
 
             <?php echo $contenido; ?>
             <?php include_once __DIR__ . '/templates/admin-sidebar.php'; ?>
-        </div>
+   
     </div>
 
     <script>
