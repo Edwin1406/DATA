@@ -65,7 +65,9 @@ class ControlController
             header('Location: /');
         }
 
-        $control = new ControlTroquel;
+        $control = ControlTroquel::all();
+
+
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
