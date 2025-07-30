@@ -4,6 +4,7 @@
     </a>
 </header> -->
 
+<main id="contenido-dinamico">
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
@@ -174,3 +175,5 @@
     </section>
 
 </div>
+
+</main>
