@@ -78,7 +78,7 @@
                          <?php foreach ($control as $contro): ?>
                              <tr>
                                  <td><?= $contro->fecha ?></td>
-                                 <td><?= $contro->turno ?></td>
+                                 <td><?= $contro->turnos ?></td>
                                  <td><?= $contro->operador ?></td>
                                  <td><?= $contro->horas_programadas ?></td>
                                  <td><?= $contro->golpes_maquina ?></td>
