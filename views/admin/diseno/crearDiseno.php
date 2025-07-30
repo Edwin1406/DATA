@@ -130,33 +130,29 @@
                                                 <option value="Enviado">Enviado</option>
                                                 <option value="Pausado">Pausado</option>
                                                 <option value="Terminado">Terminado</option>
-                                                
+
                                             </select>
                                         </div>
                                     </div>
 
-                               
 
 
                                     <div class="col-12 col-md-6">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5 class="card-title">Subir Pdf</h5>
+                                                <h5 class="card-title">Basic File Uploader</h5>
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
                                                     <p class="card-text">Using the basic file uploader up, upload here to see how
-                                                        <code>.imgbb-filepond</code>-based basic file uploader look. You must use
-                                                        <code>name=image</code> or by FormData fieldName for your
-                                                        input <code>type=file</code> to upload in imgBB.
+                                                        <code>.basic-filepond</code> look.
                                                     </p>
-                                                    <!-- imgBB file uploader -->
-                                                    <input type="file" name="image" class="imgbb-filepond">
+                                                    <!-- Basic file uploader -->
+                                                    <input type="file" class="basic-filepond">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
 
 
                                     <div class="col-12 d-flex justify-content-end">
@@ -182,7 +178,7 @@
 
 
 
-  
+
 <!-- filepond validation -->
 <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
 <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
@@ -201,7 +197,7 @@
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 <script>
     // register desired plugins...
-	FilePond.registerPlugin(
+    FilePond.registerPlugin(
         // validates the size of the file...
         FilePondPluginFileValidateSize,
         // validates the file type...
@@ -218,9 +214,9 @@
         // calculates & adds resize information...
         FilePondPluginImageResize,
     );
-    
+
     // Filepond: Basic
-    FilePond.create( document.querySelector('.basic-filepond'), { 
+    FilePond.create(document.querySelector('.basic-filepond'), {
         allowImagePreview: false,
         allowMultiple: false,
         allowFileEncode: false,
@@ -228,7 +224,7 @@
     });
 
     // Filepond: Multiple Files
-    FilePond.create( document.querySelector('.multiple-files-filepond'), { 
+    FilePond.create(document.querySelector('.multiple-files-filepond'), {
         allowImagePreview: false,
         allowMultiple: true,
         allowFileEncode: false,
@@ -236,7 +232,7 @@
     });
 
     // Filepond: With Validation
-    FilePond.create( document.querySelector('.with-validation-filepond'), { 
+    FilePond.create(document.querySelector('.with-validation-filepond'), {
         allowImagePreview: false,
         allowMultiple: true,
         allowFileEncode: false,
@@ -249,8 +245,8 @@
     });
 
     // Filepond: ImgBB with server property
-    FilePond.create( document.querySelector('.imgbb-filepond'), { 
-        allowImagePreview: false, 
+    FilePond.create(document.querySelector('.imgbb-filepond'), {
+        allowImagePreview: false,
         server: {
             process: (fieldName, file, metadata, load, error, progress, abort) => {
                 // We ignore the metadata property and only send the file
@@ -269,36 +265,35 @@
                 request.onload = function() {
                     if (request.status >= 200 && request.status < 300) {
                         load(request.responseText);
-                    }
-                    else {
+                    } else {
                         error('oh no');
                     }
                 };
 
                 request.onreadystatechange = function() {
                     if (this.readyState == 4) {
-                        if(this.status == 200) {
+                        if (this.status == 200) {
                             let response = JSON.parse(this.responseText);
-                            
+
                             Toastify({
                                 text: "Success uploading to imgbb! see console f12",
                                 duration: 3000,
-                                close:true,
-                                gravity:"bottom",
+                                close: true,
+                                gravity: "bottom",
                                 position: "right",
                                 backgroundColor: "#4fbe87",
                             }).showToast();
-                
+
                             console.log(response);
                         } else {
                             Toastify({
                                 text: "Failed uploading to imgbb! see console f12",
                                 duration: 3000,
-                                close:true,
-                                gravity:"bottom",
+                                close: true,
+                                gravity: "bottom",
                                 position: "right",
                                 backgroundColor: "#ff0000",
-                            }).showToast();   
+                            }).showToast();
 
                             console.log("Error", this.statusText);
                         }
@@ -311,12 +306,12 @@
     });
 
     // Filepond: Image Preview
-    FilePond.create( document.querySelector('.image-preview-filepond'), { 
-        allowImagePreview: true, 
+    FilePond.create(document.querySelector('.image-preview-filepond'), {
+        allowImagePreview: true,
         allowImageFilter: false,
         allowImageExifOrientation: false,
         allowImageCrop: false,
-        acceptedFileTypes: ['image/png','image/jpg','image/jpeg'],
+        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
         fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
             // Do custom type detection here and return with promise
             resolve(type);
@@ -324,25 +319,25 @@
     });
 
     // Filepond: Image Crop
-    FilePond.create( document.querySelector('.image-crop-filepond'), { 
-        allowImagePreview: true, 
+    FilePond.create(document.querySelector('.image-crop-filepond'), {
+        allowImagePreview: true,
         allowImageFilter: false,
         allowImageExifOrientation: false,
         allowImageCrop: true,
-        acceptedFileTypes: ['image/png','image/jpg','image/jpeg'],
+        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
         fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
             // Do custom type detection here and return with promise
             resolve(type);
         })
     });
 
-        // Filepond: Image Exif Orientation
-    FilePond.create( document.querySelector('.image-exif-filepond'), { 
-        allowImagePreview: true, 
+    // Filepond: Image Exif Orientation
+    FilePond.create(document.querySelector('.image-exif-filepond'), {
+        allowImagePreview: true,
         allowImageFilter: false,
         allowImageExifOrientation: true,
         allowImageCrop: false,
-        acceptedFileTypes: ['image/png','image/jpg','image/jpeg'],
+        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
         fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
             // Do custom type detection here and return with promise
             resolve(type);
@@ -350,8 +345,8 @@
     });
 
     // Filepond: Image Filter
-    FilePond.create( document.querySelector('.image-filter-filepond'), {
-        allowImagePreview: true, 
+    FilePond.create(document.querySelector('.image-filter-filepond'), {
+        allowImagePreview: true,
         allowImageFilter: true,
         allowImageExifOrientation: false,
         allowImageCrop: false,
@@ -361,7 +356,7 @@
             0.299, 0.587, 0.114, 0, 0,
             0.000, 0.000, 0.000, 1, 0
         ],
-        acceptedFileTypes: ['image/png','image/jpg','image/jpeg'],
+        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
         fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
             // Do custom type detection here and return with promise
             resolve(type);
@@ -369,8 +364,8 @@
     });
 
     // Filepond: Image Resize
-    FilePond.create( document.querySelector('.image-resize-filepond'), {
-        allowImagePreview: true, 
+    FilePond.create(document.querySelector('.image-resize-filepond'), {
+        allowImagePreview: true,
         allowImageFilter: false,
         allowImageExifOrientation: false,
         allowImageCrop: false,
@@ -379,7 +374,7 @@
         imageResizeTargetHeight: 200,
         imageResizeMode: 'cover',
         imageResizeUpscale: true,
-        acceptedFileTypes: ['image/png','image/jpg','image/jpeg'],
+        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
         fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
             // Do custom type detection here and return with promise
             resolve(type);
