@@ -74,7 +74,7 @@
                          <?php } ?>
 
                          <li class="submenu-item ">
-                             <a href="/admin/consumo">Consumo Papel</a>
+                             <a href="">/</a>
                          </li>
                      </ul>
                  </li>
