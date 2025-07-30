@@ -1,7 +1,7 @@
 <!-- layout.php -->
 
+<?php include_once __DIR__ . '/templates/admin-header.php'; ?>
 <div id="app">
-    <?php include_once __DIR__ . '/templates/admin-header.php'; ?>
     
     <div id="main">
         <?php include_once __DIR__ . '/templates/sidebar-only.php'; ?>
