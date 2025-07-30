@@ -55,7 +55,7 @@
                                          <a href="/admin/consumo_general">Registro Consumo General</a>
                                      </li>
                                      <li class="submenu-item ">
-                                         <a href="/admin/tablaConsumo">Tabla Consumo</a>
+                                         <a href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
                                      </li>
 
                                        <li class="submenu-item ">
