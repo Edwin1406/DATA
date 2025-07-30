@@ -47,7 +47,7 @@
                                  </a>
                                  <ul class="submenu ">
                                      <li class="submenu-item ">
-                                         <a  class="<?php echo ($titulo === 'Registro Empaque') ? 'active' : ''; ?>"  href="/admin/consumo">Registro Empaque</a>
+                                         <a class="dashboard__enlace <?php echo pagina_actual_admin('/admin/consumo') ? 'dashboard__enlace--actual' :'' ?>"  href="/admin/consumo">Registro Empaque</a>
                                      </li>
 
 
