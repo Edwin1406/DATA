@@ -101,6 +101,7 @@ class AdminController
 
         $router->render('admin/consumo/tablaConsumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA CONSUMO EMPAQUE',
             'nombre' => $nombre,
             'email' => $email,
             'consumos' => $consumos
