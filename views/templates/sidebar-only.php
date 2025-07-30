@@ -4,28 +4,11 @@
     ?>
 
 
- <header class="py-2">
-     <!-- <a href="#" class="burger-btn d-block d-xl-none">
-         <i class="bi bi-justify fs-3"></i>
-     </a> -->
+ <header class="py-3">
      <a href="#" class="burger-btn d-block d-xl-none">
-    <i class="bi bi-justify fs-3"></i>
-</a>
-
-
+         <i class="bi bi-justify fs-3"></i>
+     </a>
  </header>
- <style>
-    .burger-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px; /* ajusta según tu diseño */
-    width: 48px;
-    padding: 0;
-}
-
- </style>
- 
  <div id="sidebar" class="active">
      <div class="sidebar-wrapper active">
          <div class="sidebar-header">
