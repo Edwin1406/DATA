@@ -5,27 +5,27 @@
 </header> -->
 
  <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">Horizontal Navs</h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home"
-                                                role="tab" aria-controls="home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile"
-                                                role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact"
-                                                role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                                        </li>
-                                    </ul>
-                             
-                                </div>
-                            </div>
+     <div class="card-header">
+         <h5 class="card-title">Horizontal Navs</h5>
+     </div>
+     <div class="card-body">
+         <ul class="nav nav-tabs" id="myTab" role="tablist">
+             <li class="nav-item" role="presentation">
+                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="/admin/consumo_general"
+                     role="tab" aria-controls="home" aria-selected="true">Home</a>
+             </li>
+             <li class="nav-item" role="presentation">
+                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="/admin/consumo_perfil"
+                     role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+             </li>
+             <li class="nav-item" role="presentation">
+                 <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact"
+                     role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+             </li>
+         </ul>
+
+     </div>
+ </div>
 
  <div class="page-heading">
      <div class="page-title">
