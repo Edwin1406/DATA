@@ -137,29 +137,12 @@
 
 
 
-                                    <!-- PDF filepond basic no vale  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="pdf">PDF</label>
+                             <!-- FilePond CSS -->
+<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
 
-                                            <!-- Campo de carga con FilePond -->
-                                            <input type="file"
-                                                id="pdf"
-                                                name="pdf"
-                                                class="basic-filepond"
-                                                accept=".pdf">
+<!-- File input -->
+<input type="file" id="pdf" name="pdf" accept=".pdf" />
 
-                                            <!-- Enlace para ver el PDF actual (si existe) -->
-                                            <?php if (isset($cliente->pdf)) : ?>
-                                                <div class="mt-2">
-                                                    <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>"
-                                                        target="_blank">
-                                                        Descargar/Ver PDF
-                                                    </a>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
 
 
 
@@ -226,7 +209,7 @@
             resolve('application/pdf');
         })
     });
-    // Configuración de FilePond para campo de imagen
+    // Configuración de FilePond para campo de 
     FilePond.create(document.querySelector('.basic-filepond'), {
         allowImagePreview: true,
         allowMultiple: false,
