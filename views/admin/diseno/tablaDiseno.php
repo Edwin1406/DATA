@@ -92,16 +92,13 @@
                                  <td><?= $diseno->estado ?></td>
                                 
 
-                                <td>
+<td>
     <?php
         $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
     ?>
-    <!-- Mostrar PDF como miniatura con enlace -->
+    <!-- Enlace de texto para ver PDF -->
     <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
-        <img
-            
-            alt="Ver PDF"
-            style="width: 100px; height: auto; cursor: pointer;">
+        Ver PDF
     </a>
 </td>
 
