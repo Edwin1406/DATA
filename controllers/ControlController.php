@@ -129,6 +129,9 @@ class ControlController
 
         $control_doblado = new ControlDoblado;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['personal']) && is_array($_POST['personal'])) {
+                $_POST['personal'] = implode(',', $_POST['personal']);
+            }
             $control_doblado->sincronizar($_POST);
 
             if ($control_doblado->horas_programadas > 0) {

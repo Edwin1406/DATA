@@ -35,7 +35,7 @@ class ControlDoblado extends ActiveRecord {
         $this->id = $data['id'] ?? null;
         $this->fecha = $data['fecha'] ?? null;
         $this->turno = $data['turno'] ?? null;
-        $this->area = $data['area'] ?? null;
+        $this->area = $data['area'] ?? 'Doblado'; // Default area
         $this->horas_programadas = $data['horas_programadas'] ?? null;
         $this->cantidad_laminas = $data['cantidad_laminas'] ?? null;
         $this->cantidad_lamina_hora = $data['cantidad_lamina_hora'] ?? null;
