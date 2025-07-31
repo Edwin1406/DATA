@@ -61,16 +61,18 @@
                                             <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
                                         </div>
                                     </div>
+<?php if (isset($diseno->pdf)) : ?>
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label>Archivo actual:</label><br>
+            <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+                Ver / Descargar PDF
+            </a>
+            <br><br>
+            <button type="submit" name="eliminar_pdf" value="1" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar el PDF actual?');">
+                Eliminar PDF
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
 
-                                    <?php if (isset($diseno->pdf)) : ?>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label>Archivo actual:</label><br>
-                                                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>"
-                                                    target="_blank"
-                                                    class="btn btn-outline-primary btn-sm">
-                                                    Ver / Descargar PDF
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
