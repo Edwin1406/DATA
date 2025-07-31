@@ -57,7 +57,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Doblado</a>
+                    <a class="nav-link active" href="/admin/control/doblado/tablaConsumoDoblado">Tabla Consumo Doblado</a>
                 </li>
             </ul>
         </div>
