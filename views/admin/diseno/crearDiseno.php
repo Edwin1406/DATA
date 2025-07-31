@@ -141,8 +141,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="pdf">PDF</label>
-                                            <input type="file" id="pdf" class="form-control basic-filepond"
-                                                name="pdf" accept=".pdf">
+                                          <input type="file" class="basic-filepond" name="pdf" accept=".pdf">
+
 
                                         </div>
                                     </div>
