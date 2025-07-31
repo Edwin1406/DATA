@@ -108,6 +108,22 @@
                      </li>
                     <?php } ?>
 
+                        <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                      <li class="sidebar-item  has-sub">
+                         <a href="#" class='sidebar-link'>
+                             <i class="bi bi-collection-fill"></i>
+                             <span>Ventas</span>
+                         </a>
+                         <ul class="submenu ">
+                             <li class="submenu-item ">
+                                 <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
+                             </li>
+                         
+
+                         </ul>
+                     </li>
+                    <?php } ?>
+
 
              <!-- </ul> -->
          </div>
