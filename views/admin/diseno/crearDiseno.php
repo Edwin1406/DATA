@@ -136,27 +136,26 @@
                                     </div>
 
 
- <div class="formulario__campo">
-        <label class="formulario__label" for="pdf">Subir PDF</label>
-        <input
-            type="file"
-            name="pdf"
-            id="pdf"
-            class="formulario__input"
-            placeholder="Subir PDF del diseño">
-    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="pdf">Subir PDF del diseño</label>
+                                            <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf">
+                                            <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
+                                        </div>
+                                    </div>
 
-    <?php if (isset($diseno->pdf)) : ?>
-        <div class="formulario__campo">
-            <a class="formulario__texto">Archivo Actual:</a>
-            <div class="formulario__archivo">
-                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="formulario__enlace">
-                    Descargar/Ver PDF
-                </a>
-            </div>
-        </div>
-    <?php endif; ?>
-
+                                    <?php if (isset($diseno->pdf)) : ?>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label>Archivo actual:</label><br>
+                                                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>"
+                                                    target="_blank"
+                                                    class="btn btn-outline-primary btn-sm">
+                                                    Ver / Descargar PDF
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
 
 
 
@@ -174,11 +173,3 @@
     </section>
 
 </div>
-
-
-
-
-
-
-
-
