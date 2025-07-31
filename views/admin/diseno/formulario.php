@@ -66,9 +66,13 @@
           <div class="form-group">
               <label>Archivo actual:</label><br>
               <!-- eliminar espacio em blanco -->
-              <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+              <!-- <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
                   Ver / Descargar PDF
-              </a>
+              </a> -->
+              <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . trim($diseno->pdf); ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+    Ver / Descargar PDF
+</a>
+
               <br><br>
 
               <?php if ($diseno->pdf): ?>
