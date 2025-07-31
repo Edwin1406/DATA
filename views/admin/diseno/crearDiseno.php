@@ -143,14 +143,14 @@
             name="pdf"
             id="pdf"
             class="formulario__input"
-            placeholder="Subir PDF del cliente">
+            placeholder="Subir PDF del diseño">
     </div>
 
-    <?php if (isset($cliente->pdf)) : ?>
+    <?php if (isset($diseno->pdf)) : ?>
         <div class="formulario__campo">
             <a class="formulario__texto">Archivo Actual:</a>
             <div class="formulario__archivo">
-                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>" target="_blank" class="formulario__enlace">
+                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="formulario__enlace">
                     Descargar/Ver PDF
                 </a>
             </div>
