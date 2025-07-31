@@ -97,9 +97,9 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="nombre_proveedor">Nombre del Proveedor</label>
-                                            <input type="text" id="nombre_proveedor" class="form-control"
-                                                placeholder="Nombre del Proveedor" name="nombre_proveedor">
+                                            <label for="proveedor">Nombre del Proveedor</label>
+                                            <input type="text" id="proveedor" class="form-control"
+                                                placeholder="Nombre del Proveedor" name="proveedor">
                                         </div>
                                     </div>
 
