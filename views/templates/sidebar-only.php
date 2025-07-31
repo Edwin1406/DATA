@@ -59,7 +59,7 @@
 
                                 
                              <li class="submenu-item ">
-                                 <a href="/admin/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
+                                 <a href="/admin/doblado/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
                              </li>
 
 
