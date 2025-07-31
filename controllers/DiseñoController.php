@@ -43,7 +43,7 @@ class DiseñoController
                 $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
             }
 
-            debuguear($diseno);
+            // debuguear($diseno);
         }
 
            if (empty($alertas)) {
