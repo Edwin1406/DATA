@@ -130,7 +130,7 @@ $router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'edita
 $router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 
 // eliminar diseño
-$router->post('/admin/diseno/eliminarPDF', [DiseñoController::class, 'eliminarPDF']);
+$router->post('/admin/diseno/eliminar-pdf', [DiseñoController::class, 'eliminarPDF']);
 
 
 

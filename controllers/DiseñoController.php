@@ -165,40 +165,37 @@ class DiseñoController
         ]);
     }
 
-
 public static function eliminarPDF()
 {
     session_start();
     if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
+        echo json_encode(['success' => false, 'message' => 'No autorizado']);
+        return;
     }
 
     $id = $_POST['id'] ?? null;
     if (!$id) {
-        header('Location: /admin/diseno/tablaDiseno?error=sin_id');
-        exit;
+        echo json_encode(['success' => false, 'message' => 'ID no proporcionado']);
+        return;
     }
 
     $diseno = Diseno::find($id);
     if (!$diseno || !$diseno->pdf) {
-        header('Location: /admin/diseno/tablaDiseno?error=no_pdf');
-        exit;
+        echo json_encode(['success' => false, 'message' => 'Diseño no encontrado o sin PDF']);
+        return;
     }
 
     $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $diseno->pdf;
 
     if (file_exists($ruta_pdf)) {
-        unlink($ruta_pdf); // Elimina el archivo del servidor
+        unlink($ruta_pdf);
     }
 
-    $diseno->pdf = null; // Elimina la referencia del nombre del archivo
-    $diseno->guardar();  // Guarda los cambios en la base de datos
+    $diseno->pdf = null;
+    $diseno->guardar();
 
-    header("Location: /admin/diseno/editar?id={$diseno->id}");
-    exit;
+    echo json_encode(['success' => true, 'message' => 'PDF eliminado correctamente']);
 }
-
 
 
 
