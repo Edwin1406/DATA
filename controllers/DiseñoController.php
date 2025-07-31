@@ -25,6 +25,7 @@ class DiseñoController
          if (!empty($_FILES['pdf']['tmp_name'])) {
             $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
             
+            
             // Crear carpeta si no existe
             if (!is_dir($carpeta_pdfs)) {
                 mkdir($carpeta_pdfs, 0755, true);
@@ -41,6 +42,8 @@ class DiseñoController
             } else {
                 $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
             }
+
+            debuguear($diseno);
         }
 
            if (empty($alertas)) {
