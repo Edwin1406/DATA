@@ -111,4 +111,25 @@ class ControlController
 
 
 
+    // --------------------------------------------------------------------CONTROL DOBLADO--------------------------------------------
+
+    public static function control_doblado(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $router->render('admin/control/control_doblado', [
+            'titulo' => 'Control Doblado',
+            'nombre' => $nombre,
+            'email' => $email
+        ]);
+    }
+
+
 }

@@ -56,6 +56,13 @@
                              <li class="submenu-item ">
                                  <a href="/admin/consumo_general"><i class="bi bi-arrow-right"> </i>Registro Consumo General</a>
                              </li>
+
+                                
+                             <li class="submenu-item ">
+                                 <a href="/admin/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
+                             </li>
+
+
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control_troquel"><i class="bi bi-arrow-right"> </i>Registro Troquel</a>

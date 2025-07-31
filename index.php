@@ -82,6 +82,13 @@ $router->post('/admin/control_troquel', [ControlController::class, 'control_troq
 $router->get('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 $router->post('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 
+// registro doblado
+$router->get('/admin/consumo_doblado', [AdminController::class, 'consumo_doblado']);
+$router->post('/admin/consumo_doblado', [AdminController::class, 'consumo_doblado']);
+
+
+
+
 // editar diseño
 $router->get('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
 $router->post('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
