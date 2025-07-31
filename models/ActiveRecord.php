@@ -100,38 +100,38 @@ class ActiveRecord {
     //     return $sanitizado;
     // }
 
-//     protected function sanitizarAtributos(): array {
-//     $atributos = [];
-//     foreach (static::$columnasDB as $columna) {
-//         if ($columna === 'id') continue;
-        
-//         $valor = $this->$columna;
-
-//         // Si el valor es un array, convertirlo a string separado por comas
-//         if (is_array($valor)) {
-//             $valor = implode(',', $valor);
-//         }
-
-//         $atributos[$columna] = self::$db->escape_string($valor);
-//     }
-//     return $atributos;
-// }
-
-protected function sanitizarAtributos(): array {
+    protected function sanitizarAtributos(): array {
     $atributos = [];
     foreach (static::$columnasDB as $columna) {
         if ($columna === 'id') continue;
         
         $valor = $this->$columna;
 
+        // Si el valor es un array, convertirlo a string separado por comas
         if (is_array($valor)) {
             $valor = implode(',', $valor);
         }
 
-        $atributos[$columna] = self::$db->escape_string($valor ?? '');
+        $atributos[$columna] = self::$db->escape_string($valor);
     }
     return $atributos;
 }
+
+// protected function sanitizarAtributos(): array {
+//     $atributos = [];
+//     foreach (static::$columnasDB as $columna) {
+//         if ($columna === 'id') continue;
+        
+//         $valor = $this->$columna;
+
+//         if (is_array($valor)) {
+//             $valor = implode(',', $valor);
+//         }
+
+//         $atributos[$columna] = self::$db->escape_string($valor ?? '');
+//     }
+//     return $atributos;
+// }
 
 
     
