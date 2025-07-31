@@ -30,12 +30,12 @@
                     $toastMessage = '¡Registro creado!';
                     $toastClass = 'text-bg-success';
                     $paramToRemove = 'exito';
-                } elseif (isset($_GET['editado']) && $_GET['editado'] == '3') {
+                } elseif (isset($_GET['editado']) && $_GET['editado'] == '2') {
                     $toastId = 'toastEditado';
                     $toastMessage = '¡Registro editado correctamente!';
                     $toastClass = 'text-bg-primary';
                     $paramToRemove = 'editado';
-                } elseif (isset($_GET['eliminado']) && $_GET['eliminado'] == '1') {
+                } elseif (isset($_GET['eliminado']) && $_GET['eliminado'] == '3') {
                     $toastId = 'toastEliminado';
                     $toastMessage = '¡Registro eliminado correctamente!';
                     $toastClass = 'text-bg-danger';
