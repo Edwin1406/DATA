@@ -61,13 +61,16 @@
                                             <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
                                         </div>
                                     </div>
-<?php if(isset($diseno->pdf)) :?>
-    <div class="formulario__campo">
-        <a class="formulario__texto">Archivo Actual:</a>
-        <div class="formulario__archivo">
-            <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="formulario__enlace">
-                Descargar/Ver PDF
-            </a>
-        </div>
-    </div>
-<?php endif;?>
+
+                                    <?php if (isset($diseno->pdf)) : ?>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label>Archivo actual:</label><br>
+                                                <a href="<?php echo $_ENV['HOST'] . 'src/visor/' . $diseno->pdf; ?>"
+                                                    target="_blank"
+                                                    class="btn btn-outline-primary btn-sm">
+                                                    Ver / Descargar PDF
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
