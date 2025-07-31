@@ -144,7 +144,7 @@ class ControlController
             } else {
                 $control_doblado->cantidad_lamina_hora = 0;
             }
-            debuguear($control_doblado);
+            // debuguear($control_doblado);
             $alertas = $control_doblado->validar();
 
             if (empty($alertas)) {
