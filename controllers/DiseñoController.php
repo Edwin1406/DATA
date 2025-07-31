@@ -150,7 +150,7 @@ class DiseñoController
                 // Guardar en la base de datos
                 $resultado = $diseno->guardar();
                 if ($resultado) {
-                    header('Location: /admin/diseno/tablaDiseno?editado=3');
+                    header('Location: /admin/diseno/tablaDiseno?editado=2');
                     exit;
                 }
             }
@@ -254,7 +254,7 @@ public static function eliminarRegistroConPDF()
             if ($diseno) {
                 $resultado = $diseno->eliminar();
                 if ($resultado) {
-                    header('Location: /admin/diseno/tablaDiseno?exito=1');
+                    header('Location: /admin/diseno/tablaDiseno?eliminado=3');
                 } else {
                     header('Location: /admin/diseno/tablaDiseno?error=1');
                 }
