@@ -170,6 +170,17 @@ public static function editarDiseno(Router $router)
 {
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
+
+ session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+
+
     $diseno = Diseno::find($id); // Obtener diseño actual
     $alertas = Diseno::getAlertas();
 
@@ -223,6 +234,8 @@ public static function editarDiseno(Router $router)
         'diseno' => $diseno,
         'alertas' => $alertas,
         'titulo' => 'EDITAR REGISTRO',
+        'nombre' => $nombre,
+        'email' => $email,
     ]);
 }
 
