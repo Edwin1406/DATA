@@ -137,23 +137,15 @@
 
 
 
-                                    <div class="col-12 col-md-6">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5 class="card-title">Basic File Uploader</h5>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <p class="card-text">Using the basic file uploader up, upload here to see how
-                                                        <code>.basic-filepond</code> look.
-                                                    </p>
-                                                    <!-- Basic file uploader -->
-                                                    <input type="file" class="basic-filepond">
-                                                </div>
-                                            </div>
+                                    <!-- PDF -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="pdf">PDF</label>
+                                            <input type="file" id="pdf" class="form-control basic-filepond"
+                                                name="pdf" accept=".pdf">
+
                                         </div>
                                     </div>
-
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
