@@ -70,7 +70,7 @@
             </a>
             <br><br>
 
-            <form method="POST" action="/admin/diseno/eliminar-pdf" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este PDF?');">
+            <form method="POST" action="/admin/diseno/eliminarPDF" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este PDF?');">
                 <input type="hidden" name="id" value="<?php echo $diseno->id; ?>">
                 <button type="submit" class="btn btn-danger btn-sm">Eliminar PDF</button>
             </form>
