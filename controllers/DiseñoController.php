@@ -7,7 +7,7 @@ use MVC\Router;
 
 class DiseñoController
 {
-    public static function crearDiseno(Router $router)
+   public static function crearDiseno(Router $router)
 {
     session_start();
     if (!isset($_SESSION['email'])) {
@@ -17,8 +17,9 @@ class DiseñoController
     $nombre = $_SESSION['nombre'];
     $email = $_SESSION['email'];
     $diseno = new Diseno();
+    $alertas = [];
 
-    // --- Subida directa del PDF (FilePond) ---
+    // --- Subida directa del PDF desde FilePond ---
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['pdf']['tmp_name']) && empty($_POST)) {
         $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
 
@@ -39,17 +40,15 @@ class DiseñoController
         exit;
     }
 
-    // --- Envío del formulario completo ---
+    // --- Envío del formulario completo con datos del diseño ---
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $diseno->sincronizar($_POST);
         $alertas = $diseno->validar();
 
-        // Asignar nombre del PDF
+        // Asignar nombre del archivo PDF si fue subido con FilePond
         if (!empty($_POST['pdf'])) {
-            $diseno->pdf = $_POST['pdf'];
+            $diseno->pdf = $_POST['pdf']; // Aquí debe llegar un string como "archivo123.pdf"
         }
-
-        debuguear($diseno);
 
         if (empty($alertas)) {
             $existeCodigo = Diseno::where('codigo_producto', $diseno->codigo_producto);
@@ -70,11 +69,9 @@ class DiseñoController
         'titulo' => 'CREAR DISEÑO',
         'nombre' => $nombre,
         'email' => $email,
+        'alertas' => $alertas,
     ]);
 }
-
-
-
 
 
 
