@@ -7,6 +7,7 @@ class ControlDoblado extends ActiveRecord {
         'id',
         'fecha',
         'turno',
+        'personal', // Assuming this is a comma-separated string of personal names
         'area',
         'horas_programadas',
         'cantidad_laminas',
@@ -21,6 +22,7 @@ class ControlDoblado extends ActiveRecord {
     public $id;
     public $fecha;
     public $turno;
+    public $personal; // Comma-separated string of personal names
     public $area;
     public $horas_programadas;
     public $cantidad_laminas;
@@ -35,6 +37,7 @@ class ControlDoblado extends ActiveRecord {
         $this->id = $data['id'] ?? null;
         $this->fecha = $data['fecha'] ?? null;
         $this->turno = $data['turno'] ?? null;
+        $this->personal = $data['personal'] ?? null;
         $this->area = $data['area'] ?? 'Doblado'; // Default area
         $this->horas_programadas = $data['horas_programadas'] ?? null;
         $this->cantidad_laminas = $data['cantidad_laminas'] ?? null;
