@@ -25,7 +25,9 @@ class Diseno extends ActiveRecord {
         $fecha = date('Y-m-d H:i:s'); 
         $this->id = $args['id'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
-        $this->nombre_cliente = $args['nombre_cliente'] ?? '';
+        // quitar espacios en blanco
+        $this->nombre_cliente = isset($args['nombre_cliente']) ? trim($args['nombre_cliente']) : '';
+        // $this->nombre_cliente = $args['nombre_cliente'] ?? '';
         $this->proveedor = $args['proveedor'] ?? ''; // Inicializar la propiedad proveedor
         $this->nombre_producto = $args['nombre_producto'] ?? '';
         $this->codigo_producto = $args['codigo_producto'] ?? '';
