@@ -12,6 +12,7 @@ class ControlDoblado extends ActiveRecord {
         'cantidad_laminas',
         'cantidad_lamina_hora',
         'n_cambio',
+        'consumo_goma',
         'desperdicio_kg',
         
 
@@ -25,6 +26,7 @@ class ControlDoblado extends ActiveRecord {
     public $cantidad_laminas;
     public $cantidad_lamina_hora;
     public $n_cambio;
+    public $consumo_goma;
     public $desperdicio_kg;
 
 
@@ -38,6 +40,7 @@ class ControlDoblado extends ActiveRecord {
         $this->cantidad_laminas = $data['cantidad_laminas'] ?? null;
         $this->cantidad_lamina_hora = $data['cantidad_lamina_hora'] ?? null;
         $this->n_cambio = $data['n_cambio'] ?? null;
+        $this->consumo_goma = $data['consumo_goma'] ?? null;
         $this->desperdicio_kg = $data['desperdicio_kg'] ?? null;
     }
 
@@ -73,6 +76,10 @@ class ControlDoblado extends ActiveRecord {
 
         if(!$this->desperdicio_kg) {
             self::$alertas['error'][] = 'El desperdicio en kg es obligatorio';
+        }
+
+        if(!$this->consumo_goma) {
+            self::$alertas['error'][] = 'El consumo de goma es obligatorio';
         }
 
         return self::$alertas;

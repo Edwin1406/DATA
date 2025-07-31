@@ -137,6 +137,15 @@
                                         </div>
                                     </div>
 
+                                    <!-- consumo_goma -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="consumo_goma">Consumo de Goma</label>
+                                            <input type="number" id="consumo_goma" class="form-control"
+                                                placeholder="Consumo de Goma" name="consumo_goma">
+                                        </div>
+                                    </div>
+
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
