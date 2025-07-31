@@ -235,8 +235,9 @@ public static function eliminarRegistroConPDF()
         echo json_encode(['error' => 'Error al eliminar el registro']);
     }
 
-    
 
+    
+}
 
 
 

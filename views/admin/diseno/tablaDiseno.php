@@ -124,10 +124,7 @@
                                  <td>
                                      <div class="d-flex gap-1">
                                          <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <form action="/admin/diseno/eliminarRegistroConPDF" method="POST">
-                                             <input type="hidden" name="id" value="<?= $diseno->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                         </form>
+                                         <button class="btn btn-danger btn-sm" id="btnEliminarPDF" data-id="<?= $diseno->id ?>">Eliminar PDF</button>
                                      </div>
                                  </td>
 
@@ -152,4 +149,37 @@
              ]
          });
      });
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnEliminar = document.getElementById('btnEliminarPDF');
+            if (btnEliminar) {
+                btnEliminar.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (!confirm('¿Estás seguro de que deseas eliminar este PDF?')) return;
+    
+                    const idDiseno = this.dataset.id;
+    
+                    fetch('/admin/diseno/eliminarPDF', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: idDiseno })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            document.getElementById('pdf-actual').remove();
+                            alert('PDF eliminado exitosamente.');
+                        } else {
+                            alert(data.error || 'Error al eliminar el PDF.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            }
+        });
  </script>
