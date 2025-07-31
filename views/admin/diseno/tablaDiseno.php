@@ -89,11 +89,11 @@
                                  <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
-                                 <td data-id="<?php echo $visores->id; ?>"  style="color: 
+                                 <td data-id="<?php echo $diseno->id; ?>"  style="color: 
                             <?php
-                                echo ($visores->estado == 'ENVIADO') ? 'green' : (($visores->estado == 'PAUSADO') ? 'red' : (($visores->estado == 'TERMINADO') ? 'orange' : ''));
+                                echo ($diseno->estado == 'ENVIADO') ? 'green' : (($diseno->estado == 'PAUSADO') ? 'red' : (($diseno->estado == 'TERMINADO') ? 'orange' : ''));
                             ?>;">
-                                     <?php echo $visores->estado; ?>
+                                     <?php echo $diseno->estado; ?>
                                  </td>
 
 
