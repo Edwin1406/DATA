@@ -89,7 +89,7 @@
                      </li>
                  <?php } ?>
 
-
+                    <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
                       <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
@@ -106,6 +106,7 @@
 
                          </ul>
                      </li>
+                    <?php } ?>
 
 
              <!-- </ul> -->
