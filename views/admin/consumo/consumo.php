@@ -143,14 +143,19 @@
                                         <label for="producto">Escoja el Producto</label>
                                         <div class="form-group">
                                             <select class="form-select" name="producto">
-                                                <option value="PRODUCTO 1">PRODUCTO 1</option>
-                                                <option value="PRODUCTO 2">PRODUCTO 2</option>
-                                                <option value="PRODUCTO 3">PRODUCTO 3</option>
-                                                <option value="PRODUCTO 4">PRODUCTO 4</option>
-                                                <option value="PRODUCTO 5">PRODUCTO 5</option>
+                                                <option value="LAMINA">LAMINA</option>
+                                                <option value="LAMINA DOBLADA">LAMINA DOBLADA</option>
+                                                <option value="LAMINA T - R">LAMINA T - R</option>
+                                                <option value="CORREAS">CORREAS</option>
+                                                <option value="SEPARADORES">SEPARADORES</option>
+                                                <option value="PAPEL PERIODICO">PAPEL PERIODICO</option>
+                                                <option value="PEGADO CAJAS">PEGADO CAJAS</option>
+                                                <option value="PEGADO CAPUCHONES">PEGADO CAPUCHONES</option>
+                                                <option value="LINER">LINER</option>
                                             </select>
                                         </div>
                                     </div>
+
 
 
                                     <div class="col-md-6 col-12">
