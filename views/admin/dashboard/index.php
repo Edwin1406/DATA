@@ -94,7 +94,7 @@
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Troquel</h6>
                                         <h6 class="font-extrabold mb-0">112</h6>
-                                        <a href="/admin/graficasTroquel">Troquel</a>
+                                        <button><a href="/admin/graficasTroquel">Ver Gráficas</a></button>
                                     </div>
                                 </div>
                             </div>
