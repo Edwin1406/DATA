@@ -4,7 +4,9 @@
           <label for="nombre_cliente">Nombre del Cliente</label>
           <input type="text" id="nombre_cliente" class="form-control"
               placeholder="Nombre del Cliente" name="nombre_cliente"
-              value="<?php echo s($diseno->nombre_cliente) ?: ''; ?>">
+                 value="<?php echo isset($diseno) ? s($diseno->nombre_cliente) : ''; ?>">
+              
+              >
       </div>
   </div>
 
@@ -16,7 +18,7 @@
           <label for="proveedor">Nombre del Proveedor</label>
           <input type="text" id="proveedor" class="form-control"
               placeholder="Nombre del Proveedor" name="proveedor"
-              value="<?php echo s($diseno->proveedor) ?: ''; ?>">
+              value="<?php echo isset($diseno) ? s($diseno->proveedor) : ''; ?>">
       </div>
   </div>
 
@@ -26,7 +28,7 @@
           <label for="nombre_producto">Nombre del Producto</label>
           <input type="text" id="nombre_producto" class="form-control"
               placeholder="Nombre del Producto" name="nombre_producto"
-              value="<?php echo s($diseno->nombre_producto) ?: ''; ?>">
+              value="<?php echo isset($diseno) ? s($diseno->nombre_producto) : ''; ?>">
       </div>
   </div>
 
@@ -37,7 +39,7 @@
           <label for="codigo_producto">Código del Producto</label>
           <input type="text" id="codigo_producto" class="form-control"
               placeholder="Código del Producto" name="codigo_producto"
-              value="<?php echo s($diseno->codigo_producto) ?: ''; ?>">
+              value="<?php echo isset($diseno) ? s($diseno->codigo_producto) : ''; ?>">
       </div>
   </div>
 
@@ -46,9 +48,9 @@
       <div class="form-group">
           <label for="estado">Estado</label>
           <select class="form-select" name="estado" id="estado">
-              <option value="ENVIADO" <?php echo s($diseno->estado) === 'ENVIADO' ? 'selected' : ''; ?>>Enviado</option>
-              <option value="PAUSADO" <?php echo s($diseno->estado) === 'PAUSADO' ? 'selected' : ''; ?>>Pausado</option>
-              <option value="TERMINADO" <?php echo s($diseno->estado) === 'TERMINADO' ? 'selected' : ''; ?>>Terminado</option>
+              <option value="ENVIADO" <?php echo isset($diseno) && s($diseno->estado) === 'ENVIADO' ? 'selected' : ''; ?>>Enviado</option>
+              <option value="PAUSADO" <?php echo isset($diseno) && s($diseno->estado) === 'PAUSADO' ? 'selected' : ''; ?>>Pausado</option>
+              <option value="TERMINADO" <?php echo isset($diseno) && s($diseno->estado) === 'TERMINADO' ? 'selected' : ''; ?>>Terminado</option>
           </select>
       </div>
   </div>
