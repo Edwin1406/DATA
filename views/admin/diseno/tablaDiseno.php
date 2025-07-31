@@ -70,6 +70,7 @@
                      <thead>
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Id</th>
+                             <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
                              <th class="fs-6" style="min-width: 160px;">Proveedor</th>
                              <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
@@ -85,6 +86,7 @@
                          <?php foreach ($disenos as $diseno): ?>
                              <tr>
                                  <td><?= $diseno->id ?></td>
+                                 <td><?= $diseno->fecha ?></td>
                                  <td><?= $diseno->nombre_cliente ?></td>
                                  <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->nombre_producto ?></td>
