@@ -86,9 +86,12 @@
      <section class="section">
          <div class="card">
              <ul class="nav nav-tabs">
+
+                 <?php if ($email !== 'ventas@megaecuador.com') { ?>
                  <li class="nav-item">
                      <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
                  </li>
+                    <?php } ?>
              </ul>
          </div>
      </section>
