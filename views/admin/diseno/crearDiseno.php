@@ -75,7 +75,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/diseno/crearDiseno">
+                            <form class="form" method="POST" action="/admin/diseno/crearDiseno" enctype="multipart/form-data">
                                 <div class="row">
 
 
