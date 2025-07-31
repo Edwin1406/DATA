@@ -57,7 +57,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
+                    <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Doblado</a>
                 </li>
             </ul>
         </div>
@@ -69,14 +69,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL EMPAQUE</h4>
+                        <h4 class="card-title">REGISTRO DE CONTROL DOBLADO</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/consumo">
+                            <form class="form" method="POST" action="/admin/control/doblado/consumo_doblado">
                                 <div class="row">
 
                                     <!-- fecha -->
