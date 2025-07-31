@@ -219,7 +219,7 @@ public static function editarDiseno(Router $router)
         }
     }
 
-    $router->render('admin/vendedor/cliente/editar', [
+    $router->render('admin/diseno/editarDiseno', [
         'diseno' => $diseno,
         'alertas' => $alertas,
         'titulo' => 'EDITAR REGISTRO',
