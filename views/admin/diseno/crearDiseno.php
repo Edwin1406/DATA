@@ -137,15 +137,33 @@
 
 
 
-                                    <!-- PDF -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="pdf">PDF</label>
-                                        
-                                            <input type="file" id="pdf" class="form-control basic-filepond" name="pdf" accept=".pdf">
-                                        </div>
-                                    </div>
+                                    <!-- PDF filepond basic no vale  -->
+              <div class="col-md-6 col-12">
+    <div class="form-group">
+        <label for="pdf">PDF</label>
 
+        <!-- Campo de carga con FilePond -->
+        <input type="file"
+               id="pdf"
+               name="pdf"
+               class="basic-filepond"
+               accept=".pdf">
+
+        <!-- Enlace para ver el PDF actual (si existe) -->
+        <?php if (isset($cliente->pdf)) : ?>
+            <div class="mt-2">
+                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>"
+                   target="_blank">
+                    Descargar/Ver PDF
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+
+                                  
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
