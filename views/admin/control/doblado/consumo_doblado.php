@@ -140,7 +140,7 @@
                                     <!-- consumo_goma -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="consumo_goma">Consumo de Goma</label>
+                                            <label for="consumo_goma">Consumo de Goma(KL)</label>
                                             <input type="number" id="consumo_goma" class="form-control"
                                                 placeholder="Consumo de Goma" name="consumo_goma">
                                         </div>
@@ -149,9 +149,9 @@
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio (kg)</label>
+                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio (kg)" name="desperdicio_kg">
+                                                placeholder="Desperdicio (kl)" name="desperdicio_kg">
                                         </div>
                                     </div>
 
