@@ -195,7 +195,7 @@ public static function eliminarPDF()
     $diseno->pdf = null; // Elimina la referencia del nombre del archivo
     $diseno->guardar();  // Guarda los cambios en la base de datos
 
-    header("Location: /admin/diseno/editar?id={$diseno->id}&exito=pdf_eliminado");
+    header("Location: /admin/diseno/editar?id={$diseno->id}");
     exit;
 }
 
