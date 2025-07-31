@@ -138,28 +138,29 @@
 
 <!-- Input de carga -->
 <input type="file" id="pdf" name="pdf" accept=".pdf" />
+<input type="hidden" name="pdf" id="pdf-nombre-subido" />
+
 
 <!-- FilePond -->
 <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
 <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
 <script>
-    FilePond.create(document.querySelector('#pdf'), {
-        acceptedFileTypes: ['application/pdf'],
-        allowMultiple: false,
-        server: {
-            process: {
-                url: '/admin/diseno/crearDiseno', // Tu ruta actual
-                method: 'POST',
-                onload: (response) => {
-                    console.log('Archivo subido:', response);
-                },
-                onerror: (error) => {
-                    console.error('Error:', error);
-                }
+FilePond.create(document.querySelector('#pdf'), {
+    acceptedFileTypes: ['application/pdf'],
+    allowMultiple: false,
+    server: {
+        process: {
+            url: '/admin/diseno/crearDiseno',
+            method: 'POST',
+            onload: (nombreArchivo) => {
+                // Guardar nombre en el input oculto para enviar en el formulario
+                document.getElementById('pdf-nombre-subido').value = nombreArchivo;
             }
         }
-    });
+    }
+});
+   
 </script>
 
 
