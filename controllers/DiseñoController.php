@@ -19,7 +19,7 @@ class DiseñoController
     $diseno = new Diseno();
     $alertas = [];
 
-    // --- Subida directa del PDF desde FilePond ---
+    // 🔄 Subida directa del PDF desde FilePond
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['pdf']['tmp_name']) && empty($_POST)) {
         $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
 
@@ -31,23 +31,23 @@ class DiseñoController
         $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
 
         if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
-            echo $nombre_pdf;
+            echo $nombre_pdf; // ✅ Muy importante: devolver solo el nombre
         } else {
             http_response_code(500);
             echo 'Error al mover el archivo';
         }
 
-        exit;
+        exit; // ✅ Imprescindible para que NO se devuelva HTML
     }
 
-    // --- Envío del formulario completo con datos del diseño ---
+    // 📋 Envío del formulario completo con campos del diseño
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $diseno->sincronizar($_POST);
         $alertas = $diseno->validar();
 
-        // Asignar nombre del archivo PDF si fue subido con FilePond
+        // ✅ Asignar nombre del PDF subido previamente
         if (!empty($_POST['pdf'])) {
-            $diseno->pdf = $_POST['pdf']; // Aquí debe llegar un string como "archivo123.pdf"
+            $diseno->pdf = $_POST['pdf'];
         }
 
         if (empty($alertas)) {
@@ -58,7 +58,7 @@ class DiseñoController
             } else {
                 $resultado = $diseno->guardar();
                 if ($resultado) {
-                    header('Location: /admin/vendedor/cliente/tabla?page=1');
+                    header('Location: /admin/diseno/crearDiseno');
                     exit;
                 }
             }
@@ -72,7 +72,6 @@ class DiseñoController
         'alertas' => $alertas,
     ]);
 }
-
 
 
 
