@@ -89,25 +89,25 @@
                                  <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
-                              <?php
-    $estado = trim($diseno->estado);
-    switch ($estado) {
-        case 'ENVIADO':
-            $badgeClass = 'bg-success'; // verde
-            break;
-        case 'PAUSADO':
-            $badgeClass = 'bg-danger'; // rojo
-            break;
-        case 'TERMINADO':
-            $badgeClass = 'bg-warning'; // naranja
-            break;
-        default:
-            $badgeClass = 'bg-secondary'; // gris por defecto
-    }
-?>
-<td data-id="<?php echo $diseno->id; ?>">
-    <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
-</td>
+                                 <?php
+                                    $estado = trim($diseno->estado);
+                                    switch ($estado) {
+                                        case 'ENVIADO':
+                                            $badgeClass = 'bg-success'; // verde
+                                            break;
+                                        case 'PAUSADO':
+                                            $badgeClass = 'bg-danger'; // rojo
+                                            break;
+                                        case 'TERMINADO':
+                                            $badgeClass = 'bg-warning'; // naranja
+                                            break;
+                                        default:
+                                            $badgeClass = 'bg-secondary'; // gris por defecto
+                                    }
+                                    ?>
+                                 <td data-id="<?php echo $diseno->id; ?>">
+                                     <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
+                                 </td>
 
 
                                  <td>
