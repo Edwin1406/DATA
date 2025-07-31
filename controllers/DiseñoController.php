@@ -213,7 +213,7 @@ public static function editarDiseno(Router $router)
             // Guardar en la base de datos
             $resultado = $diseno->guardar();
             if ($resultado) {
-                header('Location: /admin/vendedor/cliente/tabla?page=1');
+                header('Location: /admin/diseno/tablaDiseno');
                 exit;
             }
         }
