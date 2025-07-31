@@ -23,19 +23,13 @@ class DiseñoController
         $diseno->sincronizar($_POST);
         $alertas = $diseno->validar();
 
-        // Verificar si ya existe un diseño idéntico (según campos clave)
-        $existeDiseno = Diseno::whereArray([
-            'codigo_producto' => $diseno->codigo_producto,
-            'nombre' => $diseno->nombre,
-            'descripcion' => $diseno->descripcion,
-           
-        ]);
-
-        if ($existeDiseno) {
-            Diseno::setAlerta('error', 'Este diseño ya existe con los mismos datos. No se subió el archivo.');
+        // Verificar si el código ya está registrado antes de subir el archivo
+        $existeCodigo = Diseno::where('codigo_producto', $diseno->codigo_producto);
+        if ($existeCodigo) {
+            Diseno::setAlerta('error', 'El código ya está registrado. No se subió el PDF.');
             $alertas = Diseno::getAlertas();
         } else {
-            // Solo subir PDF si no existe un diseño idéntico
+            // Subir el PDF solo si el código no existe
             if (!empty($_FILES['pdf']['tmp_name'])) {
                 $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
 
@@ -53,7 +47,7 @@ class DiseñoController
                 }
             }
 
-            // Si no hay alertas, guardar
+            // Guardar si no hay alertas
             if (empty($alertas)) {
                 $resultado = $diseno->guardar();
                 if ($resultado) {
