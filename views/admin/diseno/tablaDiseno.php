@@ -90,18 +90,15 @@
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
                                  <td><?= $diseno->estado ?></td>
-                                 <td>
-                                     <?php
-                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-                                        ?>
-                                     <!-- Mostrar PDF como miniatura con enlace -->
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
-                                         <img
-                                             src="/assets/img/icono-pdf.png"
-                                             alt="Ver PDF"
-                                             style="width: 100px; height: auto; cursor: pointer;">
-                                     </a>
-                                 </td>
+                                <td>
+    <?php
+        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
+    ?>
+    <!-- Enlace con ícono de PDF de Bootstrap -->
+    <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF" class="icono-pdf">
+        <i class="bi bi-file-earmark-pdf-fill fs-3"></i>
+    </a>
+</td>
 
 
                                  <td>
