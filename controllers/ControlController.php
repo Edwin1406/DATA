@@ -151,7 +151,7 @@ class ControlController
                 $resultado = $control_doblado->guardar();
                 if ($resultado) {
                     // resu
-                    header('Location: /admin/control/crear?resultado=1');
+                    header('Location: /admin/control/doblado/consumo_doblado?exito=1');
                 }
             } else {
                 $alertas = ControlDoblado::getAlertas();
