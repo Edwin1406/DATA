@@ -19,31 +19,67 @@
                  </nav>
              </div>
 
-             <div class="toast-container position-fixed top-0 end-0 p-3">
-                 <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                     <div class="d-flex">
-                         <div class="toast-body">
-                             ¡Registro eliminado!
+<?php
+                $toastId = null;
+                $toastMessage = null;
+                $toastClass = null;
+                $paramToRemove = null;
+
+                if (isset($_GET['exito']) && $_GET['exito'] == '1') {
+                    $toastId = 'toastExito';
+                    $toastMessage = '¡Registro creado!';
+                    $toastClass = 'text-bg-success';
+                    $paramToRemove = 'exito';
+                } elseif (isset($_GET['editado']) && $_GET['editado'] == '3') {
+                    $toastId = 'toastEditado';
+                    $toastMessage = '¡Registro editado correctamente!';
+                    $toastClass = 'text-bg-primary';
+                    $paramToRemove = 'editado';
+                } elseif (isset($_GET['eliminado']) && $_GET['eliminado'] == '1') {
+                    $toastId = 'toastEliminado';
+                    $toastMessage = '¡Registro eliminado correctamente!';
+                    $toastClass = 'text-bg-danger';
+                    $paramToRemove = 'eliminado';
+                }
+                ?>
+
+             <?php if ($toastId) : ?>
+                 <!-- Toast HTML -->
+                 <div class="toast-container position-fixed top-0 end-0 p-3">
+                     <div id="<?php echo $toastId; ?>" class="toast align-items-center <?php echo $toastClass; ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                         <div class="d-flex">
+                             <div class="toast-body">
+                                 <?php echo $toastMessage; ?>
+                             </div>
+                             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                          </div>
-                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                      </div>
                  </div>
-             </div>
-             <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
+
+                 <!-- Toast JS -->
                  <script>
                      window.addEventListener('DOMContentLoaded', function() {
-                         // Mostrar el toast
-                         var toastEl = document.getElementById('toastExito');
-                         var toast = new bootstrap.Toast(toastEl);
-                         toast.show();
+                         var toastEl = document.getElementById('<?php echo $toastId; ?>');
+                         if (toastEl) {
+                             var toast = new bootstrap.Toast(toastEl);
+                             toast.show();
+                         }
 
-                         // Quitar el parámetro ?exito=1 de la URL sin recargar
                          const url = new URL(window.location);
-                         url.searchParams.delete('exito');
+                         url.searchParams.delete('<?php echo $paramToRemove; ?>');
                          window.history.replaceState({}, document.title, url.toString());
                      });
                  </script>
              <?php endif; ?>
+
+
+
+
+
+
+
+
+
          </div>
      </div>
 
