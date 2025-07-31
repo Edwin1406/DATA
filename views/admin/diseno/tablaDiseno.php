@@ -158,6 +158,10 @@
 
 
                                  <td>
+                                        <!-- usuario -->
+                                                     <?php if (!$userEmail === 'ventas@megaecuador.com') { ?>
+
+
                                      <div class="d-flex gap-1">
                                          <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarDiseno" method="POST">
@@ -165,6 +169,9 @@
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
+                                       <?php } ?>
+
+                                     
                                  </td>
 
                              </tr>
