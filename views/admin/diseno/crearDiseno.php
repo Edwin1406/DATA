@@ -149,7 +149,7 @@
         allowMultiple: false,
         server: {
             process: {
-                url: '/admin/vendedor/cliente/crear', // Tu ruta actual
+                url: '/admin/diseno/crearDiseno', // Tu ruta actual
                 method: 'POST',
                 onload: (response) => {
                     console.log('Archivo subido:', response);
