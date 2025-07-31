@@ -51,7 +51,7 @@
          <div class="card">
              <ul class="nav nav-tabs">
                  <li class="nav-item">
-                     <a class="nav-link active" href="/admin/control_troquel">Registro Consumo Troquel</a>
+                     <a class="nav-link active" href="/admin/control/doblado/consumo_doblado">Registro Consumo Doblado</a>
                  </li>
              </ul>
          </div>
