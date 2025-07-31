@@ -85,8 +85,8 @@
                          <?php foreach ($control_doblado as $control_dob): ?>
                              <tr>
                                  <td><?= $control_dob->fecha ?></td>
-                                 <td><?= $control_dob->turnos ?></td>
-                                 <td><?= $control_dob->operador ?></td>
+                                 <td><?= $control_dob->turno ?></td>
+                                 <td><?= $control_dob->area ?></td>
                                  <td><?= $control_dob->horas_programadas ?></td>
                                  <td><?= $control_dob->cantidad_laminas ?></td>
                                  <td><?= $control_dob->cantidad_lamina_hora ?></td>
