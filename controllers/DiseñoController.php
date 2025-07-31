@@ -38,14 +38,14 @@ class DiseñoController
             // Intentar mover el archivo cargado
             if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
                 // Asignar el nombre del archivo al objeto diseño
-                // $diseno->pdf = $nombre_pdf;
-                $diseno->pdf = trim($nombre_pdf);
+                $diseno->pdf = $nombre_pdf;
+                // $diseno->pdf = trim($nombre_pdf);
 
             } else {
                 $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
             }
 
-            debuguear($diseno);
+            
         }
 
            if (empty($alertas)) {
