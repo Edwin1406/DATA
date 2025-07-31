@@ -117,6 +117,10 @@ $router->get('/admin/tablaConsumoTroquel', [ControlController::class, 'tablaCons
 $router->get('/admin/diseno/tablaDiseno', [DiseñoController::class, 'tablaDiseno']);
 
 
+// tabla consumo doblado
+$router->get('/admin/control/doblado/tablaConsumoDoblado', [ControlController::class, 'tablaConsumoDoblado']);
+
+
 
 
 // ELIMINAR

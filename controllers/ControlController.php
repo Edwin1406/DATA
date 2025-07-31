@@ -166,4 +166,81 @@ class ControlController
             'email' => $email
         ]);
     }
+
+    // tabla consumo doblado
+    public static function tablaConsumoDoblado(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $control_doblado = ControlDoblado::all();
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $router->render('admin/control/doblado/tablaConsumoDoblado', [
+            'titulo' => 'Tabla Consumo Doblado',
+            'subtitulo' => 'Consumo Doblado',
+            'nombre' => $nombre,
+            'email' => $email,
+            'control_doblado' => $control_doblado
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
