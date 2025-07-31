@@ -241,6 +241,37 @@ public static function eliminarRegistroConPDF()
 
 
 
+    public static function eliminarDiseno()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $diseno = Diseno::find($id);
+            if ($diseno) {
+                $resultado = $diseno->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/diseno/tablaDiseno?exito=1');
+                } else {
+                    header('Location: /admin/diseno/tablaDiseno?error=1');
+                }
+            } else {
+                header('Location: /admin/diseno/tablaDiseno?error=1');
+            }
+        }
+    }
+
+
+    
+    
+
+
+
+
+
 
 
 

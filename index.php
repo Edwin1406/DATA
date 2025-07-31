@@ -125,7 +125,7 @@ $router->post('/admin/eliminarConsumoTroquel', [ControlController::class, 'elimi
 // eliminar pdf
 $router->post('/admin/diseno/eliminarPDF', [DiseñoController::class, 'eliminarPDF']);
 // eliminar registro con pdf
-$router->post('/admin/diseno/eliminarRegistroConPDF', [DiseñoController::class, 'eliminarRegistroConPDF']);
+$router->post('/admin/eliminarDiseno', [DiseñoController::class, 'eliminarDiseno']);
 
 // EDITAR CONSUMO GENERAL
 $router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
