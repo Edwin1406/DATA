@@ -113,23 +113,93 @@ class ControlController
 
     // --------------------------------------------------------------------CONTROL DOBLADO--------------------------------------------
 
-    public static function consumo_doblado(Router $router)
+    public static function consumo_doblado()
     {
         session_start();
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
 
+        $control = new ControlTroquel;
+        $control->sincronizar($_POST);
+
+        // Validar horas programadas
+        if ($control->horas_programadas > 0) {
+            $horasDecimal = $control->convertirHorasADecimal($control->horas_programadas);
+            if ($horasDecimal > 0) {
+                $control->golpes_maquina_hora = $control->golpes_maquina / $horasDecimal;
+            } else {
+                $control->golpes_maquina_hora = 0;
+            }
+        } else {
+            $control->golpes_maquina_hora = 0;
+        }
+
+        $alertas = $control->validar();
+        if (empty($alertas)) {
+            $resultado = $control->guardar();
+            if ($resultado) {
+                header('Location: /admin/control/doblado/consumo_doblado?exito=1');
+            }
+        }
+
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        $router->render('admin/control/doblado/consumo_doblado', [
+        return [
             'titulo' => 'Control Doblado',
             'nombre' => $nombre,
-            'email' => $email
-        ]);
+            'email' => $email,
+            'alertas' => $alertas
+        ];
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
