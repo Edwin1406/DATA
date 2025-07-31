@@ -49,7 +49,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/tablaConsumoTroquel">Tabla Diseño</a>
+                    <a class="nav-link active" href="/admin/diseno/tablaDiseno">Tabla Diseño</a>
                 </li>
             </ul>
         </div>
