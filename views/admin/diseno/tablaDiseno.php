@@ -92,8 +92,8 @@
                                  <td><?= $diseno->estado ?></td>
                                  <td>
                                      <?php
-                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($visores->pdf);
-                                        $extension = pathinfo($visores->pdf, PATHINFO_EXTENSION);
+                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
+                                        $extension = pathinfo($diseno->pdf, PATHINFO_EXTENSION);
 
                                         if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])): ?>
                                          <!-- Mostrar miniatura para imágenes -->
