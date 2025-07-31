@@ -89,20 +89,25 @@
                                  <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
-                                 <td><?= $diseno->estado ?></td>
-                                
+                                 <td data-id="<?php echo $visores->id; ?>"  style="color: 
+                            <?php
+                                echo ($visores->estado == 'ENVIADO') ? 'green' : (($visores->estado == 'PAUSADO') ? 'red' : (($visores->estado == 'TERMINADO') ? 'orange' : ''));
+                            ?>;">
+                                     <?php echo $visores->estado; ?>
+                                 </td>
 
-<td>
-    <?php
-        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-    ?>
-    <!-- Enlace de texto para ver PDF -->
-    <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
-        Ver PDF
-    </a>
-</td>
 
-    
+                                 <td>
+                                     <?php
+                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
+                                        ?>
+                                     <!-- Enlace de texto para ver PDF -->
+                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
+                                         Ver PDF
+                                     </a>
+                                 </td>
+
+
 
                                  <td>
                                      <div class="d-flex gap-1">
