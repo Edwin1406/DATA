@@ -136,36 +136,26 @@
                                     </div>
 
 
-<!-- Input visible para FilePond -->
-<input type="file" id="pdf" name="archivoTemporal" accept=".pdf" />
+ <div class="formulario__campo">
+        <label class="formulario__label" for="pdf">Subir PDF</label>
+        <input
+            type="file"
+            name="pdf"
+            id="pdf"
+            class="formulario__input"
+            placeholder="Subir PDF del cliente">
+    </div>
 
-<!-- Campo oculto que guarda el nombre del archivo subido -->
-<input type="hidden" name="pdf" id="pdf-nombre-subido" />
-
-<!-- FilePond CSS y JS -->
-<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
-<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-<script>
-    FilePond.create(document.querySelector('#pdf'), {
-        acceptedFileTypes: ['application/pdf'],
-        allowMultiple: false,
-        labelIdle: 'Arrastra tu PDF o haz clic para subir',
-        server: {
-            process: {
-                url: '/admin/diseno/crearDiseno',
-                method: 'POST',
-                onload: (nombreArchivo) => {
-                    // Asignar nombre del archivo al campo oculto
-                    document.getElementById('pdf-nombre-subido').value = nombreArchivo;
-                },
-                onerror: (error) => {
-                    console.error('Error al subir el archivo:', error);
-                }
-            }
-        }
-    });
-</script>
+    <?php if (isset($cliente->pdf)) : ?>
+        <div class="formulario__campo">
+            <a class="formulario__texto">Archivo Actual:</a>
+            <div class="formulario__archivo">
+                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>" target="_blank" class="formulario__enlace">
+                    Descargar/Ver PDF
+                </a>
+            </div>
+        </div>
+    <?php endif; ?>
 
 
 
