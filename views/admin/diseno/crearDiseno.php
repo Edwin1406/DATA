@@ -136,15 +136,31 @@
                                     </div>
 
 
-
-                             <!-- FilePond CSS -->
-<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
-
-<!-- File input -->
+<!-- Input de carga -->
 <input type="file" id="pdf" name="pdf" accept=".pdf" />
 
+<!-- FilePond -->
+<link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
-
+<script>
+    FilePond.create(document.querySelector('#pdf'), {
+        acceptedFileTypes: ['application/pdf'],
+        allowMultiple: false,
+        server: {
+            process: {
+                url: '/admin/vendedor/cliente/crear', // Tu ruta actual
+                method: 'POST',
+                onload: (response) => {
+                    console.log('Archivo subido:', response);
+                },
+                onerror: (error) => {
+                    console.error('Error:', error);
+                }
+            }
+        }
+    });
+</script>
 
 
                                     <div class="col-12 d-flex justify-content-end">
@@ -169,49 +185,3 @@
 
 
 
-
-
-<!-- filepond validation -->
-<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-
-<!-- image editor -->
-<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-filter/dist/filepond-plugin-image-filter.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-
-<!-- toastify -->
-<script src="assets/vendors/toastify/toastify.js"></script>
-
-<!-- filepond -->
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<!-- FilePond JS -->
-<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-<script>
-    // Crear una instancia FilePond
-    const inputElement = document.querySelector('#pdf');
-
-    FilePond.create(inputElement, {
-        acceptedFileTypes: ['application/pdf'],
-        allowMultiple: false,
-        labelIdle: 'Arrastra tu archivo PDF o haz clic para seleccionar',
-        server: {
-            process: {
-                url: '/upload_pdf.php', // Tu endpoint PHP
-                method: 'POST',
-                withCredentials: false,
-                headers: {},
-                timeout: 7000,
-                onload: response => {
-                    console.log('Subido:', response);
-                },
-                onerror: response => {
-                    console.error('Error al subir:', response);
-                }
-            }
-        }
-    });
-</script>
