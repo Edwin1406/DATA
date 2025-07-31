@@ -131,7 +131,7 @@
                                     $estado = trim($diseno->estado);
                                     switch ($estado) {
                                         case 'ARTE':
-                                            $badgeClass = 'bg-info'; // CELESTE
+                                            $badgeClass = 'bg-secondary'; // CELESTE
                                             break;
                                         case 'APROBADO':
                                             $badgeClass = 'bg-success'; // verde
