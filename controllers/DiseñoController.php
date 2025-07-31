@@ -131,7 +131,7 @@ class DiseñoController
                     mkdir($carpeta_pdfs, 0755, true);
                 }
 
-                // Generar un nombre único para el archivo
+                // Generar un nombre único para el archivo 
                 $nombre_pdf = md5(uniqid(rand(), true)) . '.pdf';
                 $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
 
@@ -143,7 +143,7 @@ class DiseñoController
                     $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
                 }
 
-                // debuguear($diseno);
+                debuguear($diseno);
             }
 
             if (empty($alertas)) {
