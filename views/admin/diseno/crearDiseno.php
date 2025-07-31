@@ -136,32 +136,37 @@
                                     </div>
 
 
-<!-- Input de carga -->
-<input type="file" id="pdf" name="pdf" accept=".pdf" />
+<!-- Input visible para FilePond -->
+<input type="file" id="pdf" name="archivoTemporal" accept=".pdf" />
+
+<!-- Input oculto para guardar el nombre del archivo subido -->
 <input type="hidden" name="pdf" id="pdf-nombre-subido" />
 
-
-<!-- FilePond -->
+<!-- FilePond CSS y JS -->
 <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
 <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
 <script>
-FilePond.create(document.querySelector('#pdf'), {
-    acceptedFileTypes: ['application/pdf'],
-    allowMultiple: false,
-    server: {
-        process: {
-            url: '/admin/diseno/crearDiseno',
-            method: 'POST',
-            onload: (nombreArchivo) => {
-                // Guardar nombre en el input oculto para enviar en el formulario
-                document.getElementById('pdf-nombre-subido').value = nombreArchivo;
+    const pond = FilePond.create(document.querySelector('#pdf'), {
+        acceptedFileTypes: ['application/pdf'],
+        allowMultiple: false,
+        labelIdle: 'Arrastra tu PDF o haz clic para subir',
+        server: {
+            process: {
+                url: '/admin/diseno/crearDiseno', // Tu endpoint actual
+                method: 'POST',
+                onload: (nombreArchivo) => {
+                    // Guardar el nombre del archivo en el input oculto
+                    document.getElementById('pdf-nombre-subido').value = nombreArchivo;
+                },
+                onerror: (error) => {
+                    console.error('Error al subir el archivo', error);
+                }
             }
         }
-    }
-});
-   
+    });
 </script>
+
 
 
                                     <div class="col-12 d-flex justify-content-end">
