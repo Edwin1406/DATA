@@ -87,6 +87,7 @@ class DiseñoController
     
          $router->render('admin/diseno/tablaDiseno', [
               'titulo' => 'TABLA DISEÑO',
+                'subtitulo' => 'Diseños Registrados',
               'nombre' => $nombre,
               'email' => $email,
               'disenos' => $disenos,
