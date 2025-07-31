@@ -77,4 +77,27 @@ class ControlDoblado extends ActiveRecord {
 
         return self::$alertas;
     }
+
+
+
+  
+ public function convertirHorasADecimal($horas) {
+    $horas = trim($horas); // eliminar espacios alrededor
+    $partes = explode(':', $horas);
+    
+    if (count($partes) !== 2 || !is_numeric($partes[0]) || !is_numeric($partes[1])) {
+        return 0; // Formato incorrecto
+    }
+
+    $horasDecimal = (int)$partes[0] + ((int)$partes[1] / 60);
+    return $horasDecimal;
+}
+
+
+
+
+
+
+
+
 }

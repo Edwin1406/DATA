@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\ControlDoblado;
 use Model\ControlTroquel;
 use MVC\Router;
 
@@ -123,6 +124,41 @@ class ControlController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
+        $alertas = [];
+
+
+        $control_doblado = new ControlDoblado;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $control_doblado->sincronizar($_POST);
+
+            if ($control_doblado->horas_programadas > 0) {
+                // Convertir solo para el cálculo
+                $horasDecimal = $control_doblado->convertirHorasADecimal($control_doblado->horas_programadas);
+
+                // Validar que el resultado de conversión sea mayor a 0
+                if ($horasDecimal > 0) {
+                    $control_doblado->cantidad_lamina_hora = $control_doblado->cantidad_laminas / $horasDecimal;
+                } else {
+                    $control_doblado->cantidad_lamina_hora = 0;
+                }
+            } else {
+                $control_doblado->cantidad_lamina_hora = 0;
+            }
+            debuguear($control_doblado);
+            $alertas = $control_doblado->validar();
+
+            if (empty($alertas)) {
+                $resultado = $control_doblado->guardar();
+                if ($resultado) {
+                    // resu
+                    header('Location: /admin/control/crear?resultado=1');
+                }
+            } else {
+                $alertas = ControlDoblado::getAlertas();
+            }
+        }
+
+
 
         $router->render('admin/control/doblado/consumo_doblado', [
             'titulo' => 'Control Doblado',
@@ -130,49 +166,4 @@ class ControlController
             'email' => $email
         ]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
