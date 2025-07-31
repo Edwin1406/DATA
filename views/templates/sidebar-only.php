@@ -57,7 +57,7 @@
                                  <a href="/admin/consumo_general"><i class="bi bi-arrow-right"> </i>Registro Consumo General</a>
                              </li>
 
-                                
+
                              <li class="submenu-item ">
                                  <a href="/admin/control/doblado/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
                              </li>
@@ -77,6 +77,12 @@
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumoGeneral"><i class="bi bi-arrow-right"> </i>Tabla Consumo General</a>
                              </li>
+
+                             <li class="submenu-item ">
+                                 <a href="/admin/control/doblado/tablaConsumoDoblado"><i class="bi bi-arrow-right"> </i>Tabla Consumo Doblado</a>
+                             </li>
+
+
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/tablaConsumoTroquel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Troquel</a>
@@ -136,12 +142,8 @@
                      </li>
                  <?php } ?>
 
-                    <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-                        <li class="submenu-item ">
-                            <a href="/admin/tablaConsumoDoblado"><i class="bi bi-arrow-right"> </i>Tabla Consumo Doblado</a>
-                        </li>
-                    <?php } ?>
-                    
+
+
 
                  <!-- </ul> -->
          </div>
