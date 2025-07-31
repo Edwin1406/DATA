@@ -70,13 +70,52 @@
             </a>
             <br><br>
 
-            <a href="/admin/diseno/editarDiseno?id=<?php echo $diseno->id; ?>&eliminar_pdf=1"
-   class="btn btn-danger btn-sm"
-   onclick="return confirm('¿Estás seguro de que deseas eliminar este PDF?');">
-   Eliminar PDF
-</a>
+     <?php if ($diseno->pdf): ?>
+<div id="pdf-actual">
+    <p>PDF actual: <?php echo htmlspecialchars($diseno->pdf); ?></p>
+    <a href="#" 
+       id="btnEliminarPDF" 
+       data-id="<?php echo $diseno->id; ?>" 
+       class="btn btn-danger btn-sm">
+       Eliminar PDF
+    </a>
+</div>
+<?php endif; ?>
+
 
         </div>
     </div>
 <?php endif; ?>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const btnEliminar = document.getElementById('btnEliminarPDF');
+    if (btnEliminar) {
+        btnEliminar.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!confirm('¿Estás seguro de que deseas eliminar este PDF?')) return;
+
+            const idDiseno = this.dataset.id;
+
+            fetch('/admin/diseno/eliminarPDF', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + encodeURIComponent(idDiseno)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('pdf-actual').innerHTML = '<p>PDF eliminado correctamente.</p>';
+                } else {
+                    alert(data.error || 'Ocurrió un error.');
+                }
+            })
+            .catch(err => {
+                console.error('Error AJAX:', err);
+            });
+        });
+    }
+});
+</script>
