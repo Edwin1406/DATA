@@ -99,96 +99,57 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6 col-12">
-
-                                        <label for="personal">Escoja el Personal</label>
-                                        <!-- nombre multiple -->
                                         <div class="form-group">
-                                            <select class="choices form-select select-light-danger" multiple="multiple" name="personal[]">
-                                                <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
-                                                <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
-                                                <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
-                                                <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
-                                                <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
-                                                <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
-                                                <option value="MILTON COYAGO">MILTON COYAGO</option>
-                                                <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
-                                                <option value="LOURDES FARINANGO">LOURDES FARINANGO</option>
-                                                <option value="MERY CHAUCA">MERY CHAUCA</option>
-                                                <option value="GINA TUQUERRES">GINA TUQUERRES</option>
-                                                <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
-                                                <option value="JESSY BERMEO">JESSY BERMEO</option>
-                                                <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
-                                                <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
-                                                <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
-                                                <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
-                                                <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
-                                                <option value="DE LA CRUZ BLANCA">DE LA CRUZ BLANCA</option>
-                                                <option value="GLORIA GUALAN">GLORIA GUALAN</option>
-                                                <option value="JEFFERSON PINANGO">JEFFERSON PINANGO</option>
-                                                <option value="YORVI VILLEGAS">YORVI VILLEGAS</option>
-                                                <option value="VERÓNICA LANDETA">VERÓNICA LANDETA</option>
-                                                <option value="ALVARO POGO">ALVARO POGO</option>
-                                                <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
-                                                <option value="LUIS GOVEA">LUIS GOVEA</option>
-                                                <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
-                                    <div class="col-md-6 col-12">
-                                        <label for="producto">Escoja el Producto</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="producto">
-                                                <option value="LAMINA">LAMINA</option>
-                                                <option value="LAMINA DOBLADA">LAMINA DOBLADA</option>
-                                                <option value="LAMINA T - R">LAMINA T - R</option>
-                                                <option value="CORREAS">CORREAS</option>
-                                                <option value="SEPARADORES">SEPARADORES</option>
-                                                <option value="PAPEL PERIODICO">PAPEL PERIODICO</option>
-                                                <option value="PEGADO CAJAS">PEGADO CAJAS</option>
-                                                <option value="PEGADO CAPUCHONES">PEGADO CAPUCHONES</option>
-                                                <option value="LINER">LINER</option>
-                                            </select>
+                                            <label for="area">Area</label>
+                                            <input type="number" id="area" class="form-control"
+                                                placeholder="Area" name="area">
                                         </div>
                                     </div>
 
-
+                                    <!-- horas_programadas -->
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="medidas">Medida</label>
-                                            <input type="text" id="medidas" class="form-control"
-                                                placeholder="Medida" name="medidas">
-                                        </div>
-                                    </div>
-                                    <!-- hora de inicio  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_inicio">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control"
-                                                placeholder="Hora de Inicio" name="hora_inicio">
+                                            <label for="horas_programadas">Horas Programadas</label>
+                                            <input type="time" id="horas_programadas" class="form-control"
+                                                placeholder="Horas Programadas" name="horas_programadas">
                                         </div>
                                     </div>
 
-                                    <!-- hora de fin  -->
+                                    <!-- cantidad_laminas -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control"
-                                                placeholder="Hora de Fin" name="hora_fin">
+                                            <label for="cantidad_laminas">Cantidad de Laminas</label>
+                                            <input type="number" id="cantidad_laminas" class="form-control"
+                                                placeholder="Cantidad de Laminas" name="cantidad_laminas">
                                         </div>
                                     </div>
 
-                                    <!-- cantidad  -->
+                                    <!-- cantidad_laminasx_hora -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad">Cantidad</label>
-                                            <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad">
+                                            <label for="cantidad_laminasx_hora">Cantidad de Laminas por Hora</label>
+                                            <input type="number" id="cantidad_laminasx_hora" class="form-control"
+                                                placeholder="Cantidad de Laminas por Hora" name="cantidad_laminasx_hora">
+                                        </div>
+                                    </div>
+
+                                    <!-- n_cambio -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="n_cambio">N° de Cambio</label>
+                                            <input type="number" id="n_cambio" class="form-control"
+                                                placeholder="N° de Cambio" name="n_cambio">
+                                        </div>
+                                    </div>
+
+                                    <!-- desperdicio_k -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="desperdicio_k">Desperdicio (kg)</label>
+                                            <input type="number" id="desperdicio_k" class="form-control"
+                                                placeholder="Desperdicio (kg)" name="desperdicio_k">
                                         </div>
                                     </div>
 
@@ -206,6 +167,3 @@
     </section>
 
 </div>
-
-
-
