@@ -44,32 +44,37 @@
                          <ul class="submenu ">
                              <li class="sidebar-title"><b><i class="bi bi-archive"></i> Registros</b></li>
 
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
+                                 </li>
+                             <?php }  ?>
 
-                             <li class="submenu-item ">
-                                 <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
-                             </li>
                              <!-- icono de flecha -->
 
 
                              <li class="submenu-item ">
                                  <a href="/admin/consumo_general"><i class="bi bi-arrow-right"> </i>Registro Consumo General</a>
                              </li>
-
-                             <li class="submenu-item ">
-                                 <a href="/admin/control_troquel"><i class="bi bi-arrow-right"> </i>Registro Troquel</a>
-                             </li>
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/control_troquel"><i class="bi bi-arrow-right"> </i>Registro Troquel</a>
+                                 </li>
+                             <?php }  ?>
                              <li class="sidebar-title"><b><i class="bi bi-table"></i> Tablas</b></li>
-
-                             <li class="submenu-item ">
-                                 <a href="/admin/tablaConsumo"><i class="bi bi-arrow-right"> </i>Tabla Consumo Empaque</a>
-                             </li>
-
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/tablaConsumo"><i class="bi bi-arrow-right"> </i>Tabla Consumo Empaque</a>
+                                 </li>
+                             <?php }  ?>
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumoGeneral"><i class="bi bi-arrow-right"> </i>Tabla Consumo General</a>
                              </li>
-                             <li class="submenu-item ">
-                                 <a href="/admin/tablaConsumoTroquel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Troquel</a>
-                             </li>
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/tablaConsumoTroquel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Troquel</a>
+                                 </li>
+                             <?php }  ?>
                          </ul>
                      <?php }  ?>
 
@@ -89,8 +94,8 @@
                      </li>
                  <?php } ?>
 
-                    <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-                      <li class="sidebar-item  has-sub">
+                 <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                     <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
                              <span>Diseño</span>
@@ -102,14 +107,14 @@
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
                              </li>
-                         
+
 
                          </ul>
                      </li>
-                    <?php } ?>
+                 <?php } ?>
 
-                        <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
-                      <li class="sidebar-item  has-sub">
+                 <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                     <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
                              <span>Ventas</span>
@@ -118,14 +123,14 @@
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
                              </li>
-                         
+
 
                          </ul>
                      </li>
-                    <?php } ?>
+                 <?php } ?>
 
 
-             <!-- </ul> -->
+                 <!-- </ul> -->
          </div>
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
