@@ -6,9 +6,10 @@ namespace Model;
 class Diseno extends ActiveRecord {
 
     protected static $tabla = 'visor';
-    protected static $columnasDB = ['id', 'nombre_cliente','proveedor','nombre_producto','codigo_producto','estado','pdf'];
+    protected static $columnasDB = ['id','fecha','nombre_cliente','proveedor','nombre_producto','codigo_producto','estado','pdf'];
 
     public $id;
+    public $fecha;
     public $nombre_cliente;
     public $proveedor; // Agregar la propiedad proveedor
     public $nombre_producto;
@@ -20,7 +21,10 @@ class Diseno extends ActiveRecord {
 
     public function __construct($args = [])
     {
+         date_default_timezone_set('America/Guayaquil');
+        $fecha = date('Y-m-d H:i:s'); 
         $this->id = $args['id'] ?? null;
+        $this->fecha = $args['fecha'] ?? $fecha;
         $this->nombre_cliente = $args['nombre_cliente'] ?? '';
         $this->proveedor = $args['proveedor'] ?? ''; // Inicializar la propiedad proveedor
         $this->nombre_producto = $args['nombre_producto'] ?? '';
