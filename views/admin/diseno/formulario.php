@@ -5,8 +5,6 @@
           <input type="text" id="nombre_cliente" class="form-control"
               placeholder="Nombre del Cliente" name="nombre_cliente"
                  value="<?php echo isset($diseno) ? s($diseno->nombre_cliente) : ''; ?>">
-              
-              >
       </div>
   </div>
 
