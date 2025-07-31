@@ -90,20 +90,22 @@
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
                                  <td><?= $diseno->estado ?></td>
-                                 <td>
+                                
 
-                                 <td>
-                                     <?php
-                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-                                        ?>
-                                     <!-- Mostrar PDF como miniatura con enlace -->
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
+                                <td>
+    <?php
+        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
+    ?>
+    <!-- Mostrar PDF como miniatura con enlace -->
+    <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
+        <img
+            
+            alt="Ver PDF"
+            style="width: 100px; height: auto; cursor: pointer;">
+    </a>
+</td>
 
-                                     </a>
-                                 </td>
-
-
-
+    
 
                                  <td>
                                      <div class="d-flex gap-1">
