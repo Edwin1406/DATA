@@ -102,9 +102,7 @@
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
                              </li>
-                              <li class="submenu-item ">
-                                 <a href="/admin/diseno/editarDiseno"><i class="bi bi-arrow-right"> </i>Editar Diseño</a>
-                             </li>
+                         
 
                          </ul>
                      </li>
