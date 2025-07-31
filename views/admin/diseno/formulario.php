@@ -65,41 +65,18 @@
     <div class="col-md-6 col-12">
         <div class="form-group">
             <label>Archivo actual:</label><br>
-            <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>"
-               target="_blank"
-               class="btn btn-outline-primary btn-sm">
-               Ver / Descargar PDF
+            <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+                Ver / Descargar PDF
             </a>
             <br><br>
-            <button type="button" class="btn btn-danger btn-sm" onclick="eliminarPDF(<?php echo $diseno->id; ?>)">
-                Eliminar PDF
-            </button>
+
+            <a href="/admin/diseno/editarDiseno?id=<?php echo $diseno->id; ?>&eliminar_pdf=1"
+   class="btn btn-danger btn-sm"
+   onclick="return confirm('¿Estás seguro de que deseas eliminar este PDF?');">
+   Eliminar PDF
+</a>
+
         </div>
     </div>
-
-    <script>
-    function eliminarPDF(id) {
-        if (!confirm('¿Estás seguro de que deseas eliminar este PDF?')) return;
-
-        fetch('/admin/diseno/eliminar-pdf', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'id=' + id
-        })
-        .then(res => res.json())
-        .then(data => {
-            alert(data.message);
-            if (data.success) {
-                location.reload(); // recarga la página para reflejar el cambio
-            }
-        })
-        .catch(error => {
-            alert('Error al eliminar el PDF');
-        });
-    }
-    </script>
 <?php endif; ?>
-
 
