@@ -150,7 +150,7 @@ class DiseñoController
                 // Guardar en la base de datos
                 $resultado = $diseno->guardar();
                 if ($resultado) {
-                    header('Location: /admin/diseno/tablaDiseno?editado=1');
+                    header('Location: /admin/diseno/tablaDiseno?editado=3');
                     exit;
                 }
             }
