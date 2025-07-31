@@ -72,7 +72,26 @@ class DiseñoController
 }
 
 
-
+    public static function tablaDiseno(Router $router)
+    {
+         session_start();
+         if (!isset($_SESSION['email'])) {
+              header('Location: /');
+         }
+    
+         $nombre = $_SESSION['nombre'];
+         $email = $_SESSION['email'];
+    
+         // Obtener todos los diseños
+         $disenos = Diseno::all();
+    
+         $router->render('admin/diseno/tablaDiseno', [
+              'titulo' => 'TABLA DISEÑO',
+              'nombre' => $nombre,
+              'email' => $email,
+              'disenos' => $disenos,
+         ]);
+    }
 
 
 

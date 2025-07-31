@@ -104,6 +104,11 @@ $router->get('/admin/tablaAdminConsumoGeneral', [AdminController::class, 'tablaA
 $router->get('/admin/tablaConsumoTroquel', [ControlController::class, 'tablaConsumoTroquel']);
 
 
+// tabla diseño
+$router->get('/admin/diseno/tablaDiseno', [DiseñoController::class, 'tablaDiseno']);
+
+
+
 
 // ELIMINAR
 // eliminar consumo

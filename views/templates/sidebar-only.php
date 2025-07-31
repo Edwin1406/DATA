@@ -99,6 +99,9 @@
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/crearDiseno"><i class="bi bi-arrow-right"> </i>Crear Diseño</a>
                              </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
+                             </li>
 
                          </ul>
                      </li>
