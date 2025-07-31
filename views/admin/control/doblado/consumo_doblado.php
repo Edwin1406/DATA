@@ -102,7 +102,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="area">Area</label>
-                                            <input type="number" id="area" class="form-control"
+                                            <input type="text" id="area" class="form-control"
                                                 placeholder="Area" name="area">
                                         </div>
                                     </div>
