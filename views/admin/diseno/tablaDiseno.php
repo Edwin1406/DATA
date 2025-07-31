@@ -159,7 +159,7 @@
 
                                  <td>
                                         <!-- usuario -->
-                                                     <?php if (!$userEmail === 'ventas@megaecuador.com') { ?>
+                                                     <?php if (!$email === 'ventas@megaecuador.com') { ?>
 
 
                                      <div class="d-flex gap-1">
