@@ -105,21 +105,37 @@
                                         <label for="personal">Escoja el Personal</label>
                                         <!-- nombre multiple -->
                                         <div class="form-group">
-                                            <select class="choices form-select select-light-danger"
-                                                multiple="multiple" name="personal[]">
-                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
-                                                <option value="JOSE PEREZ">JOSE PEREZ</option>
-                                                <option value="MARIA LOPEZ">MARIA LOPEZ</option>
-                                                <option value="ANA GARCIA">ANA GARCIA</option>
-                                                <option value="CARLOS MARTINEZ">CARLOS MARTINEZ</option>
-                                                <option value="LUIS HERNANDEZ">LUIS HERNANDEZ</option>
-                                                <option value="LAURA GUTIERREZ">LAURA GUTIERREZ</option>
-                                                <option value="JULIAN RAMIREZ">JULIAN RAMIREZ</option>
-                                                <option value="SANDRA TORO">SANDRA TORO</option>
-                                                <option value="ANDRES MORALES">ANDRES MORALES</option>
-                                                <option value="PAOLA REYES">PAOLA REYES</option>
+                                            <select class="choices form-select select-light-danger" multiple="multiple" name="personal[]">
+                                                <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
+                                                <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
+                                                <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
+                                                <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
+                                                <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
+                                                <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
+                                                <option value="MILTON COYAGO">MILTON COYAGO</option>
+                                                <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
+                                                <option value="LOURDES FARINANGO">LOURDES FARINANGO</option>
+                                                <option value="MERY CHAUCA">MERY CHAUCA</option>
+                                                <option value="GINA TUQUERRES">GINA TUQUERRES</option>
+                                                <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
+                                                <option value="JESSY BERMEO">JESSY BERMEO</option>
+                                                <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
+                                                <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
+                                                <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
+                                                <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
+                                                <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
+                                                <option value="DE LA CRUZ BLANCA">DE LA CRUZ BLANCA</option>
+                                                <option value="GLORIA GUALAN">GLORIA GUALAN</option>
+                                                <option value="JEFFERSON PINANGO">JEFFERSON PINANGO</option>
+                                                <option value="YORVI VILLEGAS">YORVI VILLEGAS</option>
+                                                <option value="VERÓNICA LANDETA">VERÓNICA LANDETA</option>
+                                                <option value="ALVARO POGO">ALVARO POGO</option>
+                                                <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
+                                                <option value="LUIS GOVEA">LUIS GOVEA</option>
+                                                <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
                                             </select>
                                         </div>
+
                                     </div>
 
                                     <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
