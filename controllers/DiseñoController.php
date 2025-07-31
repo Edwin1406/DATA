@@ -45,7 +45,7 @@ class DiseñoController
                 $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
             }
 
-            
+         
         }
 
            if (empty($alertas)) {
@@ -70,6 +70,8 @@ class DiseñoController
         'titulo' => 'CREAR DISEÑO',
         'nombre' => $nombre,
         'email' => $email,
+        'diseno' => $diseno,
+        'alertas' => $diseno->getAlertas(),
     ]);
 }
 
