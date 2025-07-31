@@ -188,177 +188,25 @@
 <!-- filepond -->
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 <script>
-    // Registrar los plugins necesarios
     FilePond.registerPlugin(
         FilePondPluginFileValidateSize,
-        FilePondPluginFileValidateType,
-        FilePondPluginImageCrop,
-        FilePondPluginImagePreview,
-        FilePondPluginImageFilter,
-        FilePondPluginImageExifOrientation,
-        FilePondPluginImageResize
+        FilePondPluginFileValidateType
     );
 
-    // Filepond: Basic - FORMULARIO DE PDF
-   FilePond.create(document.querySelector('.basic-filepond'), {
-    allowImagePreview: false,
-    allowMultiple: false,
-    allowFileEncode: false,
-    required: false,
-    acceptedFileTypes: ['application/pdf'],
-    labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite PDF',
-    fileValidateTypeLabelExpectedTypes: 'Formato esperado: .pdf',
-    
-    // 👇 Forzar tipo MIME detectado
-    fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-        resolve('application/pdf');
-    })
-});
-
-
-    // Filepond: Multiple Files
-    FilePond.create(document.querySelector('.multiple-files-filepond'), {
+    // Configuración de FilePond para campo PDF
+    FilePond.create(document.querySelector('.basic-filepond'), {
         allowImagePreview: false,
-        allowMultiple: true,
+        allowMultiple: false,
         allowFileEncode: false,
-        required: false
-    });
+        required: false,
+        acceptedFileTypes: ['application/pdf'], // Tipo permitido
+        labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite PDF',
+        fileValidateTypeLabelExpectedTypes: 'Formato esperado: .pdf',
 
-    // Filepond: With Validation
-    FilePond.create(document.querySelector('.with-validation-filepond'), {
-        allowImagePreview: false,
-        allowMultiple: true,
-        allowFileEncode: false,
-        required: true,
-        acceptedFileTypes: ['image/png'],
+        // 🔧 Forzamos detección de tipo a application/pdf
         fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
-        })
-    });
-
-    // Filepond: ImgBB with server property
-    FilePond.create(document.querySelector('.imgbb-filepond'), {
-        allowImagePreview: false,
-        server: {
-            process: (fieldName, file, metadata, load, error, progress, abort) => {
-                const formData = new FormData();
-                formData.append(fieldName, file, file.name);
-
-                const request = new XMLHttpRequest();
-                request.open('POST', 'https://api.imgbb.com/1/upload?key=762894e2014f83c023b233b2f10395e2');
-
-                request.upload.onprogress = (e) => {
-                    progress(e.lengthComputable, e.loaded, e.total);
-                };
-
-                request.onload = function () {
-                    if (request.status >= 200 && request.status < 300) {
-                        load(request.responseText);
-                    } else {
-                        error('Error al subir');
-                    }
-                };
-
-                request.onreadystatechange = function () {
-                    if (this.readyState == 4) {
-                        if (this.status == 200) {
-                            let response = JSON.parse(this.responseText);
-                            Toastify({
-                                text: "¡Carga exitosa a imgbb! Mira la consola (F12)",
-                                duration: 3000,
-                                close: true,
-                                gravity: "bottom",
-                                position: "right",
-                                backgroundColor: "#4fbe87",
-                            }).showToast();
-                            console.log(response);
-                        } else {
-                            Toastify({
-                                text: "¡Falló la carga en imgbb!",
-                                duration: 3000,
-                                close: true,
-                                gravity: "bottom",
-                                position: "right",
-                                backgroundColor: "#ff0000",
-                            }).showToast();
-                            console.log("Error", this.statusText);
-                        }
-                    }
-                };
-
-                request.send(formData);
-            }
-        }
-    });
-
-    // Filepond: Image Preview
-    FilePond.create(document.querySelector('.image-preview-filepond'), {
-        allowImagePreview: true,
-        allowImageFilter: false,
-        allowImageExifOrientation: false,
-        allowImageCrop: false,
-        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
-        })
-    });
-
-    // Filepond: Image Crop
-    FilePond.create(document.querySelector('.image-crop-filepond'), {
-        allowImagePreview: true,
-        allowImageFilter: false,
-        allowImageExifOrientation: false,
-        allowImageCrop: true,
-        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
-        })
-    });
-
-    // Filepond: Image Exif Orientation
-    FilePond.create(document.querySelector('.image-exif-filepond'), {
-        allowImagePreview: true,
-        allowImageFilter: false,
-        allowImageExifOrientation: true,
-        allowImageCrop: false,
-        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
-        })
-    });
-
-    // Filepond: Image Filter
-    FilePond.create(document.querySelector('.image-filter-filepond'), {
-        allowImagePreview: true,
-        allowImageFilter: true,
-        allowImageExifOrientation: false,
-        allowImageCrop: false,
-        imageFilterColorMatrix: [
-            0.299, 0.587, 0.114, 0, 0,
-            0.299, 0.587, 0.114, 0, 0,
-            0.299, 0.587, 0.114, 0, 0,
-            0.000, 0.000, 0.000, 1, 0
-        ],
-        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
-        })
-    });
-
-    // Filepond: Image Resize
-    FilePond.create(document.querySelector('.image-resize-filepond'), {
-        allowImagePreview: true,
-        allowImageFilter: false,
-        allowImageExifOrientation: false,
-        allowImageCrop: false,
-        allowImageResize: true,
-        imageResizeTargetWidth: 200,
-        imageResizeTargetHeight: 200,
-        imageResizeMode: 'cover',
-        imageResizeUpscale: true,
-        acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            resolve(type);
+            // Este truco hace que FilePond acepte cualquier archivo como si fuera PDF
+            resolve('application/pdf');
         })
     });
 </script>
