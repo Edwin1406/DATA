@@ -10,7 +10,7 @@ class ControlDoblado extends ActiveRecord {
         'area',
         'horas_programadas',
         'cantidad_laminas',
-        'cantidad_maquina_hora',
+        'cantidad_lamina_hora',
         'n_cambio',
         'desperdicio_kg',
         
@@ -23,7 +23,7 @@ class ControlDoblado extends ActiveRecord {
     public $area;
     public $horas_programadas;
     public $cantidad_laminas;
-    public $cantidad_maquina_hora;
+    public $cantidad_lamina_hora;
     public $n_cambio;
     public $desperdicio_kg;
 
@@ -36,7 +36,7 @@ class ControlDoblado extends ActiveRecord {
         $this->area = $data['area'] ?? null;
         $this->horas_programadas = $data['horas_programadas'] ?? null;
         $this->cantidad_laminas = $data['cantidad_laminas'] ?? null;
-        $this->cantidad_maquina_hora = $data['cantidad_maquina_hora'] ?? null;
+        $this->cantidad_lamina_hora = $data['cantidad_lamina_hora'] ?? null;
         $this->n_cambio = $data['n_cambio'] ?? null;
         $this->desperdicio_kg = $data['desperdicio_kg'] ?? null;
     }
@@ -63,8 +63,8 @@ class ControlDoblado extends ActiveRecord {
             self::$alertas['error'][] = 'La cantidad de láminas es obligatoria';
         }
 
-        if(!$this->cantidad_maquina_hora) {
-            self::$alertas['error'][] = 'La cantidad de máquina por hora es obligatoria';
+        if(!$this->cantidad_lamina_hora) {
+            self::$alertas['error'][] = 'La cantidad de láminas por hora es obligatoria';
         }
 
         if(!$this->n_cambio) {
