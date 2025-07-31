@@ -187,53 +187,31 @@
 
 <!-- filepond -->
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<!-- FilePond JS -->
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
 <script>
-    FilePond.registerPlugin(
-        FilePondPluginFileValidateSize,
-        FilePondPluginFileValidateType
-    );
+    // Crear una instancia FilePond
+    const inputElement = document.querySelector('#pdf');
 
-    // Configuración de FilePond para campo PDF
-    FilePond.create(document.querySelector('.basic-filepond'), {
-        allowImagePreview: false,
+    FilePond.create(inputElement, {
+        acceptedFileTypes: ['application/pdf'],
         allowMultiple: false,
-        allowFileEncode: false,
-        required: false,
-        acceptedFileTypes: ['application/pdf'], // Tipo permitido
-        labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite PDF',
-        fileValidateTypeLabelExpectedTypes: 'Formato esperado: .pdf',
-
-        // 🔧 Forzamos detección de tipo a application/pdf
-        fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
-            // Este truco hace que FilePond acepte cualquier archivo como si fuera PDF
-            resolve('application/pdf');
-        })
+        labelIdle: 'Arrastra tu archivo PDF o haz clic para seleccionar',
+        server: {
+            process: {
+                url: '/upload_pdf.php', // Tu endpoint PHP
+                method: 'POST',
+                withCredentials: false,
+                headers: {},
+                timeout: 7000,
+                onload: response => {
+                    console.log('Subido:', response);
+                },
+                onerror: response => {
+                    console.error('Error al subir:', response);
+                }
+            }
+        }
     });
-    // Configuración de FilePond para campo de 
-    FilePond.create(document.querySelector('.basic-filepond'), {
-        allowImagePreview: true,
-        allowMultiple: false,
-        allowFileEncode: false,
-        required: false,
-        acceptedFileTypes: ['image/*'], // Tipos permitidos
-        labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite imagen',
-        fileValidateTypeLabelExpectedTypes: 'Formatos esperados: .jpg, .jpeg, .png, .gif',
-
-        // Configuración de tamaño máximo
-        maxFileSize: '5MB', // Tamaño máximo de archivo
-        labelMaxFileSizeExceeded: 'El archivo es demasiado grande',
-        labelMaxFileSize: 'Tamaño máximo permitido: {filesize}',
-
-        // Configuración de vista previa de imagen
-        imagePreviewHeight: 200,
-    });
-
-    // Configuración de FilePond para campo de imagen
-    
-
-
-
-
-
-
 </script>
