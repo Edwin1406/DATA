@@ -124,7 +124,7 @@
                                  <td>
                                      <div class="d-flex gap-1">
                                          <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <form action="/admin/eliminarDiseno" method="POST">
+                                         <form action="/admin/diseno/eliminarRegistroConPDF" method="POST">
                                              <input type="hidden" name="id" value="<?= $diseno->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
