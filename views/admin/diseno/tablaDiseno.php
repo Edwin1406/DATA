@@ -93,24 +93,16 @@
                                  <td>
                                      <?php
                                         $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-                                        $extension = pathinfo($diseno->pdf, PATHINFO_EXTENSION);
-
-                                        if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])): ?>
-                                         <!-- Mostrar miniatura para imágenes -->
+                                        ?>
+                                     <!-- Mostrar PDF como miniatura con enlace -->
+                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" title="Ver PDF">
                                          <img
-                                             src="<?php echo $rutaArchivo ?>"
-                                             alt="pdf"
-                                             class="imagen-miniatura"
-                                             style="width: 100px; height: auto; cursor: pointer;"
-                                             onclick="mostrarImagen(this.src)">
-                                     <?php elseif (strtolower($extension) === 'pdf'): ?>
-                                         <!-- Mostrar enlace para visualizar PDF -->
-                                         <a href="<?php echo $rutaArchivo ?>" target="_blank" class="enlace-pdf">Ver PDF</a>
-                                     <?php else: ?>
-                                         <a href="<?php echo $rutaArchivo ?>" target="_blank" class="enlace-pdf">Ver PDF</a>
-
-                                     <?php endif; ?>
+                                             src="/assets/img/icono-pdf.png"
+                                             alt="Ver PDF"
+                                             style="width: 100px; height: auto; cursor: pointer;">
+                                     </a>
                                  </td>
+
 
                                  <td>
                                      <div class="d-flex gap-1">
