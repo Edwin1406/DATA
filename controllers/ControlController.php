@@ -113,7 +113,7 @@ class ControlController
 
     // --------------------------------------------------------------------CONTROL DOBLADO--------------------------------------------
 
-    public static function control_doblado(Router $router)
+    public static function consumo_doblado(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {

@@ -83,8 +83,8 @@ $router->get('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDisen
 $router->post('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 
 // registro doblado
-$router->get('/admin/doblado/consumo_doblado', [AdminController::class, 'consumo_doblado']);
-$router->post('/admin/doblado/consumo_doblado', [AdminController::class, 'consumo_doblado']);
+$router->get('/admin/doblado/consumo_doblado', [ControlController::class, 'consumo_doblado']);
+$router->post('/admin/doblado/consumo_doblado', [ControlController::class, 'consumo_doblado']);
 
 
 
