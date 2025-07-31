@@ -49,7 +49,7 @@ class DiseñoController
             $diseno->pdf = $_POST['pdf'];
         }
 
-        // debuguear($diseno);
+        debuguear($diseno);
 
         if (empty($alertas)) {
             $existeCodigo = Diseno::where('codigo_producto', $diseno->codigo_producto);
