@@ -126,14 +126,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- cantidad_laminasx_hora -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_laminasx_hora">Cantidad de Laminas por Hora</label>
-                                            <input type="number" id="cantidad_laminasx_hora" class="form-control"
-                                                placeholder="Cantidad de Laminas por Hora" name="cantidad_laminasx_hora">
-                                        </div>
-                                    </div>
+                                  
 
                                     <!-- n_cambio -->
                                     <div class="col-md-6 col-12">
