@@ -114,9 +114,7 @@
                                      <?php
                                         $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
                                         ?>
-                                     <!-- Enlace de texto para ver PDF -->
-                                    
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-primary rounded-pill">Ver PDF</a>
+                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a>
                                  </td>
 
 
