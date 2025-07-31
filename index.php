@@ -84,6 +84,10 @@ $router->post('/admin/control_troquel', [ControlController::class, 'control_troq
 $router->get('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 $router->post('/admin/diseno/crearDiseno', [DiseñoController::class, 'crearDiseno']);
 
+// editar diseño
+$router->get('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
+$router->post('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
+
 
 
 
