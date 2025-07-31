@@ -76,7 +76,7 @@
                              <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 110px;">Pdf</th>
-                           
+
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
@@ -90,8 +90,28 @@
                                  <td><?= $diseno->nombre_producto ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
                                  <td><?= $diseno->estado ?></td>
-                                 <td><?= $diseno->pdf ?></td>
-                                    
+                                 <td>
+                                     <?php
+                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($visores->pdf);
+                                        $extension = pathinfo($visores->pdf, PATHINFO_EXTENSION);
+
+                                        if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])): ?>
+                                         <!-- Mostrar miniatura para imágenes -->
+                                         <img
+                                             src="<?php echo $rutaArchivo ?>"
+                                             alt="pdf"
+                                             class="imagen-miniatura"
+                                             style="width: 100px; height: auto; cursor: pointer;"
+                                             onclick="mostrarImagen(this.src)">
+                                     <?php elseif (strtolower($extension) === 'pdf'): ?>
+                                         <!-- Mostrar enlace para visualizar PDF -->
+                                         <a href="<?php echo $rutaArchivo ?>" target="_blank" class="enlace-pdf">Ver PDF</a>
+                                     <?php else: ?>
+                                         <a href="<?php echo $rutaArchivo ?>" target="_blank" class="enlace-pdf">Ver PDF</a>
+
+                                     <?php endif; ?>
+                                 </td>
+
                                  <td>
                                      <div class="d-flex gap-1">
                                          <a href="/admin/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
