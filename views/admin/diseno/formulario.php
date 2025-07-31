@@ -46,9 +46,9 @@
       <div class="form-group">
           <label for="estado">Estado</label>
           <select class="form-select" name="estado" id="estado">
-              <option value="ENVIADO" <?php echo isset($diseno) && s($diseno->estado) === 'ENVIADO' ? 'selected' : ''; ?>>Enviado</option>
-              <option value="PAUSADO" <?php echo isset($diseno) && s($diseno->estado) === 'PAUSADO' ? 'selected' : ''; ?>>Pausado</option>
-              <option value="TERMINADO" <?php echo isset($diseno) && s($diseno->estado) === 'TERMINADO' ? 'selected' : ''; ?>>Terminado</option>
+              <option value="ARTE" <?php echo isset($diseno) && s($diseno->estado) === 'ARTE' ? 'selected' : ''; ?>>Arte</option>
+              <option value="APROBADO" <?php echo isset($diseno) && s($diseno->estado) === 'APROBADO' ? 'selected' : ''; ?>>Aprobado</option>
+              <option value="CLICHE" <?php echo isset($diseno) && s($diseno->estado) === 'CLICHE' ? 'selected' : ''; ?>>Cliché</option>
           </select>
       </div>
   </div>

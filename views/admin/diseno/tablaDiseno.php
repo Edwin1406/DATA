@@ -130,13 +130,13 @@
                                  <?php
                                     $estado = trim($diseno->estado);
                                     switch ($estado) {
-                                        case 'ENVIADO':
+                                        case 'ARTE':
                                             $badgeClass = 'bg-success'; // verde
                                             break;
-                                        case 'PAUSADO':
+                                        case 'APROBADO':
                                             $badgeClass = 'bg-danger'; // rojo
                                             break;
-                                        case 'TERMINADO':
+                                        case 'CLICHE':
                                             $badgeClass = 'bg-warning'; // naranja
                                             break;
                                         default:
