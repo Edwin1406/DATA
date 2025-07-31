@@ -138,32 +138,32 @@
 
 
                                     <!-- PDF filepond basic no vale  -->
-              <div class="col-md-6 col-12">
-    <div class="form-group">
-        <label for="pdf">PDF</label>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="pdf">PDF</label>
 
-        <!-- Campo de carga con FilePond -->
-        <input type="file"
-               id="pdf"
-               name="pdf"
-               class="basic-filepond"
-               accept=".pdf">
+                                            <!-- Campo de carga con FilePond -->
+                                            <input type="file"
+                                                id="pdf"
+                                                name="pdf"
+                                                class="basic-filepond"
+                                                accept=".pdf">
 
-        <!-- Enlace para ver el PDF actual (si existe) -->
-        <?php if (isset($cliente->pdf)) : ?>
-            <div class="mt-2">
-                <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>"
-                   target="_blank">
-                    Descargar/Ver PDF
-                </a>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
+                                            <!-- Enlace para ver el PDF actual (si existe) -->
+                                            <?php if (isset($cliente->pdf)) : ?>
+                                                <div class="mt-2">
+                                                    <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $cliente->pdf; ?>"
+                                                        target="_blank">
+                                                        Descargar/Ver PDF
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
 
 
 
-                                  
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
@@ -226,4 +226,31 @@
             resolve('application/pdf');
         })
     });
+    // Configuración de FilePond para campo de imagen
+    FilePond.create(document.querySelector('.basic-filepond'), {
+        allowImagePreview: true,
+        allowMultiple: false,
+        allowFileEncode: false,
+        required: false,
+        acceptedFileTypes: ['image/*'], // Tipos permitidos
+        labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite imagen',
+        fileValidateTypeLabelExpectedTypes: 'Formatos esperados: .jpg, .jpeg, .png, .gif',
+
+        // Configuración de tamaño máximo
+        maxFileSize: '5MB', // Tamaño máximo de archivo
+        labelMaxFileSizeExceeded: 'El archivo es demasiado grande',
+        labelMaxFileSize: 'Tamaño máximo permitido: {filesize}',
+
+        // Configuración de vista previa de imagen
+        imagePreviewHeight: 200,
+    });
+
+    // Configuración de FilePond para campo de imagen
+    
+
+
+
+
+
+
 </script>
