@@ -136,6 +136,12 @@
                      </li>
                  <?php } ?>
 
+                    <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                        <li class="submenu-item ">
+                            <a href="/admin/tablaConsumoDoblado"><i class="bi bi-arrow-right"> </i>Tabla Consumo Doblado</a>
+                        </li>
+                    <?php } ?>
+                    
 
                  <!-- </ul> -->
          </div>
