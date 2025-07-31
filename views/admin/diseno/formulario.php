@@ -69,9 +69,11 @@
                 Ver / Descargar PDF
             </a>
             <br><br>
-            <button type="submit" name="eliminar_pdf" value="1" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar el PDF actual?');">
-                Eliminar PDF
-            </button>
+
+            <form method="POST" action="/admin/diseno/eliminar-pdf" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este PDF?');">
+                <input type="hidden" name="id" value="<?php echo $diseno->id; ?>">
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar PDF</button>
+            </form>
         </div>
     </div>
 <?php endif; ?>

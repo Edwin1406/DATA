@@ -129,6 +129,10 @@ $router->post('/admin/eliminarConsumoTroquel', [ControlController::class, 'elimi
 $router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 $router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 
+// eliminar diseño
+$router->post('/admin/diseno/eliminar-pdf', [DiseñoController::class, 'eliminarPDF']);
+
+
 
 
 
