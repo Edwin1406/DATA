@@ -199,45 +199,7 @@ public static function eliminarPDF()
 }
 
 
-public static function eliminarRegistroConPDF()
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        echo json_encode(['error' => 'No autorizado']);
-        return;
-    }
 
-    $id = $_POST['id'] ?? null;
-    if (!$id) {
-        echo json_encode(['error' => 'ID no proporcionado']);
-        return;
-    }
-
-    $diseno = Diseno::find($id);
-    if (!$diseno) {
-        echo json_encode(['error' => 'Diseño no encontrado']);
-        return;
-    }
-
-    // Eliminar el PDF si existe
-    if ($diseno->pdf) {
-        $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $diseno->pdf;
-        if (file_exists($ruta_pdf)) {
-            unlink($ruta_pdf);
-        }
-    }
-
-    // Eliminar el registro de la base de datos
-    $resultado = $diseno->eliminar();
-    if ($resultado) {
-        echo json_encode(['success' => true]);
-    } else {
-        echo json_encode(['error' => 'Error al eliminar el registro']);
-    }
-
-
-    
-}
 
 
 

@@ -72,7 +72,7 @@
 
               <?php if ($diseno->pdf): ?>
                   <div id="pdf-actual">
-                      <p>PDF actual: <?php echo htmlspecialchars($diseno->pdf); ?></p>
+                      <p>PDF actual: <?php echo htmlspecialchars($diseno->pdf); ?> </p>
                       <a href="#"
                           id="btnEliminarPDF"
                           data-id="<?php echo $diseno->id; ?>"
