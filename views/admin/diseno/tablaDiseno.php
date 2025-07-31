@@ -51,7 +51,7 @@
          <div class="card">
              <ul class="nav nav-tabs">
                  <li class="nav-item">
-                     <a class="nav-link active" href="/admin/consumo">Registro Empaque</a>
+                     <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
                  </li>
              </ul>
          </div>
