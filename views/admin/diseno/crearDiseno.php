@@ -121,9 +121,9 @@
                                         <div class="form-group">
                                             <label for="estado">Estado</label>
                                             <select class="form-select" name="estado" id="estado">
-                                                <option value="Enviado">Enviado</option>
-                                                <option value="Pausado">Pausado</option>
-                                                <option value="Terminado">Terminado</option>
+                                                <option value="ENVIADO">Enviado</option>
+                                                <option value="PAUSADO">Pausado</option>
+                                                <option value="TERMINADO">Terminado</option>
 
                                             </select>
                                         </div>
