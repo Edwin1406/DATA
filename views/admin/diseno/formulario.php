@@ -87,36 +87,61 @@
           </div>
       </div>
   <?php endif; ?>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const btnEliminar = document.getElementById('btnEliminarPDF');
 
-  <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const btnEliminar = document.getElementById('btnEliminarPDF');
-          if (btnEliminar) {
-              btnEliminar.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  if (!confirm('¿Estás seguro de que deseas eliminar este PDF?')) return;
+    if (btnEliminar) {
+      btnEliminar.addEventListener('click', function (e) {
+        e.preventDefault();
 
-                  const idDiseno = this.dataset.id;
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'No podrás recuperar este archivo después de eliminarlo.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const idDiseno = this.dataset.id;
 
-                  fetch('/admin/diseno/eliminarPDF', {
-                          method: 'POST',
-                          headers: {
-                              'Content-Type': 'application/x-www-form-urlencoded'
-                          },
-                          body: 'id=' + encodeURIComponent(idDiseno)
-                      })
-                      .then(res => res.json())
-                      .then(data => {
-                          if (data.success) {
-                              document.getElementById('pdf-actual').innerHTML = '<p>PDF eliminado correctamente.</p>';
-                          } else {
-                              alert(data.error || 'Ocurrió un error.');
-                          }
-                      })
-                      .catch(err => {
-                          console.error('Error AJAX:', err);
-                      });
+            fetch('/admin/diseno/eliminarPDF', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: 'id=' + encodeURIComponent(idDiseno)
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: '¡Eliminado!',
+                    text: 'El archivo PDF ha sido eliminado correctamente.'
+                  });
+
+                  document.getElementById('pdf-actual').innerHTML = '<p>PDF eliminado correctamente.</p>';
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'Ocurrió un error al eliminar el archivo.'
+                  });
+                }
+              })
+              .catch(err => {
+                console.error('Error AJAX:', err);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Error en la solicitud. Intenta de nuevo.'
+                });
               });
           }
+        });
       });
-  </script>
+    }
+  });
+</script>
