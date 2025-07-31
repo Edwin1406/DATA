@@ -94,9 +94,9 @@
                                     
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/editarConsumo?id=<?= $consumo->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <form action="/admin/eliminarConsumo" method="POST">
-                                             <input type="hidden" name="id" value="<?= $consumo->id ?>">
+                                         <a href="/admin/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <form action="/admin/eliminarDiseno" method="POST">
+                                             <input type="hidden" name="id" value="<?= $diseno->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
