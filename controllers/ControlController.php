@@ -124,7 +124,7 @@ class ControlController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        $router->render('admin/control/doblado/control_doblado', [
+        $router->render('admin/control/doblado/consumo_doblado', [
             'titulo' => 'Control Doblado',
             'nombre' => $nombre,
             'email' => $email
