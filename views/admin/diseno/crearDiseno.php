@@ -200,15 +200,21 @@
     );
 
     // Filepond: Basic - FORMULARIO DE PDF
-    FilePond.create(document.querySelector('.basic-filepond'), {
-        allowImagePreview: false,
-        allowMultiple: false,
-        allowFileEncode: false,
-        required: false,
-        acceptedFileTypes: ['application/pdf'], // 👈 Aceptar solo archivos PDF
-        labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite PDF',
-        fileValidateTypeLabelExpectedTypes: 'Formato esperado: .pdf'
-    });
+   FilePond.create(document.querySelector('.basic-filepond'), {
+    allowImagePreview: false,
+    allowMultiple: false,
+    allowFileEncode: false,
+    required: false,
+    acceptedFileTypes: ['application/pdf'],
+    labelFileTypeNotAllowed: 'Archivo inválido. Solo se permite PDF',
+    fileValidateTypeLabelExpectedTypes: 'Formato esperado: .pdf',
+    
+    // 👇 Forzar tipo MIME detectado
+    fileValidateTypeDetectType: (source, type) => new Promise((resolve) => {
+        resolve('application/pdf');
+    })
+});
+
 
     // Filepond: Multiple Files
     FilePond.create(document.querySelector('.multiple-files-filepond'), {
