@@ -140,7 +140,8 @@ $router->post('/admin/eliminarDiseno', [DiseñoController::class, 'eliminarDisen
 $router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 $router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 
-// eliminar diseño
+// eliminar consumo doblado
+$router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'eliminarConsumoDoblado']);
 
 
 

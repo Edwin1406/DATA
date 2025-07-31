@@ -99,8 +99,8 @@
                                  <td>
                                      <div class="d-flex gap-1">
                                          <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                                         <form action="/admin/eliminarConsumoTroquel" method="POST">
-                                             <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                         <form action="/admin/eliminarConsumoDoblado" method="POST">
+                                             <input type="hidden" name="id" value="<?= $control_dob->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>

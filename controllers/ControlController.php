@@ -191,6 +191,31 @@ class ControlController
     }
 
 
+    // eliminar consumo doblado
+    public static function eliminarConsumoDoblado()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $control_doblado = ControlDoblado::find($id);
+            if ($control_doblado) {
+                $resultado = $control_doblado->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/control/doblado/tablaConsumoDoblado?exito=1');
+                } else {
+                    header('Location: /admin/control/doblado/tablaConsumoDoblado?error=1');
+                }
+            } else {
+                header('Location: /admin/control/doblado/tablaConsumoDoblado?error=1');
+            }
+        }
+    }
+
+
 
 
 
