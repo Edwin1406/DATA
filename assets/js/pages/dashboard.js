@@ -128,50 +128,62 @@ async function ApiConsumo3() {
         console.log(e);
     }
 }
+
+
+
+
+
+
 function barchat(datos) {
-	// Agrupar por tipo_maquina y sumar total_general
+	// Agrupar datos por máquina y por mes
 	const agrupado = {};
 
 	datos.forEach(item => {
-		const tipo = item.tipo_maquina.trim();
+		const maquina = item.tipo_maquina.trim();
+		const fecha = new Date(item.created_at);
+		const mes = fecha.toLocaleString('default', { month: 'short' }); // ej: "Jan", "Feb", etc.
 		const total = parseFloat(item.total_general);
 
-		if (agrupado[tipo]) {
-			agrupado[tipo] += total;
-		} else {
-			agrupado[tipo] = total;
-		}
+		if (!agrupado[maquina]) agrupado[maquina] = {};
+		if (!agrupado[maquina][mes]) agrupado[maquina][mes] = 0;
+
+		agrupado[maquina][mes] += total;
 	});
 
-	// Convertir a array y ordenar
-	const agrupadoArray = Object.entries(agrupado).map(([tipo, total]) => ({ tipo, total }));
-	agrupadoArray.sort((a, b) => b.total - a.total);
+	// Obtener todos los meses únicos presentes en los datos (orden alfabético)
+	const todosMeses = Array.from(
+		new Set(datos.map(d => new Date(d.created_at).toLocaleString('default', { month: 'short' })))
+	);
 
-	// Tomar top 5
-	const top5 = agrupadoArray.slice(0, 5);
+	// Ordenar meses (puedes ajustar si prefieres orden real de meses del año)
+	const mesesOrden = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	const mesesFiltrados = mesesOrden.filter(m => todosMeses.includes(m));
 
-	// Generar series individuales por máquina
-	const series = top5.map((item, index) => ({
-		name: item.tipo,
-		data: [item.total]
-	}));
+	// Construir series por máquina
+	const series = Object.entries(agrupado).map(([maquina, totalesPorMes]) => {
+		const data = mesesFiltrados.map(mes => totalesPorMes[mes] || 0);
+		return {
+			name: maquina,
+			data: data
+		};
+	});
 
-	// Colores distintos por serie
-	const colores = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'];
+	// Paleta de colores (puedes agregar más si hay más máquinas)
+	const colores = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#3F51B5', '#D4526E'];
 
-	// Configuración del gráfico
-	var barOptions = {
+	// Opciones del gráfico
+	const barOptions = {
 		series: series,
 		chart: {
-			type: "bar",
-			height: 350,
+			type: 'bar',
+			height: 400,
 			stacked: false
 		},
 		plotOptions: {
 			bar: {
 				horizontal: false,
-				columnWidth: "55%",
-				endingShape: "rounded"
+				columnWidth: '55%',
+				endingShape: 'rounded'
 			}
 		},
 		colors: colores,
@@ -179,28 +191,25 @@ function barchat(datos) {
 		stroke: {
 			show: true,
 			width: 2,
-			colors: ["transparent"]
+			colors: ['transparent']
 		},
 		xaxis: {
-			categories: ['Máquinas'] // Solo una categoría, ya que cada máquina es una serie
+			categories: mesesFiltrados
 		},
 		yaxis: {
-			title: { text: "Total General" }
+			title: { text: 'Total General' }
 		},
 		tooltip: {
 			y: {
-				formatter: function (val) {
-					return val.toFixed(2);
-				}
+				formatter: val => val.toFixed(2)
 			}
 		}
 	};
 
-	var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
-	bar.render();
+	// Renderizar gráfico
+	var chart = new ApexCharts(document.querySelector("#bar"), barOptions);
+	chart.render();
 }
-
-
 
 
 
