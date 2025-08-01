@@ -33,7 +33,7 @@ class GraficasController
         }
 
         // Lógica para obtener los datos de la gráfica
-        $datos = Consumo_general::all('DESC');
+        $datos = Consumo_general::all('ASC');
 
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
