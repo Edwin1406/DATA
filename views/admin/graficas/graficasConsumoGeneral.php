@@ -1,139 +1,426 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consumo por Máquina</title>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #eef4ff;
-      padding: 30px;
-      font-family: Arial, sans-serif;
-    }
-    h2 {
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 25px;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TÍTULO -->
-  <div class="container mb-4">
-    <h2>Consumo General por Máquina</h2>
-  </div>
-
-  <!-- FORMULARIO DE FILTRO -->
-  <div class="container mb-5">
-    <form id="formFiltroMaquinas" class="row g-3 align-items-end">
-      <div class="col-md-4">
-        <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
-        <input type="date" class="form-control" id="inputFechaInicio" required>
-      </div>
-      <div class="col-md-4">
-        <label for="inputFechaFin" class="form-label">Fecha Fin</label>
-        <input type="date" class="form-control" id="inputFechaFin" required>
-      </div>
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-      </div>
-    </form>
-  </div>
-
-  <!-- GRÁFICA DE MÁQUINAS -->
-  <div class="container">
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <div id="graficoConsumoMaquinas"></div>
-      </div>
+<!-- 
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header> -->
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com') { ?>
+    <div class="page-heading">
+        <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
-  </div>
 
-  <!-- SCRIPT JS -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
-      let graficoMaquinas = null;
+  <!-- Filtro por Fecha -->
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Filtrar por Fecha</h4>
+            </div>
+            <div class="card-body">
+                <form id="filtroFechas">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaFin" class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control" id="fechaFin" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-      function filtrarPorFechas(datos, inicio, fin) {
-        const desde = new Date(inicio);
-        const hasta = new Date(fin);
-        return datos.filter(item => {
-          const fecha = new Date(item.created_at);
-          return fecha >= desde && fecha <= hasta;
+<!-- Gráfica ApexChart -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Consumo General por Máquina</h4>
+            </div>
+            <div class="card-body">
+                <div id="chart-profile-visit"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const chartContainer = document.querySelector("#chart-profile-visit");
+    let chart = null;
+
+    // Función para filtrar por rango de fechas
+    function filtrarPorFechas(data, inicio, fin) {
+        const start = new Date(inicio);
+        const end = new Date(fin);
+        return data.filter(item => {
+            const fecha = new Date(item.created_at);
+            return fecha >= start && fecha <= end;
         });
-      }
+    }
 
-      function agruparPorTipo(datos) {
-        const agrupado = {};
-        datos.forEach(item => {
-          const tipo = item.tipo_maquina.trim();
-          const total = parseFloat(item.total_general);
-          agrupado[tipo] = (agrupado[tipo] || 0) + total;
+    // Agrupar totales por tipo de máquina
+    function procesarDatos(data) {
+        const resumen = {};
+
+        data.forEach(item => {
+            const tipo = item.tipo_maquina.trim();
+            const total = parseFloat(item.total_general);
+            resumen[tipo] = (resumen[tipo] || 0) + total;
         });
 
         return {
-          etiquetas: Object.keys(agrupado),
-          valores: Object.values(agrupado)
+            categorias: Object.keys(resumen),
+            valores: Object.values(resumen)
         };
-      }
+    }
 
-      async function cargarDatos(fechaInicio = null, fechaFin = null) {
+    // Cargar los datos desde la API y renderizar la gráfica
+    async function cargarDatos(fechaInicio = null, fechaFin = null) {
         try {
-          const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-          const datos = await res.json();
+            const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+            const data = await res.json();
 
-          let datosFiltrados = datos;
-          if (fechaInicio && fechaFin) {
-            datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
-          }
+            let datosFiltrados = data;
+            if (fechaInicio && fechaFin) {
+                datosFiltrados = filtrarPorFechas(data, fechaInicio, fechaFin);
+            }
 
-          const { etiquetas, valores } = agruparPorTipo(datosFiltrados);
+            const { categorias, valores } = procesarDatos(datosFiltrados);
 
-          const opciones = {
-            chart: {
-              type: "bar",
-              height: 400
-            },
-            series: [{
-              name: "Consumo (Total General)",
-              data: valores
-            }],
-            xaxis: {
-              categories: etiquetas,
-              labels: { rotate: -45 }
-            },
-            dataLabels: {
-              enabled: true
-            },
-            colors: ['#00BFFF']
-          };
+            const options = {
+                chart: {
+                    type: "bar",
+                    height: 350
+                },
+                series: [{
+                    name: "Total General",
+                    data: valores
+                }],
+                xaxis: {
+                    categories: categorias
+                },
+                colors: ['#3B82F6']
+            };
 
-          // Destruir gráfico anterior
-          if (graficoMaquinas) graficoMaquinas.destroy();
+            // ⚠️ Eliminar gráfico anterior si ya existe
+            if (chart) {
+                chart.destroy();
+            }
 
-          graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
-          graficoMaquinas.render();
+            chart = new ApexCharts(chartContainer, options);
+            chart.render();
 
         } catch (error) {
-          console.error("Error al cargar los datos:", error);
+            console.error("Error al cargar datos de la API:", error);
         }
-      }
+    }
 
-      // Evento formulario
-      document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+    // Evento del formulario de filtrado
+    document.getElementById("filtroFechas").addEventListener("submit", e => {
         e.preventDefault();
-        const fechaInicio = document.getElementById("inputFechaInicio").value;
-        const fechaFin = document.getElementById("inputFechaFin").value;
+        const fechaInicio = document.getElementById("fechaInicio").value;
+        const fechaFin = document.getElementById("fechaFin").value;
         cargarDatos(fechaInicio, fechaFin);
-      });
-
-      // Carga inicial sin filtro
-      cargarDatos();
     });
-  </script>
-</body>
-</html>
+
+    // Carga inicial sin filtros
+    cargarDatos();
+});
+</script>
+
+
+
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12 col-lg-9">
+                <!-- Profile Statistics -->
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon purple">
+                                            <i class="iconly-boldShow"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Usuarios Conectados</h6>
+                                        <h6 class="font-extrabold mb-0"><?php echo $usuariosConectados; ?></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon blue">
+                                            <i class="iconly-boldProfile"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Followers</h6>
+                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon blue">
+                                            <i class="iconly-boldProfile"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Followers</h6>
+                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon green">
+                                            <i class="iconly-boldAdd-User"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Following</h6>
+                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon red">
+                                            <i class="iconly-boldBookmark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Troquel</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <button class="btn btn-primary  color:white"><a href="/admin/graficas/graficasConsumoGeneral">Ver Gráficas</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Profile Statistics -->
+                <!-- filtrador de fechas -->
+
+
+
+
+                <!-- End of Profile Visit -->
+
+                <!-- Latest Comments -->
+                <div class="row">
+                    <div class="col-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Profile Visit</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-primary" width="32" height="32" fill="blue"
+                                                style="width:10px">
+                                                <use
+                                                    xlink:href="/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">Europe</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">862</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-europe"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-success" width="32" height="32" fill="blue"
+                                                style="width:10px">
+                                                <use
+                                                    xlink:href="/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">America</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">375</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-america"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-danger" width="32" height="32" fill="blue"
+                                                style="width:10px">
+                                                <use
+                                                    xlink:href="/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">Indonesia</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">1025</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-indonesia"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Latest Comments</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Comment</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-md">
+                                                            <img src="/assets/images/faces/5.jpg">
+                                                        </div>
+                                                        <p class="font-bold ms-3 mb-0">Si Cantik</p>
+                                                    </div>
+                                                </td>
+                                                <td class="col-auto">
+                                                    <p class=" mb-0">Congratulations on your graduation!</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-md">
+                                                            <img src="/assets/images/faces/2.jpg">
+                                                        </div>
+                                                        <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                                    </div>
+                                                </td>
+                                                <td class="col-auto">
+                                                    <p class=" mb-0">Wow amazing design! Can you make another
+                                                        tutorial for
+                                                        this design?</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="card text-truncate">
+                    <div class="card-body py-4 px-5">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="/assets/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-0 name ">
+                                <h5 class="font-bold"><?php echo $nombre; ?></h5>
+                                <h6 class="text-muted mb-0 .fs-6 small"><?php echo $email; ?></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Recent Messages</h4>
+                    </div>
+                    <div class="card-content pb-4">
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/4.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Hank Schrader</h5>
+                                <h6 class="text-muted mb-0">@johnducky</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/5.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Dean Winchester</h5>
+                                <h6 class="text-muted mb-0">@imdean</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/1.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">John Dodol</h5>
+                                <h6 class="text-muted mb-0">@dodoljohn</h6>
+                            </div>
+                        </div>
+                        <div class="px-4">
+                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
+                                Conversation</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Visitors Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-visitors-profile"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<?php } else { ?>
+    <div class="page-heading">
+        <h3>Bienvenido <?php echo $nombre; ?></h3>
+        <p class="text-subtitle text-muted"><?php echo $email; ?></p>
+    </div>
+
+<?php } ?>
