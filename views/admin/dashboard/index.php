@@ -9,8 +9,7 @@
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 <!-- Ejemplo para Iconly si estás usando esa librería -->
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <!-- FontAwesome 6 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
