@@ -9,7 +9,7 @@
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
@@ -53,24 +53,24 @@
 
 
 
-    <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl"> <!-- Puedes ajustar el tamaño -->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalTarjetasLabel">Detalle de Consumo</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row" id="contenedor-tarjetas"></div> <!-- Aquí se cargan las tarjetas -->
+                    <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl"> <!-- Puedes ajustar el tamaño -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTarjetasLabel">Detalle de Consumo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" id="contenedor-tarjetas"></div> <!-- Aquí se cargan las tarjetas -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
 
                     <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card" id="abrirModalTarjetas"  style="cursor: pointer;">
+                        <div class="card" id="abrirModalTarjetas" style="cursor: pointer;">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -146,58 +146,164 @@
                 <!-- End of Profile Visit -->
 
                 <!-- Latest Comments -->
-                <div class="row">
-                   
-                    <div class="col-12 col-xl-8">
+
+                <!-- Contenedor -->
+                <div class="row mt-4">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Latest Comments</h4>
+                                <h4>Consumo Diario por Máquina</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-lg">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Comment</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="/assets/images/faces/5.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Congratulations on your graduation!</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="/assets/images/faces/2.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Wow amazing design! Can you make another
-                                                        tutorial for
-                                                        this design?</p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <form id="formFiltroMaquinas" class="mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputFechaInicio">Fecha Inicio</label>
+                                            <input type="date" class="form-control" id="inputFechaInicio" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputFechaFin">Fecha Fin</label>
+                                            <input type="date" class="form-control" id="inputFechaFin" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                                </form>
+
+                                <!-- Gráficas pequeñas -->
+                                <div id="contenedorMiniGraficos" class="row gy-4"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- ApexCharts -->
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const contenedor = document.querySelector("#contenedorMiniGraficos");
+
+                        function filtrarPorFechas(datos, inicio, fin) {
+                            const desde = new Date(inicio);
+                            const hasta = new Date(fin);
+                            return datos.filter(item => {
+                                const fecha = new Date(item.created_at);
+                                return fecha >= desde && fecha <= hasta;
+                            });
+                        }
+
+                        function agruparDatos(datos) {
+                            const agrupado = {};
+
+                            datos.forEach(item => {
+                                const maquina = item.tipo_maquina.trim();
+                                const fecha = new Date(item.created_at).toISOString().split('T')[0];
+                                const total = parseFloat(item.total_general);
+
+                                if (!agrupado[maquina]) agrupado[maquina] = {
+                                    total: 0,
+                                    fechas: {}
+                                };
+
+                                agrupado[maquina].total += total;
+                                agrupado[maquina].fechas[fecha] = (agrupado[maquina].fechas[fecha] || 0) + total;
+                            });
+
+                            return agrupado;
+                        }
+
+                        function generarColor(index) {
+                            const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019'];
+                            return colores[index % colores.length];
+                        }
+
+                        async function cargarDatos(fechaInicio = null, fechaFin = null) {
+                            try {
+                                const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+                                const datos = await res.json();
+
+                                let datosFiltrados = datos;
+                                if (fechaInicio && fechaFin) {
+                                    datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+                                }
+
+                                const agrupado = agruparDatos(datosFiltrados);
+                                contenedor.innerHTML = ""; // Limpiar gráficos anteriores
+
+                                let index = 0;
+                                for (const [maquina, {
+                                        total,
+                                        fechas
+                                    }] of Object.entries(agrupado)) {
+                                    const color = generarColor(index);
+                                    const fechasOrdenadas = Object.entries(fechas)
+                                        .sort(([a], [b]) => new Date(a) - new Date(b))
+                                        .map(([x, y]) => ({
+                                            x,
+                                            y
+                                        }));
+
+                                    // Crear contenedor individual
+                                    const col = document.createElement("div");
+                                    col.className = "col-md-4";
+                                    col.innerHTML = `
+                    <div class="d-flex align-items-center mb-2">
+                        <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;margin-right:8px;"></span>
+                        <strong>${maquina}</strong>
+                        <span class="ms-auto">${total.toFixed(0)}</span>
+                    </div>
+                    <div id="grafico_${index}"></div>
+                `;
+                                    contenedor.appendChild(col);
+
+                                    // Crear gráfico individual
+                                    const opciones = {
+                                        chart: {
+                                            type: "area",
+                                            height: 100,
+                                            sparkline: {
+                                                enabled: true
+                                            }
+                                        },
+                                        series: [{
+                                            name: maquina,
+                                            data: fechasOrdenadas
+                                        }],
+                                        stroke: {
+                                            curve: 'smooth',
+                                            width: 2
+                                        },
+                                        colors: [color],
+                                        tooltip: {
+                                            x: {
+                                                format: 'dd/MM/yyyy'
+                                            }
+                                        }
+                                    };
+
+                                    const chart = new ApexCharts(document.querySelector(`#grafico_${index}`), opciones);
+                                    chart.render();
+                                    index++;
+                                }
+
+                            } catch (error) {
+                                console.error("Error al cargar los datos:", error);
+                            }
+                        }
+
+                        // Manejar formulario
+                        document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+                            e.preventDefault();
+                            const fechaInicio = document.getElementById("inputFechaInicio").value;
+                            const fechaFin = document.getElementById("inputFechaFin").value;
+                            cargarDatos(fechaInicio, fechaFin);
+                        });
+
+                        // Cargar inicialmente
+                        cargarDatos();
+                    });
+                </script>
+
             </div>
             <div class="col-12 col-lg-3">
                 <div class="card text-truncate">
