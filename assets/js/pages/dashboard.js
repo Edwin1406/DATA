@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 
+
+function renderTarjetas(data) {
+
+
+
 const iconosMaquinas = {
     "TROQUEL": { icono: "iconly-boldProfile", color: "success" },
     "PRE-PRINTER": { icono: "iconly-boldPaper", color: "info" },
@@ -47,11 +52,6 @@ const iconosMaquinas = {
     "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "warning" },
     "DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "secondary" }
 };
-
-
-
-function renderTarjetas(data) {
-
 
 
 
@@ -75,6 +75,7 @@ function renderTarjetas(data) {
 
         // Generar tarjetas con íconos y colores personalizados
         for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
+            const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "gray" };
 			const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "secondary" };
 
 
