@@ -56,7 +56,7 @@ var optionsEurope = {
 			show:false,
 		},
 	},
-	colors: ['#5350e9'],
+	colors: ['#cc631dff'],
 	stroke: {
 		width: 2,
 	},
