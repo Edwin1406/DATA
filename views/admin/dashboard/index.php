@@ -17,10 +17,10 @@
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
-                <!-- Profile Statistics -->
+                <!-- Profile Statistics
                 <div class="row" id="contenedor-tarjetas">
 
-                </div>
+                </div> -->
                 <!-- End of Profile Statistics -->
                 <!-- filtrador de fechas -->
 
@@ -294,9 +294,11 @@
 
 
 
-<div class="col-12 col-lg-9">
+
     <!-- Profile Statistics -->
     <div class="row" id="contenedor-tarjetas">
 
     </div>
-</div>
+
+
+>
