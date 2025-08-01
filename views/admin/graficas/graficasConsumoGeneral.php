@@ -110,31 +110,7 @@
 
 
 
-
-
-<!-- Filtro por fechas -->
-<div class="card">
-    <div class="card-header">
-        <h4>Filtrar por Fechas</h4>
-    </div>
-    <div class="card-body">
-        <form id="formFiltroMaquinas">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
-                    <input type="date" class="form-control" id="inputFechaInicio" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="inputFechaFin" class="form-label">Fecha Fin</label>
-                    <input type="date" class="form-control" id="inputFechaFin" required>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </form>
-    </div>
-</div>
-
-<!-- Gráfico -->
+<!-- Contenedor -->
 <div class="row mt-4">
     <div class="col-12">
         <div class="card">
@@ -142,116 +118,140 @@
                 <h4>Consumo Diario por Máquina</h4>
             </div>
             <div class="card-body">
-                <div id="graficoConsumoMaquinas"></div>
+                <form id="formFiltroMaquinas" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputFechaInicio">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="inputFechaInicio" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputFechaFin">Fecha Fin</label>
+                            <input type="date" class="form-control" id="inputFechaFin" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+
+                <!-- Gráficas pequeñas -->
+                <div id="contenedorMiniGraficos" class="row gy-4"></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Script con ApexCharts -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+<!-- ApexCharts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
-        let graficoMaquinas = null;
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.querySelector("#contenedorMiniGraficos");
 
-        function filtrarPorFechas(datos, inicio, fin) {
-            const desde = new Date(inicio);
-            const hasta = new Date(fin);
-            return datos.filter(item => {
-                const fecha = new Date(item.created_at);
-                return fecha >= desde && fecha <= hasta;
-            });
-        }
+    function filtrarPorFechas(datos, inicio, fin) {
+        const desde = new Date(inicio);
+        const hasta = new Date(fin);
+        return datos.filter(item => {
+            const fecha = new Date(item.created_at);
+            return fecha >= desde && fecha <= hasta;
+        });
+    }
 
-        function agruparConsumoPorDiaYMaquina(datos) {
-            const seriesPorMaquina = {};
+    function agruparDatos(datos) {
+        const agrupado = {};
 
-            datos.forEach(item => {
-                const tipo = item.tipo_maquina.trim();
-                const fecha = new Date(item.created_at).toISOString().split('T')[0]; // YYYY-MM-DD
-                const total = parseFloat(item.total_general);
+        datos.forEach(item => {
+            const maquina = item.tipo_maquina.trim();
+            const fecha = new Date(item.created_at).toISOString().split('T')[0];
+            const total = parseFloat(item.total_general);
 
-                if (!seriesPorMaquina[tipo]) seriesPorMaquina[tipo] = {};
-                seriesPorMaquina[tipo][fecha] = (seriesPorMaquina[tipo][fecha] || 0) + total;
-            });
+            if (!agrupado[maquina]) agrupado[maquina] = { total: 0, fechas: {} };
 
-            return Object.entries(seriesPorMaquina).map(([maquina, fechas]) => {
-                const datosOrdenados = Object.entries(fechas)
-                    .sort(([f1], [f2]) => new Date(f1) - new Date(f2))
-                    .map(([fecha, valor]) => ({ x: fecha, y: valor }));
+            agrupado[maquina].total += total;
+            agrupado[maquina].fechas[fecha] = (agrupado[maquina].fechas[fecha] || 0) + total;
+        });
 
-                return {
-                    name: maquina,
-                    data: datosOrdenados
-                };
-            });
-        }
+        return agrupado;
+    }
 
-        async function cargarDatos(fechaInicio = null, fechaFin = null) {
-            try {
-                const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-                const datos = await res.json();
+    function generarColor(index) {
+        const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019'];
+        return colores[index % colores.length];
+    }
 
-                let datosFiltrados = datos;
-                if (fechaInicio && fechaFin) {
-                    datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
-                }
+    async function cargarDatos(fechaInicio = null, fechaFin = null) {
+        try {
+            const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+            const datos = await res.json();
 
-                const series = agruparConsumoPorDiaYMaquina(datosFiltrados);
+            let datosFiltrados = datos;
+            if (fechaInicio && fechaFin) {
+                datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+            }
 
+            const agrupado = agruparDatos(datosFiltrados);
+            contenedor.innerHTML = ""; // Limpiar gráficos anteriores
+
+            let index = 0;
+            for (const [maquina, { total, fechas }] of Object.entries(agrupado)) {
+                const color = generarColor(index);
+                const fechasOrdenadas = Object.entries(fechas)
+                    .sort(([a], [b]) => new Date(a) - new Date(b))
+                    .map(([x, y]) => ({ x, y }));
+
+                // Crear contenedor individual
+                const col = document.createElement("div");
+                col.className = "col-md-4";
+                col.innerHTML = `
+                    <div class="d-flex align-items-center mb-2">
+                        <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;margin-right:8px;"></span>
+                        <strong>${maquina}</strong>
+                        <span class="ms-auto">${total.toFixed(0)}</span>
+                    </div>
+                    <div id="grafico_${index}"></div>
+                `;
+                contenedor.appendChild(col);
+
+                // Crear gráfico individual
                 const opciones = {
                     chart: {
                         type: "area",
-                        height: 350,
-                        stacked: false,
-                        toolbar: { show: false },
+                        height: 100,
                         sparkline: { enabled: true }
                     },
-                    series: series,
+                    series: [{
+                        name: maquina,
+                        data: fechasOrdenadas
+                    }],
                     stroke: {
                         curve: 'smooth',
                         width: 2
                     },
-                    xaxis: {
-                        type: 'datetime',
-                        labels: {
-                            format: 'dd/MM',
-                            style: { fontSize: '12px' }
-                        }
-                    },
+                    colors: [color],
                     tooltip: {
-                        x: {
-                            format: 'dd/MM/yyyy'
-                        }
-                    },
-                    colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
-                    dataLabels: { enabled: false },
-                    legend: {
-                        position: 'bottom'
+                        x: { format: 'dd/MM/yyyy' }
                     }
                 };
 
-                if (graficoMaquinas) graficoMaquinas.destroy();
-                graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
-                graficoMaquinas.render();
-
-            } catch (error) {
-                console.error("Error al cargar los datos:", error);
+                const chart = new ApexCharts(document.querySelector(`#grafico_${index}`), opciones);
+                chart.render();
+                index++;
             }
+
+        } catch (error) {
+            console.error("Error al cargar los datos:", error);
         }
+    }
 
-        // Manejo del formulario
-        document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
-            e.preventDefault();
-            const fechaInicio = document.getElementById("inputFechaInicio").value;
-            const fechaFin = document.getElementById("inputFechaFin").value;
-            cargarDatos(fechaInicio, fechaFin);
-        });
-
-        // Carga inicial sin filtros
-        cargarDatos();
+    // Manejar formulario
+    document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+        e.preventDefault();
+        const fechaInicio = document.getElementById("inputFechaInicio").value;
+        const fechaFin = document.getElementById("inputFechaFin").value;
+        cargarDatos(fechaInicio, fechaFin);
     });
+
+    // Cargar inicialmente
+    cargarDatos();
+});
 </script>
 
 
