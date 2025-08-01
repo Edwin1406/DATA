@@ -33,21 +33,21 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 
-  const iconosMaquinas = {
-        "TROQUEL": { icono: "iconly-boldProfile", color: "blue" },
-        "PRE-PRINTER": { icono: "iconly-boldPaper", color: "green" },
-        "GUILLOTINA LAMINA": { icono: "iconly-boldPrinter", color: "purple" },
-        "CORRUGADOR": { icono: "iconly-boldBookmark", color: "red" },
-		"FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "orange" },
-		"MICRO": { icono: "iconly-boldDocument", color: "pink" },
-		"EMPAQUE": { icono: "iconly-boldPrinter", color: "teal" },
-		"DOBLADO": { icono: "iconly-boldPrinter", color: "cyan" },
-		"BODEGA": { icono: "iconly-boldPaper", color: "brown" },
-		"CONVERTIDOR": { icono: "iconly-boldCut", color: "gray" },
-		"DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "yellow" },
-		"DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "gray" }
+const iconosMaquinas = {
+    "TROQUEL": { icono: "iconly-boldProfile", color: "success" },
+    "PRE-PRINTER": { icono: "iconly-boldPaper", color: "info" },
+    "GUILLOTINA LAMINA": { icono: "iconly-boldDocument", color: "primary" },
+    "CORRUGADOR": { icono: "iconly-boldBookmark", color: "danger" },
+    "FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "warning" },
+    "MICRO": { icono: "iconly-boldDocument", color: "secondary" },
+    "EMPAQUE": { icono: "iconly-boldPrinter", color: "success" },
+    "DOBLADO": { icono: "iconly-boldPrinter", color: "primary" },
+    "BODEGA": { icono: "iconly-boldPaper", color: "dark" },
+    "CONVERTIDOR": { icono: "iconly-boldCut", color: "secondary" },
+    "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "warning" },
+    "DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "secondary" }
+};
 
-    };
 
 
 function renderTarjetas(data) {
