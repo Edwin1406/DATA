@@ -33,26 +33,24 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 
+const iconosMaquinas = {
+    "TROQUEL": { icono: "iconly-boldScissor", color: "danger" },               // Corte preciso
+    "PRE-PRINTER": { icono: "iconly-boldEditSquare", color: "info" },         // Preparación/impresión inicial
+    "GUILLOTINA LAMINA": { icono: "iconly-boldDocument", color: "primary" },  // Corte de hojas
+    "CORRUGADOR": { icono: "iconly-boldGraph", color: "warning" },            // Proceso estructural
+    "FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "info" },             // Impresión
+    "MICRO": { icono: "iconly-boldElement3", color: "secondary" },            // Detalles o formatos pequeños
+    "EMPAQUE": { icono: "iconly-boldBox", color: "success" },                 // Embalaje
+    "DOBLADO": { icono: "iconly-boldArrowDown2", color: "primary" },          // Transformación/flexión
+    "BODEGA": { icono: "iconly-boldHome", color: "dark" },                    // Almacenamiento
+    "CONVERTIDOR": { icono: "iconly-boldSwap", color: "secondary" },          // Transformación
+    "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaperPlus", color: "warning" }, // Separación y paso a conversión
+    "DESHOJE-PRE-PRINTER": { icono: "iconly-boldPaperDownload", color: "secondary" } // Separación antes de impresión
+};
 
 
 function renderTarjetas(data) {
 
-
-
-const iconosMaquinas = {
-    "TROQUEL": { icono: "f2b9", color: "success" },
-    "PRE-PRINTER": { icono: "iconly-boldPaper", color: "info" },
-    "GUILLOTINA LAMINA": { icono: "iconly-boldDocument", color: "primary" },
-    "CORRUGADOR": { icono: "iconly-boldBookmark", color: "danger" },
-    "FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "warning" },
-    "MICRO": { icono: "iconly-boldDocument", color: "secondary" },
-    "EMPAQUE": { icono: "iconly-boldPrinter", color: "success" },
-    "DOBLADO": { icono: "iconly-boldPrinter", color: "primary" },
-    "BODEGA": { icono: "iconly-boldPaper", color: "dark" },
-    "CONVERTIDOR": { icono: "iconly-boldCut", color: "secondary" },
-    "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "warning" },
-    "DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "secondary" }
-};
 
 
 
@@ -75,8 +73,8 @@ const iconosMaquinas = {
 
         // Generar tarjetas con íconos y colores personalizados
         for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
-            const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "gray" };
-			
+            const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "secondary" };
+
 
             const tarjetaHTML = `
                 <div class="col-6 col-lg-3 col-md-6">
