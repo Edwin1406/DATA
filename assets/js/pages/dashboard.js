@@ -20,53 +20,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// Llamar a la funcion ApiConsumo
 
+async function grafica() {
+	const apiConsumo = await ApiConsumo();
+	const { tipo_maquina, total_general, created_at } = apiConsumo;
 
+	// Convertir fechas a nombres cortos de meses
+	const meses = created_at.map(mes => {
+		const fecha = new Date(mes);
+		return fecha.toLocaleString('default', { month: 'short' });
+	});
 
-	async function grafica(){
-	 	const  apiConsumo = await ApiConsumo();
-		const {tipo_maquina,total_general,created_at} = apiConsumo;
-
-		// sacar los meses 
-		const meses = created_at.map(mes => {
-			const fecha = new Date(mes);
-			return fecha.toLocaleString('default', { month: 'short' });
-		});
-	
-
-		var optionsProfileVisit = {
-				annotations: {
-					position: 'back'
-				},
-				dataLabels: {
-					enabled:false
-				},
-				chart: {
-					type: 'bar',
-					height: 300
-				},
-				fill: {
-					opacity:1
-				},
-				plotOptions: {
-				},
-				series: [{
-					name: 'sales',
-					data: [9,20,30,20,10,20,30,20,10,20,30,20]
-				}],
-				colors: '#435ebe',
-				xaxis: {
-					categories: meses,
-				},
+	// Configuración del gráfico
+	var optionsProfileVisit = {
+		annotations: {
+			position: 'back'
+		},
+		dataLabels: {
+			enabled: false
+		},
+		chart: {
+			type: 'bar',
+			height: 300
+		},
+		fill: {
+			opacity: 1
+		},
+		plotOptions: {
+			bar: {
+				borderRadius: 4,
+				horizontal: false,
 			}
+		},
+		series: [{
+			name: tipo_maquina || 'Consumo',
+			data: total_general || []
+		}],
+		colors: ['#435ebe'],
+		xaxis: {
+			categories: meses,
+		}
+	};
 
+	// Renderizar el gráfico
+	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+	chartProfileVisit.render();
+}
 
-
-
-var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
-
-
-	}
-
+// Llamar a la función
+grafica();
 
 
 
