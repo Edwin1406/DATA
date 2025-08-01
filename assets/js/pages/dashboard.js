@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
 function renderTarjetas(data) {
 
 
@@ -52,7 +53,6 @@ const iconosMaquinas = {
     "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "warning" },
     "DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "secondary" }
 };
-
 
 
 
@@ -76,8 +76,7 @@ const iconosMaquinas = {
         // Generar tarjetas con íconos y colores personalizados
         for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
             const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "gray" };
-			const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "secondary" };
-
+			
 
             const tarjetaHTML = `
                 <div class="col-6 col-lg-3 col-md-6">
