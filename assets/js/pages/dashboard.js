@@ -144,7 +144,13 @@ function barchat(datos){
 			// nombre de maquinas 
 			{ name: nombresMaquinas[0], data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
 			{ name: nombresMaquinas[1], data: [76, 85, 101, 98, 87, 105, 91, 114, 94] },
-			{ name: nombresMaquinas[2], data: [35, 41, 36, 26, 45, 48, 52, 53, 41] }
+			{ name: nombresMaquinas[2], data: [35, 41, 36, 26, 45, 48, 52, 53, 41] },
+			{ name: nombresMaquinas[3], data: [26, 24, 30, 28, 27, 29, 31, 32, 30] },
+			{ name: nombresMaquinas[4], data: [55, 60, 65, 70, 75, 80, 85, 90, 95] },
+			{ name: nombresMaquinas[5], data: [40, 45, 50, 55, 60, 65, 70, 75, 80] },
+			{ name: nombresMaquinas[6], data: [20, 25, 30, 35, 40, 45, 50, 55, 60] },
+			{ name: nombresMaquinas[7], data: [15, 20, 25, 30, 35, 40, 45, 50, 55] },
+			{ name: nombresMaquinas[8], data: [10, 15, 20, 25, 30, 35, 40, 45, 50] }
 		],
     chart: { type: "bar", height: 350 },
     plotOptions: {
