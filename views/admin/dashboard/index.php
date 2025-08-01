@@ -231,63 +231,6 @@
 
 
 
-<section id="basic-modals">
-    <div class="row">
-        <div class="col-md-6 col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Basic Modal</h4>
-                </div>
-                <div class="card-body">
-
-                    <!-- Button trigger for basic modal -->
-                    <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-                        data-bs-target="#default">
-                        Launch Modal
-                    </button>
-
-                    <!--Basic Modal -->
-                    <div class="modal fade text-left" id="default" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="myModalLabel1">Basic Modal</h5>
-                                    <button type="button" class="close rounded-pill"
-                                        data-bs-dismiss="modal" aria-label="Close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-12 col-lg-9">
-                                        <!-- Profile Statistics -->
-                                        <div class="row" id="contenedor-tarjetas">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                        <i class="bx bx-x d-block d-sm-none"></i>
-                                        <span class="d-none d-sm-block">Close</span>
-                                    </button>
-                                    <button type="button" class="btn btn-primary ml-1"
-                                        data-bs-dismiss="modal">
-                                        <i class="bx bx-check d-block d-sm-none"></i>
-                                        <span class="d-none d-sm-block">Accept</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
-</section>
 
 
 <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
