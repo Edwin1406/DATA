@@ -9,31 +9,16 @@
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 
-  <!-- Filtro por Fecha -->
-<div class="row">
-    <div class="col-12 col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h4>Filtrar por Fecha</h4>
-            </div>
-            <div class="card-body">
-                <form id="filtroFechas">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="fechaInicio" class="form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="fechaInicio" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="fechaFin" class="form-label">Fecha Fin</label>
-                            <input type="date" class="form-control" id="fechaFin" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Solo un div para mostrar la gráfica -->
+<div id="chart-profile-visit"></div>
+
+<!-- Y un formulario con estos IDs -->
+<form id="filtroFechas">
+  <input type="date" id="fechaInicio" required />
+  <input type="date" id="fechaFin" required />
+  <button type="submit">Filtrar</button>
+</form>
+
 
 
 
