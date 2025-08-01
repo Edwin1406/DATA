@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     ApiConsumo();
 	ApiConsumo2();
+	ApiConsumo3();
 });
 
  async function ApiConsumo(){
