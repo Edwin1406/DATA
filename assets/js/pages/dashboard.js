@@ -129,5 +129,5 @@ var chartIndonesia = new ApexCharts(document.querySelector("#chart-indonesia"), 
 chartIndonesia.render();
 chartAmerica.render();
 chartEurope.render();
-// chartProfileVisit.render();
+chartProfileVisit.render();
 chartVisitorsProfile.render()
