@@ -17,15 +17,15 @@
                 <h4>Filtrar por Fecha</h4>
             </div>
             <div class="card-body">
-                <form id="filtroFechas">
+                <form id="formFiltroMaquinas">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="fechaInicio" class="form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="fechaInicio" required>
+                            <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="inputFechaInicio" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="fechaFin" class="form-label">Fecha Fin</label>
-                            <input type="date" class="form-control" id="fechaFin" required>
+                            <label for="inputFechaFin" class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control" id="inputFechaFin" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Filtrar</button>
@@ -43,100 +43,94 @@
                 <h4>Consumo General por Máquina</h4>
             </div>
             <div class="card-body">
-                <div id="chart-profile-visit"></div>
+                <div id="graficoConsumoMaquinas"></div>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const chartContainer = document.querySelector("#chart-profile-visit");
-    let chart = null;
+    document.addEventListener("DOMContentLoaded", () => {
+      const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
+      let graficoMaquinas = null;
 
-    // Función para filtrar por rango de fechas
-    function filtrarPorFechas(data, inicio, fin) {
-        const start = new Date(inicio);
-        const end = new Date(fin);
-        return data.filter(item => {
-            const fecha = new Date(item.created_at);
-            return fecha >= start && fecha <= end;
+      function filtrarPorFechas(datos, inicio, fin) {
+        const desde = new Date(inicio);
+        const hasta = new Date(fin);
+        return datos.filter(item => {
+          const fecha = new Date(item.created_at);
+          return fecha >= desde && fecha <= hasta;
         });
-    }
+      }
 
-    // Agrupar totales por tipo de máquina
-    function procesarDatos(data) {
-        const resumen = {};
-
-        data.forEach(item => {
-            const tipo = item.tipo_maquina.trim();
-            const total = parseFloat(item.total_general);
-            resumen[tipo] = (resumen[tipo] || 0) + total;
+      function agruparPorTipo(datos) {
+        const agrupado = {};
+        datos.forEach(item => {
+          const tipo = item.tipo_maquina.trim();
+          const total = parseFloat(item.total_general);
+          agrupado[tipo] = (agrupado[tipo] || 0) + total;
         });
 
         return {
-            categorias: Object.keys(resumen),
-            valores: Object.values(resumen)
+          etiquetas: Object.keys(agrupado),
+          valores: Object.values(agrupado)
         };
-    }
+      }
 
-    // Cargar los datos desde la API y renderizar la gráfica
-    async function cargarDatos(fechaInicio = null, fechaFin = null) {
+      async function cargarDatos(fechaInicio = null, fechaFin = null) {
         try {
-            const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-            const data = await res.json();
+          const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+          const datos = await res.json();
 
-            let datosFiltrados = data;
-            if (fechaInicio && fechaFin) {
-                datosFiltrados = filtrarPorFechas(data, fechaInicio, fechaFin);
-            }
+          let datosFiltrados = datos;
+          if (fechaInicio && fechaFin) {
+            datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+          }
 
-            const { categorias, valores } = procesarDatos(datosFiltrados);
+          const { etiquetas, valores } = agruparPorTipo(datosFiltrados);
 
-            const options = {
-                chart: {
-                    type: "bar",
-                    height: 350
-                },
-                series: [{
-                    name: "Total General",
-                    data: valores
-                }],
-                xaxis: {
-                    categories: categorias
-                },
-                colors: ['#3B82F6']
-            };
+          const opciones = {
+            chart: {
+              type: "bar",
+              height: 400
+            },
+            series: [{
+              name: "Consumo (Total General)",
+              data: valores
+            }],
+            xaxis: {
+              categories: etiquetas,
+              labels: { rotate: -45 }
+            },
+            dataLabels: {
+              enabled: true
+            },
+            colors: ['#00BFFF']
+          };
 
-            // ⚠️ Eliminar gráfico anterior si ya existe
-            if (chart) {
-                chart.destroy();
-            }
+          // Destruir gráfico anterior
+          if (graficoMaquinas) graficoMaquinas.destroy();
 
-            chart = new ApexCharts(chartContainer, options);
-            chart.render();
+          graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
+          graficoMaquinas.render();
 
         } catch (error) {
-            console.error("Error al cargar datos de la API:", error);
+          console.error("Error al cargar los datos:", error);
         }
-    }
+      }
 
-    // Evento del formulario de filtrado
-    document.getElementById("filtroFechas").addEventListener("submit", e => {
+      // Evento formulario
+      document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
         e.preventDefault();
-        const fechaInicio = document.getElementById("fechaInicio").value;
-        const fechaFin = document.getElementById("fechaFin").value;
+        const fechaInicio = document.getElementById("inputFechaInicio").value;
+        const fechaFin = document.getElementById("inputFechaFin").value;
         cargarDatos(fechaInicio, fechaFin);
+      });
+
+      // Carga inicial sin filtro
+      cargarDatos();
     });
-
-    // Carga inicial sin filtros
-    cargarDatos();
-});
-</script>
-
-
+  </script>
 
     <div class="page-content">
         <section class="row">
