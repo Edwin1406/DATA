@@ -8,7 +8,7 @@ console.log("Dashboard JS loaded");
         
         
         try {
-            const url = `${location.origin}/admin/api/pedidos?apiGraficasConsumoGeneral`;
+            const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
             const resultado = await fetch(url);
             const apipedidos = await resultado.json();
             console.log(apipedidos);
