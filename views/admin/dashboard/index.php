@@ -262,11 +262,15 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-12 col-lg-9">
-                                        <!-- Profile Statistics -->
-                                        <div class="row" id="contenedor-tarjetas">
+                                    <div class="page-content">
+                                        <section class="row">
+                                            <div class="col-12 col-lg-9">
+                                                <!-- Profile Statistics -->
+                                                <div class="row" id="contenedor-tarjetas">
 
-                                        </div>
+                                                </div>
+                                            </div>
+                                        </section>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -300,4 +304,3 @@
 
     </div>
 </div>
-
