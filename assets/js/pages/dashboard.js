@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     ApiConsumo();
 	ApiConsumo2();
+ApiConsumo3();
+
 });
 
  async function ApiConsumo(){
@@ -115,7 +117,7 @@ function renderTarjetas(data) {
 
 
 
-apiConsumo3(); // Llamar a la función para cargar las tarjetas al inicio
+ // Llamar a la función para cargar las tarjetas al inicio
 async function ApiConsumo3() {
     try {
         const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
