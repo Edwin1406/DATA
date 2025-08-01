@@ -34,18 +34,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 const iconosMaquinas = {
-    "TROQUEL": { icono: "iconly-boldScissor", color: "danger" },               // Corte preciso
-    "PRE-PRINTER": { icono: "iconly-boldEditSquare", color: "info" },         // Preparación/impresión inicial
-    "GUILLOTINA LAMINA": { icono: "iconly-boldDocument", color: "primary" },  // Corte de hojas
-    "CORRUGADOR": { icono: "iconly-boldGraph", color: "warning" },            // Proceso estructural
-    "FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "info" },             // Impresión
-    "MICRO": { icono: "iconly-boldElement3", color: "secondary" },            // Detalles o formatos pequeños
-    "EMPAQUE": { icono: "iconly-boldBox", color: "success" },                 // Embalaje
-    "DOBLADO": { icono: "iconly-boldArrowDown2", color: "primary" },          // Transformación/flexión
-    "BODEGA": { icono: "iconly-boldHome", color: "dark" },                    // Almacenamiento
-    "CONVERTIDOR": { icono: "iconly-boldSwap", color: "secondary" },          // Transformación
-    "DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaperPlus", color: "warning" }, // Separación y paso a conversión
-    "DESHOJE-PRE-PRINTER": { icono: "iconly-boldPaperDownload", color: "secondary" } // Separación antes de impresión
+    "TROQUEL": { icono: "fa-solid fa-scissors", color: "danger" },
+    "PRE-PRINTER": { icono: "fa-solid fa-print", color: "info" },
+    "GUILLOTINA LAMINA": { icono: "fa-solid fa-cut", color: "primary" },
+    "CORRUGADOR": { icono: "fa-solid fa-layer-group", color: "warning" },
+    "FLEXOGRAFICA": { icono: "fa-solid fa-pen-nib", color: "info" },
+    "MICRO": { icono: "fa-solid fa-microchip", color: "secondary" },
+    "EMPAQUE": { icono: "fa-solid fa-box", color: "success" },
+    "DOBLADO": { icono: "fa-solid fa-object-ungroup", color: "primary" },
+    "BODEGA": { icono: "fa-solid fa-warehouse", color: "dark" },
+    "CONVERTIDOR": { icono: "fa-solid fa-recycle", color: "secondary" },
+    "DESHOJE-CONVERTIDOR": { icono: "fa-solid fa-file-arrow-down", color: "warning" },
+    "DESHOJE-PRE-PRINTER": { icono: "fa-solid fa-file-pen", color: "info" }
 };
 
 
