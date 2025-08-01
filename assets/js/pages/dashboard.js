@@ -20,6 +20,20 @@ document.addEventListener("DOMContentLoaded", function() {
     } 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const card = document.getElementById("abrirModalTarjetas");
+
+    if (card) {
+        card.addEventListener("click", async () => {
+            // Llamada a tu API y renderizado
+            await ApiConsumo2();
+
+            // Mostrar el modal (requiere Bootstrap 5)
+            const modal = new bootstrap.Modal(document.getElementById('modalTarjetas'));
+            modal.show();
+        });
+    }
+});
 
 	async function ApiConsumo2() {
     try {
