@@ -128,7 +128,6 @@ async function ApiConsumo3() {
         console.log(e);
     }
 }
-
 function barchat(datos) {
 	// Agrupar por tipo_maquina y sumar total_general
 	const agrupado = {};
@@ -144,29 +143,29 @@ function barchat(datos) {
 		}
 	});
 
-	// Convertir a array y ordenar por total descendente
+	// Convertir a array y ordenar
 	const agrupadoArray = Object.entries(agrupado).map(([tipo, total]) => ({ tipo, total }));
 	agrupadoArray.sort((a, b) => b.total - a.total);
 
 	// Tomar top 5
 	const top5 = agrupadoArray.slice(0, 5);
 
-	// Preparar datos para el gráfico
-	const nombresMaquinas = top5.map(item => item.tipo);
-	const valores = top5.map(item => item.total);
+	// Generar series individuales por máquina
+	const series = top5.map((item, index) => ({
+		name: item.tipo,
+		data: [item.total]
+	}));
 
-	// Paleta de colores para las barras (puedes personalizar los hex)
+	// Colores distintos por serie
 	const colores = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'];
 
-	// Configurar gráfico
+	// Configuración del gráfico
 	var barOptions = {
-		series: [{
-			name: "Total General",
-			data: valores
-		}],
+		series: series,
 		chart: {
 			type: "bar",
-			height: 350
+			height: 350,
+			stacked: false
 		},
 		plotOptions: {
 			bar: {
@@ -183,12 +182,11 @@ function barchat(datos) {
 			colors: ["transparent"]
 		},
 		xaxis: {
-			categories: nombresMaquinas
+			categories: ['Máquinas'] // Solo una categoría, ya que cada máquina es una serie
 		},
 		yaxis: {
 			title: { text: "Total General" }
 		},
-		fill: { opacity: 1 },
 		tooltip: {
 			y: {
 				formatter: function (val) {
@@ -201,8 +199,6 @@ function barchat(datos) {
 	var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
 	bar.render();
 }
-
-
 
 
 
