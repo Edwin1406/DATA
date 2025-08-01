@@ -236,7 +236,7 @@
 
 <section id="basic-modals">
     <div class="row">
-        <div class="col-md-6 col-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Basic Modal</h4>
