@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Followers</h6>
+                                        <h6 class="text-muted font-semibold">CONSUMO GENERAL</h6>
                                         <h6 class="font-extrabold mb-0">183.000</h6>
                                     </div>
                                 </div>
