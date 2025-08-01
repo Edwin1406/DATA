@@ -123,7 +123,7 @@ async function ApiConsumo3() {
         const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
         const resultado = await fetch(url);
         const datos = await resultado.json();
-        renderTarjetas(datos);
+        barchat(datos);
     } catch (e) {
         console.log(e);
     }
