@@ -1,18 +1,16 @@
+document.addEventListener("DOMContentLoaded", function() {
+    grafica();
+});
 
-
-
-console.log("Dashboard JS loaded");
-
-
- async function ApiPedidos(){
+ async function ApiConsumo(){
         
         
         try {
             const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
             const resultado = await fetch(url);
-            const apipedidos = await resultado.json();
-            console.log(apipedidos);
-            return apipedidos
+            const ApiConsumo = await resultado.json();
+            console.log(ApiConsumo);
+            return ApiConsumo
         } catch (e) {
             console.log(e);
                 
@@ -20,9 +18,22 @@ console.log("Dashboard JS loaded");
     } 
 
 
-	// Llamar a la funcion ApiPedidos
-	ApiPedidos();
+	// Llamar a la funcion ApiConsumo
 
+
+
+	async function grafica(){
+		const apiConsumo = await ApiConsumo();
+
+
+
+		console.log(apiConsumo);
+
+
+
+
+
+	}
 
 
 
