@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 }
 
-renderTarjetas(ApiConsumo()); // Llama a la función con los datos de la API
 
 
 	// Llamar a la funcion ApiConsumo
