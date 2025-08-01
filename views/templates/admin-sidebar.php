@@ -18,11 +18,11 @@
 <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="/assets/js/pages/dashboard.js"></script>
+<!-- <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+<script src="/assets/js/pages/dashboard.js"></script> -->
 <?php
 $currentPath = $_SERVER['REQUEST_URI'];
-if (strpos($currentPath, '/admin/index') !== false) {
+if (strpos($currentPath, '/admin/index') !== false || strpos($currentPath, '/admin/graficas/graficasConsumoGeneral') !== false || strpos($currentPath, '/admin/graficas/graficasDoblado') !== false) {
     echo '<script src="/assets/vendors/apexcharts/apexcharts.js"></script>';
     echo '<script src="/assets/js/pages/dashboard.js"></script>';
 }
