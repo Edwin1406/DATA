@@ -81,19 +81,31 @@ grafica();
 
 
 
-
-
 async function grafica2() {
-	let apiConsumo = await ApiConsumo(); // Obtener datos desde API
+	let apiConsumo = await ApiConsumo();
 
-	// Extraer etiquetas (máquinas) y valores (totales)
-	let maquinas = apiConsumo.map(item => item.tipo_maquina);
-	let totales = apiConsumo.map(item => parseFloat(item.total_general));
+	// Agrupar totales por tipo de máquina
+	let agrupado = {};
 
-	let optionsVisitorsProfile  = {
-		series: totales,     // valores de consumo
-		labels: maquinas,    // nombres de las máquinas
-		colors: ['#435ebe','#55c6e8','#ff7979','#3ab795','#ffe066','#7e57c2','#ff6f91','#36b9cc'], // puedes ampliar esta lista
+	apiConsumo.forEach(item => {
+		let maquina = item.tipo_maquina.trim();
+		let total = parseFloat(item.total_general);
+
+		if (agrupado[maquina]) {
+			agrupado[maquina] += total;
+		} else {
+			agrupado[maquina] = total;
+		}
+	});
+
+	// Separar en arrays para usar en el gráfico
+	let maquinas = Object.keys(agrupado);
+	let totales = Object.values(agrupado);
+
+	let optionsVisitorsProfile = {
+		series: totales,
+		labels: maquinas,
+		colors: ['#435ebe', '#55c6e8', '#ff7979', '#3ab795', '#ffe066', '#7e57c2', '#ff6f91', '#36b9cc', '#a3e635', '#ef4444', '#14b8a6', '#8b5cf6'], // puedes ampliar la lista
 		chart: {
 			type: 'donut',
 			width: '100%',
@@ -111,7 +123,6 @@ async function grafica2() {
 		}
 	};
 
-	// Renderizar el gráfico
 	let chartVisitorsProfile = new ApexCharts(document.querySelector("#chart-visitors-profile"), optionsVisitorsProfile);
 	chartVisitorsProfile.render();
 }
