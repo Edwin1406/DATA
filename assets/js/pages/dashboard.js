@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
             const resultado = await fetch(url);
             const ApiConsumo = await resultado.json();
-            console.log(ApiConsumo);
+            // console.log(ApiConsumo);
             return ApiConsumo
         } catch (e) {
             console.log(e);
