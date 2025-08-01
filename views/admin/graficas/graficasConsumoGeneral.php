@@ -13,94 +13,6 @@
 
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
-            let graficoMaquinas = null;
-
-            function filtrarPorFechas(datos, inicio, fin) {
-                const desde = new Date(inicio);
-                const hasta = new Date(fin);
-                return datos.filter(item => {
-                    const fecha = new Date(item.created_at);
-                    return fecha >= desde && fecha <= hasta;
-                });
-            }
-
-            function agruparPorTipo(datos) {
-                const agrupado = {};
-                datos.forEach(item => {
-                    const tipo = item.tipo_maquina.trim();
-                    const total = parseFloat(item.total_general);
-                    agrupado[tipo] = (agrupado[tipo] || 0) + total;
-                });
-
-                return {
-                    etiquetas: Object.keys(agrupado),
-                    valores: Object.values(agrupado)
-                };
-            }
-
-            async function cargarDatos(fechaInicio = null, fechaFin = null) {
-                try {
-                    const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-                    const datos = await res.json();
-
-                    let datosFiltrados = datos;
-                    if (fechaInicio && fechaFin) {
-                        datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
-                    }
-
-                    const {
-                        etiquetas,
-                        valores
-                    } = agruparPorTipo(datosFiltrados);
-
-                    const opciones = {
-                        chart: {
-                            type: "bar",
-                            height: 400
-                        },
-                        series: [{
-                            name: "Consumo (Total General)",
-                            data: valores
-                        }],
-                        xaxis: {
-                            categories: etiquetas,
-                            labels: {
-                                rotate: -45
-                            }
-                        },
-                        dataLabels: {
-                            enabled: true
-                        },
-                        colors: ['#00BFFF']
-                    };
-
-                    // Destruir gráfico anterior
-                    if (graficoMaquinas) graficoMaquinas.destroy();
-
-                    graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
-                    graficoMaquinas.render();
-
-                } catch (error) {
-                    console.error("Error al cargar los datos:", error);
-                }
-            }
-
-            // Evento formulario
-            document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
-                e.preventDefault();
-                const fechaInicio = document.getElementById("inputFechaInicio").value;
-                const fechaFin = document.getElementById("inputFechaFin").value;
-                cargarDatos(fechaInicio, fechaFin);
-            });
-
-            // Carga inicial sin filtro
-            cargarDatos();
-        });
-    </script>
-
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
@@ -231,6 +143,243 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
+            let graficoMaquinas = null;
+
+            function filtrarPorFechas(datos, inicio, fin) {
+                const desde = new Date(inicio);
+                const hasta = new Date(fin);
+                return datos.filter(item => {
+                    const fecha = new Date(item.created_at);
+                    return fecha >= desde && fecha <= hasta;
+                });
+            }
+
+            function agruparPorTipo(datos) {
+                const agrupado = {};
+                datos.forEach(item => {
+                    const tipo = item.tipo_maquina.trim();
+                    const total = parseFloat(item.total_general);
+                    agrupado[tipo] = (agrupado[tipo] || 0) + total;
+                });
+
+                return {
+                    etiquetas: Object.keys(agrupado),
+                    valores: Object.values(agrupado)
+                };
+            }
+
+            async function cargarDatos(fechaInicio = null, fechaFin = null) {
+                try {
+                    const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+                    const datos = await res.json();
+
+                    let datosFiltrados = datos;
+                    if (fechaInicio && fechaFin) {
+                        datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+                    }
+
+                    const {
+                        etiquetas,
+                        valores
+                    } = agruparPorTipo(datosFiltrados);
+
+                    const opciones = {
+                        chart: {
+                            type: "bar",
+                            height: 400
+                        },
+                        series: [{
+                            name: "Consumo (Total General)",
+                            data: valores
+                        }],
+                        xaxis: {
+                            categories: etiquetas,
+                            labels: {
+                                rotate: -45
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true
+                        },
+                        colors: ['#00BFFF']
+                    };
+
+                    // Destruir gráfico anterior
+                    if (graficoMaquinas) graficoMaquinas.destroy();
+
+                    graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
+                    graficoMaquinas.render();
+
+                } catch (error) {
+                    console.error("Error al cargar los datos:", error);
+                }
+            }
+
+            // Evento formulario
+            document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+                e.preventDefault();
+                const fechaInicio = document.getElementById("inputFechaInicio").value;
+                const fechaFin = document.getElementById("inputFechaFin").value;
+                cargarDatos(fechaInicio, fechaFin);
+            });
+
+            // Carga inicial sin filtro
+            cargarDatos();
+        });
+    </script>
+
+
+
+
+
+<!-- Filtro por fechas -->
+<div class="card">
+    <div class="card-header">
+        <h4>Filtrar por Fechas</h4>
+    </div>
+    <div class="card-body">
+        <form id="formFiltroMaquinas">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
+                    <input type="date" class="form-control" id="inputFechaInicio" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputFechaFin" class="form-label">Fecha Fin</label>
+                    <input type="date" class="form-control" id="inputFechaFin" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Gráfico -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Consumo Diario por Máquina</h4>
+            </div>
+            <div class="card-body">
+                <div id="graficoConsumoMaquinas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script con ApexCharts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
+        let graficoMaquinas = null;
+
+        function filtrarPorFechas(datos, inicio, fin) {
+            const desde = new Date(inicio);
+            const hasta = new Date(fin);
+            return datos.filter(item => {
+                const fecha = new Date(item.created_at);
+                return fecha >= desde && fecha <= hasta;
+            });
+        }
+
+        function agruparConsumoPorDiaYMaquina(datos) {
+            const seriesPorMaquina = {};
+
+            datos.forEach(item => {
+                const tipo = item.tipo_maquina.trim();
+                const fecha = new Date(item.created_at).toISOString().split('T')[0]; // YYYY-MM-DD
+                const total = parseFloat(item.total_general);
+
+                if (!seriesPorMaquina[tipo]) seriesPorMaquina[tipo] = {};
+                seriesPorMaquina[tipo][fecha] = (seriesPorMaquina[tipo][fecha] || 0) + total;
+            });
+
+            return Object.entries(seriesPorMaquina).map(([maquina, fechas]) => {
+                const datosOrdenados = Object.entries(fechas)
+                    .sort(([f1], [f2]) => new Date(f1) - new Date(f2))
+                    .map(([fecha, valor]) => ({ x: fecha, y: valor }));
+
+                return {
+                    name: maquina,
+                    data: datosOrdenados
+                };
+            });
+        }
+
+        async function cargarDatos(fechaInicio = null, fechaFin = null) {
+            try {
+                const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+                const datos = await res.json();
+
+                let datosFiltrados = datos;
+                if (fechaInicio && fechaFin) {
+                    datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+                }
+
+                const series = agruparConsumoPorDiaYMaquina(datosFiltrados);
+
+                const opciones = {
+                    chart: {
+                        type: "area",
+                        height: 350,
+                        stacked: false,
+                        toolbar: { show: false },
+                        sparkline: { enabled: true }
+                    },
+                    series: series,
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        labels: {
+                            format: 'dd/MM',
+                            style: { fontSize: '12px' }
+                        }
+                    },
+                    tooltip: {
+                        x: {
+                            format: 'dd/MM/yyyy'
+                        }
+                    },
+                    colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
+                    dataLabels: { enabled: false },
+                    legend: {
+                        position: 'bottom'
+                    }
+                };
+
+                if (graficoMaquinas) graficoMaquinas.destroy();
+                graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
+                graficoMaquinas.render();
+
+            } catch (error) {
+                console.error("Error al cargar los datos:", error);
+            }
+        }
+
+        // Manejo del formulario
+        document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+            e.preventDefault();
+            const fechaInicio = document.getElementById("inputFechaInicio").value;
+            const fechaFin = document.getElementById("inputFechaFin").value;
+            cargarDatos(fechaInicio, fechaFin);
+        });
+
+        // Carga inicial sin filtros
+        cargarDatos();
+    });
+</script>
 
 
                 <!-- End of Profile Visit -->
