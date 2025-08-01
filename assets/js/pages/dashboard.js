@@ -40,7 +40,7 @@ function renderTarjetas(data) {
 
 
 const iconosMaquinas = {
-    "TROQUEL": { icono: "iconly-boldProfile", color: "success" },
+    "TROQUEL": { icono: "f2b9", color: "success" },
     "PRE-PRINTER": { icono: "iconly-boldPaper", color: "info" },
     "GUILLOTINA LAMINA": { icono: "iconly-boldDocument", color: "primary" },
     "CORRUGADOR": { icono: "iconly-boldBookmark", color: "danger" },
@@ -122,7 +122,7 @@ const iconosMaquinas = {
 
 
 
-	
+
 
 	// Llamar a la funcion ApiConsumo
 async function grafica() {
