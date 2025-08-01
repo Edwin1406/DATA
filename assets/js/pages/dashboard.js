@@ -100,6 +100,30 @@ const iconosMaquinas = {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
 	// Llamar a la funcion ApiConsumo
 async function grafica() {
 	const apiConsumo = await ApiConsumo(); // Llama a tu API

@@ -8,6 +8,8 @@
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
+<!-- Ejemplo para Iconly si estás usando esa librería -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconly@1.0.0/iconly.min.css">
 
 
     <div class="page-content">
