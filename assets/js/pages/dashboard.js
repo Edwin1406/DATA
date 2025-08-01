@@ -35,12 +35,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+function renderTarjetas(data) {
+    const contenedor = document.getElementById("contenedor-tarjetas");
+    contenedor.innerHTML = '';
 
-	function renderTarjetas(data) {
-    const contenedor = document.getElementById("contenedor-tarjetas"); // Asegúrate de tener este contenedor en tu HTML
-    contenedor.innerHTML = ''; // Limpia antes de renderizar
+    const maquinasAgrupadas = {};
 
+    // Agrupar por tipo_maquina y sumar total_general
     data.forEach(item => {
+        const nombre = item.tipo_maquina.trim();
+        const total = parseFloat(item.total_general);
+
+        if (maquinasAgrupadas[nombre]) {
+            maquinasAgrupadas[nombre] += total;
+        } else {
+            maquinasAgrupadas[nombre] = total;
+        }
+    });
+
+    // Crear tarjetas a partir del objeto agrupado
+    for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
         const tarjetaHTML = `
             <div class="col-6 col-lg-3 col-md-6">
                 <div class="card">
@@ -52,17 +66,16 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">${item.tipo_maquina.trim()}</h6>
-                                <h6 class="font-extrabold mb-0">${parseFloat(item.total_general).toFixed(2)}</h6>
+                                <h6 class="text-muted font-semibold">${maquina}</h6>
+                                <h6 class="font-extrabold mb-0">${total.toFixed(2)}</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>`;
         contenedor.innerHTML += tarjetaHTML;
-    });
+    }
 }
-
 
 
 	// Llamar a la funcion ApiConsumo
