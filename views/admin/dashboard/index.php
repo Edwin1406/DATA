@@ -6,7 +6,7 @@
             </header> -->
 <?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com') { ?>
     <div class="page-heading">
-        <h3>ESTADISTICAS DEL PERFIL </h3>
+        <h3>ESTADISTICAS CONSUMO GENERAL X MAQUINA</h3>
     </div>
 <!-- Ejemplo para Iconly si estás usando esa librería -->
 

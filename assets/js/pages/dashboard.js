@@ -37,7 +37,7 @@ const iconosMaquinas = {
     "TROQUEL": { icono: "fa-solid fa-scissors", color: "danger" },
     "PRE-PRINTER": { icono: "fa-solid fa-print", color: "info" },
     "GUILLOTINA LAMINA": { icono: "fa-solid fa-cut", color: "primary" },
-    "GUILLOTINA PAPEL": { icono: "fa-solid fa-cut", color: "primary" },
+    "GUILLOTINA PAPEL": { icono: "fa-solid fa-", color: "primary" },
     "CORRUGADOR": { icono: "fa-solid fa-layer-group", color: "warning" },
     "FLEXOGRAFICA": { icono: "fa-solid fa-pen-nib", color: "info" },
     "MICRO": { icono: "fa-solid fa-microchip", color: "secondary" },
