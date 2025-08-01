@@ -1,4 +1,3 @@
-
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
@@ -45,15 +44,15 @@
         </script>
     <?php endif; ?>
 
-     <section class="section">
-         <div class="card">
-             <ul class="nav nav-tabs">
-                 <li class="nav-item">
-                     <a class="nav-link active" href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
-                 </li>
-             </ul>
-         </div>
-     </section>
+    <section class="section">
+        <div class="card">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin/tablaConsumoGeneral">Tabla Consumo General</a>
+                </li>
+            </ul>
+        </div>
+    </section>
 
 
     <!-- // Basic multiple Column Form section start -->
@@ -62,7 +61,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONSUMO  GENERAL</h4>
+                        <h4 class="card-title">REGISTRO DE CONSUMO GENERAL</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
                     </div>
                     <div class="card-content">
@@ -81,14 +80,17 @@
                                                 <option value="TROQUEL">TROQUEL</option>
                                                 <option value="FLEXOGRAFICA">FLEXOGRAFICA</option>
                                                 <option value="PRE-PRINTER">PRE-PRINTER</option>
-                                                 <option value="DOBLADO">DOBLADO</option>
-                                                  <option value="CORTE CEJA">CORTE CEJA</option>
-                                                   <option value="CONVERTIDOR">CONVERTIDOR</option>
-                                                    <option value="GUILLLOTINA LAMINA">GUILLLOTINA LAMINA</option>
-                                                     <option value="GUILLOTINA PAPEL">GUILLOTINA PAPEL</option>
-                                                      <option value="EMPAQUE">EMPAQUE</option>
-                                                         <option value="BODEGA">BODEGA</option>
-
+                                                <option value="DOBLADO">DOBLADO</option>
+                                                <option value="CORTE CEJA">CORTE CEJA</option>
+                                                <option value="CONVERTIDOR">CONVERTIDOR</option>
+                                                <option value="GUILLLOTINA LAMINA">GUILLLOTINA LAMINA</option>
+                                                <option value="GUILLOTINA PAPEL">GUILLOTINA PAPEL</option>
+                                                <option value="EMPAQUE">EMPAQUE</option>
+                                                <option value="BODEGA">BODEGA</option>
+                                                <option value="DESHOJE-MICRO">DESHOJE-MICRO</option>
+                                                <option value="DESHOJE-CORRGADOR">DESHOJE-CORRGADOR</option>
+                                                <option value="DESHOJE-PRE-PRINTER">DESHOJE-PRE-PRINTER</option>
+                                                <option value="DESHOJE-CONVERTIDOR">DESHOJE-CONVERTIDOR</option>
                                             </select>
                                         </div>
                                     </div>
@@ -101,7 +103,7 @@
                                                 placeholder="Total General" name="total_general">
                                         </div>
                                     </div>
-                                   
+
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
