@@ -237,36 +237,44 @@ async function grafica() {
 	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
 	// Configuración del gráfico
-	var optionsProfileVisit = {
-		annotations: {
-			position: 'back'
-		},
-		dataLabels: {
-			enabled: false
-		},
-		chart: {
-			type: 'bar',
-			height: 300,
-			stacked: false
-		},
-		fill: {
-			opacity: 1
-		},
-		plotOptions: {
-			bar: {
-				borderRadius: 4,
-				horizontal: false
-			}
-		},
-		series: series,
-		colors: colores,
-		xaxis: {
-			categories: fechasUnicas,
-			title: {
-				text: 'Día'
+var optionsProfileVisit = {
+	annotations: {
+		position: 'back'
+	},
+	dataLabels: {
+		enabled: false
+	},
+	chart: {
+		type: 'bar',
+		height: 300,
+		stacked: false
+	},
+	fill: {
+		opacity: 1
+	},
+	plotOptions: {
+		bar: {
+			borderRadius: 4,
+			horizontal: false
+		}
+	},
+	series: series,
+	colors: colores,
+	xaxis: {
+		categories: fechasUnicas,
+		title: {
+			text: 'Día'
+		}
+	},
+	yaxis: {
+		labels: {
+			formatter: function (value) {
+				return value.toFixed(2);
 			}
 		}
-	};
+	}
+};
+
 
 	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 	chartProfileVisit.render();
