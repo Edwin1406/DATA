@@ -81,6 +81,7 @@ grafica();
 
 
 
+	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 
 
 
