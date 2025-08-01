@@ -131,60 +131,59 @@ async function ApiConsumo3() {
 
 
 
+function barchat(datos) {
+	// Ordenar por total_general de mayor a menor
+	datos.sort((a, b) => parseFloat(b.total_general) - parseFloat(a.total_general));
+	
+	// Tomar solo los 5 primeros
+	datos = datos.slice(0, 5);
 
-function barchat(datos){
-	// nombres de las maquinas 
+	// Obtener nombres y valores para el gráfico
 	const nombresMaquinas = datos.map(item => item.tipo_maquina.trim());
+	const valores = datos.map(item => parseFloat(item.total_general));
 
+	console.log("Top 5:", datos);
 
-
-	console.log(datos);
 	var barOptions = {
-		series: [
-			// nombre de maquinas 
-			{ name: nombresMaquinas[0], data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
-			{ name: nombresMaquinas[1], data: [76, 85, 101, 98, 87, 105, 91, 114, 94] },
-			{ name: nombresMaquinas[2], data: [35, 41, 36, 26, 45, 48, 52, 53, 41] },
-			{ name: nombresMaquinas[3], data: [26, 24, 30, 28, 27, 29, 31, 32, 30] },
-			{ name: nombresMaquinas[4], data: [55, 60, 65, 70, 75, 80, 85, 90, 95] },
-			{ name: nombresMaquinas[5], data: [40, 45, 50, 55, 60, 65, 70, 75, 80] },
-			{ name: nombresMaquinas[6], data: [20, 25, 30, 35, 40, 45, 50, 55, 60] },
-			{ name: nombresMaquinas[7], data: [15, 20, 25, 30, 35, 40, 45, 50, 55] },
-			{ name: nombresMaquinas[8], data: [10, 15, 20, 25, 30, 35, 40, 45, 50] }
-		],
-    chart: { type: "bar", height: 350 },
-    plotOptions: {
-		bar: {
-			horizontal: false,
-			columnWidth: "55%",
-			endingShape: "rounded",
+		series: [{
+			name: "Total General",
+			data: valores
+		}],
+		chart: {
+			type: "bar",
+			height: 350
 		},
-    },
-    dataLabels: { enabled: false },
-    stroke: {
-		show: true,
-		width: 2,
-		colors: ["transparent"],
-    },
-    xaxis: {
-		categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    },
-    yaxis: {
-		title: { text: "$ (thousands)" },
-    },
-    fill: { opacity: 1 },
-    tooltip: {
-		y: {
-			formatter: function (val) {
-				return "$ " + val + " thousands";
-			},
+		plotOptions: {
+			bar: {
+				horizontal: false,
+				columnWidth: "55%",
+				endingShape: "rounded"
+			}
 		},
-    },
-};
+		dataLabels: { enabled: false },
+		stroke: {
+			show: true,
+			width: 2,
+			colors: ["transparent"]
+		},
+		xaxis: {
+			categories: nombresMaquinas
+		},
+		yaxis: {
+			title: { text: "Total General" }
+		},
+		fill: { opacity: 1 },
+		tooltip: {
+			y: {
+				formatter: function (val) {
+					return val.toFixed(2);
+				}
+			}
+		}
+	};
 
-var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
-bar.render();
-
+	var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
+	bar.render();
 }
 
 
