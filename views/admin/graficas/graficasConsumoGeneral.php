@@ -51,7 +51,7 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const chartContainer = document.querySelector("#chart-profile-visit");
