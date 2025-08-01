@@ -18,8 +18,8 @@
 <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="/assets/js/pages/dashboard.js"></script> -->
+<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+<script src="/assets/js/pages/dashboard.js"></script>
 <?php
 $currentPath = $_SERVER['REQUEST_URI'];
 if (strpos($currentPath, '/admin/index') !== false) {
@@ -28,7 +28,6 @@ if (strpos($currentPath, '/admin/index') !== false) {
 }
 ?>
 
-<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
 
 <script src="/assets/js/main.js"></script>
  <script src="/assets/vendors/choices.js/choices.min.js"></script>
