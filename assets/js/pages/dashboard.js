@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    grafica();
+    ApiConsumo();
 });
 
  async function ApiConsumo(){
@@ -22,18 +22,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-	async function grafica(){
+	// async function grafica(){
 		const apiConsumo = await ApiConsumo();
+		const {tipo_maquina,total_general,created_at} = apiConsumo;
+	console.log(created_at);
+
+		var optionsProfileVisit = {
+				annotations: {
+					position: 'back'
+				},
+				dataLabels: {
+					enabled:false
+				},
+				chart: {
+					type: 'bar',
+					height: 300
+				},
+				fill: {
+					opacity:1
+				},
+				plotOptions: {
+				},
+				series: [{
+					name: 'sales',
+					data: [9,20,30,20,10,20,30,20,10,20,30,20]
+				}],
+				colors: '#435ebe',
+				xaxis: {
+					categories: ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"],
+				},
+			}
 
 
 
-		console.log(apiConsumo);
 
 
 
-
-
-	}
+	// }
 
 
 
@@ -42,31 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // GRAFICO DE BARRAS
-var optionsProfileVisit = {
-	annotations: {
-		position: 'back'
-	},
-	dataLabels: {
-		enabled:false
-	},
-	chart: {
-		type: 'bar',
-		height: 300
-	},
-	fill: {
-		opacity:1
-	},
-	plotOptions: {
-	},
-	series: [{
-		name: 'sales',
-		data: [9,20,30,20,10,20,30,20,10,20,30,20]
-	}],
-	colors: '#435ebe',
-	xaxis: {
-		categories: ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"],
-	},
-}
 
 
 
