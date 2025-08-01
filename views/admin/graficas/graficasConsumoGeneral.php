@@ -9,30 +9,131 @@
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Filtrar por Fecha</h4>
-                </div>
-                <div class="card-body">
-                    <form action="/admin/dashboard/filtrarPorFecha" method="POST">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="fechaInicio" class="form-label">Fecha Inicio</label>
-                                <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="fechaFin" class="form-label">Fecha Fin</label>
-                                <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
-                            </div>
+  <!-- Filtro por Fecha -->
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Filtrar por Fecha</h4>
+            </div>
+            <div class="card-body">
+                <form id="filtroFechas">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Filtrar</button>
-                    </form>
-                </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaFin" class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control" id="fechaFin" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Gráfica ApexChart -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Consumo General por Máquina</h4>
+            </div>
+            <div class="card-body">
+                <div id="chart-profile-visit"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const chartContainer = document.querySelector("#chart-profile-visit");
+    let chart;
+
+    function filtrarPorFechas(data, inicio, fin) {
+        const start = new Date(inicio);
+        const end = new Date(fin);
+        return data.filter(item => {
+            const fecha = new Date(item.created_at);
+            return fecha >= start && fecha <= end;
+        });
+    }
+
+    function procesarDatos(data) {
+        const resumen = {};
+
+        data.forEach(item => {
+            const tipo = item.tipo_maquina.trim();
+            const total = parseFloat(item.total_general);
+            resumen[tipo] = (resumen[tipo] || 0) + total;
+        });
+
+        return {
+            categorias: Object.keys(resumen),
+            valores: Object.values(resumen)
+        };
+    }
+
+    async function cargarDatos(fechaInicio = null, fechaFin = null) {
+        try {
+            const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+            const data = await res.json();
+
+            let datosFiltrados = data;
+            if (fechaInicio && fechaFin) {
+                datosFiltrados = filtrarPorFechas(data, fechaInicio, fechaFin);
+            }
+
+            const { categorias, valores } = procesarDatos(datosFiltrados);
+
+            const options = {
+                chart: {
+                    type: "bar",
+                    height: 350
+                },
+                series: [{
+                    name: "Total General",
+                    data: valores
+                }],
+                xaxis: {
+                    categories: categorias
+                },
+                colors: ['#008FFB']
+            };
+
+            if (chart) {
+                chart.updateOptions(options);
+            } else {
+                chart = new ApexCharts(chartContainer, options);
+                chart.render();
+            }
+        } catch (error) {
+            console.error("Error cargando datos:", error);
+        }
+    }
+
+    // Inicial
+    cargarDatos();
+
+    // Filtrado
+    document.getElementById("filtroFechas").addEventListener("submit", e => {
+        e.preventDefault();
+        const fechaInicio = document.getElementById("fechaInicio").value;
+        const fechaFin = document.getElementById("fechaFin").value;
+        cargarDatos(fechaInicio, fechaFin);
+    });
+});
+</script>
+
+
+
 
     <div class="page-content">
         <section class="row">
@@ -132,21 +233,6 @@
 
 
 
-
-
-                <!-- Profile Visit -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Profile Visit</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-profile-visitsss"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- End of Profile Visit -->
 
                 <!-- Latest Comments -->
