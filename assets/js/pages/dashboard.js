@@ -129,21 +129,36 @@ async function ApiConsumo3() {
     }
 }
 
-
-
 function barchat(datos) {
-	// Ordenar por total_general de mayor a menor
-	datos.sort((a, b) => parseFloat(b.total_general) - parseFloat(a.total_general));
-	
-	// Tomar solo los 5 primeros
-	datos = datos.slice(0, 5);
+	// Agrupar por tipo_maquina y sumar total_general
+	const agrupado = {};
 
-	// Obtener nombres y valores para el gráfico
-	const nombresMaquinas = datos.map(item => item.tipo_maquina.trim());
-	const valores = datos.map(item => parseFloat(item.total_general));
+	datos.forEach(item => {
+		const tipo = item.tipo_maquina.trim();
+		const total = parseFloat(item.total_general);
 
-	console.log("Top 5:", datos);
+		if (agrupado[tipo]) {
+			agrupado[tipo] += total;
+		} else {
+			agrupado[tipo] = total;
+		}
+	});
 
+	// Convertir a array y ordenar por total descendente
+	const agrupadoArray = Object.entries(agrupado).map(([tipo, total]) => ({ tipo, total }));
+	agrupadoArray.sort((a, b) => b.total - a.total);
+
+	// Tomar top 5
+	const top5 = agrupadoArray.slice(0, 5);
+
+	// Preparar datos para el gráfico
+	const nombresMaquinas = top5.map(item => item.tipo);
+	const valores = top5.map(item => item.total);
+
+	// Paleta de colores para las barras (puedes personalizar los hex)
+	const colores = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'];
+
+	// Configurar gráfico
 	var barOptions = {
 		series: [{
 			name: "Total General",
@@ -160,6 +175,7 @@ function barchat(datos) {
 				endingShape: "rounded"
 			}
 		},
+		colors: colores,
 		dataLabels: { enabled: false },
 		stroke: {
 			show: true,
@@ -185,7 +201,6 @@ function barchat(datos) {
 	var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
 	bar.render();
 }
-
 
 
 
