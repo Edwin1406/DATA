@@ -14,7 +14,7 @@
         <section class="row">
             <div class="col-12 col-lg-9">
                 <!-- Profile Statistics -->
-                <div class="row" id="contenedor-tarjetas">
+                <div class="row" >
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
