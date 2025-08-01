@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     ApiConsumo();
 	ApiConsumo2();
-ApiConsumo3();
-
 });
 
  async function ApiConsumo(){
@@ -117,13 +115,13 @@ function renderTarjetas(data) {
 
 
 
- // Llamar a la función para cargar las tarjetas al inicio
+apiConsumo3(); // Llamar a la función para cargar las tarjetas al inicio
 async function ApiConsumo3() {
     try {
         const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
         const resultado = await fetch(url);
         const datos = await resultado.json();
-        barchat(datos);
+        renderTarjetas(datos);
     } catch (e) {
         console.log(e);
     }
@@ -132,83 +130,48 @@ async function ApiConsumo3() {
 
 
 
+function barchat(datos){
 
-
-function barchat(datos) {
-	// Agrupar datos por máquina y por mes
-	const agrupado = {};
-
-	datos.forEach(item => {
-		const maquina = item.tipo_maquina.trim();
-		const fecha = new Date(item.created_at);
-		const mes = fecha.toLocaleString('default', { month: 'short' }); // ej: "Jan", "Feb", etc.
-		const total = parseFloat(item.total_general);
-
-		if (!agrupado[maquina]) agrupado[maquina] = {};
-		if (!agrupado[maquina][mes]) agrupado[maquina][mes] = 0;
-
-		agrupado[maquina][mes] += total;
-	});
-
-	// Obtener todos los meses únicos presentes en los datos (orden alfabético)
-	const todosMeses = Array.from(
-		new Set(datos.map(d => new Date(d.created_at).toLocaleString('default', { month: 'short' })))
-	);
-
-	// Ordenar meses (puedes ajustar si prefieres orden real de meses del año)
-	const mesesOrden = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-	const mesesFiltrados = mesesOrden.filter(m => todosMeses.includes(m));
-
-	// Construir series por máquina
-	const series = Object.entries(agrupado).map(([maquina, totalesPorMes]) => {
-		const data = mesesFiltrados.map(mes => totalesPorMes[mes] || 0);
-		return {
-			name: maquina,
-			data: data
-		};
-	});
-
-	// Paleta de colores (puedes agregar más si hay más máquinas)
-	const colores = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#3F51B5', '#D4526E'];
-
-	// Opciones del gráfico
-	const barOptions = {
-		series: series,
-		chart: {
-			type: 'bar',
-			height: 400,
-			stacked: false
+	console.log(datos);
+	var barOptions = {
+		series: [
+			{ name: "Net Profit", data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
+			{ name: "Revenue", data: [76, 85, 101, 98, 87, 105, 91, 114, 94] },
+			{ name: "Free Cash Flow", data: [35, 41, 36, 26, 45, 48, 52, 53, 41] }
+		],
+    chart: { type: "bar", height: 350 },
+    plotOptions: {
+		bar: {
+			horizontal: false,
+			columnWidth: "55%",
+			endingShape: "rounded",
 		},
-		plotOptions: {
-			bar: {
-				horizontal: false,
-				columnWidth: '55%',
-				endingShape: 'rounded'
-			}
+    },
+    dataLabels: { enabled: false },
+    stroke: {
+		show: true,
+		width: 2,
+		colors: ["transparent"],
+    },
+    xaxis: {
+		categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    },
+    yaxis: {
+		title: { text: "$ (thousands)" },
+    },
+    fill: { opacity: 1 },
+    tooltip: {
+		y: {
+			formatter: function (val) {
+				return "$ " + val + " thousands";
+			},
 		},
-		colors: colores,
-		dataLabels: { enabled: false },
-		stroke: {
-			show: true,
-			width: 2,
-			colors: ['transparent']
-		},
-		xaxis: {
-			categories: mesesFiltrados
-		},
-		yaxis: {
-			title: { text: 'Total General' }
-		},
-		tooltip: {
-			y: {
-				formatter: val => val.toFixed(2)
-			}
-		}
-	};
+    },
+};
 
-	// Renderizar gráfico
-	var chart = new ApexCharts(document.querySelector("#bar"), barOptions);
-	chart.render();
+var bar = new ApexCharts(document.querySelector("#bar"), barOptions);
+bar.render();
+
 }
 
 
@@ -225,7 +188,8 @@ function barchat(datos) {
 
 
 
-	// Llamar a la funcion ApiConsumo
+
+// Llamar a la función ApiConsumo
 async function grafica() {
 	const apiConsumo = await ApiConsumo(); // Llama a tu API
 
@@ -245,12 +209,22 @@ async function grafica() {
 		if (!maquinas[tipo]) {
 			maquinas[tipo] = {};
 		}
-		maquinas[tipo][fecha] = total;
+		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + total;
 	});
 
-	// Crear las series para ApexCharts
-	const series = Object.entries(maquinas).map(([nombre, datos]) => {
-		// Asegurar que cada día tenga un valor (o 0 si no hay datos)
+	// Calcular el total general acumulado por tipo_maquina
+	const totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
+		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
+		return { nombre, totalAcumulado, datos };
+	});
+
+	// Ordenar y tomar solo el top 5
+	const top5 = totalesPorMaquina
+		.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
+		.slice(0, 5);
+
+	// Crear las series solo con el top 5
+	const series = top5.map(({ nombre, datos }) => {
 		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
 		return {
 			name: nombre,
@@ -258,8 +232,8 @@ async function grafica() {
 		};
 	});
 
-	// Colores (se asignan por serie)
-	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#ec4899'];
+	// Colores (se asignan por serie, limitado a 5)
+	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
 	// Configuración del gráfico
 	var optionsProfileVisit = {
