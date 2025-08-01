@@ -83,28 +83,40 @@ grafica();
 
 
 
+async function grafica2() {
+	let apiConsumo = await ApiConsumo(); // Obtener datos desde API
 
+	// Extraer etiquetas (máquinas) y valores (totales)
+	let maquinas = apiConsumo.map(item => item.tipo_maquina);
+	let totales = apiConsumo.map(item => parseFloat(item.total_general));
 
-let optionsVisitorsProfile  = {
-	series: [70, 30],
-	labels: ['Male', 'Female'],
-	colors: ['#435ebe','#55c6e8'],
-	chart: {
-		type: 'donut',
-		width: '100%',
-		height:'350px'
-	},
-	legend: {
-		position: 'bottom'
-	},
-	plotOptions: {
-		pie: {
-			donut: {
-				size: '30%'
+	let optionsVisitorsProfile  = {
+		series: totales,     // valores de consumo
+		labels: maquinas,    // nombres de las máquinas
+		colors: ['#435ebe','#55c6e8','#ff7979','#3ab795','#ffe066','#7e57c2','#ff6f91','#36b9cc'], // puedes ampliar esta lista
+		chart: {
+			type: 'donut',
+			width: '100%',
+			height: '350px'
+		},
+		legend: {
+			position: 'bottom'
+		},
+		plotOptions: {
+			pie: {
+				donut: {
+					size: '30%'
+				}
 			}
 		}
-	}
+	};
+
+	// Renderizar el gráfico
+	let chartVisitorsProfile = new ApexCharts(document.querySelector("#chart-visitors-profile"), optionsVisitorsProfile);
+	chartVisitorsProfile.render();
 }
+
+grafica2(); // Ejecutar la función para mostrar el gráfico de barras
 
 var optionsEurope = {
 	series: [{
