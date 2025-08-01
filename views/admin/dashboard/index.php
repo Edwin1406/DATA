@@ -17,10 +17,10 @@
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
-                <!-- Profile Statistics
+                <!-- Profile Statistics -->
                 <div class="row" id="contenedor-tarjetas">
 
-                </div> -->
+                </div>
                 <!-- End of Profile Statistics -->
                 <!-- filtrador de fechas -->
 
@@ -236,7 +236,7 @@
 
 <section id="basic-modals">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Basic Modal</h4>
@@ -262,15 +262,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="page-content">
-                                        <section class="row">
-                                            <div class="col-12 col-lg-9">
-                                                <!-- Profile Statistics -->
-                                                <div class="row" id="contenedor-tarjetas">
+                                    <div class="col-12 col-lg-9">
+                                        <!-- Profile Statistics -->
+                                        <div class="row" id="contenedor-tarjetas">
 
-                                                </div>
-                                            </div>
-                                        </section>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
