@@ -379,7 +379,7 @@
 
 
 
-<div class="col-md-6">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header">
             <h4>Bar Chart</h4>
