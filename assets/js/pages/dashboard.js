@@ -21,16 +21,20 @@ document.addEventListener("DOMContentLoaded", function() {
 	// Llamar a la funcion ApiConsumo
 
 async function grafica() {
-	const apiConsumo = await ApiConsumo();
-	const { tipo_maquina, total_general, created_at } = apiConsumo;
+	const apiConsumo = await ApiConsumo(); // Llama a tu API
 
-	// Convertir fechas a nombres cortos de meses
-	const meses = created_at.map(mes => {
-		const fecha = new Date(mes);
+	// Extraer campos necesarios
+	const meses = apiConsumo.map(item => {
+		const fecha = new Date(item.created_at);
 		return fecha.toLocaleString('default', { month: 'short' });
 	});
 
-	// Configuración del gráfico
+	const consumos = apiConsumo.map(item => parseFloat(item.total_general));
+
+	// Opcional: si solo quieres el nombre de una máquina para el título
+	const maquinaNombre = apiConsumo[0]?.tipo_maquina || "Máquina";
+
+	// Configurar el gráfico
 	var optionsProfileVisit = {
 		annotations: {
 			position: 'back'
@@ -48,12 +52,12 @@ async function grafica() {
 		plotOptions: {
 			bar: {
 				borderRadius: 4,
-				horizontal: false,
+				horizontal: false
 			}
 		},
 		series: [{
-			name: tipo_maquina || 'Consumo',
-			data: total_general || []
+			name: maquinaNombre,
+			data: consumos
 		}],
 		colors: ['#435ebe'],
 		xaxis: {
@@ -66,10 +70,8 @@ async function grafica() {
 	chartProfileVisit.render();
 }
 
-// Llamar a la función
+// Ejecutar la función
 grafica();
-
-
 
 
 
