@@ -49,8 +49,28 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+    <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl"> <!-- Puedes ajustar el tamaño -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTarjetasLabel">Detalle de Consumo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row" id="contenedor-tarjetas"></div> <!-- Aquí se cargan las tarjetas -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                     <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card" id="abrirModalTarjetas">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
