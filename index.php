@@ -153,8 +153,8 @@ $router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'elimi
 
 
 // links paa las graficas
-$router->get('/admin/graficasConsumoGeneral', [AdminController::class, 'graficasConsumoGeneral']);
-$router->get('/admin/graficasDoblado', [AdminController::class, 'graficasDoblado']);
+$router->get('/admin/graficas/graficasConsumoGeneral', [AdminController::class, 'graficasConsumoGeneral']);
+$router->get('/admin/graficas/graficasDoblado', [AdminController::class, 'graficasDoblado']);
 
 
 
