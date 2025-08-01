@@ -50,13 +50,13 @@
 </div>
 
 
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const chartContainer = document.querySelector("#chart-profile-visit");
-    let chart;
+    let chart = null;
 
+    // Función para filtrar por rango de fechas
     function filtrarPorFechas(data, inicio, fin) {
         const start = new Date(inicio);
         const end = new Date(fin);
@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Agrupar totales por tipo de máquina
     function procesarDatos(data) {
         const resumen = {};
 
@@ -81,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
+    // Cargar los datos desde la API y renderizar la gráfica
     async function cargarDatos(fechaInicio = null, fechaFin = null) {
         try {
             const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
@@ -105,33 +107,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 xaxis: {
                     categories: categorias
                 },
-                colors: ['#008FFB']
+                colors: ['#3B82F6']
             };
 
+            // ⚠️ Eliminar gráfico anterior si ya existe
             if (chart) {
-                chart.updateOptions(options);
-            } else {
-                chart = new ApexCharts(chartContainer, options);
-                chart.render();
+                chart.destroy();
             }
+
+            chart = new ApexCharts(chartContainer, options);
+            chart.render();
+
         } catch (error) {
-            console.error("Error cargando datos:", error);
+            console.error("Error al cargar datos de la API:", error);
         }
     }
 
-    // Inicial
-    cargarDatos();
-
-    // Filtrado
+    // Evento del formulario de filtrado
     document.getElementById("filtroFechas").addEventListener("submit", e => {
         e.preventDefault();
         const fechaInicio = document.getElementById("fechaInicio").value;
         const fechaFin = document.getElementById("fechaFin").value;
         cargarDatos(fechaInicio, fechaFin);
     });
+
+    // Carga inicial sin filtros
+    cargarDatos();
 });
 </script>
-
 
 
 
