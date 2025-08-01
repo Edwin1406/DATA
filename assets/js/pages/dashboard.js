@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-	// async function grafica(){
-		const apiConsumo = await ApiConsumo();
+	async function grafica(){
+	 	const  apiConsumo = await ApiConsumo();
 		const {tipo_maquina,total_general,created_at} = apiConsumo;
 
 		// sacar los meses 
@@ -62,9 +62,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 
 
-	// }
+	}
 
 
 
@@ -160,7 +161,6 @@ let optionsIndonesia = {
 
 
 
-var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 var chartVisitorsProfile = new ApexCharts(document.getElementById('chart-visitors-profile'), optionsVisitorsProfile)
 var chartEurope = new ApexCharts(document.querySelector("#chart-europe"), optionsEurope);
 var chartAmerica = new ApexCharts(document.querySelector("#chart-america"), optionsAmerica);
