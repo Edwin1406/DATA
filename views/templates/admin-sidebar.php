@@ -28,6 +28,7 @@ if (strpos($currentPath, '/admin/index') !== false) {
 }
 ?>
 
+<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
 
 <script src="/assets/js/main.js"></script>
  <script src="/assets/vendors/choices.js/choices.min.js"></script>
