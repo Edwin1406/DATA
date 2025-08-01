@@ -25,7 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	// async function grafica(){
 		const apiConsumo = await ApiConsumo();
 		const {tipo_maquina,total_general,created_at} = apiConsumo;
-	console.log(created_at);
+
+		// sacar los meses 
+		const meses = created_at.map(mes => {
+			const fecha = new Date(mes);
+			return fecha.toLocaleString('default', { month: 'short' });
+		});
+	
 
 		var optionsProfileVisit = {
 				annotations: {
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				}],
 				colors: '#435ebe',
 				xaxis: {
-					categories: ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"],
+					categories: meses,
 				},
 			}
 
