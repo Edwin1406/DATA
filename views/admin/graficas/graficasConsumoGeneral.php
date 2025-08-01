@@ -139,8 +139,20 @@
     </div>
 </div>
 
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Consumo General por Máquina</h4>
+            </div>
+            <div class="card-body">
+                <div id="graficoConsumoMaquinas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ApexCharts -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
