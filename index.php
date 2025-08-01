@@ -165,7 +165,8 @@ $router->get('/admin/graficas/graficasDoblado', [GraficasController::class, 'gra
 
 
 
-
+// Apis para las graficas
+$router->get('/admin/api/graficasConsumoGeneral', [GraficasController::class, 'graficasConsumoGeneral']);
 
 
 

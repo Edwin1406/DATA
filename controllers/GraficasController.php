@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Consumo_general;
 use MVC\Router;
 
 class GraficasController
@@ -22,6 +23,22 @@ class GraficasController
             'email' => $email,
             'nombre' => $nombre
         ]);
+    }
+    // api para las graficas consumo general
+    public static function apiGraficasConsumoGeneral()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        // Lógica para obtener los datos de la gráfica
+        $datos = Consumo_general::all();
+
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($datos);
+        exit;
     }
     
     
