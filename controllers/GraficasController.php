@@ -29,11 +29,11 @@ class GraficasController
     {
         session_start();
         if (!isset($_SESSION['email'])) {
-            header('Location: /');
+            header('Location: /');  
         }
 
         // Lógica para obtener los datos de la gráfica
-        $datos = Consumo_general::all();
+        $datos = Consumo_general::all('DESC');
 
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
