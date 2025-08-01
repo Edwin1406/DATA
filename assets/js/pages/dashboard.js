@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const resultado = await fetch(url);
             const ApiConsumo = await resultado.json();
             // console.log(ApiConsumo);
+			        renderTarjetas(data);
+
             return ApiConsumo
         } catch (e) {
             console.log(e);
