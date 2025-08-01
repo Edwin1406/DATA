@@ -375,3 +375,17 @@
     </div>
 
 <?php } ?>
+
+
+
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h4>Bar Chart</h4>
+        </div>
+        <div class="card-body">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
