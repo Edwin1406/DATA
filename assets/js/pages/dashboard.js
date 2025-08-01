@@ -19,20 +19,40 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 	// Llamar a la funcion ApiConsumo
-
 async function grafica() {
 	const apiConsumo = await ApiConsumo(); // Llama a tu API
 
-	// Extraer fechas con formato corto de día (ej: 01 Ago)
-	const dias = apiConsumo.map(item => {
+	// Extraer todas las fechas únicas
+	const fechasUnicas = [...new Set(apiConsumo.map(item => {
 		const fecha = new Date(item.created_at);
 		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
+	}))];
+
+	// Agrupar los consumos por tipo_maquina
+	const maquinas = {};
+	apiConsumo.forEach(item => {
+		const fecha = new Date(item.created_at).toLocaleDateString('default', { day: '2-digit', month: 'short' });
+		const tipo = item.tipo_maquina;
+		const total = parseFloat(item.total_general);
+
+		if (!maquinas[tipo]) {
+			maquinas[tipo] = {};
+		}
+		maquinas[tipo][fecha] = total;
 	});
 
-	// Convertir totales a número (por si vienen como texto)
-	const consumos = apiConsumo.map(item => parseFloat(item.total_general));
+	// Crear las series para ApexCharts
+	const series = Object.entries(maquinas).map(([nombre, datos]) => {
+		// Asegurar que cada día tenga un valor (o 0 si no hay datos)
+		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
+		return {
+			name: nombre,
+			data: dataPorFecha
+		};
+	});
 
-	const maquinaNombre = apiConsumo[0]?.tipo_maquina || "Máquina";
+	// Colores (se asignan por serie)
+	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#ec4899'];
 
 	// Configuración del gráfico
 	var optionsProfileVisit = {
@@ -44,7 +64,8 @@ async function grafica() {
 		},
 		chart: {
 			type: 'bar',
-			height: 300
+			height: 300,
+			stacked: false
 		},
 		fill: {
 			opacity: 1
@@ -55,13 +76,10 @@ async function grafica() {
 				horizontal: false
 			}
 		},
-		series: [{
-			name: maquinaNombre,
-			data: consumos
-		}],
-		colors: ['#435ebe'],
+		series: series,
+		colors: colores,
 		xaxis: {
-			categories: dias,
+			categories: fechasUnicas,
 			title: {
 				text: 'Día'
 			}
@@ -72,7 +90,6 @@ async function grafica() {
 	chartProfileVisit.render();
 }
 
-// Ejecutar
 grafica();
 
 
