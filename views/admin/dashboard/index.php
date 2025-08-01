@@ -70,7 +70,7 @@
 
 
                     <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card" id="abrirModalTarjetas" data-bs-toggle="modal" data-bs-target="#modalTarjetas" style="cursor: pointer;">
+                        <div class="card" id="abrirModalTarjetas"  style="cursor: pointer;">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
