@@ -33,50 +33,71 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 
+  const iconosMaquinas = {
+        "TROQUEL": { icono: "iconly-boldProfile", color: "blue" },
+        "PRE-PRINTER": { icono: "iconly-boldPaper", color: "green" },
+        "GUILLOTINA LAMINA": { icono: "iconly-boldPrinter", color: "purple" },
+        "CORRUGADOR": { icono: "iconly-boldBookmark", color: "red" },
+		"FLEXOGRAFICA": { icono: "iconly-boldPaper", color: "orange" },
+		"MICRO": { icono: "iconly-boldDocument", color: "pink" },
+		"EMPAQUE": { icono: "iconly-boldPrinter", color: "teal" },
+		"DOBLADO": { icono: "iconly-boldPrinter", color: "cyan" },
+		"BODEGA": { icono: "iconly-boldPaper", color: "brown" },
+		"CONVERTIDOR": { icono: "iconly-boldCut", color: "gray" },
+		"DESHOJE-CONVERTIDOR": { icono: "iconly-boldPaper", color: "yellow" },
+		"DESHOJE-PRE-PRINTER": { icono: "iconly-boldInfoCircle", color: "gray" }
+
+    };
 
 
 function renderTarjetas(data) {
-    const contenedor = document.getElementById("contenedor-tarjetas");
-    contenedor.innerHTML = '';
 
-    const maquinasAgrupadas = {};
 
-    // Agrupar por tipo_maquina y sumar total_general
-    data.forEach(item => {
-        const nombre = item.tipo_maquina.trim();
-        const total = parseFloat(item.total_general);
 
-        if (maquinasAgrupadas[nombre]) {
-            maquinasAgrupadas[nombre] += total;
-        } else {
-            maquinasAgrupadas[nombre] = total;
-        }
-    });
 
-    // Crear tarjetas a partir del objeto agrupado
-    for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
-        const tarjetaHTML = `
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon blue">
-                                    <i class="iconly-boldProfile"></i>
+
+        const contenedor = document.getElementById("contenedor-tarjetas");
+        contenedor.innerHTML = '';
+
+        const maquinasAgrupadas = {};
+
+        // Agrupar por tipo_maquina y sumar total_general
+        data.forEach(item => {
+            const nombre = item.tipo_maquina.trim();
+            const total = parseFloat(item.total_general);
+
+            if (maquinasAgrupadas[nombre]) {
+                maquinasAgrupadas[nombre] += total;
+            } else {
+                maquinasAgrupadas[nombre] = total;
+            }
+        });
+
+        // Generar tarjetas con íconos y colores personalizados
+        for (const [maquina, total] of Object.entries(maquinasAgrupadas)) {
+            const config = iconosMaquinas[maquina] || { icono: "iconly-boldInfoCircle", color: "gray" };
+
+            const tarjetaHTML = `
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon ${config.color}">
+                                        <i class="${config.icono}"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">${maquina}</h6>
-                                <h6 class="font-extrabold mb-0">${total.toFixed(2)}</h6>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">${maquina}</h6>
+                                    <h6 class="font-extrabold mb-0">${total.toFixed(2)}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>`;
-        contenedor.innerHTML += tarjetaHTML;
+                </div>`;
+            contenedor.innerHTML += tarjetaHTML;
+        }
     }
-}
-
 
 	// Llamar a la funcion ApiConsumo
 async function grafica() {
