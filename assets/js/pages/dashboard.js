@@ -23,18 +23,18 @@ document.addEventListener("DOMContentLoaded", function() {
 async function grafica() {
 	const apiConsumo = await ApiConsumo(); // Llama a tu API
 
-	// Extraer campos necesarios
-	const meses = apiConsumo.map(item => {
+	// Extraer fechas con formato corto de día (ej: 01 Ago)
+	const dias = apiConsumo.map(item => {
 		const fecha = new Date(item.created_at);
-		return fecha.toLocaleString('default', { month: 'short' });
+		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
 	});
 
+	// Convertir totales a número (por si vienen como texto)
 	const consumos = apiConsumo.map(item => parseFloat(item.total_general));
 
-	// Opcional: si solo quieres el nombre de una máquina para el título
 	const maquinaNombre = apiConsumo[0]?.tipo_maquina || "Máquina";
 
-	// Configurar el gráfico
+	// Configuración del gráfico
 	var optionsProfileVisit = {
 		annotations: {
 			position: 'back'
@@ -61,18 +61,19 @@ async function grafica() {
 		}],
 		colors: ['#435ebe'],
 		xaxis: {
-			categories: meses,
+			categories: dias,
+			title: {
+				text: 'Día'
+			}
 		}
 	};
 
-	// Renderizar el gráfico
 	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 	chartProfileVisit.render();
 }
 
-// Ejecutar la función
+// Ejecutar
 grafica();
-
 
 
 
