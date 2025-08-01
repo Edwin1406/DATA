@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     ApiConsumo();
+	ApiConsumo2();
 });
 
  async function ApiConsumo(){
@@ -10,14 +11,26 @@ document.addEventListener("DOMContentLoaded", function() {
             const resultado = await fetch(url);
             const ApiConsumo = await resultado.json();
             // console.log(ApiConsumo);
-			        renderTarjetas(data);
-
+			
             return ApiConsumo
         } catch (e) {
             console.log(e);
                 
         }
     } 
+
+
+
+	async function ApiConsumo2() {
+    try {
+        const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+        const resultado = await fetch(url);
+        const data = await resultado.json();
+        renderTarjetas(data);
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 
 
