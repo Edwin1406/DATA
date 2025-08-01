@@ -4,7 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 
-class ControlController
+class GraficasController
 {
  
     public static function graficasConsumoGeneral(Router $router)

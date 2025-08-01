@@ -31,6 +31,7 @@ use Controllers\AuthController;
 use Controllers\AdminController;
 use Controllers\ControlController;
 use Controllers\DiseñoController;
+use Controllers\GraficasController;
 
 $router = new Router();
 
@@ -153,8 +154,8 @@ $router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'elimi
 
 
 // links paa las graficas
-$router->get('/admin/graficas/graficasConsumoGeneral', [AdminController::class, 'graficasConsumoGeneral']);
-$router->get('/admin/graficas/graficasDoblado', [AdminController::class, 'graficasDoblado']);
+$router->get('/admin/graficas/graficasConsumoGeneral', [GraficasController::class, 'graficasConsumoGeneral']);
+$router->get('/admin/graficas/graficasDoblado', [GraficasController::class, 'graficasDoblado']);
 
 
 
