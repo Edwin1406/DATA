@@ -14,7 +14,7 @@
     
     // obtener datos del api de pedidos
     async function ApiPedidos(){
-        const {pedido_id} = test;
+        const {pedido_id} = test; //destructuramos el id del pedido
         
         try {
             const url = `${location.origin}/admin/api/pedidos?pedido_id=${pedido_id}`;

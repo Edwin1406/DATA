@@ -4,6 +4,29 @@
 console.log("Dashboard JS loaded");
 
 
+ async function ApiPedidos(){
+        
+        
+        try {
+            const url = `${location.origin}/admin/api/pedidos?apiGraficasConsumoGeneral`;
+            const resultado = await fetch(url);
+            const apipedidos = await resultado.json();
+            console.log(apipedidos);
+            return apipedidos
+        } catch (e) {
+            console.log(e);
+                
+        }
+    } 
+
+
+	// Llamar a la funcion ApiPedidos
+	ApiPedidos();
+
+
+
+
+
 
 
 
