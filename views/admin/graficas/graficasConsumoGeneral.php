@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gráfica de Consumo</title>
+  <title>Consumo por Máquina</title>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f0f4ff;
+      background-color: #eef4ff;
       padding: 30px;
       font-family: Arial, sans-serif;
     }
@@ -23,19 +23,19 @@
 
   <!-- TÍTULO -->
   <div class="container mb-4">
-    <h2>ESTADÍSTICAS DEL PERFIL</h2>
+    <h2>Consumo General por Máquina</h2>
   </div>
 
   <!-- FORMULARIO DE FILTRO -->
   <div class="container mb-5">
-    <form id="filtroFechas" class="row g-3 align-items-end">
+    <form id="formFiltroMaquinas" class="row g-3 align-items-end">
       <div class="col-md-4">
-        <label for="fechaInicio" class="form-label">Fecha Inicio</label>
-        <input type="date" class="form-control" id="fechaInicio" required>
+        <label for="inputFechaInicio" class="form-label">Fecha Inicio</label>
+        <input type="date" class="form-control" id="inputFechaInicio" required>
       </div>
       <div class="col-md-4">
-        <label for="fechaFin" class="form-label">Fecha Fin</label>
-        <input type="date" class="form-control" id="fechaFin" required>
+        <label for="inputFechaFin" class="form-label">Fecha Fin</label>
+        <input type="date" class="form-control" id="inputFechaFin" required>
       </div>
       <div class="col-md-4">
         <button type="submit" class="btn btn-primary w-100">Filtrar</button>
@@ -43,11 +43,11 @@
     </form>
   </div>
 
-  <!-- GRÁFICA -->
+  <!-- GRÁFICA DE MÁQUINAS -->
   <div class="container">
     <div class="card shadow-sm">
       <div class="card-body">
-        <div id="chart-profile-visit"></div>
+        <div id="graficoConsumoMaquinas"></div>
       </div>
     </div>
   </div>
@@ -55,86 +55,83 @@
   <!-- SCRIPT JS -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const chartContainer = document.querySelector("#chart-profile-visit");
-      let chart = null;
+      const contenedorGrafico = document.querySelector("#graficoConsumoMaquinas");
+      let graficoMaquinas = null;
 
-      // Filtrar fechas
-      function filtrarPorFechas(data, inicio, fin) {
-        const start = new Date(inicio);
-        const end = new Date(fin);
-        return data.filter(item => {
+      function filtrarPorFechas(datos, inicio, fin) {
+        const desde = new Date(inicio);
+        const hasta = new Date(fin);
+        return datos.filter(item => {
           const fecha = new Date(item.created_at);
-          return fecha >= start && fecha <= end;
+          return fecha >= desde && fecha <= hasta;
         });
       }
 
-      // Agrupar por tipo de máquina
-      function procesarDatos(data) {
-        const resumen = {};
-
-        data.forEach(item => {
+      function agruparPorTipo(datos) {
+        const agrupado = {};
+        datos.forEach(item => {
           const tipo = item.tipo_maquina.trim();
           const total = parseFloat(item.total_general);
-          resumen[tipo] = (resumen[tipo] || 0) + total;
+          agrupado[tipo] = (agrupado[tipo] || 0) + total;
         });
 
         return {
-          categorias: Object.keys(resumen),
-          valores: Object.values(resumen)
+          etiquetas: Object.keys(agrupado),
+          valores: Object.values(agrupado)
         };
       }
 
-      // Cargar desde la API
       async function cargarDatos(fechaInicio = null, fechaFin = null) {
         try {
           const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-          const data = await res.json();
+          const datos = await res.json();
 
-          let datosFiltrados = data;
+          let datosFiltrados = datos;
           if (fechaInicio && fechaFin) {
-            datosFiltrados = filtrarPorFechas(data, fechaInicio, fechaFin);
+            datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
           }
 
-          const { categorias, valores } = procesarDatos(datosFiltrados);
+          const { etiquetas, valores } = agruparPorTipo(datosFiltrados);
 
-          const options = {
+          const opciones = {
             chart: {
               type: "bar",
               height: 400
             },
             series: [{
-              name: "Total General",
+              name: "Consumo (Total General)",
               data: valores
             }],
             xaxis: {
-              categories: categorias,
+              categories: etiquetas,
               labels: { rotate: -45 }
             },
             dataLabels: {
               enabled: true
             },
-            colors: ['#1E90FF']
+            colors: ['#00BFFF']
           };
 
-          if (chart) chart.destroy();
+          // Destruir gráfico anterior
+          if (graficoMaquinas) graficoMaquinas.destroy();
 
-          chart = new ApexCharts(chartContainer, options);
-          chart.render();
+          graficoMaquinas = new ApexCharts(contenedorGrafico, opciones);
+          graficoMaquinas.render();
 
         } catch (error) {
-          console.error("Error cargando datos:", error);
+          console.error("Error al cargar los datos:", error);
         }
       }
 
       // Evento formulario
-      document.getElementById("filtroFechas").addEventListener("submit", e => {
+      document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
         e.preventDefault();
-        const inicio = document.getElementById("fechaInicio").value;
-        const fin = document.getElementById("fechaFin").value;
-        cargarDatos(inicio, fin);
+        const fechaInicio = document.getElementById("inputFechaInicio").value;
+        const fechaFin = document.getElementById("inputFechaFin").value;
+        cargarDatos(fechaInicio, fechaFin);
       });
 
-      // Inicial sin filtros
+      // Carga inicial sin filtro
       cargarDatos();
     });
   </script>
