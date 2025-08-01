@@ -17,10 +17,7 @@
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
-                <!-- Profile Statistics -->
-                <div class="row" id="contenedor-tarjetas">
-
-                </div>
+              
                 <!-- End of Profile Statistics -->
                 <!-- filtrador de fechas -->
 
