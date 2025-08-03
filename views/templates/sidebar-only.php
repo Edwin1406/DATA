@@ -144,7 +144,11 @@
                      </li>
                  <?php } ?>
 
+                 <!-- pruebas-->
 
+                    <li class="submenu-item ">
+                        <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
+                    </li>
 
 
                  <!-- </ul> -->
