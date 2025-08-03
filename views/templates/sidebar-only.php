@@ -26,7 +26,7 @@
              <ul class="menu">
                  <li class="sidebar-title">Menu</li>
 
-                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item active ">
                          <a href="/admin/index" class='sidebar-link'>
                              <i class="bi bi-grid-fill"></i>
@@ -40,7 +40,7 @@
                          <i class="bi bi-stack"></i>
                          <span>Producción</span>
                      </a>
-                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com') { ?>
+                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                          <ul class="submenu ">
                              <li class="sidebar-title"><b><i class="bi bi-archive"></i> Registros</b></li>
 
@@ -94,7 +94,7 @@
                      <?php }  ?>
 
                  </li>
-                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
@@ -109,7 +109,7 @@
                      </li>
                  <?php } ?>
 
-                 <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com'|| $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
@@ -128,7 +128,7 @@
                      </li>
                  <?php } ?>
 
-                 <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
