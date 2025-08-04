@@ -131,9 +131,9 @@
                                     <div class="col-md-6 col-12">
 
                                         <div class="form-group">
-                                            <label for="ancho_papel">Ancho de Papel</label>
-                                            <input type="number" id="ancho_papel" class="form-control"
-                                                placeholder="Ancho de Papel" name="ancho_papel">
+                                            <label for="n_cambios_medida">N° de Cambios de Medida</label>
+                                            <input type="number" id="n_cambios_medida" class="form-control"
+                                                placeholder="N° de Cambios de Medida" name="n_cambios_medida">
                                         </div>
                                     </div>
 
@@ -141,22 +141,11 @@
                                     <!-- n_cambio -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="n_cambios">N° de Cambio</label>
-                                            <input type="number" id="n_cambios" class="form-control"
-                                                placeholder="N° de Cambio" name="n_cambios">
+                                            <label for="n_cortes">N° de Cortes</label>
+                                            <input type="number" id="n_cortes" class="form-control"
+                                                placeholder="N° de Cortes" name="n_cortes">
                                         </div>
                                     </div>
-
-                                    <!-- gramaje -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="gramaje">Gramaje</label>
-                                            <input type="number" id="gramaje" class="form-control"
-                                                placeholder="Gramaje" name="gramaje">
-                                        </div>
-                                    </div>
-
-
 
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
