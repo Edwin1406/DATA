@@ -133,9 +133,9 @@
                                     <!-- n_cambio -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="n_cambio">N° de Cambio</label>
-                                            <input type="number" id="n_cambio" class="form-control"
-                                                placeholder="N° de Cambio" name="n_cambio">
+                                            <label for="n_cambios">N° de Cambio</label>
+                                            <input type="number" id="n_cambios" class="form-control"
+                                                placeholder="N° de Cambio" name="n_cambios">
                                         </div>
                                     </div>
 
