@@ -36,15 +36,15 @@ class Prueba extends ActiveRecord {
       
 
         // Si viene como array (desde formulario), convertir a string
-        // if (isset($args['personal'])) {
-        //     if (is_array($args['personal'])) {
-        //         $this->personal = $args['personal'];
-        //     } else {
-        //         $this->personal = [$args['personal']]; // Asegurarse de que sea un array
-        //     }
-        // } else {
-        //     $this->personal = [];
-        // }
+        if (isset($args['personal'])) {
+            if (is_array($args['personal'])) {
+                $this->personal = $args['personal'];
+            } else {
+                $this->personal = [$args['personal']]; // Asegurarse de que sea un array
+            }
+        } else {
+            $this->personal = [];
+        }
         
 
   $this->producto = $args['producto'] ?? '';
