@@ -281,133 +281,124 @@ bar.render();
 
 
 
+async function cargarGraficoTopMaquinas(fechaInicio, fechaFin, topSeleccionado, maquinaSeleccionada) {
+    const datosAPI = await ApiConsumo();
 
+    const inicio = new Date(fechaInicio + 'T00:00:00');
+    const fin = new Date(fechaFin + 'T23:59:59');
 
-async function graficaConFiltros(fechaInicio, fechaFin, topValue, maquinaFiltro) {
-	const apiConsumoRaw = await ApiConsumo();
+    // Filtrar por rango de fechas
+    let datosFiltrados = datosAPI.filter(item => {
+        const fecha = new Date(item.created_at + 'T00:00:00');
+        return fecha >= inicio && fecha <= fin;
+    });
 
-	// Convertir fechas a objetos Date
-	const inicio = new Date(fechaInicio + 'T00:00:00');
-	const fin = new Date(fechaFin + 'T23:59:59');
+    // Filtrar por tipo de máquina
+    if (maquinaSeleccionada !== 'todos') {
+        datosFiltrados = datosFiltrados.filter(item =>
+            item.tipo_maquina.toLowerCase() === maquinaSeleccionada.toLowerCase()
+        );
+    }
 
-	// Filtrar por fecha
-	let datosFiltrados = apiConsumoRaw.filter(item => {
-		const fecha = new Date(item.created_at + 'T00:00:00');
-		return fecha >= inicio && fecha <= fin;
-	});
+    if (datosFiltrados.length === 0) {
+        alert("No se encontraron datos para los filtros seleccionados.");
+        return;
+    }
 
-	// Filtrar por tipo de máquina (si no es "todos")
-	if (maquinaFiltro !== 'todos') {
-		datosFiltrados = datosFiltrados.filter(item =>
-			item.tipo_maquina.toLowerCase() === maquinaFiltro.toLowerCase()
-		);
-	}
+    const fechasUnicas = [...new Set(datosFiltrados.map(item => {
+        const fecha = new Date(item.created_at + 'T00:00:00');
+        return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
+    }))];
 
-	// Verificar si hay datos
-	if (datosFiltrados.length === 0) {
-		alert("No se encontraron datos para los filtros seleccionados.");
-		return;
-	}
+    const agrupadoMaquinas = {};
+    datosFiltrados.forEach(item => {
+        const fecha = new Date(item.created_at + 'T00:00:00').toLocaleDateString('default', { day: '2-digit', month: 'short' });
+        const tipo = item.tipo_maquina;
+        const total = parseFloat(item.total_general);
 
-	// Extraer fechas únicas
-	const fechasUnicas = [...new Set(datosFiltrados.map(item => {
-		const fecha = new Date(item.created_at + 'T00:00:00');
-		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
-	}))];
+        if (!agrupadoMaquinas[tipo]) {
+            agrupadoMaquinas[tipo] = {};
+        }
+        agrupadoMaquinas[tipo][fecha] = (agrupadoMaquinas[tipo][fecha] || 0) + (isNaN(total) ? 0 : total);
+    });
 
-	// Agrupar por máquina
-	const maquinas = {};
-	datosFiltrados.forEach(item => {
-		const fecha = new Date(item.created_at + 'T00:00:00').toLocaleDateString('default', { day: '2-digit', month: 'short' });
-		const tipo = item.tipo_maquina;
-		const total = parseFloat(item.total_general);
+    let resumenMaquinas = Object.entries(agrupadoMaquinas).map(([nombre, datos]) => {
+        const total = Object.values(datos).reduce((sum, val) => sum + val, 0);
+        return { nombre, total, datos };
+    });
 
-		if (!maquinas[tipo]) {
-			maquinas[tipo] = {};
-		}
-		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + (isNaN(total) ? 0 : total);
-	});
+    if (topSeleccionado !== 'todos') {
+        resumenMaquinas = resumenMaquinas
+            .sort((a, b) => b.total - a.total)
+            .slice(0, parseInt(topSeleccionado));
+    }
 
-	// Calcular totales por máquina
-	let totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
-		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
-		return { nombre, totalAcumulado, datos };
-	});
+    const seriesMaquinas = resumenMaquinas.map(({ nombre, datos }) => {
+        const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
+        return {
+            name: nombre,
+            data: dataPorFecha
+        };
+    });
 
-	// Aplicar Top si corresponde
-	if (topValue !== 'todos') {
-		totalesPorMaquina = totalesPorMaquina
-			.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
-			.slice(0, parseInt(topValue));
-	}
+    const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
-	// Preparar series para gráfico
-	const series = totalesPorMaquina.map(({ nombre, datos }) => {
-		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
-		return { name: nombre, data: dataPorFecha };
-	});
+    const opcionesGrafico = {
+        annotations: { position: 'back' },
+        dataLabels: { enabled: false },
+        chart: {
+            type: 'bar',
+            height: 300,
+            stacked: false
+        },
+        fill: { opacity: 1 },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: false
+            }
+        },
+        series: seriesMaquinas,
+        colors: colores,
+        xaxis: {
+            categories: fechasUnicas,
+            title: { text: 'Día' }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return value.toFixed(2);
+                }
+            }
+        }
+    };
 
-	// Colores
-	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
+    const contenedor = document.querySelector("#grafico-top-maquinas");
+    contenedor.innerHTML = ""; // Limpiar gráfico anterior
 
-	// Configurar gráfico
-	const optionsProfileVisit = {
-		annotations: { position: 'back' },
-		dataLabels: { enabled: false },
-		chart: {
-			type: 'bar',
-			height: 300,
-			stacked: false
-		},
-		fill: { opacity: 1 },
-		plotOptions: {
-			bar: {
-				borderRadius: 4,
-				horizontal: false
-			}
-		},
-		series: series,
-		colors: colores,
-		xaxis: {
-			categories: fechasUnicas,
-			title: { text: 'Día' }
-		},
-		yaxis: {
-			labels: {
-				formatter: function (value) {
-					return value.toFixed(2);
-				}
-			}
-		}
-	};
-
-	// Limpiar gráfico anterior si existe
-	const chartContainer = document.querySelector("#chart-profile-visit");
-	chartContainer.innerHTML = "";
-
-	const chartProfileVisit = new ApexCharts(chartContainer, optionsProfileVisit);
-	chartProfileVisit.render();
+    const grafico = new ApexCharts(contenedor, opcionesGrafico);
+    grafico.render();
 }
 
-// Listener para formulario de filtro
+// Escuchar el formulario
 document.addEventListener("DOMContentLoaded", function () {
-	const form = document.getElementById("formFiltroMaquinas");
+    const form = document.getElementById("formFiltroTopMaquinas");
 
-	form.addEventListener("submit", function (e) {
-		e.preventDefault();
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-		const fechaInicio = document.getElementById("inputFechaInicio").value;
-		const fechaFin = document.getElementById("inputFechaFin").value;
-		const topValue = document.getElementById("inputTop").value;
-		const maquinaFiltro = document.getElementById("inputMaquina").value;
+        const fechaInicio = document.getElementById("filtroFechaInicio").value;
+        const fechaFin = document.getElementById("filtroFechaFin").value;
+        const top = document.getElementById("filtroTopMaquinas").value;
+        const maquina = document.getElementById("filtroTipoMaquina").value;
 
-		if (!fechaInicio || !fechaFin) {
-			alert("Selecciona fechas válidas.");
-			return;
-		}
+        if (!fechaInicio || !fechaFin) {
+            alert("Selecciona una fecha de inicio y fin válida.");
+            return;
+        }
 
-		graficaConFiltros(fechaInicio, fechaFin, topValue, maquinaFiltro);
-	});
+        cargarGraficoTopMaquinas(fechaInicio, fechaFin, top, maquina);
+    });
 });
 
 

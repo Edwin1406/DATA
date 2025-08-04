@@ -386,17 +386,44 @@
 
 
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>CANTIDAD X DIA Y MAQUINA</h4>
+<div class="card-body">
+    <form id="formFiltroTopMaquinas" class="mb-4">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="filtroFechaInicio">Fecha Inicio</label>
+                <input type="date" class="form-control" id="filtroFechaInicio" required>
             </div>
-            <div class="card-body">
-                <div id="chart-profile-visit"></div>
+            <div class="col-md-6 mb-3">
+                <label for="filtroFechaFin">Fecha Fin</label>
+                <input type="date" class="form-control" id="filtroFechaFin" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="filtroTopMaquinas">Top</label>
+                <select class="form-select" id="filtroTopMaquinas">
+                    <option value="5">Top 5</option>
+                    <option value="todos">Todos</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="filtroTipoMaquina">Máquina</label>
+                <select class="form-select" id="filtroTipoMaquina">
+                    <option value="todos">Todas</option>
+                    <option value="troquel">Troquel</option>
+                    <option value="guillotina">Guillotina</option>
+                    <option value="doblado">Doblado</option>
+                    <option value="convertidor">Convertidor</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
             </div>
         </div>
-    </div>
+    </form>
+
+    <div id="grafico-top-maquinas"></div> <!-- contenedor único -->
 </div>
 
 
