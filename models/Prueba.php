@@ -12,9 +12,9 @@ class Prueba extends ActiveRecord {
     public ?int $id;
     public string $fecha = '';
     public string $turno = '';
-    public array $personal = [];
+    // public array $personal = [];
     // En Model\Prueba.php
-// public string $personal;
+public string $personal;
 
     public string $producto = '';
     public string $medidas = '';
@@ -36,15 +36,15 @@ class Prueba extends ActiveRecord {
       
 
         // Si viene como array (desde formulario), convertir a string
-        if (isset($args['personal'])) {
-            if (is_array($args['personal'])) {
-                $this->personal = $args['personal'];
-            } else {
-                $this->personal = [$args['personal']]; // Asegurarse de que sea un array
-            }
-        } else {
-            $this->personal = [];
-        }
+        // if (isset($args['personal'])) {
+        //     if (is_array($args['personal'])) {
+        //         $this->personal = $args['personal'];
+        //     } else {
+        //         $this->personal = [$args['personal']]; // Asegurarse de que sea un array
+        //     }
+        // } else {
+        //     $this->personal = [];
+        // }
         
 
   $this->producto = $args['producto'] ?? '';
@@ -66,9 +66,7 @@ class Prueba extends ActiveRecord {
         if (!$this->turno) {
             self::$alertas['error'][] = 'El Turno es Obligatorio';
         }
-        if (!$this->personal) {
-            self::$alertas['error'][] = 'El Personal es Obligatorio';
-        }
+        
         if (!$this->producto) {
             self::$alertas['error'][] = 'El Producto es Obligatorio';
         }
