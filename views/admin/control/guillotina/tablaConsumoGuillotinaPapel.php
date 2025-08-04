@@ -13,7 +13,7 @@
              <div class="col-12 col-md-6 order-md-2 order-first">
                  <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                      <ol class="breadcrumb">
-                         <li class="breadcrumb-item"><a > <?php echo $nombre; ?></a></li>
+                         <li class="breadcrumb-item"><a> <?php echo $nombre; ?></a></li>
                          <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
                      </ol>
                  </nav>
@@ -51,7 +51,7 @@
          <div class="card">
              <ul class="nav nav-tabs">
                  <li class="nav-item">
-                     <a class="nav-link active" href="/admin/control_troquel">Registro Consumo Troquel</a>
+                     <a class="nav-link active" href="/admin/control/guillotina/tablaConsumoGuillotinaPapel">Registro Consumo Guillotina Papel</a>
                  </li>
              </ul>
          </div>
@@ -70,36 +70,30 @@
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 155px;">Operador</th>
+                             <th class="fs-6" style="min-width: 155px;">Personal</th>
                              <th class="fs-6" style="min-width: 130px;">Horas Programadas</th>
-                             <th class="fs-6" style="min-width: 93px;">Golpes Máquina</th>
-                             <th class="fs-6" style="min-width: 98px;">Golpes x hora</th>
-                             <th class="fs-6" style="min-width: 110px;">Cambio Medida</th>
-                             <th class="fs-6" style="min-width: 130px;">Separadores</th>
-                             <th class="fs-6" style="min-width: 80px;">Cajas</th>
-                             <th class="fs-6" style="min-width: 85px;">Papel</th>
-                             <th class="fs-6" style="min-width: 100px;">Desperdicio</th>
+                             <th class="fs-6" style="min-width: 130px;">Cantidad Resmas</th>
+                             <th class="fs-6" style="min-width: 130px;">N° Cambios de Medida</th>
+                             <th class="fs-6" style="min-width: 130px;">N° Cortes</th>
+                             <th class="fs-6" style="min-width: 130px;">N° Cortes/Hora</th>
+                             <th class="fs-6" style="min-width: 130px;">Desperdicio (Kg)</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($control as $contro): ?>
+                         <?php foreach ($control_guillotina as $guillotina): ?>
                              <tr>
-                                 <td><?= $contro->fecha ?></td>
-                                 <td><?= $contro->turnos ?></td>
-                                 <td><?= $contro->operador ?></td>
-                                 <td><?= $contro->horas_programadas ?></td>
-                                 <td><?= $contro->golpes_maquina ?></td>
-                                 <td><?= $contro->golpes_maquina_hora ?></td>
-                                 <td><?= $contro->cambios_medida ?></td>
-                                 <td><?= $contro->cantidad_separadores ?></td>
-                                 <td><?= $contro->cantidad_cajas ?></td>
-                                 <td><?= $contro->cantidad_papel ?></td>
-                                 <td><?= $contro->desperdicio_kg ?></td>
-                                
-                                 <!-- los botones en horizontal -->
-
+                                 <td><?= $guillotina->fecha ?></td>
+                                 <td><?= $guillotina->turno ?></td>
+                                 <td><?= $guillotina->area ?></td>
+                                 <td><?= $guillotina->personal ?></td>
+                                 <td><?= $guillotina->horas_programadas ?></td>
+                                 <td><?= $guillotina->cantidad_resmas ?></td>
+                                 <td><?= $guillotina->n_cambios_medidas ?></td>
+                                 <td><?= $guillotina->n_cortes ?></td>
+                                 <td><?= $guillotina->n_cortes_hora ?></td>
+                                 <td><?= $guillotina->desperdicio_kg ?></td>
                                  <td>
                                      <div class="d-flex gap-1">
                                          <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
