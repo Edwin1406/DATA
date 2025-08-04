@@ -190,97 +190,97 @@ bar.render();
 
 
 
-// // Llamar a la función ApiConsumo
-// async function grafica() {
-// 	const apiConsumo = await ApiConsumo(); // Llama a tu API
+// Llamar a la función ApiConsumo
+async function grafica() {
+	const apiConsumo = await ApiConsumo(); // Llama a tu API
 
-// 	// Extraer todas las fechas únicas
-// 	const fechasUnicas = [...new Set(apiConsumo.map(item => {
-// 		const fecha = new Date(item.created_at);
-// 		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
-// 	}))];
+	// Extraer todas las fechas únicas
+	const fechasUnicas = [...new Set(apiConsumo.map(item => {
+		const fecha = new Date(item.created_at);
+		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
+	}))];
 
-// 	// Agrupar los consumos por tipo_maquina
-// 	const maquinas = {};
-// 	apiConsumo.forEach(item => {
-// 		const fecha = new Date(item.created_at).toLocaleDateString('default', { day: '2-digit', month: 'short' });
-// 		const tipo = item.tipo_maquina;
-// 		const total = parseFloat(item.total_general);
+	// Agrupar los consumos por tipo_maquina
+	const maquinas = {};
+	apiConsumo.forEach(item => {
+		const fecha = new Date(item.created_at).toLocaleDateString('default', { day: '2-digit', month: 'short' });
+		const tipo = item.tipo_maquina;
+		const total = parseFloat(item.total_general);
 
-// 		if (!maquinas[tipo]) {
-// 			maquinas[tipo] = {};
-// 		}
-// 		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + total;
-// 	});
+		if (!maquinas[tipo]) {
+			maquinas[tipo] = {};
+		}
+		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + total;
+	});
 
-// 	// Calcular el total general acumulado por tipo_maquina
-// 	const totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
-// 		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
-// 		return { nombre, totalAcumulado, datos };
-// 	});
+	// Calcular el total general acumulado por tipo_maquina
+	const totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
+		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
+		return { nombre, totalAcumulado, datos };
+	});
 
-// 	// Ordenar y tomar solo el top 5
-// 	const top5 = totalesPorMaquina
-// 		.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
-// 		.slice(0, 5);
+	// Ordenar y tomar solo el top 5
+	const top5 = totalesPorMaquina
+		.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
+		.slice(0, 5);
 
-// 	// Crear las series solo con el top 5
-// 	const series = top5.map(({ nombre, datos }) => {
-// 		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
-// 		return {
-// 			name: nombre,
-// 			data: dataPorFecha
-// 		};
-// 	});
+	// Crear las series solo con el top 5
+	const series = top5.map(({ nombre, datos }) => {
+		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
+		return {
+			name: nombre,
+			data: dataPorFecha
+		};
+	});
 
-// 	// Colores (se asignan por serie, limitado a 5)
-// 	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
+	// Colores (se asignan por serie, limitado a 5)
+	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
-// 	// Configuración del gráfico
-// var optionsProfileVisit = {
-// 	annotations: {
-// 		position: 'back'
-// 	},
-// 	dataLabels: {
-// 		enabled: false
-// 	},
-// 	chart: {
-// 		type: 'bar',
-// 		height: 300,
-// 		stacked: false
-// 	},
-// 	fill: {
-// 		opacity: 1
-// 	},
-// 	plotOptions: {
-// 		bar: {
-// 			borderRadius: 4,
-// 			horizontal: false
-// 		}
-// 	},
-// 	series: series,
-// 	colors: colores,
-// 	xaxis: {
-// 		categories: fechasUnicas,
-// 		title: {
-// 			text: 'Día'
-// 		}
-// 	},
-// 	yaxis: {
-// 		labels: {
-// 			formatter: function (value) {
-// 				return value.toFixed(2);
-// 			}
-// 		}
-// 	}
-// };
+	// Configuración del gráfico
+var optionsProfileVisit = {
+	annotations: {
+		position: 'back'
+	},
+	dataLabels: {
+		enabled: false
+	},
+	chart: {
+		type: 'bar',
+		height: 300,
+		stacked: false
+	},
+	fill: {
+		opacity: 1
+	},
+	plotOptions: {
+		bar: {
+			borderRadius: 4,
+			horizontal: false
+		}
+	},
+	series: series,
+	colors: colores,
+	xaxis: {
+		categories: fechasUnicas,
+		title: {
+			text: 'Día'
+		}
+	},
+	yaxis: {
+		labels: {
+			formatter: function (value) {
+				return value.toFixed(2);
+			}
+		}
+	}
+};
 
 
-// 	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
-// 	chartProfileVisit.render();
-// }
+	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+	chartProfileVisit.render();
+}
 
-// grafica();
+grafica();
 
 
 
