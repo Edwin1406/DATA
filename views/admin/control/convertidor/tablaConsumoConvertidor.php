@@ -13,7 +13,7 @@
              <div class="col-12 col-md-6 order-md-2 order-first">
                  <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                      <ol class="breadcrumb">
-                         <li class="breadcrumb-item"><a > <?php echo $nombre; ?></a></li>
+                         <li class="breadcrumb-item"><a> <?php echo $nombre; ?></a></li>
                          <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
                      </ol>
                  </nav>
@@ -70,34 +70,34 @@
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 155px;">Operador</th>
+                             <th class="fs-6" style="min-width: 155px;">Area</th>
+                             <th class="fs-6" style="min-width: 130px;">Personal</th>
                              <th class="fs-6" style="min-width: 130px;">Horas Programadas</th>
-                             <th class="fs-6" style="min-width: 93px;">Golpes Máquina</th>
-                             <th class="fs-6" style="min-width: 98px;">Golpes x hora</th>
-                             <th class="fs-6" style="min-width: 110px;">Cambio Medida</th>
-                             <th class="fs-6" style="min-width: 130px;">Separadores</th>
-                             <th class="fs-6" style="min-width: 80px;">Cajas</th>
-                             <th class="fs-6" style="min-width: 85px;">Papel</th>
-                             <th class="fs-6" style="min-width: 100px;">Desperdicio</th>
+                             <th class="fs-6" style="min-width: 130px;">Cantidad Resmas</th>
+                             <th class="fs-6" style="min-width: 130px;">Cantidad Resmas/Hora</th>
+                             <th class="fs-6" style="min-width: 130px;">Ancho Papel</th>
+                             <th class="fs-6" style="min-width: 130px;">N° Cambios</th>
+                             <th class="fs-6" style="min-width: 130px;">Gramaje</th>
+                             <th class="fs-6" style="min-width: 130px;">Desperdicio Kg</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($control as $contro): ?>
+                         <?php foreach ($control_convertidor as $conver): ?>
                              <tr>
-                                 <td><?= $contro->fecha ?></td>
-                                 <td><?= $contro->turnos ?></td>
-                                 <td><?= $contro->operador ?></td>
-                                 <td><?= $contro->horas_programadas ?></td>
-                                 <td><?= $contro->golpes_maquina ?></td>
-                                 <td><?= $contro->golpes_maquina_hora ?></td>
-                                 <td><?= $contro->cambios_medida ?></td>
-                                 <td><?= $contro->cantidad_separadores ?></td>
-                                 <td><?= $contro->cantidad_cajas ?></td>
-                                 <td><?= $contro->cantidad_papel ?></td>
-                                 <td><?= $contro->desperdicio_kg ?></td>
-                                
+                                 <td><?= $conver->fecha ?></td>
+                                 <td><?= $conver->turno ?></td>
+                                 <td><?= $conver->area ?></td>
+                                 <td><?= $conver->personal ?></td>
+                                 <td><?= $conver->horas_programadas ?></td>
+                                 <td><?= $conver->cantidad_resmas ?></td>
+                                 <td><?= $conver->cantidad_resmas_hora ?></td>
+                                 <td><?= $conver->ancho_papel ?></td>
+                                 <td><?= $conver->n_cambios ?></td>
+                                 <td><?= $conver->gramaje ?></td>
+                                 <td><?= $conver->desperdicio_kg ?></td>
+
                                  <!-- los botones en horizontal -->
 
                                  <td>
