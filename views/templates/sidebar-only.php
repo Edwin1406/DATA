@@ -70,6 +70,11 @@
                                      <a href="/admin/control/doblado/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
                                  </li>
                              <?php }  ?>
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/control/guillotina/consumo_guillotina_papel"><i class="bi bi-arrow-right"> </i>Registro Consumo Guillotina</a>
+                                 </li>
+                             <?php }  ?>
 
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
@@ -104,6 +109,16 @@
                                      <a href="/admin/tablaConsumoTroquel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Troquel</a>
                                  </li>
                              <?php }  ?>
+
+                                
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/control/guillotina/tablaConsumoGuillotina"><i class="bi bi-arrow-right"> </i>Tabla Consumo Guillotina</a>
+                                 </li>
+                             <?php }  ?>
+
+
+
                          </ul>
                      <?php }  ?>
 
