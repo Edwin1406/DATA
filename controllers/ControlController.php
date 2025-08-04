@@ -310,6 +310,36 @@ public static function consumo_convertidor(Router $router)
 
 
 
+    // eliminar consumo convertidor
+    public static function eliminarConsumoConvertidor()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $control_convertidor = ControlConvertidor::find($id);
+            if ($control_convertidor) {
+                $resultado = $control_convertidor->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/control/convertidor/tablaConsumoConvertidor?exito=1');
+                } else {
+                    header('Location: /admin/control/convertidor/tablaConsumoConvertidor?error=1');
+                }
+            } else {
+                header('Location: /admin/control/convertidor/tablaConsumoConvertidor?error=1');
+            }
+        }
+    }
+    
+
+
+
+    
+
+
 
 
 
