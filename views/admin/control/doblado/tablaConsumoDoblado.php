@@ -57,6 +57,7 @@
          </div>
      </section>
 
+                        <?php require_once __DIR__ . '../../../../templates/alertas.php'  ?>
 
 
      <section class="section">
