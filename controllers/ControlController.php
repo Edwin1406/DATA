@@ -376,12 +376,12 @@ public static function consumo_convertidor(Router $router)
             if (empty($alertas)) {
                 $resultado = $control_guillotina->guardar();
                 if ($resultado) {
-                    header('Location: /admin/control/guillotina_papel/consumo_guillotina_papel?exito=1');
+                    header('Location: /admin/control/guillotina/consumo_guillotina_papel?exito=1');
                 }
             } else {
                 $alertas = ControlGuillotina::getAlertas();
             }
-            
+
 
    
         $router->render('admin/control/guillotina/consumo_guillotina_papel', [
