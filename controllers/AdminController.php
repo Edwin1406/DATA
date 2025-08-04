@@ -51,6 +51,12 @@ class AdminController
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
             $consumo->sincronizar($_POST);
+            // QITAR ESPACIO EN BLANCO EN TIPO_MAQUINA
+            $consumo->tipo_maquina = trim($consumo->tipo_maquina);
+
+
+
+
             $consumo->sacarTotalHoras();
 
 
