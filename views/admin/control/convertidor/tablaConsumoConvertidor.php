@@ -102,9 +102,9 @@
 
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                         <!-- <a href="/admin/editarConsumo?id=<?= $conver->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
                                          <form action="/admin/eliminarConsumoConvertidor" method="POST">
-                                             <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                             <input type="hidden" name="id" value="<?= $conver->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
