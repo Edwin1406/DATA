@@ -12,7 +12,7 @@ class ControlConvertidor extends ActiveRecord {
         'horas_programadas',
         'cantidad_resmas',
         'cantidad_resmas_hora',
-        'n_cambio',
+        'n_cambios',
         'gramaje',
         'desperdicio_kg',
     ];
@@ -25,7 +25,7 @@ class ControlConvertidor extends ActiveRecord {
     public $horas_programadas;
     public $cantidad_resmas;
     public $cantidad_resmas_hora;
-    public $n_cambio;
+    public $n_cambios;
     public $gramaje;
     public $desperdicio_kg;
 
@@ -41,7 +41,7 @@ class ControlConvertidor extends ActiveRecord {
         $this->horas_programadas = $data['horas_programadas'] ?? null;
         $this->cantidad_resmas = $data['cantidad_resmas'] ?? null;
         $this->cantidad_resmas_hora = $data['cantidad_resmas_hora'] ?? null;
-        $this->n_cambio = $data['n_cambio'] ?? null;
+        $this->n_cambios = $data['n_cambios'] ?? null;
         $this->gramaje = $data['gramaje'] ?? null;
         $this->desperdicio_kg = $data['desperdicio_kg'] ?? null;
     }
@@ -67,8 +67,8 @@ class ControlConvertidor extends ActiveRecord {
             self::$alertas['error'][] = 'La cantidad de resmas es obligatoria';
         }
 
-        if(!$this->n_cambio) {
-            self::$alertas['error'][] = 'El número de cambio es obligatorio';
+        if(!$this->n_cambios) {
+            self::$alertas['error'][] = 'El número de cambios es obligatorio';
         }
 
         return self::$alertas;
