@@ -57,7 +57,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/control/convertidor/tablaConsumoConvertidor">Tabla Consumo Convertidor</a>
+                    <a class="nav-link active" href="/admin/control/convertidor/tablaConsumoConvertidor">Tabla Consumo Guillotina</a>
                 </li>
             </ul>
         </div>
