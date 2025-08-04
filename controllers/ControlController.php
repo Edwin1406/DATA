@@ -371,7 +371,7 @@ public static function consumo_convertidor(Router $router)
             } else {
                 $control_guillotina->n_cortes_hora = 0;
             }
-            debuguear($control_guillotina);
+            // debuguear($control_guillotina);
             $alertas = $control_guillotina->validar();
             if (empty($alertas)) {
                 $resultado = $control_guillotina->guardar();
