@@ -188,13 +188,23 @@ bar.render();
 
 
 
-
-
 // Llamar a la función ApiConsumo
 async function grafica() {
-	const apiConsumo = await ApiConsumo(); // Llama a tu API
+	// Obtener datos desde la API
+	const apiConsumoRaw = await ApiConsumo();
 
-	// Extraer todas las fechas únicas
+	// Obtener mes y año actual
+	const hoy = new Date();
+	const mesActual = hoy.getMonth(); // 0 = enero, 7 = agosto
+	const añoActual = hoy.getFullYear();
+
+	// Filtrar solo registros del mes y año actual
+	const apiConsumo = apiConsumoRaw.filter(item => {
+		const fecha = new Date(item.created_at);
+		return fecha.getMonth() === mesActual && fecha.getFullYear() === añoActual;
+	});
+
+	// Extraer todas las fechas únicas del mes actual
 	const fechasUnicas = [...new Set(apiConsumo.map(item => {
 		const fecha = new Date(item.created_at);
 		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
@@ -237,44 +247,43 @@ async function grafica() {
 	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
 	// Configuración del gráfico
-var optionsProfileVisit = {
-	annotations: {
-		position: 'back'
-	},
-	dataLabels: {
-		enabled: false
-	},
-	chart: {
-		type: 'bar',
-		height: 300,
-		stacked: false
-	},
-	fill: {
-		opacity: 1
-	},
-	plotOptions: {
-		bar: {
-			borderRadius: 4,
-			horizontal: false
-		}
-	},
-	series: series,
-	colors: colores,
-	xaxis: {
-		categories: fechasUnicas,
-		title: {
-			text: 'Día'
-		}
-	},
-	yaxis: {
-		labels: {
-			formatter: function (value) {
-				return value.toFixed(2);
+	var optionsProfileVisit = {
+		annotations: {
+			position: 'back'
+		},
+		dataLabels: {
+			enabled: false
+		},
+		chart: {
+			type: 'bar',
+			height: 300,
+			stacked: false
+		},
+		fill: {
+			opacity: 1
+		},
+		plotOptions: {
+			bar: {
+				borderRadius: 4,
+				horizontal: false
+			}
+		},
+		series: series,
+		colors: colores,
+		xaxis: {
+			categories: fechasUnicas,
+			title: {
+				text: 'Día'
+			}
+		},
+		yaxis: {
+			labels: {
+				formatter: function (value) {
+					return value.toFixed(2);
+				}
 			}
 		}
-	}
-};
-
+	};
 
 	var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
 	chartProfileVisit.render();
