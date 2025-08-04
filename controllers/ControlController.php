@@ -126,7 +126,7 @@ class ControlController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
-        $alertas = [];
+    
 
 
         $control_doblado = new ControlDoblado;
@@ -159,7 +159,7 @@ class ControlController
                     header('Location: /admin/control/doblado/consumo_doblado?exito=1');
                 }
             } else {
-                $alertas = ControlDoblado::getAlertas();
+                $alertas = [];
             }
         }
 
@@ -168,7 +168,8 @@ class ControlController
         $router->render('admin/control/doblado/consumo_doblado', [
             'titulo' => 'Control Doblado',
             'nombre' => $nombre,
-            'email' => $email
+            'email' => $email,
+            'alertas' => $alertas
         ]);
     }
 
