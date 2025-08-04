@@ -160,6 +160,10 @@ $router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'edit
 // eliminar consumo doblado
 $router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'eliminarConsumoDoblado']);
 
+// eliminar consumo convertidor
+$router->post('/admin/eliminarConsumoConvertidor', [ControlController::class, 'eliminarConsumoConvertidor']);
+
+
 
 
 
