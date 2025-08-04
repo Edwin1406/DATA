@@ -58,6 +58,16 @@
                              </li>
 
 
+
+                                
+                             <li class="submenu-item ">
+                                 <a href="/admin/convertidor"><i class="bi bi-arrow-right"> </i>Registro Convertidor</a>
+                             </li>
+
+
+
+
+
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control/doblado/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
