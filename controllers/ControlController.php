@@ -420,7 +420,32 @@ public static function consumo_convertidor(Router $router)
 
 
 
-    
+
+    // eliminar consumo guillotina papel
+    public static function eliminarConsumoGuillotina()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $control_guillotina = ControlGuillotina::find($id);
+            if ($control_guillotina) {
+                $resultado = $control_guillotina->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/control/guillotina/tablaConsumoGuillotinaPapel?exito=1');
+                } else {
+                    header('Location: /admin/control/guillotina/tablaConsumoGuillotinaPapel?error=1');
+                }
+            } else {
+                header('Location: /admin/control/guillotina/tablaConsumoGuillotinaPapel?error=1');
+            }
+        }
+    }
+
+
 
 
 

@@ -174,6 +174,8 @@ $router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'elimi
 // eliminar consumo convertidor
 $router->post('/admin/eliminarConsumoConvertidor', [ControlController::class, 'eliminarConsumoConvertidor']);
 
+// eliminar consumo guillotina papel
+$router->post('/admin/eliminarConsumoGuillotina', [ControlController::class, 'eliminarConsumoGuillotina']);
 
 
 
