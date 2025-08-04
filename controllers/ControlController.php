@@ -383,6 +383,7 @@ public static function consumo_convertidor(Router $router)
             }
 
 
+        }
    
         $router->render('admin/control/guillotina/consumo_guillotina_papel', [
             'titulo' => 'Control Guillotina Papel',
@@ -390,7 +391,6 @@ public static function consumo_convertidor(Router $router)
             'email' => $email,
             'alertas' => $alertas
         ]);
-    }
 }
 
 
