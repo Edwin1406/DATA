@@ -230,16 +230,10 @@ public static function consumo_convertidor(Router $router)
         header('Location: /');
     }
 
-    // NOMBRE DE LA PERSONA LOGEADA
-    $nombre = $_SESSION['nombre'];
-    $email = $_SESSION['email'];
-    $alertas = [];
-
+  
     $router->render('admin/control/convertidor/consumo_convertidor', [
         'titulo' => 'Control Convertidor',
-        'nombre' => $nombre,
-        'email' => $email,
-        'alertas' => $alertas
+      
     ]);
 
 
