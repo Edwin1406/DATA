@@ -143,6 +143,10 @@ $router->get('/admin/control/doblado/tablaConsumoDoblado', [ControlController::c
 // tabla consumo convertidor
 $router->get('/admin/control/convertidor/tablaConsumoConvertidor', [ControlController::class, 'tablaConsumoConvertidor']);
 
+// tabla consumo guillotina papel
+$router->get('/admin/control/guillotina/tablaConsumoGuillotinaPapel', [ControlController::class, 'tablaConsumoGuillotinaPapel']);
+
+
 
 
 
