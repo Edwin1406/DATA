@@ -61,7 +61,7 @@
 
                                 
                              <li class="submenu-item ">
-                                 <a href="/admin/convertidor"><i class="bi bi-arrow-right"> </i>Registro Convertidor</a>
+                                 <a href="/admin/control/convertidor/consumo_convertidor"><i class="bi bi-arrow-right"> </i>Registro Convertidor</a>
                              </li>
 
 

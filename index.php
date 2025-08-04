@@ -92,6 +92,11 @@ $router->get('/admin/control/doblado/consumo_doblado', [ControlController::class
 $router->post('/admin/control/doblado/consumo_doblado', [ControlController::class, 'consumo_doblado']);
 
 
+// registro convertidor
+$router->get('/admin/control/convertidor/consumo_convertidor', [ControlController::class, 'convertidor']);
+$router->post('/admin/control/convertidor/consumo_convertidor', [ControlController::class, 'convertidor']);
+
+
 
 
 // editar diseño
