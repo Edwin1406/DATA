@@ -76,7 +76,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/control/doblado/consumo_doblado">
+                            <form class="form" method="POST" action="/admin/control/convertidor/consumo_convertidor">
                                 <div class="row">
 
                                     <!-- fecha -->
