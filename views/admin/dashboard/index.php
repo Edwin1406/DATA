@@ -409,11 +409,16 @@
             <div class="col-md-6 mb-3">
                 <label for="filtroTipoMaquina">Máquina</label>
                 <select class="form-select" id="filtroTipoMaquina">
+
                     <option value="todos">Todas</option>
                     <option value="TROQUEL">Troquel</option>
                     <option value="GUILLOTINA">Guillotina</option>
                     <option value="DOBLADO">Doblado</option>
                     <option value="CONVERTIDOR">Convertidor</option>
+                    <option value="EMPAQUE">Empaque</option>
+                    <option value="MICRO">Micro</option>
+                    <option value="CORRUGADOR">Corrugador</option>
+                    <option value="FLEXOGRAFICA">Flexografica</option>
                 </select>
             </div>
 
