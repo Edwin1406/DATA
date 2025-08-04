@@ -70,7 +70,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">REGISTRO DE CONTROL CONVERTIDOR</h4>
-                        <?php include_once __DIR__ . '/../..//templates/alertas.php'  ?>
+                        <?php include_once __DIR__ . '../../../templates/alertas.php'  ?>
 
 
                     </div>
