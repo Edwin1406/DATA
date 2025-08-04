@@ -395,6 +395,34 @@ public static function consumo_convertidor(Router $router)
 
 
 
+    // tabla consumo guillotina papel
+    public static function tablaConsumoGuillotinaPapel(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $control_guillotina = ControlGuillotina::all();
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $router->render('admin/control/guillotina/tablaConsumoGuillotinaPapel', [
+            'titulo' => 'Tabla Consumo Guillotina Papel',
+            'subtitulo' => 'Consumo Guillotina Papel',
+            'nombre' => $nombre,
+            'email' => $email,
+            'control_guillotina' => $control_guillotina
+        ]);
+    }
+
+
+
+    
+
+
 
 
 
