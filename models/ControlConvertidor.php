@@ -26,6 +26,7 @@ class ControlConvertidor extends ActiveRecord {
     public $horas_programadas;
     public $cantidad_resmas;
     public $cantidad_resmas_hora;
+    public $ancho_papel;
     public $n_cambios;
     public $gramaje;
     public $desperdicio_kg;
@@ -42,6 +43,7 @@ class ControlConvertidor extends ActiveRecord {
         $this->horas_programadas = $data['horas_programadas'] ?? null;
         $this->cantidad_resmas = $data['cantidad_resmas'] ?? null;
         $this->cantidad_resmas_hora = $data['cantidad_resmas_hora'] ?? null;
+        $this->ancho_papel = $data['ancho_papel'] ?? null;
         $this->n_cambios = $data['n_cambios'] ?? null;
         $this->gramaje = $data['gramaje'] ?? null;
         $this->desperdicio_kg = $data['desperdicio_kg'] ?? null;
