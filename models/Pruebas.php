@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Prueba extends ActiveRecord {
+class Pruebas extends ActiveRecord {
     protected static $tabla = 'pruebas';
     protected static $columnasDB = ['id', 'nombre', 'descripcion', 'fecha', 'resultado'];
 
