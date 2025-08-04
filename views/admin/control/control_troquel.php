@@ -124,7 +124,7 @@
                                     <!-- golpes maquina  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="golpes_maquina">Golpes Maquina</label>
+                                            <label for="golpes_maquina">Golpes Maquina(UND)</label>
                                             <input type="number" id="golpes_maquina" class="form-control"
                                                 placeholder="Golpes Maquina" name="golpes_maquina">
                                         </div>
@@ -142,7 +142,7 @@
                                     <!-- cantidad separadores  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_separadores">Cantidad Separadores</label>
+                                            <label for="cantidad_separadores">Cantidad Separadores(UND)</label>
                                             <input type="number" id="cantidad_separadores" class="form-control"
                                                 placeholder="Cantidad Separadores" name="cantidad_separadores">
                                         </div>
@@ -151,7 +151,7 @@
                                     <!-- cantidad cajas  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_cajas">Cantidad Cajas</label>
+                                            <label for="cantidad_cajas">Cantidad Cajas(UND)</label>
                                             <input type="number" id="cantidad_cajas" class="form-control"
                                                 placeholder="Cantidad Cajas" name="cantidad_cajas">
                                         </div>
@@ -160,7 +160,7 @@
                                     <!-- cantidad papel  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_papel">Cantidad Papel</label>
+                                            <label for="cantidad_papel">Cantidad Papel(UND)</label>
                                             <input type="number" id="cantidad_papel" class="form-control"
                                                 placeholder="Cantidad Papel" name="cantidad_papel">
 
@@ -170,7 +170,7 @@
                                     <!-- desperdicio kg  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio Kg</label>
+                                            <label for="desperdicio_kg">Desperdicio(KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
                                                 placeholder="Desperdicio Kg" name="desperdicio_kg">
                                         </div>

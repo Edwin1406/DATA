@@ -121,7 +121,7 @@
                                     <!-- cantidad_laminas -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_resmas">Cantidad de Resmas</label>
+                                            <label for="cantidad_resmas">Cantidad de Resmas(UND)</label>
                                             <input type="number" id="cantidad_resmas" class="form-control"
                                                 placeholder="Cantidad de Resmas" name="cantidad_resmas">
                                         </div>
@@ -149,7 +149,7 @@
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio</label>
+                                            <label for="desperdicio_kg">Desperdicio(KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
                                                 placeholder="Desperdicio (kl)" name="desperdicio_kg">
                                         </div>

@@ -133,7 +133,7 @@
                                     <!-- cantidad_laminas -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_laminas">Cantidad de Laminas</label>
+                                            <label for="cantidad_laminas">Cantidad de Laminas(UND)</label>
                                             <input type="number" id="cantidad_laminas" class="form-control"
                                                 placeholder="Cantidad de Laminas" name="cantidad_laminas">
                                         </div>
