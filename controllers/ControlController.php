@@ -280,12 +280,34 @@ public static function consumo_convertidor(Router $router)
         'alertas' => $alertas
     ]);
 
-
-
-
-
-
 }
+
+
+
+
+    // tabla consumo convertidor
+    public static function tablaConsumoConvertidor(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $control_convertidor = ControlConvertidor::all();
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $router->render('admin/control/convertidor/tablaConsumoConvertidor', [
+            'titulo' => 'Tabla Consumo Convertidor',
+            'subtitulo' => 'Consumo Convertidor',
+            'nombre' => $nombre,
+            'email' => $email,
+            'control_convertidor' => $control_convertidor
+        ]);
+    }
+
 
 
 

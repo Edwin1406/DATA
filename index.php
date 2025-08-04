@@ -133,6 +133,11 @@ $router->get('/admin/diseno/tablaDiseno', [DiseñoController::class, 'tablaDisen
 $router->get('/admin/control/doblado/tablaConsumoDoblado', [ControlController::class, 'tablaConsumoDoblado']);
 
 
+// tabla consumo convertidor
+$router->get('/admin/control/convertidor/tablaConsumoConvertidor', [ControlController::class, 'tablaConsumoConvertidor']);
+
+
+
 
 
 // ELIMINAR

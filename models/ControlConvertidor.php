@@ -12,6 +12,7 @@ class ControlConvertidor extends ActiveRecord {
         'horas_programadas',
         'cantidad_resmas',
         'cantidad_resmas_hora',
+        'ancho_papel',
         'n_cambios',
         'gramaje',
         'desperdicio_kg',
