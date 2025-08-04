@@ -57,7 +57,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/control/guillotina/tablaConsumoGuillotina">Tabla Consumo Guillotina</a>
+                    <a class="nav-link active" href="/admin/control/guillotina/tablaConsumoGuillotinaPapel">Tabla Consumo Guillotina</a>
                 </li>
             </ul>
         </div>
