@@ -59,13 +59,10 @@
 
 
 
-                                
+
                              <li class="submenu-item ">
                                  <a href="/admin/control/convertidor/consumo_convertidor"><i class="bi bi-arrow-right"> </i>Registro Convertidor</a>
                              </li>
-
-
-
 
 
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
@@ -85,6 +82,13 @@
                                      <a href="/admin/tablaConsumo"><i class="bi bi-arrow-right"> </i>Tabla Consumo Empaque</a>
                                  </li>
                              <?php }  ?>
+
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/control/convertidor/tablaConsumoConvertidor"><i class="bi bi-arrow-right"> </i>Tabla Consumo Convertidor</a>
+                                 </li>
+                             <?php }  ?>
+
                              <li class="submenu-item ">
                                  <a href="/admin/tablaConsumoGeneral"><i class="bi bi-arrow-right"> </i>Tabla Consumo General</a>
                              </li>
@@ -119,7 +123,7 @@
                      </li>
                  <?php } ?>
 
-                 <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com'|| $userEmail === 'pruebas@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <i class="bi bi-collection-fill"></i>
@@ -166,12 +170,12 @@
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
                              </li>
-                                <li class="submenu-item ">
-                                    <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
-                                </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
+                             </li>
                          </ul>
-                        </li>
-                    <?php } ?>
+                     </li>
+                 <?php } ?>
 
 
                  <!-- </ul> -->
