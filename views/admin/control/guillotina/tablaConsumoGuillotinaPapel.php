@@ -71,6 +71,7 @@
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
                              <th class="fs-6" style="min-width: 155px;">Personal</th>
+                                <th class="fs-6" style="min-width: 130px;">Area</th>
                              <th class="fs-6" style="min-width: 130px;">Horas Programadas</th>
                              <th class="fs-6" style="min-width: 130px;">Cantidad Resmas</th>
                              <th class="fs-6" style="min-width: 130px;">N° Cambios de Medida</th>
@@ -86,8 +87,8 @@
                              <tr>
                                  <td><?= $guillotina->fecha ?></td>
                                  <td><?= $guillotina->turno ?></td>
-                                 <td><?= $guillotina->area ?></td>
                                  <td><?= $guillotina->personal ?></td>
+                                 <td><?= $guillotina->area ?></td>
                                  <td><?= $guillotina->horas_programadas ?></td>
                                  <td><?= $guillotina->cantidad_resmas ?></td>
                                  <td><?= $guillotina->n_cambios_medidas ?></td>
