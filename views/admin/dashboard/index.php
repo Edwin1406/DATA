@@ -410,10 +410,10 @@
                 <label for="filtroTipoMaquina">Máquina</label>
                 <select class="form-select" id="filtroTipoMaquina">
                     <option value="todos">Todas</option>
-                    <option value="troquel">Troquel</option>
-                    <option value="guillotina">Guillotina</option>
-                    <option value="doblado">Doblado</option>
-                    <option value="convertidor">Convertidor</option>
+                    <option value="TROQUEL">Troquel</option>
+                    <option value="GUILLOTINA">Guillotina</option>
+                    <option value="DOBLADO">Doblado</option>
+                    <option value="CONVERTIDOR">Convertidor</option>
                 </select>
             </div>
 
