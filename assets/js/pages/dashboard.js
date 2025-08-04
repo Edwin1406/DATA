@@ -413,4 +413,4 @@ chartIndonesia.render();
 chartAmerica.render();
 chartEurope.render();
 chartProfileVisit.render();
-// chartVisitorsProfile.render()
+chartVisitorsProfile.render()
