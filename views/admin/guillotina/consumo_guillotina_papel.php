@@ -57,7 +57,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/control/convertidor/tablaConsumoConvertidor">Tabla Consumo Guillotina</a>
+                    <a class="nav-link active" href="/admin/control/guillotina/tablaConsumoGuillotina">Tabla Consumo Guillotina</a>
                 </li>
             </ul>
         </div>
@@ -69,7 +69,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL CONVERTIDOR</h4>
+                        <h4 class="card-title">REGISTRO DE CONTROL GUILLERMO</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
