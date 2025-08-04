@@ -235,40 +235,12 @@ public static function consumo_convertidor(Router $router)
     $email = $_SESSION['email'];
     $alertas = [];
 
-
-    $control_convertidor = new ControlConvertidor;
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['personal']) && is_array($_POST['personal'])) {
-            $_POST['personal'] = implode(',', $_POST['personal']);
-        }
-        $control_convertidor->sincronizar($_POST);
-
-        if ($control_convertidor->horas_programadas > 0) {
-            // Convertir solo para el cálculo
-            $horasDecimal = $control_convertidor->convertirHorasADecimal($control_convertidor->horas_programadas);
-
-            // Validar que el resultado de conversión sea mayor a 0
-            if ($horasDecimal > 0) {
-                $control_convertidor->cantidad_lamina_hora = $control_convertidor->cantidad_laminas / $horasDecimal;
-            } else {
-                $control_convertidor->cantidad_lamina_hora = 0;
-            }
-        } else {
-            $control_convertidor->cantidad_lamina_hora = 0;
-        }
-        // debuguear($control_convertidor);
-        $alertas = $control_convertidor->validar();
-
-        if (empty($alertas)) {
-            $resultado = $control_convertidor->guardar();
-            if ($resultado) {
-                // resu
-                header('Location: /admin/control/convertidor/consumo_convertidor?exito=1');
-            }
-        } else {
-            $alertas = ControlConvertidor::getAlertas();
-        }
-    }
+    $router->render('admin/control/convertidor/consumo_convertidor', [
+        'titulo' => 'Control Convertidor',
+        'nombre' => $nombre,
+        'email' => $email,
+        'alertas' => $alertas
+    ]);
 
 
 
