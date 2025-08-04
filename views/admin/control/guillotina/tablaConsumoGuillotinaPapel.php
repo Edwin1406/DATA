@@ -97,9 +97,9 @@
                                  <td><?= $guillotina->desperdicio_kg ?></td>
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                                         <form action="/admin/eliminarConsumoTroquel" method="POST">
-                                             <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                         <!-- <a href="/admin/editarConsumo?id=<?= $guillotina->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                         <form action="/admin/eliminarConsumoGuillotina" method="POST">
+                                             <input type="hidden" name="id" value="<?= $guillotina->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
