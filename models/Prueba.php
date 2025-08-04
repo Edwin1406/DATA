@@ -12,9 +12,9 @@ class Prueba extends ActiveRecord {
     public ?int $id;
     public string $fecha = '';
     public string $turno = '';
-    // public array $personal = [];
+    public array $personal = [];
     // En Model\Prueba.php
-public string $personal;
+// public string $personal;
 
     public string $producto = '';
     public string $medidas = '';
