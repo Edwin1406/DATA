@@ -131,9 +131,9 @@
                                     <div class="col-md-6 col-12">
 
                                         <div class="form-group">
-                                            <label for="n_cambios_medida">N° de Cambios de Medida</label>
-                                            <input type="number" id="n_cambios_medida" class="form-control"
-                                                placeholder="N° de Cambios de Medida" name="n_cambios_medida">
+                                            <label for="n_cambios_medidas">N° de Cambios de Medida</label>
+                                            <input type="number" id="n_cambios_medidas" class="form-control"
+                                                placeholder="N° de Cambios de Medida" name="n_cambios_medidas">
                                         </div>
                                     </div>
 

@@ -24,7 +24,7 @@ class ControlGuillotina extends ActiveRecord {
     public $fecha;
     public $turno;
     public $area;
-    public $personal; // Comma-separated string of personal names
+    public $personal; 
     public $horas_programadas;
     public $cantidad_resmas;
     public $n_cambios_medidas;
