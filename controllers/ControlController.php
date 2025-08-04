@@ -407,56 +407,111 @@ public static function consumo_convertidor(Router $router)
 
     // ------------------------------------------ CONSUMO GUILLOTINA PAPEL ----------------------------------------
 
-    public static function consumo_guillotina_papel(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
+//     public static function consumo_guillotina_papel(Router $router)
+//     {
+//         session_start();
+//         if (!isset($_SESSION['email'])) {
+//             header('Location: /');
+//         }
 
-        // NOMBRE DE LA PERSONA LOGEADA
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-        $alertas = [];
-        $control_guillotina = new ControlGuillotina;
+//         // NOMBRE DE LA PERSONA LOGEADA
+//         $nombre = $_SESSION['nombre'];
+//         $email = $_SESSION['email'];
+//         $alertas = [];
+//         $control_guillotina = new ControlGuillotina;
 
-        // n_crotes es cantidad 
-        // n_cortes_hora es cantidad por hora
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $control_guillotina->sincronizar($_POST);
+//         // n_crotes es cantidad 
+//         // n_cortes_hora es cantidad por hora
+//         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//             $control_guillotina->sincronizar($_POST);
 
-            if ($control_guillotina->horas_programadas > 0) {
-                // Convertir solo para el cálculo
-                $horasDecimal = $control_guillotina->convertirHorasADecimal($control_guillotina->horas_programadas);
+//             if ($control_guillotina->horas_programadas > 0) {
+//                 // Convertir solo para el cálculo
+//                 $horasDecimal = $control_guillotina->convertirHorasADecimal($control_guillotina->horas_programadas);
 
-                if ($horasDecimal > 0) {
-                    $control_guillotina->n_cortes_hora = $control_guillotina->n_cortes / $horasDecimal;
-                } else {
-                    $control_guillotina->n_cortes_hora = 0;
-                }
+//                 if ($horasDecimal > 0) {
+//                     $control_guillotina->n_cortes_hora = $control_guillotina->n_cortes / $horasDecimal;
+//                 } else {
+//                     $control_guillotina->n_cortes_hora = 0;
+//                 }
+//             } else {
+//                 $control_guillotina->n_cortes_hora = 0;
+//             }
+//             // debuguear($control_guillotina);
+//             $alertas = $control_guillotina->validar();
+//             if (empty($alertas)) {
+//                 $resultado = $control_guillotina->guardar();
+//                 if ($resultado) {
+//                     header('Location: /admin/control/guillotina/consumo_guillotina_papel?exito=1');
+//                 }
+//             } else {
+//                 $alertas = ControlGuillotina::getAlertas();
+//             }
+
+
+//         }
+   
+//         $router->render('admin/control/guillotina/consumo_guillotina_papel', [
+//             'titulo' => 'Control Guillotina Papel',
+//             'nombre' => $nombre,
+//             'email' => $email,
+//             'alertas' => $alertas
+//         ]);
+// }
+
+public static function consumo_guillotina_papel(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
+    }
+
+    // NOMBRE DE LA PERSONA LOGEADA
+    $nombre = $_SESSION['nombre'];
+    $email = $_SESSION['email'];
+    
+    $alertas = []; // Inicializar alertas
+    $control_guillotina = new ControlGuillotina;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Sincronizar datos del formulario
+        $control_guillotina->sincronizar($_POST);
+
+        // Calcular cortes por hora si hay horas programadas
+        if ($control_guillotina->horas_programadas > 0) {
+            $horasDecimal = $control_guillotina->convertirHorasADecimal($control_guillotina->horas_programadas);
+            
+            if ($horasDecimal > 0) {
+                $control_guillotina->n_cortes_hora = $control_guillotina->n_cortes / $horasDecimal;
             } else {
                 $control_guillotina->n_cortes_hora = 0;
             }
-            // debuguear($control_guillotina);
-            $alertas = $control_guillotina->validar();
-            if (empty($alertas)) {
-                $resultado = $control_guillotina->guardar();
-                if ($resultado) {
-                    header('Location: /admin/control/guillotina/consumo_guillotina_papel?exito=1');
-                }
-            } else {
-                $alertas = ControlGuillotina::getAlertas();
-            }
-
-
+        } else {
+            $control_guillotina->n_cortes_hora = 0;
         }
-   
-        $router->render('admin/control/guillotina/consumo_guillotina_papel', [
-            'titulo' => 'Control Guillotina Papel',
-            'nombre' => $nombre,
-            'email' => $email,
-            'alertas' => $alertas
-        ]);
+
+        // Validar los datos
+        $alertas = $control_guillotina->validar();
+
+        // Si no hay alertas, guardar y redirigir
+        if (empty($alertas)) {
+            $resultado = $control_guillotina->guardar();
+            if ($resultado) {
+                header('Location: /admin/control/guillotina/consumo_guillotina_papel?exito=1');
+                exit;
+            }
+        }
+        // Si hay alertas, se mostrarán en la vista (NO se sobrescriben)
+    }
+
+    // Renderizar vista con los datos y alertas
+    $router->render('admin/control/guillotina/consumo_guillotina_papel', [
+        'titulo' => 'Control Guillotina Papel',
+        'nombre' => $nombre,
+        'email' => $email,
+        'alertas' => $alertas
+    ]);
 }
 
 
