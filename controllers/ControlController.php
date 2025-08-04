@@ -402,6 +402,7 @@ public static function consumo_convertidor(Router $router)
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
+        $alertas = [];
 
         $control_guillotina = ControlGuillotina::all();
 
@@ -414,7 +415,8 @@ public static function consumo_convertidor(Router $router)
             'subtitulo' => 'Consumo Guillotina Papel',
             'nombre' => $nombre,
             'email' => $email,
-            'control_guillotina' => $control_guillotina
+            'control_guillotina' => $control_guillotina,
+            'alertas' => $alertas
         ]);
     }
 
