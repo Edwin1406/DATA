@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\ControlConvertidor;
 use Model\ControlDoblado;
 use Model\ControlTroquel;
 use MVC\Router;
@@ -234,6 +235,44 @@ public static function consumo_convertidor(Router $router)
     $nombre = $_SESSION['nombre'];
     $email = $_SESSION['email'];
     $alertas = [];
+
+
+    $control_convertidor = new ControlConvertidor;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       
+        $control_convertidor->sincronizar($_POST);
+
+        debuguear($control_convertidor);
+
+        if ($control_convertidor->horas_programadas > 0) {
+            // Convertir solo para el cálculo
+            $horasDecimal = $control_convertidor->convertirHorasADecimal($control_convertidor->horas_programadas);
+
+            // Validar que el resultado de conversión sea mayor a 0
+            if ($horasDecimal > 0) {
+                $control_convertidor->cantidad_resmas_hora = $control_convertidor->cantidad_resmas / $horasDecimal;
+            } else {
+                $control_convertidor->cantidad_resmas_hora = 0;
+            }
+        } else {
+            $control_convertidor->cantidad_resmas_hora = 0;
+        }
+
+        // debuguear($control_convertidor);
+        $alertas = $control_convertidor->validar();
+
+        if (empty($alertas)) {
+            $resultado = $control_convertidor->guardar();
+            if ($resultado) {
+                header('Location: /admin/control/convertidor/consumo_convertidor?exito=1');
+            }
+        } else {
+            $alertas = ControlConvertidor::getAlertas();
+        }
+    }
+
+
 
   
     $router->render('admin/control/convertidor/consumo_convertidor', [
