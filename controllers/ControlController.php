@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\ControlConvertidor;
 use Model\ControlDoblado;
+use Model\ControlGuillotina;
 use Model\ControlTroquel;
 use MVC\Router;
 
@@ -353,6 +354,8 @@ public static function consumo_convertidor(Router $router)
         $alertas = [];
         $control_guillotina = new ControlGuillotina;
 
+        // n_crotes es cantidad 
+        // n_cortes_hora es cantidad por hora
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $control_guillotina->sincronizar($_POST);
 
@@ -360,28 +363,27 @@ public static function consumo_convertidor(Router $router)
                 // Convertir solo para el cálculo
                 $horasDecimal = $control_guillotina->convertirHorasADecimal($control_guillotina->horas_programadas);
 
-                // Validar que el resultado de conversión sea mayor a 0
                 if ($horasDecimal > 0) {
-                    $control_guillotina->cantidad_resmas_hora = $control_guillotina->cantidad_resmas / $horasDecimal;
+                    $control_guillotina->n_cortes_hora = $control_guillotina->n_cortes / $horasDecimal;
                 } else {
-                    $control_guillotina->cantidad_resmas_hora = 0;
+                    $control_guillotina->n_cortes_hora = 0;
                 }
             } else {
-                $control_guillotina->cantidad_resmas_hora = 0;
+                $control_guillotina->n_cortes_hora = 0;
             }
-
             // debuguear($control_guillotina);
             $alertas = $control_guillotina->validar();
-
             if (empty($alertas)) {
                 $resultado = $control_guillotina->guardar();
                 if ($resultado) {
-                    header('Location: /admin/control/gillotina_papel/consumo_guillotina_papel?exito=1');
+                    header('Location: /admin/control/guillotina_papel/consumo_guillotina_papel?exito=1');
                 }
             } else {
                 $alertas = ControlGuillotina::getAlertas();
             }
-        }
+            
+
+   
         $router->render('admin/control/guillotina/consumo_guillotina_papel', [
             'titulo' => 'Control Guillotina Papel',
             'nombre' => $nombre,
