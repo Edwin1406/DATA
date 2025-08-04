@@ -116,62 +116,127 @@ class ControlController
 
     // --------------------------------------------------------------------CONTROL DOBLADO--------------------------------------------
 
-    public static function consumo_doblado(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
+    // public static function consumo_doblado(Router $router)
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //     }
 
-        // NOMBRE DE LA PERSONA LOGEADA
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
+    //     // NOMBRE DE LA PERSONA LOGEADA
+    //     $nombre = $_SESSION['nombre'];
+    //     $email = $_SESSION['email'];
     
 
 
-        $control_doblado = new ControlDoblado;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['personal']) && is_array($_POST['personal'])) {
-                $_POST['personal'] = implode(',', $_POST['personal']);
-            }
-            $control_doblado->sincronizar($_POST);
+    //     $control_doblado = new ControlDoblado;
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         if (isset($_POST['personal']) && is_array($_POST['personal'])) {
+    //             $_POST['personal'] = implode(',', $_POST['personal']);
+    //         }
+    //         $control_doblado->sincronizar($_POST);
 
-            if ($control_doblado->horas_programadas > 0) {
-                // Convertir solo para el cálculo
-                $horasDecimal = $control_doblado->convertirHorasADecimal($control_doblado->horas_programadas);
+    //         if ($control_doblado->horas_programadas > 0) {
+    //             // Convertir solo para el cálculo
+    //             $horasDecimal = $control_doblado->convertirHorasADecimal($control_doblado->horas_programadas);
 
-                // Validar que el resultado de conversión sea mayor a 0
-                if ($horasDecimal > 0) {
-                    $control_doblado->cantidad_lamina_hora = $control_doblado->cantidad_laminas / $horasDecimal;
-                } else {
-                    $control_doblado->cantidad_lamina_hora = 0;
-                }
+    //             // Validar que el resultado de conversión sea mayor a 0
+    //             if ($horasDecimal > 0) {
+    //                 $control_doblado->cantidad_lamina_hora = $control_doblado->cantidad_laminas / $horasDecimal;
+    //             } else {
+    //                 $control_doblado->cantidad_lamina_hora = 0;
+    //             }
+    //         } else {
+    //             $control_doblado->cantidad_lamina_hora = 0;
+    //         }
+    //         // debuguear($control_doblado);
+    //         $alertas = $control_doblado->validar();
+
+    //         if (empty($alertas)) {
+    //             $resultado = $control_doblado->guardar();
+    //             if ($resultado) {
+    //                 // resu
+    //                 header('Location: /admin/control/doblado/consumo_doblado?exito=1');
+    //             }
+    //         } else {
+    //             $alertas = [];
+    //         }
+    //     }
+
+
+
+    //     $router->render('admin/control/doblado/consumo_doblado', [
+    //         'titulo' => 'Control Doblado',
+    //         'nombre' => $nombre,
+    //         'email' => $email,
+    //         'alertas' => $alertas
+    //     ]);
+    // }
+
+
+public static function consumo_doblado(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
+    }
+
+    // NOMBRE DE LA PERSONA LOGEADA
+    $nombre = $_SESSION['nombre'];
+    $email = $_SESSION['email'];
+
+    $alertas = []; // Inicializar para asegurar que esté definida siempre
+    $control_doblado = new ControlDoblado;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Convertir 'personal' a string si es un array
+        if (isset($_POST['personal']) && is_array($_POST['personal'])) {
+            $_POST['personal'] = implode(',', $_POST['personal']);
+        }
+
+        // Sincronizar datos
+        $control_doblado->sincronizar($_POST);
+
+        // Calcular cantidad_lamina_hora si hay horas programadas
+        if ($control_doblado->horas_programadas > 0) {
+            $horasDecimal = $control_doblado->convertirHorasADecimal($control_doblado->horas_programadas);
+
+            if ($horasDecimal > 0) {
+                $control_doblado->cantidad_lamina_hora = $control_doblado->cantidad_laminas / $horasDecimal;
             } else {
                 $control_doblado->cantidad_lamina_hora = 0;
             }
-            // debuguear($control_doblado);
-            $alertas = $control_doblado->validar();
-
-            if (empty($alertas)) {
-                $resultado = $control_doblado->guardar();
-                if ($resultado) {
-                    // resu
-                    header('Location: /admin/control/doblado/consumo_doblado?exito=1');
-                }
-            } else {
-                $alertas = [];
-            }
+        } else {
+            $control_doblado->cantidad_lamina_hora = 0;
         }
 
+        // Validar datos
+        $alertas = $control_doblado->validar();
 
-
-        $router->render('admin/control/doblado/consumo_doblado', [
-            'titulo' => 'Control Doblado',
-            'nombre' => $nombre,
-            'email' => $email,
-            'alertas' => $alertas
-        ]);
+        // Si no hay alertas, guardar y redirigir
+        if (empty($alertas)) {
+            $resultado = $control_doblado->guardar();
+            if ($resultado) {
+                header('Location: /admin/control/doblado/consumo_doblado?exito=1');
+                exit;
+            }
+        }
+        // Si hay alertas, se conservarán para mostrarlas en la vista
     }
+
+    // Renderizar vista
+    $router->render('admin/control/doblado/consumo_doblado', [
+        'titulo' => 'Control Doblado',
+        'nombre' => $nombre,
+        'email' => $email,
+        'alertas' => $alertas
+    ]);
+}
+
+
+
 
     // tabla consumo doblado
     public static function tablaConsumoDoblado(Router $router)
