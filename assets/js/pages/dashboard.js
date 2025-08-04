@@ -180,31 +180,144 @@ bar.render();
 
 
 
-async function grafica() {
+// async function grafica() {
+// 	const apiConsumoRaw = await ApiConsumo();
+
+// 	// Obtener mes y año actuales
+// 	const hoy = new Date();
+// 	const mesActual = hoy.getMonth(); // 0 = enero, 7 = agosto
+// 	const añoActual = hoy.getFullYear();
+
+// 	// Filtrar solo los registros del mes y año actual
+// 	const apiConsumo = apiConsumoRaw.filter(item => {
+// 		const fecha = new Date(item.created_at + 'T00:00:00'); // Asegura formato correcto
+// 		return fecha.getMonth() === mesActual && fecha.getFullYear() === añoActual;
+// 	});
+
+// 	console.log("Datos filtrados del mes actual:", apiConsumo);
+
+// 	// Extraer fechas únicas (por día y mes abreviado)
+// 	const fechasUnicas = [...new Set(apiConsumo.map(item => {
+// 		const fecha = new Date(item.created_at + 'T00:00:00');
+// 		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
+// 	}))];
+
+// 	// Agrupar consumos por tipo_maquina
+// 	const maquinas = {};
+// 	apiConsumo.forEach(item => {
+// 		const fecha = new Date(item.created_at + 'T00:00:00').toLocaleDateString('default', { day: '2-digit', month: 'short' });
+// 		const tipo = item.tipo_maquina;
+// 		const total = parseFloat(item.total_general);
+
+// 		if (!maquinas[tipo]) {
+// 			maquinas[tipo] = {};
+// 		}
+// 		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + (isNaN(total) ? 0 : total);
+// 	});
+
+// 	// Calcular totales por tipo_maquina
+// 	const totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
+// 		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
+// 		return { nombre, totalAcumulado, datos };
+// 	});
+
+// 	// Tomar top 5 por mayor consumo
+// 	const top5 = totalesPorMaquina
+// 		.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
+// 		.slice(0, 5);
+
+// 	// Preparar series para el gráfico
+// 	const series = top5.map(({ nombre, datos }) => {
+// 		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
+// 		return {
+// 			name: nombre,
+// 			data: dataPorFecha
+// 		};
+// 	});
+
+// 	// Colores de barras
+// 	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
+
+// 	// Configuración de ApexCharts
+// 	const optionsProfileVisit = {
+// 		annotations: { position: 'back' },
+// 		dataLabels: { enabled: false },
+// 		chart: {
+// 			type: 'bar',
+// 			height: 300,
+// 			stacked: false
+// 		},
+// 		fill: { opacity: 1 },
+// 		plotOptions: {
+// 			bar: {
+// 				borderRadius: 4,
+// 				horizontal: false
+// 			}
+// 		},
+// 		series: series,
+// 		colors: colores,
+// 		xaxis: {
+// 			categories: fechasUnicas,
+// 			title: { text: 'Día' }
+// 		},
+// 		yaxis: {
+// 			labels: {
+// 				formatter: function (value) {
+// 					return value.toFixed(2);
+// 				}
+// 			}
+// 		}
+// 	};
+
+// 	const chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+// 	chartProfileVisit.render();
+// }
+
+// // Esperar a que el DOM esté listo antes de ejecutar
+// document.addEventListener("DOMContentLoaded", function () {
+// 	grafica();
+// });
+
+
+
+
+
+
+async function graficaConFiltros(fechaInicio, fechaFin, topValue, maquinaFiltro) {
 	const apiConsumoRaw = await ApiConsumo();
 
-	// Obtener mes y año actuales
-	const hoy = new Date();
-	const mesActual = hoy.getMonth(); // 0 = enero, 7 = agosto
-	const añoActual = hoy.getFullYear();
+	// Convertir fechas a objetos Date
+	const inicio = new Date(fechaInicio + 'T00:00:00');
+	const fin = new Date(fechaFin + 'T23:59:59');
 
-	// Filtrar solo los registros del mes y año actual
-	const apiConsumo = apiConsumoRaw.filter(item => {
-		const fecha = new Date(item.created_at + 'T00:00:00'); // Asegura formato correcto
-		return fecha.getMonth() === mesActual && fecha.getFullYear() === añoActual;
+	// Filtrar por fecha
+	let datosFiltrados = apiConsumoRaw.filter(item => {
+		const fecha = new Date(item.created_at + 'T00:00:00');
+		return fecha >= inicio && fecha <= fin;
 	});
 
-	console.log("Datos filtrados del mes actual:", apiConsumo);
+	// Filtrar por tipo de máquina (si no es "todos")
+	if (maquinaFiltro !== 'todos') {
+		datosFiltrados = datosFiltrados.filter(item =>
+			item.tipo_maquina.toLowerCase() === maquinaFiltro.toLowerCase()
+		);
+	}
 
-	// Extraer fechas únicas (por día y mes abreviado)
-	const fechasUnicas = [...new Set(apiConsumo.map(item => {
+	// Verificar si hay datos
+	if (datosFiltrados.length === 0) {
+		alert("No se encontraron datos para los filtros seleccionados.");
+		return;
+	}
+
+	// Extraer fechas únicas
+	const fechasUnicas = [...new Set(datosFiltrados.map(item => {
 		const fecha = new Date(item.created_at + 'T00:00:00');
 		return fecha.toLocaleDateString('default', { day: '2-digit', month: 'short' });
 	}))];
 
-	// Agrupar consumos por tipo_maquina
+	// Agrupar por máquina
 	const maquinas = {};
-	apiConsumo.forEach(item => {
+	datosFiltrados.forEach(item => {
 		const fecha = new Date(item.created_at + 'T00:00:00').toLocaleDateString('default', { day: '2-digit', month: 'short' });
 		const tipo = item.tipo_maquina;
 		const total = parseFloat(item.total_general);
@@ -215,30 +328,29 @@ async function grafica() {
 		maquinas[tipo][fecha] = (maquinas[tipo][fecha] || 0) + (isNaN(total) ? 0 : total);
 	});
 
-	// Calcular totales por tipo_maquina
-	const totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
+	// Calcular totales por máquina
+	let totalesPorMaquina = Object.entries(maquinas).map(([nombre, datos]) => {
 		const totalAcumulado = Object.values(datos).reduce((sum, val) => sum + val, 0);
 		return { nombre, totalAcumulado, datos };
 	});
 
-	// Tomar top 5 por mayor consumo
-	const top5 = totalesPorMaquina
-		.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
-		.slice(0, 5);
+	// Aplicar Top si corresponde
+	if (topValue !== 'todos') {
+		totalesPorMaquina = totalesPorMaquina
+			.sort((a, b) => b.totalAcumulado - a.totalAcumulado)
+			.slice(0, parseInt(topValue));
+	}
 
-	// Preparar series para el gráfico
-	const series = top5.map(({ nombre, datos }) => {
+	// Preparar series para gráfico
+	const series = totalesPorMaquina.map(({ nombre, datos }) => {
 		const dataPorFecha = fechasUnicas.map(fecha => datos[fecha] || 0);
-		return {
-			name: nombre,
-			data: dataPorFecha
-		};
+		return { name: nombre, data: dataPorFecha };
 	});
 
-	// Colores de barras
+	// Colores
 	const colores = ['#435ebe', '#55c6e8', '#f59e0b', '#10b981', '#ef4444'];
 
-	// Configuración de ApexCharts
+	// Configurar gráfico
 	const optionsProfileVisit = {
 		annotations: { position: 'back' },
 		dataLabels: { enabled: false },
@@ -269,14 +381,57 @@ async function grafica() {
 		}
 	};
 
-	const chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+	// Limpiar gráfico anterior si existe
+	const chartContainer = document.querySelector("#chart-profile-visit");
+	chartContainer.innerHTML = "";
+
+	const chartProfileVisit = new ApexCharts(chartContainer, optionsProfileVisit);
 	chartProfileVisit.render();
 }
 
-// Esperar a que el DOM esté listo antes de ejecutar
+// Listener para formulario de filtro
 document.addEventListener("DOMContentLoaded", function () {
-	grafica();
+	const form = document.getElementById("formFiltroMaquinas");
+
+	form.addEventListener("submit", function (e) {
+		e.preventDefault();
+
+		const fechaInicio = document.getElementById("inputFechaInicio").value;
+		const fechaFin = document.getElementById("inputFechaFin").value;
+		const topValue = document.getElementById("inputTop").value;
+		const maquinaFiltro = document.getElementById("inputMaquina").value;
+
+		if (!fechaInicio || !fechaFin) {
+			alert("Selecciona fechas válidas.");
+			return;
+		}
+
+		graficaConFiltros(fechaInicio, fechaFin, topValue, maquinaFiltro);
+	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
