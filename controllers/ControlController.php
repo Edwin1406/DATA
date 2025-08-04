@@ -382,7 +382,7 @@ public static function consumo_convertidor(Router $router)
                 $alertas = ControlGuillotina::getAlertas();
             }
         }
-        $router->render('admin/guillotina/consumo_guillotina_papel', [
+        $router->render('admin/control/guillotina/consumo_guillotina_papel', [
             'titulo' => 'Control Guillotina Papel',
             'nombre' => $nombre,
             'email' => $email,
@@ -390,7 +390,7 @@ public static function consumo_convertidor(Router $router)
         ]);
     }
 
-    
+
 
 
 
