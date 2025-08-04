@@ -3,8 +3,8 @@
 
 
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 
 
@@ -100,8 +100,8 @@ $router->post('/admin/control/convertidor/consumo_convertidor', [ControlControll
 
 
 // registro GILLOTINA PAPEL
-$router->get('/admin/control/gillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
-$router->post('/admin/control/gillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+$router->get('/admin/control/guillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+$router->post('/admin/control/guillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
 
 
 
