@@ -243,7 +243,7 @@ public static function consumo_convertidor(Router $router)
        
         $control_convertidor->sincronizar($_POST);
 
-        debuguear($control_convertidor);
+        // debuguear($control_convertidor);
 
         if ($control_convertidor->horas_programadas > 0) {
             // Convertir solo para el cálculo
@@ -259,7 +259,7 @@ public static function consumo_convertidor(Router $router)
             $control_convertidor->cantidad_resmas_hora = 0;
         }
 
-        // debuguear($control_convertidor);
+        debuguear($control_convertidor);
         $alertas = $control_convertidor->validar();
 
         if (empty($alertas)) {
