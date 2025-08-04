@@ -289,7 +289,10 @@ async function grafica() {
 	chartProfileVisit.render();
 }
 
-grafica();
+document.addEventListener("DOMContentLoaded", function () {
+	grafica();
+});
+
 
 
 
@@ -412,5 +415,5 @@ var chartIndonesia = new ApexCharts(document.querySelector("#chart-indonesia"), 
 chartIndonesia.render();
 chartAmerica.render();
 chartEurope.render();
-chartProfileVisit.render();
+// chartProfileVisit.render();
 // chartVisitorsProfile.render()
