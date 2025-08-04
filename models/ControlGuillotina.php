@@ -2,7 +2,7 @@
 namespace Model;
 
 class ControlGuillotina extends ActiveRecord {
-    protected static $tabla = 'control_produccion';
+    protected static $tabla = 'control_guillotina';
     protected static $columnasDB = [
         'id',
         'fecha',
