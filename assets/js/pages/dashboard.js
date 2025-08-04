@@ -296,7 +296,8 @@ async function cargarGraficoTopMaquinas(fechaInicio, fechaFin, topSeleccionado, 
     // Filtrar por tipo de máquina
     if (maquinaSeleccionada !== 'todos') {
         datosFiltrados = datosFiltrados.filter(item =>
-            item.tipo_maquina.toLowerCase() === maquinaSeleccionada.toLowerCase()
+			// quitar espacios y comparar en minúsculas
+			item.tipo_maquina.trim().toLowerCase() === maquinaSeleccionada.trim().toLowerCase()
         );
     }
 
