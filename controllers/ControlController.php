@@ -273,8 +273,6 @@ public static function consumo_convertidor(Router $router)
     }
 
 
-
-  
     $router->render('admin/control/convertidor/consumo_convertidor', [
         'titulo' => 'Control Convertidor',
         'nombre' => $nombre,
