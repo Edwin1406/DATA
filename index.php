@@ -32,6 +32,7 @@ use Controllers\AdminController;
 use Controllers\ControlController;
 use Controllers\DiseñoController;
 use Controllers\GraficasController;
+use Controllers\PruebasController;
 
 $router = new Router();
 
@@ -182,8 +183,8 @@ $router->get('/admin/api/apiGraficasConsumoGeneral', [GraficasController::class,
 
 // CRUD DE PRUEBAS 
 // Crear prueba
-$router->get('/admin/pruebas/crearPruebas', [ControlController::class, 'crearPruebas']);
-$router->post('/admin/pruebas/crearPruebas', [ControlController::class, 'crearPruebas']);
+$router->get('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPruebas']);
+$router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPruebas']);
 
 
 
