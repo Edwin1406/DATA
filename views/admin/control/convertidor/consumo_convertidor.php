@@ -69,7 +69,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL DOBLADO</h4>
+                        <h4 class="card-title">REGISTRO DE CONTROL CONVERTIDOR</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
@@ -99,25 +99,15 @@
                                         </div>
                                     </div>
 
-                                         <div class="col-md-6 col-12">
-
+                                    <div class="col-md-6 col-12">
                                         <label for="personal">Escoja el Personal</label>
-                                        <!-- nombre multiple -->
                                         <div class="form-group">
-                                            <select class="choices form-select select-light-danger" multiple="multiple" name="personal[]">
-                                                <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
-                                                <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
-                                                <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
-                                                <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
-                                                <option value="MILTON COYAGO">MILTON COYAGO</option>
-                                                <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
-                                                <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
-                                                <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
+                                            <select class="form-select" name="personal" id="personal">
+                                                <option value="Luis Govea">Luis Govea</option>
+                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
                                             </select>
                                         </div>
-
                                     </div>
-
 
                                     <!-- horas_programadas -->
 
@@ -138,7 +128,7 @@
                                         </div>
                                     </div>
 
-                                  
+
 
                                     <!-- n_cambio -->
                                     <div class="col-md-6 col-12">
