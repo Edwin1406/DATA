@@ -100,8 +100,8 @@ $router->post('/admin/control/convertidor/consumo_convertidor', [ControlControll
 
 
 // registro GILLOTINA PAPEL
-$router->get('/admin/control/gillotina_papel/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
-$router->post('/admin/control/gillotina_papel/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+$router->get('/admin/control/gillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+$router->post('/admin/control/gillotina/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
 
 
 
