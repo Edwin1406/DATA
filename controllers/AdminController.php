@@ -51,8 +51,11 @@ class AdminController
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
             $consumo->sincronizar($_POST);
-            $consumo->tipo_maquina = trim($consumo->tipo_maquina);
-            // QITAR ESPACIO EN BLANCO EN TIPO_MAQUINA
+
+            // trim al inicio de tipo_maquina y al final
+            // Elimina espacios al inicio/final y reduce múltiples espacios internos a uno solo
+            $consumo->tipo_maquina = preg_replace('/\s+/', ' ', trim($consumo->tipo_maquina));
+
 
 
 
