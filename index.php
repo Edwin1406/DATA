@@ -99,6 +99,13 @@ $router->get('/admin/control/convertidor/consumo_convertidor', [ControlControlle
 $router->post('/admin/control/convertidor/consumo_convertidor', [ControlController::class, 'consumo_convertidor']);
 
 
+// registro GILLOTINA PAPEL
+$router->get('/admin/control/gillotina_papel/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+$router->post('/admin/control/gillotina_papel/consumo_guillotina_papel', [ControlController::class, 'consumo_guillotina_papel']);
+
+
+
+
 
 
 // editar diseño

@@ -76,6 +76,7 @@ class ControlConvertidor extends ActiveRecord {
 
         return self::$alertas;
     }
+
     public function convertirHorasADecimal($horas) {
         $partes = explode(':', $horas);
         if (count($partes) === 2) {
@@ -85,5 +86,5 @@ class ControlConvertidor extends ActiveRecord {
         return 0; // Si no es un formato válido, retornar 0
     }
 
-
+    
 }
