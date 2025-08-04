@@ -127,7 +127,15 @@
                                                 placeholder="Cantidad de Resmas" name="cantidad_resmas">
                                         </div>
                                     </div>
+                                    <!-- ancho_papel -->
+                                    <div class="col-md-6 col-12">
 
+                                        <div class="form-group">
+                                            <label for="ancho_papel">Ancho de Papel</label>
+                                            <input type="number" id="ancho_papel" class="form-control"
+                                                placeholder="Ancho de Papel" name="ancho_papel">
+                                        </div>
+                                    </div>
 
 
                                     <!-- n_cambio -->
@@ -148,15 +156,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- ancho_papel -->
-                                    <div class="col-md-6 col-12">
-                                       
-                                        <div class="form-group">
-                                            <label for="ancho_papel">Ancho de Papel</label>
-                                            <input type="number" id="ancho_papel" class="form-control"
-                                                placeholder="Ancho de Papel" name="ancho_papel">
-                                        </div>
-                                    </div>
+
 
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
