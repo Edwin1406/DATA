@@ -50,11 +50,11 @@ class AdminController
             if (isset($_POST['personal']) && is_array($_POST['personal'])) {
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
+            $consumo->tipo_maquina = preg_replace('/\s+/', ' ', trim($consumo->tipo_maquina));
             $consumo->sincronizar($_POST);
 
             // trim al inicio de tipo_maquina y al final
             // Elimina espacios al inicio/final y reduce múltiples espacios internos a uno solo
-            $consumo->tipo_maquina = preg_replace('/\s+/', ' ', trim($consumo->tipo_maquina));
 
 
 
