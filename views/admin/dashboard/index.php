@@ -4,7 +4,7 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header> -->
-<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com'|| $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
@@ -154,27 +154,12 @@
                                             <label for="inputFechaFin">Fecha Fin</label>
                                             <input type="date" class="form-control" id="inputFechaFin" required>
                                         </div>
-                                        <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="inputTop">Top</label>
-                                            <select class="form-select" id="inputTop">
-                                                <option value="5">Top 5</option>
-                                                <option value="todos">Todos</option>
-                                            </select>
-                                        </div>
+                                            <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+                                    
 
-                                        <!-- filtro por maquina  -->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="inputMaquina">Máquina</label>
-                                            <select class="form-select" id="inputMaquina">
-                                                <option value="todos">Todas</option>
-                                                <option value="troquel">Troquel</option>
-                                                <option value="guillotina">Guillotina</option>
-                                                <option value="doblado">Doblado</option>
-                                                <option value="convertidor">Convertidor</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Filtrar</button>
+
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Filtrar</button>
                                 </form>
 
                                 <!-- Gráficas pequeñas -->
@@ -413,3 +398,6 @@
         </div>
     </div>
 </div>
+
+
+
