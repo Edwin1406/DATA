@@ -177,9 +177,8 @@
                                         <button type="submit" class="btn btn-primary">Filtrar</button>
                                 </form>
 
-<div id="chart-profile-visit"></div>
-
-
+                                <!-- Gráficas pequeñas -->
+                                <div id="contenedorMiniGraficos" class="row gy-4"></div>
                             </div>
                         </div>
                     </div>
@@ -401,7 +400,7 @@
 
 
 
-<!-- 
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -413,4 +412,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
