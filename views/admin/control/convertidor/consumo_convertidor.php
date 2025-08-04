@@ -122,9 +122,9 @@
                                     <!-- cantidad_laminas -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_laminas">Cantidad de Laminas</label>
-                                            <input type="number" id="cantidad_laminas" class="form-control"
-                                                placeholder="Cantidad de Laminas" name="cantidad_laminas">
+                                            <label for="cantidad_resmas">Cantidad de Resmas</label>
+                                            <input type="number" id="cantidad_resmas" class="form-control"
+                                                placeholder="Cantidad de Resmas" name="cantidad_resmas">
                                         </div>
                                     </div>
 
@@ -139,19 +139,29 @@
                                         </div>
                                     </div>
 
-                                    <!-- consumo_goma -->
+                                    <!-- gramaje -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="consumo_goma">Consumo de Goma(KL)</label>
-                                            <input type="number" id="consumo_goma" class="form-control"
-                                                placeholder="Consumo de Goma" name="consumo_goma">
+                                            <label for="gramaje">Gramaje</label>
+                                            <input type="number" id="gramaje" class="form-control"
+                                                placeholder="Gramaje" name="gramaje">
+                                        </div>
+                                    </div>
+
+                                    <!-- ancho_papel -->
+                                    <div class="col-md-6 col-12">
+                                       
+                                        <div class="form-group">
+                                            <label for="ancho_papel">Ancho de Papel</label>
+                                            <input type="number" id="ancho_papel" class="form-control"
+                                                placeholder="Ancho de Papel" name="ancho_papel">
                                         </div>
                                     </div>
 
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
+                                            <label for="desperdicio_kg">Desperdicio</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
                                                 placeholder="Desperdicio (kl)" name="desperdicio_kg">
                                         </div>
