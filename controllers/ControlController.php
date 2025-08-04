@@ -240,7 +240,7 @@ public static function consumo_convertidor(Router $router)
 
 
 
-
+}
 
 
 
