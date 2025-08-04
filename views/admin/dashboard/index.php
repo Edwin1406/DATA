@@ -4,7 +4,7 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header> -->
-<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com') { ?>
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com'|| $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
