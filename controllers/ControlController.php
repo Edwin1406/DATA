@@ -338,6 +338,63 @@ public static function consumo_convertidor(Router $router)
 
 
 
+    // ------------------------------------------ CONSUMO GUILLOTINA PAPEL ----------------------------------------
+
+    public static function consumo_guillotina_papel(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $alertas = [];
+        $control_guillotina = new ControlGuillotina;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $control_guillotina->sincronizar($_POST);
+
+            if ($control_guillotina->horas_programadas > 0) {
+                // Convertir solo para el cálculo
+                $horasDecimal = $control_guillotina->convertirHorasADecimal($control_guillotina->horas_programadas);
+
+                // Validar que el resultado de conversión sea mayor a 0
+                if ($horasDecimal > 0) {
+                    $control_guillotina->cantidad_resmas_hora = $control_guillotina->cantidad_resmas / $horasDecimal;
+                } else {
+                    $control_guillotina->cantidad_resmas_hora = 0;
+                }
+            } else {
+                $control_guillotina->cantidad_resmas_hora = 0;
+            }
+
+            // debuguear($control_guillotina);
+            $alertas = $control_guillotina->validar();
+
+            if (empty($alertas)) {
+                $resultado = $control_guillotina->guardar();
+                if ($resultado) {
+                    header('Location: /admin/control/gillotina_papel/consumo_guillotina_papel?exito=1');
+                }
+            } else {
+                $alertas = ControlGuillotina::getAlertas();
+            }
+        }
+        $router->render('admin/guillotina/consumo_guillotina_papel', [
+            'titulo' => 'Control Guillotina Papel',
+            'nombre' => $nombre,
+            'email' => $email,
+            'alertas' => $alertas
+        ]);
+    }
+
+    
+
+
+
+
 
 
 
