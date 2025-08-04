@@ -113,7 +113,7 @@
                                 
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
-                                     <a href="/admin/control/guillotina/tablaConsumoGuillotina"><i class="bi bi-arrow-right"> </i>Tabla Consumo Guillotina</a>
+                                     <a href="/admin/control/guillotina/tablaConsumoGuillotinaPapel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Guillotina Papel</a>
                                  </li>
                              <?php }  ?>
 
