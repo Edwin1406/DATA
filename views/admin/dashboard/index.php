@@ -174,8 +174,6 @@
 
 
                 <!-- ApexCharts -->
-
-            
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const contenedorGrafico = document.querySelector("#graficoUnico");
@@ -194,8 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         datos.forEach(item => {
             const maquina = item.tipo_maquina.trim();
             const fecha = new Date(item.created_at).toISOString().split('T')[0];
-            // solo 2 deciamles
-            const total = parseFloat(item.total_general).toFixed(2);
+            const total = parseFloat(item.total_general);
 
             if (!agrupado[maquina]) agrupado[maquina] = {};
             agrupado[maquina][fecha] = (agrupado[maquina][fecha] || 0) + total;
@@ -204,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function generarColor(index) {
-        const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019', '#546E7A'];
+        const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019', '#546E7A', '#26a69a', '#d4526e'];
         return colores[index % colores.length];
     }
 
@@ -225,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
             for (const [maquina, fechas] of Object.entries(agrupado)) {
                 const data = Object.entries(fechas)
                     .sort(([a], [b]) => new Date(a) - new Date(b))
-                    .map(([fecha, valor]) => ({ x: fecha, y: valor }));
+                    .map(([fecha, valor]) => ({ x: fecha, y: parseFloat(valor.toFixed(2)) }));
 
                 series.push({
                     name: maquina,
@@ -241,7 +238,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 chart: {
                     type: "line",
                     height: 400,
-                    zoom: { enabled: true }
+                    zoom: { enabled: true },
+                    locales: [{
+                        name: 'es',
+                        options: {
+                            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                            days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                            shortDays: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                            toolbar: {
+                                exportToSVG: "Descargar SVG",
+                                exportToPNG: "Descargar PNG",
+                                exportToCSV: "Descargar CSV",
+                                menu: "Menú",
+                                selection: "Selección",
+                                selectionZoom: "Zoom de selección",
+                                zoomIn: "Acercar",
+                                zoomOut: "Alejar",
+                                pan: "Mover",
+                                reset: "Restablecer Zoom"
+                            }
+                        }
+                    }],
+                    defaultLocale: 'es'
                 },
                 series: series,
                 xaxis: {
@@ -249,7 +268,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: { text: 'Fecha' }
                 },
                 yaxis: {
-                    title: { text: 'Consumo General' }
+                    title: { text: 'Consumo General' },
+                    labels: {
+                        formatter: val => val.toFixed(2)
+                    }
                 },
                 stroke: {
                     curve: 'smooth',
@@ -257,7 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 colors: series.map((_, i) => generarColor(i)),
                 tooltip: {
-                    x: { format: 'dd/MM/yyyy' }
+                    x: {
+                        format: 'dd MMM yyyy'
+                    },
+                    y: {
+                        formatter: val => val.toFixed(2)
+                    }
                 },
                 legend: {
                     position: 'top'
@@ -275,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Formulario
+    // Manejar envío de formulario
     document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
         e.preventDefault();
         const fechaInicio = document.getElementById("inputFechaInicio").value;
@@ -283,11 +310,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cargarDatos(fechaInicio, fechaFin);
     });
 
-    // Cargar gráfico inicial
+    // Cargar gráfico al inicio
     cargarDatos();
 });
 </script>
-
 
 
               
