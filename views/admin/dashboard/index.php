@@ -6,7 +6,7 @@
             </header> -->
 <?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
-        <h3>ESTADISTICAS DEL PERFIL </h3>
+        <h3>GRAFICAS CONSUMO GENERAL DESPERDICIO</h3>
     </div>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -153,8 +153,7 @@
                             <button type="submit" class="btn btn-primary">Filtrar</button>
                         </form>
 
-                        <!-- Gráficas pequeñas -->
-                        <!-- Gráfica combinada -->
+            
                         <div id="graficoUnico" class="mt-4"></div>
 
 
