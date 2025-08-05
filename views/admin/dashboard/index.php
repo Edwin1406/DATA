@@ -4,7 +4,7 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header> -->
-<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com'|| $email === 'pruebas@megaecuador.com') { ?>
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
@@ -154,8 +154,8 @@
                                             <label for="inputFechaFin">Fecha Fin</label>
                                             <input type="date" class="form-control" id="inputFechaFin" required>
                                         </div>
-                                            <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
-                                    
+                                        <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+
 
 
                                     </div>
@@ -428,9 +428,8 @@
             </div>
         </div>
     </form>
+    <div class="card-body">
+        <div id="grafico-top-maquinas"></div> <!-- contenedor único -->
 
-    <div id="grafico-top-maquinas"></div> <!-- contenedor único -->
+    </div>
 </div>
-
-
-
