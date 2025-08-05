@@ -14,6 +14,17 @@
         <section class="row">
             <div class="col-md-12">
                 <!-- Profile Statistics -->
+
+                  <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a><?php echo $nombre; ?></a></li>
+                        <!--  cerrar sesión -->
+                        <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
+
+                    </ol>
+                </nav>
+            </div>
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
