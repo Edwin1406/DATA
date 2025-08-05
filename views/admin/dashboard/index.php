@@ -412,7 +412,8 @@
 
                     <option value="todos">Todas</option>
                     <option value="TROQUEL">Troquel</option>
-                    <option value="GUILLOTINA">Guillotina</option>
+                    <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
+                    <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
                     <option value="DOBLADO">Doblado</option>
                     <option value="CONVERTIDOR">Convertidor</option>
                     <option value="EMPAQUE">Empaque</option>
