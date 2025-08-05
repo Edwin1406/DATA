@@ -165,18 +165,22 @@
 
 
                         <div id="graficoUnico" class="mt-4"></div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
-            
-            
-            
-            
-            <div id="grafico-mensual" class="mt-4"></div>
 
 
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div id="grafico-mensual" class="mt-4"></div>
+
+                </div>
+            </div>
 
 
 
@@ -232,8 +236,8 @@
             </div>
 
 
-    <!-- </div> -->
-    </section>
+            <!-- </div> -->
+        </section>
     </div>
 
 <?php } else { ?>
