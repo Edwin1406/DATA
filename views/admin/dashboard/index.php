@@ -247,3 +247,38 @@
     </div>
 
 <?php } ?>
+
+
+
+
+<div id="chart1">
+</div>
+
+
+
+<script>
+
+var options1 = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+  series: [67, 84, 97, 61],
+  plotOptions: {
+    radialBar: {
+      dataLabels: {
+        total: {
+          show: true,
+          label: 'TOTAL'
+        }
+      }
+    }
+  },
+  labels: ['TEAM A', 'TEAM B', 'TEAM C', 'TEAM D']
+};
+
+new ApexCharts(document.querySelector("#chart1"), options1).render();
+
+
+
+</script>
