@@ -137,7 +137,7 @@
                 <!-- Latest Comments -->
 
                 <!-- Contenedor -->
-                <div class="row mt-4">
+                <div class="row mt-12">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
