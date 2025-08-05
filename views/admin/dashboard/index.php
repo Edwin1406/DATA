@@ -12,8 +12,8 @@
         
         <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-danger" onclick="location.href='/admin/logout'">Cerrar Sesión</button>
+            <p class="text-subtitle text-muted"><?php echo $email; ?></p>
         </div>
-        <p class="text-subtitle text-muted"><?php echo $email; ?></p>
     </div>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
