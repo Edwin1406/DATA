@@ -247,21 +247,10 @@
 
 <?php } ?>
 
-</div>
-</div>
 
 
 
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Gráfico Radial</title>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-</head>
-
-<body>
 
     <div id="chart3"></div>
 
@@ -288,6 +277,3 @@
         new ApexCharts(document.querySelector("#chart3"), options1).render();
     </script>
 
-</body>
-
-</html>
