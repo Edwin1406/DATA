@@ -4,15 +4,15 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header> -->
-<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com'|| $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <div class="page-content">
         <section class="row">
-            < class="col-12 col-lg-9">
+            <div class="col-12 col-lg-9">
                 <!-- Profile Statistics -->
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
@@ -122,94 +122,59 @@
                         </div>
                     </div>
                 </div>
-             
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Consumo Diario por Máquina</h4>
-                        </div>
-                        <div class="card-body">
-                            <form id="formFiltroMaquinas" class="mb-4">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="inputFechaInicio">Fecha Inicio</label>
-                                        <input type="date" class="form-control" id="inputFechaInicio" required>
+                <!-- End of Profile Statistics -->
+                <!-- filtrador de fechas -->
+
+
+
+
+
+
+                <!-- Profile Visit -->
+
+                <!-- End of Profile Visit -->
+
+                <!-- Latest Comments -->
+
+                <!-- Contenedor -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Consumo Diario por Máquina</h4>
+                            </div>
+                            <div class="card-body">
+                                <form id="formFiltroMaquinas" class="mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputFechaInicio">Fecha Inicio</label>
+                                            <input type="date" class="form-control" id="inputFechaInicio" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputFechaFin">Fecha Fin</label>
+                                            <input type="date" class="form-control" id="inputFechaFin" required>
+                                        </div>
+                                            <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+                                    
+
+
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="inputFechaFin">Fecha Fin</label>
-                                        <input type="date" class="form-control" id="inputFechaFin" required>
-                                    </div>
-                                    <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+                                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                                </form>
 
-
-
-                                </div>
-                                <button type="submit" class="btn btn-primary">Filtrar</button>
-                            </form>
-
-                            <div id="graficoUnico" class="mt-4"></div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Top Máquinas</h4>
-                        </div> <!-- Aquí cerramos bien el card-header -->
-
-                        <div class="card-body">
-                            <form id="formFiltroTopMaquinas" class="mb-4">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="filtroFechaInicio">Fecha Inicio</label>
-                                        <input type="date" class="form-control" id="filtroFechaInicio" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="filtroFechaFin">Fecha Fin</label>
-                                        <input type="date" class="form-control" id="filtroFechaFin" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="filtroTopMaquinas">Top</label>
-                                        <select class="form-select" id="filtroTopMaquinas">
-                                            <option value="5">Top 5</option>
-                                            <option value="todos">Todos</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="filtroTipoMaquina">Máquina</label>
-                                        <select class="form-select" id="filtroTipoMaquina">
-                                            <option value="todos">Todas</option>
-                                            <option value="TROQUEL">Troquel</option>
-                                            <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
-                                            <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
-                                            <option value="DOBLADO">Doblado</option>
-                                            <option value="CONVERTIDOR">Convertidor</option>
-                                            <option value="EMPAQUE">Empaque</option>
-                                            <option value="MICRO">Micro</option>
-                                            <option value="CORRUGADOR">Corrugador</option>
-                                            <option value="FLEXOGRAFICA">Flexografica</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Filtrar</button>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div id="grafico-top-maquinas"></div>
+                                <!-- Gráficas pequeñas -->
+                                <div id="contenedorMiniGraficos" class="row gy-4"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
 
 
                 <!-- ApexCharts -->
+
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
-                        const contenedorGrafico = document.querySelector("#graficoUnico");
+                        const contenedor = document.querySelector("#contenedorMiniGraficos");
 
                         function filtrarPorFechas(datos, inicio, fin) {
                             const desde = new Date(inicio);
@@ -222,19 +187,26 @@
 
                         function agruparDatos(datos) {
                             const agrupado = {};
+
                             datos.forEach(item => {
                                 const maquina = item.tipo_maquina.trim();
                                 const fecha = new Date(item.created_at).toISOString().split('T')[0];
                                 const total = parseFloat(item.total_general);
 
-                                if (!agrupado[maquina]) agrupado[maquina] = {};
-                                agrupado[maquina][fecha] = (agrupado[maquina][fecha] || 0) + total;
+                                if (!agrupado[maquina]) agrupado[maquina] = {
+                                    total: 0,
+                                    fechas: {}
+                                };
+
+                                agrupado[maquina].total += total;
+                                agrupado[maquina].fechas[fecha] = (agrupado[maquina].fechas[fecha] || 0) + total;
                             });
+
                             return agrupado;
                         }
 
                         function generarColor(index) {
-                            const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019', '#546E7A', '#26a69a', '#d4526e'];
+                            const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019'];
                             return colores[index % colores.length];
                         }
 
@@ -249,102 +221,70 @@
                                 }
 
                                 const agrupado = agruparDatos(datosFiltrados);
-                                const series = [];
+                                contenedor.innerHTML = ""; // Limpiar gráficos anteriores
 
                                 let index = 0;
-                                for (const [maquina, fechas] of Object.entries(agrupado)) {
-                                    const data = Object.entries(fechas)
+                                for (const [maquina, {
+                                        total,
+                                        fechas
+                                    }] of Object.entries(agrupado)) {
+                                    const color = generarColor(index);
+                                    const fechasOrdenadas = Object.entries(fechas)
                                         .sort(([a], [b]) => new Date(a) - new Date(b))
-                                        .map(([fecha, valor]) => ({
-                                            x: fecha,
-                                            y: parseFloat(valor.toFixed(2))
+                                        .map(([x, y]) => ({
+                                            x,
+                                            y
                                         }));
 
-                                    series.push({
-                                        name: maquina,
-                                        data: data
-                                    });
+                                    // Crear contenedor individual
+                                    const col = document.createElement("div");
+                                    col.className = "col-md-4";
+                                    col.innerHTML = `
+                    <div class="d-flex align-items-center mb-2">
+                        <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;margin-right:8px;"></span>
+                        <strong>${maquina}</strong>
+                        <span class="ms-auto">${total.toFixed(0)}</span>
+                    </div>
+                    <div id="grafico_${index}"></div>
+                `;
+                                    contenedor.appendChild(col);
 
+                                    // Crear gráfico individual
+                                    const opciones = {
+                                        chart: {
+                                            type: "area",
+                                            height: 100,
+                                            sparkline: {
+                                                enabled: true
+                                            }
+                                        },
+                                        series: [{
+                                            name: maquina,
+                                            data: fechasOrdenadas
+                                        }],
+                                        stroke: {
+                                            curve: 'smooth',
+                                            width: 2
+                                        },
+                                        colors: [color],
+                                        tooltip: {
+                                            x: {
+                                                format: 'dd/MM/yyyy'
+                                            }
+                                        }
+                                    };
+
+                                    const chart = new ApexCharts(document.querySelector(`#grafico_${index}`), opciones);
+                                    chart.render();
                                     index++;
                                 }
-
-                                contenedorGrafico.innerHTML = ""; // Limpiar gráfico anterior
-
-                                const chart = new ApexCharts(contenedorGrafico, {
-                                    chart: {
-                                        type: "line",
-                                        height: 400,
-                                        zoom: {
-                                            enabled: true
-                                        },
-                                        locales: [{
-                                            name: 'es',
-                                            options: {
-                                                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                                                shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                                                days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                                                shortDays: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                                                toolbar: {
-                                                    exportToSVG: "Descargar SVG",
-                                                    exportToPNG: "Descargar PNG",
-                                                    exportToCSV: "Descargar CSV",
-                                                    menu: "Menú",
-                                                    selection: "Selección",
-                                                    selectionZoom: "Zoom de selección",
-                                                    zoomIn: "Acercar",
-                                                    zoomOut: "Alejar",
-                                                    pan: "Mover",
-                                                    reset: "Restablecer Zoom"
-                                                }
-                                            }
-                                        }],
-                                        defaultLocale: 'es'
-                                    },
-                                    series: series,
-                                    xaxis: {
-                                        type: 'datetime',
-                                        title: {
-                                            text: 'Fecha'
-                                        }
-                                    },
-                                    yaxis: {
-                                        title: {
-                                            text: 'Consumo General'
-                                        },
-                                        labels: {
-                                            formatter: val => val.toFixed(2)
-                                        }
-                                    },
-                                    stroke: {
-                                        curve: 'smooth',
-                                        width: 2
-                                    },
-                                    colors: series.map((_, i) => generarColor(i)),
-                                    tooltip: {
-                                        x: {
-                                            format: 'dd MMM yyyy'
-                                        },
-                                        y: {
-                                            formatter: val => val.toFixed(2)
-                                        }
-                                    },
-                                    legend: {
-                                        position: 'top'
-                                    },
-                                    title: {
-                                        text: "Consumo Diario por Máquina",
-                                        align: 'center'
-                                    }
-                                });
-
-                                chart.render();
 
                             } catch (error) {
                                 console.error("Error al cargar los datos:", error);
                             }
                         }
 
-                        // Manejar envío de formulario
+                        // Manejar formulario
                         document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
                             e.preventDefault();
                             const fechaInicio = document.getElementById("inputFechaInicio").value;
@@ -352,15 +292,74 @@
                             cargarDatos(fechaInicio, fechaFin);
                         });
 
-                        // Cargar gráfico al inicio
+                        // Cargar inicialmente
                         cargarDatos();
                     });
                 </script>
 
-
-    </div>
-
-    </section>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="card text-truncate">
+                    <div class="card-body py-4 px-5">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="/assets/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-0 name ">
+                                <h5 class="font-bold"><?php echo $nombre; ?></h5>
+                                <h6 class="text-muted mb-0 .fs-6 small"><?php echo $email; ?></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Recent Messages</h4>
+                    </div>
+                    <div class="card-content pb-4">
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/4.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Hank Schrader</h5>
+                                <h6 class="text-muted mb-0">@johnducky</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/5.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Dean Winchester</h5>
+                                <h6 class="text-muted mb-0">@imdean</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="/assets/images/faces/1.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">John Dodol</h5>
+                                <h6 class="text-muted mb-0">@dodoljohn</h6>
+                            </div>
+                        </div>
+                        <div class="px-4">
+                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
+                                Conversation</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Grafico de consumo</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-visitors-profile"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 <?php } else { ?>
     <div class="page-heading">
@@ -369,15 +368,5 @@
     </div>
 
 <?php } ?>
-
-
-
-
-
-
-
-
-
-
 
 
