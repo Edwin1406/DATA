@@ -9,7 +9,7 @@
         <h3>GRAFICAS CONSUMO GENERAL DESPERDICIO</h3>
 
         <!-- CERRAR SESSION  -->
-        
+
         <div class="d-flex justify-content-end mb-3">
             <button class="btn btn-danger" onclick="location.href='/cerrarSesion'">Cerrar Sesión</button>
             <br>
@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <!-- Profile Statistics -->
 
-                
+
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
@@ -64,14 +64,14 @@
 
 
                     <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl"> 
+                        <div class="modal-dialog modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalTarjetasLabel">Detalle de Consumo</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="row" id="contenedor-tarjetas"></div> 
+                                    <div class="row" id="contenedor-tarjetas"></div>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +231,7 @@
             </div>
 
 
-    </div>
+    <!-- </div> -->
     </section>
     </div>
 
