@@ -122,22 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End of Profile Statistics -->
-                <!-- filtrador de fechas -->
-
-
-
-
-
-
-                <!-- Profile Visit -->
-
-                <!-- End of Profile Visit -->
-
-                <!-- Latest Comments -->
-
-                <!-- Contenedor -->
-
+             
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -162,8 +147,6 @@
                                 <button type="submit" class="btn btn-primary">Filtrar</button>
                             </form>
 
-                            <!-- Gráficas pequeñas -->
-                            <!-- Gráfica combinada -->
                             <div id="graficoUnico" class="mt-4"></div>
 
 
@@ -171,23 +154,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Bar Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <div id="bar"></div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -392,8 +358,6 @@
                 </script>
 
 
-
-
     </div>
 
     </section>
@@ -405,3 +369,15 @@
     </div>
 
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
