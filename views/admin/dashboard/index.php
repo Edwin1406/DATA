@@ -194,7 +194,8 @@ document.addEventListener("DOMContentLoaded", () => {
         datos.forEach(item => {
             const maquina = item.tipo_maquina.trim();
             const fecha = new Date(item.created_at).toISOString().split('T')[0];
-            const total = parseFloat(item.total_general);
+            // solo 2 deciamles
+            const total = parseFloat(item.total_general).toFixed(2);
 
             if (!agrupado[maquina]) agrupado[maquina] = {};
             agrupado[maquina][fecha] = (agrupado[maquina][fecha] || 0) + total;
