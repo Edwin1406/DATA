@@ -7,7 +7,10 @@
 <?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>GRAFICAS CONSUMO GENERAL DESPERDICIO</h3>
-          <div class="col-12 col-md-6 order-md-2 order-first">
+        
+    </div>
+
+      <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a><?php echo $nombre; ?></a></li>
@@ -17,7 +20,6 @@
                     </ol>
                 </nav>
             </div>
-    </div>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <div class="page-content">
