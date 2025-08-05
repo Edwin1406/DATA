@@ -137,54 +137,54 @@
                 <!-- Latest Comments -->
 
                 <!-- Contenedor -->
-                
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Consumo Diario por Máquina</h4>
-                            </div>
-                            <div class="card-body">
-                                <form id="formFiltroMaquinas" class="mb-4">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="inputFechaInicio">Fecha Inicio</label>
-                                            <input type="date" class="form-control" id="inputFechaInicio" required>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label for="inputFechaFin">Fecha Fin</label>
-                                            <input type="date" class="form-control" id="inputFechaFin" required>
-                                        </div>
-                                        <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
 
-
-
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Consumo Diario por Máquina</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="formFiltroMaquinas" class="mb-4">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="inputFechaInicio">Fecha Inicio</label>
+                                        <input type="date" class="form-control" id="inputFechaInicio" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                                </form>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="inputFechaFin">Fecha Fin</label>
+                                        <input type="date" class="form-control" id="inputFechaFin" required>
+                                    </div>
+                                    <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
 
-                                <!-- Gráficas pequeñas -->
-                                <!-- Gráfica combinada -->
-                                <div id="graficoUnico" class="mt-4"></div>
 
 
-                            </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </form>
+
+                            <!-- Gráficas pequeñas -->
+                            <!-- Gráfica combinada -->
+                            <div id="graficoUnico" class="mt-4"></div>
+
+
                         </div>
                     </div>
-                
+                </div>
 
 
 
-                
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <h4>Bar Chart</h4>
-        </div>
-        <div class="card-body">
-            <div id="bar"></div>
-        </div>
-    </div>
-</div>
+
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Bar Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="bar"></div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -342,9 +342,9 @@
 
 
 
-            </div>
+    </div>
 
-        </section>
+    </section>
     </div>
 <?php } else { ?>
     <div class="page-heading">
@@ -360,50 +360,68 @@
 
 
 
-<div class="card-body">
-    <form id="formFiltroTopMaquinas" class="mb-4">
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="filtroFechaInicio">Fecha Inicio</label>
-                <input type="date" class="form-control" id="filtroFechaInicio" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="filtroFechaFin">Fecha Fin</label>
-                <input type="date" class="form-control" id="filtroFechaFin" required>
-            </div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Bar Chart</h4>
+        </div>
+        <div class="card-body">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
 
-            <div class="col-md-6 mb-3">
-                <label for="filtroTopMaquinas">Top</label>
-                <select class="form-select" id="filtroTopMaquinas">
-                    <option value="5">Top 5</option>
-                    <option value="todos">Todos</option>
-                </select>
-            </div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Top Máquinas</h4>
+            <div class="card-body">
+                <form id="formFiltroTopMaquinas" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="filtroFechaInicio">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="filtroFechaInicio" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="filtroFechaFin">Fecha Fin</label>
+                            <input type="date" class="form-control" id="filtroFechaFin" required>
+                        </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="filtroTipoMaquina">Máquina</label>
-                <select class="form-select" id="filtroTipoMaquina">
+                        <div class="col-md-6 mb-3">
+                            <label for="filtroTopMaquinas">Top</label>
+                            <select class="form-select" id="filtroTopMaquinas">
+                                <option value="5">Top 5</option>
+                                <option value="todos">Todos</option>
+                            </select>
+                        </div>
 
-                    <option value="todos">Todas</option>
-                    <option value="TROQUEL">Troquel</option>
-                    <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
-                    <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
-                    <option value="DOBLADO">Doblado</option>
-                    <option value="CONVERTIDOR">Convertidor</option>
-                    <option value="EMPAQUE">Empaque</option>
-                    <option value="MICRO">Micro</option>
-                    <option value="CORRUGADOR">Corrugador</option>
-                    <option value="FLEXOGRAFICA">Flexografica</option>
-                </select>
-            </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="filtroTipoMaquina">Máquina</label>
+                            <select class="form-select" id="filtroTipoMaquina">
 
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Filtrar</button>
+                                <option value="todos">Todas</option>
+                                <option value="TROQUEL">Troquel</option>
+                                <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
+                                <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
+                                <option value="DOBLADO">Doblado</option>
+                                <option value="CONVERTIDOR">Convertidor</option>
+                                <option value="EMPAQUE">Empaque</option>
+                                <option value="MICRO">Micro</option>
+                                <option value="CORRUGADOR">Corrugador</option>
+                                <option value="FLEXOGRAFICA">Flexografica</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="card-body">
+                    <div id="grafico-top-maquinas"></div> <!-- contenedor único -->
+
+                </div>
             </div>
         </div>
-    </form>
-    <div class="card-body">
-        <div id="grafico-top-maquinas"></div> <!-- contenedor único -->
-
     </div>
 </div>
