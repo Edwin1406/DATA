@@ -460,77 +460,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // grafica x mes 
+document.addEventListener("DOMContentLoaded", () => {
+  cargarGraficaMensual();
+});
 
- // Ejecutar al cargar el documento
-  document.addEventListener("DOMContentLoaded", () => {
-    cargarGraficaMensual();
-  });
+async function cargarGraficaMensual() {
+  try {
+    const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+    const resultado = await fetch(url);
+    const data = await resultado.json();
 
-  // Función para cargar la gráfica mensual
-  async function cargarGraficaMensual() {
-    try {
-      const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
-      const resultado = await fetch(url);
-      const data = await resultado.json();
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
 
-      const meses = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-      ];
+    // Mapa para agrupar por máquina y mes
+    const consumoPorMaquina = {};
 
-      const consumoMensual = Array(12).fill(0);
+    data.forEach(item => {
+      const fecha = new Date(item.created_at);
+      const mes = fecha.getMonth(); // 0-11
+      const total = parseFloat(item.total_general);
+      const maquina = item.maquina || "Sin Nombre";
 
-      data.forEach(item => {
-        const fecha = new Date(item.created_at);
-        const mes = fecha.getMonth(); // 0 = Enero, 11 = Diciembre
-        const total = parseFloat(item.total_general);
-        consumoMensual[mes] += isNaN(total) ? 0 : total;
-      });
+      if (!consumoPorMaquina[maquina]) {
+        consumoPorMaquina[maquina] = Array(12).fill(0);
+      }
 
-      const series = [{
-        name: 'Consumo Mensual',
-        data: consumoMensual
-      }];
+      consumoPorMaquina[maquina][mes] += isNaN(total) ? 0 : total;
+    });
 
-      const opcionesGrafico = {
-        chart: {
-          type: 'bar',
-          height: 350
-        },
-        series: series, // ✅ AQUÍ se incluye la serie
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded'
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        xaxis: {
-          categories: meses
-        },
-        yaxis: {
-          title: {
-            text: 'Consumo Total'
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        title: {
-          text: 'Consumo Mensual por Máquina',
-          align: 'center'
+    // Convertir el objeto en series para ApexCharts
+    const series = Object.entries(consumoPorMaquina).map(([nombre, datos]) => ({
+      name: nombre,
+      data: datos
+    }));
+
+    const opcionesGrafico = {
+      chart: {
+        type: 'bar',
+        height: 350,
+        stacked: true // Si quieres comparar por mes
+      },
+      series: series,
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
         }
-      };
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: meses
+      },
+      yaxis: {
+        title: {
+          text: 'Consumo Total'
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      title: {
+        text: 'Consumo Mensual por Máquina',
+        align: 'center'
+      },
+      tooltip: {
+        y: {
+          formatter: val => `${val.toFixed(2)}`
+        }
+      }
+    };
 
-      const contenedor = document.querySelector("#grafico-mensual");
-      contenedor.innerHTML = ""; // Limpiar gráfico anterior
+    const contenedor = document.querySelector("#grafico-mensual");
+    contenedor.innerHTML = ""; // Limpiar gráfico anterior
 
-      const grafico = new ApexCharts(contenedor, opcionesGrafico);
-      grafico.render();
-    } catch (e) {
-      console.error("Error al cargar la gráfica:", e);
-    }
+    const grafico = new ApexCharts(contenedor, opcionesGrafico);
+    grafico.render();
+  } catch (e) {
+    console.error("Error al cargar la gráfica:", e);
   }
+}
