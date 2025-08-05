@@ -125,6 +125,50 @@
 
 
 
+
+
+ <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Consumo Diario por Máquina</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="formFiltroMaquinas" class="mb-4">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="inputFechaInicio">Fecha Inicio</label>
+                                        <input type="date" class="form-control" id="inputFechaInicio" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="inputFechaFin">Fecha Fin</label>
+                                        <input type="date" class="form-control" id="inputFechaFin" required>
+                                    </div>
+                                    <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+
+
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </form>
+
+                            <!-- Gráficas pequeñas -->
+                            <!-- Gráfica combinada -->
+                            <div id="graficoUnico" class="mt-4"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
