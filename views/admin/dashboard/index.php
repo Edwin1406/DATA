@@ -256,6 +256,24 @@
     document.addEventListener('DOMContentLoaded', function () {
        
 
+async function ApiConsumoGeneralxmesymaquina() {
+  try {
+    const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+    const resultado = await fetch(url);
+    const ApiConsumo = await resultado.json();
+    // console.log(ApiConsumo);
+
+    return ApiConsumo;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+
+
+
+
+
    var options = {
           series: [{
           name: 'PRODUCT A',
@@ -266,7 +284,20 @@
         }, {
           name: 'PRODUCT C',
           data: [11, 17, 15, 15, 21, 14, 15, 13]
-        }],
+        }, {
+          name: 'PRODUCT D',
+          data: [21, 7, 25, 13, 22, 8, 24, 10]
+        }, {
+          name: 'PRODUCT E',
+          data: [12, 9, 15, 11, 20, 15, 17, 10]
+        }
+    
+    
+    
+    ],
+
+
+
           chart: {
           type: 'bar',
           height: 350,
