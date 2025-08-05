@@ -322,12 +322,14 @@ document.addEventListener('DOMContentLoaded', function () {
         agrupado[claveMes] += parseFloat(item.total_general);
     });
 
-    const clavesOrdenadas = Object.keys(agrupado).sort(); // Orden cronológico
+    // Ordenar por clave (YYYY-MM)
+    const clavesOrdenadas = Object.keys(agrupado).sort();
 
+    // Convertir claves a formato visible
     const categorias = clavesOrdenadas.map(clave => {
         const [year, month] = clave.split("-");
-        const fecha = new Date(`${year}-${month}-01`);
-        return fecha.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+        const fechaUTC = new Date(Date.UTC(year, month - 1)); // ← mes - 1
+        return fechaUTC.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
     });
 
     const valores = clavesOrdenadas.map(clave => agrupado[clave]);
