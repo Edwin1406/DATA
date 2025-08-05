@@ -278,7 +278,6 @@
     </div>
 
 <?php } ?>
-
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
@@ -289,11 +288,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const respuesta = await fetch(url);
         const datos = await respuesta.json();
         return datos;
-    }
-
-    function formatearMes(fecha) {
-        const opciones = { year: 'numeric', month: 'short' };
-        return new Date(fecha).toLocaleDateString('es-ES', opciones);
     }
 
     function filtrarDatos(datos, tipoMaquina, fechaInicio, fechaFin) {
@@ -308,35 +302,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-  function agruparPorMes(datos) {
-    const agrupado = {};
+    function agruparPorMes(datos) {
+        const agrupado = {};
 
-    datos.forEach(item => {
-        const fecha = new Date(item.created_at);
-        const claveMes = fecha.toISOString().slice(0, 7); // formato "2025-07"
+        datos.forEach(item => {
+            const fecha = new Date(item.created_at);
+            const claveMes = fecha.toISOString().slice(0, 7); // "YYYY-MM"
 
-        if (!agrupado[claveMes]) {
-            agrupado[claveMes] = 0;
-        }
+            if (!agrupado[claveMes]) {
+                agrupado[claveMes] = 0;
+            }
 
-        agrupado[claveMes] += parseFloat(item.total_general);
-    });
+            agrupado[claveMes] += parseFloat(item.total_general);
+        });
 
-    // Ordenar por clave (YYYY-MM)
-    const clavesOrdenadas = Object.keys(agrupado).sort();
+        const clavesOrdenadas = Object.keys(agrupado).sort();
 
-    // Convertir claves a formato visible
-    const categorias = clavesOrdenadas.map(clave => {
-        const [year, month] = clave.split("-");
-        const fechaUTC = new Date(Date.UTC(year, month - 1)); // ← mes - 1
-        return fechaUTC.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
-    });
+        const mesesES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-    const valores = clavesOrdenadas.map(clave => agrupado[clave]);
+        const categorias = clavesOrdenadas.map(clave => {
+            const [year, month] = clave.split("-");
+            const nombreMes = mesesES[parseInt(month, 10) - 1];
+            return `${nombreMes} ${year}`;
+        });
 
-    return { categorias, valores };
-}
+        const valores = clavesOrdenadas.map(clave => agrupado[clave]);
 
+        return { categorias, valores };
+    }
 
     function renderizarGrafico(categorias, valores) {
         const options = {
@@ -350,6 +343,12 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             xaxis: {
                 categories: categorias
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val.toFixed(2);
+                }
             },
             fill: {
                 opacity: 1
