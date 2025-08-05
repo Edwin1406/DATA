@@ -141,7 +141,7 @@
                  <?php if ($userEmail === 'artes@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
-                             <i class="fa-fw select-all fas"></i>
+                             <i class="bi bi-collection-fill"></i>
                              <span>Diseño</span>
                          </a>
                          <ul class="submenu ">

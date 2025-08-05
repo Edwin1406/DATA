@@ -163,7 +163,8 @@
                                 </form>
 
                                 <!-- Gráficas pequeñas -->
-                                <div id="contenedorMiniGraficos" class="row gy-4"></div>
+                              <div id="graficoUnico" class="mt-4"></div>
+
                             </div>
                         </div>
                     </div>
@@ -172,130 +173,92 @@
 
                 <!-- ApexCharts -->
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        const contenedor = document.querySelector("#contenedorMiniGraficos");
+               <script>
 
-                        function filtrarPorFechas(datos, inicio, fin) {
-                            const desde = new Date(inicio);
-                            const hasta = new Date(fin);
-                            return datos.filter(item => {
-                                const fecha = new Date(item.created_at);
-                                return fecha >= desde && fecha <= hasta;
-                            });
-                        }
+async function cargarDatos(fechaInicio = null, fechaFin = null) {
+    try {
+        const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+        const datos = await res.json();
 
-                        function agruparDatos(datos) {
-                            const agrupado = {};
+        let datosFiltrados = datos;
+        if (fechaInicio && fechaFin) {
+            datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+        }
 
-                            datos.forEach(item => {
-                                const maquina = item.tipo_maquina.trim();
-                                const fecha = new Date(item.created_at).toISOString().split('T')[0];
-                                const total = parseFloat(item.total_general);
+        const agrupado = agruparDatos(datosFiltrados);
 
-                                if (!agrupado[maquina]) agrupado[maquina] = {
-                                    total: 0,
-                                    fechas: {}
-                                };
+        const series = [];
+        let index = 0;
 
-                                agrupado[maquina].total += total;
-                                agrupado[maquina].fechas[fecha] = (agrupado[maquina].fechas[fecha] || 0) + total;
-                            });
+        for (const [maquina, { fechas }] of Object.entries(agrupado)) {
+            const fechasOrdenadas = Object.entries(fechas)
+                .sort(([a], [b]) => new Date(a) - new Date(b))
+                .map(([x, y]) => ({ x, y }));
 
-                            return agrupado;
-                        }
+            series.push({
+                name: maquina,
+                data: fechasOrdenadas
+            });
 
-                        function generarColor(index) {
-                            const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019'];
-                            return colores[index % colores.length];
-                        }
+            index++;
+        }
 
-                        async function cargarDatos(fechaInicio = null, fechaFin = null) {
-                            try {
-                                const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-                                const datos = await res.json();
+        const opciones = {
+            chart: {
+                type: "line",
+                height: 400,
+                zoom: {
+                    enabled: true
+                }
+            },
+            series: series,
+            xaxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Fecha'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Consumo'
+                }
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 2
+            },
+            tooltip: {
+                x: {
+                    format: 'dd/MM/yyyy'
+                }
+            },
+            colors: series.map((_, i) => generarColor(i)),
+            legend: {
+                position: 'top'
+            },
+            title: {
+                text: "Consumo Diario por Máquina (Combinado)",
+                align: 'center'
+            }
+        };
 
-                                let datosFiltrados = datos;
-                                if (fechaInicio && fechaFin) {
-                                    datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
-                                }
+        // Limpiar contenedor y renderizar el gráfico único
+        const contenedorGrafico = document.querySelector("#graficoUnico");
+        contenedorGrafico.innerHTML = ""; // Limpiar gráfico anterior si existe
 
-                                const agrupado = agruparDatos(datosFiltrados);
-                                contenedor.innerHTML = ""; // Limpiar gráficos anteriores
+        const chart = new ApexCharts(contenedorGrafico, opciones);
+        chart.render();
 
-                                let index = 0;
-                                for (const [maquina, {
-                                        total,
-                                        fechas
-                                    }] of Object.entries(agrupado)) {
-                                    const color = generarColor(index);
-                                    const fechasOrdenadas = Object.entries(fechas)
-                                        .sort(([a], [b]) => new Date(a) - new Date(b))
-                                        .map(([x, y]) => ({
-                                            x,
-                                            y
-                                        }));
+    } catch (error) {
+        console.error("Error al cargar los datos:", error);
+    }
+}
 
-                                    // Crear contenedor individual
-                                    const col = document.createElement("div");
-                                    col.className = "col-md-4";
-                                    col.innerHTML = `
-                    <div class="d-flex align-items-center mb-2">
-                        <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;margin-right:8px;"></span>
-                        <strong>${maquina}</strong>
-                        <span class="ms-auto">${total.toFixed(0)}</span>
-                    </div>
-                    <div id="grafico_${index}"></div>
-                `;
-                                    contenedor.appendChild(col);
 
-                                    // Crear gráfico individual
-                                    const opciones = {
-                                        chart: {
-                                            type: "area",
-                                            height: 100,
-                                            sparkline: {
-                                                enabled: true
-                                            }
-                                        },
-                                        series: [{
-                                            name: maquina,
-                                            data: fechasOrdenadas
-                                        }],
-                                        stroke: {
-                                            curve: 'smooth',
-                                            width: 2
-                                        },
-                                        colors: [color],
-                                        tooltip: {
-                                            x: {
-                                                format: 'dd/MM/yyyy'
-                                            }
-                                        }
-                                    };
 
-                                    const chart = new ApexCharts(document.querySelector(`#grafico_${index}`), opciones);
-                                    chart.render();
-                                    index++;
-                                }
 
-                            } catch (error) {
-                                console.error("Error al cargar los datos:", error);
-                            }
-                        }
 
-                        // Manejar formulario
-                        document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
-                            e.preventDefault();
-                            const fechaInicio = document.getElementById("inputFechaInicio").value;
-                            const fechaFin = document.getElementById("inputFechaFin").value;
-                            cargarDatos(fechaInicio, fechaFin);
-                        });
-
-                        // Cargar inicialmente
-                        cargarDatos();
-                    });
-                </script>
+               </script>
 
             </div>
             <div class="col-12 col-lg-3">
