@@ -308,22 +308,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function agruparPorMes(datos) {
-        const agrupado = {};
+  function agruparPorMes(datos) {
+    const agrupado = {};
 
-        datos.forEach(item => {
-            const mes = formatearMes(item.created_at);
-            if (!agrupado[mes]) {
-                agrupado[mes] = 0;
-            }
-            agrupado[mes] += parseFloat(item.total_general);
-        });
+    datos.forEach(item => {
+        const fecha = new Date(item.created_at);
+        const claveMes = fecha.toISOString().slice(0, 7); // formato "2025-07"
 
-        const categorias = Object.keys(agrupado).sort((a, b) => new Date(a) - new Date(b));
-        const valores = categorias.map(mes => agrupado[mes]);
+        if (!agrupado[claveMes]) {
+            agrupado[claveMes] = 0;
+        }
 
-        return { categorias, valores };
-    }
+        agrupado[claveMes] += parseFloat(item.total_general);
+    });
+
+    const clavesOrdenadas = Object.keys(agrupado).sort(); // Orden cronológico
+
+    const categorias = clavesOrdenadas.map(clave => {
+        const [year, month] = clave.split("-");
+        const fecha = new Date(`${year}-${month}-01`);
+        return fecha.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+    });
+
+    const valores = clavesOrdenadas.map(clave => agrupado[clave]);
+
+    return { categorias, valores };
+}
+
 
     function renderizarGrafico(categorias, valores) {
         const options = {
