@@ -163,8 +163,8 @@
                                 </form>
 
                                 <!-- Gráficas pequeñas -->
-                            <!-- Gráfica combinada -->
-<div id="graficoUnico" class="mt-4"></div>
+                                <!-- Gráfica combinada -->
+                                <div id="graficoUnico" class="mt-4"></div>
 
 
                             </div>
@@ -174,212 +174,161 @@
 
 
                 <!-- ApexCharts -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const contenedorGrafico = document.querySelector("#graficoUnico");
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const contenedorGrafico = document.querySelector("#graficoUnico");
 
-    function filtrarPorFechas(datos, inicio, fin) {
-        const desde = new Date(inicio);
-        const hasta = new Date(fin);
-        return datos.filter(item => {
-            const fecha = new Date(item.created_at);
-            return fecha >= desde && fecha <= hasta;
-        });
-    }
+                        function filtrarPorFechas(datos, inicio, fin) {
+                            const desde = new Date(inicio);
+                            const hasta = new Date(fin);
+                            return datos.filter(item => {
+                                const fecha = new Date(item.created_at);
+                                return fecha >= desde && fecha <= hasta;
+                            });
+                        }
 
-    function agruparDatos(datos) {
-        const agrupado = {};
-        datos.forEach(item => {
-            const maquina = item.tipo_maquina.trim();
-            const fecha = new Date(item.created_at).toISOString().split('T')[0];
-            const total = parseFloat(item.total_general);
+                        function agruparDatos(datos) {
+                            const agrupado = {};
+                            datos.forEach(item => {
+                                const maquina = item.tipo_maquina.trim();
+                                const fecha = new Date(item.created_at).toISOString().split('T')[0];
+                                const total = parseFloat(item.total_general);
 
-            if (!agrupado[maquina]) agrupado[maquina] = {};
-            agrupado[maquina][fecha] = (agrupado[maquina][fecha] || 0) + total;
-        });
-        return agrupado;
-    }
+                                if (!agrupado[maquina]) agrupado[maquina] = {};
+                                agrupado[maquina][fecha] = (agrupado[maquina][fecha] || 0) + total;
+                            });
+                            return agrupado;
+                        }
 
-    function generarColor(index) {
-        const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019', '#546E7A', '#26a69a', '#d4526e'];
-        return colores[index % colores.length];
-    }
+                        function generarColor(index) {
+                            const colores = ['#008FFB', '#00E396', '#FF4560', '#775DD0', '#FEB019', '#546E7A', '#26a69a', '#d4526e'];
+                            return colores[index % colores.length];
+                        }
 
-    async function cargarDatos(fechaInicio = null, fechaFin = null) {
-        try {
-            const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
-            const datos = await res.json();
+                        async function cargarDatos(fechaInicio = null, fechaFin = null) {
+                            try {
+                                const res = await fetch("https://pruebas.megawebsistem.com/admin/api/apiGraficasConsumoGeneral");
+                                const datos = await res.json();
 
-            let datosFiltrados = datos;
-            if (fechaInicio && fechaFin) {
-                datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
-            }
+                                let datosFiltrados = datos;
+                                if (fechaInicio && fechaFin) {
+                                    datosFiltrados = filtrarPorFechas(datos, fechaInicio, fechaFin);
+                                }
 
-            const agrupado = agruparDatos(datosFiltrados);
-            const series = [];
+                                const agrupado = agruparDatos(datosFiltrados);
+                                const series = [];
 
-            let index = 0;
-            for (const [maquina, fechas] of Object.entries(agrupado)) {
-                const data = Object.entries(fechas)
-                    .sort(([a], [b]) => new Date(a) - new Date(b))
-                    .map(([fecha, valor]) => ({ x: fecha, y: parseFloat(valor.toFixed(2)) }));
+                                let index = 0;
+                                for (const [maquina, fechas] of Object.entries(agrupado)) {
+                                    const data = Object.entries(fechas)
+                                        .sort(([a], [b]) => new Date(a) - new Date(b))
+                                        .map(([fecha, valor]) => ({
+                                            x: fecha,
+                                            y: parseFloat(valor.toFixed(2))
+                                        }));
 
-                series.push({
-                    name: maquina,
-                    data: data
-                });
+                                    series.push({
+                                        name: maquina,
+                                        data: data
+                                    });
 
-                index++;
-            }
+                                    index++;
+                                }
 
-            contenedorGrafico.innerHTML = ""; // Limpiar gráfico anterior
+                                contenedorGrafico.innerHTML = ""; // Limpiar gráfico anterior
 
-            const chart = new ApexCharts(contenedorGrafico, {
-                chart: {
-                    type: "line",
-                    height: 400,
-                    zoom: { enabled: true },
-                    locales: [{
-                        name: 'es',
-                        options: {
-                            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                            shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                            days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                            shortDays: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                            toolbar: {
-                                exportToSVG: "Descargar SVG",
-                                exportToPNG: "Descargar PNG",
-                                exportToCSV: "Descargar CSV",
-                                menu: "Menú",
-                                selection: "Selección",
-                                selectionZoom: "Zoom de selección",
-                                zoomIn: "Acercar",
-                                zoomOut: "Alejar",
-                                pan: "Mover",
-                                reset: "Restablecer Zoom"
+                                const chart = new ApexCharts(contenedorGrafico, {
+                                    chart: {
+                                        type: "line",
+                                        height: 400,
+                                        zoom: {
+                                            enabled: true
+                                        },
+                                        locales: [{
+                                            name: 'es',
+                                            options: {
+                                                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                                                shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                                                days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                                                shortDays: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                                                toolbar: {
+                                                    exportToSVG: "Descargar SVG",
+                                                    exportToPNG: "Descargar PNG",
+                                                    exportToCSV: "Descargar CSV",
+                                                    menu: "Menú",
+                                                    selection: "Selección",
+                                                    selectionZoom: "Zoom de selección",
+                                                    zoomIn: "Acercar",
+                                                    zoomOut: "Alejar",
+                                                    pan: "Mover",
+                                                    reset: "Restablecer Zoom"
+                                                }
+                                            }
+                                        }],
+                                        defaultLocale: 'es'
+                                    },
+                                    series: series,
+                                    xaxis: {
+                                        type: 'datetime',
+                                        title: {
+                                            text: 'Fecha'
+                                        }
+                                    },
+                                    yaxis: {
+                                        title: {
+                                            text: 'Consumo General'
+                                        },
+                                        labels: {
+                                            formatter: val => val.toFixed(2)
+                                        }
+                                    },
+                                    stroke: {
+                                        curve: 'smooth',
+                                        width: 2
+                                    },
+                                    colors: series.map((_, i) => generarColor(i)),
+                                    tooltip: {
+                                        x: {
+                                            format: 'dd MMM yyyy'
+                                        },
+                                        y: {
+                                            formatter: val => val.toFixed(2)
+                                        }
+                                    },
+                                    legend: {
+                                        position: 'top'
+                                    },
+                                    title: {
+                                        text: "Consumo Diario por Máquina",
+                                        align: 'center'
+                                    }
+                                });
+
+                                chart.render();
+
+                            } catch (error) {
+                                console.error("Error al cargar los datos:", error);
                             }
                         }
-                    }],
-                    defaultLocale: 'es'
-                },
-                series: series,
-                xaxis: {
-                    type: 'datetime',
-                    title: { text: 'Fecha' }
-                },
-                yaxis: {
-                    title: { text: 'Consumo General' },
-                    labels: {
-                        formatter: val => val.toFixed(2)
-                    }
-                },
-                stroke: {
-                    curve: 'smooth',
-                    width: 2
-                },
-                colors: series.map((_, i) => generarColor(i)),
-                tooltip: {
-                    x: {
-                        format: 'dd MMM yyyy'
-                    },
-                    y: {
-                        formatter: val => val.toFixed(2)
-                    }
-                },
-                legend: {
-                    position: 'top'
-                },
-                title: {
-                    text: "Consumo Diario por Máquina",
-                    align: 'center'
-                }
-            });
 
-            chart.render();
+                        // Manejar envío de formulario
+                        document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
+                            e.preventDefault();
+                            const fechaInicio = document.getElementById("inputFechaInicio").value;
+                            const fechaFin = document.getElementById("inputFechaFin").value;
+                            cargarDatos(fechaInicio, fechaFin);
+                        });
 
-        } catch (error) {
-            console.error("Error al cargar los datos:", error);
-        }
-    }
-
-    // Manejar envío de formulario
-    document.getElementById("formFiltroMaquinas").addEventListener("submit", e => {
-        e.preventDefault();
-        const fechaInicio = document.getElementById("inputFechaInicio").value;
-        const fechaFin = document.getElementById("inputFechaFin").value;
-        cargarDatos(fechaInicio, fechaFin);
-    });
-
-    // Cargar gráfico al inicio
-    cargarDatos();
-});
-</script>
+                        // Cargar gráfico al inicio
+                        cargarDatos();
+                    });
+                </script>
 
 
-              
+
 
             </div>
-            <div class="col-12 col-lg-3">
-                <div class="card text-truncate">
-                    <div class="card-body py-4 px-5">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="/assets/images/faces/1.jpg" alt="Face 1">
-                            </div>
-                            <div class="ms-0 name ">
-                                <h5 class="font-bold"><?php echo $nombre; ?></h5>
-                                <h6 class="text-muted mb-0 .fs-6 small"><?php echo $email; ?></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Recent Messages</h4>
-                    </div>
-                    <div class="card-content pb-4">
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="/assets/images/faces/4.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Hank Schrader</h5>
-                                <h6 class="text-muted mb-0">@johnducky</h6>
-                            </div>
-                        </div>
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="/assets/images/faces/5.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Dean Winchester</h5>
-                                <h6 class="text-muted mb-0">@imdean</h6>
-                            </div>
-                        </div>
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="/assets/images/faces/1.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">John Dodol</h5>
-                                <h6 class="text-muted mb-0">@dodoljohn</h6>
-                            </div>
-                        </div>
-                        <div class="px-4">
-                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                Conversation</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Grafico de consumo</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
-                    </div>
-                </div>
-            </div>
+
         </section>
     </div>
 <?php } else { ?>
