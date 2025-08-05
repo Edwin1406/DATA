@@ -247,90 +247,96 @@
 
 <?php } ?>
 
-
 <div id="chart"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
 
-    document.addEventListener('DOMContentLoaded', function () {
-       
-
-async function ApiConsumoGeneralxmesymaquina() {
-  try {
-    const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
-    const resultado = await fetch(url);
-    const ApiConsumo = await resultado.json();
-    // console.log(ApiConsumo);
-
-    return ApiConsumo;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-
-
-
-
-
-   var options = {
-          series: [{
-          name: 'PRODUCT A',
-          data: [44, 55, 41, 67, 22, 43, 21, 49]
-        }, {
-          name: 'PRODUCT B',
-          data: [13, 23, 20, 8, 13, 27, 33, 12]
-        }, {
-          name: 'PRODUCT C',
-          data: [11, 17, 15, 15, 21, 14, 15, 13]
-        }, {
-          name: 'PRODUCT D',
-          data: [21, 7, 25, 13, 22, 8, 24, 10]
-        }, {
-          name: 'PRODUCT E',
-          data: [12, 9, 15, 11, 20, 15, 17, 10]
+    async function ApiConsumoGeneralxmesymaquina() {
+        try {
+            const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+            const resultado = await fetch(url);
+            const datos = await resultado.json();
+            return datos;
+        } catch (e) {
+            console.error(e);
+            return [];
         }
-    
-    
-    
-    ],
+    }
 
+    function formatearMes(fecha) {
+        const opciones = { year: 'numeric', month: 'short' };
+        return new Date(fecha).toLocaleDateString('es-ES', opciones);
+    }
 
+    function agruparDatosPorMaquinaYMes(datos) {
+        const maquinas = {};
+        const mesesSet = new Set();
 
-          chart: {
-          type: 'bar',
-          height: 350,
-          stacked: true,
-          stackType: '100%'
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
+        datos.forEach(item => {
+            const mes = formatearMes(item.created_at);
+            mesesSet.add(mes);
+
+            if (!maquinas[item.tipo_maquina]) {
+                maquinas[item.tipo_maquina] = {};
             }
-          }
-        }],
-        xaxis: {
-          categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2',
-            '2012 Q3', '2012 Q4'
-          ],
-        },
-        fill: {
-          opacity: 1
-        },
-        legend: {
-          position: 'right',
-          offsetX: 0,
-          offsetY: 50
-        },
+
+            if (!maquinas[item.tipo_maquina][mes]) {
+                maquinas[item.tipo_maquina][mes] = 0;
+            }
+
+            maquinas[item.tipo_maquina][mes] += parseFloat(item.total_general);
+        });
+
+        const meses = Array.from(mesesSet).sort((a, b) => new Date(a) - new Date(b));
+
+        const series = Object.keys(maquinas).map(maquina => {
+            const data = meses.map(mes => maquinas[maquina][mes] || 0);
+            return { name: maquina, data };
+        });
+
+        return { series, categorias: meses };
+    }
+
+    ApiConsumoGeneralxmesymaquina().then(datosApi => {
+        const { series, categorias } = agruparDatosPorMaquinaYMes(datosApi);
+
+        const options = {
+            series,
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                stackType: '100%'
+            },
+            xaxis: {
+                categories: categorias
+            },
+            fill: {
+                opacity: 1
+            },
+            legend: {
+                position: 'right',
+                offsetX: 0,
+                offsetY: 50
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        const chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-
     });
+
+});
 </script>
