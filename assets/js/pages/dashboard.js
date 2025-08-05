@@ -458,8 +458,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-// grafica x mes 
 document.addEventListener("DOMContentLoaded", () => {
   cargarGraficaMensual();
 });
@@ -475,39 +473,42 @@ async function cargarGraficaMensual() {
       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    // Mapa para agrupar por máquina y mes
+    // Agrupar consumo por máquina y mes
     const consumoPorMaquina = {};
 
     data.forEach(item => {
       const fecha = new Date(item.created_at);
-      const mes = fecha.getMonth(); // 0-11
-      const total = parseFloat(item.total_general);
+      const mes = fecha.getMonth(); // 0 = Enero, 11 = Diciembre
       const maquina = item.maquina || "Sin Nombre";
+      const total = parseFloat(item.total_general) || 0;
 
       if (!consumoPorMaquina[maquina]) {
         consumoPorMaquina[maquina] = Array(12).fill(0);
       }
 
-      consumoPorMaquina[maquina][mes] += isNaN(total) ? 0 : total;
+      consumoPorMaquina[maquina][mes] += total;
     });
 
-    // Convertir el objeto en series para ApexCharts
-    const series = Object.entries(consumoPorMaquina).map(([nombre, datos]) => ({
-      name: nombre,
+    // Convertir a series de ApexCharts
+    const series = Object.entries(consumoPorMaquina).map(([maquina, datos]) => ({
+      name: maquina,
       data: datos
     }));
 
     const opcionesGrafico = {
       chart: {
         type: 'bar',
-        height: 350,
-        stacked: true // Si quieres comparar por mes
+        height: 400,
+        stacked: false,
+        toolbar: {
+          show: true
+        }
       },
       series: series,
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '55%',
+          columnWidth: '60%',
           endingShape: 'rounded'
         }
       },
@@ -515,29 +516,35 @@ async function cargarGraficaMensual() {
         enabled: false
       },
       xaxis: {
-        categories: meses
+        categories: meses,
+        title: {
+          text: "Mes"
+        }
       },
       yaxis: {
         title: {
-          text: 'Consumo Total'
+          text: "Consumo Total"
         }
       },
       fill: {
         opacity: 1
       },
-      title: {
-        text: 'Consumo Mensual por Máquina',
-        align: 'center'
-      },
       tooltip: {
         y: {
           formatter: val => `${val.toFixed(2)}`
         }
+      },
+      title: {
+        text: "Consumo Mensual por Máquina",
+        align: "center"
+      },
+      legend: {
+        position: 'bottom'
       }
     };
 
     const contenedor = document.querySelector("#grafico-mensual");
-    contenedor.innerHTML = ""; // Limpiar gráfico anterior
+    contenedor.innerHTML = "";
 
     const grafico = new ApexCharts(contenedor, opcionesGrafico);
     grafico.render();
