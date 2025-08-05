@@ -7,19 +7,14 @@
 <?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>GRAFICAS CONSUMO GENERAL DESPERDICIO</h3>
+
+        <!-- CERRAR SESSION  -->
         
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-danger" onclick="location.href='/admin/logout'">Cerrar Sesión</button>
+        </div>
+        <p class="text-subtitle text-muted"><?php echo $email; ?></p>
     </div>
-
-      <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a><?php echo $nombre; ?></a></li>
-                        <!--  cerrar sesión -->
-                        <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
-
-                    </ol>
-                </nav>
-            </div>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <div class="page-content">
