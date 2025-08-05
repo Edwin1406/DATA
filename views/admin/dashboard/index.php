@@ -263,7 +263,7 @@
 
 <body>
 
-    <div id="chart1"></div>
+    <div id="chart3"></div>
 
     <script>
         var options1 = {
@@ -285,7 +285,7 @@
             labels: ['TEAM A', 'TEAM B', 'TEAM C', 'TEAM D']
         };
 
-        new ApexCharts(document.querySelector("#chart1"), options1).render();
+        new ApexCharts(document.querySelector("#chart3"), options1).render();
     </script>
 
 </body>
