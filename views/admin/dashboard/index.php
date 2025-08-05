@@ -4,7 +4,7 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header> -->
-<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com'|| $email === 'pruebas@megaecuador.com') { ?>
+<?php if ($email === 'control@megaecuador.com' || $email === 'produccion@megaecuador.com' || $email === 'pruebas@megaecuador.com') { ?>
     <div class="page-heading">
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
@@ -122,18 +122,9 @@
                         </div>
                     </div>
                 </div>
-               
 
- <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Bar Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <div id="bar"></div>
-                        </div>
-                    </div>
-                </div>
+
+            
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -366,5 +357,3 @@
     </div>
 
 <?php } ?>
-
-
