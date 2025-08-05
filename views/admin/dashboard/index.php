@@ -177,6 +177,45 @@
 
             <div class="col-md-12">
                 <div class="card">
+                    <!-- filtro x maquina -->
+                    <div class="card-header">
+                        <h4>Consumo por Máquina</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="formFiltroConsumoMaquina" class="mb-4">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroFechaInicioMaquina">Fecha Inicio</label>
+                                    <input type="date" class="form-control" id="filtroFechaInicioMaquina" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroFechaFinMaquina">Fecha Fin</label>
+                                    <input type="date" class="form-control" id="filtroFechaFinMaquina" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroTipoMaquina">Máquina</label>
+                                    <select class="form-select" id="filtroTipoMaquina">
+                                        <option value="">Seleccione una máquina</option>
+                                        <option value="TROQUEL">Troquel</option>
+                                        <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
+                                        <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
+                                        <option value="DOBLADO">Doblado</option>
+                                        <option value="CONVERTIDOR">Convertidor</option>
+                                        <option value="EMPAQUE">Empaque</option>
+                                        <option value="MICRO">Micro</option>
+                                        <option value="CORRUGADOR">Corrugador</option>
+                                        <option value="FLEXOGRAFICA">Flexografica</option>
+                                    </select>
+                                </div>
+
+                                <!-- FILTRAR POR TOP NECESITO UNAS OPCIONES-->
+
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </form>
+                        
+                    </div>
+
                     <div id="chart"></div>
 
                 </div>
