@@ -453,3 +453,83 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cargar gráfico al inicio
   cargarDatos();
 });
+
+
+
+
+
+
+// grafica x mes 
+
+document.addEventListener("DOMContentLoaded", () => {
+    cargarGraficaMensual();
+});
+
+
+async function cargarGraficaMensual() {
+  try {
+    const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+    const resultado = await fetch(url);
+    const data = await resultado.json();
+
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    const consumoMensual = Array(12).fill(0);
+
+    data.forEach(item => {
+      const fecha = new Date(item.created_at);
+      const mes = fecha.getMonth();
+      const total = parseFloat(item.total_general);
+      consumoMensual[mes] += isNaN(total) ? 0 : total;
+    });
+
+    const series = [{
+      name: 'Consumo Mensual',
+      data: consumoMensual
+    }];
+
+    const opcionesGrafico = {
+      chart: {
+        type: 'bar',
+        height: 350
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: meses
+      },
+      yaxis: {
+        title: {
+          text: 'Consumo Total'
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      title: {
+        text: 'Consumo Mensual por Máquina',
+        align: 'center'
+      }
+    };
+
+    const contenedor = document.querySelector("#grafico-mensual");
+    contenedor.innerHTML = ""; // Limpiar gráfico anterior
+
+    const grafico = new ApexCharts(contenedor, opcionesGrafico);
+    grafico.render();
+  } catch (e) {
+    console.log(e);
+  }
+}
+

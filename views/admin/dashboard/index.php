@@ -165,15 +165,16 @@
 
 
                         <div id="graficoUnico" class="mt-4"></div>
-
-
+                        
+                        
                     </div>
                 </div>
             </div>
-
-
-
-
+            
+            
+            
+            
+            <div id="grafico-mensual" class="mt-4"></div>
 
 
 
