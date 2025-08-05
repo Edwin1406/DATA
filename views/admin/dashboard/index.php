@@ -11,7 +11,7 @@
         <!-- CERRAR SESSION  -->
         
         <div class="d-flex justify-content-end mb-3">
-            <button class="btn btn-danger" onclick="location.href='/admin/logout'">Cerrar Sesión</button>
+            <button class="btn btn-danger" onclick="location.href='/cerrarSesion'">Cerrar Sesión</button>
             <br>
             <!-- <p class="text-subtitle text-muted"><?php echo $email; ?></p> -->
         </div>
