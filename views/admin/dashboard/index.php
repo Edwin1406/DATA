@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <div class="page-content">
         <section class="row">
-            <div class="col-12 col-lg-9">
+            <div class="col-lg-9 col-md-12">
                 <!-- Profile Statistics -->
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
@@ -54,14 +54,14 @@
 
 
                     <div class="modal fade" id="modalTarjetas" tabindex="-1" aria-labelledby="modalTarjetasLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl"> <!-- Puedes ajustar el tamaño -->
+                        <div class="modal-dialog modal-xl"> 
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalTarjetasLabel">Detalle de Consumo</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="row" id="contenedor-tarjetas"></div> <!-- Aquí se cargan las tarjetas -->
+                                    <div class="row" id="contenedor-tarjetas"></div> 
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                             <button type="submit" class="btn btn-primary">Filtrar</button>
                         </form>
 
-            
+
                         <div id="graficoUnico" class="mt-4"></div>
 
 
@@ -219,8 +219,6 @@
                     </div>
                 </div>
             </div>
-
-
 
 
     </div>
