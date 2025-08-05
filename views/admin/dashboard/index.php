@@ -177,7 +177,7 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div id="grafico-mensual" class="mt-4"></div>
+                    <div id="chart"></div>
 
                 </div>
             </div>
@@ -247,7 +247,7 @@
 
 <?php } ?>
 
-<div id="chart"></div>
+
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
 
