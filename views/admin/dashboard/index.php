@@ -9,7 +9,7 @@
         <h3>ESTADISTICAS DEL PERFIL </h3>
     </div>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
