@@ -251,34 +251,40 @@
 
 
 
-<div id="chart1">
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfico Radial</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
 
+  <div id="chart1"></div>
 
-
-<script>
-
-var options1 = {
-  chart: {
-    height: 280,
-    type: "radialBar",
-  },
-  series: [67, 84, 97, 61],
-  plotOptions: {
-    radialBar: {
-      dataLabels: {
-        total: {
-          show: true,
-          label: 'TOTAL'
+  <script>
+    var options1 = {
+      chart: {
+        height: 280,
+        type: "radialBar",
+      },
+      series: [67, 84, 97, 61],
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            total: {
+              show: true,
+              label: 'TOTAL'
+            }
+          }
         }
-      }
-    }
-  },
-  labels: ['TEAM A', 'TEAM B', 'TEAM C', 'TEAM D']
-};
+      },
+      labels: ['TEAM A', 'TEAM B', 'TEAM C', 'TEAM D']
+    };
 
-new ApexCharts(document.querySelector("#chart1"), options1).render();
+    new ApexCharts(document.querySelector("#chart1"), options1).render();
+  </script>
 
-
-
-</script>
+</body>
+</html>
+ 
