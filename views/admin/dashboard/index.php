@@ -253,6 +253,9 @@
 
 <script>
 
+    document.addEventListener('DOMContentLoaded', function () {
+       
+
    var options = {
           series: [{
           name: 'PRODUCT A',
@@ -298,5 +301,5 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
-
+    });
 </script>
