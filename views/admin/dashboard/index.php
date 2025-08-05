@@ -12,7 +12,7 @@
 
     <div class="page-content">
         <section class="row">
-            <div class="col-12 col-lg-9">
+            < class="col-12 col-lg-9">
                 <!-- Profile Statistics -->
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
@@ -137,8 +137,8 @@
                 <!-- Latest Comments -->
 
                 <!-- Contenedor -->
-                <div class="row mt-12">
-                    <div class="col-12">
+                
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4>Consumo Diario por Máquina</h4>
@@ -170,7 +170,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
+
+
+
+                
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Bar Chart</h4>
+        </div>
+        <div class="card-body">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
+
 
 
                 <!-- ApexCharts -->
@@ -341,17 +356,6 @@
 
 
 
-
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <h4>Bar Chart</h4>
-        </div>
-        <div class="card-body">
-            <div id="bar"></div>
-        </div>
-    </div>
-</div>
 
 
 
