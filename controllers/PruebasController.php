@@ -27,7 +27,7 @@ class PruebasController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Procesar el formulario
             $carrito->id_usuario = $_SESSION['id'];
-            $carrito->id_producto = $_POST['producto'];
+            $carrito->id_producto = $_POST['id_producto'];
             $carrito->cantidad = $_POST['cantidad'];
            
             $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
