@@ -111,8 +111,8 @@
                              <th class="fs-6" style="min-width: 90px;">Id</th>
                              <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
                              <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
-                             <th class="fs-6" style="min-width: 160px;">Proveedor</th>
                              <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
+                             <th class="fs-6" style="min-width: 160px;">Proveedor</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 110px;">Pdf</th>
@@ -127,8 +127,8 @@
                                  <td><?= $diseno->id ?></td>
                                  <td><?= $diseno->codigo_producto ?></td>
                                  <td><?= $diseno->nombre_cliente ?></td>
-                                 <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->nombre_producto ?></td>
+                                 <td><?= $diseno->proveedor ?></td>
                                  <td><?= $diseno->fecha ?></td>
                                  <?php
                                     $estado = trim($diseno->estado);
