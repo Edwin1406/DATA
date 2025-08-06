@@ -10,7 +10,7 @@ class PruebasController
 {
 
 
-    public function crearPruebas(Router $router)
+    public static function crearPruebas(Router $router)
     {
 
         echo "Controlador de Pruebas - Crear Prueba";
