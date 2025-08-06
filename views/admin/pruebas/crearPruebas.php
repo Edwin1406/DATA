@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3><?php echo $titulo ?> </h3>
-                <p class="text-subtitle text-muted">Ingrese los datos del consumo</p>
+                <p class="text-subtitle text-muted">Ingrese los datos de prueba</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/tablaConsumoTroquel">Tabla Consumo Troquel</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
                 </li>
             </ul>
         </div>
@@ -74,108 +74,32 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/control_troquel">
+                            <form class="form" method="POST" action="/admin/pruebas/crearPruebas" enctype="multipart/form-data">
                                 <div class="row">
 
-                                    <!-- fecha -->
-
+                            
+                              
                                     <div class="col-md-6 col-12">
+                                        <label for="id_producto">Escoja el Producto</label>
                                         <div class="form-group">
-                                            <label for="fecha">Fecha</label>
-                                            <input type="date" id="fecha" class="form-control"
-                                                placeholder="Fecha" name="fecha">
-                                        </div>
-                                    </div>
-                                    <!-- turno -->
-
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="turnos">Turno</label>
-                                            <input type="number" id="turnos" class="form-control"
-                                                placeholder="Turno" name="turnos">
-                                        </div>
-                                    </div>
-
-
-                                    <!-- OPERADOR SELECCIONAR NO MULTIPLE -->
-                                    <div class="col-md-6 col-12">
-                                        <label for="operador">Escoja el Operador</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="operador" id="operador">
-                                                <option value="Luis Govea">Luis Govea</option>
-                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
+                                            <select class="form-select" name="id_producto" id="id_producto">
+                                                <option value="1">Producto 1</option>
+                                                <option value="2">Producto 2</option>
                                             </select>
                                         </div>
                                     </div>
 
 
-                                    <!-- hora de inicio  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="horas_programadas">Hora Programadas</label>
-                                            <input type="time" id="horas_programadas" class="form-control"
-                                                placeholder="Hora Programadas" name="horas_programadas">
-                                        </div>
-                                    </div>
-
-
-
-                                    <!-- golpes maquina  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="golpes_maquina">Golpes Maquina</label>
-                                            <input type="number" id="golpes_maquina" class="form-control"
-                                                placeholder="Golpes Maquina" name="golpes_maquina">
-                                        </div>
-                                    </div>
-
-                                    <!-- cambios de medida  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cambios_medida">Cambios de Medida</label>
-                                            <input type="number" id="cambios_medida" class="form-control"
-                                                placeholder="Cambios de Medida" name="cambios_medida">
-                                        </div>
-                                    </div>
-
-                                    <!-- cantidad separadores  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_separadores">Cantidad Separadores</label>
-                                            <input type="number" id="cantidad_separadores" class="form-control"
-                                                placeholder="Cantidad Separadores" name="cantidad_separadores">
-                                        </div>
-                                    </div>
-
                                     <!-- cantidad cajas  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_cajas">Cantidad Cajas</label>
-                                            <input type="number" id="cantidad_cajas" class="form-control"
-                                                placeholder="Cantidad Cajas" name="cantidad_cajas">
+                                            <label for="cantidad">Cantidad</label>
+                                            <input type="number" id="cantidad" class="form-control"
+                                                placeholder="Cantidad" name="cantidad">
                                         </div>
                                     </div>
 
-                                    <!-- cantidad papel  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="cantidad_papel">Cantidad Papel</label>
-                                            <input type="number" id="cantidad_papel" class="form-control"
-                                                placeholder="Cantidad Papel" name="cantidad_papel">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- desperdicio kg  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio Kg</label>
-                                            <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio Kg" name="desperdicio_kg">
-                                        </div>
-                                    </div>
-
+                                    
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
