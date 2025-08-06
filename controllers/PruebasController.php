@@ -13,7 +13,10 @@ class PruebasController
     public static function crearPruebas(Router $router)
     {
 
-        echo "Controlador de Pruebas - Crear Prueba";
+        // Renderizar la vista de crear pruebas
+        $router->render('admin/pruebas/crearPruebas', [
+            'titulo' => 'Crear Pruebas'
+        ]);
 
 
      
