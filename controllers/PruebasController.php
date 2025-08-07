@@ -101,46 +101,52 @@ class PruebasController
             exit;
         }
 
-        $id_usuario = $_SESSION['id'];
-        $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
 
-        if (empty($carritoTemporal)) {
-            // No hay productos en el carrito
-            header('Location: /carrito'); // O alguna redirección apropiada
+
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+
+            $id_usuario = $_SESSION['id'];
+            $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+
+            if (empty($carritoTemporal)) {
+                // No hay productos en el carrito
+                header('Location: /carrito'); // O alguna redirección apropiada
+                exit;
+            }
+
+            // Calcular total
+            $total = 0;
+            foreach ($carritoTemporal as $item) {
+                $total += $item->precio_unitario;
+            }
+
+            // Crear la venta (solo UNA vez)
+            $venta = new Ventas;
+            $venta->id_usuario = $id_usuario;
+            $venta->total = $total;
+            $venta->fecha = date('Y-m-d H:i:s');
+            $venta->guardar();
+
+            // Obtener el ID de la venta recién creada
+            $id_venta = $venta->id; // Asegúrate que ActiveRecord lo actualice correctamente
+
+            // Insertar cada detalle de venta
+            foreach ($carritoTemporal as $item) {
+                $detalle = new DetalleVenta;
+                $detalle->id_venta = $id_venta;
+                $detalle->id_producto = $item->id_producto;
+                $detalle->cantidad = $item->cantidad;
+                $detalle->precio_unitario = $item->precio_unitario;
+                $detalle->fecha = date('Y-m-d H:i:s');
+                $detalle->guardar();
+            }
+
+            // Vaciar el carrito del usuario
+            Carrito::eliminarPorColumna('id_usuario', $id_usuario);
+            header('Location: /admin/pruebas/crearPruebas');
             exit;
         }
-
-        // Calcular total
-        $total = 0;
-        foreach ($carritoTemporal as $item) {
-            $total += $item->precio_unitario;
-        }
-
-        // Crear la venta (solo UNA vez)
-        $venta = new Ventas;
-        $venta->id_usuario = $id_usuario;
-        $venta->total = $total;
-        $venta->fecha = date('Y-m-d H:i:s');
-        $venta->guardar();
-
-        // Obtener el ID de la venta recién creada
-        $id_venta = $venta->id; // Asegúrate que ActiveRecord lo actualice correctamente
-
-        // Insertar cada detalle de venta
-        foreach ($carritoTemporal as $item) {
-            $detalle = new DetalleVenta;
-            $detalle->id_venta = $id_venta;
-            $detalle->id_producto = $item->id_producto;
-            $detalle->cantidad = $item->cantidad;
-            $detalle->precio_unitario = $item->precio_unitario;
-            $detalle->fecha = date('Y-m-d H:i:s');
-            $detalle->guardar();
-        }
-
-        // Vaciar el carrito del usuario
-        Carrito::eliminarPorColumna('id_usuario', $id_usuario);
-
-        // Confirmar
-        header('Location: /admin/pruebas/registrarVenta?exito=1');
     }
 }
