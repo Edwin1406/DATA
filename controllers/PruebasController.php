@@ -3,6 +3,8 @@
 namespace Controllers;
 
 use Model\Carrito;
+use Model\DetalleVenta;
+use Model\Ventas;
 use MVC\Router;
 
 
@@ -94,28 +96,57 @@ class PruebasController
 
 
 
-
-    public static function registrarVenta()
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
-        // LLAMAR AL CARRITO X ID DE USUARIO
-        $id_usuario = $_SESSION['id'];
-        $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
-        // FOREACH PARA RECORRER Y SUMAR LA PRECIO UNITARIO Y SACAR UN TOTAL 
-        $total = 0;
-        foreach ($carritoTemporal as $item) {
-            $total += $item->precio_unitario;
-        }
-
-        debuguear($total);
-
-
-
-
+public static function registrarVenta()
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
     }
+
+    $id_usuario = $_SESSION['id'];
+    $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+
+    if (empty($carritoTemporal)) {
+        // No hay productos en el carrito
+        header('Location: /carrito'); // O alguna redirección apropiada
+        exit;
+    }
+
+    // Calcular total
+    $total = 0;
+    foreach ($carritoTemporal as $item) {
+        $total += $item->precio_unitario;
+    }
+
+    // Crear la venta (solo UNA vez)
+    $venta = new Ventas;
+    $venta->id_usuario = $id_usuario;
+    $venta->total = $total;
+    $venta->fecha = date('Y-m-d H:i:s');
+    $venta->guardar();
+
+    // Obtener el ID de la venta recién creada
+    $id_venta = $venta->id; // Asegúrate que ActiveRecord lo actualice correctamente
+
+    // Insertar cada detalle de venta
+    foreach ($carritoTemporal as $item) {
+        $detalle = new DetalleVenta;
+        $detalle->id_venta = $id_venta;
+        $detalle->id_producto = $item->id_producto;
+        $detalle->cantidad = $item->cantidad;
+        $detalle->precio_unitario = $item->precio_unitario;
+        $detalle->fecha = date('Y-m-d H:i:s');
+        $detalle->guardar();
+    }
+
+    // Vaciar el carrito del usuario
+    Carrito::eliminarPorUsuario($id_usuario); // O tu método equivalente
+
+    // Confirmar
+    header('Location: /ventas?success=1');
+}
+
 
 
 

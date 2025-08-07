@@ -760,6 +760,18 @@ public static function find_orden($id_orden) {
     }
     
 
+    // ELIMINAR UN REGISTRO POR SU ID
+    public static function eliminarPorUsuario($id_usuario) {
+        $query = "DELETE FROM " . static::$tabla . " WHERE id_usuario = '{$id_usuario}'";
+        $resultado = self::$db->query($query);
+
+        return $resultado;
+    }
+
+
+
+
+
     // Retornar los registros por un orden 
 
     public static function ordenar($columna, $orden) {
