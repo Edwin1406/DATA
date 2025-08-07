@@ -103,7 +103,7 @@
                                         <label for="operador">Escoja el Operador</label>
                                         <div class="form-group">
                                             <select class="form-select" name="operador" id="operador">
-                                                <option value="Luis Govea">Alvaro Pogo</option>
+                                                <option value="Luis Govea">Luis Govea</option>
                                                 <option value="Guillermo Bonilla">Guillermo Bonilla</option>
                                             </select>
                                         </div>
