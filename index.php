@@ -222,6 +222,8 @@ $router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPr
 // eliminar carrito
 $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
 
+// REGISTRAR VENTA
+$router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'registrarVenta']);
 
 
 

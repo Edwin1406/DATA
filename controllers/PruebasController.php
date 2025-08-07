@@ -95,6 +95,25 @@ class PruebasController
 
 
 
+    public static function registrarVenta()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // LLAMAR AL CARRITO X ID DE USUARIO
+        $id_usuario = $_SESSION['id'];
+        $carritoTemporal = Carrito::where('id_usuario', $id_usuario);
+
+        debuguear($carritoTemporal);
+
+
+
+
+    }
+
+
+
 
 
 
