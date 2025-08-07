@@ -24,6 +24,9 @@ class PruebasController
         // $id_usuario = $_SESSION['id'];
         // debuguear($id_usuario);
 
+
+        $carritoTemporal = Carrito::all();
+
         $carrito = new Carrito;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,7 +60,8 @@ class PruebasController
             'titulo' => 'Crear Pruebas',
             'alertas' => $alertas,
             'nombre' => $nombre,
-            'email' => $email
+            'email' => $email,
+            'carritoTemporal' => $carritoTemporal,
         ]);
 
 

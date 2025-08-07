@@ -77,8 +77,8 @@
                             <form class="form" method="POST" action="/admin/pruebas/crearPruebas" enctype="multipart/form-data">
                                 <div class="row">
 
-                            
-                              
+
+
                                     <div class="col-md-6 col-12">
                                         <label for="id_producto">Escoja el Producto</label>
                                         <div class="form-group">
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
 
-                                    
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
@@ -112,5 +112,57 @@
             </div>
         </div>
     </section>
+
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                Tabla de consumo
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th class="fs-6" style="min-width: 90px;">id_producto</th>
+                            <th class="fs-6" style="min-width: 80px;">Cantidad</th>
+                            <th class="fs-6" style="min-width: 155px;">Precio unitario</th>
+                        
+                            <th class="fs-6" style="min-width: 100px;">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($carritoTemporal as $contro): ?>
+                            <tr>
+                                <td><?= $contro->id_producto ?></td>
+                                <td><?= $contro->cantidad ?></td>
+                                <td><?= $contro->precio_unitario ?></td>
+                               
+                                <!-- los botones en horizontal -->
+
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                        <form action="/admin/eliminarConsumoTroquel" method="POST">
+                                            <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
 
 </div>
