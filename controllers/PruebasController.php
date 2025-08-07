@@ -122,14 +122,11 @@ public static function registrarVenta()
         $venta->id_usuario = $id_usuario;
         $venta->total = $total;
         $venta->fecha = date('Y-m-d H:i:s');
-        $venta->guardar();
+        $venta->guardarCarrito();
 
         // Obtener ID generado
         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
 
-echo "ID de venta insertado: " . $venta->id;
-
-        debuguear($id_venta);
 
         // Insertar detalles
         foreach ($carritoTemporal as $item) {
@@ -139,7 +136,7 @@ echo "ID de venta insertado: " . $venta->id;
             $detalle->cantidad = $item->cantidad;
             $detalle->precio_unitario = $item->precio_unitario;
             $detalle->fecha = date('Y-m-d H:i:s');
-            $detalle->guardar();
+            $detalle->guardarCarrito();
         }
 
         // Vaciar carrito

@@ -169,6 +169,35 @@ class ActiveRecord {
         return $resultado;
     }
 
+
+
+
+    public function guardarCarrito() {
+    $resultado = '';
+    
+    if (!is_null($this->id)) {
+        // actualizar
+        $resultado = $this->actualizar();
+    } else {
+        // crear
+        $respuesta = $this->crear();
+
+        // Si crear() devuelve el ID, asignarlo a la instancia
+        if (is_array($respuesta) && isset($respuesta['id'])) {
+            $this->id = $respuesta['id'];
+            $resultado = $respuesta['resultado'];
+        } else {
+            $resultado = $respuesta;
+        }
+    }
+
+    return $resultado;
+}
+
+
+
+
+
     // enviar on id para actualizar 
     public function guardarNuevo() {
         $resultado = '';
