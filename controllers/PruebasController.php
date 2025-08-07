@@ -143,7 +143,7 @@ public static function registrarVenta()
         Carrito::eliminarPorColumna('id_usuario', $id_usuario);
 
         // Redirigir o mostrar mensaje de éxito
-        header('Location: /admin/pruebas/crearPruebas?success=1');
+        header('Location: /admin/pruebas/crearPruebas?exito=1');
         exit;
     } else {
         // Si no es POST, redirige o muestra un error
