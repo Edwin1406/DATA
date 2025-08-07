@@ -110,7 +110,7 @@ class PruebasController
             $total += $item->precio_unitario;
         }
 
-        debuguear($carritoTemporal);
+        debuguear($total);
 
 
 
