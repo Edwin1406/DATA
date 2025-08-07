@@ -159,14 +159,11 @@
 
 
                         <tr>
-
+                            <td colspan="4"></td>
                         </tr>
-
                         <tr>
-
+                            <td colspan="4"></td>
                         </tr>
-
-                        <tr></tr>
 
                         <tr>
                             <td colspan="4"></td>
