@@ -21,8 +21,8 @@ class PruebasController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
-        $id_usuario = $_SESSION['id'];
-        debuguear($id_usuario);
+        // $id_usuario = $_SESSION['id'];
+        // debuguear($id_usuario);
 
         $carrito = new Carrito;
 
