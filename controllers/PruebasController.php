@@ -104,6 +104,11 @@ class PruebasController
         // LLAMAR AL CARRITO X ID DE USUARIO
         $id_usuario = $_SESSION['id'];
         $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+        // FOREACH PARA RECORRER Y SUMAR LA PRECIO UNITARIO Y SACAR UN TOTAL 
+        $total = 0;
+        foreach ($carritoTemporal as $item) {
+            $total += $item->precio_unitario;
+        }
 
         debuguear($carritoTemporal);
 
