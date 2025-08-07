@@ -102,8 +102,8 @@
                                         <label for="personal">Escoja el Personal</label>
                                         <div class="form-group">
                                             <select class="form-select" name="personal" id="personal">
-                                                <option value="Luis Govea">Luis Govea</option>
-                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
+                                                <option value="Alvaro Pogo">Alvaro Pogo</option>
+                                                <option value="Evelin Oviedo">Evelin Oviedo</option>
                                             </select>
                                         </div>
                                     </div>
