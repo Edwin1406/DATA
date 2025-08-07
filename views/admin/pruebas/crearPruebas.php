@@ -122,6 +122,8 @@
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
+                            <th class="fs-6" style="min-width: 90px;">ID</th>
+                            <th class="fs-6" style="min-width: 90px;">id_usuario</th>
                             <th class="fs-6" style="min-width: 90px;">id_producto</th>
                             <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                             <th class="fs-6" style="min-width: 155px;">Precio unitario</th>
@@ -133,16 +135,15 @@
                     <tbody>
                         <?php foreach ($carritoTemporal as $contro): ?>
                             <tr>
+                                <td><?= $contro->id ?></td>
+                                <td><?= $contro->id_usuario ?></td>
                                 <td><?= $contro->id_producto ?></td>
                                 <td><?= $contro->cantidad ?></td>
                                 <td><?= $contro->precio_unitario ?></td>
-                               
-                                <!-- los botones en horizontal -->
-
                                 <td>
                                     <div class="d-flex gap-1">
                                         <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                                        <form action="/admin/eliminarConsumoTroquel" method="POST">
+                                        <form action="/admin/eliminarCarrito" method="POST">
                                             <input type="hidden" name="id" value="<?= $contro->id ?>">
                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                         </form>
