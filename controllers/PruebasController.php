@@ -127,6 +127,7 @@ public static function registrarVenta()
         // Obtener ID generado
         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
 
+echo "ID de venta insertado: " . $venta->id;
 
         debuguear($id_venta);
 
