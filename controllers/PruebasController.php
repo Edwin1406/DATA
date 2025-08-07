@@ -67,6 +67,40 @@ class PruebasController
 
      
     }
+
+
+    public static function eliminarCarrito()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $carrito = Carrito::find($id);
+
+            if ($carrito) {
+                $carrito->eliminar();
+                header('Location: /admin/pruebas/crearPruebas?exito=1');
+                exit;
+            } else {
+                // Manejar el caso en que no se encuentra el registro
+                header('Location: /admin/pruebas/crearPruebas?error=1');
+                exit;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     
 
 

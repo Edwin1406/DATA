@@ -219,6 +219,11 @@ $router->get('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPru
 $router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPruebas']);
 
 
+// eliminar carrito
+$router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
+
+
+
 
 
 
