@@ -155,7 +155,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4"></td>
+                            <td colspan="3"></td>
 
                             <br>
                             <td><b>Total</b></td>
