@@ -157,7 +157,7 @@
                     <tfoot>
 
 
-
+<!-- 
                         <tr>
                             <td></td>
                         </tr>
@@ -176,11 +176,11 @@
                             <td><b>IVA (15%)</b></td>
                             <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario')) * 0.15 ?></td>
                             <td></td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td colspan="4"></td>
                             <td><b>Total</b></td>
-                            <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario')) * 1.15 ?></td>
+                            <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario'))  ?></td>
                             <td></td>
                         </tr>
                     </tfoot>
