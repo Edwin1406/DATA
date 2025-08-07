@@ -155,20 +155,33 @@
                     </tbody>
 
                     <tfoot>
+
+
+
                         <tr>
-                            <td colspan="3"></td>
+
+                        </tr>
+
+                        <tr>
+
+                        </tr>
+
+                        <tr></tr>
+
+                        <tr>
+                            <td colspan="4"></td>
                             <td><b>Subtotal</b></td>
                             <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario')) ?></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
+                            <td colspan="4"></td>
                             <td><b>IVA (15%)</b></td>
                             <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario')) * 0.15 ?></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
+                            <td colspan="4"></td>
                             <td><b>Total</b></td>
                             <td>$<?= array_sum(array_column($carritoTemporal, 'precio_unitario')) * 1.15 ?></td>
                             <td></td>
