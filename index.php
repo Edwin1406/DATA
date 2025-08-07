@@ -3,8 +3,8 @@
 
 
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 
 
@@ -223,7 +223,7 @@ $router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPr
 $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
 
 // REGISTRAR VENTA
-$router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'registrarVenta']);
+$router->get('/admin/pruebas/registrarVenta', [PruebasController::class, 'registrarVenta']);
 
 
 
