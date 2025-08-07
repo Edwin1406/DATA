@@ -127,7 +127,7 @@
                             <th class="fs-6" style="min-width: 90px;">id_producto</th>
                             <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                             <th class="fs-6" style="min-width: 155px;">Precio unitario</th>
-                        
+
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
                     </thead>
@@ -165,6 +165,12 @@
                     </tfoot>
                 </table>
             </div>
+            <!-- boton de registrar -->
+            <form action="/admin/pruebas/crearPruebas" method="POST">
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
+                </div>
+            </form>
         </div>
     </section>
 
