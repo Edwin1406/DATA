@@ -144,7 +144,7 @@ public static function registrarVenta()
     Carrito::eliminarPorUsuario($id_usuario); // O tu método equivalente
 
     // Confirmar
-    header('Location: /ventas?success=1');
+    header('Location: /admin/pruebas/registrarVenta?exito=1');
 }
 
 
