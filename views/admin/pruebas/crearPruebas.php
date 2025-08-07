@@ -164,13 +164,14 @@
                         </tr>
                     </tfoot>
                 </table>
-            </div>
-            <!-- boton de registrar -->
-            <form action="/admin/pruebas/crearPruebas" method="POST">
+                   <form action="/admin/pruebas/crearPruebas" method="POST">
                 <div class="col-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
                 </div>
             </form>
+            </div>
+            <!-- boton de registrar -->
+         
         </div>
     </section>
 
