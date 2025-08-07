@@ -127,6 +127,9 @@ public static function registrarVenta()
         // Obtener ID generado
         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
 
+
+        debuguear($id_venta);
+
         // Insertar detalles
         foreach ($carritoTemporal as $item) {
             $detalle = new DetalleVenta;
