@@ -164,7 +164,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                   <form action="/admin/pruebas/crearPruebas" method="POST">
+                   <form action="/admin/pruebas/registrarVenta" method="POST">
                 <div class="col-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
                 </div>
