@@ -153,7 +153,7 @@
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                    
+
                     <tfoot>
                         <tr>
                             <td colspan="3"></td>
@@ -161,22 +161,28 @@
                             <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario')) ?></td>
                             <td></td>
                         </tr>
-                            <tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td><b>IVA (15%)</b></td>
+                            <td>15%</td>
+                            <td></td>
+                        </tr>
+                        <tr>
                             <td colspan="3"></td>
                             <td><b>Total</b></td>
-                            <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario'))*1.21 ?></td>
+                            <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario')) * 0.15 ?></td>
                             <td></td>
                         </tr>
                     </tfoot>
                 </table>
-                   <form action="/admin/pruebas/registrarVenta" method="POST">
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
-                </div>
-            </form>
+                <form action="/admin/pruebas/registrarVenta" method="POST">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
+                    </div>
+                </form>
             </div>
             <!-- boton de registrar -->
-         
+
         </div>
     </section>
 
