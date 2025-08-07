@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
+                    <a class="nav-link active" href="">Tabla pruebas</a>
                 </li>
             </ul>
         </div>
@@ -67,7 +67,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL TROQUEL</h4>
+                        <h4 class="card-title">REGISTRO DE PRUEBAS</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
@@ -116,7 +116,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Tabla de consumo
+                Tabla de Pruebas
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
