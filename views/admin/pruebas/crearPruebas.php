@@ -153,8 +153,15 @@
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
+                    
                     <tfoot>
                         <tr>
+                            <td colspan="3"></td>
+                            <td><b>Total</b></td>
+                            <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario')) ?></td>
+                            <td></td>
+                        </tr>
+                            <tr>
                             <td colspan="3"></td>
                             <td><b>Total</b></td>
                             <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario')) ?></td>
