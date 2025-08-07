@@ -156,6 +156,8 @@
                     <tfoot>
                         <tr>
                             <td colspan="4"></td>
+
+                            <td></td>
                             <td>Total</td>
                             <td><?= array_sum(array_column($carritoTemporal, 'precio_unitario')) ?></td>
                             <td></td>
