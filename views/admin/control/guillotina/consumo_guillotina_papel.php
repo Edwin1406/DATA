@@ -109,7 +109,6 @@
                                     </div>
 
                                     <!-- horas_programadas -->
-
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_programadas">Horas Programadas</label>
