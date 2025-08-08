@@ -293,6 +293,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "#546E7A",
       "#26a69a",
       "#d4526e",
+      "#8d6e63",
+      "#f1c40f",
+      "#bdc3c7"
+        
     ];
     return colores[index % colores.length];
   }
