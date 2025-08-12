@@ -1,7 +1,7 @@
   <!-- NOMBRE DEL CLIENTE -->
   <div class="col-md-6 col-12">
-      <div class="form-group">
-          <label for="nombre_cliente">Nombre del Cliente</label>
+      <div class="form-group" id="snow">
+          <label for="nombre_cliente">Detalle</label>
           <input type="text" id="nombre_cliente" class="form-control"
               placeholder="Nombre del Cliente" name="nombre_cliente"
                  value="<?php echo isset($diseno) ? s($diseno->nombre_cliente) : ''; ?>">
