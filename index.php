@@ -115,6 +115,11 @@ $router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'gen
 $router->get('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
 $router->post('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
 
+// editar turno
+$router->get('/admin/turnoDiseno/editarTurno', [DiseñoController::class, 'editarTurno']);
+$router->post('/admin/turnoDiseno/editarTurno', [DiseñoController::class, 'editarTurno']);
+
+
 
 
 
