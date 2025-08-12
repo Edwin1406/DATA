@@ -127,13 +127,13 @@
                                  <?php
                                     $estado = trim($turno->estado);
                                     switch ($estado) {
-                                        case 'ARTE':
+                                        case 'EN PROCESO':
                                             $badgeClass = 'bg-secondary'; // CELESTE
                                             break;
                                         case 'APROBADO':
                                             $badgeClass = 'bg-success'; // verde
                                             break;
-                                        case 'CLICHE':
+                                        case 'PENDIENTE':
                                             $badgeClass = 'bg-warning'; // naranja
                                             break;
                                         default:
