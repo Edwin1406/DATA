@@ -266,6 +266,26 @@ public static function eliminarPDF()
 
 
 
+    // turno tablaDiseno
+    public static function turnotablaDiseno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $turnos = TurnoDiseno::all();
+
+        $router->render('admin/turnoDiseno/tablaTurno', [
+            'titulo' => 'TABLA TURNO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'turnos' => $turnos,
+        ]);
+    }
 
 
 
