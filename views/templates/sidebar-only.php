@@ -176,7 +176,7 @@
 
                          <ul class="submenu">
                              <li class="submenu-item">
-                                 <a href="/admin/turnoDiseno/tablaDiseno">
+                                 <a href="/admin/diseno/tablaDiseno">
                                      <i class="bi bi-arrow-right"></i> Tabla Diseño
                                  </a>
                                  <a href="/admin/turnoDiseno/turnotablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Turno Diseño</a>
