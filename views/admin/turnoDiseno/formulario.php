@@ -1,10 +1,10 @@
   <!-- NOMBRE DEL CLIENTE -->
   <div class="col-md-6 col-12">
     <div class="form-group">
-      <label for="proveedor">Nombre del Proveedor</label>
-      <input type="text" id="proveedor" class="form-control form-control-lg"
-        placeholder="Nombre del Proveedor" name="proveedor"
-        value="<?php echo isset($diseno) ? s($diseno->proveedor) : ''; ?>">
+      <label for="detalle">Detalle</label>
+      <input type="text" id="detalle" class="form-control form-control-lg"
+        placeholder="Detalle del Diseño" name="detalle"
+        value="<?php echo isset($diseno) ? s($diseno->detalle) : ''; ?>">
     </div>
   </div>
 
