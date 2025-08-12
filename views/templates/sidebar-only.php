@@ -158,26 +158,32 @@
                      </li>
                  <?php } ?>
 
-                 <?php if ($userEmail === 'ventas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
-                     <li class="sidebar-item  has-sub">
-                         <a href="#" class='sidebar-link'>
+                 <?php if (
+                        $userEmail === 'ventas@megaecuador.com' ||
+                        $userEmail === 'produccion@megaecuador.com' ||
+                        $userEmail === 'pruebas@megaecuador.com'
+                    ) { ?>
+                     <li class="sidebar-item has-sub">
+                         <a href="#" class="sidebar-link">
                              <i class="bi bi-collection-fill"></i>
                              <span>Ventas</span>
                          </a>
-                         <ul class="submenu ">
-                             <li class="submenu-item ">
-                                 <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
+
+                         <ul class="submenu">
+                             <li class="submenu-item">
+                                 <a href="/admin/diseno/tablaDiseno">
+                                     <i class="bi bi-arrow-right"></i> Tabla Diseño
+                                 </a>
+                             </li>
+                             <li class="submenu-item">
+                                 <a href="/admin/diseno/generarTurno">
+                                     <i class="bi bi-arrow-right"></i> Generar turno
+                                 </a>
                              </li>
                          </ul>
-
-                         <ul class="submenu ">
-                             <li class="submenu-item ">
-                                 <a href="/admin/diseno/generarTurno"><i class="bi bi-arrow-right"> </i>Generar turno</a>
-                             </li>
-                         </ul>
-
                      </li>
                  <?php } ?>
+
 
                  <!-- pruebas-->
 
