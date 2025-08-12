@@ -349,11 +349,30 @@ public static function eliminarPDF()
 }
 
 
+// eliminar turno diseño
+public static function eliminarTurnoDiseno(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
+    }
 
-
-
-
-
+    $id = $_POST['id'] ?? null;
+    if ($id) {
+        $turno = TurnoDiseno::find($id);
+        if ($turno) {
+            $resultado = $turno->eliminar();
+            if ($resultado) {
+                header('Location: /admin/turnoDiseno/turnotablaDiseno?eliminado=3');
+            } else {
+                header('Location: /admin/turnoDiseno/turnotablaDiseno?error=1');
+            }
+        } else {
+            header('Location: /admin/turnoDiseno/turnotablaDiseno?error=1');
+        }
+    }
+}
 
 
 

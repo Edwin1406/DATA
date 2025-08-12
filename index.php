@@ -186,7 +186,8 @@ $router->post('/admin/eliminarConsumoConvertidor', [ControlController::class, 'e
 // eliminar consumo guillotina papel
 $router->post('/admin/eliminarConsumoGuillotina', [ControlController::class, 'eliminarConsumoGuillotina']);
 
-
+// eliminar turno diseño
+$router->post('/admin/eliminarTurnoDiseno', [DiseñoController::class, 'eliminarTurnoDiseno']);
 
 
 
