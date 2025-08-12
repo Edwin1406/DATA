@@ -169,12 +169,14 @@
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
                              </li>
                          </ul>
-                                <ul class="submenu ">
+                         <ul class="submenu ">
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/generarTurno"><i class="bi bi-arrow-right"> </i>Generar turno</a>
                              </li>
                          </ul>
-                          
+
+                         dsadsadasdsadasd
+
                      </li>
                  <?php } ?>
 
