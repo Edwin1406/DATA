@@ -152,6 +152,11 @@
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
                              </li>
+                             <li class="submenu-item ">
+                                 <a href="/admin/turnoDiseno/generarTurno"><i class="bi bi-arrow-right"> </i>Generar Turno</a>
+                                 <a href="/admin/turnoDiseno/turnotablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Turno Diseño</a>
+                             </li>
+
 
 
                          </ul>
