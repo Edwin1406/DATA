@@ -85,6 +85,9 @@
                 
                      <li class="nav-item">
                          <a class="nav-link active" href="/admin/turnoDiseno/generarTurno">Registro Turno</a>
+                     </li>
+                
+                     <li class="nav-item">
                          <a class="nav-link active" href="/admin/turnoDiseno/generarTurno">Registro Turno</a>
                      </li>
               
