@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="detalle">Detalle</label>
       <textarea id="detalle" class="form-control form-control-sm"
-        placeholder="Escribe el detalle aquí..." name="detalle" rows="4">
+        placeholder="Escribe el detalle aquí..." name="detalle" rows="1">
         <?php echo isset($turno) ? s($turno->detalle) : ''; ?></textarea>
     </div>
   </div>
