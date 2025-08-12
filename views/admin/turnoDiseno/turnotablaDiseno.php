@@ -127,7 +127,7 @@
                                  <?php
                                     $estado = trim($turno->estado);
                                     switch ($estado) {
-                                        case 'EN PROCESO':
+                                        case 'EN_PROCESO':
                                             $badgeClass = 'bg-secondary'; // CELESTE
                                             break;
                                         case 'APROBADO':
