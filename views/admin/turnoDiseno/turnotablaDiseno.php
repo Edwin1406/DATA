@@ -130,7 +130,7 @@
                                         case 'EN_PROCESO':
                                             $badgeClass = 'bg-secondary'; // CELESTE
                                             break;
-                                        case 'APROBADO':
+                                        case 'TERMINADO':
                                             $badgeClass = 'bg-success'; // verde
                                             break;
                                         case 'PENDIENTE':
