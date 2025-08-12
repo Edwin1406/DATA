@@ -4,9 +4,10 @@ namespace Model;
 
 use DateTime;
 
-class TurnoDiseno extends ActiveRecord {    
+class TurnoDiseno extends ActiveRecord
+{
     protected static $tabla = 'turno_diseno';
-    protected static $columnasDB = ['id', 'codigo','detalle','vendedor','observaciones','estado','fecha_creacion','fecha_entrega'];
+    protected static $columnasDB = ['id', 'codigo', 'detalle', 'vendedor', 'observaciones', 'estado', 'fecha_creacion', 'fecha_entrega'];
 
     public ?int $id;
     public ?string $codigo;
@@ -18,23 +19,26 @@ class TurnoDiseno extends ActiveRecord {
     public ?string $fecha_entrega;
 
 
-      public function __construct(array $args = [])
+    public function __construct(array $args = [])
     {
+        // FECHA ATOMATICA GAYAQUIL/ECUADOR
+
         $this->id = $args['id'] ?? null;
         $this->codigo = $args['codigo'] ?? null;
         $this->detalle = $args['detalle'] ?? null;
         $this->vendedor = $args['vendedor'] ?? null;
         $this->observaciones = $args['observaciones'] ?? null;
-        $this->estado = $args['estado'] ?? 'pendiente'; // Default state
-        $this->fecha_creacion = $args['fecha_creacion'] ?? null;
-        $this->fecha_entrega = $args['fecha_entrega'] ?? null;
+        $this->estado = $args['estado'] ?? 'PENDIENTE'; // Default state
+        $this->fecha_creacion = date('Y-m-d H:i:s');
+        $this->fecha_entrega = date('Y-m-d H:i:s', strtotime('+1 day'));
     }
 
 
     // validar
 
 
-    public function validar(): array {
+    public function validar(): array
+    {
         if (!$this->codigo) {
             self::$alertas['error'][] = 'El código es obligatorio';
         }
@@ -46,23 +50,4 @@ class TurnoDiseno extends ActiveRecord {
         }
         return self::$alertas;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
