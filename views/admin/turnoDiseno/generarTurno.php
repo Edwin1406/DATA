@@ -61,7 +61,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE DISEÑO</h4>
+                        <h4 class="card-title">Generar Orden de Diseño</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
@@ -74,7 +74,7 @@
                                     <?php include_once __DIR__ . '/formulario.php'  ?>
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Orden</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
                                     </div>
                                 </div>
