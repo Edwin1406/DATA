@@ -103,30 +103,30 @@
                  <table class="table table-striped" id="table1">
                      <thead>
                          <tr>
-                             <th class="fs-6" style="min-width: 90px;">Id</th>
-                             <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
-                             <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
-                             <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
+                             <th class="fs-6" style="min-width: 90px;">Codigo</th>
+                             <th class="fs-6" style="min-width: 93px;">Detalle</th>
+                             <th class="fs-6" style="min-width: 80px;">Vendedor</th>
+                             <th class="fs-6" style="min-width: 100px;">Observaciones</th>
                              <th class="fs-6" style="min-width: 160px;">Proveedor</th>
-                             <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
-                             <th class="fs-6" style="min-width: 110px;">Pdf</th>
-
+                             <th class="fs-6" style="min-width: 80px;">Fecha de Creación</th>
+                             <th class="fs-6" style="min-width: 80px;">Fecha de Entrega</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($disenos as $diseno): ?>
+                         <?php foreach ($turnos as $turno): ?>
                              <tr>
-                                 <td><?= $diseno->id ?></td>
-                                 <td><?= $diseno->codigo_producto ?></td>
-                                 <td><?= $diseno->nombre_cliente ?></td>
-                                 <td><?= $diseno->nombre_producto ?></td>
-                                 <td><?= $diseno->proveedor ?></td>
-                                 <td><?= $diseno->fecha ?></td>
+                                 <td><?= $turno->id ?></td>
+                                 <td><?= $turno->codigo ?></td>
+                                 <td><?= $turno->detalle ?></td>
+                                 <td><?= $turno->vendedor ?></td>
+                                 <td><?= $turno->observaciones ?></td>
+                                 <td><?= $turno->fecha_creacion ?></td>
+                                 <td><?= $turno->fecha_entrega ?></td>
                                  <?php
-                                    $estado = trim($diseno->estado);
+                                    $estado = trim($turno->estado);
                                     switch ($estado) {
                                         case 'ARTE':
                                             $badgeClass = 'bg-secondary'; // CELESTE
