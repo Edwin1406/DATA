@@ -300,7 +300,21 @@ public static function eliminarPDF()
         $email = $_SESSION['email'];
 
         $alertas = [];
-        $turno = null;
+  
+
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            header('Location: /admin/turnoDiseno/turnotablaDiseno');
+            exit;
+        }
+
+        // Buscar el diseño por ID
+        $turno = TurnoDiseno::find($id);
+        if (!$turno) {
+            header('Location: /admin/turnoDiseno/turnotablaDiseno');
+            exit;
+        }
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno = new TurnoDiseno($_POST);
@@ -312,12 +326,7 @@ public static function eliminarPDF()
                     header('Location: /admin/turnoDiseno/turnotablaDiseno?exito=1');
                 }
             }
-        } else {
-            $id = $_GET['id'] ?? null;
-            if ($id) {
-                $turno = TurnoDiseno::find($id);
-            }
-        }
+        } 
 
         $router->render('admin/turnoDiseno/editarTurno', [
             'titulo' => 'EDITAR TURNO',
