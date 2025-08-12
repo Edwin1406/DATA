@@ -46,7 +46,7 @@
       <select id="estado" class="form-control" name="estado">
         <option value="PENDIENTE" <?php echo isset($turno) && $turno->estado === 'PENDIENTE' ? 'selected' : ''; ?>>Pendiente</option>
         <option value="EN_PROCESO" <?php echo isset($turno) && $turno->estado === 'EN_PROCESO' ? 'selected' : ''; ?>>En Proceso</option>
-        <option value="FINALIZADO" <?php echo isset($turno) && $turno->estado === 'FINALIZADO' ? 'selected' : ''; ?>>Finalizado</option>
+        <option value="ENTREGADO" <?php echo isset($turno) && $turno->estado === 'ENTREGADO' ? 'selected' : ''; ?>>Entregado</option>
       </select>
     </div>
   </div>
