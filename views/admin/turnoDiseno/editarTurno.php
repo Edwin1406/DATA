@@ -74,7 +74,7 @@ error_reporting(E_ALL);
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/turnoDiseno/editarTurno?id=<?php echo $diseno->id; ?>" enctype="multipart/form-data">
+                            <form class="form" method="POST" action="/admin/turnoDiseno/editarTurno?id=<?php echo $turno->id; ?>" enctype="multipart/form-data">
 
                                 <div class="row">
 
