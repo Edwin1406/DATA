@@ -332,7 +332,7 @@ public static function eliminarPDF()
         if (empty($alertas)) {
             $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
             if ($resultado) {
-                header('Location: /admin/turnoDiseno/turnotablaDiseno?exito=1');
+                header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
                 exit;
             }
         }
