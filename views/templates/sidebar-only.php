@@ -170,11 +170,11 @@
                              </li>
                          </ul>
 
-                         <div class="submenu ">
+                         <ul class="submenu ">
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/generarTurno"><i class="bi bi-arrow-right"> </i>Generar turno</a>
                              </li>
-                         </div>
+                         </ul>
 
                      </li>
                  <?php } ?>
