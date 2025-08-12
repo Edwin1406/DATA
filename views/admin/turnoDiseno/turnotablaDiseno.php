@@ -127,7 +127,7 @@
                                  <?php
                                     $estado = trim($turno->estado);
                                     switch ($estado) {
-                                        case 'EN_PROCESO':
+                                        case 'EN PROCESO':
                                             $badgeClass = 'bg-info'; // AZUL
                                             break;
                                         case 'ENTREGADO':
