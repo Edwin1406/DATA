@@ -157,8 +157,6 @@
                                  <a href="/admin/turnoDiseno/turnotablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Turno Diseño</a>
                              </li>
 
-
-
                          </ul>
                      </li>
                  <?php } ?>
@@ -170,7 +168,7 @@
                     ) { ?>
                      <li class="sidebar-item has-sub">
                          <a href="#" class="sidebar-link">
-                            <i class="bi bi-bag-fill"></i>
+                             <i class="bi bi-bag-fill"></i>
                              <span>Ventas</span>
                          </a>
 
@@ -197,7 +195,7 @@
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
-                              <i class="bi bi-code-slash"></i>
+                             <i class="bi bi-code-slash"></i>
                              <span>Pruebas</span>
                          </a>
                          <ul class="submenu ">
