@@ -40,9 +40,9 @@ class TurnoDiseno extends ActiveRecord
 
     public function validar(): array
     {
-        if (!$this->codigo) {
-            self::$alertas['error'][] = 'El código es obligatorio';
-        }
+        // if (!$this->codigo) {
+        //     self::$alertas['error'][] = 'El código es obligatorio';
+        // }
         if (!$this->detalle) {
             self::$alertas['error'][] = 'El detalle es obligatorio';
         }
