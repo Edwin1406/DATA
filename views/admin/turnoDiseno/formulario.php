@@ -1,5 +1,5 @@
   <!-- NOMBRE DEL CLIENTE -->
-  <div class="col-md-6 col-12">
+  <div class=" col-12">
       <div class="form-group" id="snow">
           <label for="nombre_cliente">Detalle</label>
           <input type="text" id="nombre_cliente" class="form-control"
