@@ -31,7 +31,7 @@ class TurnoDiseno extends ActiveRecord
         $this->observaciones = $args['observaciones'] ?? null;
         $this->estado = $args['estado'] ?? 'PENDIENTE'; // Default state
         $this->fecha_creacion = date('Y-m-d H:i:s');
-        $this->fecha_entrega = date('Y-m-d H:i:s', strtotime('+1 day'));
+        $this->fecha_entrega = $args['fecha_entrega'] ?? null;
     }
 
 
