@@ -246,12 +246,12 @@ public static function eliminarPDF()
             if (empty($alertas)) {
                 $resultado = $turno->guardar();
                 if ($resultado) {
-                    header('Location: /admin/diseno/tablaDiseno?creado=1');
+                    header('Location: /admin/turnodiseno/tablaDiseno?creado=1');
                 }
             }
         }
 
-        $router->render('admin/diseno/generarTurno', [
+        $router->render('admin/turnodiseno/generarTurno', [
             'titulo' => 'GENERAR TURNO',
             'nombre' => $nombre,
             'email' => $email,
