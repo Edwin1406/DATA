@@ -17,6 +17,21 @@
     </div>
   </div>
 
+
+
+  <!-- select de vendedores poner nombres en html -->
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="vendedor">Nombre del Vendedor</label>
+      <select id="vendedor" class="form-control" name="vendedor">
+        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un vendedor</option>
+        <option value="Vendedor 1" <?php echo isset($turno) && $turno->vendedor === 'Vendedor 1' ? 'selected' : ''; ?>>Vendedor 1</option>
+        <option value="Vendedor 2" <?php echo isset($turno) && $turno->vendedor === 'Vendedor 2' ? 'selected' : ''; ?>>Vendedor 2</option>
+        <option value="Vendedor 3" <?php echo isset($turno) && $turno->vendedor === 'Vendedor 3' ? 'selected' : ''; ?>>Vendedor 3</option>
+      </select>
+    </div>
+  </div>
+
   <!--  Observaciones -->
   <div class="col-md-6 col-12">
     <div class="form-group">
