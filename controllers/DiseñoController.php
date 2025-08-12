@@ -288,6 +288,47 @@ public static function eliminarPDF()
     }
 
 
+    // editar turno
+    public static function editarTurno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $alertas = [];
+        $turno = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $turno = new TurnoDiseno($_POST);
+            $alertas = $turno->validar();
+
+            if (empty($alertas)) {
+                $resultado = $turno->guardar();
+                if ($resultado) {
+                    header('Location: /admin/turnoDiseno/turnotablaDiseno?exito=1');
+                }
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $turno = TurnoDiseno::find($id);
+            }
+        }
+
+        $router->render('admin/turnoDiseno/editarTurno', [
+            'titulo' => 'EDITAR TURNO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'turno' => $turno,
+            'alertas' => $alertas,
+        ]);
+    }
+
+
 
 
 
