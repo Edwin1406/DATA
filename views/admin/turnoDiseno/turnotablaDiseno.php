@@ -123,8 +123,7 @@
                                  <td><?= $turno->detalle ?></td>
                                  <td><?= $turno->vendedor ?></td>
                                  <td><?= $turno->observaciones ?></td>
-                                 <td><?= $turno->fecha_creacion ?></td>
-                                 <td><?= $turno->fecha_entrega ?></td>
+                               
                                  <?php
                                     $estado = trim($turno->estado);
                                     switch ($estado) {
@@ -144,6 +143,9 @@
                                  <td data-id="<?php echo $diseno->id; ?>">
                                      <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
+
+                                   <td><?= $turno->fecha_creacion ?></td>
+                                 <td><?= $turno->fecha_entrega ?></td>
 
 
 
