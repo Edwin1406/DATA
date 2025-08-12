@@ -83,10 +83,10 @@
              <ul class="nav nav-tabs">
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                 <li class="nav-item">
-                     <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
-                 </li>
-                    <?php } ?>
+                     <li class="nav-item">
+                         <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
+                     </li>
+                 <?php } ?>
              </ul>
          </div>
      </section>
@@ -107,7 +107,7 @@
                              <th class="fs-6" style="min-width: 93px;">Detalle</th>
                              <th class="fs-6" style="min-width: 80px;">Vendedor</th>
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
-                          
+
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Creación</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Entrega</th>
@@ -118,12 +118,12 @@
                      <tbody>
                          <?php foreach ($turnos as $turno): ?>
                              <tr>
-                                 
+
                                  <td><?= $turno->codigo ?></td>
                                  <td><?= $turno->detalle ?></td>
                                  <td><?= $turno->vendedor ?></td>
                                  <td><?= $turno->observaciones ?></td>
-                               
+
                                  <?php
                                     $estado = trim($turno->estado);
                                     switch ($estado) {
@@ -144,7 +144,7 @@
                                      <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
 
-                                   <td><?= $turno->fecha_creacion ?></td>
+                                 <td><?= $turno->fecha_creacion ?></td>
                                  <td><?= $turno->fecha_entrega ?></td>
 
 
@@ -153,15 +153,15 @@
                                      <!-- usuario -->
 
 
-                                     <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                                         <div class="d-flex gap-1">
-                                             <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                     <div class="d-flex gap-1">
+                                         <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                              <form action="/admin/eliminarTurno" method="POST">
                                                  <input type="hidden" name="id" value="<?= $turno->id ?>">
                                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                              </form>
-                                         </div>
-                                     <?php } ?>
+                                         <?php } ?>
+                                     </div>
 
 
 
