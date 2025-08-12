@@ -289,57 +289,63 @@ public static function eliminarPDF()
 
 
     // editar turno
-    public static function editarTurno(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
-
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-
-        $alertas = [];
-  
-
-        $id = $_GET['id'] ?? null;
-        if (!$id) {
-            header('Location: /admin/turnoDiseno/turnotablaDiseno');
-            exit;
-        }
-
-        // Buscar el diseño por ID
-        $turno = TurnoDiseno::find($id);
-        if (!$turno) {
-            header('Location: /admin/turnoDiseno/turnotablaDiseno');
-            exit;
-        }
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $turno = new TurnoDiseno($_POST);
-            $alertas = $turno->validar();
-
-            if (empty($alertas)) {
-                $resultado = $turno->guardar();
-                if ($resultado) {
-                    header('Location: /admin/turnoDiseno/turnotablaDiseno?exito=1');
-                }
-            }
-        } 
-
-        $router->render('admin/turnoDiseno/editarTurno', [
-            'titulo' => 'EDITAR TURNO',
-            'nombre' => $nombre,
-            'email' => $email,
-            'turno' => $turno,
-            'alertas' => $alertas,
-        ]);
+   public static function editarTurno(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
     }
 
+    $nombre = $_SESSION['nombre'];
+    $email  = $_SESSION['email'];
+    $alertas = [];
 
+    $id = $_GET['id'] ?? null;
+    if (!$id) {
+        header('Location: /admin/turnoDiseno/turnotablaDiseno');
+        exit;
+    }
 
+    // Cargar el registro existente
+    $turno = TurnoDiseno::find($id);
+    if (!$turno) {
+        header('Location: /admin/turnoDiseno/turnotablaDiseno');
+        exit;
+    }
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // O usa un método sincronizar si tu ActiveRecord lo tiene
+        if (method_exists($turno, 'sincronizar')) {
+            $turno->sincronizar($_POST);
+        } else {
+            foreach ($_POST as $campo => $valor) {
+                $turno->$campo = $valor;
+            }
+        }
+
+        // Asegurar que el id siga presente
+        $turno->id = $id;
+
+        $alertas = $turno->validar();
+
+        if (empty($alertas)) {
+            $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
+            if ($resultado) {
+                header('Location: /admin/turnoDiseno/turnotablaDiseno?exito=1');
+                exit;
+            }
+        }
+    }
+
+    $router->render('admin/turnoDiseno/editarTurno', [
+        'titulo'  => 'EDITAR TURNO',
+        'nombre'  => $nombre,
+        'email'   => $email,
+        'turno'   => $turno,
+        'alertas' => $alertas,
+    ]);
+}
 
 
 
