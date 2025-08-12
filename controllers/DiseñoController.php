@@ -245,7 +245,7 @@ public static function eliminarPDF()
             // generar codigo aleatorio pero solo de 5 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 5);
 
-            debuguear($turno);
+            // debuguear($turno);
             $alertas = $turno->validar();
 
             if (empty($alertas)) {
