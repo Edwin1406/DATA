@@ -241,6 +241,8 @@ public static function eliminarPDF()
         $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno = new TurnoDiseno($_POST);
+
+            debuguear($turno);
             $alertas = $turno->validar();
 
             if (empty($alertas)) {
