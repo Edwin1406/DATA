@@ -25,7 +25,7 @@ class TurnoDiseno extends ActiveRecord {
         $this->detalle = $args['detalle'] ?? null;
         $this->vendedor = $args['vendedor'] ?? null;
         $this->observaciones = $args['observaciones'] ?? null;
-        $this->estado = $args['estado'] ?? null;
+        $this->estado = $args['estado'] ?? 'pendiente'; // Default state
         $this->fecha_creacion = $args['fecha_creacion'] ?? null;
         $this->fecha_entrega = $args['fecha_entrega'] ?? null;
     }
@@ -49,7 +49,7 @@ class TurnoDiseno extends ActiveRecord {
 
 
 
-    
+
 
 
 
