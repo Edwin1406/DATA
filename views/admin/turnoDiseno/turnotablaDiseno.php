@@ -146,14 +146,6 @@
                                  </td>
 
 
-                                 <td>
-                                     <?php
-                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-                                        ?>
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a>
-                                 </td>
-
-
 
                                  <td>
                                      <!-- usuario -->
