@@ -118,7 +118,7 @@
                      <tbody>
                          <?php foreach ($turnos as $turno): ?>
                              <tr>
-                                 <td><?= $turno->id ?></td>
+                                 
                                  <td><?= $turno->codigo ?></td>
                                  <td><?= $turno->detalle ?></td>
                                  <td><?= $turno->vendedor ?></td>
