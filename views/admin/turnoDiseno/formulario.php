@@ -2,7 +2,7 @@
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="detalle">Detalle</label>
-      <textarea id="detalle" class="form-control form-control-sm"
+      <textarea id="detalle" class="form-control form-control-lg"
         placeholder="Escribe el detalle aquí..." name="detalle" rows="1"><?php echo isset($turno) ? s($turno->detalle) : ''; ?></textarea>
 
     </div>
