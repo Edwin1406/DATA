@@ -4,9 +4,10 @@ namespace Model;
 
 use DateTime;
 
-class Prueba extends ActiveRecord {    
+class Prueba extends ActiveRecord
+{
     protected static $tabla = 'control_empaque';
-    protected static $columnasDB = ['id', 'fecha', 'turno','personal', 'producto','medidas', 'cantidad','hora_inicio','hora_fin','total_horas', 'x_hora'];
+    protected static $columnasDB = ['id', 'fecha', 'turno', 'personal', 'producto', 'medidas', 'cantidad', 'hora_inicio', 'hora_fin', 'total_horas', 'x_hora'];
 
 
     public ?int $id;
@@ -14,7 +15,7 @@ class Prueba extends ActiveRecord {
     public string $turno = '';
     // public array $personal = [];
     // En Model\Prueba.php
-public string $personal;
+    public string $personal;
 
     public string $producto = '';
     public string $medidas = '';
@@ -28,12 +29,13 @@ public string $personal;
 
 
 
-    public function __construct(array $args = []) {
+    public function __construct(array $args = [])
+    {
         $this->id = $args['id'] ?? null;
         $this->fecha = $args['fecha'] ?? '';
         $this->turno = $args['turno'] ?? '';
         // $this->personal = $args['personal'] ?? [];
-      
+
 
         // Si viene como array (desde formulario), convertir a string
         // if (isset($args['personal'])) {
@@ -45,28 +47,28 @@ public string $personal;
         // } else {
         //     $this->personal = [];
         // }
-        
 
-  $this->producto = $args['producto'] ?? '';
+
+        $this->producto = $args['producto'] ?? '';
         $this->medidas = $args['medidas'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->hora_inicio = $args['hora_inicio'] ?? '';
         $this->hora_fin = $args['hora_fin'] ?? '';
         $this->total_horas = $args['total_horas'] ?? '';
         $this->x_hora = $args['x_hora'] ?? '';
-
     }
 
 
 
-    public function validar(): array {
+    public function validar(): array
+    {
         if (!$this->fecha) {
             self::$alertas['error'][] = 'La Fecha es Obligatoria';
         }
         if (!$this->turno) {
             self::$alertas['error'][] = 'El Turno es Obligatorio';
         }
-        
+
         if (!$this->producto) {
             self::$alertas['error'][] = 'El Producto es Obligatorio';
         }
@@ -90,17 +92,11 @@ public string $personal;
 
 
 
-       public function sacarTotalHoras() {
+    public function sacarTotalHoras()
+    {
         $inicio = new DateTime($this->hora_inicio);
         $fin = new DateTime($this->hora_fin);
         $diferencia = $inicio->diff($fin);
         $this->total_horas = $diferencia->h + ($diferencia->i / 60);
     }
-
-    
-
-
-
-
-
 }

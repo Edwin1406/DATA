@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Diseno;
+use Model\TurnoDiseno;
 use MVC\Router;
 
 class DiseñoController
@@ -226,7 +227,37 @@ public static function eliminarPDF()
     
     
 
+    // Generar Turno
+    public static function generarTurno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
 
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $alertas = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $turno = new TurnoDiseno($_POST);
+            $alertas = $turno->validar();
+
+            if (empty($alertas)) {
+                $resultado = $turno->guardar();
+                if ($resultado) {
+                    header('Location: /admin/diseno/tablaDiseno?creado=1');
+                }
+            }
+        }
+
+        $router->render('admin/diseno/generarTurno', [
+            'titulo' => 'GENERAR TURNO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'alertas' => $alertas,
+        ]);
+    }
 
 
 
