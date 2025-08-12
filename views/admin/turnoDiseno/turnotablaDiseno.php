@@ -107,7 +107,7 @@
                              <th class="fs-6" style="min-width: 93px;">Detalle</th>
                              <th class="fs-6" style="min-width: 80px;">Vendedor</th>
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
-                             <th class="fs-6" style="min-width: 160px;">Proveedor</th>
+                          
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Creación</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Entrega</th>
