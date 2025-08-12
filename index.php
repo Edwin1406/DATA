@@ -105,8 +105,8 @@ $router->post('/admin/control/guillotina/consumo_guillotina_papel', [ControlCont
 
 
 // generar turno
-$router->get('/admin/turnodiseno/generarTurno', [DiseñoController::class, 'generarTurno']);
-$router->post('/admin/turnodiseno/generarTurno', [DiseñoController::class, 'generarTurno']);
+$router->get('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'generarTurno']);
+$router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'generarTurno']);
 
 
 

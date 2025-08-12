@@ -171,12 +171,12 @@
 
                          <ul class="submenu">
                              <li class="submenu-item">
-                                 <a href="/admin/turnodiseno/tablaDiseno">
+                                 <a href="/admin/turnoDiseno/tablaDiseno">
                                      <i class="bi bi-arrow-right"></i> Tabla Diseño
                                  </a>
                              </li>
                              <li class="submenu-item">
-                                 <a href="/admin/turnodiseno/generarTurno">
+                                 <a href="/admin/turnoDiseno/generarTurno">
                                      <i class="bi bi-arrow-right"></i> Generar turno
                                  </a>
                              </li>
