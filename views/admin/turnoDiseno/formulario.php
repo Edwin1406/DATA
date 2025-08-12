@@ -31,12 +31,11 @@
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="fecha_entrega">Fecha de Entrega</label>
-      <input type="text" id="fecha_entrega" class="form-control"
+      <input type="date" id="fecha_entrega" class="form-control"
         placeholder="Fecha de Entrega" name="fecha_entrega"
         value="<?php echo isset($turno) ? s($turno->fecha_entrega) : ''; ?>">
     </div>
   </div>
-
 
   <!-- estado -->
   <div class="col-md-6 col-12">
