@@ -113,7 +113,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-3 col-md-6">
+                    <!-- <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -174,46 +174,46 @@
 
 
 
-<div class="col-md-12">
-    <div class="card">
-        <!-- Filtro por máquina -->
-        <div class="card-header">
-            <h4>Consumo por Máquina</h4>
-        </div>
-        <div class="card-body">
-            <form id="formFiltroConsumoGeneral" class="mb-4">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="fechaInicioConsumo">Fecha Inicio</label>
-                        <input type="date" class="form-control" id="fechaInicioConsumo">
+            <div class="col-md-12">
+                <div class="card">
+                    <!-- Filtro por máquina -->
+                    <div class="card-header">
+                        <h4>Consumo por Máquina</h4>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="fechaFinConsumo">Fecha Fin</label>
-                        <input type="date" class="form-control" id="fechaFinConsumo">
+                    <div class="card-body">
+                        <form id="formFiltroConsumoGeneral" class="mb-4">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="fechaInicioConsumo">Fecha Inicio</label>
+                                    <input type="date" class="form-control" id="fechaInicioConsumo">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fechaFinConsumo">Fecha Fin</label>
+                                    <input type="date" class="form-control" id="fechaFinConsumo">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tipoMaquinaConsumo">Máquina</label>
+                                    <select class="form-select" id="tipoMaquinaConsumo">
+                                        <option value="">Seleccione una máquina</option>
+                                        <option value="TROQUEL">Troquel</option>
+                                        <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
+                                        <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
+                                        <option value="DOBLADO">Doblado</option>
+                                        <option value="CONVERTIDOR">Convertidor</option>
+                                        <option value="EMPAQUE">Empaque</option>
+                                        <option value="MICRO">Micro</option>
+                                        <option value="CORRUGADOR">Corrugador</option>
+                                        <option value="FLEXOGRAFICA">Flexografica</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </form>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="tipoMaquinaConsumo">Máquina</label>
-                        <select class="form-select" id="tipoMaquinaConsumo">
-                            <option value="">Seleccione una máquina</option>
-                            <option value="TROQUEL">Troquel</option>
-                            <option value="GUILLOTINA PAPEL">Guillotina Papel</option>
-                            <option value="GUILLOTINA LAMINA">Guillotina Lamina</option>
-                            <option value="DOBLADO">Doblado</option>
-                            <option value="CONVERTIDOR">Convertidor</option>
-                            <option value="EMPAQUE">Empaque</option>
-                            <option value="MICRO">Micro</option>
-                            <option value="CORRUGADOR">Corrugador</option>
-                            <option value="FLEXOGRAFICA">Flexografica</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Filtrar</button>
-            </form>
-        </div>
 
-        <div id="graficoConsumoMaquina"></div>
-    </div>
-</div>
+                    <div id="graficoConsumoMaquina"></div>
+                </div>
+            </div>
 
 
 
@@ -281,110 +281,119 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
 
-    async function obtenerDatosAPI() {
-        const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
-        const respuesta = await fetch(url);
-        const datos = await respuesta.json();
-        return datos;
-    }
+        async function obtenerDatosAPI() {
+            const url = `${location.origin}/admin/api/apiGraficasConsumoGeneral`;
+            const respuesta = await fetch(url);
+            const datos = await respuesta.json();
+            return datos;
+        }
 
-    function filtrarDatos(datos, tipoMaquina, fechaInicio, fechaFin) {
-        return datos.filter(item => {
-            const fechaItem = new Date(item.created_at);
+        function filtrarDatos(datos, tipoMaquina, fechaInicio, fechaFin) {
+            return datos.filter(item => {
+                const fechaItem = new Date(item.created_at);
 
-            const cumpleMaquina = tipoMaquina ? item.tipo_maquina === tipoMaquina : true;
-            const cumpleFechaInicio = fechaInicio ? fechaItem >= new Date(fechaInicio) : true;
-            const cumpleFechaFin = fechaFin ? fechaItem <= new Date(fechaFin) : true;
+                const cumpleMaquina = tipoMaquina ? item.tipo_maquina === tipoMaquina : true;
+                const cumpleFechaInicio = fechaInicio ? fechaItem >= new Date(fechaInicio) : true;
+                const cumpleFechaFin = fechaFin ? fechaItem <= new Date(fechaFin) : true;
 
-            return cumpleMaquina && cumpleFechaInicio && cumpleFechaFin;
-        });
-    }
+                return cumpleMaquina && cumpleFechaInicio && cumpleFechaFin;
+            });
+        }
 
-    function agruparPorMes(datos) {
-        const agrupado = {};
+        function agruparPorMes(datos) {
+            const agrupado = {};
 
-        datos.forEach(item => {
-            const fecha = new Date(item.created_at);
-            const claveMes = fecha.toISOString().slice(0, 7); // "YYYY-MM"
+            datos.forEach(item => {
+                const fecha = new Date(item.created_at);
+                const claveMes = fecha.toISOString().slice(0, 7); // "YYYY-MM"
 
-            if (!agrupado[claveMes]) {
-                agrupado[claveMes] = 0;
-            }
-
-            agrupado[claveMes] += parseFloat(item.total_general);
-        });
-
-        const clavesOrdenadas = Object.keys(agrupado).sort();
-
-        const mesesES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-
-        const categorias = clavesOrdenadas.map(clave => {
-            const [year, month] = clave.split("-");
-            const nombreMes = mesesES[parseInt(month, 10) - 1];
-            return `${nombreMes} ${year}`;
-        });
-
-        const valores = clavesOrdenadas.map(clave => agrupado[clave]);
-
-        return { categorias, valores };
-    }
-
-    function renderizarGrafico(categorias, valores) {
-        const options = {
-            series: [{
-                name: 'Total General',
-                data: valores
-            }],
-            chart: {
-                type: 'bar',
-                height: 350
-            },
-            xaxis: {
-                categories: categorias
-            },
-            dataLabels: {
-                enabled: true,
-                formatter: function (val) {
-                    return val.toFixed(2);
+                if (!agrupado[claveMes]) {
+                    agrupado[claveMes] = 0;
                 }
-            },
-            fill: {
-                opacity: 1
-            },
-            legend: {
-                position: 'top'
-            }
-        };
 
-        const chartDiv = document.querySelector("#graficoConsumoMaquina");
-        chartDiv.innerHTML = ""; // Limpiar gráfico anterior
+                agrupado[claveMes] += parseFloat(item.total_general);
+            });
 
-        const chart = new ApexCharts(chartDiv, options);
-        chart.render();
-    }
+            const clavesOrdenadas = Object.keys(agrupado).sort();
 
-    async function iniciar() {
-        const datos = await obtenerDatosAPI();
-        const { categorias, valores } = agruparPorMes(datos);
-        renderizarGrafico(categorias, valores);
-    }
+            const mesesES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-    document.getElementById('formFiltroConsumoGeneral').addEventListener('submit', async function (e) {
-        e.preventDefault();
+            const categorias = clavesOrdenadas.map(clave => {
+                const [year, month] = clave.split("-");
+                const nombreMes = mesesES[parseInt(month, 10) - 1];
+                return `${nombreMes} ${year}`;
+            });
 
-        const tipoMaquina = document.getElementById('tipoMaquinaConsumo').value;
-        const fechaInicio = document.getElementById('fechaInicioConsumo').value;
-        const fechaFin = document.getElementById('fechaFinConsumo').value;
+            const valores = clavesOrdenadas.map(clave => agrupado[clave]);
 
-        const datos = await obtenerDatosAPI();
-        const datosFiltrados = filtrarDatos(datos, tipoMaquina, fechaInicio, fechaFin);
-        const { categorias, valores } = agruparPorMes(datosFiltrados);
+            return {
+                categorias,
+                valores
+            };
+        }
 
-        renderizarGrafico(categorias, valores);
+        function renderizarGrafico(categorias, valores) {
+            const options = {
+                series: [{
+                    name: 'Total General',
+                    data: valores
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                xaxis: {
+                    categories: categorias
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val.toFixed(2);
+                    }
+                },
+                fill: {
+                    opacity: 1
+                },
+                legend: {
+                    position: 'top'
+                }
+            };
+
+            const chartDiv = document.querySelector("#graficoConsumoMaquina");
+            chartDiv.innerHTML = ""; // Limpiar gráfico anterior
+
+            const chart = new ApexCharts(chartDiv, options);
+            chart.render();
+        }
+
+        async function iniciar() {
+            const datos = await obtenerDatosAPI();
+            const {
+                categorias,
+                valores
+            } = agruparPorMes(datos);
+            renderizarGrafico(categorias, valores);
+        }
+
+        document.getElementById('formFiltroConsumoGeneral').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const tipoMaquina = document.getElementById('tipoMaquinaConsumo').value;
+            const fechaInicio = document.getElementById('fechaInicioConsumo').value;
+            const fechaFin = document.getElementById('fechaFinConsumo').value;
+
+            const datos = await obtenerDatosAPI();
+            const datosFiltrados = filtrarDatos(datos, tipoMaquina, fechaInicio, fechaFin);
+            const {
+                categorias,
+                valores
+            } = agruparPorMes(datosFiltrados);
+
+            renderizarGrafico(categorias, valores);
+        });
+
+        iniciar(); // Ejecutar al cargar
     });
-
-    iniciar(); // Ejecutar al cargar
-});
 </script>
