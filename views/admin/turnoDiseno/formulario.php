@@ -2,7 +2,7 @@
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="detalle">Detalle</label>
-      <input type="text" id="detalle" class="form-control form-control-lg"
+      <input type="text" id="detalle" class="form-control form-control-lg py-4"
         placeholder="Detalle del Diseño" name="detalle"
         value="<?php echo isset($diseno) ? s($diseno->detalle) : ''; ?>">
     </div>
