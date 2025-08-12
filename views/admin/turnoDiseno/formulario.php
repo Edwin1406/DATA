@@ -27,6 +27,9 @@
     </div>
   </div>
   <!-- fecha de entrega -->
+
+
+         <?php if ($email !== 'ventas@megaecuador.com') { ?>
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="fecha_entrega">Fecha de Entrega</label>
@@ -47,3 +50,4 @@
       </select>
     </div>
   </div>
+  <?php } ?>
