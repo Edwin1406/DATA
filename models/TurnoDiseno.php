@@ -22,6 +22,7 @@ class TurnoDiseno extends ActiveRecord
     public function __construct(array $args = [])
     {
         // FECHA ATOMATICA GAYAQUIL/ECUADOR
+        date_default_timezone_set('America/Guayaquil');
 
         $this->id = $args['id'] ?? null;
         $this->codigo = $args['codigo'] ?? null;
