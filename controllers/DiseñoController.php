@@ -242,6 +242,9 @@ public static function eliminarPDF()
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno = new TurnoDiseno($_POST);
 
+            // generar codigo aleatorio
+            $turno->codigo = md5(uniqid(rand(), true));
+
             debuguear($turno);
             $alertas = $turno->validar();
 
