@@ -134,7 +134,7 @@
                                             $badgeClass = 'bg-success'; // verde
                                             break;
                                         case 'PENDIENTE':
-                                            $badgeClass = 'bg-warning'; // naranja
+                                            $badgeClass = 'bg-danger'; // rojo
                                             break;
                                         default:
                                             $badgeClass = 'bg-secondary'; // gris por defecto
