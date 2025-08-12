@@ -279,7 +279,7 @@ public static function eliminarPDF()
 
         $turnos = TurnoDiseno::all();
 
-        $router->render('admin/turnoDiseno/tablaTurno', [
+        $router->render('admin/turnoDiseno/turnotablaDiseno', [
             'titulo' => 'TABLA TURNO',
             'nombre' => $nombre,
             'email' => $email,
