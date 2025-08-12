@@ -14,8 +14,9 @@
       <select id="vendedor" class="choices form-control" name="vendedor">
         <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un vendedor</option>
         <option value="JHON VACA" <?php echo isset($turno) && $turno->vendedor === 'JHON VACA' ? 'selected' : ''; ?>>JHON VACA</option>
-        <option value="Vendedor 2" <?php echo isset($turno) && $turno->vendedor === 'Vendedor 2' ? 'selected' : ''; ?>>Vendedor 2</option>
-        <option value="Vendedor 3" <?php echo isset($turno) && $turno->vendedor === 'Vendedor 3' ? 'selected' : ''; ?>>Vendedor 3</option>
+        <option value="ANTONELLA DESCALZI" <?php echo isset($turno) && $turno->vendedor === 'ANTONELLA DESCALZI' ? 'selected' : ''; ?>>ANTONELLA DESCALZI</option>
+        <option value="CARLOS DELGADO" <?php echo isset($turno) && $turno->vendedor === 'CARLOS DELGADO' ? 'selected' : ''; ?>>CARLOS DELGADO</option>
+        <option value="CAROLINA MUÑOZ" <?php echo isset($turno) && $turno->vendedor === 'CAROLINA MUÑOZ' ? 'selected' : ''; ?>>CAROLINA MUÑOZ</option>
       </select>
     </div>
   </div>
