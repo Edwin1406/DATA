@@ -111,6 +111,23 @@ $router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'gen
 
 
 
+// registro de localizacion de vehiculos
+$router->get('/admin/control/vehiculos/registroVehiculos', [ControlController::class, 'registroVehiculos']);
+$router->post('/admin/control/vehiculos/registroVehiculos', [ControlController::class, 'registroVehiculos']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // editar diseño
 $router->get('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
 $router->post('/admin/diseno/editarDiseno', [DiseñoController::class, 'editarDiseno']);
