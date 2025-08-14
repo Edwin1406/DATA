@@ -54,7 +54,7 @@
 
 <script>
 /** CONFIG **/
-const API_URL = '/api/locations/store'; // ajusta si tu ruta es distinta
+const API_URL = 'https://pruebas.megawebsistem.com/api/locations/store'; // ajusta si tu ruta es distinta
 const SEND_INTERVAL_MS = 5000;          // mínimo 5s entre envíos
 const MIN_MOVE_METERS = 10;             // enviar solo si se movió ≥ 10 m
 
