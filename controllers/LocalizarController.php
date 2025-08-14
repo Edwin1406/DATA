@@ -29,7 +29,7 @@ class LocalizarController
             'titulo' => 'Registro de Vehículos',
             'nombre' => $nombre,
             'email'  => $email,
-            // 'vehiculos' => $vehiculos,
+            'vehiculos' => $vehiculos,
         ]);
     }
 
