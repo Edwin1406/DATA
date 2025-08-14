@@ -6,7 +6,7 @@ use DateTime;
 
 class Locations extends ActiveRecord {    
     protected static $tabla = 'vehicle_locations';
-    protected static $columnasDB = ['id','vehicle_code','vehicle_name','lat','lng','accuracy','heading','speed','measured_at','is_last','created_at','updated_at'];
+    protected static $columnasDB = ['id','vehicle_code','vehicle_name','lat','lng','accuracy','heading','speed','measured_at','is_lastest','created_at','updated_at'];
 
     public ?int $id;
     public ?string $vehicle_code;
@@ -17,7 +17,7 @@ class Locations extends ActiveRecord {
     public ?float $heading;
     public ?float $speed;
     public ?string $measured_at;
-    public ?bool $is_last;
+    public ?bool $is_lastest;
     public ?string $created_at;
     public ?string $updated_at;
 
@@ -34,7 +34,7 @@ class Locations extends ActiveRecord {
         $this->heading = $args['heading'] ?? null;
         $this->speed = $args['speed'] ?? null;
         $this->measured_at = $args['measured_at'] ?? null;
-        $this->is_last = $args['is_last'] ?? null;
+        $this->is_lastest = $args['is_lastest'] ?? null;
         $this->created_at = $args['created_at'] ?? $fecha;
         $this->updated_at = $args['updated_at'] ?? $fecha;
 
