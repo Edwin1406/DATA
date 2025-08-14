@@ -1,4 +1,4 @@
-<!-- views/admin/control/vehiculos/registroVehiculos.php -->
+<!-- views/admin/vehiculos/registroVehiculos.php -->
 <!doctype html>
 <html lang="es">
 <head>
@@ -22,15 +22,14 @@
 <div class="bar">
   <div><strong>Hola, <?= htmlspecialchars($nombre ?? '') ?></strong></div>
 
-  <!-- Si tienes catálogo de vehículos, pinta un <select>. Si no, usa el <input>. -->
   <label>
     Vehículo:
     <select id="vehicleSelect">
       <option value="">-- Selecciona --</option>
       <?php if (!empty($vehiculos ?? [])) : ?>
         <?php foreach ($vehiculos as $v): ?>
-          <option value="<?= htmlspecialchars($v->code) ?>">
-            <?= htmlspecialchars($v->code . (isset($v->name) ? " - {$v->name}" : "")) ?>
+          <option value="<?= htmlspecialchars($v['code']) ?>">
+            <?= htmlspecialchars($v['code'] . (!empty($v['name']) ? " - {$v['name']}" : "")) ?>
           </option>
         <?php endforeach; ?>
       <?php endif; ?>
@@ -54,7 +53,7 @@
 
 <script>
 /** CONFIG **/
-const API_URL = 'https://pruebas.megawebsistem.com/api/locations/store'; // ajusta si tu ruta es distinta
+const API_URL = '/api/locations/store'; // ajusta si tu base URL es distinta
 const SEND_INTERVAL_MS = 5000;          // mínimo 5s entre envíos
 const MIN_MOVE_METERS = 10;             // enviar solo si se movió ≥ 10 m
 
@@ -78,7 +77,7 @@ function log(msg) {
   el.innerHTML = `[${time}] ${msg}<br>` + el.innerHTML;
 }
 
-/** Geodesia simple (distancia en metros entre 2 coords) **/
+/** Geodesia simple (distancia en metros) **/
 function haversineMeters(a, b) {
   if (!a || !b) return Infinity;
   const R = 6371000;
@@ -106,7 +105,6 @@ async function sendPoint(pos) {
     heading: pos.coords.heading,
     speed: pos.coords.speed,
     measured_at: measuredAt
-    // is_lastest no se envía; el trigger lo ajusta en DB
   };
 
   try {
@@ -115,12 +113,36 @@ async function sendPoint(pos) {
       headers: { 'Content-Type':'application/json' },
       body: JSON.stringify(body)
     });
-    const j = await res.json();
+
+    // Diagnóstico robusto para evitar "Unexpected token '<'"
+    const text = await res.text();
+    const ct = res.headers.get('content-type') || '';
+
+    if (!res.ok) {
+      log(`❌ HTTP ${res.status}: ${text.slice(0,200)}`);
+      setStatus('Error del servidor', 'err');
+      return;
+    }
+    if (!ct.includes('application/json')) {
+      log(`❌ Respuesta no JSON (CT=${ct}): ${text.slice(0,200)}`);
+      setStatus('Respuesta no JSON', 'err');
+      return;
+    }
+
+    let j;
+    try { j = JSON.parse(text); }
+    catch (e) {
+      log('❌ JSON inválido: ' + e.message + ' :: ' + text.slice(0,200));
+      setStatus('JSON inválido', 'err');
+      return;
+    }
+
     if (!j.ok) {
       setStatus('Error enviando ubicación', 'err');
       log('❌ Backend: ' + (j.error || 'Error desconocido'));
     } else {
       setStatus('Rastreando…', 'ok');
+      log('✅ Enviado');
     }
   } catch (e) {
     setStatus('Sin conexión al servidor', 'err');
@@ -132,17 +154,15 @@ async function sendPoint(pos) {
 function startTracking() {
   if (watchId) return;
 
-  // 1) Resolver el código de vehículo
-  const sel = $('#vehicleSelect').value.trim();
-  const manual = $('#vehicleCode').value.trim();
+  const sel = ($('#vehicleSelect').value || '').trim();
+  const manual = ($('#vehicleCode').value || '').trim();
   vehicleCode = manual || sel;
   if (!vehicleCode) {
     alert('Selecciona o ingresa un código de vehículo.');
     return;
   }
-  vehicleName = null; // si quieres, extrae del option de tu select
+  vehicleName = null;
 
-  // 2) Pedir geolocalización continua
   if (!('geolocation' in navigator)) {
     setStatus('Geolocalización no soportada en este navegador', 'err');
     return;
@@ -175,7 +195,6 @@ function startTracking() {
   $('#stopBtn').disabled  = false;
   setStatus('Solicitando ubicación… acepta el permiso', 'warn');
 
-  // Detener al cerrar/recargar (incluye iOS Safari)
   window.addEventListener('beforeunload', stopTracking, { once:true });
   window.addEventListener('pagehide', stopTracking, { once:true });
 }
@@ -194,7 +213,6 @@ function stopTracking() {
 $('#startBtn').addEventListener('click', startTracking);
 $('#stopBtn').addEventListener('click', stopTracking);
 
-// Mensaje inicial
 setStatus('Listo. Selecciona un vehículo y pulsa “Iniciar”.', 'warn');
 </script>
 

@@ -11,7 +11,8 @@ class LocalizarController
      * - Requiere sesión
      * - Renderiza la página donde el usuario selecciona vehículo e inicia el envío de GPS
      */
-    public static function registroVehiculos(Router $router)
+  
+ public static function registroVehiculos(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
@@ -19,21 +20,41 @@ class LocalizarController
             exit;
         }
 
-        $nombre = $_SESSION['nombre'];
-        $email  = $_SESSION['email'];
+        $nombre = $_SESSION['nombre'] ?? '';
+        $email  = $_SESSION['email']  ?? '';
 
-        // Si tienes catálogo de vehículos, podrías pasarlo aquí para llenar un <select>
-        $vehiculos = Locations::all();
+        // Si aún no tienes catálogo de vehículos,
+        // armamos uno deduplicando desde Locations::all()
+        $vehiculosRaw = Locations::all();
 
-        debuguear($vehiculos);
+        $vehiculos = []; // arreglo indexado por código (para deduplicar)
+        foreach ($vehiculosRaw as $loc) {
+            $code = trim($loc->vehicle_code ?? '');
+            if ($code === '') continue;
 
+            if (!isset($vehiculos[$code])) {
+                $vehiculos[$code] = [
+                    'code' => $code,
+                    'name' => trim($loc->vehicle_name ?? ''),
+                ];
+            }
+        }
+
+        // Render
         $router->render('admin/vehiculos/registroVehiculos', [
-            'titulo' => 'Registro de Vehículos',
-            'nombre' => $nombre,
-            'email'  => $email,
-            'vehiculos' => $vehiculos,
+            'titulo'     => 'Registro de Vehículos',
+            'nombre'     => $nombre,
+            'email'      => $email,
+            'vehiculos'  => array_values($vehiculos), // pasar como lista simple
         ]);
     }
+
+
+
+
+
+
+
 
     /**
      * API: Recibe y guarda un punto de geolocalización.
