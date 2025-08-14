@@ -1,4 +1,3 @@
-
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
@@ -72,9 +71,7 @@
                             <form class="form" method="POST" action="/admin/turnoDiseno/editarTurno?id=<?php echo $turno->id; ?>" enctype="multipart/form-data">
 
                                 <div class="row">
-
                                     <?php include_once __DIR__ . '/formulario.php'  ?>
-
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Actualizar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
