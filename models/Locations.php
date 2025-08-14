@@ -4,7 +4,7 @@ namespace Model;
 
 use DateTime;
 
-class Vehiculos extends ActiveRecord {    
+class Locations extends ActiveRecord {    
     protected static $tabla = 'vehicle_locations';
     protected static $columnasDB = ['id','vehicle_code','vehicle_name','lat','lng','accuracy','heading','speed','measured_at','is_last','created_at','updated_at'];
 
@@ -38,6 +38,24 @@ class Vehiculos extends ActiveRecord {
         $this->created_at = $args['created_at'] ?? $fecha;
         $this->updated_at = $args['updated_at'] ?? $fecha;
 
+    }
+
+
+
+
+    public static function ultimas(int $segundos = 60): array
+    {
+        $segundos = (int) max(5, $segundos); // mínimo 5s por seguridad
+        $tabla = static::$tabla;
+
+        $query = "
+            SELECT vehicle_code, vehicle_name, lat, lng, accuracy, heading, speed, measured_at
+            FROM {$tabla}
+            WHERE is_lastest = 1
+              AND measured_at >= (NOW() - INTERVAL {$segundos} SECOND)
+        ";
+
+        return self::consultarSQL($query);
     }
 
 }
