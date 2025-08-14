@@ -43,11 +43,15 @@ class LocalizarController
      */
     public static function apiGuardarUbicacion()
     {
-        header('Content-Type: application/json; charset=utf-8');
-        header('Access-Control-Allow-Origin: *'); // ajustar según tu dominio
-        // header de post
-        header('Access-Control-Allow-Methods: POST');
-        header('Access-Control-Allow-Headers: Content-Type');
+       if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: https://TU-ORIGEN');
+    header('Access-Control-Allow-Headers: Content-Type');
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    http_response_code(204); exit;
+}
+header('Access-Control-Allow-Origin: https://TU-ORIGEN');
+header('Vary: Origin');
+
 
 
         // Leer JSON crudo
@@ -113,10 +117,15 @@ class LocalizarController
      */
     public static function apiUltimas()
     {
+       if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: https://TU-ORIGEN');
+    header('Access-Control-Allow-Headers: Content-Type');
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    http_response_code(204); exit;
+}
+header('Access-Control-Allow-Origin: https://TU-ORIGEN');
+header('Vary: Origin');
         header('Content-Type: application/json; charset=utf-8');
-        header('Access-Control-Allow-Origin: *'); // ajustar según tu dominio
-        header('Access-Control-Allow-Methods: GET');
-        header('Access-Control-Allow-Headers: Content-Type');
 
         $activeSecs = isset($_GET['active_secs']) ? (int) $_GET['active_secs'] : 60;
         $rows = \Model\Locations::ultimas($activeSecs);
