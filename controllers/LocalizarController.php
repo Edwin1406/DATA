@@ -23,7 +23,7 @@ class LocalizarController
         $email  = $_SESSION['email'];
 
         // Si tienes catálogo de vehículos, podrías pasarlo aquí para llenar un <select>
-        $vehiculos = Locations::all();
+        // $vehiculos = Locations::all();
 
         // debuguear($vehiculos);
 
@@ -31,7 +31,8 @@ class LocalizarController
             'titulo' => 'Registro de Vehículos',
             'nombre' => $nombre,
             'email'  => $email,
-            'vehiculos' => $vehiculos,
+            'vehiculos' => Locations::all(), // no Locations
+
         ]);
     }
 
