@@ -207,7 +207,7 @@
                              </li>
 
                              <li class="submenu-item ">
-                                 <a href="/admin/control/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
+                                 <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
 
 

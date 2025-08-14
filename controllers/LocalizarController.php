@@ -25,7 +25,7 @@ class LocalizarController
         // Si tienes catálogo de vehículos, podrías pasarlo aquí para llenar un <select>
         // $vehiculos = Vehiculo::all();
 
-        $router->render('admin/control/vehiculos/registroVehiculos', [
+        $router->render('admin/vehiculos/registroVehiculos', [
             'titulo' => 'Registro de Vehículos',
             'nombre' => $nombre,
             'email'  => $email,
