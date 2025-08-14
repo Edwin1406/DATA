@@ -67,12 +67,10 @@ class LocalizarController
     public static function apiGuardarUbicacion()
     {
        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header('Access-Control-Allow-Origin: https://TU-ORIGEN');
     header('Access-Control-Allow-Headers: Content-Type');
     header('Access-Control-Allow-Methods: POST, OPTIONS');
     http_response_code(204); exit;
 }
-header('Access-Control-Allow-Origin: https://TU-ORIGEN');
 header('Vary: Origin');
 
 
@@ -141,14 +139,11 @@ header('Vary: Origin');
     public static function apiUltimas()
     {
        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header('Access-Control-Allow-Origin: https://TU-ORIGEN');
     header('Access-Control-Allow-Headers: Content-Type');
     header('Access-Control-Allow-Methods: POST, OPTIONS');
     http_response_code(204); exit;
 }
-header('Access-Control-Allow-Origin: https://TU-ORIGEN');
 header('Vary: Origin');
-        header('Content-Type: application/json; charset=utf-8');
 
         $activeSecs = isset($_GET['active_secs']) ? (int) $_GET['active_secs'] : 60;
         $rows = \Model\Locations::ultimas($activeSecs);
