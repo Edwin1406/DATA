@@ -39,6 +39,7 @@ use Controllers\DiseñoController;
 use Controllers\GraficasController;
 use Controllers\LocalizarController;
 use Controllers\PruebasController;
+use LocalizarController as GlobalLocalizarController;
 
 $router = new Router();
 
@@ -113,9 +114,10 @@ $router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'gen
 
 
 // registro de localizacion de vehiculos
-$router->get('/admin/control/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
-$router->post('/admin/control/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
+$router->get('/admin/vehiculos/registroVehiculos', [GlobalLocalizarController::class, 'registroVehiculos']);
 
+$router->post('/api/locations/store', [GlobalLocalizarController::class, 'apiGuardarUbicacion']);
+$router->get('/api/locations/latest', [GlobalLocalizarController::class, 'apiUltimas']);
 
 
 
