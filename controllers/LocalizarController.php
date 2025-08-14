@@ -44,6 +44,11 @@ class LocalizarController
     public static function apiGuardarUbicacion()
     {
         header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *'); // ajustar según tu dominio
+        // header de post
+        header('Access-Control-Allow-Methods: POST');
+        header('Access-Control-Allow-Headers: Content-Type');
+
 
         // Leer JSON crudo
         $raw = file_get_contents('php://input');
@@ -109,6 +114,9 @@ class LocalizarController
     public static function apiUltimas()
     {
         header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *'); // ajustar según tu dominio
+        header('Access-Control-Allow-Methods: GET');
+        header('Access-Control-Allow-Headers: Content-Type');
 
         $activeSecs = isset($_GET['active_secs']) ? (int) $_GET['active_secs'] : 60;
         $rows = \Model\Locations::ultimas($activeSecs);
