@@ -3,8 +3,8 @@
 
 
 
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 
 
@@ -38,7 +38,7 @@ use Controllers\ControlController;
 use Controllers\DiseñoController;
 use Controllers\GraficasController;
 use Controllers\PruebasController;
-use LocalizarController as GlobalLocalizarController;
+use Controllers\LocalizarController;
 
 $router = new Router();
 
