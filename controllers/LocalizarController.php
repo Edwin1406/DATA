@@ -121,7 +121,7 @@ header('Vary: Origin');
         ]);
 
         // Guardar
-        if (!$loc->guardar()) {
+        if (!$loc->guardarPrepared()) {
             http_response_code(500);
             echo json_encode(['ok' => false, 'error' => 'No se pudo guardar']);
             return;

@@ -43,9 +43,57 @@ class Locations extends ActiveRecord {
 
 
 
+
+
+/** NUEVO: inserta usando prepared statements para permitir NULL sin warnings */
+    public function guardarPrepared(): bool
+    {
+        $db = self::$db;
+
+        $sql = "INSERT INTO " . static::$tabla . " 
+            (vehicle_code, vehicle_name, lat, lng, accuracy, heading, speed, measured_at, is_lastest, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $db->prepare($sql);
+        if (!$stmt) {
+            // opcional: loguea $db->error
+            return false;
+        }
+
+        // Normaliza vacíos a NULL cuando aplique
+        $vehicle_code = $this->vehicle_code;                       // requerido
+        $vehicle_name = ($this->vehicle_name === '' ? null : $this->vehicle_name);
+        $lat          = $this->lat;
+        $lng          = $this->lng;
+        $accuracy     = $this->accuracy; // puede ser null
+        $heading      = $this->heading;  // puede ser null
+        $speed        = $this->speed;    // puede ser null
+        $measured_at  = $this->measured_at;
+        $is_lastest   = (int) $this->is_lastest;
+        $created_at   = $this->created_at;
+        $updated_at   = $this->updated_at;
+
+        // Tipos: s=string, d=double, i=int
+        //            vc     vn     lat  lng  acc  hea  spd  meas  is_last  created  updated
+        if (!$stmt->bind_param('ssdddddsiss',
+            $vehicle_code, $vehicle_name, $lat, $lng, $accuracy, $heading, $speed, $measured_at, $is_lastest, $created_at, $updated_at
+        )) {
+            $stmt->close();
+            return false;
+        }
+
+        $ok = $stmt->execute();
+        if ($ok) {
+            $this->id = $db->insert_id;
+        }
+        $stmt->close();
+        return $ok;
+    }
+
+    /** Consulta para últimas posiciones activas */
     public static function ultimas(int $segundos = 60): array
     {
-        $segundos = (int) max(5, $segundos); // mínimo 5s por seguridad
+        $segundos = (int) max(5, $segundos);
         $tabla = static::$tabla;
 
         $query = "
@@ -57,6 +105,15 @@ class Locations extends ActiveRecord {
 
         return self::consultarSQL($query);
     }
+
+
+
+
+
+
+
+
+
 
 }
 
