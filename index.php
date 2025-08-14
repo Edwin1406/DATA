@@ -3,8 +3,8 @@
 
 
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 
 
@@ -37,6 +37,7 @@ use Controllers\AdminController;
 use Controllers\ControlController;
 use Controllers\DiseñoController;
 use Controllers\GraficasController;
+use Controllers\LocalizarController;
 use Controllers\PruebasController;
 
 $router = new Router();
@@ -112,8 +113,8 @@ $router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'gen
 
 
 // registro de localizacion de vehiculos
-$router->get('/admin/control/vehiculos/registroVehiculos', [ControlController::class, 'registroVehiculos']);
-$router->post('/admin/control/vehiculos/registroVehiculos', [ControlController::class, 'registroVehiculos']);
+$router->get('/admin/control/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
+$router->post('/admin/control/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
 
 
 
