@@ -65,8 +65,6 @@ class EmailDiseno {
             $mail->Body    = $contenido;
             $mail->AltBody = "Se editó el turno #{$this->codigo}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->codigo}";
 
-            $mail->SMTPDebug = 2; // o 3
-        $mail->Debugoutput = 'error_log';
             $mail->send();
             return true;
         } catch (Exception $e) {
