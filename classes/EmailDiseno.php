@@ -93,7 +93,7 @@ class EmailDiseno {
         }
         $mail->Port = (int)$_ENV['EMAIL_PORT'];
 
-        $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'MEGASTOCK S.A.');
+        $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
         $mail->addAddress($this->email, $this->nombre);
 
         $mail->Subject = 'Turno editado #' . $this->codigo;
@@ -191,6 +191,8 @@ class EmailDiseno {
               <!-- Pie -->
               <div style="font-size:12px;color:#6b7280;text-align:center;margin-top:18px;line-height:1.5;">
                 Si no solicitaste este cambio o ves algo incorrecto, responde a este correo.
+                <br/>
+                CORREO: desarrollodeproductosms@gmail.com
               </div>
 
             </td>
