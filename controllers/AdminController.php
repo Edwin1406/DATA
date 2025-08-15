@@ -336,6 +336,58 @@ class AdminController
 
 
 
+    // EDITAR CONSUMO GENERAL
+    public static function editarConsumoGeneral(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/tablaConsumoGeneral?error=1');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $alertas = [];
+        $consumoGeneral = Consumo_general::find($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $consumoGeneral->sincronizar($_POST);
+            // sin espacio en blanco
+            $consumoGeneral->tipo_maquina = trim($consumoGeneral->tipo_maquina);
+            $alertas = $consumoGeneral->validar();
+
+            if (empty($alertas)) {
+                $consumoGeneral->guardar();
+                header('Location: /admin/tablaConsumoGeneral?editado=3');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $consumoGeneral = Consumo_general::find($id);
+                if (!$consumoGeneral) {
+                    header('Location: /admin/tablaConsumoGeneral?error=1');
+                }
+            } else {
+                header('Location: /admin/tablaConsumoGeneral?error=1');
+            }
+        }
+
+        $router->render('admin/consumo/editarConsumoGeneral', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'alertas' => $alertas,
+            'nombre' => $nombre,
+            'email' => $email,
+            'consumoGeneral' => $consumoGeneral
+        ]);
+    }
+
 
 
 
