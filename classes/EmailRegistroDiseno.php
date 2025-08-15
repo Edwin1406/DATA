@@ -6,18 +6,18 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class EmailRegistroDiseno {
 
-    public $email;
+    public $emaildefault;
     public $nombre;
     public $token;
-    
-    public function __construct($email, $nombre, $token)
+
+    public function __construct($emaildefault, $nombre, $token)
     {
-        $this->email = $email;
+        $this->emaildefault = $emaildefault;
         $this->nombre = $nombre;
         $this->token = $token;
     }
 
-    public function enviarConfirmacion() {
+    public function enviarConfirmacion2() {
 
          // create a new object
          $mail = new PHPMailer();
@@ -31,7 +31,7 @@ class EmailRegistroDiseno {
 
      
          $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
-         $mail->addAddress($this->email, $this->nombre);
+         $mail->addAddress($this->emaildefault, $this->nombre);
          $mail->Subject = 'Confirma tu Cuenta';
 
          // Set HTML

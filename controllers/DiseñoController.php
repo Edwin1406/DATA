@@ -253,7 +253,7 @@ class DiseñoController
 
             // Enviar correo de confirmación
             $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo);
-            $email->enviarConfirmacion();
+            $email->enviarConfirmacion2();
 
             // debuguear($turno);
             $alertas = $turno->validar();
