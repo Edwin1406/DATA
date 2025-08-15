@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Classes\EmailDiseno;
 use Model\Diseno;
 use Model\TurnoDiseno;
 use MVC\Router;
@@ -290,70 +291,135 @@ public static function eliminarPDF()
 
 
     // editar turno
-   public static function editarTurno(Router $router)
+//    public static function editarTurno(Router $router)
+// {
+//     session_start();
+//     if (!isset($_SESSION['email'])) {
+//         header('Location: /');
+//         exit;
+//     }
+
+//     $nombre = $_SESSION['nombre'];
+//     $email  = $_SESSION['email'];
+//     $alertas = [];
+
+//     $id = $_GET['id'] ?? null;
+//     if (!$id) {
+//         header('Location: /admin/turnoDiseno/turnotablaDiseno');
+//         exit;
+//     }
+
+//     // Cargar el registro existente
+//     $turno = TurnoDiseno::find($id);
+//     if (!$turno) {
+//         header('Location: /admin/turnoDiseno/turnotablaDiseno');
+//         exit;
+//     }
+
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//         // O usa un método sincronizar si tu ActiveRecord lo tiene
+//         if (method_exists($turno, 'sincronizar')) {
+//             $turno->sincronizar($_POST);
+
+//         } else {
+//             foreach ($_POST as $campo => $valor) {
+//                         $turno->$campo = $valor;
+//                     }
+//         }
+
+//         // Asegurar que el id siga presente
+//         $turno->id = $id;
+
+//         $alertas = $turno->validar();
+
+//         if (empty($alertas)) {
+//             $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
+//             if ($resultado) {
+//                 header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
+//                 exit;
+//             }
+//         }
+//     }
+
+//     $router->render('admin/turnoDiseno/editarTurno', [
+//         'titulo'  => 'EDITAR TURNO',
+//         'nombre'  => $nombre,
+//         'email'   => $email,
+//         'turno'   => $turno,
+//         'alertas' => $alertas,
+//     ]);
+// }
+public static function editarTurno(Router $router): void
 {
     session_start();
-    if (!isset($_SESSION['email'])) {
+    if (empty($_SESSION['email'])) {
         header('Location: /');
         exit;
     }
 
-    $nombre = $_SESSION['nombre'];
+    $nombre = $_SESSION['nombre'] ?? '';
     $email  = $_SESSION['email'];
+
+    // Redirección rápida
+    $go = static function(string $url) {
+        header("Location: {$url}");
+        exit;
+    };
+
+    // Validar ID
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if (!$id) $go('/admin/turnoDiseno/turnotablaDiseno');
+
+    // Buscar turno
+    $turno = TurnoDiseno::find($id);
+    if (!$turno) $go('/admin/turnoDiseno/turnotablaDiseno');
+
     $alertas = [];
 
-    $id = $_GET['id'] ?? null;
-    if (!$id) {
-        header('Location: /admin/turnoDiseno/turnotablaDiseno');
-        exit;
-    }
-
-    // Cargar el registro existente
-    $turno = TurnoDiseno::find($id);
-    if (!$turno) {
-        header('Location: /admin/turnoDiseno/turnotablaDiseno');
-        exit;
-    }
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // O usa un método sincronizar si tu ActiveRecord lo tiene
+        // Datos recibidos (sin filtrar por tipo para no alterar valores; tu modelo valida)
+        $data = $_POST ?? [];
+
+        // Sincronizar de forma segura
         if (method_exists($turno, 'sincronizar')) {
-            $turno->sincronizar($_POST);
-
-            $vendedores = [
-                "JHON VACA" => "juanito@gmail.com",
-                "SHULYANA HERNANDEZ"  => "jnito@gmail.com",
-                "ANTONELLA DEZCALZI" => "maria@example.com",
-                "CAROLINA MUÑOZ" => "pedro@example.com"
-            ];
-
-            $vendedor = $turno->vendedor;
-
-// Verificamos si existe el vendedor en el array
-if (array_key_exists($vendedor, $vendedores)) {
-    $correo = $vendedores[$vendedor];
-} else {
-    $correo = "default@example.com"; // correo por defecto si no existe
-}
-            debuguear($correo);
-
+            $turno->sincronizar($data);
         } else {
-            foreach ($_POST as $campo => $valor) {
-                $turno->$campo = $valor;
+            foreach ($data as $k => $v) {
+                if ($k !== 'id' && property_exists($turno, $k)) {
+                    $turno->$k = $v;
+                }
             }
         }
 
-        // Asegurar que el id siga presente
+        // Forzar UPDATE
         $turno->id = $id;
 
+        // Validar y guardar
         $alertas = $turno->validar();
+        if (empty($alertas) && $turno->guardar()) {
 
-        if (empty($alertas)) {
-            $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
-            if ($resultado) {
-                header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
-                exit;
+            // Enviar correo solo si no es cuenta de pruebas
+            if ($email !== 'pruebas@megaecuador.com') {
+                $vendedores = [
+                    'JHON VACA'          => 'sistemas@megaecuador.com',
+                    'SHULYANA HERNANDEZ' => 'ventas3@megaecuador.com',
+                    'ANTONELLA DEZCALZI' => 'maria@example.com',
+                    'CAROLINA MUÑOZ'     => 'pedro@example.com',
+                ];
+
+                // Normalizar clave de vendedor
+                $vKey = mb_strtoupper(trim((string)($turno->vendedor ?? '')));
+                $dest = $vendedores[$vKey] ?? 'default@example.com';
+
+                try {
+                    $m = new EmailDiseno($email, $nombre,$turno_id=$turno->id);
+                    // $m->enviar($dest, "Turno editado", "Se editó el turno #{$turno->id}.");
+                } catch (\Throwable $e) {
+                    error_log("Error email turno {$turno->id}: ".$e->getMessage());
+                }
             }
+
+            $go('/admin/turnoDiseno/turnotablaDiseno?editado=2');
         }
     }
 
@@ -365,6 +431,16 @@ if (array_key_exists($vendedor, $vendedores)) {
         'alertas' => $alertas,
     ]);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 // eliminar turno diseño
