@@ -322,24 +322,71 @@ class DiseñoController
                 $turno->sincronizar($_POST);
 
 
-                if ($email === 'pruebas@megaecuador.com') {
-                    // Aquí sí se enviará al correo de pruebas
-                    $vendedores = [
-                        "JHON VACA"            => "sistemas@megaecuador.com",
-                        "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
-                        "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
-                        "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
-                    ];
-                    $email = $vendedores[$nombre] ?? $email;
+            //     if ($email === 'pruebas@megaecuador.com') {
+            //         // Aquí sí se enviará al correo de pruebas
+            //         $vendedores = [
+            //             "JHON VACA"            => "sistemas@megaecuador.com",
+            //             "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
+            //             "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
+            //             "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
+            //         ];
+            //         $email = $vendedores[$nombre] ?? $email;
 
-                    $email = new EmailDiseno($email, $nombre);
-                    $email->enviarConfirmacion();
-                }
-            } else {
-                foreach ($_POST as $campo => $valor) {
-                    $turno->$campo = $valor;
-                }
+            //         $email = new EmailDiseno($email, $nombre);
+            //         $email->enviarConfirmacion();
+            //     }
+            // } else {
+            //     foreach ($_POST as $campo => $valor) {
+            //         $turno->$campo = $valor;
+            //     }
+            // }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (method_exists($turno, 'sincronizar')) {
+        $turno->sincronizar($_POST);
+    }
+
+    // Solo si el email es el de pruebas -> redirige al vendedor correspondiente
+    if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0) {
+
+        // Mapa vendedor -> correo
+        $vendedores = [
+            "JHON VACA"           => "sistemas@megaecuador.com",
+            "SHULYANA HERNANDEZ"  => "ventas3@megaecuador.com",
+            "ANTONELLA DEZCALZI"  => "maria@example.com",
+            "CAROLINA MUÑOZ"      => "pedro@example.com",
+        ];
+
+        // Normaliza el nombre para que coincida con las claves del array
+        $clave = mb_strtoupper(trim($nombre), 'UTF-8');
+
+        // Si no hay coincidencia, usa un correo por defecto (o el mismo de pruebas)
+        $destinatario = $vendedores[$clave] ?? 'sistemas@megaecuador.com';
+
+        try {
+            // OJO: pasa el OBJETO $turno, no $turno->codigo
+            $mailer = new EmailDiseno($destinatario, $nombre, $turno);
+
+            // Haz que el método devuelva true/false y captura errores
+            if (!$mailer->enviarConfirmacion()) {
+                error_log('No se pudo enviar el correo de confirmación.');
             }
+        } catch (Throwable $e) {
+            error_log('Error enviando correo: '.$e->getMessage());
+        }
+    } else {
+        // Resto del flujo cuando no es el correo de pruebas
+        foreach ($_POST as $campo => $valor) {
+            $turno->$campo = $valor;
+        }
+    }
+}
+
+
+
+
+
+
 
             // Asegurar que el id siga presente
             $turno->id = $id;
