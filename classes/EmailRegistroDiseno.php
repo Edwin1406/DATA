@@ -10,13 +10,15 @@ class EmailRegistroDiseno
     public $nombre;
     public $token;
     public $estado;
+    public $detalle;
 
-    public function __construct($emaildefault, $nombre, $token, $estado)
+    public function __construct($emaildefault, $nombre, $token, $estado, $detalle)
     {
         $this->emaildefault = $emaildefault;
         $this->nombre       = $nombre;
         $this->token        = $token;
         $this->estado       = $estado;
+        $this->detalle      = $detalle;
     }
 
     public function enviarConfirmacion2()
@@ -25,6 +27,7 @@ class EmailRegistroDiseno
         $nombre = htmlspecialchars($this->nombre ?? '', ENT_QUOTES, 'UTF-8');
         $token  = htmlspecialchars($this->token ?? '', ENT_QUOTES, 'UTF-8');
         $estado = htmlspecialchars($this->estado ?? '', ENT_QUOTES, 'UTF-8');
+        $detalle = htmlspecialchars($this->detalle ?? '', ENT_QUOTES, 'UTF-8');
 
         // Colores según estado
         $estadoKey = strtolower(trim($this->estado ?? ''));
@@ -78,6 +81,10 @@ class EmailRegistroDiseno
                   line-height:1;
                   vertical-align:middle;
                 ">' . $estado . '</span>
+
+                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                  Detalle: ' . $detalle . '
+                </p>
 
                 <!-- Código -->
                 <p style="margin:16px 0 6px 0;font-size:14px;">Tu código de diseño es:</p>

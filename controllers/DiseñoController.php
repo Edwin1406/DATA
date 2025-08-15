@@ -252,7 +252,7 @@ class DiseñoController
             $emaildefault = 'desarrollodeproductoms@gmail.com';
 
             // Enviar correo de confirmación
-            $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo, $turno->estado);
+            $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo, $turno->estado,$turno->detalle);
             $email->enviarConfirmacion2();
 
             // debuguear($turno);
