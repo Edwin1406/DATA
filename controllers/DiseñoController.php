@@ -319,6 +319,18 @@ public static function eliminarPDF()
         // O usa un método sincronizar si tu ActiveRecord lo tiene
         if (method_exists($turno, 'sincronizar')) {
             $turno->sincronizar($_POST);
+
+            $vendedores = [
+                "JHON VACA" => "juanito@gmail.com",
+                "SHULYANA HERNANDEZ"  => "jnito@gmail.com",
+                "ANTONELLA DEZCALZI" => "maria@example.com",
+                "CAROLINA MUÑOZ" => "pedro@example.com"
+            ];
+
+            $turno->vendedor = $vendedores[$turno->vendedor] ?? null;
+
+            debuguear($turno);
+
         } else {
             foreach ($_POST as $campo => $valor) {
                 $turno->$campo = $valor;
