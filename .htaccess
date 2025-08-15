@@ -3,17 +3,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 
-<RequireAll>
-    Require all denied
-    # Permitir solo Ecuador (EC) — rangos CIDR ejemplo
-    Require ip 200.126.0.0/19
-    Require ip 200.126.48.0/24
-    Require ip 201.46.114.0/24
-    Require ip 201.159.220.0/22
-    Require ip 201.182.84.0/22
-    Require ip 201.182.148.0/22
-    # ... (agrega aquí todos los bloques descargados)
-</RequireAll>
-
-# Redirigir usuarios no permitidos a una página personalizada (opcional)
-ErrorDocument 403 
