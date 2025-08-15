@@ -5,7 +5,8 @@ namespace Classes;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class EmailDiseno {
+class EmailDiseno
+{
 
     public $email;     // destinatario
     public $nombre;
@@ -24,7 +25,6 @@ class EmailDiseno {
         $this->fecha_creacion = $fecha_creacion;
         $this->fecha_entrega = $fecha_entrega;
         $this->estado = $estado;
-
     }
 
     // public function enviarConfirmacion() {
@@ -72,55 +72,56 @@ class EmailDiseno {
     //         throw $e;
     //     }
 
-        
+
     // }
 
 
-    public function enviarConfirmacion() {
-    $mail = new PHPMailer(true);
+    public function enviarConfirmacion()
+    {
+        $mail = new PHPMailer(true);
 
-    try {
-        $mail->isSMTP();
-        $mail->Host       = $_ENV['EMAIL_HOST'];
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $_ENV['EMAIL_USER'];
-        $mail->Password   = $_ENV['EMAIL_PASS'];
+        try {
+            $mail->isSMTP();
+            $mail->Host       = $_ENV['EMAIL_HOST'];
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $_ENV['EMAIL_USER'];
+            $mail->Password   = $_ENV['EMAIL_PASS'];
 
-        if ((int)$_ENV['EMAIL_PORT'] === 465) {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        } else {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        }
-        $mail->Port = (int)$_ENV['EMAIL_PORT'];
+            if ((int)$_ENV['EMAIL_PORT'] === 465) {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            } else {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            }
+            $mail->Port = (int)$_ENV['EMAIL_PORT'];
 
-        $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
-        $mail->addAddress($this->email, $this->nombre);
+            $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
+            $mail->addAddress($this->email, $this->nombre);
 
-        $mail->Subject = 'Turno editado #' . $this->codigo;
-        $mail->isHTML(true);
-        $mail->CharSet = 'UTF-8';
+            $mail->Subject = 'Turno editado #' . $this->codigo;
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';
 
-        // Helpers de seguridad para el HTML
-        $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+            // Helpers de seguridad para el HTML
+            $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
 
-        // Normalización de estado y color de la “badge”
-        $estadoRaw = strtolower(trim((string)$this->estado));
-        $badgeText = 'Entregado';
-        $badgeBg   = '#2e7d32'; // verde (entregado)
+            // Normalización de estado y color de la “badge”
+            $estadoRaw = strtolower(trim((string)$this->estado));
+            $badgeText = 'Entregado';
+            $badgeBg   = '#2e7d32'; // verde (entregado)
 
-        if ($estadoRaw === 'pendiente') {
-            $badgeText = 'Pendiente';
-            $badgeBg   = '#e53935'; // rojo
-        } elseif ($estadoRaw === 'en proceso' || $estadoRaw === 'proceso') {
-            $badgeText = 'En proceso';
-            $badgeBg   = '#03a9f4'; // celeste
-        }
+            if ($estadoRaw === 'pendiente') {
+                $badgeText = 'Pendiente';
+                $badgeBg   = '#e53935'; // rojo
+            } elseif ($estadoRaw === 'en proceso' || $estadoRaw === 'proceso') {
+                $badgeText = 'En proceso';
+                $badgeBg   = '#03a9f4'; // celeste
+            }
 
-        $host = rtrim($_ENV['HOST'] ?? '', '/');
-        $url  = $host . '/admin/turnoDiseno/ver?turno_id=' . rawurlencode((string)$this->codigo);
+            $host = rtrim($_ENV['HOST'] ?? '', '/');
+            $url  = $host . '/admin/turnoDiseno/ver?turno_id=' . rawurlencode((string)$this->codigo);
 
-        // HTML de la tarjeta
-        $contenido = '
+            // HTML de la tarjeta
+            $contenido = '
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -146,11 +147,11 @@ class EmailDiseno {
               <!-- Encabezado con saludo + badge de estado -->
               <div style="padding:20px 0 10px 0;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;justify-content:space-between;gap:12px;">
                 <div style="font-size:16px;color:#111827;line-height:1.4;">
-                  <strong>Hola, '.$e($this->nombre).'</strong><br/>
-                  Se editó el turno <strong>#'.$e($this->codigo).'</strong>.
+                  <strong>Hola, ' . $e($this->nombre) . '</strong><br/>
+                  Se editó el turno <strong>#' . $e($this->codigo) . '</strong>.
                 </div>
-                <span style="display:inline-block;font-size:12px;font-weight:bold;color:#ffffff;background:'.$badgeBg.';padding:6px 10px;border-radius:999px;white-space:nowrap;">
-                  '.$e($badgeText).'
+                <span style="display:inline-block;font-size:12px;font-weight:bold;color:#ffffff;background:' . $badgeBg . ';padding:6px 10px;border-radius:999px;white-space:nowrap;">
+                  ' . $e($badgeText) . '
                 </span>
               </div>
 
@@ -160,7 +161,7 @@ class EmailDiseno {
                   <td style="padding:10px 0;">
                     <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Detalle</div>
                     <div style="font-size:15px;color:#111827;line-height:1.5;background:#f9fafb;border:1px solid #eef2f7;border-radius:8px;padding:12px;">
-                      '.$e($this->detalle).'
+                      ' . $e($this->detalle) . '
                     </div>
                   </td>
                 </tr>
@@ -169,24 +170,20 @@ class EmailDiseno {
                     <div style="display:flex;flex-wrap:wrap;gap:12px;">
                       <div style="flex:1;min-width:220px;border:1px solid #eef2f7;border-radius:8px;padding:12px;background:#ffffff;">
                         <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Fecha de creación</div>
-                        <div style="font-size:15px;color:#111827;">'.$e($this->fecha_creacion).'</div>
+                        <div style="font-size:15px;color:#111827;">' . $e($this->fecha_creacion) . '</div>
                       </div>
                       <div style="flex:1;min-width:220px;border:1px solid #eef2f7;border-radius:8px;padding:12px;background:#ffffff;">
                         <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Fecha de entrega</div>
-                        <div style="font-size:15px;color:#111827;">'.$e($this->fecha_entrega).'</div>
+                        <div style="font-size:15px;color:#111827;">' . $e($this->fecha_entrega) . '</div>
                       </div>
                     </div>
                   </td>
                 </tr>
               </table>
 
-              <!-- Botón -->
-              <div style="text-align:center;margin-top:18px;">
-                <a href="'.$e($url).'" target="_blank"
-                   style="display:inline-block;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 18px;border-radius:10px;border:1px solid #111827;background:#111827;color:#ffffff;">
-                  Ver turno
-                </a>
-              </div>
+            <div style="text-align:center;margin:18px 0;">
+              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK</span>
+            </div>
 
               <!-- Pie -->
               <div style="font-size:12px;color:#6b7280;text-align:center;margin-top:18px;line-height:1.5;">
@@ -205,27 +202,14 @@ class EmailDiseno {
 </body>
 </html>';
 
-        $mail->Body    = $contenido;
-        $mail->AltBody = 'Se editó el turno #'.$this->codigo.' (Estado: '.$badgeText.'). Ver: '.$url;
+            $mail->Body    = $contenido;
+            $mail->AltBody = 'Se editó el turno #' . $this->codigo . ' (Estado: ' . $badgeText . '). Ver: ' . $url;
 
-        $mail->send();
-        return true;
-    } catch (Exception $e) {
-        error_log('PHPMailer error: ' . $mail->ErrorInfo);
-        throw $e;
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            error_log('PHPMailer error: ' . $mail->ErrorInfo);
+            throw $e;
+        }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
