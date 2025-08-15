@@ -349,6 +349,7 @@ public static function eliminarPDF()
 //         'alertas' => $alertas,
 //     ]);
 // }
+
 public static function editarTurno(Router $router): void
 {
     session_start();
@@ -360,27 +361,22 @@ public static function editarTurno(Router $router): void
     $nombre = $_SESSION['nombre'] ?? '';
     $email  = $_SESSION['email'];
 
-    // Redirección rápida
     $go = static function(string $url) {
         header("Location: {$url}");
         exit;
     };
 
-    // Validar ID
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if (!$id) $go('/admin/turnoDiseno/turnotablaDiseno');
 
-    // Buscar turno
     $turno = TurnoDiseno::find($id);
     if (!$turno) $go('/admin/turnoDiseno/turnotablaDiseno');
 
     $alertas = [];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Datos recibidos (sin filtrar por tipo para no alterar valores; tu modelo valida)
         $data = $_POST ?? [];
 
-        // Sincronizar de forma segura
         if (method_exists($turno, 'sincronizar')) {
             $turno->sincronizar($data);
         } else {
@@ -391,14 +387,11 @@ public static function editarTurno(Router $router): void
             }
         }
 
-        // Forzar UPDATE
         $turno->id = $id;
 
-        // Validar y guardar
         $alertas = $turno->validar();
         if (empty($alertas) && $turno->guardar()) {
 
-            // Enviar correo solo si no es cuenta de pruebas
             if ($email !== 'pruebas@megaecuador.com') {
                 $vendedores = [
                     'JHON VACA'          => 'sistemas@megaecuador.com',
@@ -407,13 +400,14 @@ public static function editarTurno(Router $router): void
                     'CAROLINA MUÑOZ'     => 'pedro@example.com',
                 ];
 
-                // Normalizar clave de vendedor
                 $vKey = mb_strtoupper(trim((string)($turno->vendedor ?? '')));
                 $dest = $vendedores[$vKey] ?? 'default@example.com';
 
                 try {
-                    $m = new EmailDiseno($email, $nombre,$turno_id=$turno->id);
-                    // $m->enviar($dest, "Turno editado", "Se editó el turno #{$turno->id}.");
+                    // Instancia con el DESTINATARIO correcto
+                    $m = new EmailDiseno($dest, $nombre, $turno->id);
+                    // Llama al método que sí existe
+                    $m->enviarConfirmacion();
                 } catch (\Throwable $e) {
                     error_log("Error email turno {$turno->id}: ".$e->getMessage());
                 }
@@ -431,8 +425,6 @@ public static function editarTurno(Router $router): void
         'alertas' => $alertas,
     ]);
 }
-
-
 
 
 

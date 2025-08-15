@@ -3,10 +3,11 @@
 namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class EmailDiseno {
 
-    public $email;
+    public $email;     // destinatario
     public $nombre;
     public $turno_id;
 
@@ -18,36 +19,45 @@ class EmailDiseno {
     }
 
     public function enviarConfirmacion() {
+        $mail = new PHPMailer(true);
 
-         // create a new object
-         $mail = new PHPMailer();
-         $mail->isSMTP();
-         $mail->Host = $_ENV['EMAIL_HOST'];
-         $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['EMAIL_PORT'];
-         $mail->Username = $_ENV['EMAIL_USER'];
-         $mail->Password = $_ENV['EMAIL_PASS'];
-         $mail->SMTPSecure = 'ssl';
+        try {
+            $mail->isSMTP();
+            $mail->Host       = $_ENV['EMAIL_HOST'];
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $_ENV['EMAIL_USER'];
+            $mail->Password   = $_ENV['EMAIL_PASS'];
 
-     
-         $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
-         $mail->addAddress($this->email, $this->nombre);
-         $mail->Subject = 'Confirma tu Cuenta';
+            // Ajusta esto según tu servidor:
+            if ((int)$_ENV['EMAIL_PORT'] === 465) {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            } else {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            }
+            $mail->Port = (int)$_ENV['EMAIL_PORT'];
 
-         // Set HTML
-         $mail->isHTML(TRUE);
-         $mail->CharSet = 'UTF-8';
+            // El remitente debe pertenecer al dominio del SMTP
+            $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'MEGASTOCK S.A.');
+            $mail->addAddress($this->email, $this->nombre);
 
-         $contenido = '<html>';
-         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong>Se realizó un nuevo registro en el sistema.</p>";
-         $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?turno_id=" . $this->turno_id . "'>Confirmar Cuenta</a>";
-         $contenido .= "<p>Si tu no creaste esta cuenta; puedes ignorar el mensaje</p>";
-         $contenido .= '</html>';
-         $mail->Body = $contenido;
+            $mail->Subject = 'Turno editado';
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';
 
-         //Enviar el mail
-         $mail->send();
+            $host = rtrim($_ENV['HOST'] ?? '', '/');
+            $contenido  = '<html>';
+            $contenido .= "<p><strong>Hola {$this->nombre},</strong> se editó el turno #{$this->turno_id}.</p>";
+            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}'>Abrir turno</a></p>";
+            $contenido .= '</html>';
 
+            $mail->Body    = $contenido;
+            $mail->AltBody = "Se editó el turno #{$this->turno_id}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}";
+
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            error_log('PHPMailer error: ' . $mail->ErrorInfo);
+            throw $e;
+        }
     }
-
 }
