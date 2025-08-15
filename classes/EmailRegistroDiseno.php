@@ -145,7 +145,7 @@ class EmailRegistroDiseno
             $mail->SMTPSecure = $_ENV["EMAIL_SECURE"] ?? "ssl";
 
             $mail->CharSet    = 'UTF-8';
-            $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
+            $mail->setFrom('sistemas@logmegaecuador.com', 'DISEÑO MEGASTOCK S.A.');
             $mail->addAddress($this->emaildefault, $nombre);
             $mail->addReplyTo('sistemas@logmegaecuador.com', 'Soporte MEGASTOCK');
             $mail->Subject = 'Registro de Diseño';
