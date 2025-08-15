@@ -95,7 +95,7 @@
                                  <td><?= $consumosGeneral->created_at ?></td>
                                  <td>
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/editarConsumo?id=<?= $consumosGeneral->id ?>" class="btn btn-outline-primary btn-sm">Editar</a>
+                                         <a href="/admin/editarAdminConsumoGeneral?id=<?= $consumosGeneral->id ?>" class="btn btn-outline-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarConsumoGeneral" method="POST">
                                              <input type="hidden" name="id" value="<?= $consumosGeneral->id ?>">
                                              <button
