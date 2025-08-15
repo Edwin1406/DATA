@@ -362,7 +362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $clave = mb_strtoupper(trim($nombre), 'UTF-8');
 
         // Si no hay coincidencia, usa un correo por defecto (o el mismo de pruebas)
-        $destinatario = $vendedores[$clave] ?? 'sistemas@megaecuador.com';
+        $destinatario = $vendedores[$clave] ?? 'sistemas@logmegaecuador.com';
 
         try {
             // OJO: pasa el OBJETO $turno, no $turno->codigo
