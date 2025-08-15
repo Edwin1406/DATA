@@ -249,7 +249,7 @@ class DiseñoController
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
             // debuguear($turno);
                 // email por defecto
-            $emaildefault = '<sistemas@megaecuador.com>';
+            $emaildefault = 'sistemas@megaecuador.com';
 
             // Enviar correo de confirmación
             $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo);
