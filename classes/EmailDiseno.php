@@ -59,5 +59,9 @@ class EmailDiseno {
             error_log('PHPMailer error: ' . $mail->ErrorInfo);
             throw $e;
         }
+
+        $mail->SMTPDebug = 2; // o 3
+$mail->Debugoutput = 'error_log';
+
     }
 }
