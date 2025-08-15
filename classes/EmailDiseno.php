@@ -9,13 +9,12 @@ class EmailDiseno {
 
     public $email;     // destinatario
     public $nombre;
-    public $turno_id;
 
-    public function __construct($email, $nombre, $turno_id)
+    public function __construct($email, $nombre)
     {
         $this->email = $email;
         $this->nombre = $nombre;
-        $this->turno_id = $turno_id;
+
     }
 
     public function enviarConfirmacion() {
@@ -46,12 +45,12 @@ class EmailDiseno {
 
             $host = rtrim($_ENV['HOST'] ?? '', '/');
             $contenido  = '<html>';
-            $contenido .= "<p><strong>Hola {$this->nombre},</strong> se editó el turno #{$this->turno_id}.</p>";
-            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}'>Abrir turno</a></p>";
+            $contenido .= "<p><strong>Hola {$this->nombre},</strong> se editó el turno #{$this->email}.</p>";
+            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->email}'>Abrir turno</a></p>";
             $contenido .= '</html>';
 
             $mail->Body    = $contenido;
-            $mail->AltBody = "Se editó el turno #{$this->turno_id}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}";
+            $mail->AltBody = "Se editó el turno #{$this->email}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->email}";
 
             $mail->SMTPDebug = 2; // o 3
         $mail->Debugoutput = 'error_log';

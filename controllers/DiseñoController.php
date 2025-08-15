@@ -9,87 +9,87 @@ use MVC\Router;
 
 class DiseñoController
 {
-  public static function crearDiseno(Router $router)
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
+    public static function crearDiseno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+            exit;
+        }
 
-    $nombre = $_SESSION['nombre'];
-    $email = $_SESSION['email'];
-    $diseno = new Diseno;
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $diseno = new Diseno;
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $diseno->sincronizar($_POST);
-        $alertas = $diseno->validar();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $diseno->sincronizar($_POST);
+            $alertas = $diseno->validar();
 
-        // Verificar si el código ya está registrado antes de subir el archivo
-        $existeCodigo = Diseno::where('codigo_producto', $diseno->codigo_producto);
-        if ($existeCodigo) {
-            Diseno::setAlerta('error', 'El código ya está registrado. No se subió el PDF.');
-            $alertas = Diseno::getAlertas();
-        } else {
-            // Subir el PDF solo si el código no existe
-            if (!empty($_FILES['pdf']['tmp_name'])) {
-                $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
+            // Verificar si el código ya está registrado antes de subir el archivo
+            $existeCodigo = Diseno::where('codigo_producto', $diseno->codigo_producto);
+            if ($existeCodigo) {
+                Diseno::setAlerta('error', 'El código ya está registrado. No se subió el PDF.');
+                $alertas = Diseno::getAlertas();
+            } else {
+                // Subir el PDF solo si el código no existe
+                if (!empty($_FILES['pdf']['tmp_name'])) {
+                    $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/visor';
 
-                if (!is_dir($carpeta_pdfs)) {
-                    mkdir($carpeta_pdfs, 0755, true);
+                    if (!is_dir($carpeta_pdfs)) {
+                        mkdir($carpeta_pdfs, 0755, true);
+                    }
+
+                    $nombre_pdf = md5(uniqid(rand(), true)) . '.pdf';
+                    $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
+
+                    if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
+                        $diseno->pdf = $nombre_pdf;
+                    } else {
+                        $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
+                    }
                 }
 
-                $nombre_pdf = md5(uniqid(rand(), true)) . '.pdf';
-                $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
-
-                if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
-                    $diseno->pdf = $nombre_pdf;
-                } else {
-                    $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
-                }
-            }
-
-            // Guardar si no hay alertas
-            if (empty($alertas)) {
-                $resultado = $diseno->guardar();
-                if ($resultado) {
-                    header('Location: /admin/diseno/crearDiseno?exito=1');
-                    exit;
+                // Guardar si no hay alertas
+                if (empty($alertas)) {
+                    $resultado = $diseno->guardar();
+                    if ($resultado) {
+                        header('Location: /admin/diseno/crearDiseno?exito=1');
+                        exit;
+                    }
                 }
             }
         }
-    }
 
-    $router->render('admin/diseno/crearDiseno', [
-        'titulo' => 'CREAR DISEÑO',
-        'nombre' => $nombre,
-        'email' => $email,
-        'diseno' => $diseno,
-        'alertas' => $diseno->getAlertas(),
-    ]);
-}
+        $router->render('admin/diseno/crearDiseno', [
+            'titulo' => 'CREAR DISEÑO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'diseno' => $diseno,
+            'alertas' => $diseno->getAlertas(),
+        ]);
+    }
 
 
     public static function tablaDiseno(Router $router)
     {
-         session_start();
-         if (!isset($_SESSION['email'])) {
-              header('Location: /');
-         }
-    
-         $nombre = $_SESSION['nombre'];
-         $email = $_SESSION['email'];
-    
-         // Obtener todos los diseños
-         $disenos = Diseno::all();
-    
-         $router->render('admin/diseno/tablaDiseno', [
-              'titulo' => 'TABLA DISEÑO',
-                'subtitulo' => 'Diseños Registrados',
-              'nombre' => $nombre,
-              'email' => $email,
-              'disenos' => $disenos,
-         ]);
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Obtener todos los diseños
+        $disenos = Diseno::all();
+
+        $router->render('admin/diseno/tablaDiseno', [
+            'titulo' => 'TABLA DISEÑO',
+            'subtitulo' => 'Diseños Registrados',
+            'nombre' => $nombre,
+            'email' => $email,
+            'disenos' => $disenos,
+        ]);
     }
 
 
@@ -162,39 +162,39 @@ class DiseñoController
             'alertas' => $diseno->getAlertas(),
         ]);
     }
-// elimnar pdf 
+    // elimnar pdf 
 
 
-public static function eliminarPDF()
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        echo json_encode(['error' => 'No autorizado']);
-        return;
+    public static function eliminarPDF()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['error' => 'No autorizado']);
+            return;
+        }
+
+        $id = $_POST['id'] ?? null;
+        if (!$id) {
+            echo json_encode(['error' => 'ID no proporcionado']);
+            return;
+        }
+
+        $diseno = Diseno::find($id);
+        if (!$diseno || !$diseno->pdf) {
+            echo json_encode(['error' => 'Diseño o PDF no encontrado']);
+            return;
+        }
+
+        $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $diseno->pdf;
+        if (file_exists($ruta_pdf)) {
+            unlink($ruta_pdf);
+        }
+
+        $diseno->pdf = null;
+        $diseno->guardar();
+
+        echo json_encode(['success' => true]);
     }
-
-    $id = $_POST['id'] ?? null;
-    if (!$id) {
-        echo json_encode(['error' => 'ID no proporcionado']);
-        return;
-    }
-
-    $diseno = Diseno::find($id);
-    if (!$diseno || !$diseno->pdf) {
-        echo json_encode(['error' => 'Diseño o PDF no encontrado']);
-        return;
-    }
-
-    $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $diseno->pdf;
-    if (file_exists($ruta_pdf)) {
-        unlink($ruta_pdf);
-    }
-
-    $diseno->pdf = null;
-    $diseno->guardar();
-
-    echo json_encode(['success' => true]);
-}
 
 
 
@@ -225,8 +225,8 @@ public static function eliminarPDF()
     }
 
 
-    
-    
+
+
 
     // Generar Turno
     public static function generarTurno(Router $router)
@@ -242,7 +242,7 @@ public static function eliminarPDF()
         $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno = new TurnoDiseno($_POST);
-            
+
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
             // debuguear($turno);
@@ -291,177 +291,101 @@ public static function eliminarPDF()
 
 
     // editar turno
-//    public static function editarTurno(Router $router)
-// {
-//     session_start();
-//     if (!isset($_SESSION['email'])) {
-//         header('Location: /');
-//         exit;
-//     }
-
-//     $nombre = $_SESSION['nombre'];
-//     $email  = $_SESSION['email'];
-//     $alertas = [];
-
-//     $id = $_GET['id'] ?? null;
-//     if (!$id) {
-//         header('Location: /admin/turnoDiseno/turnotablaDiseno');
-//         exit;
-//     }
-
-//     // Cargar el registro existente
-//     $turno = TurnoDiseno::find($id);
-//     if (!$turno) {
-//         header('Location: /admin/turnoDiseno/turnotablaDiseno');
-//         exit;
-//     }
-
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//         // O usa un método sincronizar si tu ActiveRecord lo tiene
-//         if (method_exists($turno, 'sincronizar')) {
-//             $turno->sincronizar($_POST);
-
-//         } else {
-//             foreach ($_POST as $campo => $valor) {
-//                         $turno->$campo = $valor;
-//                     }
-//         }
-
-//         // Asegurar que el id siga presente
-//         $turno->id = $id;
-
-//         $alertas = $turno->validar();
-
-//         if (empty($alertas)) {
-//             $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
-//             if ($resultado) {
-//                 header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
-//                 exit;
-//             }
-//         }
-//     }
-
-//     $router->render('admin/turnoDiseno/editarTurno', [
-//         'titulo'  => 'EDITAR TURNO',
-//         'nombre'  => $nombre,
-//         'email'   => $email,
-//         'turno'   => $turno,
-//         'alertas' => $alertas,
-//     ]);
-// }
-
-public static function editarTurno(Router $router): void
-{
-    session_start();
-    if (empty($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
-
-    $nombre = $_SESSION['nombre'] ?? '';
-    $email  = $_SESSION['email'];
-
-    $go = static function(string $url) {
-        header("Location: {$url}");
-        exit;
-    };
-
-    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    if (!$id) $go('/admin/turnoDiseno/turnotablaDiseno');
-
-    $turno = TurnoDiseno::find($id);
-    if (!$turno) $go('/admin/turnoDiseno/turnotablaDiseno');
-
-    $alertas = [];
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $data = $_POST ?? [];
-
-        if (method_exists($turno, 'sincronizar')) {
-            $turno->sincronizar($data);
-        } else {
-            foreach ($data as $k => $v) {
-                if ($k !== 'id' && property_exists($turno, $k)) {
-                    $turno->$k = $v;
-                }
-            }
+    public static function editarTurno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+            exit;
         }
 
-        $turno->id = $id;
+        $nombre = $_SESSION['nombre'];
+        $email  = $_SESSION['email'];
+        $alertas = [];
 
-        $alertas = $turno->validar();
-        if (empty($alertas) && $turno->guardar()) {
-
-            if ($email !== 'pruebas@megaecuador.com') {
-                $vendedores = [
-                    'JHON VACA'          => 'sistemas@megaecuador.com',
-                    'SHULYANA HERNANDEZ' => 'ventas3@megaecuador.com',
-                    'ANTONELLA DEZCALZI' => 'maria@example.com',
-                    'CAROLINA MUÑOZ'     => 'pedro@example.com',
-                ];
-
-                $vKey = mb_strtoupper(trim((string)($turno->vendedor ?? '')));
-                $dest = $vendedores[$vKey] ?? 'default@example.com';
-
-                try {
-                    // Instancia con el DESTINATARIO correcto
-                    $m = new EmailDiseno($dest, $nombre, $turno->id);
-                    // Llama al método que sí existe
-                    $m->enviarConfirmacion();
-                } catch (\Throwable $e) {
-                    error_log("Error email turno {$turno->id}: ".$e->getMessage());
-                }
-            }
-
-            $go('/admin/turnoDiseno/turnotablaDiseno?editado=2');
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            header('Location: /admin/turnoDiseno/turnotablaDiseno');
+            exit;
         }
-    }
 
-    $router->render('admin/turnoDiseno/editarTurno', [
-        'titulo'  => 'EDITAR TURNO',
-        'nombre'  => $nombre,
-        'email'   => $email,
-        'turno'   => $turno,
-        'alertas' => $alertas,
-    ]);
-}
-
-
-
-
-
-
-
-
-
-
-// eliminar turno diseño
-public static function eliminarTurnoDiseno(Router $router)
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
-
-    $id = $_POST['id'] ?? null;
-    if ($id) {
+        // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
-        if ($turno) {
-            $resultado = $turno->eliminar();
-            if ($resultado) {
-                header('Location: /admin/turnoDiseno/turnotablaDiseno?eliminado=3');
+        if (!$turno) {
+            header('Location: /admin/turnoDiseno/turnotablaDiseno');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // O usa un método sincronizar si tu ActiveRecord lo tiene
+            if (method_exists($turno, 'sincronizar')) {
+                $turno->sincronizar($_POST);
+
+
+                if ($email === 'pruebas@megaecuador.com') {
+                    // Aquí sí se enviará al correo de pruebas
+                    $vendedores = [
+                        "JHON VACA"            => "sistemas@megaecuador.com",
+                        "SHULYANA HERNANDEZ"   => "ventas3@megaecuador.com",
+                        "ANTONELLA DEZCALZI"   => "maria@example.com",
+                        "CAROLINA MUÑOZ"       => "pedro@example.com"
+                    ];
+
+                    $email = new EmailDiseno($email, $nombre);
+                    $email->enviarConfirmacion();
+                }
+            } else {
+                foreach ($_POST as $campo => $valor) {
+                    $turno->$campo = $valor;
+                }
+            }
+
+            // Asegurar que el id siga presente
+            $turno->id = $id;
+
+            $alertas = $turno->validar();
+
+            if (empty($alertas)) {
+                $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
+                if ($resultado) {
+                    header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
+                    exit;
+                }
+            }
+        }
+
+        $router->render('admin/turnoDiseno/editarTurno', [
+            'titulo'  => 'EDITAR TURNO',
+            'nombre'  => $nombre,
+            'email'   => $email,
+            'turno'   => $turno,
+            'alertas' => $alertas,
+        ]);
+    }
+
+
+    // eliminar turno diseño
+    public static function eliminarTurnoDiseno(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+            exit;
+        }
+
+        $id = $_POST['id'] ?? null;
+        if ($id) {
+            $turno = TurnoDiseno::find($id);
+            if ($turno) {
+                $resultado = $turno->eliminar();
+                if ($resultado) {
+                    header('Location: /admin/turnoDiseno/turnotablaDiseno?eliminado=3');
+                } else {
+                    header('Location: /admin/turnoDiseno/turnotablaDiseno?error=1');
+                }
             } else {
                 header('Location: /admin/turnoDiseno/turnotablaDiseno?error=1');
             }
-        } else {
-            header('Location: /admin/turnoDiseno/turnotablaDiseno?error=1');
         }
     }
-}
-
-
-
-
-
 }
