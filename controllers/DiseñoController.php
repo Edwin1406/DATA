@@ -6,6 +6,7 @@ use Classes\EmailDiseno;
 use Model\Diseno;
 use Model\TurnoDiseno;
 use MVC\Router;
+use Throwable;
 
 class DiseñoController
 {
@@ -380,10 +381,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno->$campo = $valor;
         }
     }
-}
-
-
-
+}}
 
 
 
