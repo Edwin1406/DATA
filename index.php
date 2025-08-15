@@ -7,21 +7,28 @@
 // error_reporting(E_ALL);
 
 
+// Obtener la IP real (priorizar REMOTE_ADDR)
+$ip = $_SERVER['REMOTE_ADDR'];
 
-// Detectar la IP del visitante (considerando proxies)
-$ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];
-
-// Consultar la API de geolocalización
-$response = file_get_contents("http://ip-api.com/json/$ip");
-$data = json_decode($response);
-
-// Verificar si es Ecuador
-if ($data && $data->countryCode !== "EC") {
-    // Redirigir si NO es Ecuador
-    header("Location: oops_ip_no_segura.php");
-    exit();
+// Si el servidor está detrás de un proxy confiable, permitir X-Forwarded-For
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']) && filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 }
 
+// Consultar la API (modo rápido, respuesta mínima)
+$ch = curl_init("http://ip-api.com/json/$ip?fields=status,countryCode");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 2); // evita que se congele
+$response = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($response);
+
+// Si no es Ecuador (EC), redirigir
+if (!$data || $data->status !== 'success' || $data->countryCode !== 'EC') {
+    header("Location: /oops_ip_no_segura.php");
+    exit();
+}
 
 
 

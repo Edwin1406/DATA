@@ -248,11 +248,11 @@ class DiseñoController
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
             // debuguear($turno);
-                // email por defecto
+            // email por defecto
             $emaildefault = 'desarrollodeproductoms@gmail.com';
 
             // Enviar correo de confirmación
-            $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo, $turno->estado,$turno->detalle);
+            $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo, $turno->estado, $turno->detalle);
             $email->enviarConfirmacion2();
 
             // debuguear($turno);
@@ -330,99 +330,116 @@ class DiseñoController
                 $turno->sincronizar($_POST);
 
 
-            //     if ($email === 'pruebas@megaecuador.com') {
-            //         // Aquí sí se enviará al correo de pruebas
-            //         $vendedores = [
-            //             "JHON VACA"            => "sistemas@megaecuador.com",
-            //             "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
-            //             "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
-            //             "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
-            //         ];
-            //         $email = $vendedores[$nombre] ?? $email;
+                //     if ($email === 'pruebas@megaecuador.com') {
+                //         // Aquí sí se enviará al correo de pruebas
+                //         $vendedores = [
+                //             "JHON VACA"            => "sistemas@megaecuador.com",
+                //             "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
+                //             "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
+                //             "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
+                //         ];
+                //         $email = $vendedores[$nombre] ?? $email;
 
-            //         $email = new EmailDiseno($email, $nombre);
-            //         $email->enviarConfirmacion();
-            //     }
-            // } else {
-            //     foreach ($_POST as $campo => $valor) {
-            //         $turno->$campo = $valor;
-            //     }
-            // }
-// === Normalizador de nombres (quita tildes, espacios extra y pone MAYÚSCULAS)
-function normalizar($s) {
-    $s = trim($s);
-    $s = preg_replace('/\s+/', ' ', $s); // compacta espacios
-    $s = mb_strtoupper($s, 'UTF-8');
-    // elimina tildes comunes
-    $s = strtr($s, [
-        'Á'=>'A','É'=>'E','Í'=>'I','Ó'=>'O','Ú'=>'U','Ü'=>'U','Ñ'=>'N',
-        'á'=>'A','é'=>'E','í'=>'I','ó'=>'O','ú'=>'U','ü'=>'U','ñ'=>'N'
-    ]);
-    return $s;
-}
+                //         $email = new EmailDiseno($email, $nombre);
+                //         $email->enviarConfirmacion();
+                //     }
+                // } else {
+                //     foreach ($_POST as $campo => $valor) {
+                //         $turno->$campo = $valor;
+                //     }
+                // }
+                // === Normalizador de nombres (quita tildes, espacios extra y pone MAYÚSCULAS)
+                function normalizar($s)
+                {
+                    $s = trim($s);
+                    $s = preg_replace('/\s+/', ' ', $s); // compacta espacios
+                    $s = mb_strtoupper($s, 'UTF-8');
+                    // elimina tildes comunes
+                    $s = strtr($s, [
+                        'Á' => 'A',
+                        'É' => 'E',
+                        'Í' => 'I',
+                        'Ó' => 'O',
+                        'Ú' => 'U',
+                        'Ü' => 'U',
+                        'Ñ' => 'N',
+                        'á' => 'A',
+                        'é' => 'E',
+                        'í' => 'I',
+                        'ó' => 'O',
+                        'ú' => 'U',
+                        'ü' => 'U',
+                        'ñ' => 'N'
+                    ]);
+                    return $s;
+                }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (method_exists($turno, 'sincronizar')) {
-        $turno->sincronizar($_POST);
-    }
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if (method_exists($turno, 'sincronizar')) {
+                        $turno->sincronizar($_POST);
+                    }
 
-    // Solo redirige si el destino original es el correo de pruebas
-    if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0) {
+                    // Solo redirige si el destino original es el correo de pruebas
+                    if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0) {
 
-        // OJO: usa el NOMBRE DEL VENDEDOR, no el del cliente.
-        // Cambia esta variable si tu campo real se llama distinto:
-        $vendedorNombre = $_POST['vendedor'] ?? $nombre; 
+                        // OJO: usa el NOMBRE DEL VENDEDOR, no el del cliente.
+                        // Cambia esta variable si tu campo real se llama distinto:
+                        $vendedorNombre = $_POST['vendedor'] ?? $nombre;
 
-        $vendedores = [
-            "JHON VACA"          => "ventas@megaecuador.com",
-            "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
-            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
-            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
-            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
-            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
-        ];
+                        $vendedores = [
+                            "JHON VACA"          => "ventas@megaecuador.com",
+                            "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
+                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
+                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
+                            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
+                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
+                        ];
 
-        // Crea un mapa con claves normalizadas
-        $mapa = [];
-        foreach ($vendedores as $k => $v) {
-            $mapa[ normalizar($k) ] = $v;
-        }
+                        // Crea un mapa con claves normalizadas
+                        $mapa = [];
+                        foreach ($vendedores as $k => $v) {
+                            $mapa[normalizar($k)] = $v;
+                        }
 
-        $clave = normalizar($vendedorNombre);
-        $destinatario = $mapa[$clave] ?? null;
+                        $clave = normalizar($vendedorNombre);
+                        $destinatario = $mapa[$clave] ?? null;
 
-        // (Opcional) Coincidencia difusa si no se encontró exacta
-        if ($destinatario === null) {
-            $mejor = null; $distMejor = PHP_INT_MAX; $mejorClave = null;
-            foreach (array_keys($mapa) as $k) {
-                $d = levenshtein($clave, $k);
-                if ($d < $distMejor) { $distMejor = $d; $mejor = $mapa[$k]; $mejorClave = $k; }
+                        // (Opcional) Coincidencia difusa si no se encontró exacta
+                        if ($destinatario === null) {
+                            $mejor = null;
+                            $distMejor = PHP_INT_MAX;
+                            $mejorClave = null;
+                            foreach (array_keys($mapa) as $k) {
+                                $d = levenshtein($clave, $k);
+                                if ($d < $distMejor) {
+                                    $distMejor = $d;
+                                    $mejor = $mapa[$k];
+                                    $mejorClave = $k;
+                                }
+                            }
+                            if ($distMejor <= 2) { // tolera 1–2 letras de diferencia
+                                $destinatario = $mejor;
+                                error_log("Usando coincidencia aproximada: '$vendedorNombre' ~ '$mejorClave' (dist=$distMejor)");
+                            }
+                        }
+                        $codigo = $turno->codigo;
+
+
+                        if ($destinatario === null) {
+                            // Si no hay match, manda al correo por defecto (o maneja el error)
+                            $destinatario = 'sistemas@megaecuador.com';
+                            error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
+                        }
+
+                        // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
+                        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo, $turno->detalle, $turno->fecha_creacion, $turno->fecha_entrega, $turno->estado);
+
+                        if (!$mailer->enviarConfirmacion()) {
+                            error_log('No se pudo enviar el correo de confirmación.');
+                        }
+                    }
+                }
             }
-            if ($distMejor <= 2) { // tolera 1–2 letras de diferencia
-                $destinatario = $mejor;
-                error_log("Usando coincidencia aproximada: '$vendedorNombre' ~ '$mejorClave' (dist=$distMejor)");
-            }
-        }
-            $codigo = $turno->codigo;
-
-
-        if ($destinatario === null) {
-            // Si no hay match, manda al correo por defecto (o maneja el error)
-            $destinatario = 'sistemas@megaecuador.com';
-            error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
-        }
-
-        // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo,$turno->detalle, $turno->fecha_creacion, $turno->fecha_entrega,$turno->estado);
-
-        if (!$mailer->enviarConfirmacion()) {
-            error_log('No se pudo enviar el correo de confirmación.');
-        }
-    }
-}}
-
-
-
 
             // Asegurar que el id siga presente
             $turno->id = $id;

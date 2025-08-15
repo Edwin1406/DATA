@@ -209,10 +209,7 @@
                              <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
-
-
-
-
+                             
                          </ul>
                      </li>
                  <?php } ?>
