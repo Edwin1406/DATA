@@ -21,6 +21,7 @@ RewriteRule ^ index.php [QSA,L]
     Require ip 200.31.0.0/16
     Require ip 200.55.192.0/19
     Require ip 201.219.0.0/19
+    Require ip 201.182.0.0/22
 </RequireAll>
 
 # Página personalizada para bloqueados (opcional)
