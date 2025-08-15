@@ -330,6 +330,7 @@ class DiseñoController
                         "ANTONELLA DEZCALZI"   => "maria@example.com",
                         "CAROLINA MUÑOZ"       => "pedro@example.com"
                     ];
+                    $email = $vendedores[$nombre] ?? $email;
 
                     $email = new EmailDiseno($email, $nombre);
                     $email->enviarConfirmacion();
