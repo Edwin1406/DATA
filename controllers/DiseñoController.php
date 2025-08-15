@@ -367,10 +367,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $vendedorNombre = $_POST['vendedor'] ?? $nombre; 
 
         $vendedores = [
-            "JHON VACA"          => "edwin.ed948@gmail.com",
+            "JHON VACA"          => "ventas@megaecuador.com",
             "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
-            "ANTONELLA DEZCALZI" => "maria@example.com",
-            "CAROLINA MUÑOZ"     => "pedro@example.com",
+            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
+            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
+            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
+            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
         ];
 
         // Crea un mapa con claves normalizadas
@@ -396,6 +398,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
             $codigo = $turno->codigo;
 
+
         if ($destinatario === null) {
             // Si no hay match, manda al correo por defecto (o maneja el error)
             $destinatario = 'sistemas@megaecuador.com';
@@ -403,7 +406,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo);
+        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo,$turno->detalle);
 
         if (!$mailer->enviarConfirmacion()) {
             error_log('No se pudo enviar el correo de confirmación.');

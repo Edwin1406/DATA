@@ -10,12 +10,14 @@ class EmailDiseno {
     public $email;     // destinatario
     public $nombre;
     public $codigo;
+    public $detalle;
 
-    public function __construct($email, $nombre, $codigo)
+    public function __construct($email, $nombre, $codigo, $detalle)
     {
         $this->email = $email;
         $this->nombre = $nombre;
         $this->codigo = $codigo;
+        $this->detalle = $detalle;
 
     }
 
@@ -48,7 +50,7 @@ class EmailDiseno {
             $host = rtrim($_ENV['HOST'] ?? '', '/');
             $contenido  = '<html>';
             $contenido .= "<p><strong>HOLA TE SALUDA CLAUDIO. QUE TAL  {$this->nombre},</strong> SE EDITO EL TURNO #{$this->codigo}.</p>";
-            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->codigo}'>Abrir turno</a></p>";
+            $contenido .= "<p>DETALLE: {$this->detalle}</p>";
             $contenido .= '</html>';
 
             $mail->Body    = $contenido;
