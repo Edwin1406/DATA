@@ -13,8 +13,9 @@ class EmailDiseno {
     public $detalle;
     public $fecha_creacion;
     public $fecha_entrega;
+    public $estado;
 
-    public function __construct($email, $nombre, $codigo, $detalle, $fecha_creacion, $fecha_entrega)
+    public function __construct($email, $nombre, $codigo, $detalle, $fecha_creacion, $fecha_entrega, $estado)
     {
         $this->email = $email;
         $this->nombre = $nombre;
@@ -22,6 +23,7 @@ class EmailDiseno {
         $this->detalle = $detalle;
         $this->fecha_creacion = $fecha_creacion;
         $this->fecha_entrega = $fecha_entrega;
+        $this->estado = $estado;
 
     }
 
@@ -57,6 +59,7 @@ class EmailDiseno {
             $contenido .= "<p>DETALLE: {$this->detalle}</p>";
             $contenido .= "<p>FECHA DE CREACIÓN: {$this->fecha_creacion}</p>";
             $contenido .= "<p>FECHA DE ENTREGA: {$this->fecha_entrega}</p>";
+            $contenido .= "<p>ESTADO: {$this->estado}</p>";
             $contenido .= '</html>';
 
             $mail->Body    = $contenido;
