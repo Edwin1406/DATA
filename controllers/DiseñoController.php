@@ -326,9 +326,9 @@ class DiseñoController
                     // Aquí sí se enviará al correo de pruebas
                     $vendedores = [
                         "JHON VACA"            => "sistemas@megaecuador.com",
-                        "SHULYANA HERNANDEZ"   => "ventas3@megaecuador.com",
-                        "ANTONELLA DEZCALZI"   => "maria@example.com",
-                        "CAROLINA MUÑOZ"       => "pedro@example.com"
+                        "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
+                        "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
+                        "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
                     ];
                     $email = $vendedores[$nombre] ?? $email;
 
