@@ -367,7 +367,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $vendedorNombre = $_POST['vendedor'] ?? $nombre; 
 
         $vendedores = [
-            "JHON VACA"          => "sistemas@megaecuador.com",
+            "JHON VACA"          => "edwin.ed948@gmail.com",
             "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
             "ANTONELLA DEZCALZI" => "maria@example.com",
             "CAROLINA MUÑOZ"     => "pedro@example.com",
