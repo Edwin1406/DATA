@@ -7,6 +7,7 @@ RewriteRule ^ index.php [QSA,L]
 # Permitir solo IPs de Ecuador
 <RequireAll>
     Require all denied
+Require ip 157.100.140.1
 Require ip 27.50.12.0/22
 Require ip 45.4.88.0/22
 Require ip 45.4.200.0/22
