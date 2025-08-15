@@ -1,5 +1,27 @@
+# Activar motor de reescritura
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 
+# Permitir solo IPs de Ecuador
+<RequireAll>
+    Require all denied
+    # Ejemplos de rangos CIDR de Ecuador (agrega todos los del archivo ec.zone)
+    Require ip 179.0.0.0/12
+    Require ip 181.188.0.0/14
+    Require ip 181.192.0.0/13
+    Require ip 186.3.0.0/16
+    Require ip 186.4.0.0/14
+    Require ip 190.12.64.0/18
+    Require ip 190.15.128.0/17
+    Require ip 190.52.0.0/16
+    Require ip 190.57.224.0/19
+    Require ip 200.10.228.0/22
+    Require ip 200.31.0.0/16
+    Require ip 200.55.192.0/19
+    Require ip 201.219.0.0/19
+</RequireAll>
+
+# Página personalizada para bloqueados (opcional)
+ErrorDocument 403 /oops_ip_no_segura.php
