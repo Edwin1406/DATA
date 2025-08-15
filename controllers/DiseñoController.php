@@ -406,7 +406,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo,$turno->detalle, $turno->fecha_creacion, $turno->$fecha_entrega);
+        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo,$turno->detalle, $turno->fecha_creacion, $turno->fecha_entrega);
 
         if (!$mailer->enviarConfirmacion()) {
             error_log('No se pudo enviar el correo de confirmación.');
