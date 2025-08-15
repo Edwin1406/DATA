@@ -52,7 +52,7 @@ class EmailRegistroDiseno
             <tr>
               <td style="background:#111827;padding:14px 18px;text-align:center;">
                 <div style="font-size:16px;font-weight:700;color:#ffffff;letter-spacing:.3px;">MEGASTOCK S.A.</div>
-                <div style="font-size:11px;color:#cbd5e1;margin-top:2px;">Confirmación de Registro de Diseño</div>
+                <div style="font-size:11px;color:#cbd5e1;margin-top:2px;">Registro de Diseño</div>
               </td>
             </tr>
 
@@ -111,8 +111,8 @@ class EmailRegistroDiseno
             <tr>
               <td style="padding:12px 18px;border-top:1px solid #f1f5f9;text-align:center;background:#ffffff;">
                 <div style="font-size:12px;color:#94a3b8;">
-                  © ' . $anio . ' MEGASTOCK S.A. — Enviado por
-                  <span style="color:#94a3b8;text-decoration:none;">sistemas@logmegaecuador.com</span>
+                  © ' . $anio . ' MEGASTOCK S.A. — Desarrollado por
+                  <span style="color:#94a3b8;text-decoration:none;">sistemas@megaecuador.com</span>
                 </div>
               </td>
             </tr>
@@ -125,7 +125,7 @@ class EmailRegistroDiseno
 </html>';
 
         $alt = "Confirmación de Registro de Diseño\n"
-             . "Hola $nombre,\n"
+             . "HOLA $nombre,\n"
              . "Estado: $estado\n"
              . "Código de diseño: $token\n"
              . "Fecha de creación: $fecha\n\n"

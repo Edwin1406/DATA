@@ -182,7 +182,7 @@ class EmailDiseno
               </table>
 
             <div style="text-align:center;margin:18px 0;">
-              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK</span>
+              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK S.A. — Desarrollado por Sistemas@megaecuador.com</span>
             </div>
 
               <!-- Pie -->
