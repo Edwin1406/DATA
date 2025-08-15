@@ -52,7 +52,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONSUMO GENERAL</h4>
+                        <h4 class="card-title">EDITAR DE CONSUMO GENERAL</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
