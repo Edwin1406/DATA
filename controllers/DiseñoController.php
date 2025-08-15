@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Classes\EmailDiseno;
+use Classes\EmailRegistroDiseno;
 use Model\Diseno;
 use Model\TurnoDiseno;
 use MVC\Router;
@@ -247,6 +248,11 @@ class DiseñoController
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
             // debuguear($turno);
+
+
+            // Enviar correo de confirmación
+            $email = new EmailRegistroDiseno($email, $turno->vendedor, $turno->codigo);
+            $email->enviarConfirmacion();
 
             // debuguear($turno);
             $alertas = $turno->validar();
