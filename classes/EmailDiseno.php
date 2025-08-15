@@ -182,7 +182,7 @@ class EmailDiseno
               </table>
 
             <div style="text-align:center;margin:18px 0;">
-              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK S.A. — Desarrollado por Sistemas@megaecuador.com</span>
+              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK S.A.</span>
             </div>
 
               <!-- Pie -->
@@ -190,6 +190,8 @@ class EmailDiseno
                 Si no solicitaste este cambio o ves algo incorrecto, responde a este correo.
                 <br/>
                 CORREO: desarrollodeproductosms@gmail.com
+                <br/>
+                Desarrollado por Sistemas@megaecuador.com
               </div>
 
             </td>
