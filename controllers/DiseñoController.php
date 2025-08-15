@@ -327,9 +327,15 @@ public static function eliminarPDF()
                 "CAROLINA MUÑOZ" => "pedro@example.com"
             ];
 
-            $turno->vendedor = $vendedores[$turno->vendedor] ?? null;
+            $vendedor = $turno->vendedor;
 
-            debuguear($turno);
+// Verificamos si existe el vendedor en el array
+if (array_key_exists($vendedor, $vendedores)) {
+    $correo = $vendedores[$vendedor];
+} else {
+    $correo = "default@example.com"; // correo por defecto si no existe
+}
+            debuguear($correo);
 
         } else {
             foreach ($_POST as $campo => $valor) {
