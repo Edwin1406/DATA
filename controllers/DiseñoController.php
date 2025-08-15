@@ -341,44 +341,71 @@ class DiseñoController
             //         $turno->$campo = $valor;
             //     }
             // }
+// === Normalizador de nombres (quita tildes, espacios extra y pone MAYÚSCULAS)
+function normalizar($s) {
+    $s = trim($s);
+    $s = preg_replace('/\s+/', ' ', $s); // compacta espacios
+    $s = mb_strtoupper($s, 'UTF-8');
+    // elimina tildes comunes
+    $s = strtr($s, [
+        'Á'=>'A','É'=>'E','Í'=>'I','Ó'=>'O','Ú'=>'U','Ü'=>'U','Ñ'=>'N',
+        'á'=>'A','é'=>'E','í'=>'I','ó'=>'O','ú'=>'U','ü'=>'U','ñ'=>'N'
+    ]);
+    return $s;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (method_exists($turno, 'sincronizar')) {
         $turno->sincronizar($_POST);
     }
 
-    // Solo si el email es el de pruebas -> redirige al vendedor correspondiente
+    // Solo redirige si el destino original es el correo de pruebas
     if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0) {
 
-        // Mapa vendedor -> correo
+        // OJO: usa el NOMBRE DEL VENDEDOR, no el del cliente.
+        // Cambia esta variable si tu campo real se llama distinto:
+        $vendedorNombre = $_POST['vendedor'] ?? $nombre; 
+
         $vendedores = [
-            "JHON VACA"           => "sistemas@megaecuador.com",
-            "SHULYANA HERNANDEZ"  => "ventas3@megaecuador.com",
-            "ANTONELLA DEZCALZI"  => "maria@example.com",
-            "CAROLINA MUÑOZ"      => "pedro@example.com",
+            "JHON VACA"          => "sistemas@megaecuador.com",
+            "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
+            "ANTONELLA DEZCALZI" => "maria@example.com",
+            "CAROLINA MUÑOZ"     => "pedro@example.com",
         ];
 
-        // Normaliza el nombre para que coincida con las claves del array
-        $clave = mb_strtoupper(trim($nombre), 'UTF-8');
-
-        // Si no hay coincidencia, usa un correo por defecto (o el mismo de pruebas)
-        $destinatario = $vendedores[$clave] ?? 'edwin.ed948@gmail.com';
-
-        try {
-            // OJO: pasa el OBJETO $turno, no $turno->codigo
-            $mailer = new EmailDiseno($destinatario, $nombre, $turno);
-
-            // Haz que el método devuelva true/false y captura errores
-            if (!$mailer->enviarConfirmacion()) {
-                error_log('No se pudo enviar el correo de confirmación.');
-            }
-        } catch (Throwable $e) {
-            error_log('Error enviando correo: '.$e->getMessage());
+        // Crea un mapa con claves normalizadas
+        $mapa = [];
+        foreach ($vendedores as $k => $v) {
+            $mapa[ normalizar($k) ] = $v;
         }
-    } else {
-        // Resto del flujo cuando no es el correo de pruebas
-        foreach ($_POST as $campo => $valor) {
-            $turno->$campo = $valor;
+
+        $clave = normalizar($vendedorNombre);
+        $destinatario = $mapa[$clave] ?? null;
+
+        // (Opcional) Coincidencia difusa si no se encontró exacta
+        if ($destinatario === null) {
+            $mejor = null; $distMejor = PHP_INT_MAX; $mejorClave = null;
+            foreach (array_keys($mapa) as $k) {
+                $d = levenshtein($clave, $k);
+                if ($d < $distMejor) { $distMejor = $d; $mejor = $mapa[$k]; $mejorClave = $k; }
+            }
+            if ($distMejor <= 2) { // tolera 1–2 letras de diferencia
+                $destinatario = $mejor;
+                error_log("Usando coincidencia aproximada: '$vendedorNombre' ~ '$mejorClave' (dist=$distMejor)");
+            }
+        }
+
+        if ($destinatario === null) {
+            // Si no hay match, manda al correo por defecto (o maneja el error)
+            $destinatario = 'sistemas@megaecuador.com';
+            error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
+        }
+
+        // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
+        $mailer = new EmailDiseno($destinatario, $nombre, $turno);
+
+        if (!$mailer->enviarConfirmacion()) {
+            error_log('No se pudo enviar el correo de confirmación.');
         }
     }
 }}
