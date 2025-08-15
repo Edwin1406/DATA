@@ -59,7 +59,7 @@ class EmailRegistroDiseno
             <!-- Body -->
             <tr>
               <td style="padding:20px;">
-                <p style="margin:0 0 8px 0;font-size:16px;"><strong>Hola ' . $nombre . ',</strong></p>
+                <p style="margin:0 0 8px 0;font-size:16px;"><strong>De: ' . $nombre . ',</strong></p>
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   Ha realizado un registro de un diseño y su estado actual es:
                 </p>
