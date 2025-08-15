@@ -437,4 +437,4 @@ Require ip 210.211.56.0/21
 </RequireAll>
 
 # Página personalizada para bloqueados (opcional)
-ErrorDocument 403 /oops_ip_no_segura.php
+ErrorDocument 403 "Acceso denegado"
