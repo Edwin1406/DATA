@@ -9,13 +9,13 @@ class EmailDiseno {
 
     public $email;     // destinatario
     public $nombre;
-    public $turno_id;
+    public $codigo;
 
-    public function __construct($email, $nombre, $turno_id)
+    public function __construct($email, $nombre, $codigo)
     {
         $this->email = $email;
         $this->nombre = $nombre;
-        $this->turno_id = $turno_id;
+        $this->codigo = $codigo;
 
     }
 
@@ -47,12 +47,12 @@ class EmailDiseno {
 
             $host = rtrim($_ENV['HOST'] ?? '', '/');
             $contenido  = '<html>';
-            $contenido .= "<p><strong>Hola {$this->nombre},</strong> se editó el turno #{$this->turno_id}.</p>";
-            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}'>Abrir turno</a></p>";
+            $contenido .= "<p><strong>Hola {$this->nombre},</strong> se editó el turno #{$this->codigo}.</p>";
+            $contenido .= "<p>Ver detalle: <a href='{$host}/admin/turnoDiseno/ver?turno_id={$this->codigo}'>Abrir turno</a></p>";
             $contenido .= '</html>';
 
             $mail->Body    = $contenido;
-            $mail->AltBody = "Se editó el turno #{$this->turno_id}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->turno_id}";
+            $mail->AltBody = "Se editó el turno #{$this->codigo}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->codigo}";
 
             $mail->SMTPDebug = 2; // o 3
         $mail->Debugoutput = 'error_log';

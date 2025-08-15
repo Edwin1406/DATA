@@ -394,7 +394,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 error_log("Usando coincidencia aproximada: '$vendedorNombre' ~ '$mejorClave' (dist=$distMejor)");
             }
         }
-            $turno_id = $turno->id;
+            $codigo = $turno->codigo;
 
         if ($destinatario === null) {
             // Si no hay match, manda al correo por defecto (o maneja el error)
@@ -403,7 +403,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $turno_id);
+        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo);
 
         if (!$mailer->enviarConfirmacion()) {
             error_log('No se pudo enviar el correo de confirmación.');
