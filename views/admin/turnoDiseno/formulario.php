@@ -7,6 +7,19 @@
     </div>
   </div>
 
+  <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="opciones">Opciones</label>
+      <select id="opciones" class="form-control" name="opciones">
+        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione una opción</option>
+        <option value="CAJAS" <?php echo isset($turno) && $turno->opciones === 'CAJAS' ? 'selected' : ''; ?>>Cajas</option>
+        <option value="LAMINAS" <?php echo isset($turno) && $turno->opciones === 'LAMINAS' ? 'selected' : ''; ?>>Láminas</option>
+        <option value="OTROS" <?php echo isset($turno) && $turno->opciones === 'OTROS' ? 'selected' : ''; ?>>Otros</option>
+      </select>
+    </div>
+  </div>
+
   <!-- select de vendedores poner nombres en html -->
   <div class="col-md-6 col-12">
     <div class="form-group">
