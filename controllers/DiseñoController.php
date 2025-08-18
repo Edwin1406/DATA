@@ -247,7 +247,7 @@ class DiseñoController
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
-            debuguear($turno);
+            // debuguear($turno);
             // email por defecto
             // $emaildefault = 'desarrollodeproductoms@gmail.com';
             $emaildefault = 'sistemas@megaecuador.com';
