@@ -185,7 +185,7 @@
 
     // Mostrar extras solo si es Lámina
     document.querySelectorAll(".extra-lamina").forEach(el => {
-      // el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
+      el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
     });
   });
 </script>
