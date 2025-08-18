@@ -12,135 +12,178 @@
 
 
   <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
-<div class="col-md-6 col-12">
-  <div class="form-group">
-    <label for="opciones">Tipo producto</label>
-    <select id="opciones" class="form-control" name="opciones">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="CAJAS">Cajas</option>
-      <option value="LAMINAS">Láminas</option>
-      <option value="OTROS">Otros</option>
-    </select>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="opciones">Tipo producto</label>
+      <select id="opciones" class="form-control" name="opciones">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="CAJAS">Cajas</option>
+        <option value="LAMINAS">Láminas</option>
+        <option value="OTROS">Otros</option>
+      </select>
+    </div>
   </div>
-</div>
 
-<!-- OPCIONES TIPOS SEGÚN PRODUCTO -->
-<div class="col-md-6 col-12">
-  <div class="form-group">
-    <label for="tipo">Tipo componente</label>
-    <select id="tipo" class="form-control" name="tipo">
-      <option value="" disabled selected>Seleccione un tipo</option>
-    </select>
+  <!-- OPCIONES TIPOS SEGÚN PRODUCTO -->
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="tipo">Tipo componente</label>
+      <select id="tipo" class="form-control" name="tipo">
+        <option value="" disabled selected>Seleccione un tipo</option>
+      </select>
+    </div>
   </div>
-</div>
 
 
 
-<!-- LARGO -->
-  <div class="form-group">
-    <label for="largo">Largo</label>
-    <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
-      value="<?php echo isset($turno) ? s($turno->largo) : ''; ?>">
+  <!-- LARGO -->
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="largo">Largo</label>
+      <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
+        value="<?php echo isset($turno) ? s($turno->largo) : ''; ?>">
+    </div>
   </div>
+
+
+
 
   <!-- ALTO -->
-  <div class="form-group">
-    <label for="alto">Alto</label>
-    <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
-      value="<?php echo isset($turno) ? s($turno->alto) : ''; ?>">
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="alto">Alto</label>
+      <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
+        value="<?php echo isset($turno) ? s($turno->alto) : ''; ?>">
+    </div>
   </div>
 
   <!-- ANCHO -->
-  <div class="form-group">
-    <label for="ancho">Ancho</label>
-    <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="ancho">Ancho</label>
+      <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
       value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
+    </div>
   </div>
   
+  
   <!-- DOBLES SI O NO OPCION  -->
-  <div class="form-group">
-    <label for="dobles">¿Es doble?</label>
-    <select id="dobles" class="form-control" name="dobles">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="SI">Sí</option>
-      <option value="NO">No</option>
-    </select>
+  
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="dobles">¿Es doble?</label>
+      <select id="dobles" class="form-control" name="dobles">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="SI">Sí</option>
+        <option value="NO">No</option>
+      </select>
+    </div>
   </div>
   
   <!--FLAUTA ESCRIBIR INPUT -->
   
+  <div class="col-md-6 col-12">
   <div class="form-group">
     <label for="flauta">Flauta</label>
     <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
       value="<?php echo isset($turno) ? s($turno->flauta) : ''; ?>">
   </div>
-  
+  </div>
 
-<!-- MATERIAL -->
-  <div class="form-group">
-    <label for="material">Material</label>
-    <input type="text" id="material" class="form-control" placeholder="Material" name="material"
+
+  <!-- MATERIAL -->
+
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="material">Material</label>
+      <input type="text" id="material" class="form-control" placeholder="Material" name="material"
       value="<?php echo isset($turno) ? s($turno->material) : ''; ?>">
+    </div>
   </div>
-
-<!-- ECT -->
-  <div class="form-group">
-    <label for="ect">ECT</label>
-    <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
-      value="<?php echo isset($turno) ? s($turno->ect) : ''; ?>">
+  
+  
+  <!-- ECT -->
+  
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="ect">ECT</label>
+      <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
+        value="<?php echo isset($turno) ? s($turno->ect) : ''; ?>">
+    </div>
   </div>
-
-
-
-
   
 
 
+  <script>
+    // Opciones agrupadas por producto
+    const opcionesPorProducto = {
+      CAJAS: [{
+          value: "CAJA-TROQUELADA",
+          text: "Caja Troquelada"
+        },
+        {
+          value: "CAJA-REGULAR",
+          text: "Caja Regular"
+        },
+        {
+          value: "TAPA-FLORICULTORA",
+          text: "Tapa Floricultora"
+        },
+        {
+          value: "BASE-FLORICULTORA",
+          text: "Base Floricultora"
+        },
+        {
+          value: "TAPA-TELESCOPICA",
+          text: "Tapa Telescópica"
+        },
+        {
+          value: "BASE-TELESCOPICA",
+          text: "Base Telescópica"
+        }
+      ],
+      LAMINAS: [{
+        value: "LAMINA-MICROCORRGADO",
+        text: "Lámina Microcorrugado"
+      }],
+      OTROS: [{
+          value: "CAPUCHON-FLOR",
+          text: "Capuchón Flor"
+        },
+        {
+          value: "SEPARADOR-FLOR",
+          text: "Separador Flor"
+        },
+        {
+          value: "LARGUERO",
+          text: "Larguero"
+        },
+        {
+          value: "TRANSVERSAL",
+          text: "Transversal"
+        }
+      ]
+    };
 
+    const selectProducto = document.getElementById("opciones");
+    const selectTipo = document.getElementById("tipo");
 
+    selectProducto.addEventListener("change", function() {
+      const categoria = this.value;
+      const opciones = opcionesPorProducto[categoria] || [];
 
+      // Limpia opciones previas
+      selectTipo.innerHTML = '<option value="" disabled selected>Seleccione un tipo</option>';
 
-<script>
-  // Opciones agrupadas por producto
-  const opcionesPorProducto = {
-    CAJAS: [
-      { value: "CAJA-TROQUELADA", text: "Caja Troquelada" },
-      { value: "CAJA-REGULAR", text: "Caja Regular" },
-      { value: "TAPA-FLORICULTORA", text: "Tapa Floricultora" },
-      { value: "BASE-FLORICULTORA", text: "Base Floricultora" },
-      { value: "TAPA-TELESCOPICA", text: "Tapa Telescópica" },
-      { value: "BASE-TELESCOPICA", text: "Base Telescópica" }
-    ],
-    LAMINAS: [
-      { value: "LAMINA-MICROCORRGADO", text: "Lámina Microcorrugado" }
-    ],
-    OTROS: [
-      { value: "CAPUCHON-FLOR", text: "Capuchón Flor" },
-      { value: "SEPARADOR-FLOR", text: "Separador Flor" },
-      { value: "LARGUERO", text: "Larguero" },
-      { value: "TRANSVERSAL", text: "Transversal" }
-    ]
-  };
-
-  const selectProducto = document.getElementById("opciones");
-  const selectTipo = document.getElementById("tipo");
-
-  selectProducto.addEventListener("change", function () {
-    const categoria = this.value;
-    const opciones = opcionesPorProducto[categoria] || [];
-
-    // Limpia opciones previas
-    selectTipo.innerHTML = '<option value="" disabled selected>Seleccione un tipo</option>';
-
-    // Agrega nuevas opciones según la categoría seleccionada
-    opciones.forEach(op => {
-      const option = document.createElement("option");
-      option.value = op.value;
-      option.textContent = op.text;
-      selectTipo.appendChild(option);
+      // Agrega nuevas opciones según la categoría seleccionada
+      opciones.forEach(op => {
+        const option = document.createElement("option");
+        option.value = op.value;
+        option.textContent = op.text;
+        selectTipo.appendChild(option);
+      });
     });
-  });
-</script>
+  </script>
 
 
 
