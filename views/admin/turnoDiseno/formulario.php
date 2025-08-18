@@ -23,7 +23,7 @@
 
 
 <!-- FORMULARIO CAMPOS DINÁMICOS -->
-<div id="campos-dinamicos">
+<div id="campos-dinamicos" class="row">
   <!-- LARGO -->
   <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
@@ -176,11 +176,13 @@
     document.getElementById("campo-largo").style.display = "block";
     document.getElementById("campo-alto").style.display = "block";
 
+
     // Mostrar/ocultar Ancho
     if (tipo === "LAMINA-MICROCORRGADO") {
       document.getElementById("campo-ancho").style.display = "none";
     } else {
       document.getElementById("campo-ancho").style.display = "block";
+
     }
 
     // Mostrar extras solo si es Lámina
