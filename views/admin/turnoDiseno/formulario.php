@@ -153,7 +153,7 @@
     ]
   };
 
-  const selectProducto = document.getElementById("opciones");
+  const selectProducto = document.getElementById("tipo_producto");
   const selectTipo = document.getElementById("tipo_componente");
 
   selectProducto.addEventListener("change", function() {
