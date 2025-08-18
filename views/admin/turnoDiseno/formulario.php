@@ -23,8 +23,7 @@
 
 
 <!-- FORMULARIO CAMPOS DINÁMICOS -->
-<div id="campos-dinamicos" >
-
+<div id="campos-dinamicos">
   <!-- LARGO -->
   <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
@@ -186,7 +185,7 @@
 
     // Mostrar extras solo si es Lámina
     document.querySelectorAll(".extra-lamina").forEach(el => {
-      el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
+      // el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
     });
   });
 </script>
