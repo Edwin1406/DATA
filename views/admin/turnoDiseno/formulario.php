@@ -23,9 +23,11 @@
   </div>
 
 
-
+<!-- FORMULARIO CAMPOS DINÁMICOS -->
+<div id="campos-dinamicos" class="row">
+  
   <!-- LARGO -->
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
       <label for="largo">Largo</label>
       <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
@@ -33,11 +35,8 @@
     </div>
   </div>
 
-
-
-
   <!-- ALTO -->
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 campo" id="campo-alto" style="display:none;">
     <div class="form-group">
       <label for="alto">Alto</label>
       <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
@@ -46,60 +45,55 @@
   </div>
 
   <!-- ANCHO -->
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 campo" id="campo-ancho" style="display:none;">
     <div class="form-group">
       <label for="ancho">Ancho</label>
       <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
-      value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
+        value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
     </div>
   </div>
-  
-  
-  <!-- DOBLES SI O NO OPCION  -->
-  
-  <div class="col-md-6 col-12">
+
+  <!-- DOBLES -->
+  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
     <div class="form-group">
       <label for="dobles">¿Es doble?</label>
       <select id="dobles" class="form-control" name="dobles">
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="SI">Sí</option>
-        <option value="NO">No</option>
+        <option value="SI" <?php echo isset($turno) && $turno->dobles === 'SI' ? 'selected' : ''; ?>>Sí</option>
+        <option value="NO" <?php echo isset($turno) && $turno->dobles === 'NO' ? 'selected' : ''; ?>>No</option>
       </select>
     </div>
   </div>
-  
-  <!--FLAUTA ESCRIBIR INPUT -->
-  
-  <div class="col-md-6 col-12">
-  <div class="form-group">
-    <label for="flauta">Flauta</label>
-    <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
-      value="<?php echo isset($turno) ? s($turno->flauta) : ''; ?>">
-  </div>
-  </div>
 
+  <!-- FLAUTA -->
+  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
+    <div class="form-group">
+      <label for="flauta">Flauta</label>
+      <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
+        value="<?php echo isset($turno) ? s($turno->flauta) : ''; ?>">
+    </div>
+  </div>
 
   <!-- MATERIAL -->
-
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
     <div class="form-group">
       <label for="material">Material</label>
       <input type="text" id="material" class="form-control" placeholder="Material" name="material"
-      value="<?php echo isset($turno) ? s($turno->material) : ''; ?>">
+        value="<?php echo isset($turno) ? s($turno->material) : ''; ?>">
     </div>
   </div>
-  
-  
+
   <!-- ECT -->
-  
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
     <div class="form-group">
       <label for="ect">ECT</label>
       <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
         value="<?php echo isset($turno) ? s($turno->ect) : ''; ?>">
     </div>
   </div>
-  
+
+</div>
+
 
 
   <script>
@@ -171,6 +165,35 @@
         selectTipo.appendChild(option);
       });
     });
+
+
+
+
+
+
+  selectTipo.addEventListener("change", function () {
+    const tipo = this.value;
+
+    // Mostrar siempre Largo y Alto
+    document.getElementById("campo-largo").style.display = "block";
+    document.getElementById("campo-alto").style.display = "block";
+
+    // Mostrar/ocultar Ancho
+    if (tipo === "LAMINA-MICROCORRGADO") {
+      document.getElementById("campo-ancho").style.display = "none";
+    } else {
+      document.getElementById("campo-ancho").style.display = "block";
+    }
+
+    // Mostrar extras solo si es Lámina
+    document.querySelectorAll(".extra-lamina").forEach(el => {
+      el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
+    });
+  });
+
+
+
+
   </script>
 
 
