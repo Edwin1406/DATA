@@ -44,6 +44,70 @@
 
 
 
+  <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <label for="opciones">Tipo producto</label>
+    <select id="opciones" class="form-control" name="opciones">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="CAJAS">Cajas</option>
+      <option value="LAMINAS">Láminas</option>
+      <option value="OTROS">Otros</option>
+    </select>
+  </div>
+</div>
+
+<!-- OPCIONES TIPOS SEGÚN PRODUCTO -->
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <label for="tipo">Tipo componente</label>
+    <select id="tipo" class="form-control" name="tipo">
+      <option value="" disabled selected>Seleccione un tipo</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  // Opciones agrupadas por producto
+  const opcionesPorProducto = {
+    CAJAS: [
+      { value: "CAJA-TROQUELADA", text: "Caja Troquelada" },
+      { value: "CAJA-REGULAR", text: "Caja Regular" },
+      { value: "TAPA-FLORICULTORA", text: "Tapa Floricultora" },
+      { value: "BASE-FLORICULTORA", text: "Base Floricultora" },
+      { value: "TAPA-TELESCOPICA", text: "Tapa Telescópica" },
+      { value: "BASE-TELESCOPICA", text: "Base Telescópica" }
+    ],
+    LAMINAS: [
+      { value: "LAMINA-MICROCORRGADO", text: "Lámina Microcorrugado" }
+    ],
+    OTROS: [
+      { value: "CAPUCHON-FLOR", text: "Capuchón Flor" },
+      { value: "SEPARADOR-FLOR", text: "Separador Flor" },
+      { value: "LARGUERO", text: "Larguero" },
+      { value: "TRANSVERSAL", text: "Transversal" }
+    ]
+  };
+
+  const selectProducto = document.getElementById("opciones");
+  const selectTipo = document.getElementById("tipo");
+
+  selectProducto.addEventListener("change", function () {
+    const categoria = this.value;
+    const opciones = opcionesPorProducto[categoria] || [];
+
+    // Limpia opciones previas
+    selectTipo.innerHTML = '<option value="" disabled selected>Seleccione un tipo</option>';
+
+    // Agrega nuevas opciones según la categoría seleccionada
+    opciones.forEach(op => {
+      const option = document.createElement("option");
+      option.value = op.value;
+      option.textContent = op.text;
+      selectTipo.appendChild(option);
+    });
+  });
+</script>
 
 
 
