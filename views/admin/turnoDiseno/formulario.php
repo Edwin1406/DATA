@@ -23,7 +23,7 @@
 
 
 <!-- FORMULARIO CAMPOS DINÁMICOS -->
-<div id="campos-dinamicos" class="row">
+<div id="campos-dinamicos" >
 
   <!-- LARGO -->
   <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
