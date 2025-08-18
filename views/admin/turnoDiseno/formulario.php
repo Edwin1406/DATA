@@ -22,8 +22,9 @@
 </div>
 
 
-<!-- FORMULARIO CAMPOS DINÁMICOS -->
+<!-- CAMPOS DINÁMICOS -->
 <div id="campos-dinamicos" class="row">
+
   <!-- LARGO -->
   <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
@@ -51,20 +52,29 @@
     </div>
   </div>
 
-  <!-- DOBLES -->
-  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
+  <!-- DOBLES (solo lámina) -->
+  <div class="col-md-6 col-12 campo lamina" style="display:none;">
     <div class="form-group">
       <label for="dobles">¿Es doble?</label>
       <select id="dobles" class="form-control" name="dobles">
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="SI" <?php echo isset($turno) && $turno->dobles === 'SI' ? 'selected' : ''; ?>>Sí</option>
-        <option value="NO" <?php echo isset($turno) && $turno->dobles === 'NO' ? 'selected' : ''; ?>>No</option>
+        <option value="SI">Sí</option>
+        <option value="NO">No</option>
       </select>
     </div>
   </div>
 
+  <!-- DESCRIPCION (otros) -->
+  <div class="col-md-12 campo otros" style="display:none;">
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <input type="text" id="descripcion" class="form-control" placeholder="Descripción" name="descripcion"
+        value="<?php echo isset($turno) ? s($turno->descripcion) : ''; ?>">
+    </div>
+  </div>
+
   <!-- FLAUTA -->
-  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
+  <div class="col-md-6 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="flauta">Flauta</label>
       <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
@@ -73,7 +83,7 @@
   </div>
 
   <!-- MATERIAL -->
-  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
+  <div class="col-md-6 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="material">Material</label>
       <input type="text" id="material" class="form-control" placeholder="Material" name="material"
@@ -82,7 +92,7 @@
   </div>
 
   <!-- ECT -->
-  <div class="col-md-6 col-12 campo extra-lamina" style="display:none;">
+  <div class="col-md-6 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="ect">ECT</label>
       <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
@@ -91,8 +101,6 @@
   </div>
 
 </div>
-
-
 
 <script>
   // Opciones agrupadas por producto
@@ -168,28 +176,34 @@
 
 
 
+  function mostrarCampos() {
+    const tipo = selectTipo.value;
 
-  selectTipo.addEventListener("change", function() {
-    const tipo = this.value;
+    // Ocultar todo
+    document.querySelectorAll(".campo").forEach(el => el.style.display = "none");
 
-    // Mostrar siempre Largo y Alto
-    document.getElementById("campo-largo").style.display = "block";
-    document.getElementById("campo-alto").style.display = "block";
-
-
-    // Mostrar/ocultar Ancho
+    // Lógica según el tipo seleccionado
     if (tipo === "LAMINA-MICROCORRGADO") {
-      document.getElementById("campo-ancho").style.display = "none";
-    } else {
+      document.getElementById("campo-largo").style.display = "block";
+      document.getElementById("campo-alto").style.display = "block";
+      document.querySelectorAll(".lamina").forEach(el => el.style.display = "block");
+    } 
+    else if (["CAPUCHON-FLOR", "SEPARADOR-FLOR", "LARGUERO", "TRANSVERSAL"].includes(tipo)) {
+      document.querySelectorAll(".otros").forEach(el => el.style.display = "block");
+    } 
+    else {
+      // Cajas y similares
+      document.getElementById("campo-largo").style.display = "block";
+      document.getElementById("campo-alto").style.display = "block";
       document.getElementById("campo-ancho").style.display = "block";
-
+      document.querySelectorAll(".cajas").forEach(el => el.style.display = "block");
     }
+  }
 
-    // Mostrar extras solo si es Lámina
-    document.querySelectorAll(".extra-lamina").forEach(el => {
-      el.style.display = (tipo === "LAMINA-MICROCORRGADO") ? "block" : "none";
-    });
-  });
+  selectTipo.addEventListener("change", mostrarCampos);
+
+  // Si vienes con un valor cargado desde PHP ($turno->tipo), mostrarlo automáticamente
+  window.addEventListener("DOMContentLoaded", mostrarCampos);
 </script>
 
 
