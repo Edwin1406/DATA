@@ -10,7 +10,7 @@
   <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
   <div class="col-md-6 col-12">
     <div class="form-group">
-      <label for="opciones">Opciones</label>
+      <label for="opciones">Tipo producto</label>
       <select id="opciones" class="form-control" name="opciones">
         <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione una opción</option>
         <option value="CAJAS" <?php echo isset($turno) && $turno->opciones === 'CAJAS' ? 'selected' : ''; ?>>Cajas</option>
@@ -24,7 +24,7 @@
   <!-- OPCIONES TAPA-FLORICLTORA,BASE-FLORICULTORA, CAJA-TROQUELADA,TAPA-TELESCOPICA,BASE-TELESCOPICA,CAJA-REGULAR ,LAMINA-MICROCORRGADO,CAPUCHON-FLOR,SEPARADOR-FLOR,LARGUERO,TRANSVERSAL -->
   <div class="col-md-6 col-12">
     <div class="form-group">
-      <label for="tipo">Tipo</label>
+      <label for="tipo">Tipo componente</label>
       <select id="tipo" class="form-control" name="tipo">
         <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un tipo</option>
         <option value="TAPA-FLORICULTORA" <?php echo isset($turno) && $turno->tipo === 'TAPA-FLORICULTORA' ? 'selected' : ''; ?>>Tapa Floricultora</option>
@@ -44,7 +44,7 @@
 
 
 
-  
+
 
 
 
