@@ -14,8 +14,8 @@
 <!-- OPCIONES TIPOS SEGÚN PRODUCTO -->
 <div class="col-md-6 col-12">
   <div class="form-group">
-    <label for="tipo">Tipo componente</label>
-    <select id="tipo" class="form-control" name="tipo">
+    <label for="tipo_componente">Tipo componente</label>
+    <select id="tipo_componente" class="form-control" name="tipo_componente">
       <option value="" disabled selected>Seleccione un tipo</option>
     </select>
   </div>
@@ -154,7 +154,7 @@
   };
 
   const selectProducto = document.getElementById("opciones");
-  const selectTipo = document.getElementById("tipo");
+  const selectTipo = document.getElementById("tipo_componente");
 
   selectProducto.addEventListener("change", function() {
     const categoria = this.value;
