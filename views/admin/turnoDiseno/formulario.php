@@ -64,14 +64,18 @@
     </div>
   </div>
 
-  <!-- DESCRIPCION (otros) -->
-  <div class="col-md-12 campo otros" style="display:none;">
+
+
+  <div class="col-md-6 col-12 campo otros" style="display: none;">
     <div class="form-group">
       <label for="descripcion">Descripción</label>
-      <input type="text" id="descripcion" class="form-control" placeholder="Descripción" name="descripcion"
-        value="<?php echo isset($turno) ? s($turno->descripcion) : ''; ?>">
+      <textarea id="descripcion" class="form-control form-control-sm"
+        placeholder="......." name="descripcion" rows="3"><?php echo isset($turno) ? s($turno->descripcion) : ''; ?></textarea>
     </div>
   </div>
+
+
+
 
   <!-- FLAUTA -->
   <div class="col-md-6 col-12 campo cajas" style="display:none;">
@@ -187,11 +191,9 @@
       document.getElementById("campo-largo").style.display = "block";
       document.getElementById("campo-alto").style.display = "block";
       document.querySelectorAll(".lamina").forEach(el => el.style.display = "block");
-    } 
-    else if (["CAPUCHON-FLOR", "SEPARADOR-FLOR", "LARGUERO", "TRANSVERSAL"].includes(tipo)) {
+    } else if (["CAPUCHON-FLOR", "SEPARADOR-FLOR", "LARGUERO", "TRANSVERSAL"].includes(tipo)) {
       document.querySelectorAll(".otros").forEach(el => el.style.display = "block");
-    } 
-    else {
+    } else {
       // Cajas y similares
       document.getElementById("campo-largo").style.display = "block";
       document.getElementById("campo-alto").style.display = "block";
@@ -246,6 +248,15 @@
       <input type="datetime-local" id="fecha_entrega" class="form-control"
         placeholder="Fecha y Hora de Entrega" name="fecha_entrega"
         value="<?php echo isset($turno) ? date('Y-m-d\TH:i', strtotime($turno->fecha_entrega)) : ''; ?>">
+    </div>
+  </div>
+
+
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="detalle">Detalle</label>
+      <textarea id="detalle" class="form-control form-control-sm"
+        placeholder="......." name="detalle" rows="3"><?php echo isset($turno) ? s($turno->detalle) : ''; ?></textarea>
     </div>
   </div>
 
