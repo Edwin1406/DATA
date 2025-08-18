@@ -34,6 +34,72 @@
   </div>
 </div>
 
+
+
+<!-- LARGO -->
+  <div class="form-group">
+    <label for="largo">Largo</label>
+    <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
+      value="<?php echo isset($turno) ? s($turno->largo) : ''; ?>">
+  </div>
+
+  <!-- ALTO -->
+  <div class="form-group">
+    <label for="alto">Alto</label>
+    <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
+      value="<?php echo isset($turno) ? s($turno->alto) : ''; ?>">
+  </div>
+
+  <!-- ANCHO -->
+  <div class="form-group">
+    <label for="ancho">Ancho</label>
+    <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
+      value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
+  </div>
+  
+  <!-- DOBLES SI O NO OPCION  -->
+  <div class="form-group">
+    <label for="dobles">¿Es doble?</label>
+    <select id="dobles" class="form-control" name="dobles">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="SI">Sí</option>
+      <option value="NO">No</option>
+    </select>
+  </div>
+  
+  <!--FLAUTA ESCRIBIR INPUT -->
+  
+  <div class="form-group">
+    <label for="flauta">Flauta</label>
+    <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
+      value="<?php echo isset($turno) ? s($turno->flauta) : ''; ?>">
+  </div>
+  
+
+<!-- MATERIAL -->
+  <div class="form-group">
+    <label for="material">Material</label>
+    <input type="text" id="material" class="form-control" placeholder="Material" name="material"
+      value="<?php echo isset($turno) ? s($turno->material) : ''; ?>">
+  </div>
+
+<!-- ECT -->
+  <div class="form-group">
+    <label for="ect">ECT</label>
+    <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
+      value="<?php echo isset($turno) ? s($turno->ect) : ''; ?>">
+  </div>
+
+
+
+
+  
+
+
+
+
+
+
 <script>
   // Opciones agrupadas por producto
   const opcionesPorProducto = {
