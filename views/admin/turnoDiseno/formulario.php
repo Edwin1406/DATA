@@ -248,13 +248,6 @@
   </div>
 
 
-  <div class="col-md-6 col-12">
-    <div class="form-group">
-      <label for="detalle">Detalle</label>
-      <textarea id="detalle" class="form-control form-control-sm"
-        placeholder="......." name="detalle" rows="3"><?php echo isset($turno) ? s($turno->detalle) : ''; ?></textarea>
-    </div>
-  </div>
 
 
   <!-- estado -->
