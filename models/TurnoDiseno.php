@@ -7,11 +7,38 @@ use DateTime;
 class TurnoDiseno extends ActiveRecord
 {
     protected static $tabla = 'turno_diseno';
-    protected static $columnasDB = ['id', 'codigo', 'detalle', 'vendedor', 'observaciones', 'estado', 'fecha_creacion', 'fecha_entrega'];
+    protected static $columnasDB = [
+        'id',
+        'codigo',
+        'tipo_producto',
+        'tipo_componente',
+        'largo',
+        'alto',
+        'ancho',
+        'dobles',
+        'descripcion',
+        'flauta',
+        'material',
+        'ect',
+        'vendedor',
+        'observaciones',
+        'estado',
+        'fecha_creacion',
+        'fecha_entrega'
+    ];
 
     public ?int $id;
     public ?string $codigo;
-    public ?string $detalle;
+    public ?string $tipo_producto;
+    public ?string $tipo_componente;
+    public ?int $largo;
+    public ?int $alto;
+    public ?int $ancho;
+    public ?string $dobles;
+    public ?string $descripcion;
+    public ?string $flauta;
+    public ?string $material;
+    public ?int $ect;
     public ?string $vendedor;
     public ?string $observaciones;
     public ?string $estado;
@@ -26,7 +53,16 @@ class TurnoDiseno extends ActiveRecord
 
         $this->id = $args['id'] ?? null;
         $this->codigo = $args['codigo'] ?? null;
-        $this->detalle = $args['detalle'] ?? null;
+        $this->tipo_producto = $args['tipo_producto'] ?? null;
+        $this->tipo_componente = $args['tipo_componente'] ?? null;
+        $this->largo = $args['largo'] ?? null;
+        $this->alto = $args['alto'] ?? null;
+        $this->ancho = $args['ancho'] ?? null;
+        $this->dobles = $args['dobles'] ?? null;
+        $this->descripcion = $args['descripcion'] ?? null;
+        $this->flauta = $args['flauta'] ?? null;
+        $this->material = $args['material'] ?? null;
+        $this->ect = $args['ect'] ?? null;
         $this->vendedor = $args['vendedor'] ?? null;
         $this->observaciones = $args['observaciones'] ?? null;
         $this->estado = $args['estado'] ?? 'PENDIENTE'; // Default state
@@ -43,9 +79,19 @@ class TurnoDiseno extends ActiveRecord
         // if (!$this->codigo) {
         //     self::$alertas['error'][] = 'El código es obligatorio';
         // }
-        if (!$this->detalle) {
-            self::$alertas['error'][] = 'El detalle es obligatorio';
+        if (!$this->tipo_producto) {
+            self::$alertas['error'][] = 'El tipo de producto es obligatorio';
         }
+        if (!$this->tipo_componente) {
+            self::$alertas['error'][] = 'El tipo de componente es obligatorio';
+        }
+        if (!$this->largo) {
+            self::$alertas['error'][] = 'El largo es obligatorio';
+        }
+        if (!$this->alto) {
+            self::$alertas['error'][] = 'El alto es obligatorio';
+        }
+      
         if (!$this->vendedor) {
             self::$alertas['error'][] = 'El vendedor es obligatorio';
         }
