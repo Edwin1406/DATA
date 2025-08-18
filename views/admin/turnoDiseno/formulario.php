@@ -7,40 +7,7 @@
     </div>
   </div>
 
-  <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
-  <div class="col-md-6 col-12">
-    <div class="form-group">
-      <label for="opciones">Tipo producto</label>
-      <select id="opciones" class="form-control" name="opciones">
-        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione una opción</option>
-        <option value="CAJAS" <?php echo isset($turno) && $turno->opciones === 'CAJAS' ? 'selected' : ''; ?>>Cajas</option>
-        <option value="LAMINAS" <?php echo isset($turno) && $turno->opciones === 'LAMINAS' ? 'selected' : ''; ?>>Láminas</option>
-        <option value="OTROS" <?php echo isset($turno) && $turno->opciones === 'OTROS' ? 'selected' : ''; ?>>Otros</option>
-      </select>
-    </div>
-  </div>
 
-
-  <!-- OPCIONES TAPA-FLORICLTORA,BASE-FLORICULTORA, CAJA-TROQUELADA,TAPA-TELESCOPICA,BASE-TELESCOPICA,CAJA-REGULAR ,LAMINA-MICROCORRGADO,CAPUCHON-FLOR,SEPARADOR-FLOR,LARGUERO,TRANSVERSAL -->
-  <div class="col-md-6 col-12">
-    <div class="form-group">
-      <label for="tipo">Tipo componente</label>
-      <select id="tipo" class="form-control" name="tipo">
-        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un tipo</option>
-        <option value="TAPA-FLORICULTORA" <?php echo isset($turno) && $turno->tipo === 'TAPA-FLORICULTORA' ? 'selected' : ''; ?>>Tapa Floricultora</option>
-        <option value="BASE-FLORICULTORA" <?php echo isset($turno) && $turno->tipo === 'BASE-FLORICULTORA' ? 'selected' : ''; ?>>Base Floricultora</option>
-        <option value="CAJA-TROQUELADA" <?php echo isset($turno) && $turno->tipo === 'CAJA-TROQUELADA' ? 'selected' : ''; ?>>Caja Troquelada</option>
-        <option value="TAPA-TELESCOPICA" <?php echo isset($turno) && $turno->tipo === 'TAPA-TELESCOPICA' ? 'selected' : ''; ?>>Tapa Telescópica</option>
-        <option value="BASE-TELESCOPICA" <?php echo isset($turno) && $turno->tipo === 'BASE-TELESCOPICA' ? 'selected' : ''; ?>>Base Telescópica</option>
-        <option value="CAJA-REGULAR" <?php echo isset($turno) && $turno->tipo === 'CAJA-REGULAR' ? 'selected' : ''; ?>>Caja Regular</option>
-        <option value="LAMINA-MICROCORRGADO" <?php echo isset($turno) && $turno->tipo === 'LAMINA-MICROCORRGADO' ? 'selected' : ''; ?>>Lámina Microcorrugado</option>
-        <option value="CAPUCHON-FLOR" <?php echo isset($turno) && $turno->tipo === 'CAPUCHON-FLOR' ? 'selected' : ''; ?>>Capuchón Flor</option>
-        <option value="SEPARADOR-FLOR" <?php echo isset($turno) && $turno->tipo === 'SEPARADOR-FLOR' ? 'selected' : ''; ?>>Separador Flor</option>
-        <option value="LARGUERO" <?php echo isset($turno) && $turno->tipo === 'LARGUERO' ? 'selected' : ''; ?>>Larguero</option>
-        <option value="TRANSVERSAL" <?php echo isset($turno) && $turno->tipo === 'TRANSVERSAL' ? 'selected' : ''; ?>>Transversal</option>
-      </select>
-    </div>
-  </div>
 
 
 
