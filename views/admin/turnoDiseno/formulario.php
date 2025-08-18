@@ -1,8 +1,8 @@
 <!-- OPCIONES CAJAS, LAMINAS , OTROS -->
 <div class="col-md-6 col-12">
   <div class="form-group">
-    <label for="opciones">Tipo producto</label>
-    <select id="opciones" class="form-control" name="opciones">
+    <label for="tipo_producto">Tipo producto</label>
+    <select id="tipo_producto" class="form-control" name="tipo_producto">
       <option value="" disabled selected>Seleccione una opción</option>
       <option value="CAJAS">Cajas</option>
       <option value="LAMINAS">Láminas</option>
@@ -64,8 +64,6 @@
     </div>
   </div>
 
-
-
   <div class="col-md-6 col-12 campo otros" style="display: none;">
     <div class="form-group">
       <label for="descripcion">Descripción</label>
@@ -73,8 +71,6 @@
         placeholder="......." name="descripcion" rows="3"><?php echo isset($turno) ? s($turno->descripcion) : ''; ?></textarea>
     </div>
   </div>
-
-
 
 
   <!-- FLAUTA -->
