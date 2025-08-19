@@ -265,7 +265,8 @@ class DiseñoController
                 $turno->flauta,
                 $turno->material,
                 $turno->ect,
-                $turno->descripcion // <-- ahora sí al final
+                $turno->descripcion,
+                $turno->observaciones
             );
 
             $email->enviarConfirmacion2();

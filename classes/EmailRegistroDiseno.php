@@ -19,9 +19,10 @@ class EmailRegistroDiseno
   public $material;
   public $ect;
   public $descripcion;
+  public $observaciones;
 
 
-  public function __construct($emaildefault, $nombre, $token, $estado, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion)
+  public function __construct($emaildefault, $nombre, $token, $estado, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $observaciones)
   {
     $this->emaildefault = $emaildefault;
     $this->nombre       = $nombre;
@@ -35,6 +36,7 @@ class EmailRegistroDiseno
     $this->material   = $material;
     $this->ect        = $ect;
     $this->descripcion  = $descripcion;
+    $this->observaciones = $observaciones;
   }
 
   public function enviarConfirmacion2()
@@ -51,6 +53,7 @@ class EmailRegistroDiseno
     $material = htmlspecialchars($this->material ?? '', ENT_QUOTES, 'UTF-8');
     $ect    = htmlspecialchars($this->ect ?? '', ENT_QUOTES, 'UTF-8');
     $descripcion = htmlspecialchars($this->descripcion ?? '', ENT_QUOTES, 'UTF-8');
+    $observaciones = htmlspecialchars($this->observaciones ?? '', ENT_QUOTES, 'UTF-8');
 
     // Colores según estado
     $estadoKey = strtolower(trim($this->estado ?? ''));
@@ -89,6 +92,9 @@ class EmailRegistroDiseno
     if (!empty($ect) && $ect != "0") {
       $detalles .= "ECT: $ect lbs<br>";
     }
+    if (!empty($observaciones) && strtolower($observaciones) != "0") {
+      $detalles .= "Observaciones: $observaciones<br>";
+    }
 
     // Bloque de detalles (solo si hay datos)
     $bloqueDetalles = '';
@@ -98,6 +104,9 @@ class EmailRegistroDiseno
           Detalles del diseño:<br>
           ' . $detalles . '
         </p>';
+
+
+
     }
 
     $contenido = '
@@ -141,6 +150,10 @@ class EmailRegistroDiseno
 
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   Descripción: ' . $descripcion . '
+                </p>
+
+                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                  Observaciones: ' . $observaciones . '
                 </p>
 
                 ' . $bloqueDetalles . '
