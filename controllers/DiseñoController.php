@@ -419,12 +419,12 @@ class DiseñoController
                         $vendedorNombre = $_POST['vendedor'] ?? $nombre;
 
                         $vendedores = [
-                            "JHON VACA"          => "ventas@megaecuador.com,edwin.ed948@gmail.com",
-                            "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com,edwin.ed948@gmail.com",
-                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com,edwin.ed948@gmail.com",
-                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com,edwin.ed948@gmail.com",
-                            "CARLOS DELGADO"     => "ventas1@megaecuador.com,edwin.ed948@gmail.com",
-                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com,edwin.ed948@gmail.com"
+                            "JHON VACA"          => "ventas@megaecuador.com",
+                            "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com",
+                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
+                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
+                            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
+                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
                         ];
 
                         // Crea un mapa con claves normalizadas
@@ -480,6 +480,24 @@ class DiseñoController
                             $turno->fecha_entrega,
                             $turno->estado
                         );
+
+
+                        $mailerAlterno = new EmailDiseno(
+                            "otrocorreo@megaecuador.com",
+                            $vendedorNombre,
+                            $codigo,
+                            $turno->tipo_producto,
+                            $turno->tipo_componente,
+                            $turno->alto,
+                            $turno->largo,
+                            $turno->ancho,
+                            $turno->dobles,
+                            $turno->descripcion,
+                            $turno->fecha_creacion,
+                            $turno->fecha_entrega,
+                            $turno->estado
+                        );
+                        $mailerAlterno->enviarConfirmacion();
 
                         if (!$mailer->enviarConfirmacion()) {
                             error_log('No se pudo enviar el correo de confirmación.');
