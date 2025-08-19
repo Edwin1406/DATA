@@ -24,7 +24,7 @@ class EmailRegistroDiseno
   public $observaciones;
 
 
-  public function __construct($emaildefault, $nombre, $token, $estado,$tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $observaciones)
+  public function __construct($emaildefault, $nombre, $token, $estado, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $observaciones)
   {
     $this->emaildefault = $emaildefault;
     $this->nombre       = $nombre;
@@ -98,7 +98,7 @@ class EmailRegistroDiseno
     if (!empty($ect) && $ect != "0") {
       $detalles .= "ECT: $ect lbs<br>";
     }
-  
+
 
     // Bloque de detalles (solo si hay datos)
     $bloqueDetalles = '';
@@ -108,9 +108,6 @@ class EmailRegistroDiseno
           Detalles del diseño:<br>
           ' . $detalles . '
         </p>';
-
-
-
     }
 
     $contenido = '
@@ -156,10 +153,7 @@ class EmailRegistroDiseno
                   Descripción: ' . $descripcion . '
                 </p>
 
-                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Observaciones: ' . $observaciones . '
-                </p>
-
+            
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   Tipo de producto: ' . $tipo_producto . '
                 </p>
@@ -170,6 +164,9 @@ class EmailRegistroDiseno
 
                 ' . $bloqueDetalles . '
 
+                      <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                  Observaciones: ' . $observaciones . '
+                </p>
                 <!-- Código -->
                 <p style="margin:16px 0 6px 0;font-size:14px;">Tu código de diseño es:</p>
                 <span style="
