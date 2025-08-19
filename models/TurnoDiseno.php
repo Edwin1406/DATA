@@ -85,12 +85,7 @@ class TurnoDiseno extends ActiveRecord
         if (!$this->tipo_componente) {
             self::$alertas['error'][] = 'El tipo de componente es obligatorio';
         }
-        if (!$this->largo) {
-            self::$alertas['error'][] = 'El largo es obligatorio';
-        }
-        if (!$this->alto) {
-            self::$alertas['error'][] = 'El alto es obligatorio';
-        }
+     
       
         if (!$this->vendedor) {
             self::$alertas['error'][] = 'El vendedor es obligatorio';
