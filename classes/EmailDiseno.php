@@ -8,133 +8,95 @@ use PHPMailer\PHPMailer\Exception;
 class EmailDiseno
 {
 
-    public $email;     // destinatario
-    public $nombre;
-    public $codigo;
-    public $tipo_producto;
-    public $tipo_componente;
-    public $alto;
-    public $largo;
-    public $ancho;
-    public $dobles;
-   
-    public $descripcion;
-    public $fecha_creacion;
-    public $fecha_entrega;
-    public $estado;
+  public $email;     // destinatario
+  public $nombre;
+  public $codigo;
+  public $tipo_producto;
+  public $tipo_componente;
+  public $alto;
+  public $largo;
+  public $ancho;
+  public $dobles;
 
-    public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $descripcion, $fecha_creacion, $fecha_entrega, $estado)
-    {
-        $this->email = $email;
-        $this->nombre = $nombre;
-        $this->codigo = $codigo;
-        $this->tipo_producto = $tipo_producto;
-        $this->tipo_componente = $tipo_componente;
-        $this->alto = $alto;
-        $this->largo = $largo;
-        $this->ancho = $ancho;
-        $this->dobles = $dobles;
-        $this->descripcion = $descripcion;
-        $this->fecha_creacion = $fecha_creacion;
-        $this->fecha_entrega = $fecha_entrega;
-        $this->estado = $estado;
-    }
+  public $descripcion;
+  public $fecha_creacion;
+  public $fecha_entrega;
+  public $estado;
 
-    // public function enviarConfirmacion() {
-    //     $mail = new PHPMailer(true);
+  public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $descripcion, $fecha_creacion, $fecha_entrega, $estado)
+  {
+    $this->email = $email;
+    $this->nombre = $nombre;
+    $this->codigo = $codigo;
+    $this->tipo_producto = $tipo_producto;
+    $this->tipo_componente = $tipo_componente;
+    $this->alto = $alto;
+    $this->largo = $largo;
+    $this->ancho = $ancho;
+    $this->dobles = $dobles;
+    $this->descripcion = $descripcion;
+    $this->fecha_creacion = $fecha_creacion;
+    $this->fecha_entrega = $fecha_entrega;
+    $this->estado = $estado;
+  }
 
-    //     try {
-    //         $mail->isSMTP();
-    //         $mail->Host       = $_ENV['EMAIL_HOST'];
-    //         $mail->SMTPAuth   = true;
-    //         $mail->Username   = $_ENV['EMAIL_USER'];
-    //         $mail->Password   = $_ENV['EMAIL_PASS'];
+  public function enviarConfirmacion()
+  {
+    $mail = new PHPMailer(true);
 
-    //         // Ajusta esto según tu servidor:
-    //         if ((int)$_ENV['EMAIL_PORT'] === 465) {
-    //             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    //         } else {
-    //             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    //         }
-    //         $mail->Port = (int)$_ENV['EMAIL_PORT'];
+    try {
+      $mail->isSMTP();
+      $mail->Host       = $_ENV['EMAIL_HOST'];
+      $mail->SMTPAuth   = true;
+      $mail->Username   = $_ENV['EMAIL_USER'];
+      $mail->Password   = $_ENV['EMAIL_PASS'];
 
-    //         // El remitente debe pertenecer al dominio del SMTP
-    //         $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'MEGASTOCK S.A.');
-    //         $mail->addAddress($this->email, $this->nombre);
+      if ((int)$_ENV['EMAIL_PORT'] === 465) {
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+      } else {
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      }
+      $mail->Port = (int)$_ENV['EMAIL_PORT'];
 
-    //         $mail->Subject = 'Turno editado';
-    //         $mail->isHTML(true);
-    //         $mail->CharSet = 'UTF-8';
+      $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
+      $mail->addAddress($this->email, $this->nombre);
 
-    //         $host = rtrim($_ENV['HOST'] ?? '', '/');
-    //         $contenido  = '<html>';
-    //         $contenido .= "<p><strong>HOLA TE SALUDA CLAUDIO. QUE TAL  {$this->nombre},</strong> SE EDITO EL TURNO #{$this->codigo}.</p>";
-    //         $contenido .= "<p>DETALLE: {$this->detalle}</p>";
-    //         $contenido .= "<p>FECHA DE CREACIÓN: {$this->fecha_creacion}</p>";
-    //         $contenido .= "<p>FECHA DE ENTREGA: {$this->fecha_entrega}</p>";
-    //         $contenido .= "<p>ESTADO: {$this->estado}</p>";
-    //         $contenido .= '</html>';
+      $mail->Subject = 'Turno editado #' . $this->codigo;
+      $mail->isHTML(true);
+      $mail->CharSet = 'UTF-8';
 
-    //         $mail->Body    = $contenido;
-    //         $mail->AltBody = "Se editó el turno #{$this->codigo}. Ver: {$host}/admin/turnoDiseno/ver?turno_id={$this->codigo}";
+      // Helpers
+      $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+      $field = function ($label, $value) use ($e) {
+        if ($value !== null && $value !== '' && $value !== '0') {
+          return '
+                    <div style="padding:10px 0;">
+                      <div style="font-size:12px;color:#6b7280;text-transform:uppercase;
+                                  letter-spacing:.6px;margin-bottom:4px;">' . $e($label) . '</div>
+                      <div style="font-size:15px;color:#111827;">' . $e($value) . '</div>
+                    </div>';
+        }
+        return '';
+      };
 
-    //         $mail->send();
-    //         return true;
-    //     } catch (Exception $e) {
-    //         error_log('PHPMailer error: ' . $mail->ErrorInfo);
-    //         throw $e;
-    //     }
+      // Estado y colores
+      $estadoRaw = strtolower(trim((string)$this->estado));
+      $badgeText = 'Entregado';
+      $badgeBg   = '#2e7d32'; // verde
 
+      if ($estadoRaw === 'pendiente') {
+        $badgeText = 'Pendiente';
+        $badgeBg   = '#e53935'; // rojo
+      } elseif ($estadoRaw === 'en proceso' || $estadoRaw === 'proceso') {
+        $badgeText = 'En proceso';
+        $badgeBg   = '#03a9f4'; // celeste
+      }
 
-    // }
+      $host = rtrim($_ENV['HOST'] ?? '', '/');
+      $url  = $host . '/admin/turnoDiseno/ver?turno_id=' . rawurlencode((string)$this->codigo);
 
-
-    public function enviarConfirmacion()
-    {
-        $mail = new PHPMailer(true);
-
-        try {
-            $mail->isSMTP();
-            $mail->Host       = $_ENV['EMAIL_HOST'];
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $_ENV['EMAIL_USER'];
-            $mail->Password   = $_ENV['EMAIL_PASS'];
-
-            if ((int)$_ENV['EMAIL_PORT'] === 465) {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            } else {
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            }
-            $mail->Port = (int)$_ENV['EMAIL_PORT'];
-
-            $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
-            $mail->addAddress($this->email, $this->nombre);
-
-            $mail->Subject = 'Turno editado #' . $this->codigo;
-            $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8';
-
-            // Helpers de seguridad para el HTML
-            $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
-
-            // Normalización de estado y color de la “badge”
-            $estadoRaw = strtolower(trim((string)$this->estado));
-            $badgeText = 'Entregado';
-            $badgeBg   = '#2e7d32'; // verde (entregado)
-
-            if ($estadoRaw === 'pendiente') {
-                $badgeText = 'Pendiente';
-                $badgeBg   = '#e53935'; // rojo
-            } elseif ($estadoRaw === 'en proceso' || $estadoRaw === 'proceso') {
-                $badgeText = 'En proceso';
-                $badgeBg   = '#03a9f4'; // celeste
-            }
-
-            $host = rtrim($_ENV['HOST'] ?? '', '/');
-            $url  = $host . '/admin/turnoDiseno/ver?turno_id=' . rawurlencode((string)$this->codigo);
-
-            // HTML de la tarjeta
-            $contenido = '
+      // HTML
+      $contenido = '
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -157,18 +119,20 @@ class EmailDiseno
           <tr>
             <td style="background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:0 24px 24px;">
               
-              <!-- Encabezado con saludo + badge de estado -->
+              <!-- Encabezado con saludo + badge -->
               <div style="padding:20px 0 10px 0;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;justify-content:space-between;gap:12px;">
                 <div style="font-size:16px;color:#111827;line-height:1.4;">
                   <strong>Hola, ' . $e($this->nombre) . '</strong><br/>
                   Se editó el turno <strong>#' . $e($this->codigo) . '</strong>.
                 </div>
-                <span style="display:inline-block;font-size:12px;font-weight:bold;color:#ffffff;background:' . $badgeBg . ';padding:6px 10px;border-radius:999px;white-space:nowrap;">
+                <span style="display:inline-block;font-size:16px;font-weight:bold;
+                             color:#ffffff;background:' . $badgeBg . ';
+                             padding:8px 14px;border-radius:999px;white-space:nowrap;">
                   ' . $e($badgeText) . '
                 </span>
               </div>
 
-              <!-- Cuerpo con detalles en formato “tarjeta” -->
+              <!-- Cuerpo -->
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:14px;">
                 <tr>
                   <td style="padding:10px 0;">
@@ -177,49 +141,31 @@ class EmailDiseno
                       ' . $e($this->descripcion) . '
                     </div>
                   </td>
-
-
-
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Tipo de producto</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->tipo_producto) . '</div>
-                  </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Tipo de componente</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->tipo_componente) . '</div>
-                  </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Dimensiones</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->alto) . ' x ' . $e($this->largo) . ' x ' . $e($this->ancho) . '</div>
-                  </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Doblado</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->dobles) . '</div>
-                  </div>
-             
-
                 </tr>
+
+                <tr>
+                  <td>
+                    ' . $field("Tipo de producto", $this->tipo_producto) . '
+                    ' . $field("Tipo de componente", $this->tipo_componente) . '
+                    ' . $field("Dimensiones", ($this->alto && $this->largo && $this->ancho) ? "{$this->alto} x {$this->largo} x {$this->ancho}" : "") . '
+                    ' . $field("Doblado", $this->dobles) . '
+                  </td>
+                </tr>
+
                 <tr>
                   <td style="padding:8px 0;">
                     <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                      <div style="flex:1;min-width:220px;border:1px solid #eef2f7;border-radius:8px;padding:12px;background:#ffffff;">
-                        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Fecha de creación</div>
-                        <div style="font-size:15px;color:#111827;">' . $e($this->fecha_creacion) . '</div>
-                      </div>
-                      <div style="flex:1;min-width:220px;border:1px solid #eef2f7;border-radius:8px;padding:12px;background:#ffffff;">
-                        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Fecha de entrega</div>
-                        <div style="font-size:15px;color:#111827;">' . $e($this->fecha_entrega) . '</div>
-                      </div>
+                      ' . $field("Fecha de creación", $this->fecha_creacion) . '
+                      ' . $field("Fecha de entrega", $this->fecha_entrega) . '
                     </div>
                   </td>
                 </tr>
               </table>
 
-            <div style="text-align:center;margin:18px 0;">
-              <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK S.A.</span>
-            </div>
+              <div style="text-align:center;margin:18px 0;">
+                <span style="font-size:24px;font-weight:bold;color:#111827;">MEGASTOCK S.A.</span>
+              </div>
 
-              <!-- Pie -->
               <div style="font-size:12px;color:#6b7280;text-align:center;margin-top:18px;line-height:1.5;">
                 Si no solicitaste este cambio o ves algo incorrecto, responde a este correo.
                 <br/>
@@ -238,14 +184,14 @@ class EmailDiseno
 </body>
 </html>';
 
-            $mail->Body    = $contenido;
-            $mail->AltBody = 'Se editó el turno #' . $this->codigo . ' (Estado: ' . $badgeText . '). Ver: ' . $url;
+      $mail->Body    = $contenido;
+      $mail->AltBody = 'Se editó el turno #' . $this->codigo . ' (Estado: ' . $badgeText . '). Ver: ' . $url;
 
-            $mail->send();
-            return true;
-        } catch (Exception $e) {
-            error_log('PHPMailer error: ' . $mail->ErrorInfo);
-            throw $e;
-        }
+      $mail->send();
+      return true;
+    } catch (Exception $e) {
+      error_log('PHPMailer error: ' . $mail->ErrorInfo);
+      throw $e;
     }
+  }
 }
