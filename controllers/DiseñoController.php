@@ -406,7 +406,7 @@ class DiseñoController
 
                         $vendedores = [
                             "JHON VACA"          => "ventas@megaecuador.com",
-                            "SHULYANA HERNANDEZ" => "ventas3@megaecuador.com",
+                            "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com",
                             "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
                             "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
                             "CARLOS DELGADO"     => "ventas1@megaecuador.com",
