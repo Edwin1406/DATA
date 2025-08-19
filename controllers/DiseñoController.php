@@ -419,12 +419,12 @@ class DiseñoController
                         $vendedorNombre = $_POST['vendedor'] ?? $nombre;
 
                         $vendedores = [
-                            "JHON VACA"          => "ventas@megaecuador.com","edwin.ed948@gmail.com",
-                            "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com","edwin.ed948@gmail.com",
-                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com","edwin.ed948@gmail.com",
-                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
-                            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
-                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
+                            "JHON VACA"          => "ventas@megaecuador.com,edwin.ed948@gmail.com",
+                            "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com,edwin.ed948@gmail.com",
+                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com,edwin.ed948@gmail.com",
+                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com,edwin.ed948@gmail.com",
+                            "CARLOS DELGADO"     => "ventas1@megaecuador.com,edwin.ed948@gmail.com",
+                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com,edwin.ed948@gmail.com"
                         ];
 
                         // Crea un mapa con claves normalizadas
