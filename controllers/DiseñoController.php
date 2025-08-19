@@ -272,7 +272,7 @@ class DiseñoController
             // );
 
 
-            $emails = ['sistemas@megaecuador.com', 'desarrollodeproductoms@gmail.com'];
+            $emails = ['sistemas@megaecuador.com', 'edwin.ed948@gmail.com'];
 
             foreach ($emails as $destinatario) {
                 $email = new EmailRegistroDiseno(
@@ -295,17 +295,6 @@ class DiseñoController
 
                 $email->enviarConfirmacion2();
             }
-
-
-
-
-
-
-
-
-
-
-            $email->enviarConfirmacion2();
 
             // debuguear($turno);
             $alertas = $turno->validar();
