@@ -294,7 +294,7 @@ class DiseñoController
             //     );
 
                 $email->enviarConfirmacion2();
-            }
+            
 
             // debuguear($turno);
             $alertas = $turno->validar();
