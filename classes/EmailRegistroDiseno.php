@@ -78,25 +78,25 @@ class EmailRegistroDiseno
     // Construimos los detalles dinámicamente
     $detalles = '';
     if (!empty($alto) && $alto != "0") {
-      $detalles .= "Alto: $alto cm<br>";
+      $detalles .= "<strong>Alto:</strong> $alto cm<br>";
     }
     if (!empty($largo) && $largo != "0") {
-      $detalles .= "Largo: $largo cm<br>";
+      $detalles .= "<strong>Largo:</strong> $largo cm<br>";
     }
     if (!empty($ancho) && $ancho != "0") {
-      $detalles .= "Ancho: $ancho cm<br>";
+      $detalles .= "<strong>Ancho:</strong> $ancho cm<br>";
     }
     if (!empty($dobles) && strtolower($dobles) != "0") {
-      $detalles .= "Dobles: $dobles<br>";
+      $detalles .= "<strong>Dobles:</strong> $dobles<br>";
     }
     if (!empty($flauta) && strtolower($flauta) != "0") {
-      $detalles .= "Flauta: $flauta<br>";
+      $detalles .= "<strong>Flauta:</strong> $flauta<br>";
     }
     if (!empty($material) && strtolower($material) != "0") {
-      $detalles .= "Material: $material<br>";
+      $detalles .= "<strong>Material:</strong> $material<br>";
     }
     if (!empty($ect) && $ect != "0") {
-      $detalles .= "ECT: $ect lbs<br>";
+      $detalles .= "<strong>ECT:</strong> $ect lbs<br>";
     }
 
 
@@ -105,7 +105,7 @@ class EmailRegistroDiseno
     if (!empty($detalles)) {
       $bloqueDetalles = '
         <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-          Detalles del diseño:<br>
+          <strong>Detalles del diseño:</strong><br>
           ' . $detalles . '
         </p>';
     }
@@ -150,16 +150,16 @@ class EmailRegistroDiseno
                 ">' . $estado . '</span>
 
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Descripción: ' . $descripcion . '
+                  <strong>Descripción:</strong> ' . $descripcion . '
                 </p>
 
             
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Tipo de producto: ' . $tipo_producto . '
+                  <strong>Tipo de producto:</strong> ' . $tipo_producto . '
                 </p>
 
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Tipo de componente: ' . $tipo_componente . '
+                  <strong>Tipo de componente:</strong> ' . $tipo_componente . '
                 </p>
 
                 ' . $bloqueDetalles . '
