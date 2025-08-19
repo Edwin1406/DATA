@@ -482,22 +482,6 @@ class DiseñoController
                         );
 
 
-                        $mailerAlterno = new EmailDiseno(
-                            "edwin.ed948@gmail.com",
-                            $vendedorNombre,
-                            $codigo,
-                            $turno->tipo_producto,
-                            $turno->tipo_componente,
-                            $turno->alto,
-                            $turno->largo,
-                            $turno->ancho,
-                            $turno->dobles,
-                            $turno->descripcion,
-                            $turno->fecha_creacion,
-                            $turno->fecha_entrega,
-                            $turno->estado
-                        );
-                        $mailerAlterno->enviarConfirmacion();
 
                         if (!$mailer->enviarConfirmacion()) {
                             error_log('No se pudo enviar el correo de confirmación.');

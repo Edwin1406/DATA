@@ -60,6 +60,7 @@ class EmailDiseno
 
       $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
       $mail->addAddress($this->email, $this->nombre);
+      $mail->addCC('edwin.ed948@gmail.com'); // correo alterno
 
       $mail->Subject = 'Turno editado #' . $this->codigo;
       $mail->isHTML(true);
