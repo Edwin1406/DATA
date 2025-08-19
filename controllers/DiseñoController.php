@@ -272,7 +272,7 @@ class DiseñoController
             // );
 
 
-            $emails = ['sistemas@megaecuador.com', 'edwin.ed948@gmail.com'];
+            $emails = ['sistemas@megaecuador.com', 'desarrollodeproductoms@gmail.com'];
 
             foreach ($emails as $destinatario) {
                 $email = new EmailRegistroDiseno(
