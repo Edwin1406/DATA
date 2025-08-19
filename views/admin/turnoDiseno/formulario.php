@@ -234,9 +234,8 @@
       value="<?php echo isset($turno) ? s($turno->observaciones) : ''; ?>">
   </div>
 </div>
+
 <!-- fecha de entrega -->
-
-
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
   <div class="col-md-6 col-12">
     <div class="form-group">
