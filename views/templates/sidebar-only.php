@@ -214,8 +214,8 @@
                  <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
-                             <!-- <i class="bi bi-collection-fill"></i> -->
-                             <i class="bi bi-code-slash"></i>
+
+                             <i class="bi bi-tools"></i>
                              <span>Mantenimiento</span>
                          </a>
                          <ul class="submenu ">
