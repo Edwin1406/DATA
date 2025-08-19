@@ -253,8 +253,21 @@ class DiseñoController
             $emaildefault = 'sistemas@megaecuador.com';
 
             // Enviar correo de confirmación
-            $email = new EmailRegistroDiseno($emaildefault, $turno->vendedor, $turno->codigo, $turno->estado, $turno->descripcion,$turno->alto,
-            $turno->largo, $turno->ancho, $turno->dobles, $turno->flauta, $turno->material, $turno->ect);
+            $email = new EmailRegistroDiseno(
+                $emaildefault,
+                $turno->vendedor,
+                $turno->codigo,
+                $turno->estado,
+                $turno->alto,
+                $turno->largo,
+                $turno->ancho,
+                $turno->dobles,
+                $turno->flauta,
+                $turno->material,
+                $turno->ect,
+                $turno->descripcion // <-- ahora sí al final
+            );
+
             $email->enviarConfirmacion2();
 
             // debuguear($turno);
