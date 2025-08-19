@@ -55,7 +55,7 @@
   <!-- DOBLES (solo lámina) -->
   <div class="col-md-4 col-12 campo lamina" style="display:none;">
     <div class="form-group">
-      <label for="dobles">¿Es doble?</label>
+      <label for="dobles">¿Con doblez?</label>
       <select id="dobles" class="form-control" name="dobles">
         <option value="" disabled selected>Seleccione una opción</option>
         <option value="SI">Sí</option>
