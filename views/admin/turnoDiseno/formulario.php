@@ -4,9 +4,9 @@
     <label for="tipo_producto">Tipo producto</label>
     <select id="tipo_producto" class="form-control" name="tipo_producto">
       <option value="" disabled selected>Seleccione una opción</option>
-      <option value="CAJAS">Cajas</option>
-      <option value="LAMINAS">Láminas</option>
-      <option value="OTROS">Otros</option>
+      <option value="CAJAS" <?php echo (isset($turno) && $turno->tipo_producto === 'CAJAS') ? 'selected' : ''; ?>>Cajas</option>
+      <option value="LAMINAS" <?php echo (isset($turno) && $turno->tipo_producto === 'LAMINAS') ? 'selected' : ''; ?>>Láminas</option>
+      <option value="OTROS" <?php echo (isset($turno) && $turno->tipo_producto === 'OTROS') ? 'selected' : ''; ?>>Otros</option>
     </select>
   </div>
 </div>
@@ -16,7 +16,7 @@
   <div class="form-group">
     <label for="tipo_componente">Tipo componente</label>
     <select id="tipo_componente" class="form-control" name="tipo_componente">
-      <option value="" disabled selected>Seleccione un tipo</option>
+      <option value=" " disabled selected>Seleccione un tipo</option>
     </select>
   </div>
 </div>
