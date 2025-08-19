@@ -82,11 +82,11 @@
          <div class="card">
              <ul class="nav nav-tabs">
 
-                
-                     <li class="nav-item">
-                         <a class="nav-link active" href="/admin/turnoDiseno/generarTurno">Registro Turno</a>
-                     </li>
-              
+
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/turnoDiseno/generarTurno">Registro Turno</a>
+                 </li>
+
              </ul>
          </div>
      </section>
@@ -128,6 +128,7 @@
                              <tr>
 
                                  <td><?= $turno->codigo ?></td>
+                                 <td><?= $turno->tipo_producto ?></td>
                                  <td><?= $turno->tipo_componente ?></td>
                                  <td><?= $turno->largo ?></td>
                                  <td><?= $turno->ancho ?></td>
