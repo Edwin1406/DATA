@@ -460,9 +460,7 @@ class DiseñoController
                             $turno->largo,
                             $turno->ancho,
                             $turno->dobles,
-                            $turno->flauta,
-                            $turno->material,
-                            $turno->ect,
+                           
                             $turno->descripcion,
                             $turno->fecha_creacion,
                             $turno->fecha_entrega,

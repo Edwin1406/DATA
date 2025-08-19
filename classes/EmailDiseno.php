@@ -17,15 +17,13 @@ class EmailDiseno
     public $largo;
     public $ancho;
     public $dobles;
-    public $flauta;
-    public $material;
-    public $ect;
+   
     public $descripcion;
     public $fecha_creacion;
     public $fecha_entrega;
     public $estado;
 
-    public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $fecha_creacion, $fecha_entrega, $estado)
+    public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $descripcion, $fecha_creacion, $fecha_entrega, $estado)
     {
         $this->email = $email;
         $this->nombre = $nombre;
@@ -36,9 +34,6 @@ class EmailDiseno
         $this->largo = $largo;
         $this->ancho = $ancho;
         $this->dobles = $dobles;
-        $this->flauta = $flauta;
-        $this->material = $material;
-        $this->ect = $ect;
         $this->descripcion = $descripcion;
         $this->fecha_creacion = $fecha_creacion;
         $this->fecha_entrega = $fecha_entrega;
@@ -201,18 +196,7 @@ class EmailDiseno
                     <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Doblado</div>
                     <div style="font-size:15px;color:#111827;">' . $e($this->dobles) . '</div>
                   </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Flauta</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->flauta) . '</div>
-                  </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Material</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->material) . '</div>
-                  </div>
-                  <div style="padding:10px 0;">
-                    <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">ECT</div>
-                    <div style="font-size:15px;color:#111827;">' . $e($this->ect) . '</div>
-                  </div>
+             
 
                 </tr>
                 <tr>
