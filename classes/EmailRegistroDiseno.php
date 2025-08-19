@@ -165,7 +165,7 @@ class EmailRegistroDiseno
                 ' . $bloqueDetalles . '
 
                       <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Observaciones: ' . $observaciones . '
+                  <strong>Observaciones:</strong> ' . $observaciones . '
                 </p>
                 <!-- Código -->
                 <p style="margin:16px 0 6px 0;font-size:14px;">Tu código de diseño es:</p>
