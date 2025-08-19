@@ -51,26 +51,21 @@
                              <?php }  ?>
 
                              <!-- icono de flecha -->
-
-
                              <li class="submenu-item ">
                                  <a href="/admin/consumo_general"><i class="bi bi-arrow-right"> </i>Registro Consumo General</a>
                              </li>
-
-
-
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control/convertidor/consumo_convertidor"><i class="bi bi-arrow-right"> </i>Registro Convertidor</a>
                                  </li>
                              <?php }  ?>
 
-
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control/doblado/consumo_doblado"><i class="bi bi-arrow-right"> </i>Registro Consumo Doblado</a>
                                  </li>
                              <?php }  ?>
+
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control/guillotina/consumo_guillotina_papel"><i class="bi bi-arrow-right"> </i>Registro Consumo Guillotina</a>
@@ -82,6 +77,7 @@
                                      <a href="/admin/control_troquel"><i class="bi bi-arrow-right"> </i>Registro Troquel</a>
                                  </li>
                              <?php }  ?>
+
                              <li class="sidebar-title"><b><i class="bi bi-table"></i> Tablas</b></li>
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
@@ -111,14 +107,11 @@
                                  </li>
                              <?php }  ?>
 
-
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/control/guillotina/tablaConsumoGuillotinaPapel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Guillotina Papel</a>
                                  </li>
                              <?php }  ?>
-
-
 
                          </ul>
                      <?php }  ?>
@@ -146,13 +139,9 @@
                              <span>Diseño</span>
                          </a>
                          <ul class="submenu ">
-
                              <li class="submenu-item ">
                                  <a href="/admin/diseno/crearDiseno"><i class="bi bi-arrow-right"> </i>Crear Diseño</a>
-
-
                                  <a href="/admin/diseno/tablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Diseño</a>
-
                                  <a href="/admin/turnoDiseno/generarTurno"><i class="bi bi-arrow-right"> </i>Generar Turno</a>
                                  <a href="/admin/turnoDiseno/turnotablaDiseno"><i class="bi bi-arrow-right"> </i>Tabla Turno Diseño</a>
                              </li>
@@ -206,7 +195,7 @@
                              <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
-                             
+
                          </ul>
                      </li>
                  <?php } ?>
@@ -225,16 +214,12 @@
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
                              </li>
-
                              <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
-                             
                          </ul>
                      </li>
                  <?php } ?>
-       
-
 
                  <!-- </ul> -->
          </div>
