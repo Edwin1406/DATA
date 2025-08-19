@@ -450,7 +450,24 @@ class DiseñoController
                         }
 
                         // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-                        $mailer = new EmailDiseno($destinatario, $vendedorNombre, $codigo, $turno->detalle, $turno->fecha_creacion, $turno->fecha_entrega, $turno->estado);
+                        $mailer = new EmailDiseno(
+                            $destinatario,
+                            $vendedorNombre,
+                            $codigo,
+                            $turno->tipo_producto,
+                            $turno->tipo_componente,
+                            $turno->alto,
+                            $turno->largo,
+                            $turno->ancho,
+                            $turno->dobles,
+                            $turno->flauta,
+                            $turno->material,
+                            $turno->ect,
+                            $turno->descripcion,
+                            $turno->fecha_creacion,
+                            $turno->fecha_entrega,
+                            $turno->estado
+                        );
 
                         if (!$mailer->enviarConfirmacion()) {
                             error_log('No se pudo enviar el correo de confirmación.');
