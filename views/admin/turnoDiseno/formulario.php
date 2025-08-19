@@ -95,7 +95,7 @@
   <div class="col-md-4 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="ect">ECT</label>
-      <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
+      <input type="number" id="ect" class="form-control" placeholder="ECT" name="ect"
         value="<?php echo isset($turno) ? s($turno->ect) : ''; ?>">
     </div>
   </div>
