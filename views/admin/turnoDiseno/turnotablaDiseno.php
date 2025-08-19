@@ -104,10 +104,18 @@
                      <thead>
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Codigo</th>
-                             <th class="fs-6" style="min-width: 93px;">Detalle</th>
+                             <th class="fs-6" style="min-width: 90px;">Tipo producto</th>
+                             <th class="fs-6" style="min-width: 90px;">Tipo componente</th>
+                             <th class="fs-6" style="min-width: 90px;">Largo</th>
+                             <th class="fs-6" style="min-width: 90px;">Ancho</th>
+                             <th class="fs-6" style="min-width: 90px;">Alto</th>
+                             <th class="fs-6" style="min-width: 90px;">Dobles</th>
+                             <th class="fs-6" style="min-width: 90px;">Flauta</th>
+                             <th class="fs-6" style="min-width: 90px;">Material</th>
+                             <th class="fs-6" style="min-width: 90px;">ECT</th>
+                             <th class="fs-6" style="min-width: 93px;">Descripción</th>
                              <th class="fs-6" style="min-width: 80px;">Vendedor</th>
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
-
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Creación</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha de Entrega</th>
@@ -120,7 +128,15 @@
                              <tr>
 
                                  <td><?= $turno->codigo ?></td>
-                                 <td><?= $turno->detalle ?></td>
+                                 <td><?= $turno->tipo_componente ?></td>
+                                 <td><?= $turno->largo ?></td>
+                                 <td><?= $turno->ancho ?></td>
+                                 <td><?= $turno->alto ?></td>
+                                 <td><?= $turno->dobles ?></td>
+                                 <td><?= $turno->flauta ?></td>
+                                 <td><?= $turno->material ?></td>
+                                 <td><?= $turno->ect ?></td>
+                                 <td><?= $turno->descripcion ?></td>
                                  <td><?= $turno->vendedor ?></td>
                                  <td><?= $turno->observaciones ?></td>
 
