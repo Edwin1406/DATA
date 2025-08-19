@@ -381,26 +381,6 @@ class DiseñoController
             if (method_exists($turno, 'sincronizar')) {
                 $turno->sincronizar($_POST);
 
-
-                //     if ($email === 'pruebas@megaecuador.com') {
-                //         // Aquí sí se enviará al correo de pruebas
-                //         $vendedores = [
-                //             "JHON VACA"            => "sistemas@megaecuador.com",
-                //             "SHULYANA HERNANDEZ"   => "sistemas@megaecuador.com",
-                //             "ANTONELLA DEZCALZI"   => "sistemas@megaecuador.com",
-                //             "CAROLINA MUÑOZ"       => "sistemas@megaecuador.com"
-                //         ];
-                //         $email = $vendedores[$nombre] ?? $email;
-
-                //         $email = new EmailDiseno($email, $nombre);
-                //         $email->enviarConfirmacion();
-                //     }
-                // } else {
-                //     foreach ($_POST as $campo => $valor) {
-                //         $turno->$campo = $valor;
-                //     }
-                // }
-                // === Normalizador de nombres (quita tildes, espacios extra y pone MAYÚSCULAS)
                 function normalizar($s)
                 {
                     $s = trim($s);
@@ -477,32 +457,62 @@ class DiseñoController
                         $codigo = $turno->codigo;
 
 
+                        // if ($destinatario === null) {
+                        //     // Si no hay match, manda al correo por defecto (o maneja el error)
+                        //     $destinatario = 'sistemas@megaecuador.com';
+
+                        //     error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
+                        // }
+
+                        // // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
+                        // $mailer = new EmailDiseno(
+                        //     $destinatario,
+                        //     $vendedorNombre,
+                        //     $codigo,
+                        //     $turno->tipo_producto,
+                        //     $turno->tipo_componente,
+                        //     $turno->alto,
+                        //     $turno->largo,
+                        //     $turno->ancho,
+                        //     $turno->dobles,
+                        //     $turno->descripcion,
+                        //     $turno->fecha_creacion,
+                        //     $turno->fecha_entrega,
+                        //     $turno->estado
+                        // );
+
+                        // if (!$mailer->enviarConfirmacion()) {
+                        //     error_log('No se pudo enviar el correo de confirmación.');
+                        // }
+
                         if ($destinatario === null) {
-                            // Si no hay match, manda al correo por defecto (o maneja el error)
-                            $destinatario = 'sistemas@megaecuador.com';
+                            // Si no hay match, manda a los correos por defecto
+                            $destinatarios = [
+                                'sistemas@megaecuador.com',
+                                'edwin.ed948@gmail.com'
+                            ];
 
                             error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
-                        }
 
-                        // Importante: pasa el OBJETO $turno (tu clase usa $turno->id en el constructor)
-                        $mailer = new EmailDiseno(
-                            $destinatario,
-                            $vendedorNombre,
-                            $codigo,
-                            $turno->tipo_producto,
-                            $turno->tipo_componente,
-                            $turno->alto,
-                            $turno->largo,
-                            $turno->ancho,
-                            $turno->dobles,
-                            $turno->descripcion,
-                            $turno->fecha_creacion,
-                            $turno->fecha_entrega,
-                            $turno->estado
-                        );
+                            foreach ($destinatarios as $correo) {
+                                $mailer = new EmailDiseno(
+                                    $correo,
+                                    $vendedorNombre,
+                                    $codigo,
+                                    $turno->tipo_producto,
+                                    $turno->tipo_componente,
+                                    $turno->alto,
+                                    $turno->largo,
+                                    $turno->ancho,
+                                    $turno->dobles,
+                                    $turno->descripcion,
+                                    $turno->fecha_creacion,
+                                    $turno->fecha_entrega,
+                                    $turno->estado
+                                );
 
-                        if (!$mailer->enviarConfirmacion()) {
-                            error_log('No se pudo enviar el correo de confirmación.');
+                                $mailer->enviarConfirmacion(); // (o el método que uses)
+                            }
                         }
                     }
                 }
