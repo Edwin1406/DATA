@@ -1,4 +1,5 @@
 <?php
+
 namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -6,44 +7,66 @@ use PHPMailer\PHPMailer\Exception;
 
 class EmailRegistroDiseno
 {
-    public $emaildefault;
-    public $nombre;
-    public $token;
-    public $estado;
-    public $detalle;
+  public $emaildefault;
+  public $nombre;
+  public $token;
+  public $estado;
+  public $alto;
+  public $largo;
+  public $ancho;
+  public $dobles;
+  public $flauta;
+  public $material;
+  public $ect;
+  public $descripcion;
 
-    public function __construct($emaildefault, $nombre, $token, $estado, $detalle)
-    {
-        $this->emaildefault = $emaildefault;
-        $this->nombre       = $nombre;
-        $this->token        = $token;
-        $this->estado       = $estado;
-        $this->detalle      = $detalle;
-    }
 
-    public function enviarConfirmacion2()
-    {
-        // Sanitiza
-        $nombre = htmlspecialchars($this->nombre ?? '', ENT_QUOTES, 'UTF-8');
-        $token  = htmlspecialchars($this->token ?? '', ENT_QUOTES, 'UTF-8');
-        $estado = htmlspecialchars($this->estado ?? '', ENT_QUOTES, 'UTF-8');
-        $detalle = htmlspecialchars($this->detalle ?? '', ENT_QUOTES, 'UTF-8');
+  public function __construct($emaildefault, $nombre, $token, $estado, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion)
+  {
+    $this->emaildefault = $emaildefault;
+    $this->nombre       = $nombre;
+    $this->token        = $token;
+    $this->estado       = $estado;
+    $this->alto        = $alto;
+    $this->largo       = $largo;
+    $this->ancho      = $ancho;
+    $this->dobles     = $dobles;
+    $this->flauta     = $flauta;
+    $this->material   = $material;
+    $this->ect        = $ect;
+    $this->descripcion  = $descripcion;
+  }
 
-        // Colores según estado
-        $estadoKey = strtolower(trim($this->estado ?? ''));
-        $estatusColors = [
-            'pendiente' => ['bg' => '#dc2626', 'text' => '#ffffff'], // rojo
-            'aprobado'  => ['bg' => '#0ea5e9', 'text' => '#ffffff'], // celeste
-            'rechazado' => ['bg' => '#6b7280', 'text' => '#ffffff'], // gris
-        ];
-        $colorEstadoBG   = $estatusColors[$estadoKey]['bg']   ?? '#0ea5e9';
-        $colorEstadoTEXT = $estatusColors[$estadoKey]['text'] ?? '#ffffff';
+  public function enviarConfirmacion2()
+  {
+    // Sanitiza
+    $nombre = htmlspecialchars($this->nombre ?? '', ENT_QUOTES, 'UTF-8');
+    $token  = htmlspecialchars($this->token ?? '', ENT_QUOTES, 'UTF-8');
+    $estado = htmlspecialchars($this->estado ?? '', ENT_QUOTES, 'UTF-8');
+    $alto   = htmlspecialchars($this->alto ?? '', ENT_QUOTES, 'UTF-8');
+    $largo  = htmlspecialchars($this->largo ?? '', ENT_QUOTES, 'UTF-8');
+    $ancho  = htmlspecialchars($this->ancho ?? '', ENT_QUOTES, 'UTF-8');
+    $dobles = htmlspecialchars($this->dobles ?? '', ENT_QUOTES, 'UTF-8');
+    $flauta = htmlspecialchars($this->flauta ?? '', ENT_QUOTES, 'UTF-8');
+    $material = htmlspecialchars($this->material ?? '', ENT_QUOTES, 'UTF-8');
+    $ect    = htmlspecialchars($this->ect ?? '', ENT_QUOTES, 'UTF-8');
+    $descripcion = htmlspecialchars($this->descripcion ?? '', ENT_QUOTES, 'UTF-8');
 
-        date_default_timezone_set('America/Guayaquil');
-        $fecha = date('Y-m-d H:i:s');
-        $anio  = date('Y');
+    // Colores según estado
+    $estadoKey = strtolower(trim($this->estado ?? ''));
+    $estatusColors = [
+      'pendiente' => ['bg' => '#dc2626', 'text' => '#ffffff'], // rojo
+      'aprobado'  => ['bg' => '#0ea5e9', 'text' => '#ffffff'], // celeste
+      'rechazado' => ['bg' => '#6b7280', 'text' => '#ffffff'], // gris
+    ];
+    $colorEstadoBG   = $estatusColors[$estadoKey]['bg']   ?? '#0ea5e9';
+    $colorEstadoTEXT = $estatusColors[$estadoKey]['text'] ?? '#ffffff';
 
-        $contenido = '
+    date_default_timezone_set('America/Guayaquil');
+    $fecha = date('Y-m-d H:i:s');
+    $anio  = date('Y');
+
+    $contenido = '
 <!doctype html>
 <html lang="es">
   <body style="margin:0;padding:0;background:#f5f7fb;">
@@ -83,8 +106,20 @@ class EmailRegistroDiseno
                 ">' . $estado . '</span>
 
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                  Detalle: ' . $detalle . '
+                  Descripción: ' . $descripcion . '
                 </p>
+                
+                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                Detalles del diseño:<br>
+                Alto: ' . $alto . ' cm<br>
+                Largo: ' . $largo . ' cm<br>
+                Ancho: ' . $ancho . ' cm<br>
+                Dobles: ' . $dobles . '<br>
+                Flauta: ' . $flauta . '<br>
+                Material: ' . $material . '<br>
+                ECT: ' . $ect . ' lbs
+                </p>
+                
 
                 <!-- Código -->
                 <p style="margin:16px 0 6px 0;font-size:14px;">Tu código de diseño es:</p>
@@ -131,40 +166,40 @@ class EmailRegistroDiseno
   </body>
 </html>';
 
-        $alt = "Confirmación de Registro de Diseño\n"
-             . "De: $nombre,\n"
-             . "Estado: $estado\n"
-             . "Código de diseño: $token\n"
-             . "Fecha de creación: $fecha\n\n"
-             . "Si no realizaste este registro, ignora este mensaje.\n"
-             . "© $anio MEGASTOCK S.A.";
+    $alt = "Confirmación de Registro de Diseño\n"
+      . "De: $nombre,\n"
+      . "Estado: $estado\n"
+      . "Código de diseño: $token\n"
+      . "Fecha de creación: $fecha\n\n"
+      . "Si no realizaste este registro, ignora este mensaje.\n"
+      . "© $anio MEGASTOCK S.A.";
 
-        // Envío con PHPMailer
-        $mail = new PHPMailer(true);
+    // Envío con PHPMailer
+    $mail = new PHPMailer(true);
 
-        try {
-            $mail->isSMTP();
-            $mail->Host       = $_ENV["EMAIL_HOST"];
-            $mail->SMTPAuth   = true;
-            $mail->Port       = (int) $_ENV["EMAIL_PORT"];
-            $mail->Username   = $_ENV["EMAIL_USER"];
-            $mail->Password   = $_ENV["EMAIL_PASS"];
-            $mail->SMTPSecure = $_ENV["EMAIL_SECURE"] ?? "ssl";
+    try {
+      $mail->isSMTP();
+      $mail->Host       = $_ENV["EMAIL_HOST"];
+      $mail->SMTPAuth   = true;
+      $mail->Port       = (int) $_ENV["EMAIL_PORT"];
+      $mail->Username   = $_ENV["EMAIL_USER"];
+      $mail->Password   = $_ENV["EMAIL_PASS"];
+      $mail->SMTPSecure = $_ENV["EMAIL_SECURE"] ?? "ssl";
 
-            $mail->CharSet    = 'UTF-8';
-            $mail->setFrom('sistemas@logmegaecuador.com', 'DISEÑO MEGASTOCK S.A.');
-            $mail->addAddress($this->emaildefault, $nombre);
-            $mail->addReplyTo('sistemas@logmegaecuador.com', 'Soporte MEGASTOCK');
-            $mail->Subject = 'Registro de Diseño';
+      $mail->CharSet    = 'UTF-8';
+      $mail->setFrom('sistemas@logmegaecuador.com', 'DISEÑO MEGASTOCK S.A.');
+      $mail->addAddress($this->emaildefault, $nombre);
+      $mail->addReplyTo('sistemas@logmegaecuador.com', 'Soporte MEGASTOCK');
+      $mail->Subject = 'Registro de Diseño';
 
-            $mail->isHTML(true);
-            $mail->Body    = $contenido;
-            $mail->AltBody = $alt;
+      $mail->isHTML(true);
+      $mail->Body    = $contenido;
+      $mail->AltBody = $alt;
 
-            $mail->send();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
+      $mail->send();
+      return true;
+    } catch (Exception $e) {
+      return false;
     }
+  }
 }
