@@ -149,6 +149,8 @@ class EmailRegistroDiseno
                   vertical-align:middle;
                 ">' . $estado . '</span>
 
+                <br>
+
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   <strong>Descripción:</strong> ' . $descripcion . '
                 </p>
