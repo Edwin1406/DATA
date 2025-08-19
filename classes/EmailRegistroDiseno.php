@@ -66,6 +66,40 @@ class EmailRegistroDiseno
     $fecha = date('Y-m-d H:i:s');
     $anio  = date('Y');
 
+    // Construimos los detalles dinámicamente
+    $detalles = '';
+    if (!empty($alto) && $alto != "0") {
+      $detalles .= "Alto: $alto cm<br>";
+    }
+    if (!empty($largo) && $largo != "0") {
+      $detalles .= "Largo: $largo cm<br>";
+    }
+    if (!empty($ancho) && $ancho != "0") {
+      $detalles .= "Ancho: $ancho cm<br>";
+    }
+    if (!empty($dobles) && strtolower($dobles) != "0") {
+      $detalles .= "Dobles: $dobles<br>";
+    }
+    if (!empty($flauta) && strtolower($flauta) != "0") {
+      $detalles .= "Flauta: $flauta<br>";
+    }
+    if (!empty($material) && strtolower($material) != "0") {
+      $detalles .= "Material: $material<br>";
+    }
+    if (!empty($ect) && $ect != "0") {
+      $detalles .= "ECT: $ect lbs<br>";
+    }
+
+    // Bloque de detalles (solo si hay datos)
+    $bloqueDetalles = '';
+    if (!empty($detalles)) {
+      $bloqueDetalles = '
+        <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+          Detalles del diseño:<br>
+          ' . $detalles . '
+        </p>';
+    }
+
     $contenido = '
 <!doctype html>
 <html lang="es">
@@ -74,7 +108,7 @@ class EmailRegistroDiseno
       <tr>
         <td align="center">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);overflow:hidden;font-family:Arial,Helvetica,sans-serif;color:#2d3748;">
-            <!-- Header más compacto -->
+            <!-- Header -->
             <tr>
               <td style="background:#111827;padding:14px 18px;text-align:center;">
                 <div style="font-size:16px;font-weight:700;color:#ffffff;letter-spacing:.3px;">MEGASTOCK S.A.</div>
@@ -90,7 +124,7 @@ class EmailRegistroDiseno
                   Ha realizado un registro de un diseño y su estado actual es:
                 </p>
 
-                <!-- Badge de estado (solo el texto, rojo si es pendiente) -->
+                <!-- Badge de estado -->
                 <span style="
                   display:inline-block;
                   background:' . $colorEstadoBG . ';
@@ -108,18 +142,8 @@ class EmailRegistroDiseno
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   Descripción: ' . $descripcion . '
                 </p>
-                
-                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
-                Detalles del diseño:<br>
-                Alto: ' . $alto . ' cm<br>
-                Largo: ' . $largo . ' cm<br>
-                Ancho: ' . $ancho . ' cm<br>
-                Dobles: ' . $dobles . '<br>
-                Flauta: ' . $flauta . '<br>
-                Material: ' . $material . '<br>
-                ECT: ' . $ect . ' lbs
-                </p>
-                
+
+                ' . $bloqueDetalles . '
 
                 <!-- Código -->
                 <p style="margin:16px 0 6px 0;font-size:14px;">Tu código de diseño es:</p>
