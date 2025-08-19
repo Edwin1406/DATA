@@ -38,7 +38,7 @@ class TurnoDiseno extends ActiveRecord
     public ?string $descripcion;
     public ?string $flauta;
     public ?string $material;
-    public ?int $ect;
+    public  $ect;
     public ?string $vendedor;
     public ?string $observaciones;
     public ?string $estado;
