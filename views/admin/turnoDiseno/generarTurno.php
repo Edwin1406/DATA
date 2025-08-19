@@ -74,7 +74,10 @@
                                     <?php include_once __DIR__ . '/formulario.php'  ?>
 
                                     <div class="col-12 d-flex justify-content-end">
+                                        <!-- bloqear el boton una vez dado click hasta qe se registre  -->
+                                         
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Orden</button>
+                                        
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
                                     </div>
                                 </div>

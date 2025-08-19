@@ -57,10 +57,11 @@ class EmailDiseno
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       }
       $mail->Port = (int)$_ENV['EMAIL_PORT'];
+      $mail->SMTPKeepAlive = true;
 
       $mail->setFrom($_ENV['EMAIL_FROM'] ?? $_ENV['EMAIL_USER'], 'DISEÑO MEGASTOCK S.A.');
       $mail->addAddress($this->email, $this->nombre);
-      $mail->addCC('edwin.ed948@gmail.com'); // correo alterno
+      $mail->addCC('edwin.ed948@gmail.com'); 
 
       $mail->Subject = 'Turno editado #' . $this->codigo;
       $mail->isHTML(true);

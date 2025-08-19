@@ -250,48 +250,48 @@ class DiseñoController
             // debuguear($turno);
             // email por defecto
             // $emaildefault = 'desarrollodeproductoms@gmail.com';
-            // $emaildefault = 'sistemas@megaecuador.com';
+            $emaildefault = 'sistemas@megaecuador.com';
 
             // // Enviar correo de confirmación
-            // $email = new EmailRegistroDiseno(
-            //     $emaildefault,
-            //     $turno->vendedor,
-            //     $turno->codigo,
-            //     $turno->estado,
-            //     $turno->tipo_producto,
-            //     $turno->tipo_componente,
-            //     $turno->alto,
-            //     $turno->largo,
-            //     $turno->ancho,
-            //     $turno->dobles,
-            //     $turno->flauta,
-            //     $turno->material,
-            //     $turno->ect,
-            //     $turno->descripcion,
-            //     $turno->observaciones
-            // );
+            $email = new EmailRegistroDiseno(
+                $emaildefault,
+                $turno->vendedor,
+                $turno->codigo,
+                $turno->estado,
+                $turno->tipo_producto,
+                $turno->tipo_componente,
+                $turno->alto,
+                $turno->largo,
+                $turno->ancho,
+                $turno->dobles,
+                $turno->flauta,
+                $turno->material,
+                $turno->ect,
+                $turno->descripcion,
+                $turno->observaciones
+            );
 
 
-            $emails = ['sistemas@megaecuador.com', 'edwin.ed948@gmail.com'];
+            // $emails = ['sistemas@megaecuador.com', 'edwin.ed948@gmail.com'];
 
-            foreach ($emails as $destinatario) {
-                $email = new EmailRegistroDiseno(
-                    $destinatario,
-                    $turno->vendedor,
-                    $turno->codigo,
-                    $turno->estado,
-                    $turno->tipo_producto,
-                    $turno->tipo_componente,
-                    $turno->alto,
-                    $turno->largo,
-                    $turno->ancho,
-                    $turno->dobles,
-                    $turno->flauta,
-                    $turno->material,
-                    $turno->ect,
-                    $turno->descripcion,
-                    $turno->observaciones
-                );
+            // foreach ($emails as $destinatario) {
+            //     $email = new EmailRegistroDiseno(
+            //         $destinatario,
+            //         $turno->vendedor,
+            //         $turno->codigo,
+            //         $turno->estado,
+            //         $turno->tipo_producto,
+            //         $turno->tipo_componente,
+            //         $turno->alto,
+            //         $turno->largo,
+            //         $turno->ancho,
+            //         $turno->dobles,
+            //         $turno->flauta,
+            //         $turno->material,
+            //         $turno->ect,
+            //         $turno->descripcion,
+            //         $turno->observaciones
+            //     );
 
                 $email->enviarConfirmacion2();
             }
