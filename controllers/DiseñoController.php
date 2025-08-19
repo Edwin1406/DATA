@@ -492,7 +492,7 @@ class DiseñoController
                                 'edwin.ed948@gmail.com'
                             ];
 
-                            error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
+                            // error_log("Sin coincidencia para vendedor='$vendedorNombre' (clave='$clave').");
 
                             foreach ($destinatarios as $correo) {
                                 $mailer = new EmailDiseno(
