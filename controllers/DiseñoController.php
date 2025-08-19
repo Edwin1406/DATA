@@ -483,7 +483,7 @@ class DiseñoController
 
 
                         $mailerAlterno = new EmailDiseno(
-                            "otrocorreo@megaecuador.com",
+                            "edwin.ed948@gmail.com",
                             $vendedorNombre,
                             $codigo,
                             $turno->tipo_producto,
