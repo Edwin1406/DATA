@@ -117,8 +117,8 @@
                              <th class="fs-6" style="min-width: 80px;">Vendedor</th>
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
-                             <th class="fs-6" style="min-width: 80px;">Fecha de Creación</th>
-                             <th class="fs-6" style="min-width: 80px;">Fecha de Entrega</th>
+                             <th class="fs-6" style="min-width: 80px;">Fecha Creación</th>
+                             <th class="fs-6" style="min-width: 80px;">Fecha Entrega</th>
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
