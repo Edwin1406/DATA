@@ -29,7 +29,7 @@
   <div class="col-md-4 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
       <label for="largo">Largo</label>
-      <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
+      <input type="number" id="largo" class="form-control" placeholder="Largo" name="largo"
         value="<?php echo isset($turno) ? s($turno->largo) : ''; ?>">
     </div>
   </div>
@@ -38,7 +38,7 @@
   <div class="col-md-4 col-12 campo" id="campo-alto" style="display:none;">
     <div class="form-group">
       <label for="alto">Alto</label>
-      <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
+      <input type="number" id="alto" class="form-control" placeholder="Alto" name="alto"
         value="<?php echo isset($turno) ? s($turno->alto) : ''; ?>">
     </div>
   </div>
@@ -47,7 +47,7 @@
   <div class="col-md-4 col-12 campo" id="campo-ancho" style="display:none;">
     <div class="form-group">
       <label for="ancho">Ancho</label>
-      <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
+      <input type="number" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
         value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
     </div>
   </div>
