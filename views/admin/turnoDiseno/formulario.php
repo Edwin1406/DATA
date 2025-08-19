@@ -23,7 +23,7 @@
 
 
 <!-- CAMPOS DINÁMICOS 3 columnas-->
-<div id="campos-dinamicos" class="row" >
+<div id="campos-dinamicos" class="row">
 
   <!-- LARGO -->
   <div class="col-md-4 col-12 campo" id="campo-largo" style="display:none;">
@@ -31,6 +31,15 @@
       <label for="largo">Largo</label>
       <input type="number" id="largo" class="form-control" placeholder="Largo" name="largo"
         value="<?php echo isset($turno) ? s($turno->largo) : ''; ?>">
+    </div>
+  </div>
+
+  <!-- ANCHO -->
+  <div class="col-md-4 col-12 campo" id="campo-ancho" style="display:none;">
+    <div class="form-group">
+      <label for="ancho">Ancho</label>
+      <input type="number" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
+        value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
     </div>
   </div>
 
@@ -43,14 +52,7 @@
     </div>
   </div>
 
-  <!-- ANCHO -->
-  <div class="col-md-4 col-12 campo" id="campo-ancho" style="display:none;">
-    <div class="form-group">
-      <label for="ancho">Ancho</label>
-      <input type="number" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
-        value="<?php echo isset($turno) ? s($turno->ancho) : ''; ?>">
-    </div>
-  </div>
+
 
   <!-- DOBLES (solo lámina) -->
   <div class="col-md-4 col-12 campo lamina" style="display:none;">
