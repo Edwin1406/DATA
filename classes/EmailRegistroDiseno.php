@@ -92,9 +92,7 @@ class EmailRegistroDiseno
     if (!empty($ect) && $ect != "0") {
       $detalles .= "ECT: $ect lbs<br>";
     }
-    if (!empty($observaciones) && strtolower($observaciones) != "0") {
-      $detalles .= "Observaciones: $observaciones<br>";
-    }
+  
 
     // Bloque de detalles (solo si hay datos)
     $bloqueDetalles = '';
