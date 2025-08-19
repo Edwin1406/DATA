@@ -11,6 +11,8 @@ class EmailRegistroDiseno
   public $nombre;
   public $token;
   public $estado;
+  public $tipo_producto;
+  public $tipo_componente;
   public $alto;
   public $largo;
   public $ancho;
@@ -22,12 +24,14 @@ class EmailRegistroDiseno
   public $observaciones;
 
 
-  public function __construct($emaildefault, $nombre, $token, $estado, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $observaciones)
+  public function __construct($emaildefault, $nombre, $token, $estado,$tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $flauta, $material, $ect, $descripcion, $observaciones)
   {
     $this->emaildefault = $emaildefault;
     $this->nombre       = $nombre;
     $this->token        = $token;
     $this->estado       = $estado;
+    $this->tipo_producto = $tipo_producto;
+    $this->tipo_componente = $tipo_componente;
     $this->alto        = $alto;
     $this->largo       = $largo;
     $this->ancho      = $ancho;
@@ -45,6 +49,8 @@ class EmailRegistroDiseno
     $nombre = htmlspecialchars($this->nombre ?? '', ENT_QUOTES, 'UTF-8');
     $token  = htmlspecialchars($this->token ?? '', ENT_QUOTES, 'UTF-8');
     $estado = htmlspecialchars($this->estado ?? '', ENT_QUOTES, 'UTF-8');
+    $tipo_producto = htmlspecialchars($this->tipo_producto ?? '', ENT_QUOTES, 'UTF-8');
+    $tipo_componente = htmlspecialchars($this->tipo_componente ?? '', ENT_QUOTES, 'UTF-8');
     $alto   = htmlspecialchars($this->alto ?? '', ENT_QUOTES, 'UTF-8');
     $largo  = htmlspecialchars($this->largo ?? '', ENT_QUOTES, 'UTF-8');
     $ancho  = htmlspecialchars($this->ancho ?? '', ENT_QUOTES, 'UTF-8');
@@ -152,6 +158,14 @@ class EmailRegistroDiseno
 
                 <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
                   Observaciones: ' . $observaciones . '
+                </p>
+
+                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                  Tipo de producto: ' . $tipo_producto . '
+                </p>
+
+                <p style="margin:0 0 14px 0;font-size:14px;line-height:1.6;">
+                  Tipo de componente: ' . $tipo_componente . '
                 </p>
 
                 ' . $bloqueDetalles . '

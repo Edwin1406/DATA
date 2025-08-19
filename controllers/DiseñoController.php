@@ -258,6 +258,8 @@ class DiseñoController
                 $turno->vendedor,
                 $turno->codigo,
                 $turno->estado,
+                $turno->tipo_producto,
+                $turno->tipo_componente,
                 $turno->alto,
                 $turno->largo,
                 $turno->ancho,
