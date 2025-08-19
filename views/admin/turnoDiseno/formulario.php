@@ -23,7 +23,7 @@
 
 
 <!-- CAMPOS DINÁMICOS 3 columnas-->
-<div id="campos-dinamicos" class="row" style="display:none;" >
+<div id="campos-dinamicos" class="row" >
 
   <!-- LARGO -->
   <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
