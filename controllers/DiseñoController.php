@@ -401,7 +401,7 @@ class DiseñoController
                     }
 
                     // Solo redirige si el destino original es el correo de pruebas
-                    if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0) {
+                    if (isset($email) && strcasecmp(trim($email), 'pruebas@megaecuador.com') === 0 || strcasecmp(trim($email), 'artes@megaecuador.com') === 0) {
 
                         // OJO: usa el NOMBRE DEL VENDEDOR, no el del cliente.
                         // Cambia esta variable si tu campo real se llama distinto:
