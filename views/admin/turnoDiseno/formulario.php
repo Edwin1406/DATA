@@ -26,7 +26,7 @@
 <div id="campos-dinamicos" class="row" >
 
   <!-- LARGO -->
-  <div class="col-md-6 col-12 campo" id="campo-largo" style="display:none;">
+  <div class="col-md-4 col-12 campo" id="campo-largo" style="display:none;">
     <div class="form-group">
       <label for="largo">Largo</label>
       <input type="text" id="largo" class="form-control" placeholder="Largo" name="largo"
@@ -35,7 +35,7 @@
   </div>
 
   <!-- ALTO -->
-  <div class="col-md-6 col-12 campo" id="campo-alto" style="display:none;">
+  <div class="col-md-4 col-12 campo" id="campo-alto" style="display:none;">
     <div class="form-group">
       <label for="alto">Alto</label>
       <input type="text" id="alto" class="form-control" placeholder="Alto" name="alto"
@@ -44,7 +44,7 @@
   </div>
 
   <!-- ANCHO -->
-  <div class="col-md-6 col-12 campo" id="campo-ancho" style="display:none;">
+  <div class="col-md-4 col-12 campo" id="campo-ancho" style="display:none;">
     <div class="form-group">
       <label for="ancho">Ancho</label>
       <input type="text" id="ancho" class="form-control" placeholder="Ancho" name="ancho"
@@ -53,7 +53,7 @@
   </div>
 
   <!-- DOBLES (solo lámina) -->
-  <div class="col-md-6 col-12 campo lamina" style="display:none;">
+  <div class="col-md-4 col-12 campo lamina" style="display:none;">
     <div class="form-group">
       <label for="dobles">¿Es doble?</label>
       <select id="dobles" class="form-control" name="dobles">
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-12 campo otros" style="display: none;">
+  <div class="col-md-4 col-12 campo otros" style="display: none;">
     <div class="form-group">
       <label for="descripcion">Descripción</label>
       <textarea id="descripcion" class="form-control form-control-sm"
@@ -74,7 +74,7 @@
 
 
   <!-- FLAUTA -->
-  <div class="col-md-6 col-12 campo cajas" style="display:none;">
+  <div class="col-md-4 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="flauta">Flauta</label>
       <input type="text" id="flauta" class="form-control" placeholder="Flauta" name="flauta"
@@ -83,7 +83,7 @@
   </div>
 
   <!-- MATERIAL -->
-  <div class="col-md-6 col-12 campo cajas" style="display:none;">
+  <div class="col-md-4 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="material">Material</label>
       <input type="text" id="material" class="form-control" placeholder="Material" name="material"
@@ -92,7 +92,7 @@
   </div>
 
   <!-- ECT -->
-  <div class="col-md-6 col-12 campo cajas" style="display:none;">
+  <div class="col-md-4 col-12 campo cajas" style="display:none;">
     <div class="form-group">
       <label for="ect">ECT</label>
       <input type="text" id="ect" class="form-control" placeholder="ECT" name="ect"
