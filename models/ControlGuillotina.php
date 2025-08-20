@@ -15,7 +15,7 @@ class ControlGuillotina extends ActiveRecord {
         'n_cortes',
         'n_cortes_hora',
         'desperdicio_kg',
-        
+        'observaciones'
 
     ];
 
@@ -31,6 +31,7 @@ class ControlGuillotina extends ActiveRecord {
     public $n_cortes;
     public $n_cortes_hora;
     public $desperdicio_kg;
+    public $observaciones;
 
 
 
@@ -47,6 +48,7 @@ class ControlGuillotina extends ActiveRecord {
         $this->n_cortes = $data['n_cortes'] ?? null;
         $this->n_cortes_hora = $data['n_cortes_hora'] ?? null;
         $this->desperdicio_kg = $data['desperdicio_kg'] ?? null;
+        $this->observaciones = $data['observaciones'] ?? null;
     }
 
 

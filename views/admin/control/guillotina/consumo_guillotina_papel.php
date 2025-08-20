@@ -148,9 +148,20 @@
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio(KL)</label>
+                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio (kl)" name="desperdicio_kg">
+                                                placeholder="Desperdicio (kl)" name="desperdicio_kg"
+                                                step="any" min="0">
+                                        </div>
+                                    </div>
+
+
+                                    <!-- observaciones -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="observaciones">Observaciones</label>
+                                            <input type="text" id="observaciones" class="form-control"
+                                                placeholder="Observaciones" name="observaciones">
                                         </div>
                                     </div>
 
