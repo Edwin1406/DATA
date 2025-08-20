@@ -1,14 +1,13 @@
 
 <?php
-// Pide la clave manualmente (por ejemplo desde consola)
-echo "Mantenimiento2025";
-$clave = trim(fgets(STDIN));
+$clave = "Mantenimiento2025";
 
 // Genera el hash con bcrypt, cost=10
 $hash = password_hash($clave, PASSWORD_BCRYPT, ["cost" => 10]);
 
 echo "Tu hash bcrypt es:\n" . $hash . "\n";
 ?>
+
 
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
