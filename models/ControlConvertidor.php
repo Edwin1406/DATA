@@ -70,9 +70,9 @@ class ControlConvertidor extends ActiveRecord {
             self::$alertas['error'][] = 'La cantidad de resmas es obligatoria';
         }
 
-        if(!$this->n_cambios) {
-            self::$alertas['error'][] = 'El número de cambios es obligatorio';
-        }
+        // if(!$this->n_cambios) {
+        //     self::$alertas['error'][] = 'El número de cambios es obligatorio';
+        // }
 
         return self::$alertas;
     }

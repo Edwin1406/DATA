@@ -217,12 +217,11 @@ $router->get('/admin/graficas/graficasDoblado', [GraficasController::class, 'gra
 // apis
 
 $router->get('/admin/api/apiConsumoGeneral', [Apicontroller::class, 'apiConsumoGeneral']);
+$router->get('/admin/api/apiConsumoGeneral', [Apicontroller::class, 'apiConsumoGeneral']);
 
 
 // Apis para las graficas
 $router->get('/admin/api/apiGraficasConsumoGeneral', [GraficasController::class, 'apiGraficasConsumoGeneral']);
-
-
 
 
 
