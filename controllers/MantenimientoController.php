@@ -21,6 +21,8 @@ class MantenimientoController
 
         $router->render('admin/mantenimiento/registroMantenimiento', [
             'titulo' => 'REGISTRO DE MANTENIMIENTO',
+            'email' => $email,
+            'nombre' => $nombre
         ]);
     }
 }
