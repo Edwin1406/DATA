@@ -8,7 +8,15 @@ class MantenimientoController
 {
     public function registroMantenimiento(Router $router)
     {
-        echo "Registro de Mantenimiento";
+        
+
+
+        
+
+
+        $router->render('admin/mantenimiento/registroMantenimiento', [
+            'titulo' => 'REGISTRO DE MANTENIMIENTO',
+        ]);
     }
 }
 
