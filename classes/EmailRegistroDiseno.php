@@ -232,7 +232,7 @@ class EmailRegistroDiseno
       $mail->Port       = (int) $_ENV["EMAIL_PORT"];
       $mail->Username   = $_ENV["EMAIL_USER"];
       $mail->Password   = $_ENV["EMAIL_PASS"];
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->SMTPSecure = false;
       $mail->CharSet    = 'UTF-8';
       $mail->SMTPKeepAlive = true;
 
