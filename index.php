@@ -24,6 +24,7 @@ use Controllers\DiseñoController;
 use Controllers\GraficasController;
 use Controllers\PruebasController;
 use Controllers\LocalizarController;
+use Controllers\MantenimientoController;
 
 $router = new Router();
 
@@ -109,7 +110,9 @@ $router->get('/api/locations/latest', [LocalizarController::class, 'apiUltimas']
 
 
 
-
+// REGISTRO DE MATENIMIENTO
+$router->get('/admin/mantenimiento/registroMantenimiento', [MantenimientoController::class, 'registroMantenimiento']);
+$router->post('/admin/mantenimiento/registroMantenimiento', [MantenimientoController::class, 'registroMantenimiento']);
 
 
 
@@ -224,6 +227,9 @@ $router->get('/admin/api/apiConsumoGeneral', [Apicontroller::class, 'apiConsumoG
 
 // Apis para las graficas
 $router->get('/admin/api/apiGraficasConsumoGeneral', [GraficasController::class, 'apiGraficasConsumoGeneral']);
+
+
+
 
 
 
