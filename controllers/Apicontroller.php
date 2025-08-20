@@ -16,6 +16,13 @@ class Apicontroller {
         echo json_encode($consmogeneral);
         exit;
 
+// fecha
+// ancho
+// largo
+// peso
+
+
+
 
 
     }
