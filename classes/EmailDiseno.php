@@ -51,10 +51,10 @@ class EmailDiseno
       $mail->Username   = $_ENV['EMAIL_USER'];
       $mail->Password   = $_ENV['EMAIL_PASS'];
 
-      if ((int)$_ENV['EMAIL_PORT'] === 465) {
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-      } else {
+      if ((int)$_ENV['EMAIL_PORT'] === 587) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      } else {
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
       }
       $mail->Port = (int)$_ENV['EMAIL_PORT'];
       $mail->SMTPKeepAlive = true;

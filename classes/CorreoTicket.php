@@ -4,7 +4,8 @@ namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class CorreoTicket {
+class CorreoTicket
+{
 
     public $email;
     public $emailusuario;
@@ -16,8 +17,8 @@ class CorreoTicket {
     public $prioridad;
     public $categoria;
 
-    
-    public function __construct( $email,$emailusuario,$computadora_id,$usuario_asignado,$descripcion,$fecha_creacion,$estado,$prioridad,$categoria)
+
+    public function __construct($email, $emailusuario, $computadora_id, $usuario_asignado, $descripcion, $fecha_creacion, $estado, $prioridad, $categoria)
     {
         $this->email = $email;
         $this->emailusuario = $emailusuario;
@@ -30,29 +31,32 @@ class CorreoTicket {
         $this->categoria = $categoria;
     }
 
-    public function enviarConfirmacionTicket() {
+    public function enviarConfirmacionTicket()
+    {
 
-         // create a new object
-         $mail = new PHPMailer();
-         $mail->isSMTP();
-         $mail->Host = $_ENV['EMAIL_HOST'];
-         $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['EMAIL_PORT'];
-         $mail->Username = $_ENV['EMAIL_USER'];
-         $mail->Password = $_ENV['EMAIL_PASS'];
-         $mail->SMTPSecure = 'ssl';
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+        //  $mail->SMTPSecure = 'ssl';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-     
-         $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
-         $mail->addAddress($this->email, $this->usuario_asignado);
-         $mail->addAddress($this->emailusuario, $this->usuario_asignado);
-         $mail->Subject = 'Nuevo Ticket de Soporte - MEGASTOCK S.A.';
 
-         // Set HTML
-         $mail->isHTML(TRUE);
-         $mail->CharSet = 'UTF-8';
-         $contenido = '<html>';
-         $contenido .= "<head><style>
+
+        $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
+        $mail->addAddress($this->email, $this->usuario_asignado);
+        $mail->addAddress($this->emailusuario, $this->usuario_asignado);
+        $mail->Subject = 'Nuevo Ticket de Soporte - MEGASTOCK S.A.';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+        $contenido = '<html>';
+        $contenido .= "<head><style>
              body {
                  font-family: Arial, sans-serif;
                  background-color: #f4f4f9;
@@ -94,28 +98,27 @@ class CorreoTicket {
                  text-align: center;
              }
          </style></head>";
-         $contenido .= "<body>";
-         $contenido .= "<div class='ticket-container'>";
-         $contenido .= "<div class='ticket-header'><h2>Nuevo Ticket de Soporte</h2></div>";
-         $contenido .= "<div class='ticket-details'>";
-         $contenido .= "<p> <strong>Hola " . $this->usuario_asignado . "</strong>, Has creado un ticket con los siguientes datos:</p>";
-         $contenido .= "<p> <strong>Computadora ID:</strong> " . $this->computadora_id . "</p>";
-         $contenido .= "<p> <strong>Descripción:</strong> " . $this->descripcion . "</p>";
-         $contenido .= "<p> <strong>Fecha de Creación:</strong> " . $this->fecha_creacion . "</p>";
-         $contenido .= "<p> <strong>Estado:</strong> " . $this->estado . "</p>";
-         $contenido .= "<p> <strong>Prioridad:</strong> " . $this->prioridad . "</p>";
-         $contenido .= "<p> <strong>Categoría:</strong> " . $this->categoria . "</p>";
-         $contenido .= "<p> Llegaré a la brevedad posible para atender tu solicitud.</p>";
-         $contenido .= "</div>";
-         $contenido .= "<div class='ticket-footer'><p>En caso de que no hayas solicitado este ticket, por favor contacta al departamento de sistemas.</p></div>";
-         $contenido .= "</div>";
-         $contenido .= "<div class='footer'><p>&copy; 2025 MEGASTOCK S.A. - Todos los derechos reservados.</p></div>";
-         $contenido .= "</body></html>";
-         $mail->Body = $contenido;
-         
+        $contenido .= "<body>";
+        $contenido .= "<div class='ticket-container'>";
+        $contenido .= "<div class='ticket-header'><h2>Nuevo Ticket de Soporte</h2></div>";
+        $contenido .= "<div class='ticket-details'>";
+        $contenido .= "<p> <strong>Hola " . $this->usuario_asignado . "</strong>, Has creado un ticket con los siguientes datos:</p>";
+        $contenido .= "<p> <strong>Computadora ID:</strong> " . $this->computadora_id . "</p>";
+        $contenido .= "<p> <strong>Descripción:</strong> " . $this->descripcion . "</p>";
+        $contenido .= "<p> <strong>Fecha de Creación:</strong> " . $this->fecha_creacion . "</p>";
+        $contenido .= "<p> <strong>Estado:</strong> " . $this->estado . "</p>";
+        $contenido .= "<p> <strong>Prioridad:</strong> " . $this->prioridad . "</p>";
+        $contenido .= "<p> <strong>Categoría:</strong> " . $this->categoria . "</p>";
+        $contenido .= "<p> Llegaré a la brevedad posible para atender tu solicitud.</p>";
+        $contenido .= "</div>";
+        $contenido .= "<div class='ticket-footer'><p>En caso de que no hayas solicitado este ticket, por favor contacta al departamento de sistemas.</p></div>";
+        $contenido .= "</div>";
+        $contenido .= "<div class='footer'><p>&copy; 2025 MEGASTOCK S.A. - Todos los derechos reservados.</p></div>";
+        $contenido .= "</body></html>";
+        $mail->Body = $contenido;
 
-         //Enviar el mail
-         $mail->send();
 
+        //Enviar el mail
+        $mail->send();
     }
 }

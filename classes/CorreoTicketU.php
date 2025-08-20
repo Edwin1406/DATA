@@ -4,7 +4,8 @@ namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class CorreoTicketU {
+class CorreoTicketU
+{
     public $id;
     public $email;
     public $emailusuario;
@@ -13,8 +14,8 @@ class CorreoTicketU {
     public $estado;
     public $prioridad;
 
-    
-    public function __construct( $id,$email,$emailusuario,$computadora_id,$usuario_asignado,$estado,$prioridad)
+
+    public function __construct($id, $email, $emailusuario, $computadora_id, $usuario_asignado, $estado, $prioridad)
     {
         $this->id = $id;
         $this->email = $email;
@@ -23,32 +24,33 @@ class CorreoTicketU {
         $this->usuario_asignado = $usuario_asignado;
         $this->estado = $estado;
         $this->prioridad = $prioridad;
-   
     }
 
-    public function enviarConfirmacionTicket() {
+    public function enviarConfirmacionTicket()
+    {
 
-         // create a new object
-         $mail = new PHPMailer();
-         $mail->isSMTP();
-         $mail->Host = $_ENV['EMAIL_HOST'];
-         $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['EMAIL_PORT'];
-         $mail->Username = $_ENV['EMAIL_USER'];
-         $mail->Password = $_ENV['EMAIL_PASS'];
-         $mail->SMTPSecure = 'ssl';
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+        //  $mail->SMTPSecure = 'ssl';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-     
-         $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
-         $mail->addAddress($this->email, $this->usuario_asignado);
-         $mail->addAddress($this->emailusuario, $this->usuario_asignado);
-         $mail->Subject = 'Nuevo Ticket de Soporte - MEGASTOCK S.A.';
 
-         // Set HTML
-         $mail->isHTML(TRUE);
-         $mail->CharSet = 'UTF-8';
-         $contenido = '<html>';
-         $contenido .= "<head><style>
+        $mail->setFrom('sistemas@logmegaecuador.com', 'MEGASTOCK S.A.');
+        $mail->addAddress($this->email, $this->usuario_asignado);
+        $mail->addAddress($this->emailusuario, $this->usuario_asignado);
+        $mail->Subject = 'Nuevo Ticket de Soporte - MEGASTOCK S.A.';
+
+        // Set HTML
+        $mail->isHTML(TRUE);
+        $mail->CharSet = 'UTF-8';
+        $contenido = '<html>';
+        $contenido .= "<head><style>
              body {
                  font-family: Arial, sans-serif;
                  background-color: #f4f4f9;
@@ -90,25 +92,25 @@ class CorreoTicketU {
                  text-align: center;
              }
          </style></head>";
-         $contenido .= "<body>";
-         $contenido .= "<div class='ticket-container'>";
-         $contenido .= "<div class='ticket-header'><h2>Ticket Cerrado</h2></div>";
-         $contenido .= "<div class='ticket-details'>";
-         $contenido .= "<p><strong>Hola " . $this->usuario_asignado . "</strong>, El ticket que creaste ha sido cerrado con los siguientes datos:</p>";
-         $contenido .= "<p><strong>Computadora ID:</strong> " . $this->computadora_id . "</p>";
-         $contenido .= "<p><strong>Estado:</strong> Cerrado</p>"; // Estado cerrado
-         $contenido .= "<p><strong>Prioridad:</strong> " . $this->prioridad . "</p>";
+        $contenido .= "<body>";
+        $contenido .= "<div class='ticket-container'>";
+        $contenido .= "<div class='ticket-header'><h2>Ticket Cerrado</h2></div>";
+        $contenido .= "<div class='ticket-details'>";
+        $contenido .= "<p><strong>Hola " . $this->usuario_asignado . "</strong>, El ticket que creaste ha sido cerrado con los siguientes datos:</p>";
+        $contenido .= "<p><strong>Computadora ID:</strong> " . $this->computadora_id . "</p>";
+        $contenido .= "<p><strong>Estado:</strong> Cerrado</p>"; // Estado cerrado
+        $contenido .= "<p><strong>Prioridad:</strong> " . $this->prioridad . "</p>";
         //  calificar url 
         $contenido .= "<p><strong>Calificar:</strong> <a href='https://megawebsistem.com/admin/sistemas/ticket/calificar?id=" . $this->id . "'>Calificar Ticket</a></p>";
         $contenido .= "<p>El ticket ha sido cerrado. Si tienes más consultas o necesitas reabrirlo, por favor contacta al departamento de soporte.</p>";
-         $contenido .= "</div>";
-         $contenido .= "<div class='ticket-footer'><p>Si no solicitaste este ticket, por favor contacta al departamento de sistemas.</p></div>";
-         $contenido .= "</div>";
-         $contenido .= "<div class='footer'><p>&copy; 2025 MEGASTOCK S.A. - Todos los derechos reservados.</p></div>";
-         $contenido .= "</body></html>";
-         $mail->Body = $contenido;
-         
-         // Enviar el mail
-         $mail->send();
-    }         
+        $contenido .= "</div>";
+        $contenido .= "<div class='ticket-footer'><p>Si no solicitaste este ticket, por favor contacta al departamento de sistemas.</p></div>";
+        $contenido .= "</div>";
+        $contenido .= "<div class='footer'><p>&copy; 2025 MEGASTOCK S.A. - Todos los derechos reservados.</p></div>";
+        $contenido .= "</body></html>";
+        $mail->Body = $contenido;
+
+        // Enviar el mail
+        $mail->send();
+    }
 }
