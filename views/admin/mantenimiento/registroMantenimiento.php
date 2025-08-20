@@ -85,7 +85,9 @@
                                         <label for="tipo_doc">Tipo Doc</label>
                                         <div class="form-group">
                                             <select class="form-select" name="tipo_doc" id="tipo_doc">
-                                                <option value="FACTURA">Factura</option>
+                                                <option value="">Seleccione un tipo de documento</option>
+                                                  <option value="FACTURA" <?php echo isset($diseno) && s($diseno->estado) === 'ARTE' ? 'selected' : ''; ?>>Arte</option>
+            
                                                 <option value="NOTAS DE VENTAS">Notas de Ventas</option>
                                                 <option value="COTIZACION">Cotización</option>
                                                 <option value="PROFORMA">Proforma</option>
