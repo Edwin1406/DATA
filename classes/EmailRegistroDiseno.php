@@ -237,7 +237,7 @@ class EmailRegistroDiseno
       $mail->SMTPKeepAlive = true;
 
       $mail->setFrom('sistemas@logmegaecuador.com', 'DISEÑO MEGASTOCK S.A.');
-      $mail->addBCC('sistemas@megaecuador.com');
+      $mail->addBCC('artes@megaecuador.com');
       $mail->addAddress($this->emaildefault, $nombre);
       $mail->addReplyTo('sistemas@logmegaecuador.com', 'Soporte MEGASTOCK');
       $mail->Subject = 'Registro de Diseño';
