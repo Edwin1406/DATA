@@ -103,8 +103,8 @@
                                         <label for="personal">Escoja el Personal</label>
                                         <div class="form-group">
                                             <select class="form-select" name="personal" id="personal">
-                                                <option value="Luis Govea">Luis Govea</option>
-                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
+                                                <option value="Simon Chucuri">Simon Chucuri</option>
+                                                <option value="Gabriel Silva">Gabriel Silva</option>
                                             </select>
                                         </div>
                                     </div>
