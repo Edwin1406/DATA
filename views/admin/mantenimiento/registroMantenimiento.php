@@ -1,7 +1,7 @@
 
 <?php
 // Pide la clave manualmente (por ejemplo desde consola)
-echo "Escribe tu clave:Mantenimiento2025";
+echo "Mantenimiento2025";
 $clave = trim(fgets(STDIN));
 
 // Genera el hash con bcrypt, cost=10
