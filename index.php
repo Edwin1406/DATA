@@ -7,12 +7,7 @@
 // error_reporting(E_ALL);
 
 
-
-
-
-
 require_once __DIR__ . '/includes/app.php';
-
 
 use MVC\Router;
 
@@ -53,7 +48,6 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
 
 // Area de Administración
-
 $router->get('/admin/index', [AdminController::class, 'index']);
 
 
