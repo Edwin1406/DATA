@@ -170,11 +170,15 @@
                                     <!-- desperdicio kg  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio(KL)</label>
+                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio Kg" name="desperdicio_kg">
+                                                placeholder="Desperdicio (kg)" name="desperdicio_kg"
+                                                step="any" min="0">
                                         </div>
                                     </div>
+
+
+
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
