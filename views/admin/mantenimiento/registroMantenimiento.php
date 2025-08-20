@@ -1,11 +1,3 @@
-<!-- <header class="mb-3">
-    <a href="#" class="burger-btn d-block d-xl-none">
-        <i class="bi bi-justify fs-3"></i>
-    </a>
-</header> -->
-
-
-
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
         <div class="row">
@@ -57,7 +49,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/control/convertidor/tablaConsumoConvertidor">Tabla Consumo Convertidor</a>
+                    <a class="nav-link active" href="/admin/">Tabla Consumo Convertidor</a>
                 </li>
             </ul>
         </div>
@@ -70,7 +62,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">REGISTRO DE CONTROL DE MANTENIMIENTO</h4>
-                        <?php require_once __DIR__ . '../../../../templates/alertas.php'  ?>
+                        <?php require_once __DIR__ . '../../../templates/alertas.php'  ?>
 
 
                     </div>
