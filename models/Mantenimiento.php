@@ -16,7 +16,7 @@ class Mantenimiento extends ActiveRecord {
         'subtotal',
         'iva',
         'total',
-        'observaciones'
+        'observacion'
     ];
 
     public $id;
@@ -31,7 +31,7 @@ class Mantenimiento extends ActiveRecord {
     public $subtotal;
     public $iva;
     public $total;
-    public $observaciones;
+    public $observacion;
 
     public function __construct($args = [])
     {
@@ -47,10 +47,10 @@ class Mantenimiento extends ActiveRecord {
         $this->subtotal = $args['subtotal'] ?? 0;
         $this->iva = $args['iva'] ?? 0;
         $this->total = $args['total'] ?? 0;
-        $this->observaciones = $args['observaciones'] ?? '';
+        $this->observacion = $args['observacion'] ?? '';
     }
 
-    
+
 
 
 
