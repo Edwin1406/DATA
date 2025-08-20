@@ -81,22 +81,14 @@
                                         </div>
                                     </div>
                                     <!-- turno -->
-
-
                                     <div class="col-md-6 col-12">
+                                        <label for="tipo_doc">Tipo Doc</label>
                                         <div class="form-group">
-                                            <label for="turno">Turno</label>
-                                            <input type="number" id="turno" class="form-control"
-                                                placeholder="Turno" name="turno">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <label for="personal">Escoja el Personal</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="personal" id="personal">
-                                                <option value="Luis Govea">Luis Govea</option>
-                                                <option value="Guillermo Bonilla">Guillermo Bonilla</option>
+                                            <select class="form-select" name="tipo_doc" id="tipo_doc">
+                                                <option value="FACTURA">Factura</option>
+                                                <option value="NOTAS DE VENTAS">Notas de Ventas</option>
+                                                <option value="COTIZACION">Cotización</option>
+                                                <option value="PROFORMA">Proforma</option>
                                             </select>
                                         </div>
                                     </div>
@@ -105,56 +97,71 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="horas_programadas">Horas Programadas</label>
-                                            <input type="time" id="horas_programadas" class="form-control"
-                                                placeholder="Horas Programadas" name="horas_programadas">
+                                            <label for="numero">Numero</label>
+                                            <input type="number" id="numero" class="form-control"
+                                                placeholder="Numero" name="numero">
                                         </div>
                                     </div>
 
                                     <!-- cantidad_laminas -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad_resmas">Cantidad de Resmas</label>
-                                            <input type="number" id="cantidad_resmas" class="form-control"
-                                                placeholder="Cantidad de Resmas" name="cantidad_resmas">
+                                            <label for="proveedor">Proveedor</label>
+                                            <input type="text" id="proveedor" class="form-control"
+                                                placeholder="Proveedor" name="proveedor">
                                         </div>
                                     </div>
                                     <!-- ancho_papel -->
-                                    <div class="col-md-6 col-12">
-
+                                  <div class="col-md-6 col-12">
+                                        <label for="maquina">Maquina</label>
                                         <div class="form-group">
-                                            <label for="ancho_papel">Ancho de Papel</label>
-                                            <input type="number" id="ancho_papel" class="form-control"
-                                                placeholder="Ancho de Papel" name="ancho_papel">
+                                            <select class="form-select" name="maquina" id="maquina">
+                                                <option value="CALDERO">Caldero</option>
+                                                <option value="MONTACARGAS">Montacargas</option>
+                                                <option value="TROQUELADORA">Troqueladora</option>
+                                                <option value="PRE-PRINTER">Pre-Printer</option>
+                                                <option value="DOBLADORA">Dobladora</option>
+                                                <option value="GENERAL-PLANTA">General Planta</option>
+                                                <option value="CORRUGADOR">Corrugador</option>
+                                                <option value="MICRO">Micro</option>
+                                            </select>
                                         </div>
                                     </div>
 
-
-                                    <!-- n_cambio -->
+                         
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="n_cambios">N° de Cambio</label>
-                                            <input type="number" id="n_cambios" class="form-control"
-                                                placeholder="N° de Cambio" name="n_cambios">
+                                            <label for="trabajo">Trabajo o repuesto</label>
+                                            <input type="text" id="trabajo" class="form-control"
+                                                placeholder="Trabajo o repuesto" name="trabajo">
                                         </div>
                                     </div>
 
-                                    <!-- gramaje -->
+                            
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="gramaje">Gramaje</label>
-                                            <input type="number" id="gramaje" class="form-control"
-                                                placeholder="Gramaje" name="gramaje">
+                                            <label for="valor">valor</label>
+                                            <input type="number" id="valor" class="form-control"
+                                                placeholder="valor" name="valor" step="any" min="0">
                                         </div>
                                     </div>
 
-                                    <!-- desperdicio_k -->
+                                    
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
-                                            <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio (kl)" name="desperdicio_kg"
+                                            <label for="descuento">Descuento</label>
+                                            <input type="number" id="descuento" class="form-control"
+                                                placeholder="Descuento" name="descuento"
                                                 step="any" min="0">
+                                        </div>
+                                    </div>
+
+                                    <!-- observacion -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="observacion">Observación</label>
+                                            <textarea id="observacion" class="form-control"
+                                                placeholder="Observación" name="observacion"></textarea>
                                         </div>
                                     </div>
 
