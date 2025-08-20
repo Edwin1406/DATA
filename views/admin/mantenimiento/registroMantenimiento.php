@@ -49,7 +49,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/">Tabla Consumo Convertidor</a>
+                    <a class="nav-link active" href="/admin/">Tabla Consumo mantenimiento</a>
                 </li>
             </ul>
         </div>
