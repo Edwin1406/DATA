@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Consumo_general;
+use Model\Mantenimiento;
 
 class Apicontroller {
    
@@ -14,4 +15,13 @@ class Apicontroller {
         exit;
     }
 
+    public static function apiMantenimiento():void {
+        $mantenimiento = Mantenimiento::all('ASC');
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($mantenimiento);
+        exit;
+    }
+
 }
+

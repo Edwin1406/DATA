@@ -217,7 +217,7 @@ $router->get('/admin/graficas/graficasDoblado', [GraficasController::class, 'gra
 // apis
 
 $router->get('/admin/api/apiConsumoGeneral', [Apicontroller::class, 'apiConsumoGeneral']);
-$router->get('/admin/api/mantenimiento', [MantenimientoController::class, 'apiMantenimiento']);
+$router->get('/admin/api/mantenimiento', [Apicontroller::class, 'apiMantenimiento']);
 
 
 // Apis para las graficas
