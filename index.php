@@ -18,6 +18,7 @@ use MVC\Router;
 
 use Controllers\AuthController;
 use Controllers\AdminController;
+use Controllers\Apicontroller;
 use Controllers\ControlController;
 use Controllers\DiseñoController;
 use Controllers\GraficasController;
@@ -216,9 +217,9 @@ $router->get('/admin/graficas/graficasDoblado', [GraficasController::class, 'gra
 
 
 
+// apis
 
-
-
+$router->get('/admin/api/apiConsumoGeneral', [Apicontroller::class, 'apiConsumoGeneral']);
 
 
 // Apis para las graficas
