@@ -37,6 +37,9 @@ class MantenimientoController
             // Calcular Total
             $mantenimiento->total = $mantenimiento->subtotal + $mantenimiento->iva;
 
+
+            debuguear($mantenimiento);
+
             // Validar los datos
             $errores = $mantenimiento->validar();
 
