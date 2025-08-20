@@ -156,14 +156,13 @@
                                         </div>
                                     </div>
 
-
-
                                     <!-- desperdicio_k -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="desperdicio_kg">Desperdicio</label>
+                                            <label for="desperdicio_kg">Desperdicio (KL)</label>
                                             <input type="number" id="desperdicio_kg" class="form-control"
-                                                placeholder="Desperdicio (kl)" name="desperdicio_kg">
+                                                placeholder="Desperdicio (kl)" name="desperdicio_kg"
+                                                step="any" min="0">
                                         </div>
                                     </div>
 
