@@ -74,10 +74,10 @@ class DiseñoController
 
     public static function tablaDiseno(Router $router)
     {
-        // session_start();
-        // if (!isset($_SESSION['email'])) {
-        //     header('Location: /');
-        // }
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
 
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
