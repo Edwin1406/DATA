@@ -69,7 +69,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL GUILLERMO</h4>
+                        <h4 class="card-title">REGISTRO DE CONTROL GUILLOTINA</h4>
                         <?php require_once __DIR__ . '../../../../templates/alertas.php'  ?>
 
                     </div>
