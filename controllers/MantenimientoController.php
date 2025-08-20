@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Mantenimiento;
 use MVC\Router;
 
 class MantenimientoController
@@ -17,7 +18,22 @@ class MantenimientoController
         $email = $_SESSION['email'];
         $nombre = $_SESSION['nombre'];
 
+        $mantenimiento = new Mantenimiento;
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $mantenimiento->sincronizar($_POST);
+
+            // Validar los datos
+            $errores = $mantenimiento->validar();
+
+            if (empty($errores)) {
+                // Guardar el mantenimiento en la base de datos
+                $resultado = $mantenimiento->guardar();
+                if ($resultado) {
+                    header('Location: /admin/mantenimiento');
+                }
+            }
+        }
 
         $router->render('admin/mantenimiento/registroMantenimiento', [
             'titulo' => 'REGISTRO DE MANTENIMIENTO',
@@ -26,4 +42,3 @@ class MantenimientoController
         ]);
     }
 }
-
