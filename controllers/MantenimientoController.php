@@ -23,6 +23,8 @@ class MantenimientoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mantenimiento->sincronizar($_POST);
 
+            $mantenimiento->subtotal=
+
             // Validar los datos
             $errores = $mantenimiento->validar();
 
@@ -30,7 +32,7 @@ class MantenimientoController
                 // Guardar el mantenimiento en la base de datos
                 $resultado = $mantenimiento->guardar();
                 if ($resultado) {
-                    header('Location: /admin/mantenimiento');
+                    header('Location: /admin/mantenimiento/registroMantenimiento?exito=1');
                 }
             }
         }
