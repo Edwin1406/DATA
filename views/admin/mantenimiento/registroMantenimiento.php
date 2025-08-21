@@ -1,3 +1,51 @@
+<?php
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+// 1. Obtener datos desde la API
+$apiUrl = "https://megawebsistem.com/admin/api/apiConsumoGeneral";
+$jsonData = file_get_contents($apiUrl);
+$data = json_decode($jsonData, true);
+
+// 2. Crear un nuevo archivo Excel
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+// 3. Encabezados
+$headers = ["ID", "Tipo Máquina", "Total General", "Fecha Creación", "Acción"];
+$col = "A";
+foreach ($headers as $header) {
+    $sheet->setCellValue($col . "1", $header);
+    $col++;
+}
+
+// 4. Insertar los registros
+$row = 2;
+foreach ($data as $item) {
+    $sheet->setCellValue("A" . $row, $item["id"]);
+    $sheet->setCellValue("B" . $row, $item["tipo_maquina"]);
+    $sheet->setCellValue("C" . $row, $item["total_general"]);
+    $sheet->setCellValue("D" . $row, $item["created_at"]);
+    $sheet->setCellValue("E" . $row, $item["accion"]);
+    $row++;
+}
+
+// 5. Preparar la descarga
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="consumo_general.xlsx"');
+header('Cache-Control: max-age=0');
+
+// 6. Enviar el archivo al navegador
+$writer = new Xlsx($spreadsheet);
+$writer->save('php://output');
+exit;
+?>
+
+
+
+
 
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
