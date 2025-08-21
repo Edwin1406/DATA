@@ -72,7 +72,7 @@
                                     <!-- operador SELECCIONAR NO MULTIPLE -->
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
-                                        <div class="form-group">
+                                        <div class="form-group"> 
                                             <select class="form-select" name="tipo_maquina" id="tipo_maquina">
                                                 <option value="" disabled selected>Seleccione tipo de máquina</option>
                                                 <option value="CORRUGADOR">CORRUGADOR</option>
