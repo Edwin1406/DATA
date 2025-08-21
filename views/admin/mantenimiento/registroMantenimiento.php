@@ -1,6 +1,3 @@
-<?php
-phpinfo();
-?>
 
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
