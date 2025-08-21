@@ -8,9 +8,11 @@ use Model\Mantenimiento;
 class Apicontroller {
    
     public static function apiConsumoGeneral():void {
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="consumo_general.xlsx"');
-header('Cache-Control: max-age=0');
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
         $consmogeneral = Consumo_general::all('ASC');
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
