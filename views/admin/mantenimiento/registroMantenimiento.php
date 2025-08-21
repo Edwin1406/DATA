@@ -4,26 +4,26 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-// 1. Obtener datos desde la API
 $apiUrl = "https://megawebsistem.com/admin/api/apiConsumoGeneral";
 $jsonData = file_get_contents($apiUrl);
 $data = json_decode($jsonData, true);
 
-// 2. Verificar estructura (puede venir dentro de "data")
-if (isset($data["data"])) {
-    $data = $data["data"];
-}
-
-// Si no hay datos, salir con mensaje
-if (empty($data)) {
+// --- Detectar dónde están los registros ---
+if (isset($data["data"]) && is_array($data["data"])) {
+    $rows = $data["data"];
+} elseif (isset($data["records"]) && is_array($data["records"])) {
+    $rows = $data["records"];
+} elseif (is_array($data)) {
+    $rows = $data;
+} else {
     die("⚠ No se encontraron datos en la API.");
 }
 
-// 3. Crear Excel
+// 2. Crear Excel
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-// 4. Encabezados
+// 3. Encabezados
 $headers = ["ID", "Tipo Máquina", "Total General", "Fecha Creación", "Acción"];
 $col = "A";
 foreach ($headers as $header) {
@@ -31,18 +31,18 @@ foreach ($headers as $header) {
     $col++;
 }
 
-// 5. Insertar registros
+// 4. Insertar registros
 $row = 2;
-foreach ($data as $item) {
-    $sheet->setCellValue("A" . $row, $item["id"]);
-    $sheet->setCellValue("B" . $row, $item["tipo_maquina"]);
-    $sheet->setCellValue("C" . $row, $item["total_general"]);
-    $sheet->setCellValue("D" . $row, $item["created_at"]);
-    $sheet->setCellValue("E" . $row, $item["accion"]);
+foreach ($rows as $item) {
+    $sheet->setCellValue("A" . $row, $item["id"] ?? "");
+    $sheet->setCellValue("B" . $row, $item["tipo_maquina"] ?? "");
+    $sheet->setCellValue("C" . $row, $item["total_general"] ?? "");
+    $sheet->setCellValue("D" . $row, $item["created_at"] ?? "");
+    $sheet->setCellValue("E" . $row, $item["accion"] ?? "");
     $row++;
 }
 
-// 6. Descargar Excel
+// 5. Descargar Excel
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="consumo_general.xlsx"');
 header('Cache-Control: max-age=0');
