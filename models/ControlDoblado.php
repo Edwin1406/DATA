@@ -65,25 +65,25 @@ class ControlDoblado extends ActiveRecord {
             self::$alertas['error'][] = 'Las horas programadas son obligatorias';
         }
 
-        if(!$this->cantidad_laminas) {
-            self::$alertas['error'][] = 'La cantidad de láminas es obligatoria';
-        }
+        // if(!$this->cantidad_laminas) {
+        //     self::$alertas['error'][] = 'La cantidad de láminas es obligatoria';
+        // }
 
-        if(!$this->cantidad_lamina_hora) {
-            self::$alertas['error'][] = 'La cantidad de láminas por hora es obligatoria';
-        }
+        // if(!$this->cantidad_lamina_hora) {
+        //     self::$alertas['error'][] = 'La cantidad de láminas por hora es obligatoria';
+        // }
 
-        if(!$this->n_cambio) {
-            self::$alertas['error'][] = 'El número de cambio es obligatorio';
-        }
+        // if(!$this->n_cambio) {
+        //     self::$alertas['error'][] = 'El número de cambio es obligatorio';
+        // }
 
-        if(!$this->desperdicio_kg) {
-            self::$alertas['error'][] = 'El desperdicio en kg es obligatorio';
-        }
+        // if(!$this->desperdicio_kg) {
+        //     self::$alertas['error'][] = 'El desperdicio en kg es obligatorio';
+        // }
 
-        if(!$this->consumo_goma) {
-            self::$alertas['error'][] = 'El consumo de goma es obligatorio';
-        }
+        // if(!$this->consumo_goma) {
+        //     self::$alertas['error'][] = 'El consumo de goma es obligatorio';
+        // }
 
         return self::$alertas;
     }

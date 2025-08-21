@@ -75,25 +75,25 @@ class ControlGuillotina extends ActiveRecord {
             self::$alertas['error'][] = 'Las horas programadas son obligatorias';
         }
 
-        if(!$this->cantidad_resmas) {
-            self::$alertas['error'][] = 'La cantidad de resmas es obligatoria';
-        }
+        // if(!$this->cantidad_resmas) {
+        //     self::$alertas['error'][] = 'La cantidad de resmas es obligatoria';
+        // }
 
-        if(!$this->n_cambios_medidas) {
-            self::$alertas['error'][] = 'El número de cambios de medidas es obligatorio';
-        }
+        // if(!$this->n_cambios_medidas) {
+        //     self::$alertas['error'][] = 'El número de cambios de medidas es obligatorio';
+        // }
 
-        if(!$this->n_cortes) {
-            self::$alertas['error'][] = 'El número de cortes es obligatorio';
-        }
+        // if(!$this->n_cortes) {
+        //     self::$alertas['error'][] = 'El número de cortes es obligatorio';
+        // }
 
-        if(!$this->n_cortes_hora) {
-            self::$alertas['error'][] = 'El número de cortes por hora es obligatorio';
-        }
+        // if(!$this->n_cortes_hora) {
+        //     self::$alertas['error'][] = 'El número de cortes por hora es obligatorio';
+        // }
 
-        if(!$this->desperdicio_kg) {
-            self::$alertas['error'][] = 'El desperdicio en kg es obligatorio';
-        }
+        // if(!$this->desperdicio_kg) {
+        //     self::$alertas['error'][] = 'El desperdicio en kg es obligatorio';
+        // }
 
         return self::$alertas;
     }

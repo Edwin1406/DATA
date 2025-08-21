@@ -72,21 +72,21 @@ class Prueba extends ActiveRecord
         if (!$this->producto) {
             self::$alertas['error'][] = 'El Producto es Obligatorio';
         }
-        if (!$this->medidas) {
-            self::$alertas['error'][] = 'La Medida es Obligatoria';
-        }
-        if (!$this->cantidad) {
-            self::$alertas['error'][] = 'La Cantidad es Obligatoria';
-        }
-        if (!$this->hora_inicio) {
-            self::$alertas['error'][] = 'La Hora de Inicio es Obligatoria';
-        }
-        if (!$this->hora_fin) {
-            self::$alertas['error'][] = 'La Hora de Fin es Obligatoria';
-        }
-        if (!$this->total_horas) {
-            self::$alertas['error'][] = 'El Total de Horas es Obligatorio';
-        }
+        // if (!$this->medidas) {
+        //     self::$alertas['error'][] = 'La Medida es Obligatoria';
+        // }
+        // if (!$this->cantidad) {
+        //     self::$alertas['error'][] = 'La Cantidad es Obligatoria';
+        // }
+        // if (!$this->hora_inicio) {
+        //     self::$alertas['error'][] = 'La Hora de Inicio es Obligatoria';
+        // }
+        // if (!$this->hora_fin) {
+        //     self::$alertas['error'][] = 'La Hora de Fin es Obligatoria';
+        // }
+        // if (!$this->total_horas) {
+        //     self::$alertas['error'][] = 'El Total de Horas es Obligatorio';
+        // }
         return self::$alertas;
     }
 

@@ -67,9 +67,9 @@ class ControlTroquel extends ActiveRecord {
         if(!$this->horas_programadas) {
             self::$alertas['error'][] = 'Las horas programadas son obligatorias';
         }
-        if(!$this->golpes_maquina) {
-            self::$alertas['error'][] = 'Los golpes de máquina son obligatorios';
-        }
+        // if(!$this->golpes_maquina) {
+        //     self::$alertas['error'][] = 'Los golpes de máquina son obligatorios';
+        // }
        
         // if(!$this->cambios_medida) {
         //     self::$alertas['error'][] = 'Los cambios de medida son obligatorios';
