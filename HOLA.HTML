@@ -2,63 +2,95 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Descargar Consumo General</title>
+  <title>Consumo General</title>
+  <!-- Librería para exportar a Excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background: #f2f2f2; }
+    button { padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer; font-size: 14px; }
+    button:hover { background: #218838; }
+  </style>
 </head>
 <body>
-  <h2>Exportar datos de Consumo General</h2>
-  <button id="btnDescargar">📥 Descargar Excel</button>
+  <h2>📊 Consumo General</h2>
+  <button id="btnExcel">📥 Descargar Excel</button>
+
+  <table id="tablaDatos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo de Máquina</th>
+        <th>Total General</th>
+        <th>Fecha</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
   <script>
-async function fetchTodosLosDatos() {
-  let pagina = 1;
-  let todos = [];
-  let seguir = true;
+    const apiUrl = "https://pruebas.megawebsistem.com/admin/api/apiConsumoGeneral";
+    let datosAPI = [];
 
-  while (seguir) {
-    const response = await fetch(`https://pruebas.megawebsistem.com/admin/api/apiConsumoGeneral?page=${pagina}`);
-    const data = await response.json();
+    // 1. Consumir API y mostrar en tabla
+    async function cargarDatos() {
+      try {
+        const res = await fetch(apiUrl);
+        datosAPI = await res.json();
 
-    let registros = [];
-    if (Array.isArray(data)) {
-      registros = data;
-    } else if (data.data && Array.isArray(data.data)) {
-      registros = data.data;
-    } else if (data.records && Array.isArray(data.records)) {
-      registros = data.records;
+        const tbody = document.querySelector("#tablaDatos tbody");
+        tbody.innerHTML = "";
+
+        datosAPI.forEach(reg => {
+          let fila = `
+            <tr>
+              <td>${reg.id}</td>
+              <td>${reg.tipo_maquina}</td>
+              <td>${reg.total_general}</td>
+              <td>${reg.created_at}</td>
+              <td>${reg.accion}</td>
+            </tr>
+          `;
+          tbody.innerHTML += fila;
+        });
+      } catch (err) {
+        console.error("❌ Error al cargar datos:", err);
+      }
     }
 
-    if (registros.length === 0) {
-      seguir = false;
-    } else {
-      todos = todos.concat(registros);
-      pagina++;
+    // 2. Exportar a Excel con encabezados en español
+    function descargarExcel() {
+      if (datosAPI.length === 0) {
+        alert("No hay datos para exportar");
+        return;
+      }
+
+      // Mapear datos con encabezados en español
+      const datosFormateados = datosAPI.map(reg => ({
+        "ID": reg.id,
+        "Tipo de Máquina": reg.tipo_maquina,
+        "Total General": reg.total_general,
+        "Fecha": reg.created_at,
+        "Acción": reg.accion
+      }));
+
+      // Crear hoja y libro de Excel
+      const ws = XLSX.utils.json_to_sheet(datosFormateados);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Consumo");
+
+      // Descargar archivo
+      XLSX.writeFile(wb, "ConsumoGeneral.xlsx");
     }
-  }
 
-  return todos;
-}
+    // Eventos
+    document.getElementById("btnExcel").addEventListener("click", descargarExcel);
 
-document.getElementById("btnDescargar").addEventListener("click", async () => {
-  try {
-    const registros = await fetchTodosLosDatos();
-
-    if (registros.length === 0) {
-      alert("⚠ No se encontraron datos en la API.");
-      return;
-    }
-
-    const worksheet = XLSX.utils.json_to_sheet(registros);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Consumo");
-
-    XLSX.writeFile(workbook, "consumo_general.xlsx");
-  } catch (error) {
-    console.error("Error al generar Excel:", error);
-    alert("❌ Hubo un error al descargar el archivo.");
-  }
-});
-</script>
-
+    // Cargar datos al abrir la página
+    cargarDatos();
+  </script>
 </body>
 </html>
