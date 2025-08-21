@@ -1,117 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Localizador en tiempo (casi) real</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<style>
-  #map { height: 85vh; }
-  body { font-family: system-ui, sans-serif; margin:0; padding:0; }
-  .bar { padding: 8px 12px; background:#f5f5f5; display:flex; gap:12px; align-items:center; }
-</style>
+  <meta charset="UTF-8">
+  <title>Descargar Consumo General</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="bar">
-  <label>Vehículo/ID:
-    <input id="vehicleId" placeholder="ej: CAMION-12" />
-  </label>
-  <button id="startBtn">Iniciar</button>
-  <span id="status"></span>
-</div>
-<div id="map"></div>
+  <h2>Exportar datos de Consumo General</h2>
+  <button id="btnDescargar">📥 Descargar Excel</button>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-const map = L.map('map').setView([0, 0], 2);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19, attribution: '&copy; OpenStreetMap'
-}).addTo(map);
+  <script>
+async function fetchTodosLosDatos() {
+  let pagina = 1;
+  let todos = [];
+  let seguir = true;
 
-let watchId = null;
-let myMarker = null;
-let vehicleId = null;
-const others = new Map(); // vehicle_id -> marker
+  while (seguir) {
+    const response = await fetch(`https://pruebas.megawebsistem.com/admin/api/apiConsumoGeneral?page=${pagina}`);
+    const data = await response.json();
 
-function setStatus(msg){ document.getElementById('status').textContent = msg; }
-
-// Enviar punto al backend
-async function sendPoint(pos) {
-  if (!vehicleId) return;
-  const body = {
-    vehicle_id: vehicleId,
-    lat: pos.coords.latitude,
-    lng: pos.coords.longitude,
-    accuracy: pos.coords.accuracy,
-    heading: pos.coords.heading,
-    speed: pos.coords.speed
-  };
-  try {
-    await fetch('../api/update_location.php', {
-      method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
-    });
-  } catch(e) { console.error(e); }
-}
-
-// Arrancar geolocalización continua
-function startTracking() {
-  if (watchId) return;
-  if (!('geolocation' in navigator)) { setStatus('Geolocalización no soportada'); return; }
-
-  watchId = navigator.geolocation.watchPosition(
-    (pos) => {
-      const {latitude, longitude, accuracy} = pos.coords;
-      if (!myMarker) {
-        myMarker = L.marker([latitude, longitude]).addTo(map).bindPopup('Yo ('+vehicleId+')');
-        map.setView([latitude, longitude], 16);
-      } else {
-        myMarker.setLatLng([latitude, longitude]);
-      }
-      myMarker.setTooltipContent?.(`±${Math.round(accuracy)} m`);
-      sendPoint(pos);
-    },
-    (err) => setStatus('Error: ' + err.message),
-    { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
-  );
-
-  // Al cerrar pestaña, dejamos de medir
-  window.addEventListener('beforeunload', () => {
-    if (watchId) navigator.geolocation.clearWatch(watchId);
-  });
-}
-
-// Cargar/actualizar otros vehículos cada 3 s
-async function refreshOthers() {
-  try {
-    const res = await fetch('../api/get_latest.php?since=60');
-    const data = await res.json();
-    data.forEach(d => {
-      if (d.vehicle_id === vehicleId) return;
-      const key = d.vehicle_id;
-      if (!others.has(key)) {
-        const m = L.marker([d.lat, d.lng]).addTo(map).bindPopup(key);
-        others.set(key, m);
-      } else {
-        others.get(key).setLatLng([d.lat, d.lng]);
-      }
-    });
-    // Opcional: limpiar marcadores que ya no reportan
-    const active = new Set(data.map(d => d.vehicle_id));
-    for (const [k, m] of others) {
-      if (!active.has(k)) { map.removeLayer(m); others.delete(k); }
+    let registros = [];
+    if (Array.isArray(data)) {
+      registros = data;
+    } else if (data.data && Array.isArray(data.data)) {
+      registros = data.data;
+    } else if (data.records && Array.isArray(data.records)) {
+      registros = data.records;
     }
-  } catch(e) { console.error(e); }
+
+    if (registros.length === 0) {
+      seguir = false;
+    } else {
+      todos = todos.concat(registros);
+      pagina++;
+    }
+  }
+
+  return todos;
 }
 
-setInterval(refreshOthers, 3000);
+document.getElementById("btnDescargar").addEventListener("click", async () => {
+  try {
+    const registros = await fetchTodosLosDatos();
 
-document.getElementById('startBtn').addEventListener('click', () => {
-  const id = document.getElementById('vehicleId').value.trim();
-  if (!id) { alert('Ingresa un ID de vehículo'); return; }
-  vehicleId = id;
-  startTracking();
-  setStatus('Rastreando… (detiene al cerrar la pestaña)');
+    if (registros.length === 0) {
+      alert("⚠ No se encontraron datos en la API.");
+      return;
+    }
+
+    const worksheet = XLSX.utils.json_to_sheet(registros);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Consumo");
+
+    XLSX.writeFile(workbook, "consumo_general.xlsx");
+  } catch (error) {
+    console.error("Error al generar Excel:", error);
+    alert("❌ Hubo un error al descargar el archivo.");
+  }
 });
 </script>
+
 </body>
 </html>
