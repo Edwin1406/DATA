@@ -19,38 +19,38 @@ class MantenimientoController
         $nombre = $_SESSION['nombre'];
 
         $mantenimiento = new Mantenimiento;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $mantenimiento->sincronizar($_POST);
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //     $mantenimiento->sincronizar($_POST);
 
-            // Aseguramos que el descuento nunca sea mayor al valor
-            $mantenimiento->descuento = $mantenimiento->descuento ?? 0;
-            if ($mantenimiento->descuento > $mantenimiento->valor) {
-                $mantenimiento->descuento = $mantenimiento->valor;
-            }
+        //     // Aseguramos que el descuento nunca sea mayor al valor
+        //     $mantenimiento->descuento = $mantenimiento->descuento ?? 0;
+        //     if ($mantenimiento->descuento > $mantenimiento->valor) {
+        //         $mantenimiento->descuento = $mantenimiento->valor;
+        //     }
 
-            // Subtotal = valor - descuento
-            $mantenimiento->subtotal = $mantenimiento->valor - $mantenimiento->descuento;
+        //     // Subtotal = valor - descuento
+        //     $mantenimiento->subtotal = $mantenimiento->valor - $mantenimiento->descuento;
 
-            // Calcular IVA (15%)
-            $mantenimiento->iva = $mantenimiento->subtotal * 0.15;
+        //     // Calcular IVA (15%)
+        //     $mantenimiento->iva = $mantenimiento->subtotal * 0.15;
 
-            // Calcular Total
-            $mantenimiento->total = $mantenimiento->subtotal + $mantenimiento->iva;
+        //     // Calcular Total
+        //     $mantenimiento->total = $mantenimiento->subtotal + $mantenimiento->iva;
 
 
-            // debuguear($mantenimiento);
+        //     // debuguear($mantenimiento);
 
-            // Validar los datos
-            $errores = $mantenimiento->validar();
+        //     // Validar los datos
+        //     $errores = $mantenimiento->validar();
 
-            if (empty($errores)) {
-                // Guardar en la base de datos
-                $resultado = $mantenimiento->guardar();
-                if ($resultado) {
-                    header('Location: /admin/mantenimiento/registroMantenimiento?exito=1');
-                }
-            }
-        }
+        //     if (empty($errores)) {
+        //         // Guardar en la base de datos
+        //         $resultado = $mantenimiento->guardar();
+        //         if ($resultado) {
+        //             header('Location: /admin/mantenimiento/registroMantenimiento?exito=1');
+        //         }
+        //     }
+        // }
 
 
         $router->render('admin/mantenimiento/registroMantenimiento', [
