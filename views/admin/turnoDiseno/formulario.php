@@ -232,20 +232,24 @@
 </div>
 
 
-  <!-- COLORES ARRAY  -->
-  <div class="col-md-6 col-12">
-    <div class="form-group">
-      <label for="color">Color</label>
-      <select id="color" class="choices form-control" name="color">
-        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un color</option>
-        <option value="ROJO" <?php echo isset($turno) && $turno->color === 'ROJO' ? 'selected' : ''; ?>>Rojo</option>
-        <option value="VERDE" <?php echo isset($turno) && $turno->color === 'VERDE' ? 'selected' : ''; ?>>Verde</option>
-        <option value="AZUL" <?php echo isset($turno) && $turno->color === 'AZUL' ? 'selected' : ''; ?>>Azul</option>
-        <option value="AMARILLO" <?php echo isset($turno) && $turno->color === 'AMARILLO' ? 'selected' : ''; ?>>Amarillo</option>
-        <option value="NEGRO" <?php echo isset($turno) && $turno->color === 'NEGRO' ? 'selected' : ''; ?>>Negro</option>
-      </select>
-    </div>
-  </div>
+<!-- COLORES ARRAY  -->
+<div class="form-group">
+  <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+    <option value="" disabled>Seleccione los colores</option>
+    <option value="Rojo" style="background:red; color:white;">Rojo</option>
+    <option value="Verde" style="background:green; color:white;">Verde</option>
+    <option value="Azul" style="background:blue; color:white;">Azul</option>
+    <option value="Amarillo" style="background:yellow; color:black;">Amarillo</option>
+    <option value="Naranja" style="background:orange; color:white;">Naranja</option>
+    <option value="Morado" style="background:purple; color:white;">Morado</option>
+    <option value="Rosado" style="background:pink; color:black;">Rosado</option>
+    <option value="Celeste" style="background:skyblue; color:black;">Celeste</option>
+    <option value="Gris" style="background:gray; color:white;">Gris</option>
+    <option value="Negro" style="background:black; color:white;">Negro</option>
+    <option value="Blanco" style="background:white; color:black;">Blanco</option>
+  </select>
+</div>
+
 
 <!--  Observaciones -->
 <div class="col-md-6 col-12">
