@@ -236,20 +236,35 @@
 <div class="form-group">
   <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
     <option value="" disabled>Seleccione los colores</option>
-    <option value="Rojo" style="background:red; color:white;">Rojo</option>
-    <option value="Verde" style="background:green; color:white;">Verde</option>
-    <option value="Azul" style="background:blue; color:white;">Azul</option>
-    <option value="Amarillo" style="background:yellow; color:black;">Amarillo</option>
-    <option value="Naranja" style="background:orange; color:white;">Naranja</option>
-    <option value="Morado" style="background:purple; color:white;">Morado</option>
-    <option value="Rosado" style="background:pink; color:black;">Rosado</option>
-    <option value="Celeste" style="background:skyblue; color:black;">Celeste</option>
-    <option value="Gris" style="background:gray; color:white;">Gris</option>
-    <option value="Negro" style="background:black; color:white;">Negro</option>
-    <option value="Blanco" style="background:white; color:black;">Blanco</option>
+    <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
+    <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
+    <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
+    <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
+    <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
+    <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
+    <option value="MILTON COYAGO">MILTON COYAGO</option>
+    <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
+    <option value="LOURDES FARINANGO">LOURDES FARINANGO</option>
+    <option value="MERY CHAUCA">MERY CHAUCA</option>
+    <option value="GINA TUQUERRES">GINA TUQUERRES</option>
+    <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
+    <option value="JESSY BERMEO">JESSY BERMEO</option>
+    <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
+    <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
+    <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
+    <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
+    <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
+    <option value="DE LA CRUZ BLANCA">DE LA CRUZ BLANCA</option>
+    <option value="GLORIA GUALAN">GLORIA GUALAN</option>
+    <option value="JEFFERSON PINANGO">JEFFERSON PINANGO</option>
+    <option value="YORVI VILLEGAS">YORVI VILLEGAS</option>
+    <option value="VERÓNICA LANDETA">VERÓNICA LANDETA</option>
+    <option value="ALVARO POGO">ALVARO POGO</option>
+    <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
+    <option value="LUIS GOVEA">LUIS GOVEA</option>
+    <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
   </select>
 </div>
-
 
 <!--  Observaciones -->
 <div class="col-md-6 col-12">
