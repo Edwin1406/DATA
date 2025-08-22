@@ -271,7 +271,11 @@
       if (selected.length > max) {
         // Deselecciona el último que intentó marcar
         selected[selected.length - 1].selected = false;
-        alert(`Solo puedes seleccionar hasta ${max} colores.`);
+        Swal.fire({
+          icon: 'warning',
+          title: 'Límite de selección alcanzado',
+          text: `Solo puedes seleccionar hasta ${max} colores.`,
+        });
       }
     });
   });
