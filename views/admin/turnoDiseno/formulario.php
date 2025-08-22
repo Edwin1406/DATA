@@ -247,7 +247,7 @@
 
 <!-- MAXIMO 4 COLORES ME DEJE ESOCGER  -->
 
-<!-- <div class="col-md-6 col-12">
+<div class="col-md-6 col-12">
   <div class="form-group">
     <label for="colores">Colores</label>
     <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
@@ -260,7 +260,7 @@
       <option value="BLANCO">BLANCO</option>
     </select>
   </div>
-</div> -->
+</div>
 
 <!-- fecha de entrega -->
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
