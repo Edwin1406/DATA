@@ -233,22 +233,25 @@
 
 
 <!-- COLORES ARRAY  -->
-<div class="form-group">
-  <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
-    <option value="" disabled>Seleccione los colores</option>
-    <option value="Rojo" style="background:red; color:white;">Rojo</option>
-    <option value="Verde" style="background:green; color:white;">Verde</option>
-    <option value="Azul" style="background:blue; color:white;">Azul</option>
-    <option value="Amarillo" style="background:yellow; color:black;">Amarillo</option>
-    <option value="Naranja" style="background:orange; color:white;">Naranja</option>
-    <option value="Morado" style="background:purple; color:white;">Morado</option>
-    <option value="Rosado" style="background:pink; color:black;">Rosado</option>
-    <option value="Celeste" style="background:skyblue; color:black;">Celeste</option>
-    <option value="Gris" style="background:gray; color:white;">Gris</option>
-    <option value="Negro" style="background:black; color:white;">Negro</option>
-    <option value="Blanco" style="background:white; color:black;">Blanco</option>
-  </select>
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+      <option value="" disabled>Seleccione los colores</option>
+      <option value="Rojo" style="background:red; color:white;">Rojo</option>
+      <option value="Verde" style="background:green; color:white;">Verde</option>
+      <option value="Azul" style="background:blue; color:white;">Azul</option>
+      <option value="Amarillo" style="background:yellow; color:black;">Amarillo</option>
+      <option value="Naranja" style="background:orange; color:white;">Naranja</option>
+      <option value="Morado" style="background:purple; color:white;">Morado</option>
+      <option value="Rosado" style="background:pink; color:black;">Rosado</option>
+      <option value="Celeste" style="background:skyblue; color:black;">Celeste</option>
+      <option value="Gris" style="background:gray; color:white;">Gris</option>
+      <option value="Negro" style="background:black; color:white;">Negro</option>
+      <option value="Blanco" style="background:white; color:black;">Blanco</option>
+    </select>
+  </div>
 </div>
+
 
 
 <!--  Observaciones -->
