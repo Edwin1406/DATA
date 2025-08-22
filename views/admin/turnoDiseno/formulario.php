@@ -245,12 +245,11 @@
   </div>
 </div>
 
-
+<!-- MAXIMO 4 COLORES ME DEJE ESOCGER  -->
 <div class="col-md-6 col-12">
-
   <div class="form-group">
     <label for="colores">Colores</label>
-    <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+    <select id="colores" class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
       <option value="" disabled>Seleccione los colores</option>
       <option value="ROJO">ROJO</option>
       <option value="AZUL">AZUL</option>
@@ -261,6 +260,23 @@
     </select>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const select = document.getElementById("colores");
+    const max = 4;
+
+    select.addEventListener("change", function () {
+      const selected = Array.from(select.selectedOptions);
+      if (selected.length > max) {
+        // Deselecciona el último que intentó marcar
+        selected[selected.length - 1].selected = false;
+        alert(`Solo puedes seleccionar hasta ${max} colores.`);
+      }
+    });
+  });
+</script>
+
 
 <!-- fecha de entrega -->
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
