@@ -20,16 +20,17 @@
             <th>IP</th>
             <th>Ruta</th>
         </tr>
-        <?php foreach($lineas as $linea): ?>
-            <?php if(preg_match('/^(\S+ \S+) \[(\w+)\] \((.*?)\) (.+)$/', $linea, $m)): ?>
-                <tr>
-                    <td><?= htmlspecialchars($m[1]) ?></td>
-                    <td><?= htmlspecialchars($m[2]) ?></td>
-                    <td><?= htmlspecialchars($m[3]) ?></td>
-                    <td><?= htmlspecialchars($m[4]) ?></td>
-                </tr>
-            <?php endif; ?>
-        <?php endforeach; ?>
+      <?php foreach($lineas as $linea): ?>
+    <?php if(preg_match('/^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \[(\w+)\] \((.*?)\) (.+)$/', $linea, $m)): ?>
+        <tr>
+            <td><?= htmlspecialchars($m[1]) ?></td>
+            <td><?= htmlspecialchars($m[2]) ?></td>
+            <td><?= htmlspecialchars($m[3]) ?></td>
+            <td><?= htmlspecialchars($m[4]) ?></td>
+        </tr>
+    <?php endif; ?>
+<?php endforeach; ?>
+
     </table>
 </body>
 </html>
