@@ -245,7 +245,7 @@
   </div>
 </div>
 
-<!-- MAXIMO 4 COLORES ME DEJE ESOCGER  -->
+<!-- MAXIMO 4 COLORES ME DEJE ESCOGER -->
 <div class="col-md-6 col-12">
   <div class="form-group">
     <label for="colores">Colores</label>
@@ -267,19 +267,25 @@
     const max = 4;
 
     select.addEventListener("change", function () {
-      const selected = Array.from(select.selectedOptions);
+      let selected = Array.from(select.selectedOptions);
+
       if (selected.length > max) {
-        // Deselecciona el último que intentó marcar
+        // Quitar el último seleccionado para que nunca pase al arreglo
         selected[selected.length - 1].selected = false;
+
+        // Mensaje bonito con SweetAlert2
         Swal.fire({
           icon: 'warning',
-          title: 'Límite de selección alcanzado',
+          title: 'Límite alcanzado',
           text: `Solo puedes seleccionar hasta ${max} colores.`,
+          timer: 2000,          // se cierra solo en 2s
+          showConfirmButton: false
         });
       }
     });
   });
 </script>
+
 
 
 <!-- fecha de entrega -->
