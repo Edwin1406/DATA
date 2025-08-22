@@ -10,7 +10,7 @@ function registrarLog($ruta) {
     error_log("Escribiendo log: " . $linea);
 
 
-    debuguear($linea);
+    // debuguear($linea);
 
     file_put_contents($archivo, $linea, FILE_APPEND);
 }
