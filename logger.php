@@ -1,6 +1,6 @@
 <?php
 function registrarLog($ruta) {
-    $archivo = __DIR__ . "/../logs/requests.log"; // asegúrate de que sea la misma ruta
+    $archivo = __DIR__ . "/logs/requests.log"; // asegúrate de que sea la misma ruta
     $fecha = date("Y-m-d H:i:s");
     $ip    = $_SERVER['REMOTE_ADDR'] ?? 'desconocida';
     $metodo = $_SERVER['REQUEST_METHOD'] ?? 'CLI';
