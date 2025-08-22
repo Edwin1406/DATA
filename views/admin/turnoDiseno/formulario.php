@@ -249,8 +249,7 @@
 <div class="col-md-6 col-12">
   <div class="form-group">
     <label for="colores">Colores</label>
-    <select id="colores" class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
-      <option value="" disabled>Seleccione los colores</option>
+    <select id="colores" class="choices form-select select-light-danger" multiple name="colores[]">
       <option value="ROJO">ROJO</option>
       <option value="AZUL">AZUL</option>
       <option value="VERDE">VERDE</option>
@@ -263,28 +262,33 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const select = document.getElementById("colores");
     const max = 4;
 
-    select.addEventListener("change", function () {
-      let selected = Array.from(select.selectedOptions);
+    const coloresSelect = document.getElementById("colores");
 
-      if (selected.length > max) {
-        // Quitar el último seleccionado para que nunca pase al arreglo
-        selected[selected.length - 1].selected = false;
+    const choices = new Choices(coloresSelect, {
+      removeItemButton: true,
+      maxItemCount: max,  // 👈 este es el límite de selección
+      placeholderValue: 'Seleccione los colores',
+      searchPlaceholderValue: 'Buscar color...',
+    });
 
-        // Mensaje bonito con SweetAlert2
+    // Mostrar alerta si intenta pasar el límite
+    coloresSelect.addEventListener('addItem', function (event) {
+      if (choices.getValue(true).length > max) {
+        choices.removeActiveItems();
         Swal.fire({
           icon: 'warning',
           title: 'Límite alcanzado',
           text: `Solo puedes seleccionar hasta ${max} colores.`,
-          timer: 2000,          // se cierra solo en 2s
+          timer: 2000,
           showConfirmButton: false
         });
       }
     });
   });
 </script>
+
 
 
 
