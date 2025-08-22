@@ -30,9 +30,6 @@ $router->post('/', [AuthController::class, 'login']);
 $router->post('/logout', [AuthController::class, 'logout']);
 
 
-$router->get('/admin/logs', [AdminController::class, 'verLogs']);
-
-
 // Crear Cuenta
 $router->get('/registro', [AuthController::class, 'registro']);
 // $router->post('/registro', [AuthController::class, 'registro']);

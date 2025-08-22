@@ -151,6 +151,10 @@
       {
         value: "TRANSVERSAL",
         text: "Transversal"
+      },
+      {
+        value: "OTRO",
+        text: "Otro"
       }
     ]
   };
