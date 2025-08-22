@@ -2114,7 +2114,7 @@ public static function procesarArchivoExcelpedidos($filePath)
     return $resultado[0]->total ?? 0;
 
 
-
+}
 
 
 
