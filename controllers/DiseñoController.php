@@ -247,6 +247,12 @@ class DiseñoController
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
+
+            // quiero que busque cuántos registros hay en la base de datos pendientes tomando en cuenta la hora
+           $pendientes = TurnoDiseno::countSis('estado', 'PENDIENTE');
+
+            debuguear($pendientes);
+
             // debuguear($turno);
             // email por defecto
             // $emaildefault = 'desarrollodeproductoms@gmail.com';

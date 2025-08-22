@@ -2100,6 +2100,23 @@ public static function procesarArchivoExcelpedidos($filePath)
 
 
 
+    public static function countSis($columna, $valor, $columnaHora = null, $horaActual = null) {
+    $query = "SELECT COUNT(*) as total FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
+    
+    // Si quieres filtrar además por una hora mayor o igual
+    if ($columnaHora && $horaActual) {
+        $query .= " AND {$columnaHora} >= '{$horaActual}'";
+    }
+
+    $resultado = self::consultarSQL($query);
+
+    // Devuelve directamente el número en lugar del objeto
+    return $resultado[0]['total'] ?? 0;
+}
+
+
+
+
 
 
     // 
