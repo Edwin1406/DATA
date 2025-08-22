@@ -250,6 +250,7 @@
 
   <div class="form-group">
     <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+      <label for="colores">Colores</label>
       <option value="" disabled>Seleccione los colores</option>
       <option value="ROJO">ROJO</option>
       <option value="AZUL">AZUL</option>
