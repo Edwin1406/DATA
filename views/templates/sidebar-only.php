@@ -191,11 +191,9 @@
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
                              </li>
-
                              <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
-
                          </ul>
                      </li>
                  <?php } ?>
@@ -203,7 +201,6 @@
                  <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'mantenimiento@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
-
                              <i class="bi bi-tools"></i>
                              <span>Mantenimiento</span>
                          </a>
@@ -214,13 +211,18 @@
                              <li class="submenu-item ">
                                  <a href="/admin/mantenimiento/registroMantenimiento"><i class="bi bi-arrow-right"> </i>Registro Mantenimiento</a>
                              </li>
-                            
                          </ul>
                      </li>
                  <?php } ?>
-
-                 <!-- </ul> -->
          </div>
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
  </div>
+
+
+
+
+
+
+
+

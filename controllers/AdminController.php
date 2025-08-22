@@ -50,7 +50,7 @@ class AdminController
             if (isset($_POST['personal']) && is_array($_POST['personal'])) {
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
-            
+
             $consumo->sincronizar($_POST);
 
             // trim al inicio de tipo_maquina y al final
@@ -402,5 +402,19 @@ class AdminController
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'error' => 'Página no encontrada'
         ]);
+    }
+
+
+    // En AdminController.php
+    public static function verLogs()
+    {
+        $archivo = __DIR__ . "/../logs/requests.log";
+
+        $lineas = [];
+        if (file_exists($archivo)) {
+            $lineas = array_reverse(file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES));
+        }
+
+        include __DIR__ . "/../views/admin/logs.php";
     }
 }
