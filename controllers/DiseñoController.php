@@ -249,9 +249,9 @@ class DiseñoController
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
             // quiero que busque cuántos registros hay en la base de datos pendientes tomando en cuenta la hora
-           $turno = TurnoDiseno::countSis('estado', 'PENDIENTE');
+        //    $turno = TurnoDiseno::countSis('estado', 'PENDIENTE');
 
-            debuguear($turno);
+        //     debuguear($turno);
 
             // debuguear($turno);
             // email por defecto
