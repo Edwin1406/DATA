@@ -9,5 +9,8 @@ function registrarLog($ruta) {
     // Debug temporal
     error_log("Escribiendo log: " . $linea);
 
+
+    debuguear($linea);
+
     file_put_contents($archivo, $linea, FILE_APPEND);
 }
