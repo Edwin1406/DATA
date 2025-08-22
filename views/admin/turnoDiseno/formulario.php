@@ -231,6 +231,22 @@
   </div>
 </div>
 
+
+  <!-- COLORES ARRAY  -->
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label for="color">Color</label>
+      <select id="color" class="choices form-control" name="color">
+        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un color</option>
+        <option value="ROJO" <?php echo isset($turno) && $turno->color === 'ROJO' ? 'selected' : ''; ?>>Rojo</option>
+        <option value="VERDE" <?php echo isset($turno) && $turno->color === 'VERDE' ? 'selected' : ''; ?>>Verde</option>
+        <option value="AZUL" <?php echo isset($turno) && $turno->color === 'AZUL' ? 'selected' : ''; ?>>Azul</option>
+        <option value="AMARILLO" <?php echo isset($turno) && $turno->color === 'AMARILLO' ? 'selected' : ''; ?>>Amarillo</option>
+        <option value="NEGRO" <?php echo isset($turno) && $turno->color === 'NEGRO' ? 'selected' : ''; ?>>Negro</option>
+      </select>
+    </div>
+  </div>
+
 <!--  Observaciones -->
 <div class="col-md-6 col-12">
   <div class="form-group">
