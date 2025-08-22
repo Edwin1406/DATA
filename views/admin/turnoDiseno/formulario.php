@@ -245,11 +245,14 @@
   </div>
 </div>
 
-<!-- MAXIMO 4 COLORES ME DEJE ESCOGER -->
+<!-- MAXIMO 4 COLORES ME DEJE ESOCGER  -->
+ 
 <div class="col-md-6 col-12">
+
   <div class="form-group">
     <label for="colores">Colores</label>
-    <select id="colores" class="choices form-select select-light-danger" multiple name="colores[]">
+    <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+      <option value="" disabled>Seleccione los colores</option>
       <option value="ROJO">ROJO</option>
       <option value="AZUL">AZUL</option>
       <option value="VERDE">VERDE</option>
@@ -259,38 +262,6 @@
     </select>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const max = 4;
-
-    const coloresSelect = document.getElementById("colores");
-
-    const choices = new Choices(coloresSelect, {
-      removeItemButton: true,
-      maxItemCount: max,  // 👈 este es el límite de selección
-      placeholderValue: 'Seleccione los colores',
-      searchPlaceholderValue: 'Buscar color...',
-    });
-
-    // Mostrar alerta si intenta pasar el límite
-    coloresSelect.addEventListener('addItem', function (event) {
-      if (choices.getValue(true).length > max) {
-        choices.removeActiveItems();
-        Swal.fire({
-          icon: 'warning',
-          title: 'Límite alcanzado',
-          text: `Solo puedes seleccionar hasta ${max} colores.`,
-          timer: 2000,
-          showConfirmButton: false
-        });
-      }
-    });
-  });
-</script>
-
-
-
 
 <!-- fecha de entrega -->
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
