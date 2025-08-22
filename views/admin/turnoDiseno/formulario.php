@@ -153,8 +153,8 @@
         text: "Transversal"
       },
       {
-        value: "OTRO",
-        text: "Otro"
+        value: "BARRIDOS-COLOR",
+        text: "Barridos Color"
       }
     ]
   };
