@@ -251,7 +251,7 @@ class DiseñoController
 
             $turno->sincronizar($_POST);
 
-            debuguear($turno);
+            // debuguear($turno);
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
