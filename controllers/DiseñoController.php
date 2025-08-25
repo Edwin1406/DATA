@@ -374,13 +374,12 @@ class DiseñoController
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
 
-        debuguear($turno->colores);
+        // debuguear($turno->colores);
 
-
-         
-
-
-
+        $coloresSeleccionados = [];
+        if (isset($turno->colores) && !empty($turno->colores)) {
+            $coloresSeleccionados = explode(',', $turno->colores);
+        }
 
         if (!$turno) {
             header('Location: /admin/turnoDiseno/turnotablaDiseno');
