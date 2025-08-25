@@ -242,17 +242,23 @@ class DiseñoController
         $email = $_SESSION['email'];
 
         $alertas = [];
+        $turno = new TurnoDiseno;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $turno = new TurnoDiseno($_POST);
+
+            if (isset($_POST['colores']) && is_array($_POST['colores'])) {
+                $_POST['colores'] = implode(',', $_POST['colores']);
+            }
+
+            $turno->sincronizar($_POST);
+
+            // debuguear($turno);
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
-            // quiero que busque cuántos registros hay en la base de datos pendientes tomando en cuenta la hora
-           $turno->codigo = TurnoDiseno::countSis('estado', 'PENDIENTE');
-           debuguear($turno->codigo);
 
-        //     debuguear($turno);
+
+            //     debuguear($turno);
 
             // debuguear($turno);
             // email por defecto
@@ -300,8 +306,8 @@ class DiseñoController
             //         $turno->observaciones
             //     );
 
-                $email->enviarConfirmacion2();
-            
+            $email->enviarConfirmacion2();
+
 
             // debuguear($turno);
             $alertas = $turno->validar();
@@ -367,6 +373,30 @@ class DiseñoController
 
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
+
+        if (isset($_POST['colores']) && is_array($_POST['colores'])) {
+            $_POST['colores'] = implode(',', $_POST['colores']);
+        }
+
+        // Obtener la posición del registro según su fecha de creación
+// $posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
+
+// // Ejemplo: guardarlo en el objeto o mostrarlo
+// $turno->posicion = $posicion;
+
+
+// debuguear($turno->posicion);
+
+        
+
+        // debuguear($turno->colores);
+
+        $coloresSeleccionados = [];
+        if (isset($turno->colores) && !empty($turno->colores)) {
+            $coloresSeleccionados = explode(',', $turno->colores);
+        }
+
+
         if (!$turno) {
             header('Location: /admin/turnoDiseno/turnotablaDiseno');
             exit;
@@ -376,6 +406,7 @@ class DiseñoController
             // O usa un método sincronizar si tu ActiveRecord lo tiene
             if (method_exists($turno, 'sincronizar')) {
                 $turno->sincronizar($_POST);
+
 
                 function normalizar($s)
                 {
@@ -414,13 +445,21 @@ class DiseñoController
                         $vendedorNombre = $_POST['vendedor'] ?? $nombre;
 
                         $vendedores = [
-                            "JHON VACA"          => "ventas@megaecuador.com",
+                            "JHON VACA"          => "sistemas@megaecuador.com",
                             "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com",
-                            "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
-                            "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
-                            "CARLOS DELGADO"     => "ventas1@megaecuador.com",
-                            "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
+                            "ANTONELLA DEZCALZI" => "sistemas@megaecuador.com",
+                            "CAROLINA MUÑOZ"     => "sistemas@megaecuador.com",
+                            "CARLOS DELGADO"     => "sistemas@megaecuador.com",
+                            "GABRIEL MALDONADO"   => "sistemas@megaecuador.com"
                         ];
+                        // $vendedores = [
+                        //     "JHON VACA"          => "ventas@megaecuador.com",
+                        //     "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com",
+                        //     "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
+                        //     "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
+                        //     "CARLOS DELGADO"     => "ventas1@megaecuador.com",
+                        //     "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
+                        // ];
 
                         // Crea un mapa con claves normalizadas
                         $mapa = [];
@@ -503,6 +542,7 @@ class DiseñoController
             'email'   => $email,
             'turno'   => $turno,
             'alertas' => $alertas,
+            'coloresSeleccionados' => $coloresSeleccionados
         ]);
     }
 
