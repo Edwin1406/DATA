@@ -381,11 +381,11 @@ class DiseñoController
         // Obtener la posición del registro según su fecha de creación
         $posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
 
-        // Ejemplo: guardarlo en el objeto o mostrarlo
         $turno->posicion = $posicion;
 
 
-        debuguear($turno->posicion);
+        // debuguear($turno->posicion);
+
 
 
 
@@ -512,7 +512,8 @@ class DiseñoController
                             $turno->descripcion,
                             $turno->fecha_creacion,
                             $turno->fecha_entrega,
-                            $turno->estado
+                            $turno->estado,
+                            $turno->posicion
                         );
 
                         if (!$mailer->enviarConfirmacion()) {

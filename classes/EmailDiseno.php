@@ -22,8 +22,9 @@ class EmailDiseno
   public $fecha_creacion;
   public $fecha_entrega;
   public $estado;
+  public $posicion;
 
-  public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $descripcion, $fecha_creacion, $fecha_entrega, $estado)
+  public function __construct($email, $nombre, $codigo, $tipo_producto, $tipo_componente, $alto, $largo, $ancho, $dobles, $descripcion, $fecha_creacion, $fecha_entrega, $estado, $posicion)
   {
     $this->email = $email;
     $this->nombre = $nombre;
@@ -38,6 +39,7 @@ class EmailDiseno
     $this->fecha_creacion = $fecha_creacion;
     $this->fecha_entrega = $fecha_entrega;
     $this->estado = $estado;
+    $this->posicion = $posicion;
   }
 
   public function enviarConfirmacion()
@@ -159,6 +161,7 @@ class EmailDiseno
                     <div style="display:flex;flex-wrap:wrap;gap:12px;">
                       ' . $field("Fecha de creación", $this->fecha_creacion) . '
                       ' . $field("Fecha de entrega", $this->fecha_entrega) . '
+                      ' . $field("Posición", $this->posicion) . '
                     </div>
                   </td>
                 </tr>
