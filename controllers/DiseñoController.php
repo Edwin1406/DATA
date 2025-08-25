@@ -376,10 +376,11 @@ class DiseñoController
 
         // debuguear($turno->colores);
 
-        $coloresSeleccionados = [];
-        if (isset($turno->colores) && !empty($turno->colores)) {
-            $coloresSeleccionados = explode(',', $turno->colores);
-        }
+      $coloresSeleccionados = [];
+if (isset($turno->colores) && !empty($turno->colores)) {
+    $coloresSeleccionados = explode(',', $turno->colores);
+}
+
 
         if (!$turno) {
             header('Location: /admin/turnoDiseno/turnotablaDiseno');
@@ -517,6 +518,7 @@ class DiseñoController
             'email'   => $email,
             'turno'   => $turno,
             'alertas' => $alertas,
+            'coloresSeleccionados' => $coloresSeleccionados
         ]);
     }
 
