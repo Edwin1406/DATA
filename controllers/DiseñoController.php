@@ -385,7 +385,7 @@ $posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
 $turno->posicion = $posicion;
 
 
-debuguear($turno->posicion);
+// debuguear($turno->posicion);
 
         
 
