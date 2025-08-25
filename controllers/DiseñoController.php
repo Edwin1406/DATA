@@ -242,21 +242,15 @@ class DiseñoController
         $email = $_SESSION['email'];
 
         $alertas = [];
-        $turno = new TurnoDiseno;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-             if (isset($_POST['colores']) && is_array($_POST['colores'])) {
-                $_POST['colores'] = implode(',', $_POST['colores']);
-            }
-
-            $turno->sincronizar($_POST);
-
-            debuguear($turno);
+            $turno = new TurnoDiseno($_POST);
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
-            
+            // quiero que busque cuántos registros hay en la base de datos pendientes tomando en cuenta la hora
+           $turno->codigo = TurnoDiseno::countSis('estado', 'PENDIENTE');
+           debuguear($turno->codigo);
 
         //     debuguear($turno);
 
@@ -373,13 +367,6 @@ class DiseñoController
 
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
-
-
-         
-
-
-
-
         if (!$turno) {
             header('Location: /admin/turnoDiseno/turnotablaDiseno');
             exit;
