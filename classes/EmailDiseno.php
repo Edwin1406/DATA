@@ -161,7 +161,7 @@ class EmailDiseno
                     <div style="display:flex;flex-wrap:wrap;gap:12px;">
                       ' . $field("Fecha de creación", $this->fecha_creacion) . '
                       ' . $field("Fecha de entrega", $this->fecha_entrega) . '
-                      ' . $field("Despues de:", $this->posicion) . '
+                      ' . $field("Orden de atención:", $this->posicion) . '
                     </div>
                   </td>
                 </tr>
