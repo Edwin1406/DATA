@@ -378,10 +378,15 @@ class DiseñoController
             $_POST['colores'] = implode(',', $_POST['colores']);
         }
 
-        // Obtener la posición del registro según su fecha de creación
-        $posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
 
-        $turno->posicion = $posicion;
+        // si turno->estado ==en proceso la posicion deberia ser 0
+        if ($turno->estado === 'EN PROCESO'|| $turno->estado === 'ENTREGADO') {
+            $turno->posicion = 0;
+        } else {
+            // Obtener la posición del registro según su fecha de creación
+            $posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
+            $turno->posicion = $posicion;
+        }
 
 
         // debuguear($turno->posicion);
