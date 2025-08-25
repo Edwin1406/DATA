@@ -542,7 +542,7 @@ class DiseñoController
             'email'   => $email,
             'turno'   => $turno,
             'alertas' => $alertas,
-            'coloresSeleccionados' => $coloresSeleccionados
+            // 'coloresSeleccionados' => $coloresSeleccionados
         ]);
     }
 
