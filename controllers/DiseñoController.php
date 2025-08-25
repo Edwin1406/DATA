@@ -245,20 +245,20 @@ class DiseñoController
         $turno = new TurnoDiseno;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            if (isset($_POST['colores']) && is_array($_POST['colores'])) {
+             if (isset($_POST['colores']) && is_array($_POST['colores'])) {
                 $_POST['colores'] = implode(',', $_POST['colores']);
             }
 
             $turno->sincronizar($_POST);
 
-            // debuguear($turno);
+            debuguear($turno);
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
+            
 
-
-            //     debuguear($turno);
+        //     debuguear($turno);
 
             // debuguear($turno);
             // email por defecto
@@ -306,8 +306,8 @@ class DiseñoController
             //         $turno->observaciones
             //     );
 
-            $email->enviarConfirmacion2();
-
+                $email->enviarConfirmacion2();
+            
 
             // debuguear($turno);
             $alertas = $turno->validar();
@@ -374,16 +374,10 @@ class DiseñoController
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
 
-         if (isset($_POST['colores']) && is_array($_POST['colores'])) {
-                $_POST['colores'] = implode(',', $_POST['colores']);
-            }
 
-        // debuguear($turno->colores);
+         
 
-        $coloresSeleccionados = [];
-        if (isset($turno->colores) && !empty($turno->colores)) {
-            $coloresSeleccionados = explode(',', $turno->colores);
-        }
+
 
 
         if (!$turno) {
@@ -440,14 +434,6 @@ class DiseñoController
                             "CARLOS DELGADO"     => "ventas1@megaecuador.com",
                             "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
                         ];
-                        // $vendedores = [
-                        //     "JHON VACA"          => "ventas@megaecuador.com",
-                        //     "SHULYANA HERNANDEZ" => "sistemas@megaecuador.com",
-                        //     "ANTONELLA DEZCALZI" => "ventas4@megaecuador.com",
-                        //     "CAROLINA MUÑOZ"     => "comercial@megaecuador.com",
-                        //     "CARLOS DELGADO"     => "ventas1@megaecuador.com",
-                        //     "GABRIEL MALDONADO"   => "asistente.ventas@megaecuador.com"
-                        // ];
 
                         // Crea un mapa con claves normalizadas
                         $mapa = [];
@@ -530,7 +516,6 @@ class DiseñoController
             'email'   => $email,
             'turno'   => $turno,
             'alertas' => $alertas,
-            'coloresSeleccionados' => $coloresSeleccionados
         ]);
     }
 
