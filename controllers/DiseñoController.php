@@ -374,6 +374,8 @@ class DiseñoController
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
 
+        debuguear($turno->colores);
+
 
          
 
