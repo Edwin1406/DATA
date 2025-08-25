@@ -2099,26 +2099,7 @@ public static function procesarArchivoExcelpedidos($filePath)
     }
 
 
-
-    public static function countSis($columna, $valor, $columnaHora = null, $horaActual = null)
-{
-    $query = "SELECT COUNT(*) as total FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
-
-    if ($columnaHora && $horaActual) {
-        $query .= " AND {$columnaHora} >= '{$horaActual}'";
-    }
-
-    $resultado = self::consultarSQL($query);
-
-    // Como consultarSQL devuelve objetos, accedemos con ->
-    return $resultado[0]->total ?? 0;
-
-
-}
-
-
-
-    // 
+    
 
 
     

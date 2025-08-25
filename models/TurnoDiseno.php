@@ -22,6 +22,7 @@ class TurnoDiseno extends ActiveRecord
         'ect',
         'vendedor',
         'observaciones',
+        'colores',
         'estado',
         'fecha_creacion',
         'fecha_entrega'
@@ -41,6 +42,7 @@ class TurnoDiseno extends ActiveRecord
     public  $ect;
     public ?string $vendedor;
     public ?string $observaciones;
+    public ?string $colores;
     public ?string $estado;
     public ?string $fecha_creacion;
     public ?string $fecha_entrega;
@@ -65,6 +67,7 @@ class TurnoDiseno extends ActiveRecord
         $this->ect = $args['ect'] ?? null;
         $this->vendedor = $args['vendedor'] ?? null;
         $this->observaciones = $args['observaciones'] ?? null;
+        $this->colores = $args['colores'] ?? null;
         $this->estado = $args['estado'] ?? 'PENDIENTE'; // Default state
         $this->fecha_creacion = date('Y-m-d H:i:s');
         $this->fecha_entrega = $args['fecha_entrega'] ?? null;
