@@ -247,7 +247,7 @@
 
 <!-- MAXIMO 4 COLORES ME DEJE ESOCGER  -->
 
-<div class="col-md-6 col-12">
+<!-- <div class="col-md-6 col-12">
   <div class="form-group">
     <label for="colores">Colores</label>
     <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
@@ -260,7 +260,28 @@
       <option value="BLANCO">BLANCO</option>
     </select>
   </div>
+</div> -->
+
+
+
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <label for="colores">Colores</label>
+    <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
+      <option value="" disabled>Seleccione los colores</option>
+      <option value="ROJO"     <?= in_array("ROJO", $coloresSeleccionados) ? "selected" : "" ?>>ROJO</option>
+      <option value="AZUL"     <?= in_array("AZUL", $coloresSeleccionados) ? "selected" : "" ?>>AZUL</option>
+      <option value="VERDE"    <?= in_array("VERDE", $coloresSeleccionados) ? "selected" : "" ?>>VERDE</option>
+      <option value="AMARILLO" <?= in_array("AMARILLO", $coloresSeleccionados) ? "selected" : "" ?>>AMARILLO</option>
+      <option value="NEGRO"    <?= in_array("NEGRO", $coloresSeleccionados) ? "selected" : "" ?>>NEGRO</option>
+      <option value="BLANCO"   <?= in_array("BLANCO", $coloresSeleccionados) ? "selected" : "" ?>>BLANCO</option>
+    </select>
+  </div>
 </div>
+
+
+
+
 
 <!-- fecha de entrega -->
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
