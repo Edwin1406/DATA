@@ -374,6 +374,10 @@ class DiseñoController
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
 
+         if (isset($_POST['colores']) && is_array($_POST['colores'])) {
+                $_POST['colores'] = implode(',', $_POST['colores']);
+            }
+
         // debuguear($turno->colores);
 
         $coloresSeleccionados = [];
