@@ -374,9 +374,20 @@ class DiseñoController
         // Cargar el registro existente
         $turno = TurnoDiseno::find($id);
 
-         if (isset($_POST['colores']) && is_array($_POST['colores'])) {
-                $_POST['colores'] = implode(',', $_POST['colores']);
-            }
+        if (isset($_POST['colores']) && is_array($_POST['colores'])) {
+            $_POST['colores'] = implode(',', $_POST['colores']);
+        }
+
+        // Obtener la posición del registro según su fecha de creación
+$posicion = TurnoDiseno::countTicketsPendientesHoy($turno->fecha_creacion);
+
+// Ejemplo: guardarlo en el objeto o mostrarlo
+$turno->posicion = $posicion;
+
+
+debuguear($turno->posicion);
+
+        
 
         // debuguear($turno->colores);
 
@@ -395,6 +406,7 @@ class DiseñoController
             // O usa un método sincronizar si tu ActiveRecord lo tiene
             if (method_exists($turno, 'sincronizar')) {
                 $turno->sincronizar($_POST);
+
 
                 function normalizar($s)
                 {
