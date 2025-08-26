@@ -702,6 +702,10 @@ class DiseñoController
         $email  = $_SESSION['email'];
 
         $id = $_GET['id'] ?? null;
+
+        debuguear($id);
+
+
         $cambios = CambiosTurno::find($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
