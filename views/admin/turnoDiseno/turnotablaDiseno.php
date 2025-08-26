@@ -174,22 +174,19 @@
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <!-- ver detalle un boton -->
 
-                                         <button class="btn btn-info btn-sm btn-detalle"
-                                             data-bs-toggle="modal"
-                                             data-bs-target="#detalleModal"
-                                             data-id="<?= $turno->id ?>">Ver Detalle</button>
+                                   <button class="btn btn-info btn-sm btn-detalle"
+        data-id="<?= $turno->id ?>">Ver Detalle</button>
 
-                                         <script>
-                                           
+<script>
+  // Para el botón "Ver Detalle"
+  document.querySelectorAll('.btn-detalle').forEach(boton => {
+      boton.addEventListener('click', () => {
+          const id = boton.getAttribute('data-id');
+          console.log("ID desde Ver Detalle:", id);
+      });
+  });
+</script>
 
-                                             // Para el botón "Ver Detalle"
-                                             document.querySelectorAll('.btn-detalle').forEach(boton => {
-                                                 boton.addEventListener('click', () => {
-                                                     const id = boton.getAttribute('data-id');
-                                                     console.log("ID desde Ver Detalle:", id);
-                                                 });
-                                             });
-                                         </script>
 
 
 
