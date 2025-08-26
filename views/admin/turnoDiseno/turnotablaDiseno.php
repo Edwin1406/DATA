@@ -178,12 +178,13 @@
         data-id="<?= $turno->id ?>">Ver Detalle</button>
 
 <script>
-  // Para el botón "Ver Detalle"
-  document.querySelectorAll('.btn-detalle').forEach(boton => {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.btn-detalle').forEach(boton => {
       boton.addEventListener('click', () => {
-          const id = boton.getAttribute('data-id');
-          console.log("ID desde Ver Detalle:", id);
+        const id = boton.getAttribute('data-id');
+        console.log("ID desde Ver Detalle:", id);
       });
+    });
   });
 </script>
 
