@@ -175,8 +175,7 @@
                                          <!-- ver detalle un boton -->
 
 <!-- BOTÓN -->
-<button class="btn btn-info btn-sm btn-detalle" data-id="123">Ver Detalle</button>
-<button class="btn btn-info btn-sm btn-detalle" data-id="456">Ver Detalle</button>
+<button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
 
 <script>
   // Delegación de eventos para botones generados dinámicamente
