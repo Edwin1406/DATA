@@ -178,15 +178,16 @@
 <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
 
 <script>
-  // Delegación de eventos para botones generados dinámicamente
   document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('btn-detalle')) {
-      const id = e.target.getAttribute('data-id');
+    const boton = e.target.closest('.btn-detalle'); // busca el botón más cercano
+    if (boton) {
+      const id = boton.getAttribute('data-id');
       console.log("ID desde Ver Detalle:", id);
-      alert("ID: " + id); // opcional, para verificar rápido
+      alert("ID: " + id); // opcional
     }
   });
 </script>
+
 
 
 
