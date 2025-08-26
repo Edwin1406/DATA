@@ -712,6 +712,9 @@ class DiseñoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $turno->sincronizar($_POST);
 
+            $id = $_GET['id'] ?? null;
+
+            debuguear($id);
 
             debuguear($turno);
 
