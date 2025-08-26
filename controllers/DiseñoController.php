@@ -706,7 +706,8 @@ class DiseñoController
         // debuguear($id);
 
 
-        $cambios = CambiosTurno::find($id);
+        $cambios = new CambiosTurno;
+        $cambios = TurnoDiseno::find($id);
 
 
         debuguear($cambios);
