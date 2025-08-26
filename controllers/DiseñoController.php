@@ -703,10 +703,13 @@ class DiseñoController
 
         $id = $_GET['id'] ?? null;
 
-        debuguear($id);
+        // debuguear($id);
 
 
         $cambios = CambiosTurno::find($id);
+
+
+        debuguear($cambios);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cambios->sincronizar($_POST);
