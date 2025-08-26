@@ -597,4 +597,62 @@ class DiseñoController
             }
         }
     }
+
+
+   public static function eliminarPDFturno()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['error' => 'No autorizado']);
+            return;
+        }
+
+        $id = $_POST['id'] ?? null;
+        if (!$id) {
+            echo json_encode(['error' => 'ID no proporcionado']);
+            return;
+        }
+
+        $turno = TurnoDiseno::find($id);
+        if (!$turno || !$turno->pdf) {
+            echo json_encode(['error' => 'Turno o PDF no encontrado']);
+            return;
+        }
+
+        $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $turno->pdf;
+        if (file_exists($ruta_pdf)) {
+            unlink($ruta_pdf);
+        }
+
+        $turno->pdf = null;
+        $turno->guardar();
+
+        echo json_encode(['success' => true]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -333,14 +333,14 @@
           cancelButtonText: 'Cancelar'
         }).then((result) => {
           if (result.isConfirmed) {
-            const idDiseno = this.dataset.id;
+            const idTurno = this.dataset.id;
 
-            fetch('/admin/diseno/eliminarPDF', {
+            fetch('/admin/diseno/eliminarPDFturno', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'id=' + encodeURIComponent(idDiseno)
+                body: 'id=' + encodeURIComponent(idTurno)
               })
               .then(res => res.json())
               .then(data => {
