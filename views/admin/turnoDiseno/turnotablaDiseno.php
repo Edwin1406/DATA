@@ -173,7 +173,7 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <button type="button" class="btn btn-outline-info"
-                                             data-bs-toggle="modal" data-bs-target="#info">
+                                             data-bs-toggle="modal" data-bs-target="#info" data-id="<?= $turno->id ?>">
                                              Info
                                          </button>
 
