@@ -706,16 +706,17 @@ class DiseñoController
         // debuguear($id);
 
 
-        $cambios = new CambiosTurno;
+        $turno = new CambiosTurno;
+
         $cambio = TurnoDiseno::find($id);
 
 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cambios->sincronizar($_POST);
+            $turno->sincronizar($_POST);
 
 
-            debuguear($cambios);
+            debuguear($turno);
 
         }
 
