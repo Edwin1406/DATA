@@ -270,14 +270,111 @@
     <select class="choices form-select select-light-danger" multiple="multiple" name="colores[]">
       <option value="" disabled>Seleccione los colores</option>
       <option value="ROJO" <?= (is_array($coloresSeleccionados) && in_array("ROJO", $coloresSeleccionados)) ? "selected" : "" ?>>ROJO</option>
-      <option value="AZUL"     <?= (is_array($coloresSeleccionados) && in_array("AZUL", $coloresSeleccionados)) ? "selected" : "" ?>>AZUL</option>
-      <option value="VERDE"    <?= (is_array($coloresSeleccionados) && in_array("VERDE", $coloresSeleccionados)) ? "selected" : "" ?>>VERDE</option>
+      <option value="AZUL" <?= (is_array($coloresSeleccionados) && in_array("AZUL", $coloresSeleccionados)) ? "selected" : "" ?>>AZUL</option>
+      <option value="VERDE" <?= (is_array($coloresSeleccionados) && in_array("VERDE", $coloresSeleccionados)) ? "selected" : "" ?>>VERDE</option>
       <option value="AMARILLO" <?= (is_array($coloresSeleccionados) && in_array("AMARILLO", $coloresSeleccionados)) ? "selected" : "" ?>>AMARILLO</option>
-      <option value="NEGRO"    <?= (is_array($coloresSeleccionados) && in_array("NEGRO", $coloresSeleccionados)) ? "selected" : "" ?>>NEGRO</option>
-      <option value="BLANCO"   <?= (is_array($coloresSeleccionados) && in_array("BLANCO", $coloresSeleccionados)) ? "selected" : "" ?>>BLANCO</option>
+      <option value="NEGRO" <?= (is_array($coloresSeleccionados) && in_array("NEGRO", $coloresSeleccionados)) ? "selected" : "" ?>>NEGRO</option>
+      <option value="BLANCO" <?= (is_array($coloresSeleccionados) && in_array("BLANCO", $coloresSeleccionados)) ? "selected" : "" ?>>BLANCO</option>
     </select>
   </div>
 </div>
+
+
+
+
+
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <label for="pdf">Subir PDF del diseño</label>
+    <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf">
+    <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
+  </div>
+</div>
+<?php if (isset($diseno->pdf)) : ?>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>Archivo actual:</label><br>
+      <!-- eliminar espacio em blanco -->
+      <a href="<?php echo $_ENV['HOST'] . '/src/visor/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+        Ver / Descargar PDF
+      </a>
+      <br><br>
+
+      <?php if ($diseno->pdf): ?>
+        <div id="pdf-actual">
+          <p>PDF actual: <?php echo htmlspecialchars($diseno->pdf); ?> </p>
+          <a href="#"
+            id="btnEliminarPDF"
+            data-id="<?php echo $diseno->id; ?>"
+            class="btn btn-danger btn-sm">
+            Eliminar PDF
+          </a>
+        </div>
+      <?php endif; ?>
+
+
+    </div>
+  </div>
+<?php endif; ?>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnEliminar = document.getElementById('btnEliminarPDF');
+
+    if (btnEliminar) {
+      btnEliminar.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'No podrás recuperar este archivo después de eliminarlo.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const idDiseno = this.dataset.id;
+
+            fetch('/admin/diseno/eliminarPDF', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + encodeURIComponent(idDiseno)
+              })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: '¡Eliminado!',
+                    text: 'El archivo PDF ha sido eliminado correctamente.'
+                  });
+
+                  document.getElementById('pdf-actual').innerHTML = '<p>PDF eliminado correctamente.</p>';
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'Ocurrió un error al eliminar el archivo.'
+                  });
+                }
+              })
+              .catch(err => {
+                console.error('Error AJAX:', err);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Error en la solicitud. Intenta de nuevo.'
+                });
+              });
+          }
+        });
+      });
+    }
+  });
+</script>
+
 
 
 
