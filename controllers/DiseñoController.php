@@ -259,6 +259,24 @@ class DiseñoController
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
 
+              if (!empty($_FILES['pdf']['tmp_name'])) {
+                    $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
+
+                    if (!is_dir($carpeta_pdfs)) {
+                        mkdir($carpeta_pdfs, 0755, true);
+                    }
+
+                    $nombre_pdf = md5(uniqid(rand(), true)) . '.pdf';
+                    $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
+
+                    if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
+                        $turno->pdf = $nombre_pdf;
+                    } else {
+                        $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
+                    }
+                }
+
+
 
             //     debuguear($turno);
 
