@@ -179,11 +179,10 @@
 
 <script>
   document.addEventListener('click', function (e) {
-    const boton = e.target.closest('.btn-detalle'); // busca el botón más cercano
-    if (boton) {
-      const id = boton.getAttribute('data-id');
+    if (e.target.matches('.btn-detalle')) {   // solo si el clic fue DIRECTO en un botón con esa clase
+      const id = e.target.getAttribute('data-id');
       console.log("ID desde Ver Detalle:", id);
-      alert("ID: " + id); // opcional
+      alert("ID: " + id);
     }
   });
 </script>
