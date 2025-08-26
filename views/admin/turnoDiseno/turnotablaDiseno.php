@@ -172,30 +172,28 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <button type="button" class="btn btn-outline-info"
-                                             data-bs-toggle="modal"
-                                             data-bs-target="#info"
-                                             data-id="<?= $turno->id ?>">
-                                             Info
-                                         </button>
-
-                                         <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                                             <form action="/admin/eliminarTurnoDiseno" method="POST">
-                                                 <input type="hidden" name="id" value="<?= $turno->id ?>">
-                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                             </form>
-
-                                         <?php } ?>
-                                     </div>
+                                 <td data-id="<?php echo $turno->id; ?>">
+                                     <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
 
-                             </tr>
-                         <?php endforeach; ?>
-                     </tbody>
-                 </table>
+
+                                 <?php if ($email !== 'ventas@megaecuador.com') { ?>
+                                     <form action="/admin/eliminarTurnoDiseno" method="POST">
+                                         <input type="hidden" name="id" value="<?= $turno->id ?>">
+                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                     </form>
+
+                                 <?php } ?>
              </div>
+             </td>
+
+             </tr>
+         <?php endforeach; ?>
+         </tbody>
+         </table>
          </div>
-     </section>
+ </div>
+ </section>
  </div>
 
 
@@ -219,31 +217,27 @@
 
 
  <script>
+     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+         button.addEventListener('click', function() {
+             const id = this.getAttribute('data-id');
+             ApiDetalle(id);
+         });
+     });
 
-    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.getAttribute('data-id');
-            ApiDetalle(id);
-        });
-    });
+     // obtener datos detalle
+     async function ApiDetalle(id) {
 
-    // obtener datos detalle
-    async function ApiDetalle(id){
+         console.log(id);
 
-        console.log(id);
-        
-        try {
-            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-            const resultado = await fetch(url);
-            const apipedidos = await resultado.json();
-            console.log(apipedidos);
-            return apipedidos
-        } catch (e) {
-            console.log(e);
-                
-        }
-    } 
+         try {
+             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+             const resultado = await fetch(url);
+             const apipedidos = await resultado.json();
+             console.log(apipedidos);
+             return apipedidos
+         } catch (e) {
+             console.log(e);
 
-
-
+         }
+     }
  </script>
