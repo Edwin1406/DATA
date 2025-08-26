@@ -31,7 +31,7 @@ class Apicontroller {
 
 
 
-    public static function apiDetalle($id):void {
+    public static function apiDetalle():void {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
