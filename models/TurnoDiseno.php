@@ -23,6 +23,7 @@ class TurnoDiseno extends ActiveRecord
         'vendedor',
         'observaciones',
         'colores',
+        'pdf',
         'estado',
         'fecha_creacion',
         'fecha_entrega'
@@ -43,6 +44,7 @@ class TurnoDiseno extends ActiveRecord
     public ?string $vendedor;
     public ?string $observaciones;
     public ?string $colores;
+    public ?string $pdf;
     public ?string $estado;
     public ?string $fecha_creacion;
     public ?string $fecha_entrega;
@@ -68,6 +70,7 @@ class TurnoDiseno extends ActiveRecord
         $this->vendedor = $args['vendedor'] ?? null;
         $this->observaciones = $args['observaciones'] ?? null;
         $this->colores = $args['colores'] ?? null;
+        $this->pdf = $args['pdf'] ?? null;
         $this->estado = $args['estado'] ?? 'PENDIENTE'; // Default state
         $this->fecha_creacion = date('Y-m-d H:i:s');
         $this->fecha_entrega = $args['fecha_entrega'] ?? null;
@@ -88,8 +91,11 @@ class TurnoDiseno extends ActiveRecord
         if (!$this->tipo_componente) {
             self::$alertas['error'][] = 'El tipo de componente es obligatorio';
         }
-     
-      
+
+        if (!$this->pdf) {
+            self::$alertas['error'][] = 'El PDF es obligatorio';
+        }
+
         if (!$this->vendedor) {
             self::$alertas['error'][] = 'El vendedor es obligatorio';
         }

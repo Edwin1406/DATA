@@ -251,6 +251,8 @@ class DiseñoController
 
             $turno->sincronizar($_POST);
 
+            
+
             // debuguear($turno);
 
             // generar codigo aleatorio pero solo de 6 digitos
@@ -380,7 +382,7 @@ class DiseñoController
 
 
         // si turno->estado ==en proceso la posicion deberia ser 0
-        if ($turno->estado === 'EN PROCESO'|| $turno->estado === 'ENTREGADO') {
+        if ($turno->estado === 'EN PROCESO' || $turno->estado === 'ENTREGADO') {
             $turno->posicion = 0;
         } else {
             // Obtener la posición del registro según su fecha de creación
