@@ -736,48 +736,50 @@ public static function cambios(Router $router)
     }
 
     $alertas = [];
-    $nombre = $_SESSION['nombre'];
-    $email  = $_SESSION['email'];
+    $nombre  = $_SESSION['nombre'];
+    $email   = $_SESSION['email'];
 
     $turno = new CambiosTurno;
 
-    // ✅ Recuperar el ID de la URL (turno original)
+    // ID de turno original desde URL
     $id_turno = $_GET['id'] ?? null;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Crear nuevo registro en CambiosTurno
         
-        // tomar el id de la url con get 
-        $turno->id_turno = $_POST['id_turno'] ?? null;
+        // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
+        $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
 
-        // find para traer informacion
+        // Validar que el turno existe
         $datos = TurnoDiseno::find($turno->id_turno);
-        debuguear($datos);
-        // $turno->codigo = $datos->codigo ?? '';
+        if(!$datos) {
+            $alertas[] = "El turno no existe.";
+        } else {
+            // Sincronizar con datos del formulario
+            $turno->sincronizar($_POST);
 
-        $turno->sincronizar($_POST);
-        // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
-        // debuguear($turno);
-        // debuguear($datos);
-        // $turno->id_turno = $id_turno;
+            // Forzar campos que queremos asegurar
+            $turno->id_turno = $id_turno;
+            $turno->codigo   = $datos->codigo ?? '';
 
-        // Guardar como NUEVO registro
-        $turno->guardar();
+            // Guardar como nuevo registro
+            $turno->guardar();
 
-        // Redirigir con mensaje de éxito
-        header("Location: /admin/turnoDiseno/cambios?exito=1");
-        exit;
+            // Redirigir con mensaje de éxito
+            header("Location: /admin/turnoDiseno/cambios?exito=1");
+            exit;
+        }
     }
 
     $router->render('admin/turnoDiseno/cambios', [
-        'titulo'  => 'CAMBIOS EN EL PEDIDO',
-        'nombre'  => $nombre,
-        'email'   => $email,
-        'alertas' => $alertas,
-        'turno'   => $turno,
-        'id_turno' => $id_turno // lo mandamos a la vista
+        'titulo'   => 'CAMBIOS EN EL PEDIDO',
+        'nombre'   => $nombre,
+        'email'    => $email,
+        'alertas'  => $alertas,
+        'turno'    => $turno,
+        'id_turno' => $id_turno
     ]);
 }
+
 
 
 
