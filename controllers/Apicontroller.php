@@ -37,11 +37,19 @@ class Apicontroller {
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
-        $detalle = TurnoDiseno::find($id);
-        // Devolver los datos en formato JSON
-        header('Content-Type: application/json');
-        echo json_encode($detalle);
-        exit;
+       $id= $_GET['id'] ?? '';
+       $id = filter_var($id, FILTER_VALIDATE_INT);
+
+       if(!$id){
+           echo json_encode([]);
+           return;
+            
+        }
+
+        $turno = TurnoDiseno::where('id',$id);
+
+        // $pedidos = Pedido::all();
+        echo json_encode($turno);
     }
 
 }
