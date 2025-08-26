@@ -282,8 +282,8 @@
 
 <div class="col-md-6 col-12">
   <div class="form-group">
-    <label for="archivo">Subir archivo (PDF o imagen)</label>
-    <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf,image/*">
+    <label for="pdf">Subir archivo (PDF o imagen)</label>
+    <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf,image/*">
     <small class="form-text text-muted">Se permiten archivos PDF o imágenes.</small>
   </div>
 </div>
@@ -300,7 +300,7 @@
 
       <?php if ($turno->pdf): ?>
         <div id="archivo-actual">
-          <p>Archivo actual: <?php echo htmlspecialchars($turno->pdf); ?> </p>
+          <p>Archivo actual: <?php echo htmlspecialchars($turno->pdf); ?></p>
           <a href="#"
             id="btnEliminarArchivo"
             data-id="<?php echo $turno->id; ?>"
@@ -312,8 +312,6 @@
     </div>
   </div>
 <?php endif; ?>
-
-
 
 
 <script>

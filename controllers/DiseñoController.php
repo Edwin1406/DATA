@@ -265,7 +265,7 @@ class DiseñoController
                     mkdir($carpeta_archivos, 0755, true);
                 }
 
-                // Detectar el tipo MIME
+                // Detectar tipo MIME
                 $tipo = mime_content_type($_FILES['pdf']['tmp_name']);
 
                 // Asignar extensión según tipo
@@ -278,7 +278,7 @@ class DiseñoController
                     return;
                 }
 
-                // Crear nombre único con la extensión correspondiente
+                // Nombre único
                 $nombre_archivo = md5(uniqid(rand(), true)) . $extension;
                 $ruta_destino = $carpeta_archivos . '/' . $nombre_archivo;
 
@@ -288,6 +288,7 @@ class DiseñoController
                     $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
                 }
             }
+
 
 
 
