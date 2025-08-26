@@ -174,21 +174,19 @@
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <!-- ver detalle un boton -->
 
-                                   <button class="btn btn-info btn-sm btn-detalle"
-        data-bs-toggle="modal"
-        data-bs-target="#detalleModal"
+ <button class="btn btn-info btn-sm btn-detalle"
         data-id="<?= $turno->id ?>">Ver Detalle</button>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.btn-detalle').forEach(boton => {
-      boton.addEventListener('click', (e) => {
-        e.preventDefault(); // Evita que Bootstrap maneje el click primero
-        const id = boton.getAttribute('data-id');
-        console.log("ID desde Ver Detalle:", id);
-      });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-detalle').forEach(boton => {
+    boton.addEventListener('click', () => {
+      const id = boton.getAttribute('data-id');
+      console.log("ID desde Ver Detalle:", id);
     });
   });
+});
 </script>
+
 
 
 
