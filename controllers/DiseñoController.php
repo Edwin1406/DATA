@@ -264,29 +264,29 @@ class DiseñoController
                     mkdir($carpeta_archivos, 0755, true);
                 }
 
-                // Detectar tipo MIME
-                $tipo = mime_content_type($_FILES['pdf']['tmp_name']);
+                // Detectar extensión original en minúsculas
+                $extension = strtolower(pathinfo($_FILES['pdf']['name'], PATHINFO_EXTENSION));
 
-                // Asignar extensión según tipo
-                if (strpos($tipo, 'pdf') !== false) {
-                    $extension = '.pdf';
-                } elseif (strpos($tipo, 'image/') === 0) {
-                    $extension = '.img';
-                } else {
-                    $alertas[] = "Formato de archivo no permitido ($tipo).";
+                // Extensiones permitidas
+                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif'];
+
+                if (!in_array($extension, $permitidos)) {
+                    $alertas[] = "Formato de archivo no permitido ($extension).";
                     return;
                 }
 
                 // Nombre único
-                $nombre_archivo = md5(uniqid(rand(), true)) . $extension;
+                $nombre_archivo = md5(uniqid(rand(), true)) . '.' . $extension;
                 $ruta_destino = $carpeta_archivos . '/' . $nombre_archivo;
 
+                // Mover archivo a la carpeta
                 if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
                     $turno->pdf = $nombre_archivo;
                 } else {
                     $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
                 }
             }
+
 
 
 
