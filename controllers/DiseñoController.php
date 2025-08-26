@@ -379,8 +379,7 @@ class DiseñoController
 
         $turnos = TurnoDiseno::all();
 
-        $iddetalle = $_GET['id'] ?? null;
-        $detalle= TurnoDiseno::find($iddetalle);
+     
 
         $router->render('admin/turnoDiseno/turnotablaDiseno', [
             'titulo' => 'TABLA TURNO',
