@@ -173,9 +173,12 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <button type="button" class="btn btn-outline-info"
-                                             data-bs-toggle="modal" data-bs-target="#info" data-id="<?= $turno->id ?>">
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#info"
+                                             data-id="<?= $turno->id ?>">
                                              Info
                                          </button>
+
 
                                          <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                              <form action="/admin/eliminarTurnoDiseno" method="POST">
@@ -213,6 +216,9 @@
 
 
  <div class="modal-info me-1 mb-1 d-inline-block">
+     <!-- Button trigger for info theme modal -->
+
+
      <!--info theme Modal -->
      <div class="modal fade text-left" id="info" tabindex="-1"
          role="dialog" aria-labelledby="myModalLabel130"
@@ -222,7 +228,7 @@
              <div class="modal-content">
                  <div class="modal-header bg-info">
                      <h5 class="modal-title white" id="myModalLabel130">
-                         INFORMACION DEL PEDIDO
+                         Info Modal
                      </h5>
                      <button type="button" class="close"
                          data-bs-dismiss="modal" aria-label="Close">
@@ -230,7 +236,6 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     TOMANDO EL ID <?= $turno->id ?>
                      Tart lemon drops macaroon oat cake chocolate toffee
                      chocolate
                      bar icing. Pudding jelly beans
