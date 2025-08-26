@@ -225,7 +225,7 @@
              <div class="modal-content">
                  <div class="modal-header bg-info">
                      <h5 class="modal-title white" id="myModalLabel130">
-                         Info Modal
+                         <?php echo $titulo; ?>
                      </h5>
                      <button type="button" class="close"
                          data-bs-dismiss="modal" aria-label="Close">
