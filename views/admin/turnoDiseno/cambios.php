@@ -71,7 +71,7 @@
                             <form class="form" method="POST" action="/admin/turnoDiseno/cambios" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
-                                    <?php include_once __DIR__ . '/formulario.php'  ?>
+                                    <?php include_once __DIR__ . '/formulariocambios.php'  ?>
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <!-- bloqear el boton una vez dado click hasta qe se registre  -->
