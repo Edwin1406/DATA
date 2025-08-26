@@ -107,9 +107,9 @@ $router->get('/admin/mantenimiento/registroMantenimiento', [MantenimientoControl
 $router->post('/admin/mantenimiento/registroMantenimiento', [MantenimientoController::class, 'registroMantenimiento']);
 
 
-
-
-
+// REGISTTRO CAMBIOS
+$router->get('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios']);
+$router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios']);
 
 
 

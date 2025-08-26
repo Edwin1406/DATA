@@ -270,7 +270,7 @@ class DiseñoController
                 $extension = strtolower(pathinfo($_FILES['pdf']['name'], PATHINFO_EXTENSION));
 
                 // Extensiones permitidas
-                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif','ai'];
+                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'ai'];
 
                 if (!in_array($extension, $permitidos)) {
                     $alertas[] = "Formato de archivo no permitido ($extension).";
@@ -379,7 +379,7 @@ class DiseñoController
 
         $turnos = TurnoDiseno::all();
 
-     
+
 
         $router->render('admin/turnoDiseno/turnotablaDiseno', [
             'titulo' => 'TABLA TURNO',
@@ -429,36 +429,36 @@ class DiseñoController
 
 
 
-            
-            if (!empty($_FILES['pdf']['tmp_name'])) {
-                $carpeta_archivos = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
 
-                if (!is_dir($carpeta_archivos)) {
-                    mkdir($carpeta_archivos, 0755, true);
-                }
+        if (!empty($_FILES['pdf']['tmp_name'])) {
+            $carpeta_archivos = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
 
-                // Detectar extensión original en minúsculas
-                $extension = strtolower(pathinfo($_FILES['pdf']['name'], PATHINFO_EXTENSION));
-
-                // Extensiones permitidas
-                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif','ai'];
-
-                if (!in_array($extension, $permitidos)) {
-                    $alertas[] = "Formato de archivo no permitido ($extension).";
-                    return;
-                }
-
-                // Nombre único
-                $nombre_archivo = md5(uniqid(rand(), true)) . '.' . $extension;
-                $ruta_destino = $carpeta_archivos . '/' . $nombre_archivo;
-
-                // Mover archivo a la carpeta
-                if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
-                    $turno->pdf = $nombre_archivo;
-                } else {
-                    $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
-                }
+            if (!is_dir($carpeta_archivos)) {
+                mkdir($carpeta_archivos, 0755, true);
             }
+
+            // Detectar extensión original en minúsculas
+            $extension = strtolower(pathinfo($_FILES['pdf']['name'], PATHINFO_EXTENSION));
+
+            // Extensiones permitidas
+            $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'ai'];
+
+            if (!in_array($extension, $permitidos)) {
+                $alertas[] = "Formato de archivo no permitido ($extension).";
+                return;
+            }
+
+            // Nombre único
+            $nombre_archivo = md5(uniqid(rand(), true)) . '.' . $extension;
+            $ruta_destino = $carpeta_archivos . '/' . $nombre_archivo;
+
+            // Mover archivo a la carpeta
+            if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
+                $turno->pdf = $nombre_archivo;
+            } else {
+                $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
+            }
+        }
 
 
 
@@ -683,5 +683,16 @@ class DiseñoController
         $turno->guardar();
 
         echo json_encode(['success' => true]);
+    }
+
+
+    // cambios
+    public static function cambios(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+            exit;
+        }
     }
 }
