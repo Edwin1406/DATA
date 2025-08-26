@@ -746,10 +746,10 @@ public static function cambios(Router $router)
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Crear nuevo registro en CambiosTurno
-        $turno->sincronizar($_POST);
-
+        
         // tomar el id de la url con get 
         $turno->id_turno = $_POST['id_turno'] ?? null;
+        $turno->sincronizar($_POST);
         // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
         debuguear($turno);
         // debuguear($datos);
