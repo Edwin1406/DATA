@@ -701,14 +701,11 @@ class DiseñoController
         $nombre = $_SESSION['nombre'];
         $email  = $_SESSION['email'];
 
-        $id = $_GET['id'] ?? null;
-
-        // debuguear($id);
 
 
         $turno = new CambiosTurno;
 
-        $cambio = TurnoDiseno::find($id);
+      
 
 
 
@@ -719,12 +716,6 @@ class DiseñoController
             debuguear($turno);
 
         }
-
-
-
-
-
-
 
 
         $router->render('admin/turnoDiseno/cambios', [
