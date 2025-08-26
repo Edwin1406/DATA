@@ -315,62 +315,64 @@
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const btnEliminar = document.getElementById('btnEliminarPDF');
+document.addEventListener('DOMContentLoaded', function() {
+  const btnEliminar = document.getElementById('btnEliminarArchivo'); // aquí el mismo ID del HTML
 
-    if (btnEliminar) {
-      btnEliminar.addEventListener('click', function(e) {
-        e.preventDefault();
+  if (btnEliminar) {
+    btnEliminar.addEventListener('click', function(e) {
+      e.preventDefault();
 
-        Swal.fire({
-          title: '¿Estás seguro?',
-          text: 'No podrás recuperar este archivo después de eliminarlo.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Sí, eliminar',
-          cancelButtonText: 'Cancelar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            const idTurno = this.dataset.id;
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'No podrás recuperar este archivo después de eliminarlo.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const idTurno = this.dataset.id;
 
-            fetch('/admin/diseno/eliminarPDFturno', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'id=' + encodeURIComponent(idTurno)
-              })
-              .then(res => res.json())
-              .then(data => {
-                if (data.success) {
-                  Swal.fire({
-                    icon: 'success',
-                    title: '¡Eliminado!',
-                    text: 'El archivo PDF ha sido eliminado correctamente.'
-                  });
+          fetch('/admin/diseno/eliminarPDFturno', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: 'id=' + encodeURIComponent(idTurno)
+            })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                Swal.fire({
+                  icon: 'success',
+                  title: '¡Eliminado!',
+                  text: 'El archivo se eliminó correctamente.'
+                });
 
-                  document.getElementById('pdf-actual').innerHTML = '<p>PDF eliminado correctamente.</p>';
-                } else {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: data.error || 'Ocurrió un error al eliminar el archivo.'
-                  });
-                }
-              })
-              .catch(err => {
-                console.error('Error AJAX:', err);
+                // Ojo: tu HTML usa id="archivo-actual", no "pdf-actual"
+                document.getElementById('archivo-actual').innerHTML = '<p>Archivo eliminado correctamente.</p>';
+              } else {
                 Swal.fire({
                   icon: 'error',
                   title: 'Error',
-                  text: 'Error en la solicitud. Intenta de nuevo.'
+                  text: data.error || 'Ocurrió un error al eliminar el archivo.'
                 });
+              }
+            })
+            .catch(err => {
+              console.error('Error AJAX:', err);
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error en la solicitud. Intenta de nuevo.'
               });
-          }
-        });
+            });
+        }
       });
-    }
-  });
+    });
+  }
+});
+
 </script>
 
 
