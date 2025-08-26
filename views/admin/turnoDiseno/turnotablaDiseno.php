@@ -106,15 +106,7 @@
                              <th class="fs-6" style="min-width: 90px;">Codigo</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo producto</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo componente</th>
-                             <th class="fs-6" style="min-width: 90px;">Largo</th>
-                             <th class="fs-6" style="min-width: 90px;">Ancho</th>
-                             <th class="fs-6" style="min-width: 90px;">Alto</th>
-                             <th class="fs-6" style="min-width: 90px;">Dobles</th>
-                             <th class="fs-6" style="min-width: 90px;">Flauta</th>
-                             <th class="fs-6" style="min-width: 90px;">Material</th>
-                             <th class="fs-6" style="min-width: 90px;">ECT</th>
-                             <th class="fs-6" style="min-width: 93px;">Descripción</th>
-                             <th class="fs-6" style="min-width: 80px;">Vendedor</th>
+                          
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha Creación</th>
@@ -130,15 +122,7 @@
                                  <td><?= $turno->codigo ?></td>
                                  <td><?= $turno->tipo_producto ?></td>
                                  <td><?= $turno->tipo_componente ?></td>
-                                 <td><?= $turno->largo ?></td>
-                                 <td><?= $turno->ancho ?></td>
-                                 <td><?= $turno->alto ?></td>
-                                 <td><?= $turno->dobles ?></td>
-                                 <td><?= $turno->flauta ?></td>
-                                 <td><?= $turno->material ?></td>
-                                 <td><?= $turno->ect ?></td>
-                                 <td><?= $turno->descripcion ?></td>
-                                 <td><?= $turno->vendedor ?></td>
+
                                  <td><?= $turno->observaciones ?></td>
 
                                  <?php
@@ -174,8 +158,8 @@
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <!-- ver detalle un boton -->
 
-<!-- BOTÓN -->
-<button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
+                                         <!-- BOTÓN -->
+                                         <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
 
 
 
@@ -220,85 +204,84 @@
  </script>
 
 
-<!-- Modal reutilizable -->
-<div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-info">
-        <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <i data-feather="x"></i>
-        </button>
-      </div>
-      <div class="modal-body" id="detalleContenido">
-        Cargando información...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
+ <!-- Modal reutilizable -->
+ <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+         <div class="modal-content">
+             <div class="modal-header bg-info">
+                 <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
+                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                     <i data-feather="x"></i>
+                 </button>
+             </div>
+             <div class="modal-body" id="detalleContenido">
+                 Cargando información...
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+             </div>
+         </div>
+     </div>
+ </div>
 
 
 
-<script>
-  document.addEventListener('click', async function (e) {
-    if (e.target.matches('.btn-detalle')) {
-      const id = e.target.getAttribute('data-id');
-      const contenido = document.getElementById('detalleContenido');
-      contenido.innerHTML = "Cargando información...";
 
-      const datos = await ApiDetalle(id);
 
-      if (datos) {
-        let tabla = `<table class="table table-sm table-bordered"><tbody>`;
-        
-        for (const [campo, valor] of Object.entries(datos)) {
-          // Condición: si el valor está vacío, es null o es "0", no se muestra
-          if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-            
-            // si el campo es "pdf", lo mostramos como enlace
-            if (campo === "pdf") {
-              tabla += `
+ <script>
+     document.addEventListener('click', async function(e) {
+         if (e.target.matches('.btn-detalle')) {
+             const id = e.target.getAttribute('data-id');
+             const contenido = document.getElementById('detalleContenido');
+             contenido.innerHTML = "Cargando información...";
+
+             const datos = await ApiDetalle(id);
+
+             if (datos) {
+                 let tabla = `<table class="table table-sm table-bordered"><tbody>`;
+
+                 for (const [campo, valor] of Object.entries(datos)) {
+                     // Condición: si el valor está vacío, es null o es "0", no se muestra
+                     if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+
+                         // si el campo es "pdf", lo mostramos como enlace
+                         if (campo === "pdf") {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
                 </tr>
               `;
-            } else {
-              tabla += `
+                         } else {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td>${valor}</td>
                 </tr>
               `;
-            }
-          }
-        }
+                         }
+                     }
+                 }
 
-        tabla += `</tbody></table>`;
-        contenido.innerHTML = tabla;
-      } else {
-        contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
-      }
+                 tabla += `</tbody></table>`;
+                 contenido.innerHTML = tabla;
+             } else {
+                 contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+             }
 
-      const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
-      modal.show();
-    }
-  });
+             const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+             modal.show();
+         }
+     });
 
-  async function ApiDetalle(id){
-    try {
-      const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-      const resultado = await fetch(url);
-      return await resultado.json();
-    } catch (e) {
-      console.log(e);
-      return null;
-    }
-  }
-</script>
-
+     async function ApiDetalle(id) {
+         try {
+             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+             const resultado = await fetch(url);
+             return await resultado.json();
+         } catch (e) {
+             console.log(e);
+             return null;
+         }
+     }
+ </script>
