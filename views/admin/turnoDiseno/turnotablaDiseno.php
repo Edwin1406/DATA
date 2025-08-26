@@ -213,9 +213,6 @@
 
 
  <div class="modal-info me-1 mb-1 d-inline-block">
-     <!-- Button trigger for info theme modal -->
-
-
      <!--info theme Modal -->
      <div class="modal fade text-left" id="info" tabindex="-1"
          role="dialog" aria-labelledby="myModalLabel130"
@@ -225,7 +222,7 @@
              <div class="modal-content">
                  <div class="modal-header bg-info">
                      <h5 class="modal-title white" id="myModalLabel130">
-                         <?php echo $titulo; ?>
+                         INFORMACION DEL PEDIDO
                      </h5>
                      <button type="button" class="close"
                          data-bs-dismiss="modal" aria-label="Close">
