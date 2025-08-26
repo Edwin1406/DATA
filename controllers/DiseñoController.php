@@ -257,7 +257,6 @@ class DiseñoController
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
-
             if (!empty($_FILES['pdf']['tmp_name'])) {
                 $carpeta_archivos = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
 
@@ -269,12 +268,12 @@ class DiseñoController
                 $tipo = mime_content_type($_FILES['pdf']['tmp_name']);
 
                 // Asignar extensión según tipo
-                if ($tipo === 'application/pdf') {
+                if (strpos($tipo, 'pdf') !== false) {
                     $extension = '.pdf';
                 } elseif (strpos($tipo, 'image/') === 0) {
                     $extension = '.img';
                 } else {
-                    $alertas[] = "Formato de archivo no permitido.";
+                    $alertas[] = "Formato de archivo no permitido ($tipo).";
                     return;
                 }
 
@@ -288,6 +287,7 @@ class DiseñoController
                     $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
                 }
             }
+
 
 
 
