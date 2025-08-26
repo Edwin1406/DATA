@@ -177,6 +177,10 @@
                                                  <input type="hidden" name="id" value="<?= $turno->id ?>">
                                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                              </form>
+                                             <button type="button" class="btn btn-outline-info"
+                                                 data-bs-toggle="modal" data-bs-target="#info">
+                                                 Info
+                                             </button>
                                          <?php } ?>
                                      </div>
                                  </td>
@@ -208,10 +212,7 @@
 
  <div class="modal-info me-1 mb-1 d-inline-block">
      <!-- Button trigger for info theme modal -->
-     <button type="button" class="btn btn-outline-info"
-         data-bs-toggle="modal" data-bs-target="#info">
-         Info
-     </button>
+
 
      <!--info theme Modal -->
      <div class="modal fade text-left" id="info" tabindex="-1"
