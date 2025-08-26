@@ -173,11 +173,43 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <!-- Botón para abrir el modal -->
-                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#turnoModal">
-                                             Ver detalle
-                                         </button>
+                                         <!-- Tu tabla -->
+                                         <table class="table">
+                                             <thead>
+                                                 <tr>
+                                                     <th>ID</th>
+                                                     <th>Descripción</th>
+                                                     <th>Fecha creación</th>
+                                                     <th>Fecha entrega</th>
+                                                     <th>Acciones</th>
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                                 <?php foreach ($turnos as $turno): ?>
+                                                     <tr>
+                                                         <td><?= $turno->id ?></td>
+                                                         <td><?= $turno->descripcion ?></td>
+                                                         <td><?= $turno->fecha_creacion ?></td>
+                                                         <td><?= $turno->fecha_entrega ?></td>
+                                                         <td>
+                                                             <!-- Botón que pasa los datos como atributos -->
+                                                             <button
+                                                                 class="btn btn-primary btn-detalle"
+                                                                 data-id="<?= $turno->id ?>"
+                                                                 data-descripcion="<?= $turno->descripcion ?>"
+                                                                 data-creacion="<?= $turno->fecha_creacion ?>"
+                                                                 data-entrega="<?= $turno->fecha_entrega ?>"
+                                                                 data-bs-toggle="modal"
+                                                                 data-bs-target="#turnoModal">
+                                                                 Ver detalle
+                                                             </button>
+                                                         </td>
+                                                     </tr>
+                                                 <?php endforeach; ?>
+                                             </tbody>
+                                         </table>
 
-                                         <!-- Modal -->
+                                         <!-- Modal único -->
                                          <div class="modal fade" id="turnoModal" tabindex="-1" aria-labelledby="turnoModalLabel" aria-hidden="true">
                                              <div class="modal-dialog">
                                                  <div class="modal-content">
@@ -186,12 +218,10 @@
                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                                      </div>
                                                      <div class="modal-body">
-                                                         <p>ID del turno: <span id="turno-id"><?= $turno->id ?></span></p>
-                                                         <div id="contenido-turno">
-                                                             <p>Descripción: <?= $turno->descripcion ?></p>
-                                                             <p>Fecha de creación: <?= $turno->fecha_creacion ?></p>
-                                                             <p>Fecha de entrega: <?= $turno->fecha_entrega ?></p>
-                                                         </div>
+                                                         <p><strong>ID del turno:</strong> <span id="modal-id"></span></p>
+                                                         <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
+                                                         <p><strong>Fecha de creación:</strong> <span id="modal-creacion"></span></p>
+                                                         <p><strong>Fecha de entrega:</strong> <span id="modal-entrega"></span></p>
                                                      </div>
                                                      <div class="modal-footer">
                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -199,6 +229,23 @@
                                                  </div>
                                              </div>
                                          </div>
+
+                                         <!-- Script para rellenar el modal -->
+                                         <script>
+                                             document.addEventListener("DOMContentLoaded", function() {
+                                                 const botones = document.querySelectorAll(".btn-detalle");
+
+                                                 botones.forEach(boton => {
+                                                     boton.addEventListener("click", function() {
+                                                         document.getElementById("modal-id").textContent = this.getAttribute("data-id");
+                                                         document.getElementById("modal-descripcion").textContent = this.getAttribute("data-descripcion");
+                                                         document.getElementById("modal-creacion").textContent = this.getAttribute("data-creacion");
+                                                         document.getElementById("modal-entrega").textContent = this.getAttribute("data-entrega");
+                                                     });
+                                                 });
+                                             });
+                                         </script>
+
 
 
                                          <?php if ($email !== 'ventas@megaecuador.com') { ?>
@@ -233,4 +280,3 @@
          });
      });
  </script>
-
