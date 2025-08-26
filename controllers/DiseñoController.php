@@ -751,7 +751,7 @@ public static function cambios(Router $router)
         $turno->id_turno = $_POST['id_turno'] ?? null;
 
         // find para traer informacion
-        $datos = TurnoDiseno::find($id_turno);
+        $datos = TurnoDiseno::find($turno->id_turno);
 
         $turno->sincronizar($_POST);
         // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
