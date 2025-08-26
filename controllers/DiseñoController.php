@@ -702,7 +702,7 @@ class DiseñoController
 
 
         $router->render('admin/turnoDiseno/cambios', [
-            'titulo'  => 'CAMBIOS TURNO',
+            'titulo'  => 'CAMBIOS EN EL PEDIDO',
             'nombre'  => $nombre,
             'email'   => $email,
             'alertas' => $alertas,
