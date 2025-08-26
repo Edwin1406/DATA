@@ -28,10 +28,10 @@
 <!--  Observaciones -->
 <div class="col-md-6 col-12">
   <div class="form-group">
-    <label for="observaciones">Observaciones</label>
-    <input type="text" id="observaciones" class="form-control"
-      placeholder="Observaciones" name="observaciones"
-      value="<?php echo isset($turno) ? s($turno->observaciones) : ''; ?>">
+    <label for="cambios">Cambios</label>
+    <input type="text" id="cambios" class="form-control"
+      placeholder="Cambios" name="cambios"
+      value="<?php echo isset($turno) ? s($turno->cambios) : ''; ?>">
   </div>
 </div>
 
