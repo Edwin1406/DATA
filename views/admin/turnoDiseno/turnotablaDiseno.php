@@ -265,7 +265,7 @@
               tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
-                  <td><a href="/uploads/${valor}" target="_blank">Ver archivo</a></td>
+                  <td><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
                 </tr>
               `;
             } else {
