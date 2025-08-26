@@ -749,6 +749,10 @@ public static function cambios(Router $router)
         
         // tomar el id de la url con get 
         $turno->id_turno = $_POST['id_turno'] ?? null;
+
+        // find para traer informacion
+        $datos = TurnoDiseno::find($id_turno);
+
         $turno->sincronizar($_POST);
         // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
         // debuguear($turno);
