@@ -172,26 +172,52 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                        <!-- ver detalle un boton -->
-                                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detalleModal" data-id="<?= $turno->id ?>">Ver Detalle</button>
+                                         <!-- ver detalle un boton -->
 
-                                 <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                                     <form action="/admin/eliminarTurnoDiseno" method="POST">
-                                         <input type="hidden" name="id" value="<?= $turno->id ?>">
-                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                     </form>
+                                         <button class="btn btn-info btn-sm btn-detalle"
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#detalleModal"
+                                             data-id="<?= $turno->id ?>">Ver Detalle</button>
 
-                                 <?php } ?>
+                                         <script>
+                                             // Para el enlace "Editar"
+                                             document.querySelectorAll('.btn-editar').forEach(boton => {
+                                                 boton.addEventListener('click', event => {
+                                                     event.preventDefault(); // Evita que recargue la página
+                                                     const url = new URL(boton.href, window.location.origin);
+                                                     const id = url.searchParams.get('id');
+                                                     console.log("ID desde Editar:", id);
+                                                 });
+                                             });
+
+                                             // Para el botón "Ver Detalle"
+                                             document.querySelectorAll('.btn-detalle').forEach(boton => {
+                                                 boton.addEventListener('click', () => {
+                                                     const id = boton.getAttribute('data-id');
+                                                     console.log("ID desde Ver Detalle:", id);
+                                                 });
+                                             });
+                                         </script>
+
+
+
+                                         <?php if ($email !== 'ventas@megaecuador.com') { ?>
+                                             <form action="/admin/eliminarTurnoDiseno" method="POST">
+                                                 <input type="hidden" name="id" value="<?= $turno->id ?>">
+                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                             </form>
+
+                                         <?php } ?>
+                                     </div>
+                                 </td>
+
+                             </tr>
+                         <?php endforeach; ?>
+                     </tbody>
+                 </table>
              </div>
-             </td>
-
-             </tr>
-         <?php endforeach; ?>
-         </tbody>
-         </table>
          </div>
- </div>
- </section>
+     </section>
  </div>
 
 
