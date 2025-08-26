@@ -688,42 +688,91 @@ class DiseñoController
 
 
     // cambios
-    public static function cambios(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-            exit;
-        }
-        $alertas = [];
+    // public static function cambios(Router $router)
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //         exit;
+    //     }
+    //     $alertas = [];
 
         
-        $nombre = $_SESSION['nombre'];
-        $email  = $_SESSION['email'];
+    //     $nombre = $_SESSION['nombre'];
+    //     $email  = $_SESSION['email'];
 
 
 
-        $turno = new CambiosTurno;
+    //     $turno = new CambiosTurno;
 
       
 
 
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $turno->sincronizar($_POST);
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         $turno->sincronizar($_POST);
 
 
-            debuguear($turno);
+    //         debuguear($turno);
 
-        }
+    //     }
 
 
-        $router->render('admin/turnoDiseno/cambios', [
-            'titulo'  => 'CAMBIOS EN EL PEDIDO',
-            'nombre'  => $nombre,
-            'email'   => $email,
-            'alertas' => $alertas,
+    //     $router->render('admin/turnoDiseno/cambios', [
+    //         'titulo'  => 'CAMBIOS EN EL PEDIDO',
+    //         'nombre'  => $nombre,
+    //         'email'   => $email,
+    //         'alertas' => $alertas,
            
-        ]);
+    //     ]);
+    // }
+
+public static function cambios(Router $router)
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header('Location: /');
+        exit;
     }
+
+    $alertas = [];
+    $nombre = $_SESSION['nombre'];
+    $email  = $_SESSION['email'];
+
+    $turno = new CambiosTurno;
+
+    // ✅ Recuperar el ID de la URL (turno original)
+    $id_turno = $_GET['id'] ?? null;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Crear nuevo registro en CambiosTurno
+        $turno->sincronizar($_POST);
+
+        // ✅ Guardar el id_turno de referencia (no actualizar, solo referencia)
+        $turno->id_turno = $id_turno;
+
+        // Guardar como NUEVO registro
+        $turno->guardar();
+
+        // Redirigir con mensaje de éxito
+        header("Location: /admin/turnoDiseno/cambios?exito=1");
+        exit;
+    }
+
+    $router->render('admin/turnoDiseno/cambios', [
+        'titulo'  => 'CAMBIOS EN EL PEDIDO',
+        'nombre'  => $nombre,
+        'email'   => $email,
+        'alertas' => $alertas,
+        'turno'   => $turno,
+        'id_turno' => $id_turno // lo mandamos a la vista
+    ]);
+}
+
+
+
+
+
+
+
 }
