@@ -251,30 +251,43 @@ class DiseñoController
 
             $turno->sincronizar($_POST);
 
-            
+
 
             // debuguear($turno);
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
 
+            if (!empty($_FILES['pdf']['tmp_name'])) {
+                $carpeta_archivos = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
 
-              if (!empty($_FILES['pdf']['tmp_name'])) {
-                    $carpeta_pdfs = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
-
-                    if (!is_dir($carpeta_pdfs)) {
-                        mkdir($carpeta_pdfs, 0755, true);
-                    }
-
-                    $nombre_pdf = md5(uniqid(rand(), true)) . '.pdf';
-                    $ruta_destino = $carpeta_pdfs . '/' . $nombre_pdf;
-
-                    if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
-                        $turno->pdf = $nombre_pdf;
-                    } else {
-                        $alertas[] = "Error al mover el archivo PDF. Verifica los permisos de la carpeta.";
-                    }
+                if (!is_dir($carpeta_archivos)) {
+                    mkdir($carpeta_archivos, 0755, true);
                 }
+
+                // Detectar el tipo MIME
+                $tipo = mime_content_type($_FILES['pdf']['tmp_name']);
+
+                // Asignar extensión según tipo
+                if ($tipo === 'application/pdf') {
+                    $extension = '.pdf';
+                } elseif (strpos($tipo, 'image/') === 0) {
+                    $extension = '.img';
+                } else {
+                    $alertas[] = "Formato de archivo no permitido.";
+                    return;
+                }
+
+                // Crear nombre único con la extensión correspondiente
+                $nombre_archivo = md5(uniqid(rand(), true)) . $extension;
+                $ruta_destino = $carpeta_archivos . '/' . $nombre_archivo;
+
+                if (move_uploaded_file($_FILES['pdf']['tmp_name'], $ruta_destino)) {
+                    $turno->pdf = $nombre_archivo;
+                } else {
+                    $alertas[] = "Error al mover el archivo. Verifica los permisos de la carpeta.";
+                }
+            }
 
 
 
@@ -599,7 +612,7 @@ class DiseñoController
     }
 
 
-   public static function eliminarPDFturno()
+    public static function eliminarPDFturno()
     {
         session_start();
         if (!isset($_SESSION['email'])) {
@@ -629,30 +642,4 @@ class DiseñoController
 
         echo json_encode(['success' => true]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

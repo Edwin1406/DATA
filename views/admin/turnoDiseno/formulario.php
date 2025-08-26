@@ -280,42 +280,42 @@
 </div>
 
 
-
-
-
 <div class="col-md-6 col-12">
   <div class="form-group">
-    <label for="pdf">Subir PDF del diseño</label>
-    <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf">
-    <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
+    <label for="archivo">Subir archivo (PDF o imagen)</label>
+    <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf,image/*">
+    <small class="form-text text-muted">Se permiten archivos PDF o imágenes.</small>
   </div>
 </div>
+
 <?php if (isset($turno->pdf)) : ?>
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label>Archivo actual:</label><br>
-      <!-- eliminar espacio em blanco -->
+
       <a href="<?php echo $_ENV['HOST'] . '/src/turnos/' . $turno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
-        Ver / Descargar PDF
+        Ver / Descargar archivo
       </a>
       <br><br>
 
       <?php if ($turno->pdf): ?>
-        <div id="pdf-actual">
-          <p>PDF actual: <?php echo htmlspecialchars($turno->pdf); ?> </p>
+        <div id="archivo-actual">
+          <p>Archivo actual: <?php echo htmlspecialchars($turno->pdf); ?> </p>
           <a href="#"
-            id="btnEliminarPDF"
+            id="btnEliminarArchivo"
             data-id="<?php echo $turno->id; ?>"
             class="btn btn-danger btn-sm">
-            Eliminar PDF
+            Eliminar archivo
           </a>
         </div>
       <?php endif; ?>
-
-
     </div>
   </div>
 <?php endif; ?>
+
+
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const btnEliminar = document.getElementById('btnEliminarPDF');
