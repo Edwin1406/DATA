@@ -753,7 +753,7 @@ public static function cambios(Router $router)
         // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
 
         // debuguear($datos);
-        $turno->id_turno = $id_turno;
+        // $turno->id_turno = $id_turno;
 
         // Guardar como NUEVO registro
         $turno->guardar();
