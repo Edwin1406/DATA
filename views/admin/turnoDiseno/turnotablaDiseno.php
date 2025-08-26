@@ -174,18 +174,27 @@
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <!-- ver detalle un boton -->
 
- <button class="btn btn-info btn-sm btn-detalle"
-        data-id="<?= $turno->id ?>">Ver Detalle</button>
+<!-- BOTÓN -->
+<button class="btn btn-info btn-sm btn-detalle" data-id="123">Ver Detalle</button>
+<button class="btn btn-info btn-sm btn-detalle" data-id="456">Ver Detalle</button>
+
+<!-- SCRIPT -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.btn-detalle').forEach(boton => {
-    boton.addEventListener('click', () => {
-      const id = boton.getAttribute('data-id');
-      console.log("ID desde Ver Detalle:", id);
+  // Se asegura que el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    const botones = document.querySelectorAll('.btn-detalle');
+    
+    botones.forEach(boton => {
+      boton.addEventListener('click', () => {
+        const id = boton.getAttribute('data-id');
+        console.log("ID desde Ver Detalle:", id);
+        // Para verificar fácil en pantalla
+        alert("ID: " + id);
+      });
     });
   });
-});
 </script>
+
 
 
 
