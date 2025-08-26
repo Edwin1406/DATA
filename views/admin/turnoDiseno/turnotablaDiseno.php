@@ -172,81 +172,10 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <!-- Botón para abrir el modal -->
-                                         <!-- Tu tabla -->
-                                         <table class="table">
-                                             <thead>
-                                                 <tr>
-                                                     <th>ID</th>
-                                                     <th>Descripción</th>
-                                                     <th>Fecha creación</th>
-                                                     <th>Fecha entrega</th>
-                                                     <th>Acciones</th>
-                                                 </tr>
-                                             </thead>
-                                             <tbody>
-                                                 <?php foreach ($turnos as $turno): ?>
-                                                     <tr>
-                                                         <td><?= $turno->id ?></td>
-                                                         <td><?= $turno->descripcion ?></td>
-                                                         <td><?= $turno->fecha_creacion ?></td>
-                                                         <td><?= $turno->fecha_entrega ?></td>
-                                                         <td>
-                                                             <!-- Botón que pasa los datos como atributos -->
-                                                             <button
-                                                                 class="btn btn-primary btn-detalle"
-                                                                 data-id="<?= $turno->id ?>"
-                                                                 data-descripcion="<?= $turno->descripcion ?>"
-                                                                 data-creacion="<?= $turno->fecha_creacion ?>"
-                                                                 data-entrega="<?= $turno->fecha_entrega ?>"
-                                                                 data-bs-toggle="modal"
-                                                                 data-bs-target="#turnoModal">
-                                                                 Ver detalle
-                                                             </button>
-                                                         </td>
-                                                     </tr>
-                                                 <?php endforeach; ?>
-                                             </tbody>
-                                         </table>
-
-                                         <!-- Modal único -->
-                                         <div class="modal fade" id="turnoModal" tabindex="-1" aria-labelledby="turnoModalLabel" aria-hidden="true">
-                                             <div class="modal-dialog">
-                                                 <div class="modal-content">
-                                                     <div class="modal-header">
-                                                         <h5 class="modal-title" id="turnoModalLabel">Detalle del turno</h5>
-                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                                     </div>
-                                                     <div class="modal-body">
-                                                         <p><strong>ID del turno:</strong> <span id="modal-id"></span></p>
-                                                         <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
-                                                         <p><strong>Fecha de creación:</strong> <span id="modal-creacion"></span></p>
-                                                         <p><strong>Fecha de entrega:</strong> <span id="modal-entrega"></span></p>
-                                                     </div>
-                                                     <div class="modal-footer">
-                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-
-                                         <!-- Script para rellenar el modal -->
-                                         <script>
-                                             document.addEventListener("DOMContentLoaded", function() {
-                                                 const botones = document.querySelectorAll(".btn-detalle");
-
-                                                 botones.forEach(boton => {
-                                                     boton.addEventListener("click", function() {
-                                                         document.getElementById("modal-id").textContent = this.getAttribute("data-id");
-                                                         document.getElementById("modal-descripcion").textContent = this.getAttribute("data-descripcion");
-                                                         document.getElementById("modal-creacion").textContent = this.getAttribute("data-creacion");
-                                                         document.getElementById("modal-entrega").textContent = this.getAttribute("data-entrega");
-                                                     });
-                                                 });
-                                             });
-                                         </script>
-
-
+                                         <button type="button" class="btn btn-outline-info"
+                                             data-bs-toggle="modal" data-bs-target="#info">
+                                             Info
+                                         </button>
 
                                          <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                              <form action="/admin/eliminarTurnoDiseno" method="POST">
@@ -280,3 +209,50 @@
          });
      });
  </script>
+
+
+
+ <div class="modal-info me-1 mb-1 d-inline-block">
+     <!--info theme Modal -->
+     <div class="modal fade text-left" id="info" tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel130"
+         aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+             role="document">
+             <div class="modal-content">
+                 <div class="modal-header bg-info">
+                     <h5 class="modal-title white" id="myModalLabel130">
+                         INFORMACION DEL PEDIDO
+                     </h5>
+                     <button type="button" class="close"
+                         data-bs-dismiss="modal" aria-label="Close">
+                         <i data-feather="x"></i>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                     TOMANDO EL ID <?= $turno->id ?>
+                     Tart lemon drops macaroon oat cake chocolate toffee
+                     chocolate
+                     bar icing. Pudding jelly beans
+                     carrot cake pastry gummies cheesecake lollipop. I
+                     love cookie
+                     lollipop cake I love sweet
+                     gummi bears cupcake dessert.
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button"
+                         class="btn btn-light-secondary"
+                         data-bs-dismiss="modal">
+                         <i class="bx bx-x d-block d-sm-none"></i>
+                         <span class="d-none d-sm-block">Close</span>
+                     </button>
+                     <button type="button" class="btn btn-info ml-1"
+                         data-bs-dismiss="modal">
+                         <i class="bx bx-check d-block d-sm-none"></i>
+                         <span class="d-none d-sm-block">Accept</span>
+                     </button>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
