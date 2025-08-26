@@ -172,15 +172,17 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <button type="button" class="btn btn-outline-info"
+                                             data-bs-toggle="modal" data-bs-target="#info">
+                                             Info
+                                         </button>
+
                                          <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                              <form action="/admin/eliminarTurnoDiseno" method="POST">
                                                  <input type="hidden" name="id" value="<?= $turno->id ?>">
                                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                              </form>
-                                             <button type="button" class="btn btn-outline-info"
-                                                 data-bs-toggle="modal" data-bs-target="#info">
-                                                 Info
-                                             </button>
+
                                          <?php } ?>
                                      </div>
                                  </td>
