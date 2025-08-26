@@ -753,6 +753,8 @@ public static function cambios(Router $router)
         // find para traer informacion
         $datos = TurnoDiseno::find($turno->id_turno);
 
+        $turno->codigo = $datos->codigo ?? '';
+
         $turno->sincronizar($_POST);
         // $datos = TurnoDiseno::find($id_turno) ? $id_turno : null;
         // debuguear($turno);
