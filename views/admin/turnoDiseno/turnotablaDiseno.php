@@ -220,68 +220,69 @@
  </script>
 
 
-
-
-<script>
-  document.addEventListener('click', function (e) {
-
-    if (e.target.matches('.btn-detalle')) {   // solo si el clic fue DIRECTO en un botón con esa clase
-      const id = e.target.getAttribute('data-id');
-      console.log("ID desde Ver Detalle:", id);
-      ApiDetalle(id);
-    }
-
-
-       // obtener datos del api de detalle
-    async function ApiDetalle(id){
-        try {
-            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-            const resultado = await fetch(url);
-            const apipedidos = await resultado.json();
-            console.log(apipedidos);
-            return apipedidos
-        } catch (e) {
-            console.log(e);
-                
-        }
-    }  
-
-
-
-
-  });
-</script>
+<!-- Modal reutilizable -->
+<div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="detalleContenido">
+        Cargando información...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 
 
 
 
-<!-- 
+<script>
+  document.addEventListener('click', async function (e) {
+    if (e.target.matches('.btn-detalle')) {
+      const id = e.target.getAttribute('data-id');
+      console.log("ID desde Ver Detalle:", id);
 
+      const contenido = document.getElementById('detalleContenido');
+      contenido.innerHTML = "Cargando información...";
 
- <script>
-     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
-         button.addEventListener('click', function() {
-             const id = this.getAttribute('data-id');
-             ApiDetalle(id);
-         });
-     });
+      const datos = await ApiDetalle(id);
 
-     // obtener datos detalle
-     async function ApiDetalle(id) {
+      if (datos) {
+        // Aquí ajusta según lo que devuelva tu API
+        contenido.innerHTML = `
+          <p><strong>ID:</strong> ${datos.id}</p>
+          <p><strong>Nombre:</strong> ${datos.nombre}</p>
+          <p><strong>Fecha:</strong> ${datos.fecha}</p>
+          <p><strong>Descripción:</strong> ${datos.descripcion}</p>
+        `;
+      } else {
+        contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+      }
 
-         console.log(id);
+      // Abrir el modal con Bootstrap 5
+      const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+      modal.show();
+    }
+  });
 
-         try {
-             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-             const resultado = await fetch(url);
-             const apipedidos = await resultado.json();
-             console.log(apipedidos);
-             return apipedidos
-         } catch (e) {
-             console.log(e);
-
-         }
-     }
- </script> -->
+  // Función para llamar a la API
+  async function ApiDetalle(id){
+    try {
+      const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+      const resultado = await fetch(url);
+      return await resultado.json();
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+</script>
