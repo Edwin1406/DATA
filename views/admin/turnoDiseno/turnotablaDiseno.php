@@ -230,6 +230,7 @@
                      </button>
                  </div>
                  <div class="modal-body">
+                     TOMANDO EL ID <?= $turno->id ?>
                      Tart lemon drops macaroon oat cake chocolate toffee
                      chocolate
                      bar icing. Pudding jelly beans
