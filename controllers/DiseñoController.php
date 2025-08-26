@@ -727,6 +727,8 @@ class DiseñoController
     //     ]);
     // }
 
+
+
 public static function cambios(Router $router)
 {
     session_start();
@@ -746,6 +748,7 @@ public static function cambios(Router $router)
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
+        $turno->sincronizar($_POST);
         // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
         $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
 
@@ -755,7 +758,6 @@ public static function cambios(Router $router)
             $alertas[] = "El turno no existe.";
         } else {
             // Sincronizar con datos del formulario
-            $turno->sincronizar($_POST);
 
             // Forzar campos que queremos asegurar
             $turno->id_turno = $id_turno;
