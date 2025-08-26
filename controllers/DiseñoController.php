@@ -748,9 +748,9 @@ public static function cambios(Router $router)
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        $turno->sincronizar($_POST);
         // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
         $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
+        $turno->sincronizar($_POST);
 
         // Validar que el turno existe
         $datos = TurnoDiseno::find($turno->id_turno);
