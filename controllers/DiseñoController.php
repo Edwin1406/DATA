@@ -619,7 +619,7 @@ class DiseñoController
             return;
         }
 
-        $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/visor/' . $turno->pdf;
+        $ruta_pdf = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos/' . $turno->pdf;
         if (file_exists($ruta_pdf)) {
             unlink($ruta_pdf);
         }
