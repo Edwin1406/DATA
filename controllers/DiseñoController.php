@@ -700,6 +700,17 @@ class DiseñoController
         $nombre = $_SESSION['nombre'];
         $email  = $_SESSION['email'];
 
+           $diseno = new Diseno;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $diseno->sincronizar($_POST);
+
+
+
+
+
+
+
 
         $router->render('admin/turnoDiseno/cambios', [
             'titulo'  => 'CAMBIOS EN EL PEDIDO',
