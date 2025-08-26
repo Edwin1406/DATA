@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Classes\EmailDiseno;
 use Classes\EmailRegistroDiseno;
+use Model\CambiosTurno;
 use Model\Diseno;
 use Model\TurnoDiseno;
 use MVC\Router;
@@ -700,10 +701,16 @@ class DiseñoController
         $nombre = $_SESSION['nombre'];
         $email  = $_SESSION['email'];
 
-           $diseno = new Diseno;
+        $id = $_GET['id'] ?? null;
+        $cambios = CambiosTurno::find($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $diseno->sincronizar($_POST);
+            $cambios->sincronizar($_POST);
+
+
+            debuguear($cambios);
+
+        }
 
 
 
