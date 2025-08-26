@@ -156,6 +156,7 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/turnoDiseno/cambios?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Cambios</a>
                                          <!-- ver detalle un boton -->
 
                                          <!-- BOTÓN -->
