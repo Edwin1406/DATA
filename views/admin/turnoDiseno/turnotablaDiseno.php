@@ -177,15 +177,7 @@
 <!-- BOTÓN -->
 <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
 
-<script>
-  document.addEventListener('click', function (e) {
-    if (e.target.matches('.btn-detalle')) {   // solo si el clic fue DIRECTO en un botón con esa clase
-      const id = e.target.getAttribute('data-id');
-      console.log("ID desde Ver Detalle:", id);
-      alert("ID: " + id);
-    }
-  });
-</script>
+
 
 
 
@@ -226,6 +218,19 @@
          });
      });
  </script>
+
+
+
+
+<script>
+  document.addEventListener('click', function (e) {
+    if (e.target.matches('.btn-detalle')) {   // solo si el clic fue DIRECTO en un botón con esa clase
+      const id = e.target.getAttribute('data-id');
+      console.log("ID desde Ver Detalle:", id);
+      alert("ID: " + id);
+    }
+  });
+</script>
 
 
 
