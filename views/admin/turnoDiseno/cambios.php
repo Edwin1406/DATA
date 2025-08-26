@@ -69,7 +69,6 @@
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form" method="POST" action="/admin/turnoDiseno/cambios" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
-                                <input type="hidden" name="id_turno" value="<?php echo $id_turno ?? ''; ?>">
 
                                 <div class="row">
 

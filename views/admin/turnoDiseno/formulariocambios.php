@@ -1,4 +1,7 @@
 <!--  Observaciones -->
+
+                                <input type="hidden" name="id_turno" value="<?php echo $id_turno ?? ''; ?>">
+
 <div class="col-md-6 col-12">
   <div class="form-group">
     <label for="cambios">Cambios</label>
