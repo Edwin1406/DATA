@@ -749,9 +749,9 @@ public static function cambios(Router $router)
         $turno->sincronizar($_POST);
 
         // tomar el id de la url con get 
-        $id_turno = $_GET['id'] ?? null;
+    $turno->id_turno = $_POST['id_turno'] ?? null;
 
-        debuguear($id_turno);
+        debuguear($turno);
         $turno->id_turno = $id_turno;
 
         // Guardar como NUEVO registro
