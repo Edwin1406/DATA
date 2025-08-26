@@ -244,37 +244,52 @@
 
 
 
-
 <script>
   document.addEventListener('click', async function (e) {
     if (e.target.matches('.btn-detalle')) {
       const id = e.target.getAttribute('data-id');
-      console.log("ID desde Ver Detalle:", id);
-
       const contenido = document.getElementById('detalleContenido');
       contenido.innerHTML = "Cargando información...";
 
       const datos = await ApiDetalle(id);
 
       if (datos) {
-        // Aquí ajusta según lo que devuelva tu API
-        contenido.innerHTML = `
-          <p><strong>ID:</strong> ${datos.id}</p>
-          <p><strong>Nombre:</strong> ${datos.nombre}</p>
-          <p><strong>Fecha:</strong> ${datos.fecha}</p>
-          <p><strong>Descripción:</strong> ${datos.descripcion}</p>
-        `;
+        let tabla = `<table class="table table-sm table-bordered"><tbody>`;
+        
+        for (const [campo, valor] of Object.entries(datos)) {
+          // Condición: si el valor está vacío, es null o es "0", no se muestra
+          if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+            
+            // si el campo es "pdf", lo mostramos como enlace
+            if (campo === "pdf") {
+              tabla += `
+                <tr>
+                  <th style="width:30%">${campo}</th>
+                  <td><a href="/uploads/${valor}" target="_blank">Ver archivo</a></td>
+                </tr>
+              `;
+            } else {
+              tabla += `
+                <tr>
+                  <th style="width:30%">${campo}</th>
+                  <td>${valor}</td>
+                </tr>
+              `;
+            }
+          }
+        }
+
+        tabla += `</tbody></table>`;
+        contenido.innerHTML = tabla;
       } else {
         contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
       }
 
-      // Abrir el modal con Bootstrap 5
       const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
       modal.show();
     }
   });
 
-  // Función para llamar a la API
   async function ApiDetalle(id){
     try {
       const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
@@ -286,3 +301,4 @@
     }
   }
 </script>
+
