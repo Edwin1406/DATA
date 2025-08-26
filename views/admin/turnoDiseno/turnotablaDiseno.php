@@ -178,22 +178,17 @@
 <button class="btn btn-info btn-sm btn-detalle" data-id="123">Ver Detalle</button>
 <button class="btn btn-info btn-sm btn-detalle" data-id="456">Ver Detalle</button>
 
-<!-- SCRIPT -->
 <script>
-  // Se asegura que el DOM esté listo
-  document.addEventListener('DOMContentLoaded', () => {
-    const botones = document.querySelectorAll('.btn-detalle');
-    
-    botones.forEach(boton => {
-      boton.addEventListener('click', () => {
-        const id = boton.getAttribute('data-id');
-        console.log("ID desde Ver Detalle:", id);
-        // Para verificar fácil en pantalla
-        alert("ID: " + id);
-      });
-    });
+  // Delegación de eventos para botones generados dinámicamente
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('btn-detalle')) {
+      const id = e.target.getAttribute('data-id');
+      console.log("ID desde Ver Detalle:", id);
+      alert("ID: " + id); // opcional, para verificar rápido
+    }
   });
 </script>
+
 
 
 
