@@ -261,3 +261,39 @@
          </div>
      </div>
  </div>
+
+
+
+
+
+
+
+ <script>
+
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            ApiDetalle(id);
+        });
+    });
+
+    // obtener datos detalle
+    async function ApiDetalle(id){
+
+        console.log(id);
+        
+        try {
+            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+            const resultado = await fetch(url);
+            const apipedidos = await resultado.json();
+            console.log(apipedidos);
+            return apipedidos
+        } catch (e) {
+            console.log(e);
+                
+        }
+    } 
+
+
+
+ </script>

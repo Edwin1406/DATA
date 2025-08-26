@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Consumo_general;
 use Model\Mantenimiento;
+use Model\TurnoDiseno;
 
 class Apicontroller {
    
@@ -25,6 +26,21 @@ class Apicontroller {
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
         echo json_encode($mantenimiento);
+        exit;
+    }
+
+
+
+    public static function apiDetalle($id):void {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $detalle = TurnoDiseno::find($id);
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($detalle);
         exit;
     }
 

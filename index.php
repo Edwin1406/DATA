@@ -223,6 +223,8 @@ $router->get('/admin/api/mantenimiento', [Apicontroller::class, 'apiMantenimient
 $router->get('/admin/api/apiGraficasConsumoGeneral', [GraficasController::class, 'apiGraficasConsumoGeneral']);
 
 
+// api detalle
+$router->get('/admin/api/apiDetalle', [Apicontroller::class, 'apiDetalle']);
 
 
 
