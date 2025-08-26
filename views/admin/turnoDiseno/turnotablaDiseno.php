@@ -180,15 +180,7 @@
                                              data-id="<?= $turno->id ?>">Ver Detalle</button>
 
                                          <script>
-                                             // Para el enlace "Editar"
-                                             document.querySelectorAll('.btn-editar').forEach(boton => {
-                                                 boton.addEventListener('click', event => {
-                                                     event.preventDefault(); // Evita que recargue la página
-                                                     const url = new URL(boton.href, window.location.origin);
-                                                     const id = url.searchParams.get('id');
-                                                     console.log("ID desde Editar:", id);
-                                                 });
-                                             });
+                                           
 
                                              // Para el botón "Ver Detalle"
                                              document.querySelectorAll('.btn-detalle').forEach(boton => {
