@@ -1,6 +1,3 @@
-
-
-
 <!--  Observaciones -->
 <div class="col-md-6 col-12">
   <div class="form-group">
@@ -31,11 +28,6 @@
 
 
 
-
-
-
-
-
 <!-- fecha de entrega -->
 <?php if ($email !== 'ventas@megaecuador.com') { ?>
   <div class="col-md-6 col-12">
@@ -46,10 +38,6 @@
         value="<?php echo isset($turno) ? date('Y-m-d\TH:i', strtotime($turno->fecha_entrega)) : ''; ?>">
     </div>
   </div>
-
-
-
-
   <!-- estado -->
   <div class="col-md-6 col-12">
     <div class="form-group">
