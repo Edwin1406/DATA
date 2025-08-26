@@ -694,5 +694,19 @@ class DiseñoController
             header('Location: /');
             exit;
         }
+        $alertas = [];
+
+        
+        $nombre = $_SESSION['nombre'];
+        $email  = $_SESSION['email'];
+
+
+        $router->render('admin/turnoDiseno/cambios', [
+            'titulo'  => 'EDITAR TURNO',
+            'nombre'  => $nombre,
+            'email'   => $email,
+            'alertas' => $alertas,
+           
+        ]);
     }
 }
