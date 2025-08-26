@@ -257,6 +257,8 @@ class DiseñoController
 
             // generar codigo aleatorio pero solo de 6 digitos
             $turno->codigo = substr(md5(uniqid(rand(), true)), 0, 6);
+
+            
             if (!empty($_FILES['pdf']['tmp_name'])) {
                 $carpeta_archivos = $_SERVER['DOCUMENT_ROOT'] . '/src/turnos';
 
@@ -268,7 +270,7 @@ class DiseñoController
                 $extension = strtolower(pathinfo($_FILES['pdf']['name'], PATHINFO_EXTENSION));
 
                 // Extensiones permitidas
-                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif'];
+                $permitidos = ['pdf', 'jpg', 'jpeg', 'png', 'gif','ai'];
 
                 if (!in_array($extension, $permitidos)) {
                     $alertas[] = "Formato de archivo no permitido ($extension).";
