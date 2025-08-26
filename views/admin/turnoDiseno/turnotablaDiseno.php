@@ -224,13 +224,35 @@
 
 <script>
   document.addEventListener('click', function (e) {
+
     if (e.target.matches('.btn-detalle')) {   // solo si el clic fue DIRECTO en un botón con esa clase
       const id = e.target.getAttribute('data-id');
       console.log("ID desde Ver Detalle:", id);
-      alert("ID: " + id);
+      ApiDetalle(id);
     }
+
+
+       // obtener datos del api de detalle
+    async function ApiDetalle(id){
+        try {
+            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+            const resultado = await fetch(url);
+            const apipedidos = await resultado.json();
+            console.log(apipedidos);
+            return apipedidos
+        } catch (e) {
+            console.log(e);
+                
+        }
+    }  
+
+
+
+
   });
 </script>
+
+  
 
 
 
