@@ -290,22 +290,22 @@
     <small class="form-text text-muted">Solo se permiten archivos PDF.</small>
   </div>
 </div>
-<?php if (isset($diseno->pdf)) : ?>
+<?php if (isset($turno->pdf)) : ?>
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label>Archivo actual:</label><br>
       <!-- eliminar espacio em blanco -->
-      <a href="<?php echo $_ENV['HOST'] . '/src/turnos/' . $diseno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
+      <a href="<?php echo $_ENV['HOST'] . '/src/turnos/' . $turno->pdf; ?>" target="_blank" class="btn btn-outline-primary btn-sm">
         Ver / Descargar PDF
       </a>
       <br><br>
 
-      <?php if ($diseno->pdf): ?>
+      <?php if ($turno->pdf): ?>
         <div id="pdf-actual">
-          <p>PDF actual: <?php echo htmlspecialchars($diseno->pdf); ?> </p>
+          <p>PDF actual: <?php echo htmlspecialchars($turno->pdf); ?> </p>
           <a href="#"
             id="btnEliminarPDF"
-            data-id="<?php echo $diseno->id; ?>"
+            data-id="<?php echo $turno->id; ?>"
             class="btn btn-danger btn-sm">
             Eliminar PDF
           </a>
