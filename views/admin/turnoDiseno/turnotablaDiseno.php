@@ -172,10 +172,8 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/turnoDiseno/editarTurno?id=<?= $turno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                 <td data-id="<?php echo $turno->id; ?>">
-                                     <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
-                                 </td>
-
+                                        <!-- ver detalle un boton -->
+                                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detalleModal" data-id="<?= $turno->id ?>">Ver Detalle</button>
 
                                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                      <form action="/admin/eliminarTurnoDiseno" method="POST">
