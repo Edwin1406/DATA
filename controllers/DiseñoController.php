@@ -707,10 +707,9 @@ class DiseñoController
 
 
         $cambios = new CambiosTurno;
-        $cambios = TurnoDiseno::find($id);
+        $cambio = TurnoDiseno::find($id);
 
 
-        debuguear($cambios);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cambios->sincronizar($_POST);
