@@ -748,9 +748,7 @@ public static function cambios(Router $router)
         // Crear nuevo registro en CambiosTurno
         $turno->sincronizar($_POST);
 
-        // ✅ Guardar el id_turno de referencia (no actualizar, solo referencia)
-            $turno->id_turno = $_GET['id'] ?? null;
-        debuguear($turno);
+        
         $turno->id_turno = $id_turno;
 
         // Guardar como NUEVO registro
