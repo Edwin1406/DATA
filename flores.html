@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Ti ❤️</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --glass-bg: rgba(255,255,255,.15);
+      --glass-brd: rgba(255,255,255,.35);
+    }
+    *{scroll-behavior:smooth}
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:#222;
+      min-height:100vh;
+      /* Fondo degradado animado */
+      background: linear-gradient(120deg, #ffe0e9, #fff3e0, #e0f7ff);
+      background-size: 180% 180%;
+      animation: gradientMove 12s ease infinite;
+    }
+    @keyframes gradientMove{
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
+    }
+
+    /* Tarjeta estilo glassmorphism */
+    .glass{
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-brd);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    /* Título con efecto máquina de escribir */
+    .typewriter{
+      display:inline-block;
+      border-right: .12em solid rgba(0,0,0,.4);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: caret 1s step-end infinite;
+      max-width: 100%;
+    }
+    @keyframes caret{ 50%{ border-color: transparent } }
+
+    /* Botón principal */
+    .btn-love{
+      padding:.85rem 1.25rem;
+      border-radius: 999px;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(220,20,60,.25);
+    }
+
+    /* Corazones flotantes */
+    .hearts{
+      position: fixed; inset: 0; pointer-events:none; overflow: hidden;
+    }
+    .heart{
+      position: absolute;
+      font-size: 18px;
+      animation: floatUp 4s ease-in forwards;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.2));
+    }
+    @keyframes floatUp{
+      0%{ transform: translateY(0) scale(1); opacity:1 }
+      80%{ opacity:.9 }
+      100%{ transform: translateY(-140vh) scale(1.6); opacity:0 }
+    }
+
+    /* Imagenes redondeadas bonitas (si agregas fotos) */
+    .rounded-20{border-radius:20px}
+  </style>
+</head>
+
+<body>
+  <!-- capa corazones -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- NAV muy sutil -->
+  <nav class="navbar navbar-expand-lg bg-transparent">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-heart-fill text-danger"></i> Para Ti
+      </a>
+      <div class="d-flex gap-2 ms-auto">
+        <a href="#frases" class="btn btn-outline-danger btn-sm rounded-pill">Frases</a>
+        <a href="#video" class="btn btn-danger btn-sm rounded-pill">Video</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="container text-center pt-2 pt-md-4 pb-1 pb-md-3">
+    <div class="glass p-4 p-md-5">
+      <h1 class="display-5 fw-bold text-danger mb-2">Para la persona más especial <span class="ms-1">💕</span></h1>
+      <p id="tw" class="typewriter fs-4 fw-semibold"></p>
+      <div class="mt-4">
+        <button id="btnHearts" class="btn btn-danger btn-love">
+          <i class="bi bi-heart-pulse-fill me-1"></i> Toca para ver magia
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- FRASES -->
+  <section id="frases" class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="glass p-4 p-md-5">
+          <div id="frasesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active text-center">
+                <blockquote class="blockquote">
+                  <p class="fs-4">“Eres mi razón favorita para sonreír cada día.”</p>
+                </blockquote>
+              </div>
+              <div class="carousel-item text-center">
+                <blockquote class="blockquote">
+                  <p class="fs-4">“Contigo, cada momento se vuelve un recuerdo hermoso.”</p>
+                </blockquote>
+              </div>
+              <div class="carousel-item text-center">
+                <blockquote class="blockquote">
+                  <p class="fs-4">“Lo mejor de mi vida lleva tu nombre.”</p>
+                </blockquote>
+              </div>
+              <div class="carousel-item text-center">
+                <blockquote class="blockquote">
+                  <p class="fs-4">“Si me dieran a elegir, te elegiría a ti una y mil veces.”</p>
+                </blockquote>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#frasesCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#frasesCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="glass p-2 p-md-3">
+          <div class="ratio ratio-16x9 shadow rounded-20">
+            <!-- TIP: reemplaza SOLO el ID por el de tu video. Si tu URL es
+                 https://www.youtube.com/watch?v=ABCDEFGHIJK, usa /embed/ABCDEFGHIJK -->
+            <iframe
+              id="ytFrame"
+              src="/amores.mp4"
+              title="Nuestro video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="text-center mt-3 mb-0">
+            Si el video no se reproduce, prueba con otro enlace de YouTube o verifica que permita <em>“embeds”</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+  </section>
+
+  <footer class="text-center pb-4">
+    <small class="text-muted">Con amor, <strong>Tu persona favorita</strong> <i class="bi bi-heart-fill text-danger"></i></small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // --- Texto "typewriter" rotativo en el HERO ---
+    const frasesTW = [
+      "Gracias por existir.",
+      "Eres mi lugar favorito.",
+      "Hoy, mañana y siempre: tú.",
+      "Mi mejor historia eres tú."
+    ];
+    const twEl = document.getElementById('tw');
+    let i = 0, char = 0, typing = true;
+
+    function typeLoop(){
+      const texto = frasesTW[i];
+      if(typing){
+        twEl.textContent = texto.slice(0, ++char);
+        if(char === texto.length){ typing = false; setTimeout(typeLoop, 1400); return; }
+      }else{
+        twEl.textContent = texto.slice(0, --char);
+        if(char === 0){ typing = true; i = (i+1) % frasesTW.length; }
+      }
+      setTimeout(typeLoop, typing ? 55 : 30);
+    }
+    typeLoop();
+
+    // --- Corazones flotando al pulsar el botón (o al tocar en la pantalla móvil) ---
+    const heartsLayer = document.getElementById('hearts');
+    function spawnHeart(x, y){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.style.left = (x - 8) + 'px';
+      h.style.top  = (y - 8) + 'px';
+      h.style.opacity = (0.75 + Math.random()*0.25).toFixed(2);
+      h.style.transform = `translateY(0) scale(${1 + Math.random()*0.6})`;
+      h.style.animationDuration = (3 + Math.random()*2).toFixed(2) + 's';
+      h.innerHTML = Math.random() > .5 ? '💖' : '💘';
+      heartsLayer.appendChild(h);
+      setTimeout(()=>h.remove(), 5000);
+    }
+    document.getElementById('btnHearts').addEventListener('click', e=>{
+      const { innerWidth:w, innerHeight:h } = window;
+      // suelta varios corazones en posiciones aleatorias
+      for(let k=0;k<20;k++){
+        const x = Math.random()*w;
+        const y = h - Math.random()*120; // arrancan desde abajo
+        spawnHeart(x,y);
+      }
+    });
+    // en móviles, tocar la pantalla genera 1 corazón
+    document.addEventListener('click', (e)=>{
+      if(!e.target.closest('#btnHearts')) spawnHeart(e.clientX, e.clientY);
+    });
+
+    // --- Utilidad: si pegas una URL normal de YouTube en data-url, la convertimos a /embed/ ---
+    // Ejemplo de uso: <iframe id="ytFrame" data-url="https://www.youtube.com/watch?v=XXXX"></iframe>
+    (function fixYouTube(){
+      const f = document.getElementById('ytFrame');
+      const dataUrl = f.getAttribute('data-url');
+      if(!dataUrl) return;
+      const idMatch = dataUrl.match(/[?&]v=([^&]+)/) || dataUrl.match(/youtu\.be\/([^?]+)/);
+      if(idMatch){
+        const id = idMatch[1];
+        f.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
+      }
+    })();
+  </script>
+</body>
+</html>
