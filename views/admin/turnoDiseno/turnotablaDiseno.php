@@ -292,8 +292,9 @@
          try {
              const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
              const resultado = await fetch(url);
+             const dato = await resultado.json();
             //  return await resultado.json();
-            console.log(resultado);
+            console.log(dato);
          } catch (e) {
              console.log(e);
              return null;
