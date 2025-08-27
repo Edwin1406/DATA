@@ -259,10 +259,11 @@
           <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Fecha</th>
-                <th>Descripción</th>
+                <th>id</th>
+                <th>id_turno</th>
+                <th>codigo</th>
+                <th>cambios</th>
+                <th>fecha_creacion</th>
               </tr>
             </thead>
             <tbody></tbody>
