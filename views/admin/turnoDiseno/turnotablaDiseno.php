@@ -276,14 +276,14 @@
                          <table class="table table-striped" id="table1" id="tablaCambios">
                              <thead>
                                  <tr>
-                                     <th class="fs-6" style="min-width: 90px;">Codigo</th>
-                                     <th class="fs-6" style="min-width: 90px;">Tipo producto</th>
-                                     <th class="fs-6" style="min-width: 90px;">Tipo componente</th>
-                                     <th class="fs-6" style="min-width: 100px;">Observaciones</th>
-                                     <th class="fs-6" style="min-width: 98px;">Estado</th>
+                                     <th class="fs-6" style="min-width: 90px;">ID</th>
+                                     <th class="fs-6" style="min-width: 90px;">id_turno</th>
+                                     <th class="fs-6" style="min-width: 90px;">codigo</th>
+                                     <th class="fs-6" style="min-width: 100px;">cambios</th>
+                                
                                      <th class="fs-6" style="min-width: 80px;">Fecha Creación</th>
                                      <th class="fs-6" style="min-width: 80px;">Fecha Entrega</th>
-                                     <th class="fs-6" style="min-width: 100px;">Acciones</th>
+                                     
                                  </tr>
                              </thead>
 
