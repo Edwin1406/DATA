@@ -292,8 +292,8 @@
          try {
              const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
              const resultado = await fetch(url);
-             const dato = await resultado.json();
-            //  return await resultado.json();
+            //  const dato = await resultado.json();
+             return await resultado.json();
             console.log(dato);
          } catch (e) {
              console.log(e);
@@ -302,6 +302,29 @@
      }
 
 
+    // crear una tabla con los datos de apicambios
+
+   const tablaCambios = document.createElement('table');
+   tablaCambios.classList.add('table', 'table-sm', 'table-bordered');
+   const tbodyCambios = document.createElement('tbody');
+
+   for (const [campo, valor] of Object.entries(dato)) {
+       // Condición: si el valor está vacío, es null o es "0", no se muestra
+       if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+           const tr = document.createElement('tr');
+           const th = document.createElement('th');
+           th.style.width = "30%";
+           th.textContent = campo;
+           const td = document.createElement('td');
+           td.textContent = valor;
+           tr.appendChild(th);
+           tr.appendChild(td);
+           tbodyCambios.appendChild(tr);
+       }
+   }
+
+   tablaCambios.appendChild(tbodyCambios);
+   contenido.appendChild(tablaCambios);
 
 
 
