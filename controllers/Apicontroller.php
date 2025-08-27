@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\CambiosTurno;
 use Model\Consumo_general;
 use Model\Mantenimiento;
 use Model\TurnoDiseno;
@@ -70,7 +71,7 @@ class Apicontroller {
 
         }
 
-        $cambios = TurnoDiseno::where('id',$id);
+        $cambios = CambiosTurno::where('id',$id);
         echo json_encode($cambios);
     }
 
