@@ -264,6 +264,7 @@
                 <th>codigo</th>
                 <th>cambios</th>
                 <th>fecha_creacion</th>
+                <th>fecha_entrega</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -327,7 +328,8 @@
             { data: 'id_turno' },
             { data: 'codigo' },
             { data: 'cambios' },
-            { data: 'fecha_creacion' }
+            { data: 'fecha_creacion' },
+                        { data: 'fecha_entrega' }
           ],
           language: {
             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
