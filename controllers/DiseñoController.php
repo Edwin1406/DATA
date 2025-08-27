@@ -690,7 +690,7 @@ class DiseñoController
     //     }
     //     $alertas = [];
 
-        
+
     //     $nombre = $_SESSION['nombre'];
     //     $email  = $_SESSION['email'];
 
@@ -698,7 +698,7 @@ class DiseñoController
 
     //     $turno = new CambiosTurno;
 
-      
+
 
 
 
@@ -716,72 +716,99 @@ class DiseñoController
     //         'nombre'  => $nombre,
     //         'email'   => $email,
     //         'alertas' => $alertas,
-           
+
     //     ]);
     // }
 
 
 
-public static function cambios(Router $router)
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
-
-    $alertas = [];
-    $nombre  = $_SESSION['nombre'];
-    $email   = $_SESSION['email'];
-
-    $turno = new CambiosTurno;
-
-    // ID de turno original desde URL
-    $id_turno = $_GET['id'] ?? null;
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
-        // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
-        $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
-       debuguear($turno);
-
-        $turno->sincronizar($_POST);
-
-        // Validar que el turno existe
-        $datos = TurnoDiseno::find($turno->id_turno);
-        if(!$datos) {
-            $alertas[] = "El turno no existe.";
-        } else {
-            // Sincronizar con datos del formulario
-
-            // Forzar campos que queremos asegurar
-            $turno->id_turno = $id_turno;
-            $turno->codigo   = $datos->codigo ?? '';
-
-            // Guardar como nuevo registro
-            $turno->guardar();
-
-            // Redirigir con mensaje de éxito
-            header("Location: /admin/turnoDiseno/cambios?exito=1");
+    public static function cambios(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
             exit;
         }
+
+        $alertas = [];
+        $nombre  = $_SESSION['nombre'];
+        $email   = $_SESSION['email'];
+
+        $turno = new CambiosTurno;
+
+        // ID de turno original desde URL
+        $id_turno = $_GET['id'] ?? null;
+
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        //     // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
+        //     $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
+        //    debuguear($turno);
+
+        //     $turno->sincronizar($_POST);
+
+        //     // Validar que el turno existe
+        //     $datos = TurnoDiseno::find($turno->id_turno);
+        //     if(!$datos) {
+        //         $alertas[] = "El turno no existe.";
+        //     } else {
+        //         // Sincronizar con datos del formulario
+
+        //         // Forzar campos que queremos asegurar
+        //         $turno->id_turno = $id_turno;
+        //         $turno->codigo   = $datos->codigo ?? '';
+
+        //         // Guardar como nuevo registro
+        //         $turno->guardar();
+
+        //         // Redirigir con mensaje de éxito
+        //         header("Location: /admin/turnoDiseno/cambios?exito=1");
+        //         exit;
+        //     }
+        // }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Tomar el id de una sola fuente confiable
+            $idTurno = $_POST['id_turno'] ?? ($id_turno ?? null);
+            if (!$idTurno) {
+                $alertas[] = "Falta id_turno.";
+            } else {
+
+                // 1) Volcar datos del formulario
+                $turno->sincronizar($_POST);
+
+                // 2) Asegurar el id_turno DESPUÉS de sincronizar
+                $turno->id_turno = (int)$idTurno;
+
+                // 3) Validar turno origen
+                $datos = TurnoDiseno::find($turno->id_turno);
+                if (!$datos) {
+                    $alertas[] = "El turno no existe.";
+                } else {
+                    // 4) Forzar campos que dependan del turno válido
+                    $turno->codigo = $datos->codigo ?? null;
+
+                    // 5) Guardar
+                    $turno->guardar();
+
+                    // 6) Redirigir
+                    header("Location: /admin/turnoDiseno/cambios?exito=1");
+                    exit;
+                }
+            }
+        }
+
+
+
+
+        $router->render('admin/turnoDiseno/cambios', [
+            'titulo'   => 'CAMBIOS EN EL PEDIDO',
+            'nombre'   => $nombre,
+            'email'    => $email,
+            'alertas'  => $alertas,
+            'turno'    => $turno,
+            'id_turno' => $id_turno
+        ]);
     }
-
-    $router->render('admin/turnoDiseno/cambios', [
-        'titulo'   => 'CAMBIOS EN EL PEDIDO',
-        'nombre'   => $nombre,
-        'email'    => $email,
-        'alertas'  => $alertas,
-        'turno'    => $turno,
-        'id_turno' => $id_turno
-    ]);
-}
-
-
-
-
-
-
-
-
 }
