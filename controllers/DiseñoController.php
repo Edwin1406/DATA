@@ -8,7 +8,6 @@ use Model\CambiosTurno;
 use Model\Diseno;
 use Model\TurnoDiseno;
 use MVC\Router;
-use Throwable;
 
 class DiseñoController
 {
@@ -290,13 +289,7 @@ class DiseñoController
                 }
             }
 
-
-
-
-
-
             //     debuguear($turno);
-
             // debuguear($turno);
             // email por defecto
             // $emaildefault = 'desarrollodeproductoms@gmail.com';
@@ -750,6 +743,8 @@ public static function cambios(Router $router)
         
         // ID del turno (lo tomamos de la URL o del POST si lo mandas como hidden)
         $turno->id_turno = $_POST['id_turno'] ?? $id_turno;
+       debuguear($turno);
+
         $turno->sincronizar($_POST);
 
         // Validar que el turno existe
