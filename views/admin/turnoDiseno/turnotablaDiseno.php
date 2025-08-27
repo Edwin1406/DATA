@@ -355,18 +355,19 @@
     }
   }
 
-  async function ApiCambios(id) {
-    try {
-      const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
-      const resultado = await fetch(url);
-          console.log("Respuesta de ApiCambios:", data); // 👈 Aquí revisa
-
-      return await resultado.json();
-    } catch (e) {
-      console.log("Error:", e);
-      return [];
-    }
+ async function ApiCambios(id) {
+  try {
+    const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
+    const resultado = await fetch(url);
+    const data = await resultado.json();  // ✅ Guardamos la respuesta en data
+    console.log("Respuesta de ApiCambios:", data); // ✅ Ahora sí existe
+    return data; // devolvemos el array para DataTables
+  } catch (e) {
+    console.log("Error:", e);
+    return [];
   }
+}
+
 </script>
 
 
