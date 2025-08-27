@@ -376,7 +376,7 @@
 console.log("Respuesta de ApiDetalle:", detalle);
 
          try {
-             const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${codigo}`;
+             const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
              const resultado = await fetch(url);
              const data = await resultado.json(); // ✅ Guardamos la respuesta en data
              console.log("Respuesta de ApiCambios:", data); // ✅ Ahora sí existe
