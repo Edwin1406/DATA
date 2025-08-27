@@ -106,7 +106,7 @@
                              <th class="fs-6" style="min-width: 90px;">Codigo</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo producto</th>
                              <th class="fs-6" style="min-width: 90px;">Tipo componente</th>
-                          
+
                              <th class="fs-6" style="min-width: 100px;">Observaciones</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha Creación</th>
@@ -218,6 +218,22 @@
              <div class="modal-body" id="detalleContenido">
                  Cargando información...
              </div>
+
+             <table id="tablaCambios" class="display" style="width:100%">
+                 <thead>
+                     <tr>
+                         <th>ID</th>
+                         <th>Nombre</th>
+                         <th>Fecha</th>
+                         <th>Descripción</th>
+                     </tr>
+                 </thead>
+                 <tbody></tbody>
+             </table>
+
+
+
+
              <div class="modal-footer">
                  <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
              </div>
@@ -288,43 +304,56 @@
      }
 
 
-     async function ApiCambios(id) {
-         try {
-             const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
-             const resultado = await fetch(url);
-            //  const dato = await resultado.json();
-             return await resultado.json();
-            console.log(dato);
-         } catch (e) {
-             console.log(e);
-             return null;
-         }
-     }
+
+    //  const dato = await ApiCambios(id);
 
 
-    // crear una tabla con los datos de apicambios
+    //  async function ApiCambios(id) {
+    //      try {
+    //          const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
+    //          const resultado = await fetch(url);
+    //          //  const dato = await resultado.json();
+    //          return await resultado.json();
+    //          console.log(dato);
+    //      } catch (e) {
+    //          console.log(e);
+    //          return null;
+    //      }
+    //  }
 
-   const tablaCambios = document.createElement('table');
-   tablaCambios.classList.add('table', 'table-sm', 'table-bordered');
-   const tbodyCambios = document.createElement('tbody');
+const dato = await ApiCambios(id);
 
-   for (const [campo, valor] of Object.entries(dato)) {
-       // Condición: si el valor está vacío, es null o es "0", no se muestra
-       if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-           const tr = document.createElement('tr');
-           const th = document.createElement('th');
-           th.style.width = "30%";
-           th.textContent = campo;
-           const td = document.createElement('td');
-           td.textContent = valor;
-           tr.appendChild(th);
-           tr.appendChild(td);
-           tbodyCambios.appendChild(tr);
-       }
-   }
+    async function ApiCambios(id) {
+      try {
+        const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
+        const resultado = await fetch(url);
+        return await resultado.json(); // devuelve el JSON de la API
+      } catch (e) {
+        console.log("Error:", e);
+        return [];
+      }
+    }
 
-   tablaCambios.appendChild(tbodyCambios);
-   contenido.appendChild(tablaCambios);
+    // inicializar DataTable con los datos recibidos
+    $(document).ready(async function () {
+      const data = await ApiCambios(id);
+
+      $('#tablaCambios').DataTable({
+        data: data, // 👈 asume que es un array de objetos
+        columns: [
+          { data: 'id' },
+          { data: 'nombre' },
+          { data: 'fecha' },
+          { data: 'descripcion' }
+        ],
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+        }
+      });
+    });
+
+
+
 
 
 
