@@ -52,5 +52,41 @@ class Apicontroller {
         echo json_encode($turno);
     }
 
+
+
+
+    public static function apiCambiosDiseno(){
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $id= $_GET['id'] ?? '';
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if(!$id){
+            echo json_encode([]);
+            return;
+
+        }
+
+        $cambios = TurnoDiseno::where('id',$id);
+        echo json_encode($cambios);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
