@@ -780,6 +780,8 @@ class DiseñoController
 
                 // 2) Asegurar el id_turno DESPUÉS de sincronizar
                 $turno->id_turno = (int)$idTurno;
+                // tomar la hora actual
+                $turno->fecha_creacion = date('Y-m-d H:i:s');
 
                 // 3) Validar turno origen
                 $datos = TurnoDiseno::find($turno->id_turno);
