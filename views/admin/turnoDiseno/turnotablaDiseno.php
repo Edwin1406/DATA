@@ -290,141 +290,142 @@
                              <tbody>
                              </tbody>
                          </table>
-
-
-
-
-
                      </div>
-                 </div>
 
-                 <div class="modal-footer">
-                     <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+
+
+
                  </div>
+             </div>
+
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
              </div>
          </div>
      </div>
+ </div>
 
-     <script>
-         document.addEventListener('click', async function(e) {
-             if (e.target.matches('.btn-detalle')) {
-                 const id = e.target.getAttribute('data-id');
-                 const contenido = document.getElementById('detalleContenido');
-                 contenido.innerHTML = "Cargando información...";
+ <script>
+     document.addEventListener('click', async function(e) {
+         if (e.target.matches('.btn-detalle')) {
+             const id = e.target.getAttribute('data-id');
+             const contenido = document.getElementById('detalleContenido');
+             contenido.innerHTML = "Cargando información...";
 
-                 // 👉 Traer detalle
-                 const datos = await ApiDetalle(id);
+             // 👉 Traer detalle
+             const datos = await ApiDetalle(id);
 
-                 if (datos) {
-                     let tabla = `<table class="table table-sm table-bordered"><tbody>`;
-                     for (const [campo, valor] of Object.entries(datos)) {
-                         if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-                             if (campo === "pdf") {
-                                 tabla += `
+             if (datos) {
+                 let tabla = `<table class="table table-sm table-bordered"><tbody>`;
+                 for (const [campo, valor] of Object.entries(datos)) {
+                     if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+                         if (campo === "pdf") {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
                 </tr>`;
-                             } else {
-                                 tabla += `
+                         } else {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td>${valor}</td>
                 </tr>`;
-                             }
                          }
                      }
-                     tabla += `</tbody></table>`;
-                     contenido.innerHTML = tabla;
-                 } else {
-                     contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
                  }
+                 tabla += `</tbody></table>`;
+                 contenido.innerHTML = tabla;
+             } else {
+                 contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+             }
 
-                 // 👉 Ahora cargo los cambios usando el CODIGO del detalle
-                 const cambios = await ApiCambios(datos.codigo);
+             // 👉 Ahora cargo los cambios usando el CODIGO del detalle
+             const cambios = await ApiCambios(datos.codigo);
 
-                 if ($.fn.DataTable.isDataTable('#tablaCambios')) {
-                     $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
-                 } else {
-                     $('#tablaCambios').DataTable({
-                         data: cambios,
-                         columns: [{
-                                 data: 'id'
-                             },
-                             {
-                                 data: 'id_turno'
-                             },
-                             {
-                                 data: 'codigo'
-                             },
-                             {
-                                 data: 'cambios'
-                             },
-                             {
-                                 data: 'fecha_creacion'
-                             },
-                             {
-                                 data: 'fecha_entrega'
-                             }
-                         ],
-                         language: {
-                             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+             if ($.fn.DataTable.isDataTable('#tablaCambios')) {
+                 $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
+             } else {
+                 $('#tablaCambios').DataTable({
+                     data: cambios,
+                     columns: [{
+                             data: 'id'
                          },
-                         responsive: true
-                     });
-                 }
-
-                 // Mostrar modal
-                 const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
-                 modal.show();
+                         {
+                             data: 'id_turno'
+                         },
+                         {
+                             data: 'codigo'
+                         },
+                         {
+                             data: 'cambios'
+                         },
+                         {
+                             data: 'fecha_creacion'
+                         },
+                         {
+                             data: 'fecha_entrega'
+                         }
+                     ],
+                     language: {
+                         url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                     },
+                     responsive: true
+                 });
              }
-         });
 
-         // 👉 Función para traer detalle
-         async function ApiDetalle(id) {
-             try {
-                 const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-                 const resultado = await fetch(url);
-                 return await resultado.json();
-             } catch (e) {
-                 console.log(e);
-                 return null;
-             }
+             // Mostrar modal
+             const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+             modal.show();
          }
+     });
 
-         // 👉 Función para traer cambios usando CODIGO
-         async function ApiCambios(codigo) {
-             try {
-                 const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
-                 const resultado = await fetch(url);
-                 const data = await resultado.json();
-                 console.log("Respuesta de ApiCambios:", data);
-                 return data;
-             } catch (e) {
-                 console.log("Error:", e);
-                 return [];
-             }
+     // 👉 Función para traer detalle
+     async function ApiDetalle(id) {
+         try {
+             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+             const resultado = await fetch(url);
+             return await resultado.json();
+         } catch (e) {
+             console.log(e);
+             return null;
          }
-     </script>
+     }
+
+     // 👉 Función para traer cambios usando CODIGO
+     async function ApiCambios(codigo) {
+         try {
+             const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
+             const resultado = await fetch(url);
+             const data = await resultado.json();
+             console.log("Respuesta de ApiCambios:", data);
+             return data;
+         } catch (e) {
+             console.log("Error:", e);
+             return [];
+         }
+     }
+ </script>
 
 
-     <!-- jQuery -->
-     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ <!-- jQuery -->
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-     <!-- DataTables CSS -->
-     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+ <!-- DataTables CSS -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-     <!-- DataTables JS -->
-     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+ <!-- DataTables JS -->
+ <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-     <!-- DataTables Responsive (CSS + JS) -->
-     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+ <!-- DataTables Responsive (CSS + JS) -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+ <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
 
-     <!-- Y recién tu script -->
-     <script>
-         $(document).ready(function() {
-             console.log("jQuery ya funciona 👍");
-         });
-     </script>
+ <!-- Y recién tu script -->
+ <script>
+     $(document).ready(function() {
+         console.log("jQuery ya funciona 👍");
+     });
+ </script>
