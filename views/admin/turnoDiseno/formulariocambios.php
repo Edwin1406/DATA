@@ -19,8 +19,11 @@
       <label for="fecha_entrega">Fecha y Hora de Entrega</label>
       <input type="datetime-local" id="fecha_entrega" class="form-control"
         placeholder="Fecha y Hora de Entrega" name="fecha_entrega"
-        value="<?php echo isset($turno) ? date('Y-m-d\TH:i', strtotime($turno->fecha_entrega)) : ''; ?>">
+        value="<?= $turno?->fecha_entrega
+                  ? date('Y-m-d\TH:i', strtotime($turno->fecha_entrega))
+                  : '' ?>">
     </div>
+
   </div>
   <!-- estado -->
   <div class="col-md-6 col-12">

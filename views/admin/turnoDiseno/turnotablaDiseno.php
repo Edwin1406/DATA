@@ -342,7 +342,7 @@
         }
     });
 
-    // 👉 Función para traer detalle
+    
     async function ApiDetalle(id) {
         try {
             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
@@ -354,7 +354,6 @@
         }
     }
 
-    // 👉 Función para traer cambios usando CODIGO
     async function ApiCambios(codigo) {
         try {
             const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
