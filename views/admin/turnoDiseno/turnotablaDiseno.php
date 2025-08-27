@@ -321,7 +321,7 @@
     //      }
     //  }
 
-const dato = await ApiCambios(id);
+// const dato = await ApiCambios(id);
 
     async function ApiCambios(id) {
       try {
