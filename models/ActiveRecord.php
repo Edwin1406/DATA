@@ -2219,4 +2219,13 @@ class ActiveRecord
 
         return 0;
     }
+
+
+    // recuperar codigo 
+    public static function whereCodigo($columna, $valor)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '" . self::$db->escape_string($valor) . "'";
+        $resultado = self::consultarSQL($query);
+        return $resultado; // Devuelve array con todos los objetos encontrados
+    }
 }

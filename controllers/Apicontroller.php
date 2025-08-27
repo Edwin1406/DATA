@@ -62,16 +62,16 @@ class Apicontroller {
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
-        $id= $_GET['id'] ?? '';
-        $id = filter_var($id, FILTER_VALIDATE_INT);
+        $codigo = $_GET['codigo'] ?? '';
+        $codigo = filter_var($codigo, FILTER_SANITIZE_STRING);
 
-        if(!$id){
+        if(!$codigo){
             echo json_encode([]);
             return;
 
         }
 
-        $cambios = CambiosTurno::where('id',$id);
+        $cambios = CambiosTurno::whereCodigo('codigo',$codigo);
         echo json_encode($cambios);
     }
 
