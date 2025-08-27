@@ -358,3 +358,10 @@
 
 
  </script>
+
+
+<script>
+  $(document).ready(function(){
+    console.log("jQuery ya funciona 👍");
+  });
+</script>
