@@ -237,6 +237,7 @@
              contenido.innerHTML = "Cargando información...";
 
              const datos = await ApiDetalle(id);
+             const dato = await ApiCambios(id);
 
              if (datos) {
                  let tabla = `<table class="table table-sm table-bordered"><tbody>`;
@@ -285,4 +286,22 @@
              return null;
          }
      }
+
+
+     async function ApiCambios(id) {
+         try {
+             const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
+             const resultado = await fetch(url);
+            //  return await resultado.json();
+            console.log(resultado);
+         } catch (e) {
+             console.log(e);
+             return null;
+         }
+     }
+
+
+
+
+
  </script>
