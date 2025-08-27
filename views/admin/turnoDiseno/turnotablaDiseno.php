@@ -371,6 +371,8 @@
         // traerlos datos de apidetalle
         const detalle = await ApiDetalle();
 
+        const { id, codigo } = detalle;
+
 console.log("Respuesta de ApiDetalle:", detalle);
 
          try {
