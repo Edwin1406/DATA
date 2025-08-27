@@ -323,9 +323,10 @@
           data: cambios,
           columns: [
             { data: 'id' },
-            { data: 'nombre' },
-            { data: 'fecha' },
-            { data: 'descripcion' }
+            { data: 'id_turno' },
+            { data: 'codigo' },
+            { data: 'cambios' },
+            { data: 'fecha_creacion' }
           ],
           language: {
             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
