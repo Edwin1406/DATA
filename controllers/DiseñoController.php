@@ -793,7 +793,7 @@ class DiseñoController
                     $turno->guardar();
 
                     // 6) Redirigir
-                    header("Location: /admin/turnoDiseno/cambios?exito=1");
+                    header("Location: /admin/turnoDiseno/turnotablaDiseno?exito=1");
                     exit;
                 }
             }
