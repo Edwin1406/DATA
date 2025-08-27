@@ -360,6 +360,13 @@
  </script>
 
 
+<!-- jQuery primero -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Luego DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!-- Y recién tu script -->
 <script>
   $(document).ready(function(){
     console.log("jQuery ya funciona 👍");
