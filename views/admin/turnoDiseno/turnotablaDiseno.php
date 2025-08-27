@@ -369,7 +369,7 @@
      async function ApiCambios() {
 
         // traerlos datos de apidetalle
-        const detalle = await ApiDetalle(codigo);
+        const detalle = await ApiDetalle();
 
 console.log("Respuesta de ApiDetalle:", detalle);
 
