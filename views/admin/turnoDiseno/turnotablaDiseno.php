@@ -254,7 +254,7 @@
              <div class="modal-body">
                  <div id="detalleContenido">Cargando información...</div>
 
-                 <div class="table-responsive mt-3">
+                 <!-- <div class="table-responsive mt-3">
                      <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
                          <thead>
                              <tr>
@@ -267,13 +267,13 @@
                              </tr>
                          </thead>
                          <tbody></tbody>
-                     </table>
+                     </table> -->
 
 
 
 
                      <div class="card-body">
-                         <table class="table table-striped" id="table1">
+                         <table class="table table-striped" id="table1" id="tablaCambios">
                              <thead>
                                  <tr>
                                      <th class="fs-6" style="min-width: 90px;">Codigo</th>
