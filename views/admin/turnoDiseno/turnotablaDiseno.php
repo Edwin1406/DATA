@@ -206,7 +206,7 @@
 
 
  <!-- Modal reutilizable -->
- <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+ <!-- <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
          <div class="modal-content">
              <div class="modal-header bg-info">
@@ -239,136 +239,129 @@
              </div>
          </div>
      </div>
- </div>
+ </div> -->
+
+
+<!-- Modal reutilizable -->
+<div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="detalleContenido">Cargando información...</div>
+
+        <div class="table-responsive mt-3">
+          <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 
 
- <script>
-     document.addEventListener('click', async function(e) {
-         if (e.target.matches('.btn-detalle')) {
-             const id = e.target.getAttribute('data-id');
-             const contenido = document.getElementById('detalleContenido');
-             contenido.innerHTML = "Cargando información...";
+<script>
+  document.addEventListener('click', async function(e) {
+    if (e.target.matches('.btn-detalle')) {
+      const id = e.target.getAttribute('data-id');
+      const contenido = document.getElementById('detalleContenido');
+      contenido.innerHTML = "Cargando información...";
 
-             const datos = await ApiDetalle(id);
-             const dato = await ApiCambios(id);
+      // Carga detalle
+      const datos = await ApiDetalle(id);
 
-             if (datos) {
-                 let tabla = `<table class="table table-sm table-bordered"><tbody>`;
-
-                 for (const [campo, valor] of Object.entries(datos)) {
-                     // Condición: si el valor está vacío, es null o es "0", no se muestra
-                     if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-
-                         // si el campo es "pdf", lo mostramos como enlace
-                         if (campo === "pdf") {
-                             tabla += `
+      if (datos) {
+        let tabla = `<table class="table table-sm table-bordered"><tbody>`;
+        for (const [campo, valor] of Object.entries(datos)) {
+          if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+            if (campo === "pdf") {
+              tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
-                </tr>
-              `;
-                         } else {
-                             tabla += `
+                </tr>`;
+            } else {
+              tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td>${valor}</td>
-                </tr>
-              `;
-                         }
-                     }
-                 }
-
-                 tabla += `</tbody></table>`;
-                 contenido.innerHTML = tabla;
-             } else {
-                 contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
-             }
-
-             const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
-             modal.show();
-         }
-     });
-
-     async function ApiDetalle(id) {
-         try {
-             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-             const resultado = await fetch(url);
-             return await resultado.json();
-         } catch (e) {
-             console.log(e);
-             return null;
-         }
-     }
-
-
-
-    //  const dato = await ApiCambios(id);
-
-
-    //  async function ApiCambios(id) {
-    //      try {
-    //          const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
-    //          const resultado = await fetch(url);
-    //          //  const dato = await resultado.json();
-    //          return await resultado.json();
-    //          console.log(dato);
-    //      } catch (e) {
-    //          console.log(e);
-    //          return null;
-    //      }
-    //  }
-
-// const dato = await ApiCambios(id);
-
-    async function ApiCambios(id) {
-      try {
-        const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
-        const resultado = await fetch(url);
-        return await resultado.json(); // devuelve el JSON de la API
-      } catch (e) {
-        console.log("Error:", e);
-        return [];
-      }
-    }
-
-    // inicializar DataTable con los datos recibidos
-    $(document).ready(async function () {
-      const data = await ApiCambios(id);
-
-      $('#tablaCambios').DataTable({
-        data: data, // 👈 asume que es un array de objetos
-        columns: [
-          { data: 'id' },
-          { data: 'nombre' },
-          { data: 'fecha' },
-          { data: 'descripcion' }
-        ],
-        language: {
-          url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                </tr>`;
+            }
+          }
         }
-      });
-    });
+        tabla += `</tbody></table>`;
+        contenido.innerHTML = tabla;
+      } else {
+        contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+      }
 
+      // 👉 Cargar cambios en la tabla DataTables
+      const cambios = await ApiCambios(id);
 
+      if ($.fn.DataTable.isDataTable('#tablaCambios')) {
+        $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
+      } else {
+        $('#tablaCambios').DataTable({
+          data: cambios,
+          columns: [
+            { data: 'id' },
+            { data: 'nombre' },
+            { data: 'fecha' },
+            { data: 'descripcion' }
+          ],
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+          },
+          responsive: true
+        });
+      }
 
-
-
-
- </script>
-
-
-<!-- jQuery primero -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<!-- Luego DataTables -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-<!-- Y recién tu script -->
-<script>
-  $(document).ready(function(){
-    console.log("jQuery ya funciona 👍");
+      // Mostrar modal
+      const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+      modal.show();
+    }
   });
+
+  async function ApiDetalle(id) {
+    try {
+      const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+      const resultado = await fetch(url);
+      return await resultado.json();
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async function ApiCambios(id) {
+    try {
+      const url = `${location.origin}/admin/api/apiCambiosDiseno?id=${id}`;
+      const resultado = await fetch(url);
+      return await resultado.json();
+    } catch (e) {
+      console.log("Error:", e);
+      return [];
+    }
+  }
 </script>
