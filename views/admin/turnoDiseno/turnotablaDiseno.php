@@ -373,7 +373,7 @@
 
         const { id, codigo } = detalle;
 
-console.log("Respuesta de ApiDetalle:", detalle);
+console.log("Respuesta de ApiDetalle:", codigo);
 
          try {
              const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
