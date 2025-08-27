@@ -241,43 +241,42 @@
  </div> -->
 
 
-<!-- Modal reutilizable -->
-<div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="detalleContenido">Cargando información...</div>
+ <!-- Modal reutilizable -->
+ <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+         <div class="modal-content">
+             <div class="modal-header bg-info">
+                 <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
+                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                     <i data-feather="x"></i>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 <div id="detalleContenido">Cargando información...</div>
 
-                <div class="card-body">
-                    <!-- ✅ Corregido: solo un id -->
-                    <table class="table table-striped" id="tablaCambios">
-                        <thead>
-                            <tr>
-                                <th class="fs-6" style="min-width: 90px;">ID</th>
-                                <th class="fs-6" style="min-width: 90px;">id_turno</th>
-                                <th class="fs-6" style="min-width: 90px;">codigo</th>
-                                <th class="fs-6" style="min-width: 100px;">cambios</th>
-                                <th class="fs-6" style="min-width: 80px;">Fecha Creación</th>
-                                <th class="fs-6" style="min-width: 80px;">Fecha Entrega</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
+                 <div class="table-responsive mt-3">
+                     <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
+                         <thead>
+                             <tr>
+                                 <th>id</th>
+                                 <th>id_turno</th>
+                                 <th>codigo</th>
+                                 <th>cambios</th>
+                                 <th>fecha_creacion</th>
+                                 <th>fecha_entrega</th>
+                             </tr>
+                         </thead>
+                         <tbody></tbody>
+                     </table>
+                 </div>
+             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+             </div>
+         </div>
+     </div>
+ </div>
 
 <script>
     document.addEventListener('click', async function(e) {
@@ -369,3 +368,25 @@
         }
     }
 </script>
+
+
+ <!-- jQuery -->
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+ <!-- DataTables CSS -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+ <!-- DataTables JS -->
+ <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+ <!-- DataTables Responsive (CSS + JS) -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+ <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+
+ <!-- Y recién tu script -->
+ <script>
+     $(document).ready(function() {
+         console.log("jQuery ya funciona 👍");
+     });
+ </script>
