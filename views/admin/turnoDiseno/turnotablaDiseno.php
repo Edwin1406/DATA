@@ -327,7 +327,17 @@
                         { data: 'codigo' },
                         { data: 'cambios' },
                         { data: 'fecha_creacion' },
-                        { data: 'fecha_entrega' }
+                        { data: 'fecha_entrega' },
+                        // acciones
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                return `
+                                    <button class="btn btn-sm btn-primary btn-editar" data-id="${row.id}">Editar</button>
+                                    <button class="btn btn-sm btn-danger btn-eliminar" data-id="${row.id}">Eliminar</button>
+                                `;
+                            }
+                        }
                     ],
                     language: {
                         url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
