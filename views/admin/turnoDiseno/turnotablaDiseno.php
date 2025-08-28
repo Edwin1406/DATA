@@ -345,7 +345,7 @@
                              data: null,
                              render: function(data, type, row) {
                                  return `
-                                    <a href="/admin/turnoDiseno/cambios?id=${row.id}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="/admin/turnoDiseno/editarCambios?id=${row.id}" class="btn btn-sm btn-primary">Editar</a>
                                     <a href="/admin/turnoDiseno/eliminar?id=${row.id}" class="btn btn-sm btn-danger">Eliminar</a>
                                 `;
                              }

@@ -68,7 +68,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/turnoDiseno/editarTurno?id=<?php echo $turno->id; ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
+                            <form class="form" method="POST" action="/admin/turnoDiseno/editarCambios?id=<?php echo $turno->id; ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
 
                                 <div class="row">
                                     <?php include_once __DIR__ . '/formulario.php'  ?>
