@@ -264,7 +264,7 @@
                                  <th>cambios</th>
                                  <th>fecha_creacion</th>
                                  <th>fecha_entrega</th>
-                                    <th>Acciones</th>
+                                 <th>Acciones</th>
                              </tr>
                          </thead>
                          <tbody></tbody>
@@ -279,105 +279,117 @@
      </div>
  </div>
 
-<script>
-    document.addEventListener('click', async function(e) {
-        if (e.target.matches('.btn-detalle')) {
-            const id = e.target.getAttribute('data-id');
-            const contenido = document.getElementById('detalleContenido');
-            contenido.innerHTML = "Cargando información...";
+ <script>
+     document.addEventListener('click', async function(e) {
+         if (e.target.matches('.btn-detalle')) {
+             const id = e.target.getAttribute('data-id');
+             const contenido = document.getElementById('detalleContenido');
+             contenido.innerHTML = "Cargando información...";
 
-            // 👉 Traer detalle
-            const datos = await ApiDetalle(id);
+             // 👉 Traer detalle
+             const datos = await ApiDetalle(id);
 
-            if (datos) {
-                let tabla = `<table class="table table-sm table-bordered"><tbody>`;
-                for (const [campo, valor] of Object.entries(datos)) {
-                    if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-                        if (campo === "pdf") {
-                            tabla += `
+             if (datos) {
+                 let tabla = `<table class="table table-sm table-bordered"><tbody>`;
+                 for (const [campo, valor] of Object.entries(datos)) {
+                     if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+                         if (campo === "pdf") {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
                 </tr>`;
-                        } else {
-                            tabla += `
+                         } else {
+                             tabla += `
                 <tr>
                   <th style="width:30%">${campo}</th>
                   <td>${valor}</td>
                 </tr>`;
-                        }
-                    }
-                }
-                tabla += `</tbody></table>`;
-                contenido.innerHTML = tabla;
-            } else {
-                contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
-            }
+                         }
+                     }
+                 }
+                 tabla += `</tbody></table>`;
+                 contenido.innerHTML = tabla;
+             } else {
+                 contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+             }
 
-            // 👉 Ahora cargo los cambios usando el CODIGO del detalle
-            const cambios = await ApiCambios(datos.codigo);
+             // 👉 Ahora cargo los cambios usando el CODIGO del detalle
+             const cambios = await ApiCambios(datos.codigo);
 
-            if ($.fn.DataTable.isDataTable('#tablaCambios')) {
-                $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
-            } else {
-                $('#tablaCambios').DataTable({
-                    data: cambios,
-                    columns: [
-                        { data: 'id' },
-                        { data: 'id_turno' },
-                        { data: 'codigo' },
-                        { data: 'cambios' },
-                        { data: 'fecha_creacion' },
-                        { data: 'fecha_entrega' },
-                        // acciones
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                return `
-                                    <button class="btn btn-sm btn-primary btn-editar" data-id="${row.id}">Editar</button>
-                                    <button class="btn btn-sm btn-danger btn-eliminar" data-id="${row.id}">Eliminar</button>
+             if ($.fn.DataTable.isDataTable('#tablaCambios')) {
+                 $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
+             } else {
+                 $('#tablaCambios').DataTable({
+                     data: cambios,
+                     columns: [{
+                             data: 'id'
+                         },
+                         {
+                             data: 'id_turno'
+                         },
+                         {
+                             data: 'codigo'
+                         },
+                         {
+                             data: 'cambios'
+                         },
+                         {
+                             data: 'fecha_creacion'
+                         },
+                         {
+                             data: 'fecha_entrega'
+                         },
+                         // acciones
+                         {
+                             data: null,
+                             render: function(data, type, row) {
+                                 return `
+                                    <a href="/ruta/editar/${row.id}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="/ruta/eliminar/${row.id}" class="btn btn-sm btn-danger">Eliminar</a>
                                 `;
-                            }
-                        },
-                    ],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-                    },
-                    responsive: true
-                });
-            }
+                             }
 
-            // Mostrar modal
-            const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
-            modal.show();
-        }
-    });
+                         },
+                     ],
+                     language: {
+                         url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                     },
+                     responsive: true
+                 });
+             }
 
-    
-    async function ApiDetalle(id) {
-        try {
-            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-            const resultado = await fetch(url);
-            return await resultado.json();
-        } catch (e) {
-            console.log(e);
-            return null;
-        }
-    }
+             // Mostrar modal
+             const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+             modal.show();
+         }
+     });
 
-    async function ApiCambios(codigo) {
-        try {
-            const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
-            const resultado = await fetch(url);
-            const data = await resultado.json();
-            console.log("Respuesta de ApiCambios:", data);
-            return data;
-        } catch (e) {
-            console.log("Error:", e);
-            return [];
-        }
-    }
-</script>
+
+     async function ApiDetalle(id) {
+         try {
+             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+             const resultado = await fetch(url);
+             return await resultado.json();
+         } catch (e) {
+             console.log(e);
+             return null;
+         }
+     }
+
+     async function ApiCambios(codigo) {
+         try {
+             const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
+             const resultado = await fetch(url);
+             const data = await resultado.json();
+             console.log("Respuesta de ApiCambios:", data);
+             return data;
+         } catch (e) {
+             console.log("Error:", e);
+             return [];
+         }
+     }
+ </script>
 
 
  <!-- jQuery -->
