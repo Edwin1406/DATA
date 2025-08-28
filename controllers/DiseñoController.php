@@ -831,6 +831,7 @@ class DiseñoController
 
         // ID de turno original desde URL
         $id = $_GET['id'] ?? null;
+        
         debuguear($id);
 
         $router->render('admin/turnoDiseno/editarCambios', [
