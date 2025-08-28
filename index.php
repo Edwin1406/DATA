@@ -130,7 +130,9 @@ $router->get('/admin/editarConsumoGeneral', [AdminController::class, 'editarCons
 $router->post('/admin/editarConsumoGeneral', [AdminController::class, 'editarConsumoGeneral']);
 
 
-
+// editarcambios
+$router->get('/admin/turnoDiseno/editarCambios', [DiseñoController::class, 'editarCambios']);
+$router->post('/admin/turnoDiseno/editarCambios', [DiseñoController::class, 'editarCambios']);
 
 
 
