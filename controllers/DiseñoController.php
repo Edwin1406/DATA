@@ -830,41 +830,8 @@ class DiseñoController
         $turno = new CambiosTurno;
 
         // ID de turno original desde URL
-        $id_turno = $_GET['id'] ?? null;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // Tomar el id de una sola fuente confiable
-            $idTurno = $_POST['id_turno'] ?? ($id_turno ?? null);
-            if (!$idTurno) {
-                $alertas[] = "Falta id_turno.";
-            } else {
-
-                // 1) Volcar datos del formulario
-                $turno->sincronizar($_POST);
-
-                // 2) Asegurar el id_turno DESPUÉS de sincronizar
-                $turno->id_turno = (int)$idTurno;
-                // tomar la hora actual
-                $turno->fecha_creacion = date('Y-m-d H:i:s');
-
-                // 3) Validar turno origen
-                $datos = TurnoDiseno::find($turno->id_turno);
-                if (!$datos) {
-                    $alertas[] = "El turno no existe.";
-                } else {
-                    // 4) Forzar campos que dependan del turno válido
-                    $turno->codigo = $datos->codigo ?? null;
-
-                    // 5) Guardar
-                    $turno->guardar();
-
-                    // 6) Redirigir
-                    header("Location: /admin/turnoDiseno/turnotablaDiseno?exito=1");
-                    exit;
-                }
-            }
-        }
+        $id = $_GET['id'] ?? null;
+        debuguear($id);
 
         $router->render('admin/turnoDiseno/editarCambios', [
             'titulo'   => 'EDITAR CAMBIOS EN EL PEDIDO',
@@ -872,7 +839,7 @@ class DiseñoController
             'email'    => $email,
             'alertas'  => $alertas,
             'turno'    => $turno,
-            'id_turno' => $id_turno
+            // 'id_turno' => $id_turno
         ]);
     }
 
