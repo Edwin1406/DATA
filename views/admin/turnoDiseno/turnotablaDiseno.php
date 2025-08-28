@@ -264,6 +264,7 @@
                                  <th>cambios</th>
                                  <th>fecha_creacion</th>
                                  <th>fecha_entrega</th>
+                                    <th>Acciones</th>
                              </tr>
                          </thead>
                          <tbody></tbody>
