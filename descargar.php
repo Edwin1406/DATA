@@ -3,7 +3,11 @@ if (isset($_GET['file']) && isset($_GET['nombre'])) {
     // 🔹 Quitar solo espacios al inicio y final
     $archivoNombre = trim(basename($_GET['file'])); 
     $nombreDescarga = trim($_GET['nombre']) . ".pdf";
+    // CIDAR MUCHO LAS RTAS 
 
+    $archivoNombre = preg_replace('/\s+/', '_', $archivoNombre);
+    $nombreDescarga = preg_replace('/\s+/', '_', $nombreDescarga);
+    
     // Ruta dentro de public/src/visor/
     $archivo = __DIR__ . "/src/visor/" . $archivoNombre;
 
@@ -21,3 +25,10 @@ if (isset($_GET['file']) && isset($_GET['nombre'])) {
     echo "Parámetros inválidos.";
 }
 ?>
+
+
+
+
+
+
+
