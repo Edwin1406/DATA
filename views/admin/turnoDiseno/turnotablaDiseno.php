@@ -307,7 +307,6 @@
                          {
                              data: 'fecha_entrega'
                          },
-                         // poner si estado es == PENDIENTE color rojo
                          {
                              data: 'estado',
                              render: function(data, type, row) {
@@ -328,7 +327,6 @@
                                  return `<span class="badge ${badgeClass}">${data}</span>`;
                              }
                          },
-
                          {
                              data: null,
                              render: function(data, type, row) {

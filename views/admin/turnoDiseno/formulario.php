@@ -103,7 +103,7 @@
   </div>
 
 </div>
-
+<!-- 
 <script>
   // Opciones agrupadas por producto
   const opcionesPorProducto = {
@@ -209,8 +209,112 @@
   // Si vienes con un valor cargado desde PHP ($turno->tipo), mostrarlo automáticamente
   window.addEventListener("DOMContentLoaded", mostrarCampos);
 </script>
+ -->
 
+<script>
+  // Opciones agrupadas por producto
+  const opcionesPorProducto = {
+    CAJAS: [
+      { value: "CAJA-TROQUELADA", text: "Caja Troquelada" },
+      { value: "CAJA-REGULAR", text: "Caja Regular" },
+      { value: "TAPA-FLORICULTORA", text: "Tapa Floricultora" },
+      { value: "BASE-FLORICULTORA", text: "Base Floricultora" },
+      { value: "TAPA-TELESCOPICA", text: "Tapa Telescópica" },
+      { value: "BASE-TELESCOPICA", text: "Base Telescópica" }
+    ],
+    LAMINAS: [
+      { value: "LAMINA-MICROCORRGADO", text: "Lámina Microcorrugado" }
+    ],
+    OTROS: [
+      { value: "CAPUCHON-FLOR", text: "Capuchón Flor" },
+      { value: "SEPARADOR-FLOR", text: "Separador Flor" },
+      { value: "LARGUERO", text: "Larguero" },
+      { value: "TRANSVERSAL", text: "Transversal" },
+      { value: "BARRIDOS-COLOR", text: "Barridos Color" }
+    ]
+  };
 
+  const selectProducto = document.getElementById("tipo_producto");
+  const selectTipo = document.getElementById("tipo_componente");
+
+  // Detectar si existe id en la URL
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+    if (!id) {
+      // Ocultar todos los inputs si no hay id (dejamos solo producto y componente)
+      document.querySelectorAll("input, select, textarea").forEach(el => {
+        if (el.id !== "tipo_producto" && el.id !== "tipo_componente") {
+          if (el.closest(".form-group")) {
+            el.closest(".form-group").style.display = "none";
+          }
+        }
+      });
+    }
+
+    // Valor de PHP ya guardado
+    const tipoGuardado = "<?= isset($turno) ? $turno->tipo_componente : '' ?>";
+
+    // Simular el cambio para cargar opciones de tipo_componente
+    if (selectProducto.value) {
+      selectProducto.dispatchEvent(new Event("change"));
+
+      if (tipoGuardado) {
+        [...selectTipo.options].forEach(op => {
+          if (op.value === tipoGuardado) {
+            op.selected = true;
+          }
+        });
+
+        // Mostrar campos correctos
+        mostrarCampos();
+      }
+    }
+  });
+
+  // Generar opciones cuando cambia el producto
+  selectProducto.addEventListener("change", function () {
+    const categoria = this.value;
+    const opciones = opcionesPorProducto[categoria] || [];
+
+    // Limpiar opciones previas
+    selectTipo.innerHTML = '<option value="" disabled selected>Seleccione un tipo</option>';
+
+    // Agregar nuevas opciones
+    opciones.forEach(op => {
+      const option = document.createElement("option");
+      option.value = op.value;
+      option.textContent = op.text;
+      selectTipo.appendChild(option);
+    });
+  });
+
+  // Mostrar campos dinámicos
+  function mostrarCampos() {
+    const tipo = selectTipo.value;
+
+    // Ocultar todo
+    document.querySelectorAll(".campo").forEach(el => el.style.display = "none");
+
+    // Mostrar según tipo
+    if (tipo === "LAMINA-MICROCORRGADO") {
+      document.getElementById("campo-largo").style.display = "block";
+      document.getElementById("campo-alto").style.display = "block";
+      document.querySelectorAll(".lamina").forEach(el => el.style.display = "block");
+    } else if (["CAPUCHON-FLOR", "SEPARADOR-FLOR", "LARGUERO", "TRANSVERSAL"].includes(tipo)) {
+      document.querySelectorAll(".otros").forEach(el => el.style.display = "block");
+    } else if (tipo) {
+      // Cajas y similares
+      document.getElementById("campo-largo").style.display = "block";
+      document.getElementById("campo-alto").style.display = "block";
+      document.getElementById("campo-ancho").style.display = "block";
+      document.querySelectorAll(".cajas").forEach(el => el.style.display = "block");
+    }
+  }
+
+  selectTipo.addEventListener("change", mostrarCampos);
+</script>
 
 
 
