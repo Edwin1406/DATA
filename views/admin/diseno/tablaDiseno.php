@@ -112,7 +112,7 @@
                              <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
                              <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
                              <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
-                             <th class="fs-6" style="min-width: 160px;">Proveedor</th>
+                             <th class="fs-6" style="min-width: 100px;">Proveedor</th>
                              <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 110px;">Pdf</th>
