@@ -827,7 +827,7 @@ class DiseñoController
         $nombre  = $_SESSION['nombre'];
         $email   = $_SESSION['email'];
 
-        $turno = new CambiosTurno;
+        // $turno = new CambiosTurno;
 
         // ID de turno original desde URL
         $id = $_GET['id'] ?? null;
@@ -835,9 +835,9 @@ class DiseñoController
 
 
 
-        $datos= CambiosTurno::find($id);
+        $turno= CambiosTurno::find($id);
         
-        debuguear($datos);
+        // debuguear($datos);
 
         $router->render('admin/turnoDiseno/editarCambios', [
             'titulo'   => 'EDITAR CAMBIOS EN EL PEDIDO',
@@ -845,7 +845,7 @@ class DiseñoController
             'email'    => $email,
             'alertas'  => $alertas,
             'turno'    => $turno,
-            // 'id_turno' => $id_turno
+            // 'turno'    => $datos
         ]);
     }
 
