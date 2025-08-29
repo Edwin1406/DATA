@@ -296,7 +296,16 @@
                         { data: 'cambios' },
                         { data: 'fecha_creacion' },
                         { data: 'fecha_entrega' },
-                        { data: 'estado' },
+                        // poner si estado es == PENDIENTE color rojo
+                        {
+                            data: 'estado',
+                            render: function(data, type, row) {
+                                if (data === 'PENDIENTE') {
+                                    return `<span class="text-danger">${data}</span>`;
+                                }
+                                return data;
+                            }
+                        },
                         {
                             data: null,
                             render: function(data, type, row) {
