@@ -116,7 +116,7 @@
                              <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 88px;">Estado</th>
                              <th class="fs-6" style="min-width: 100px;">Pdf</th>
-                             <th class="fs-6" style="min-width: 100px;">Descargar</th>
+                                <th class="fs-6" style="min-width: 100px;">Descargar</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
@@ -150,15 +150,32 @@
                                  <td data-id="<?php echo $diseno->id; ?>">
                                      <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
+
                                  <td>
+                                     <?php
+                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
+                                        ?>
+                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a>
+                                 </td> 
+
+                                 <td>
+                                     <!-- Ver PDF en navegador -->
                                      <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a>
+
+                                     <!-- Descargar con nombre personalizado -->
+
                                  </td>
                                  <td>
                                      <a href="/descargar.php?file=<?= urlencode($diseno->pdf) ?>&nombre=<?= urlencode($diseno->codigo_producto . " - " . $diseno->nombre_producto) ?>"
                                          class="btn btn-success btn-sm">Descargar</a>
                                  </td>
 
+
+
                                  <td>
+                                     <!-- usuario -->
+
+
                                      <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                          <div class="d-flex gap-1">
                                              <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
