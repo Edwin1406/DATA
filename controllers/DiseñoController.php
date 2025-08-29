@@ -831,6 +831,9 @@ class DiseñoController
 
         // ID de turno original desde URL
         $id = $_GET['id'] ?? null;
+        $id=filter_var($id, FILTER_VALIDATE_INT);
+
+
 
         $datos= TurnoDiseno::find($id);
         
