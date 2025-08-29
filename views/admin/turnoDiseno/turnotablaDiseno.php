@@ -252,9 +252,13 @@
                  </button>
              </div>
              <div class="modal-body">
-                 <div id="detalleContenido">Cargando información...</div>
 
-                 <div class="table-responsive mt-4">
+
+
+                <!-- 3 columnas -->
+                 <div class="row-cols-3"  id="detalleContenido">Cargando información...</div>
+
+                 <div class="table-responsive mt-3">
                      <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
                          <thead>
                              <tr>
