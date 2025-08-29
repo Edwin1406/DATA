@@ -151,12 +151,12 @@
                                      <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
 
-                                 <td>
+                              
                                      <?php
                                         $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
                                         ?>
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a>
-                                 </td> 
+                                     <!-- <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a> -->
+                                 
 
                                  <td>
                                      <!-- Ver PDF en navegador -->
