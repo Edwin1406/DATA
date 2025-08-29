@@ -815,7 +815,7 @@ class DiseñoController
     }
 
     // EDITARCAMBIOS
-    public static function editarCambios(Router $router)
+   public static function editarCambios(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
@@ -827,12 +827,17 @@ class DiseñoController
         $nombre  = $_SESSION['nombre'];
         $email   = $_SESSION['email'];
 
-        $turno = new CambiosTurno;
+        // $turno = new CambiosTurno;
 
         // ID de turno original desde URL
         $id = $_GET['id'] ?? null;
+        $id=filter_var($id, FILTER_VALIDATE_INT);
+
+
+
+        $turno= CambiosTurno::find($id);
         
-        debuguear($id);
+        // debuguear($datos);
 
         $router->render('admin/turnoDiseno/editarCambios', [
             'titulo'   => 'EDITAR CAMBIOS EN EL PEDIDO',
@@ -840,10 +845,9 @@ class DiseñoController
             'email'    => $email,
             'alertas'  => $alertas,
             'turno'    => $turno,
-            // 'id_turno' => $id_turno
+            // 'turno'    => $datos
         ]);
     }
-
 
 
 }
