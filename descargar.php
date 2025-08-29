@@ -1,8 +1,11 @@
 <?php
 if (isset($_GET['file']) && isset($_GET['nombre'])) {
-    $archivoNombre = basename($_GET['file']); 
+    // 🔹 Quitar solo espacios al inicio y final
+    $archivoNombre = trim(basename($_GET['file'])); 
+    $nombreDescarga = trim($_GET['nombre']) . ".pdf";
+
+    // Ruta dentro de public/src/visor/
     $archivo = __DIR__ . "/src/visor/" . $archivoNombre;
-    $nombreDescarga = $_GET['nombre'] . ".pdf";
 
     if (file_exists($archivo)) {
         header("Content-Type: application/pdf");
@@ -11,14 +14,8 @@ if (isset($_GET['file']) && isset($_GET['nombre'])) {
         readfile($archivo);
         exit;
     } else {
-        echo "⚠️ Archivo no encontrado.<br>";
-        echo "Buscado: " . $archivo . "<br><br>";
-        
-        // Mostrar qué archivos hay en la carpeta
-        echo "Archivos disponibles en src/visor/:<br>";
-        foreach (glob(__DIR__ . "/src/visor/*.pdf") as $f) {
-            echo basename($f) . "<br>";
-        }
+        echo "Archivo no encontrado.<br>";
+        echo "Ruta buscada: " . $archivo;
     }
 } else {
     echo "Parámetros inválidos.";
