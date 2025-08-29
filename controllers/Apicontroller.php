@@ -63,14 +63,13 @@ class Apicontroller {
         header('Access-Control-Allow-Headers: Content-Type');
 
         $codigo = $_GET['codigo'] ?? '';
-        $codigo = filter_var($codigo, FILTER_SANITIZE_STRING);
-
-        if(!$codigo){
+        $codigo = strip_tags($codigo);
+        if (!$codigo) {
             echo json_encode([]);
             return;
 
         }
-
+        
         $cambios = CambiosTurno::whereCodigo('codigo',$codigo);
         echo json_encode($cambios);
     }
