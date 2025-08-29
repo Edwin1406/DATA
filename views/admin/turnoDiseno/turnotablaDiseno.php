@@ -220,6 +220,7 @@
                                 <th>cambios</th>
                                 <th>fecha_creacion</th>
                                 <th>fecha_entrega</th>
+                                <th>estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -295,6 +296,7 @@
                         { data: 'cambios' },
                         { data: 'fecha_creacion' },
                         { data: 'fecha_entrega' },
+                        { data: 'estado' },
                         {
                             data: null,
                             render: function(data, type, row) {
