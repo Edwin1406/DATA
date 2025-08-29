@@ -835,7 +835,7 @@ class DiseñoController
 
 
 
-        $datos= TurnoDiseno::find($id);
+        $datos= CambiosTurno::find($id);
         
         debuguear($datos);
 
