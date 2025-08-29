@@ -161,15 +161,6 @@
                                          <!-- BOTÓN -->
                                          <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Detalle</button>
 
-
-
-
-
-
-
-
-
-
                                          <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                              <form action="/admin/eliminarTurnoDiseno" method="POST">
                                                  <input type="hidden" name="id" value="<?= $turno->id ?>">

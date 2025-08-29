@@ -7,12 +7,13 @@ namespace Model;
 class CambiosTurno extends ActiveRecord {
 
     protected static $tabla = 'cambios_diseno_turno';
-    protected static $columnasDB = ['id', 'id_turno','codigo','cambios','fecha_creacion','fecha_entrega'];
+    protected static $columnasDB = ['id', 'id_turno','codigo','cambios','estado','fecha_creacion','fecha_entrega'];
 
     public $id;
     public $id_turno;
     public $codigo;
     public $cambios;
+    public $estado;
     public $fecha_creacion;
     public $fecha_entrega;
 
@@ -22,6 +23,7 @@ class CambiosTurno extends ActiveRecord {
         $this->id_turno = $args['id_turno'] ?? null;
         $this->codigo = $args['codigo'] ?? null;
         $this->cambios = $args['cambios'] ?? null;
+        $this->estado = $args['estado'] ?? 'PENDIENTE';
         $this->fecha_creacion = $args['fecha_creacion'] ?? null;
         $this->fecha_entrega = $args['fecha_entrega'] ?? null;
     }
