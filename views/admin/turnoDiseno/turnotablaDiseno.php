@@ -195,180 +195,203 @@
  </script>
 
 
-<!-- Modal reutilizable -->
-<div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
+ <!-- Modal reutilizable -->
+ <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
+     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+         <div class="modal-content">
+             <div class="modal-header bg-info">
+                 <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
+                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                     <i data-feather="x"></i>
+                 </button>
+             </div>
+             <div class="modal-body">
 
-                <!-- Contenedor de detalle -->
-                <div id="detalleContenido">Cargando información...</div>
+                 <!-- Contenedor de detalle -->
+                 <div id="detalleContenido">Cargando información...</div>
 
-                <div class="table-responsive mt-3">
-                    <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>id_turno</th>
-                                <th>codigo</th>
-                                <th>cambios</th>
-                                <th>fecha_creacion</th>
-                                <th>fecha_entrega</th>
-                                <th>estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
+                 <div class="table-responsive mt-3">
+                     <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
+                         <thead>
+                             <tr>
+                                 <th>id</th>
+                                 <th>id_turno</th>
+                                 <th>codigo</th>
+                                 <th>cambios</th>
+                                 <th>fecha_creacion</th>
+                                 <th>fecha_entrega</th>
+                                 <th>estado</th>
+                                 <th>Acciones</th>
+                             </tr>
+                         </thead>
+                         <tbody></tbody>
+                     </table>
+                 </div>
+             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
+             </div>
+         </div>
+     </div>
+ </div>
 
-<script>
-    document.addEventListener('click', async function(e) {
-        if (e.target.matches('.btn-detalle')) {
-            const id = e.target.getAttribute('data-id');
-            const contenido = document.getElementById('detalleContenido');
-            contenido.innerHTML = "Cargando información...";
+ <script>
+     document.addEventListener('click', async function(e) {
+         if (e.target.matches('.btn-detalle')) {
+             const id = e.target.getAttribute('data-id');
+             const contenido = document.getElementById('detalleContenido');
+             contenido.innerHTML = "Cargando información...";
 
-            // 👉 Traer detalle
-            const datos = await ApiDetalle(id);
+             // 👉 Traer detalle
+             const datos = await ApiDetalle(id);
 
-            if (datos) {
-                let tabla = `<table class="table table-sm table-bordered"><tbody><tr>`;
-                let contador = 0;
+             if (datos) {
+                 let tabla = `<table class="table table-sm table-bordered"><tbody><tr>`;
+                 let contador = 0;
 
-                for (const [campo, valor] of Object.entries(datos)) {
-                    if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
-                        let celda;
-                        if (campo === "pdf") {
-                            celda = `
+                 for (const [campo, valor] of Object.entries(datos)) {
+                     if (valor !== null && valor !== "" && valor !== 0 && valor !== "0") {
+                         let celda;
+                         if (campo === "pdf") {
+                             celda = `
                                 <th style="width:15%">${campo}</th>
                                 <td style="width:35%"><a href="/src/turnos/${valor}" target="_blank">Ver archivo</a></td>
                             `;
-                        } else {
-                            celda = `
+                         } else {
+                             celda = `
                                 <th style="width:15%">${campo}</th>
                                 <td style="width:35%">${valor}</td>
                             `;
-                        }
+                         }
 
-                        tabla += celda;
-                        contador++;
+                         tabla += celda;
+                         contador++;
 
-                        // 👉 Cada 2 pares (4 celdas) cerramos fila y abrimos otra
-                        if (contador % 2 === 0) {
-                            tabla += `</tr><tr>`;
-                        }
-                    }
-                }
+                         // 👉 Cada 2 pares (4 celdas) cerramos fila y abrimos otra
+                         if (contador % 2 === 0) {
+                             tabla += `</tr><tr>`;
+                         }
+                     }
+                 }
 
-                tabla += `</tr></tbody></table>`;
-                contenido.innerHTML = tabla;
-            } else {
-                contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
-            }
+                 tabla += `</tr></tbody></table>`;
+                 contenido.innerHTML = tabla;
+             } else {
+                 contenido.innerHTML = `<p class="text-danger">No se pudo cargar el detalle.</p>`;
+             }
 
-            // 👉 Ahora cargo los cambios usando el CODIGO del detalle
-            const cambios = await ApiCambios(datos.codigo);
+             // 👉 Ahora cargo los cambios usando el CODIGO del detalle
+             const cambios = await ApiCambios(datos.codigo);
 
-            if ($.fn.DataTable.isDataTable('#tablaCambios')) {
-                $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
-            } else {
-                $('#tablaCambios').DataTable({
-                    data: cambios,
-                    columns: [
-                        { data: 'id' },
-                        { data: 'id_turno' },
-                        { data: 'codigo' },
-                        { data: 'cambios' },
-                        { data: 'fecha_creacion' },
-                        { data: 'fecha_entrega' },
-                        // poner si estado es == PENDIENTE color rojo
-                        {
-                            data: 'estado',
-                            render: function(data, type, row) {
-                                if (data === 'PENDIENTE') {
-                                    return `<span class="text-danger">${data}</span>`;
-                                }
-                                return data;
-                            }
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                return `
+             if ($.fn.DataTable.isDataTable('#tablaCambios')) {
+                 $('#tablaCambios').DataTable().clear().rows.add(cambios).draw();
+             } else {
+                 $('#tablaCambios').DataTable({
+                     data: cambios,
+                     columns: [{
+                             data: 'id'
+                         },
+                         {
+                             data: 'id_turno'
+                         },
+                         {
+                             data: 'codigo'
+                         },
+                         {
+                             data: 'cambios'
+                         },
+                         {
+                             data: 'fecha_creacion'
+                         },
+                         {
+                             data: 'fecha_entrega'
+                         },
+                         // poner si estado es == PENDIENTE color rojo
+                         {
+                             data: 'estado',
+                             render: function(data, type, row) {
+                                 let badgeClass = 'bg-secondary'; // gris por defecto
+
+                                 switch (data.trim()) {
+                                     case 'EN PROCESO':
+                                         badgeClass = 'bg-info'; // azul
+                                         break;
+                                     case 'ENTREGADO':
+                                         badgeClass = 'bg-success'; // verde
+                                         break;
+                                     case 'PENDIENTE':
+                                         badgeClass = 'bg-danger'; // rojo
+                                         break;
+                                 }
+
+                                 return `<span class="badge ${badgeClass}">${data}</span>`;
+                             }
+                         },
+
+                         {
+                             data: null,
+                             render: function(data, type, row) {
+                                 return `
                                     <a href="/admin/turnoDiseno/editarCambios?id=${row.id}" class="btn btn-sm btn-primary">Editar</a>
                                 `;
-                            }
-                        },
-                    ],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-                    },
-                    responsive: true
-                });
-            }
+                             }
+                         },
+                     ],
+                     language: {
+                         url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                     },
+                     responsive: true
+                 });
+             }
 
-            // Mostrar modal
-            const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
-            modal.show();
-        }
-    });
+             // Mostrar modal
+             const modal = new bootstrap.Modal(document.getElementById('detalleModal'));
+             modal.show();
+         }
+     });
 
-    async function ApiDetalle(id) {
-        try {
-            const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
-            const resultado = await fetch(url);
-            return await resultado.json();
-        } catch (e) {
-            console.log(e);
-            return null;
-        }
-    }
+     async function ApiDetalle(id) {
+         try {
+             const url = `${location.origin}/admin/api/apiDetalle?id=${id}`;
+             const resultado = await fetch(url);
+             return await resultado.json();
+         } catch (e) {
+             console.log(e);
+             return null;
+         }
+     }
 
-    async function ApiCambios(codigo) {
-        try {
-            const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
-            const resultado = await fetch(url);
-            const data = await resultado.json();
-            console.log("Respuesta de ApiCambios:", data);
-            return data;
-        } catch (e) {
-            console.log("Error:", e);
-            return [];
-        } 
-    }
-</script>
+     async function ApiCambios(codigo) {
+         try {
+             const url = `${location.origin}/admin/api/apiCambiosDiseno?codigo=${codigo}`;
+             const resultado = await fetch(url);
+             const data = await resultado.json();
+             console.log("Respuesta de ApiCambios:", data);
+             return data;
+         } catch (e) {
+             console.log("Error:", e);
+             return [];
+         }
+     }
+ </script>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ <!-- jQuery -->
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- DataTables CSS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+ <!-- DataTables CSS -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+ <!-- DataTables JS -->
+ <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- DataTables Responsive (CSS + JS) -->
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+ <!-- DataTables Responsive (CSS + JS) -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+ <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
-<!-- Y recién tu script -->
-<script>
-    $(document).ready(function() {
-        console.log("jQuery ya funciona 👍");
-    });
-</script>
+ <!-- Y recién tu script -->
+ <script>
+     $(document).ready(function() {
+         console.log("jQuery ya funciona 👍");
+     });
+ </script>
