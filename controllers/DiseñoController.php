@@ -815,7 +815,7 @@ class DiseñoController
     }
 
     // EDITARCAMBIOS
-   public static function editarCambios(Router $router)
+    public static function editarCambios(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
@@ -831,15 +831,19 @@ class DiseñoController
 
         // ID de turno original desde URL
         $id = $_GET['id'] ?? null;
-        $id=filter_var($id, FILTER_VALIDATE_INT);
+        $id = filter_var($id, FILTER_VALIDATE_INT);
 
 
 
-        $turno= CambiosTurno::find($id);
+        $turno = CambiosTurno::find($id);
 
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $turno->sincronizar($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            unset($data['id_turno']); // <- lo sacas antes
+            $turno->sincronizar($data);
+
+            // $turno->sincronizar($_POST);
             $alertas = $turno->validar();
 
             if (empty($alertas)) {
@@ -861,7 +865,4 @@ class DiseñoController
             // 'id_turno' => $id_turno
         ]);
     }
-
 }
-
-
