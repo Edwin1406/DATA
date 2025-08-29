@@ -71,7 +71,7 @@
                             <form class="form" method="POST" action="/admin/turnoDiseno/editarCambios?id=<?php echo $turno->id; ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
 
                                 <div class="row">
-                                    <?php include_once __DIR__ . '/formulario.php'  ?>
+                                    <?php include_once __DIR__ . '/formulariocambiosactualizar.php'  ?>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" id="btnActualizar" class="btn btn-primary me-1 mb-1">Actualizar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
