@@ -3,8 +3,8 @@ if (isset($_GET['file']) && isset($_GET['nombre'])) {
     // Seguridad: solo nombre del archivo
     $archivoNombre = basename($_GET['file']); 
 
-    // Ruta donde realmente están tus PDFs
-    $archivo = __DIR__ . "/src/visor/" . $archivoNombre;
+    // Ruta real (subimos un nivel desde /public hasta la raíz del proyecto)
+    $archivo = dirname(__DIR__) . "/src/visor/" . $archivoNombre;
 
     // Nombre final para la descarga
     $nombreDescarga = $_GET['nombre'] . ".pdf";
@@ -17,7 +17,7 @@ if (isset($_GET['file']) && isset($_GET['nombre'])) {
         readfile($archivo);
         exit;
     } else {
-        // ⚠️ Mensaje de depuración para saber qué ruta está buscando
+        // ⚠️ Depuración
         echo "Archivo no encontrado.<br>";
         echo "Ruta buscada: " . $archivo;
     }
