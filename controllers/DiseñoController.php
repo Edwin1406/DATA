@@ -839,34 +839,13 @@ class DiseñoController
 
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $turno->sincronizar($_POST);
+            $alertas = $turno->validar();
 
-            // Tomar el id de una sola fuente confiable
-            $idTurno = $_POST['id_turno'] ?? ($id ?? null);
-            if (!$idTurno) {
-                $alertas[] = "Falta id_turno.";
-            } else {
-
-                // 1) Volcar datos del formulario
-                $turno->sincronizar($_POST);
-
-                // 2) Asegurar el id_turno DESPUÉS de sincronizar
-                $turno->id_turno = (int)$idTurno;
-                // tomar la hora actual
-                $turno->fecha_creacion = date('Y-m-d H:i:s');
-
-                // 3) Validar turno origen
-                $datos = CambiosTurno::find($turno->id_turno);
-                if (!$datos) {
-                    $alertas[] = "El turno no existe.";
-                } else {
-                    // 4) Forzar campos que dependan del turno válido
-                    $turno->codigo = $datos->codigo ?? null;
-
-                    // 5) Guardar
-                    $turno->guardar();
-
-                    // 6) Redirigir
-                    header("Location: /admin/turnoDiseno/turnotablaDiseno?exito=1");
+            if (empty($alertas)) {
+                $resultado = $turno->guardar(); // debe hacer UPDATE al tener id
+                if ($resultado) {
+                    header('Location: /admin/turnoDiseno/turnotablaDiseno?editado=2');
                     exit;
                 }
             }
@@ -879,7 +858,7 @@ class DiseñoController
             'email'    => $email,
             'alertas'  => $alertas,
             'turno'    => $turno,
-            'id_turno' => $id_turno
+            // 'id_turno' => $id_turno
         ]);
     }
 
