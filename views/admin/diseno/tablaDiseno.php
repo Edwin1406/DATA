@@ -116,6 +116,7 @@
                              <th class="fs-6" style="min-width: 80px;">Fecha</th>
                              <th class="fs-6" style="min-width: 98px;">Estado</th>
                              <th class="fs-6" style="min-width: 110px;">Pdf</th>
+                                <th class="fs-6" style="min-width: 110px;">Descargar</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
