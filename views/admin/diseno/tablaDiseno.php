@@ -88,10 +88,10 @@
              <ul class="nav nav-tabs">
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                 <li class="nav-item">
-                     <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
-                 </li>
-                    <?php } ?>
+                     <li class="nav-item">
+                         <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
+                     </li>
+                 <?php } ?>
              </ul>
          </div>
      </section>
@@ -150,12 +150,21 @@
                                      <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
                                  </td>
 
-
+                                 <!-- 
                                  <td>
                                      <?php
                                         $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
                                         ?>
                                      <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a>
+                                 </td> -->
+
+                                 <td>
+                                     <!-- Ver PDF en navegador -->
+                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a>
+
+                                     <!-- Descargar con nombre personalizado -->
+                                     <a href="/descargar.php?file=<?= urlencode($diseno->pdf) ?>&nombre=<?= urlencode($diseno->codigo_producto . " - " . $diseno->nombre_producto) ?>"
+                                         class="btn btn-success btn-sm">Descargar</a>
                                  </td>
 
 
