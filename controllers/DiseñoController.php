@@ -886,19 +886,3 @@ class DiseñoController
 }
 
 
-
-        
-        // debuguear($datos);
-
-        $router->render('admin/turnoDiseno/editarCambios', [
-            'titulo'   => 'EDITAR CAMBIOS EN EL PEDIDO',
-            'nombre'   => $nombre,
-            'email'    => $email,
-            'alertas'  => $alertas,
-            'turno'    => $turno,
-            // 'turno'    => $datos
-        ]);
-    }
-
-
-}
