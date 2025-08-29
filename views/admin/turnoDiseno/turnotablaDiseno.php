@@ -254,7 +254,7 @@
              <div class="modal-body">
                  <div id="detalleContenido">Cargando información...</div>
 
-                 <div class="table-responsive mt-3">
+                 <div class="table-responsive mt-4">
                      <table id="tablaCambios" class="table table-striped table-bordered table-hover w-100">
                          <thead>
                              <tr>
