@@ -60,8 +60,8 @@
       <label for="dobles">¿Con doblez?</label>
       <select id="dobles" class="form-control" name="dobles">
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="SI">Sí</option>
-        <option value="NO">No</option>
+        <option value="<?php echo (isset($turno) && $turno->dobles === 'SI') ? 'SI' : ''; ?>">Sí</option>
+        <option value="<?php echo (isset($turno) && $turno->dobles === 'NO') ? 'NO' : ''; ?>">No</option>
       </select>
     </div>
   </div>
