@@ -163,6 +163,9 @@
                                      <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a>
 
                                      <!-- Descargar con nombre personalizado -->
+
+                                 </td>
+                                 <td>
                                      <a href="/descargar.php?file=<?= urlencode($diseno->pdf) ?>&nombre=<?= urlencode($diseno->codigo_producto . " - " . $diseno->nombre_producto) ?>"
                                          class="btn btn-success btn-sm">Descargar</a>
                                  </td>
