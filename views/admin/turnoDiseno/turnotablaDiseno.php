@@ -159,7 +159,7 @@
                                          <!-- ver detalle un boton -->
 
                                          <!-- BOTÓN -->
-                                         <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Ver Detalle</button>
+                                         <button class="btn btn-info btn-sm btn-detalle" data-id="<?= $turno->id ?>">Detalle</button>
 
 
 
@@ -203,42 +203,6 @@
      });
  </script>
 
-
- <!-- Modal reutilizable -->
- <!-- <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-         <div class="modal-content">
-             <div class="modal-header bg-info">
-                 <h5 class="modal-title white" id="detalleLabel">Detalle del Turno</h5>
-                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                     <i data-feather="x"></i>
-                 </button>
-             </div>
-             <div class="modal-body" id="detalleContenido">
-                 Cargando información...
-             </div>
-
-             <table id="tablaCambios" class="display" style="width:100%">
-                 <thead>
-                     <tr>
-                         <th>ID</th>
-                         <th>Nombre</th>
-                         <th>Fecha</th>
-                         <th>Descripción</th>
-                     </tr>
-                 </thead>
-                 <tbody></tbody>
-             </table>
-
-
-
-
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Cerrar</button>
-             </div>
-         </div>
-     </div>
- </div> -->
 
 <!-- Modal reutilizable -->
 <div class="modal fade text-left" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleLabel" aria-hidden="true">
@@ -383,7 +347,7 @@
         } catch (e) {
             console.log("Error:", e);
             return [];
-        }
+        } 
     }
 </script>
 
