@@ -59,10 +59,11 @@
     <div class="form-group">
       <label for="dobles">¿Con doblez?</label>
       <select id="dobles" class="form-control" name="dobles">
-        <option value="" disabled selected>Seleccione una opción</option>
-        <option value="<?php echo (isset($turno) && $turno->dobles === 'SI') ? 'SI' : ''; ?>">Sí</option>
-        <option value="<?php echo (isset($turno) && $turno->dobles === 'NO') ? 'NO' : ''; ?>">No</option>
+        <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione una opción</option>
+        <option value="SI" <?php echo (isset($turno) && $turno->dobles === 'SI') ? 'selected' : ''; ?>>Sí</option>
+        <option value="NO" <?php echo (isset($turno) && $turno->dobles === 'NO') ? 'selected' : ''; ?>>No</option>
       </select>
+
     </div>
   </div>
 
@@ -214,23 +215,55 @@
 <script>
   // Opciones agrupadas por producto
   const opcionesPorProducto = {
-    CAJAS: [
-      { value: "CAJA-TROQUELADA", text: "Caja Troquelada" },
-      { value: "CAJA-REGULAR", text: "Caja Regular" },
-      { value: "TAPA-FLORICULTORA", text: "Tapa Floricultora" },
-      { value: "BASE-FLORICULTORA", text: "Base Floricultora" },
-      { value: "TAPA-TELESCOPICA", text: "Tapa Telescópica" },
-      { value: "BASE-TELESCOPICA", text: "Base Telescópica" }
+    CAJAS: [{
+        value: "CAJA-TROQUELADA",
+        text: "Caja Troquelada"
+      },
+      {
+        value: "CAJA-REGULAR",
+        text: "Caja Regular"
+      },
+      {
+        value: "TAPA-FLORICULTORA",
+        text: "Tapa Floricultora"
+      },
+      {
+        value: "BASE-FLORICULTORA",
+        text: "Base Floricultora"
+      },
+      {
+        value: "TAPA-TELESCOPICA",
+        text: "Tapa Telescópica"
+      },
+      {
+        value: "BASE-TELESCOPICA",
+        text: "Base Telescópica"
+      }
     ],
-    LAMINAS: [
-      { value: "LAMINA-MICROCORRGADO", text: "Lámina Microcorrugado" }
-    ],
-    OTROS: [
-      { value: "CAPUCHON-FLOR", text: "Capuchón Flor" },
-      { value: "SEPARADOR-FLOR", text: "Separador Flor" },
-      { value: "LARGUERO", text: "Larguero" },
-      { value: "TRANSVERSAL", text: "Transversal" },
-      { value: "BARRIDOS-COLOR", text: "Barridos Color" }
+    LAMINAS: [{
+      value: "LAMINA-MICROCORRGADO",
+      text: "Lámina Microcorrugado"
+    }],
+    OTROS: [{
+        value: "CAPUCHON-FLOR",
+        text: "Capuchón Flor"
+      },
+      {
+        value: "SEPARADOR-FLOR",
+        text: "Separador Flor"
+      },
+      {
+        value: "LARGUERO",
+        text: "Larguero"
+      },
+      {
+        value: "TRANSVERSAL",
+        text: "Transversal"
+      },
+      {
+        value: "BARRIDOS-COLOR",
+        text: "Barridos Color"
+      }
     ]
   };
 
@@ -238,7 +271,7 @@
   const selectTipo = document.getElementById("tipo_componente");
 
   // Detectar si existe id en la URL
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -274,7 +307,7 @@
   });
 
   // Generar opciones cuando cambia el producto
-  selectProducto.addEventListener("change", function () {
+  selectProducto.addEventListener("change", function() {
     const categoria = this.value;
     const opciones = opcionesPorProducto[categoria] || [];
 
@@ -419,64 +452,63 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const btnEliminar = document.getElementById('btnEliminarArchivo'); // aquí el mismo ID del HTML
+  document.addEventListener('DOMContentLoaded', function() {
+    const btnEliminar = document.getElementById('btnEliminarArchivo'); // aquí el mismo ID del HTML
 
-  if (btnEliminar) {
-    btnEliminar.addEventListener('click', function(e) {
-      e.preventDefault();
+    if (btnEliminar) {
+      btnEliminar.addEventListener('click', function(e) {
+        e.preventDefault();
 
-      Swal.fire({
-        title: '¿Estás seguro?',
-        text: 'No podrás recuperar este archivo después de eliminarlo.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const idTurno = this.dataset.id;
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'No podrás recuperar este archivo después de eliminarlo.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const idTurno = this.dataset.id;
 
-          fetch('/admin/diseno/eliminarPDFturno', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              body: 'id=' + encodeURIComponent(idTurno)
-            })
-            .then(res => res.json())
-            .then(data => {
-              if (data.success) {
-                Swal.fire({
-                  icon: 'success',
-                  title: '¡Eliminado!',
-                  text: 'El archivo se eliminó correctamente.'
-                });
+            fetch('/admin/diseno/eliminarPDFturno', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + encodeURIComponent(idTurno)
+              })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: '¡Eliminado!',
+                    text: 'El archivo se eliminó correctamente.'
+                  });
 
-                // Ojo: tu HTML usa id="archivo-actual", no "pdf-actual"
-                document.getElementById('archivo-actual').innerHTML = '<p>Archivo eliminado correctamente.</p>';
-              } else {
+                  // Ojo: tu HTML usa id="archivo-actual", no "pdf-actual"
+                  document.getElementById('archivo-actual').innerHTML = '<p>Archivo eliminado correctamente.</p>';
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'Ocurrió un error al eliminar el archivo.'
+                  });
+                }
+              })
+              .catch(err => {
+                console.error('Error AJAX:', err);
                 Swal.fire({
                   icon: 'error',
                   title: 'Error',
-                  text: data.error || 'Ocurrió un error al eliminar el archivo.'
+                  text: 'Error en la solicitud. Intenta de nuevo.'
                 });
-              }
-            })
-            .catch(err => {
-              console.error('Error AJAX:', err);
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error en la solicitud. Intenta de nuevo.'
               });
-            });
-        }
+          }
+        });
       });
-    });
-  }
-});
-
+    }
+  });
 </script>
 
 
