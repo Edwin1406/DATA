@@ -855,7 +855,7 @@ class DiseñoController
                 $turno->fecha_creacion = date('Y-m-d H:i:s');
 
                 // 3) Validar turno origen
-                $datos = TurnoDiseno::find($turno->id_turno);
+                $datos = CambiosTurno::find($turno->id_turno);
                 if (!$datos) {
                     $alertas[] = "El turno no existe.";
                 } else {
