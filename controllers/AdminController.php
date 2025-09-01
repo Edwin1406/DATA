@@ -50,7 +50,7 @@ class AdminController
             $alertas = $horas_trabajo->validar();
             if (empty($alertas)) {
                 $horas_trabajo->guardar();
-                header('Location: /admin/horas_trabajo?exito=1');
+                header('Location: /admin/consumo?exito=1');
             }
         }
     }
