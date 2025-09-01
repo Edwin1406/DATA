@@ -80,26 +80,26 @@ class AdminController
         $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
  
 
-        debuguear($horas_trabajo);
-
+        
         $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            
             if (isset($_POST['personal']) && is_array($_POST['personal'])) {
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
-
+            
             $consumo->sincronizar($_POST);
-
+            
             // trim al inicio de tipo_maquina y al final
             // Elimina espacios al inicio/final y reduce múltiples espacios internos a uno solo
-
-
-
-
-
+            
+            
+            
+            
+            
             $consumo->sacarTotalHoras();
+            debuguear($consumo);
 
 
             // Calcular productividad cada 15 minutos
