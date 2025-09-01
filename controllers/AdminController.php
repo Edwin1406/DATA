@@ -4,6 +4,7 @@ namespace Controllers;
 
 
 use Model\Consumo_general;
+use Model\HorasTrabajo;
 use Model\Prueba;
 use MVC\Router;
 
@@ -29,6 +30,35 @@ class AdminController
             'usuariosConectados' => $usuariosConectados
         ]);
     }
+
+
+    // hora de trabajo
+
+    public static function horasTrabajo(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+  
+        $horas_trabajo = new HorasTrabajo;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $horas_trabajo->sincronizar($_POST);
+
+            debuguear($horas_trabajo);
+
+        
+        }
+    }
+
+
+
+
+
+
+
+
 
     // consumo
     public static function consumo(Router $router)
