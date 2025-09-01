@@ -85,9 +85,9 @@
                                 <div class="row">
                                     <div class="col-md-2 col-12">
                                         <div class="form-group">
-                                            <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <input type="number" id="horas_trabajo" class="form-control"
-                                                placeholder="Horas de Trabajo" name="horas_trabajo">
+                                            <label for="hora_trabajo">Horas de Trabajo</label>
+                                            <input type="time" id="hora_trabajo" class="form-control"
+                                                placeholder="Horas de Trabajo" name="hora_trabajo">
                                         </div>
                                     </div>
                                 </div>
