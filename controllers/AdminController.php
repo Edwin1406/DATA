@@ -77,7 +77,7 @@ class AdminController
         // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
         // $fecha_hoy = date('Y-m-d');
 
-        // $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
+        $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
  
 
         
@@ -98,8 +98,10 @@ class AdminController
 
             // $consumosd=round($consumo->total_horas, 2);
 
-            // $tiempo_muerto =$consumosd - $horas_trabajo[0]->hora_trabajo;
-            // debuguear($tiempo_muerto);
+            $consumo->horas_trabajo = $horas_trabajo[0]->hora_trabajo;
+            
+
+            debuguear($consumo->horas_trabajo);
 
 
             // Calcular productividad cada 15 minutos

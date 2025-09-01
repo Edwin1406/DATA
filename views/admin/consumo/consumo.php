@@ -101,6 +101,11 @@
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
 
+
+
+                                    <!-- horas de trabajo -->
+                                    
+
                                     <!-- fecha -->
 
                                     <div class="col-md-6 col-12">
