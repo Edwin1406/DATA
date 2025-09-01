@@ -75,7 +75,9 @@ class AdminController
         $email = $_SESSION['email'];
         //cerrar sesión 
 
+        $horas_trabajo = HorasTrabajo::all();
 
+        debuguear($horas_trabajo);
 
         $alertas = [];
         $consumo = new Prueba();
