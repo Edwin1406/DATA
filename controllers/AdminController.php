@@ -72,7 +72,7 @@ class AdminController
         }
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
-        // $email = $_SESSION['email'];
+        $email = $_SESSION['email'];
         //cerrar sesión 
 
 
@@ -123,7 +123,7 @@ class AdminController
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'alertas' => $alertas,
             'nombre' => $nombre,
-            // 'email' => $email
+            'email' => $email
         ]);
     }
 
