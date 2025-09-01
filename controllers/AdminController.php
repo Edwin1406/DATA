@@ -78,8 +78,7 @@ class AdminController
         $fecha_hoy = date('Y-m-d');
 
         $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
-        // hora trabajo convertir a numero entero
-        $horas_trabajo = array_map('intval', $horas_trabajo);
+ 
 
         debuguear($horas_trabajo);
 
