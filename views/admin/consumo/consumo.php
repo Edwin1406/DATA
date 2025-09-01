@@ -76,6 +76,25 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
+
+                            <!-- agregar horas de trabajo con post porqe se guarda en otro formulario  -->
+
+
+
+                            <form action="/admin/horas_trabajo" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="horas_trabajo">Horas de Trabajo</label>
+                                            <input type="number" id="horas_trabajo" class="form-control"
+                                                placeholder="Horas de Trabajo" name="horas_trabajo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Agregar Horas</button>
+                            </form>
+
+
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
 
