@@ -99,7 +99,8 @@ class AdminController
             
             
             $consumo->sacarTotalHoras();
-            debuguear($consumo);
+            $consumosd=round($consumo->total_horas, 2);
+            debuguear($consumosd);
 
 
             // Calcular productividad cada 15 minutos
