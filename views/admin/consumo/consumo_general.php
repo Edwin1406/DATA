@@ -93,7 +93,7 @@
                                                 <option value="DESHOJE-CONVERTIDOR">DESHOJE-CONVERTIDOR</option>
                                                 <option value="CANUTOS">CANUTOS</option>
                                                 <option value="MATERIA-DE-BAJA">MATERIA-DE-BAJA</option>
-                                                <option value="RETASOS BOBINA">RETASOS BOBINA</option>
+                                                <option value="RETAZOS-BOBINA">RETAZOS-BOBINA</option>
 
                                             </select>
                                         </div>
