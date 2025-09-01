@@ -72,6 +72,7 @@ class AdminController
         }
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
         //cerrar sesión 
 
 
@@ -121,7 +122,8 @@ class AdminController
         $router->render('admin/consumo/consumo', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'alertas' => $alertas,
-            'nombre' => $nombre
+            'nombre' => $nombre,
+            'email' => $email
         ]);
     }
 

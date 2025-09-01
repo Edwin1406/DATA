@@ -94,6 +94,9 @@
                                 <button type="submit" class="btn btn-primary">Agregar Horas</button>
                             </form>
                             <?php } ?>
+                            
+
+
 
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
