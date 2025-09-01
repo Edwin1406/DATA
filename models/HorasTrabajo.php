@@ -8,9 +8,9 @@ class HorasTrabajo extends ActiveRecord {
     protected static $tabla = 'horas_trabajo';
     protected static $columnasDB = ['id','hora_trabajo','fecha'];
 
-    public ?int $id;
-    public ?string $hora_trabajo;
-    public string $fecha = '';
+    public  $id;
+    public  $hora_trabajo;
+    public  $fecha;
     
 
 
@@ -19,10 +19,13 @@ class HorasTrabajo extends ActiveRecord {
     // fecha automatica
     
     {
+
+         date_default_timezone_set('America/Guayaquil');
+        $fecha = date('Y-m-d');
         $this->id = $args['id'] ?? null;
         $this->hora_trabajo = $args['hora_trabajo'] ?? null;
         // $this->fecha = $args['fecha'] ?? null;
-        $this->fecha = new DateTime();
+        $this->fecha = $fecha;
     }
 
 
