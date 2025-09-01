@@ -9,8 +9,9 @@ class HorasTrabajo extends ActiveRecord {
     protected static $columnasDB = ['id','hora_trabajo','fecha'];
 
     public ?int $id;
-    public ?DateTime $hora_trabajo;
-    public ?DateTime $fecha;
+    public ?string $hora_trabajo;
+    public string $fecha = '';
+    
 
 
     public function __construct($args = [])
