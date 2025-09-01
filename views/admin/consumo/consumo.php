@@ -80,7 +80,7 @@
                             <!-- agregar horas de trabajo con post porqe se guarda en otro formulario  -->
 
                                 <!-- validar que sea el usario admin para poder agregar horas -->
-                            <?php if (true) : ?>    
+                         <?php if ($email !== 'pruebas@megaecuador.com') { ?> 
                             <form action="/admin/horas_trabajo" method="POST">
                                 <div class="row">
                                     <div class="col-md-2 col-12">
@@ -93,7 +93,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Agregar Horas</button>
                             </form>
-                            <?php endif; ?>
+                            <?php } ?>
 
                             <form class="form" method="POST" action="/admin/consumo">
                                 <div class="row">
