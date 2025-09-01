@@ -93,17 +93,12 @@ class AdminController
             $consumo->sacarTotalHoras();
             
             
-                    $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
-            
-                    debuguear($horas_trabajo);
-            
+                 $hora = HorasTrabajo::where('fecha', $fecha_hoy)->pluck('hora_trabajo')->first();
 
-            // $consumosd=round($consumo->total_horas, 2);
+$consumo->horas_trabajo = $hora;
 
-            $consumo->horas_trabajo = $horas_trabajo[0]->hora_trabajo;
-            
+debuguear($consumo->horas_trabajo);
 
-            debuguear($consumo->horas_trabajo);
 
 
             // Calcular productividad cada 15 minutos
