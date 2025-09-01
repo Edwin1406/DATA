@@ -75,9 +75,11 @@ class AdminController
         $email = $_SESSION['email'];
         //cerrar sesión
         // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
-        // $fecha_hoy = date('Y-m-d');
+        $fecha_hoy = date('Y-m-d');
 
         $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
+
+        // debuguear($horas_trabajo);
  
 
         
