@@ -46,9 +46,12 @@ class AdminController
 
             $horas_trabajo->sincronizar($_POST);
 
-            debuguear($horas_trabajo);
-
-        
+            // debuguear($horas_trabajo);
+            $alertas = $horas_trabajo->validar();
+            if (empty($alertas)) {
+                $horas_trabajo->guardar();
+                header('Location: /admin/horas_trabajo?exito=1');
+            }
         }
     }
 
