@@ -80,7 +80,7 @@ class AdminController
         $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
  
 
-        debuguear($horas_trabajo);
+        // debuguear($horas_trabajo);
 
         $alertas = [];
         $consumo = new Prueba();
