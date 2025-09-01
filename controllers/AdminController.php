@@ -73,9 +73,11 @@ class AdminController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
-        //cerrar sesión 
+        //cerrar sesión
+        // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
+        $fecha_hoy = date('Y-m-d');
 
-        $horas_trabajo = HorasTrabajo::all();
+        $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
 
         debuguear($horas_trabajo);
 
