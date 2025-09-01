@@ -93,11 +93,16 @@ class AdminController
             $consumo->sacarTotalHoras();
             
             
-                 $hora = HorasTrabajo::where('fecha', $fecha_hoy)->pluck('hora_trabajo')->first();
+            
+                    $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
+                    // me devuelve un array quiero sacr de ahi solo la hora_trabajo
+                    $horas_trabajo = $horas_trabajo[0]->hora_trabajo;
 
-$consumo->horas_trabajo = $hora;
+                    debuguear($horas_trabajo);
 
-debuguear($consumo->horas_trabajo);
+            // $consumosd=round($consumo->total_horas, 2);
+
+            
 
 
 
