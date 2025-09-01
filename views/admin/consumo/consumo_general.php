@@ -91,6 +91,9 @@
                                                 <option value="DESHOJE-CORRGADOR">DESHOJE-CORRGADOR</option>
                                                 <option value="DESHOJE-PRE-PRINTER">DESHOJE-PRE-PRINTER</option>
                                                 <option value="DESHOJE-CONVERTIDOR">DESHOJE-CONVERTIDOR</option>
+                                                <option value="CANUTOS">CANUTOS</option>
+                                                <option value="MATERIA-DE-BAJA">MATERIA-DE-BAJA</option>
+
                                             </select>
                                         </div>
                                     </div>
