@@ -83,7 +83,7 @@
 
                             <form action="/admin/horas_trabajo" method="POST">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
                                             <input type="number" id="horas_trabajo" class="form-control"
