@@ -54,6 +54,19 @@ $router->get('/admin/index', [AdminController::class, 'index']);
 $router->get('/admin/consumo', [AdminController::class, 'consumo']);
 $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
+$router->post('/admin/horas_trabajo', [AdminController::class, 'horasTrabajo']);
+
+
+
+
+
+
+
+
+
+
+
+
 
 // consmo general
 $router->get('/admin/consumo_general', [AdminController::class, 'consumo_general']);
@@ -110,6 +123,10 @@ $router->post('/admin/mantenimiento/registroMantenimiento', [MantenimientoContro
 // REGISTTRO CAMBIOS
 $router->get('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios']);
 $router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios']);
+
+
+
+
 
 
 
