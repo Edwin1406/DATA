@@ -91,16 +91,12 @@ class AdminController
             
             $consumo->sincronizar($_POST);
             
-            // trim al inicio de tipo_maquina y al final
-            // Elimina espacios al inicio/final y reduce múltiples espacios internos a uno solo
-            
-            
-            
-            
-            
+            // sacar total de horas.
             $consumo->sacarTotalHoras();
             $consumosd=round($consumo->total_horas, 2);
-            debuguear($consumosd);
+
+            $tiempo_muerto =$consumosd - $horas_trabajo[0]->hora_trabajo;
+            debuguear($tiempo_muerto);
 
 
             // Calcular productividad cada 15 minutos
