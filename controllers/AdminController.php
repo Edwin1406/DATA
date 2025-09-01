@@ -76,12 +76,8 @@ class AdminController
         //cerrar sesión
         // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
         $fecha_hoy = date('Y-m-d');
-
-        $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
-
-        // debuguear($horas_trabajo);
- 
-
+        
+        
         
         $alertas = [];
         $consumo = new Prueba();
@@ -95,8 +91,12 @@ class AdminController
             
             // sacar total de horas.
             $consumo->sacarTotalHoras();
-
-
+            
+            
+                    $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
+            
+                    debuguear($horas_trabajo);
+            
 
             // $consumosd=round($consumo->total_horas, 2);
 
