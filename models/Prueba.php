@@ -7,7 +7,7 @@ use DateTime;
 class Prueba extends ActiveRecord
 {
     protected static $tabla = 'control_empaque';
-    protected static $columnasDB = ['id', 'fecha', 'turno', 'personal', 'producto', 'medidas', 'cantidad', 'hora_inicio', 'hora_fin', 'total_horas', 'x_hora'];
+    protected static $columnasDB = ['id', 'fecha', 'turno', 'personal', 'producto', 'medidas', 'cantidad', 'hora_inicio', 'hora_fin', 'total_horas', 'x_hora','horas_trabajo'];
 
 
     public ?int $id;
@@ -24,6 +24,7 @@ class Prueba extends ActiveRecord
     public string $hora_fin = '';
     public string $total_horas = '';
     public string $x_hora = '';
+    public string $horas_trabajo = '';
 
 
 
@@ -56,6 +57,7 @@ class Prueba extends ActiveRecord
         $this->hora_fin = $args['hora_fin'] ?? '';
         $this->total_horas = $args['total_horas'] ?? '';
         $this->x_hora = $args['x_hora'] ?? '';
+        $this->horas_trabajo = $args['horas_trabajo'] ?? 10;
     }
 
 
