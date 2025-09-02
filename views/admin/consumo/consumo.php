@@ -287,10 +287,11 @@
                                     </div>
 
                                     <!-- Hora de fin -->
+                                     <!-- readonly PARA BLOQEAR  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin" readonly>
+                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin" >
                                         </div>
                                     </div>
 
