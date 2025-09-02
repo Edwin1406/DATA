@@ -215,13 +215,13 @@
 
                                     <!-- fecha -->
 
-                                    <div class="col-md-6 col-12">
+                                    <!-- <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="fecha">Fecha</label>
                                             <input type="date" id="fecha" class="form-control"
                                                 placeholder="Fecha" name="fecha">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- turno -->
 
 

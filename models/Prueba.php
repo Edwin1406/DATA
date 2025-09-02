@@ -32,8 +32,10 @@ class Prueba extends ActiveRecord
 
     public function __construct(array $args = [])
     {
+                date_default_timezone_set('America/Guayaquil');
+
         $this->id = $args['id'] ?? null;
-        $this->fecha = $args['fecha'] ?? '';
+        $this->fecha = date('Y-m-d');
         $this->turno = $args['turno'] ?? '';
         // $this->personal = $args['personal'] ?? [];
 
