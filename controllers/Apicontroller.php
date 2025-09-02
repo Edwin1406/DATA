@@ -5,6 +5,7 @@ namespace Controllers;
 use Model\CambiosTurno;
 use Model\Consumo_general;
 use Model\Mantenimiento;
+use Model\Prueba;
 use Model\TurnoDiseno;
 
 class Apicontroller {
@@ -77,7 +78,20 @@ class Apicontroller {
 
 
 
+// api apiEmpaque
 
+    public static function apiEmpaque():void {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $empaque = Prueba::all('ASC');
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($empaque);
+        exit;
+    }
 
 
 

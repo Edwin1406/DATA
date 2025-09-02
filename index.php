@@ -250,6 +250,11 @@ $router->get('/admin/api/apiDetalle', [Apicontroller::class, 'apiDetalle']);
 $router->get('/admin/api/apiCambiosDiseno', [Apicontroller::class, 'apiCambiosDiseno']);
 
 
+// apiempaque
+$router->get('/admin/api/apiEmpaque', [Apicontroller::class, 'apiEmpaque']);
+
+
+
 
 
 
