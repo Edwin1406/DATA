@@ -22,7 +22,7 @@ class DetalleEmpaque extends ActiveRecord {
         $this->tiempos_muertos = $data['tiempos_muertos'] ?? null;
     }
 
-
+    
 
 
 

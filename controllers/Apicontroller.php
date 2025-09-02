@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\CambiosTurno;
 use Model\Consumo_general;
+use Model\DetalleEmpaque;
 use Model\Mantenimiento;
 use Model\Prueba;
 use Model\TurnoDiseno;
@@ -102,7 +103,7 @@ class Apicontroller {
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
-        $empaque = Prueba::all('ASC');
+        $empaque = DetalleEmpaque::all('ASC');
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
         echo json_encode($empaque);
