@@ -93,11 +93,11 @@ class AdminController
             $consumo->sacarTotalHoras();
             
             
-            $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
+//             $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
 
-foreach ($horas_trabajo as $h) {
-    debuguear($h->hora_trabajo);
-}
+// foreach ($horas_trabajo as $h) {
+//     debuguear($h->hora_trabajo);
+// }
 
             
 
