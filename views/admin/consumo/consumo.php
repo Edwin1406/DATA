@@ -79,20 +79,20 @@
 
                             <!-- agregar horas de trabajo con post porqe se guarda en otro formulario  -->
 
-                                <!-- validar que sea el usario admin para poder agregar horas -->
-                         <?php if ($email == 'pruebas@megaecuador.com') { ?> 
-                            <form action="/admin/horas_trabajo" method="POST">
-                                <div class="row">
-                                    <div class="col-md-2 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_trabajo">Horas de Trabajo</label>
-                                            <input type="time" id="hora_trabajo" class="form-control"
-                                                placeholder="Horas de Trabajo" name="hora_trabajo">
+                            <!-- validar que sea el usario admin para poder agregar horas -->
+                            <?php if ($email == 'pruebas@megaecuador.com') { ?>
+                                <form action="/admin/horas_trabajo" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-2 col-12">
+                                            <div class="form-group">
+                                                <label for="hora_trabajo">Horas de Trabajo</label>
+                                                <input type="time" id="hora_trabajo" class="form-control"
+                                                    placeholder="Horas de Trabajo" name="hora_trabajo">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Agregar Horas</button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary">Agregar Horas</button>
+                                </form>
                             <?php } ?>
 
 
@@ -104,7 +104,7 @@
 
 
                                     <!-- horas de trabajo -->
-                                    
+
 
                                     <!-- fecha -->
 
@@ -116,7 +116,30 @@
                                         </div>
                                     </div>
                                     <!-- turno -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="horas_trabajo">Horas de Trabajo</label>
+                                            <input type="time" id="horas_trabajo" class="form-control"
+                                                placeholder="Horas de Trabajo" name="horas_trabajo" readonly>
+                                        </div>
+                                    </div>
 
+                                    <script>
+                                        // Configura aquí tu contraseña
+                                        const passwordCorrecta = "1234";
+
+                                        const inputHoras = document.getElementById("horas_trabajo");
+
+                                        inputHoras.addEventListener("focus", function() {
+                                            const password = prompt("Ingrese la contraseña para editar este campo:");
+                                            if (password === passwordCorrecta) {
+                                                inputHoras.removeAttribute("readonly");
+                                            } else {
+                                                alert("Contraseña incorrecta. No puede editar este campo.");
+                                                inputHoras.blur();
+                                            }
+                                        });
+                                    </script>
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
