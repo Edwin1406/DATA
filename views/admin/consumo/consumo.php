@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Hora de Inicio (auto y bloqueada) -->
+                                    <!-- Hora de Inicio (auto + botones individuales) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -263,6 +263,46 @@
                                         </div>
                                     </div>
 
+                                    <!-- Botones para MÚLTIPLES personas -->
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap" style="gap:.5rem">
+                                            <button type="button" class="btn btn-success btn-sm" id="btnIniciarSeleccion">Iniciar turnos (seleccionados)</button>
+                                            <button type="button" class="btn btn-primary btn-sm" id="btnVerDetalle">Ver detalle</button>
+                                            <button type="button" class="btn btn-danger btn-sm" id="btnFinalizarMiTurno">Finalizar mi turno</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal Ver Detalle -->
+                                    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title">Turnos del día <span id="fechaHoyLbl"></span></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="table-responsive">
+                                              <table class="table table-sm align-middle">
+                                                <thead>
+                                                  <tr>
+                                                    <th>Persona</th>
+                                                    <th>Inicio</th>
+                                                    <th>Fin</th>
+                                                    <th>Estado</th>
+                                                    <th style="width:230px">Acciones</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody id="tbodyDetalle"></tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
                                     <!-- Input oculto para enviar los intervalos generados -->
                                     <input type="hidden" name="intervalos" id="intervalos_json" value="[]">
 
@@ -273,14 +313,12 @@
                                 </div>
                             </form>
 
+                            <!-- ====== Lógica individual de turno (igual que antes) ====== -->
                             <script>
-                                // ====== CONFIG INTERVALOS ======
-                                const SLOT_MINUTES = 60; // 60 = 1 hora; cambia a 30 o 15 si quieres
+                                const SLOT_MINUTES = 60; // 60 = 1h
 
-                                // ====== KEYS localStorage para estado del turno ======
-                                const LS_TURNO = "consumo_turno"; // {inicio:"HH:MM", fin:null| "HH:MM", activo:true|false}
+                                const LS_TURNO = "consumo_turno"; // {inicio, fin, activo}
 
-                                // -------- Utilidades de hora --------
                                 const pad2 = n => String(n).padStart(2, "0");
                                 const nowHHMM = () => {
                                     const d = new Date();
@@ -313,7 +351,6 @@
                                     return out;
                                 }
 
-                                // -------- UI refs --------
                                 const elInicio = document.getElementById("hora_inicio");
                                 const elFin = document.getElementById("hora_fin");
                                 const elEstado = document.getElementById("estadoTurno");
@@ -323,17 +360,12 @@
                                 const intervalosInput = document.getElementById("intervalos_json");
                                 const btnLimpiar = document.getElementById("btnLimpiar");
 
-                                // -------- Estado turno --------
                                 function loadTurno() {
                                     const raw = localStorage.getItem(LS_TURNO);
                                     return raw ? JSON.parse(raw) : null;
                                 }
-                                function saveTurno(obj) {
-                                    localStorage.setItem(LS_TURNO, JSON.stringify(obj));
-                                }
-                                function clearTurno() {
-                                    localStorage.removeItem(LS_TURNO);
-                                }
+                                function saveTurno(obj) { localStorage.setItem(LS_TURNO, JSON.stringify(obj)); }
+                                function clearTurno() { localStorage.removeItem(LS_TURNO); }
 
                                 function setUIInicio(inicio) {
                                     elInicio.value = inicio;
@@ -357,93 +389,192 @@
                                     elEstado.textContent = "Turno finalizado";
                                 }
 
-                                // Al cargar
                                 (function initTurno() {
                                     const t = loadTurno();
-                                    if (t && t.activo && t.inicio) {
-                                        setUIInicio(t.inicio);
-                                    } else {
-                                        setUIEsperando();
-                                    }
+                                    if (t && t.activo && t.inicio) setUIInicio(t.inicio);
+                                    else setUIEsperando();
                                 })();
 
-                                // Iniciar turno: fija hora actual y bloquea
                                 btnIniciar.addEventListener("click", () => {
                                     const t = loadTurno();
-                                    if (t && t.activo) {
-                                        alert("Ya hay un turno activo iniciado a las " + t.inicio);
-                                        return;
-                                    }
+                                    if (t && t.activo) { alert("Ya hay un turno activo iniciado a las " + t.inicio); return; }
                                     const inicio = nowHHMM();
                                     saveTurno({ inicio, fin: null, activo: true });
                                     setUIInicio(inicio);
                                 });
 
-                                // Finalizar turno: fija hora actual, genera intervalos y no envía aún
                                 btnFinalizar.addEventListener("click", () => {
                                     const t = loadTurno();
-                                    if (!t || !t.activo) {
-                                        alert("No hay un turno activo.");
-                                        return;
-                                    }
+                                    if (!t || !t.activo) { alert("No hay un turno activo."); return; }
                                     const fin = nowHHMM();
-                                    t.fin = fin;
-                                    t.activo = false;
-                                    saveTurno(t);
+                                    t.fin = fin; t.activo = false; saveTurno(t);
                                     setUIFinalizado(fin);
-
-                                    // Generar intervalos y dejarlos listos en el input oculto
                                     const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
                                     intervalosInput.value = JSON.stringify(intervalos);
                                 });
 
-                                // Envío del formulario:
-                                // - si no está finalizado, fija hora de fin ahora
-                                // - genera intervalos automáticamente
-                                form.addEventListener("submit", (e) => {
+                                form.addEventListener("submit", () => {
                                     let t = loadTurno();
                                     if (!t || !t.inicio) {
-                                        // Si nunca iniciaron, forzamos inicio ahora (opcional)
                                         const inicio = nowHHMM();
                                         t = { inicio, fin: null, activo: true };
-                                        saveTurno(t);
-                                        setUIInicio(inicio);
+                                        saveTurno(t); setUIInicio(inicio);
                                     }
                                     if (!t.fin) {
-                                        // Si no finalizaron, fijamos fin ahora
                                         const fin = nowHHMM();
-                                        t.fin = fin;
-                                        t.activo = false;
-                                        saveTurno(t);
-                                        setUIFinalizado(fin);
+                                        t.fin = fin; t.activo = false; saveTurno(t); setUIFinalizado(fin);
                                     }
-                                    // Poner los valores en los inputs visibles
-                                    elInicio.value = t.inicio;
-                                    elFin.value = t.fin;
-
-                                    // Preparar intervalos
+                                    elInicio.value = t.inicio; elFin.value = t.fin;
                                     const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
                                     intervalosInput.value = JSON.stringify(intervalos);
-
-                                    // IMPORTANTE: si tu endpoint /admin/consumo
-                                    // espera múltiples filas, allí (en el backend)
-                                    // parsea $_POST['intervalos'] (JSON) y crea
-                                    // N registros con cada tramo.
-                                    //
-                                    // Ejemplo PHP (idea):
-                                    // $intervalos = json_decode($_POST['intervalos'], true);
-                                    // foreach ($intervalos as $slot) { insertar($slot['desde'], $slot['hasta'], ...); }
-
-                                    // Tras enviar, limpiamos el estado local del turno
                                     clearTurno();
                                 });
 
-                                // Reset manual limpia el estado del turno
                                 btnLimpiar.addEventListener("click", () => {
-                                    clearTurno();
-                                    setUIEsperando();
-                                    intervalosInput.value = "[]";
+                                    clearTurno(); setUIEsperando(); intervalosInput.value = "[]";
                                 });
+                            </script>
+
+                            <!-- ====== Gestión de MÚLTIPLES personas (localStorage por día) ====== -->
+                            <script>
+                            (function(){
+                              const LS_MULTI = 'empaque_turnos_v1';
+                              const fechaHoy = () => (new Date()).toISOString().slice(0,10);
+                              const pad2b = n => String(n).padStart(2,'0');
+                              const nowHHMMb = () => { const d=new Date(); return `${pad2b(d.getHours())}:${pad2b(d.getMinutes())}`; };
+
+                              function loadAllDays(){ try { return JSON.parse(localStorage.getItem(LS_MULTI) || '{}'); } catch { return {}; } }
+                              function saveAllDays(map){ localStorage.setItem(LS_MULTI, JSON.stringify(map)); }
+                              function loadDay(day){ const all = loadAllDays(); return Array.isArray(all[day]) ? all[day] : []; }
+                              function saveDay(day, arr){ const all = loadAllDays(); all[day] = arr; saveAllDays(all); }
+                              function uid(){ return 't_'+Math.random().toString(36).slice(2,9); }
+
+                              const selPersonal = document.querySelector('select[name="personal[]"]');
+                              const btnIniciarSeleccion = document.getElementById('btnIniciarSeleccion');
+                              const btnVerDetalle = document.getElementById('btnVerDetalle');
+                              const btnFinalizarMiTurno = document.getElementById('btnFinalizarMiTurno');
+                              const tbodyDetalle = document.getElementById('tbodyDetalle');
+                              const fechaHoyLbl = document.getElementById('fechaHoyLbl');
+
+                              const inpInicio = document.getElementById('hora_inicio');
+                              const inpFin    = document.getElementById('hora_fin');
+                              const form      = document.getElementById('formConsumo');
+
+                              let modalDetalle;
+                              document.addEventListener('DOMContentLoaded', () => {
+                                const el = document.getElementById('modalDetalle');
+                                if (window.bootstrap && el) modalDetalle = new bootstrap.Modal(el);
+                              });
+
+                              btnIniciarSeleccion.addEventListener('click', () => {
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                const seleccionados = Array.from(selPersonal.selectedOptions).map(o => o.value);
+                                if (seleccionados.length === 0) { alert('Selecciona al menos una persona.'); return; }
+                                const ahora = nowHHMMb();
+                                let iniciados = 0, omitidos = [];
+                                seleccionados.forEach(persona => {
+                                  const yaActivo = lista.find(r => r.persona === persona && r.estado === 'activo');
+                                  if (yaActivo) omitidos.push(persona);
+                                  else { lista.push({ id: uid(), persona, inicio: ahora, fin: null, estado: 'activo' }); iniciados++; }
+                                });
+                                saveDay(day, lista);
+                                if (iniciados) alert(`Iniciados ${iniciados} turno(s) a las ${ahora}.`);
+                                if (omitidos.length) alert(`Omitidos (ya activos): ${omitidos.join(', ')}`);
+                              });
+
+                              btnVerDetalle.addEventListener('click', () => {
+                                renderTablaDetalle();
+                                fechaHoyLbl.textContent = fechaHoy();
+                                modalDetalle?.show();
+                              });
+
+                              btnFinalizarMiTurno.addEventListener('click', () => {
+                                const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
+                                if (personas.length !== 1) { alert('Selecciona exactamente 1 persona para finalizar su turno.'); return; }
+                                const persona = personas[0];
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                const reg = lista.find(r => r.persona === persona && r.estado === 'activo');
+                                if (!reg) { alert('No hay turno activo para esa persona.'); return; }
+                                reg.fin = nowHHMMb(); reg.estado = 'finalizado'; saveDay(day, lista);
+                                inpInicio.value = reg.inicio; inpFin.value = reg.fin;
+                                alert(`Turno de ${persona} finalizado a las ${reg.fin}.`);
+                              });
+
+                              function renderTablaDetalle(){
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                tbodyDetalle.innerHTML = '';
+                                if (!lista.length) { tbodyDetalle.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sin registros hoy.</td></tr>'; return; }
+                                lista.forEach(reg => {
+                                  const tr = document.createElement('tr');
+                                  tr.innerHTML = `
+                                    <td>${reg.persona}</td>
+                                    <td>${reg.inicio ?? '-'}</td>
+                                    <td>${reg.fin ?? '--:--'}</td>
+                                    <td>${reg.estado}</td>
+                                    <td>
+                                      <div class="btn-group btn-group-sm" role="group">
+                                        <button class="btn btn-outline-primary btnCargar">Cargar</button>
+                                        <button class="btn btn-outline-success btnFinalizar"${reg.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
+                                        <button class="btn btn-outline-danger btnEliminar">Eliminar</button>
+                                      </div>
+                                    </td>`;
+                                  tr.querySelector('.btnCargar').addEventListener('click', () => cargarEnFormulario(reg.id));
+                                  tr.querySelector('.btnFinalizar').addEventListener('click', () => finalizarAhora(reg.id));
+                                  tr.querySelector('.btnEliminar').addEventListener('click', () => eliminarRegistro(reg.id));
+                                  tbodyDetalle.appendChild(tr);
+                                });
+                              }
+
+                              function cargarEnFormulario(id){
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                const reg = lista.find(r => r.id === id);
+                                if (!reg) return;
+                                Array.from(selPersonal.options).forEach(o => o.selected = false);
+                                const opt = Array.from(selPersonal.options).find(o => o.value === reg.persona);
+                                if (opt) opt.selected = true;
+                                inpInicio.value = reg.inicio || '';
+                                inpFin.value = reg.fin || '';
+                                modalDetalle?.hide();
+                              }
+
+                              function finalizarAhora(id){
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                const reg = lista.find(r => r.id === id);
+                                if (!reg) return;
+                                if (reg.estado === 'finalizado') { alert('Ese registro ya está finalizado.'); return; }
+                                reg.fin = nowHHMMb(); reg.estado = 'finalizado'; saveDay(day, lista);
+                                renderTablaDetalle();
+                              }
+
+                              function eliminarRegistro(id){
+                                const day = fechaHoy();
+                                let lista = loadDay(day);
+                                if (!confirm('¿Eliminar este registro local?')) return;
+                                lista = lista.filter(r => r.id !== id);
+                                saveDay(day, lista);
+                                renderTablaDetalle();
+                              }
+
+                              // Al enviar: si hay exactamente 1 persona seleccionada, usa su registro del día
+                              form.addEventListener('submit', () => {
+                                const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
+                                if (personas.length === 1) {
+                                  const day = fechaHoy();
+                                  const lista = loadDay(day);
+                                  const reg = lista.find(r => r.persona === personas[0]);
+                                  if (reg) {
+                                    if (!inpInicio.value) inpInicio.value = reg.inicio || '';
+                                    if (!inpFin.value)    inpFin.value    = reg.fin || nowHHMMb();
+                                  }
+                                }
+                              });
+
+                            })();
                             </script>
                         </div>
                     </div>
