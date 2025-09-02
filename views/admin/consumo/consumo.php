@@ -425,17 +425,17 @@
                               });
 
                               // (Opcional) al enviar, si falta hora y existe un grupo con EXACTA selección, completar
-                              form.addEventListener('submit', ()=>{
-                                const seleccion = Array.from(selPersonal.selectedOptions).map(o=>o.value).sort().join('|');
-                                const day = fechaHoy();
-                                const lista = loadDay(day);
-                                const match = lista.find(g => g.personas.slice().sort().join('|') === seleccion);
-                                if (match) {
-                                  if (!inpInicio.value) inpInicio.value = match.inicio || '';
-                                  if (!inpFin.value)    inpFin.value    = match.fin || '';
-                                  if (!inpGrupoId.value) inpGrupoId.value = match.id;
-                                }
-                              });
+                            //   form.addEventListener('submit', ()=>{
+                            //     const seleccion = Array.from(selPersonal.selectedOptions).map(o=>o.value).sort().join('|');
+                            //     const day = fechaHoy();
+                            //     const lista = loadDay(day);
+                            //     const match = lista.find(g => g.personas.slice().sort().join('|') === seleccion);
+                            //     if (match) {
+                            //       if (!inpInicio.value) inpInicio.value = match.inicio || '';
+                            //       if (!inpFin.value)    inpFin.value    = match.fin || '';
+                            //       if (!inpGrupoId.value) inpGrupoId.value = match.id;
+                            //     }
+                            //   });
 
                               // Limpiar
                               btnLimpiar.addEventListener('click', ()=>{
