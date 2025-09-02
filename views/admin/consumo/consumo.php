@@ -4,8 +4,6 @@
     </a>
 </header> -->
 
-
-
 <div class="page-heading" id="contenido-dinamico">
     <div class="page-title">
         <div class="row">
@@ -17,9 +15,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a><?php echo $nombre; ?></a></li>
-                        <!--  cerrar sesión -->
                         <li class="breadcrumb-item"><a href="/cerrarSesion">Cerrar Sesión</a></li>
-
                     </ol>
                 </nav>
             </div>
@@ -39,19 +35,15 @@
     <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
         <script>
             window.addEventListener('DOMContentLoaded', function() {
-                // Mostrar el toast
                 var toastEl = document.getElementById('toastExito');
                 var toast = new bootstrap.Toast(toastEl);
                 toast.show();
-
-                // Quitar el parámetro ?exito=1 de la URL sin recargar
                 const url = new URL(window.location);
                 url.searchParams.delete('exito');
                 window.history.replaceState({}, document.title, url.toString());
             });
         </script>
     <?php endif; ?>
-
 
     <section class="section">
         <div class="card">
@@ -71,39 +63,14 @@
                     <div class="card-header">
                         <h4 class="card-title">REGISTRO DE CONTROL EMPAQUE</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
-
-
                     </div>
+
                     <div class="card-content">
                         <div class="card-body">
-
-                            <!-- agregar horas de trabajo con post porqe se guarda en otro formulario  -->
-
-                            <!-- validar que sea el usario admin para poder agregar horas -->
-                            <!-- <?php if ($email == 'pruebas@megaecuador.com') { ?>
-                                <form action="/admin/horas_trabajo" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-2 col-12">
-                                            <div class="form-group">
-                                                <label for="hora_trabajo">Horas de Trabajo</label>
-                                                <input type="time" id="hora_trabajo" class="form-control"
-                                                    placeholder="Horas de Trabajo" name="hora_trabajo">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Agregar Horas</button>
-                                </form>
-                            <?php } ?> -->
-
-
-
-
-                            <form class="form" method="POST" action="/admin/consumo">
+                            <form class="form" method="POST" action="/admin/consumo" id="formConsumo">
                                 <div class="row">
 
-
-
-                                    <!-- horas de trabajo -->
+                                    <!-- Horas de trabajo (tu módulo con contraseña) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
@@ -118,27 +85,19 @@
                                     </div>
 
                                     <script>
-                                        // ====== CONFIGURA AQUÍ TU CONTRASEÑA ======
+                                        // ====== CONFIG CONTRASEÑA HORAS DE TRABAJO ======
                                         const PASSWORD = "1234";
-                                        // ==========================================
-
-                                        const KEY_VAL = "horas_trabajo_val"; // almacena la hora "HH:MM"
-                                        const KEY_LOCKED = "horas_trabajo_lock"; // "1" si ya pasó la primera vez
-
+                                        const KEY_VAL = "horas_trabajo_val";
+                                        const KEY_LOCKED = "horas_trabajo_lock";
                                         const input = document.getElementById("horas_trabajo");
                                         const btnEditar = document.getElementById("btnEditarHoras");
                                         const btnSave = document.getElementById("btnGuardarBloquear");
                                         const btnCancel = document.getElementById("btnCancelar");
                                         const estado = document.getElementById("estadoHoras");
-
                                         let editando = false;
                                         let valorAntes = null;
 
-                                        function normalizar(t) {
-                                            return (t ?? "").toString().normalize("NFKC").trim();
-                                        }
-
-                                        // ---- Estado visual ----
+                                        function normalizar(t) { return (t ?? "").toString().normalize("NFKC").trim(); }
                                         function setBloqueado(msg = "Bloqueado") {
                                             input.readOnly = true;
                                             btnEditar.disabled = false;
@@ -149,7 +108,6 @@
                                             estado.textContent = msg;
                                             editando = false;
                                         }
-
                                         function setEditando(msg = "Editando…") {
                                             input.readOnly = false;
                                             btnEditar.disabled = true;
@@ -161,24 +119,17 @@
                                             editando = true;
                                             input.focus();
                                         }
-
-                                        // ---- Flujo ----
                                         (function init() {
                                             const guardado = localStorage.getItem(KEY_VAL);
                                             const locked = localStorage.getItem(KEY_LOCKED) === "1";
-
                                             if (guardado) input.value = guardado;
-
                                             if (!locked) {
-                                                // PRIMERA VEZ: desbloqueado sin contraseña
                                                 valorAntes = input.value || "";
                                                 setEditando("Primera configuración: elige la hora y guarda para bloquear");
                                             } else {
-                                                // Ya configurado alguna vez: empieza bloqueado
                                                 setBloqueado("Bloqueado (pulse Editar para ingresar contraseña)");
                                             }
                                         })();
-
                                         btnEditar.addEventListener("click", () => {
                                             if (editando) return;
                                             const ingreso = prompt("Ingrese la contraseña para editar este campo:");
@@ -190,7 +141,6 @@
                                                 alert("Contraseña incorrecta.");
                                             }
                                         });
-
                                         btnSave.addEventListener("click", () => {
                                             const val = input.value;
                                             if (!/^\d{2}:\d{2}$/.test(val)) {
@@ -198,52 +148,31 @@
                                                 return;
                                             }
                                             localStorage.setItem(KEY_VAL, val);
-                                            // A partir de ahora queda marcado como "ya configurado"
                                             localStorage.setItem(KEY_LOCKED, "1");
                                             setBloqueado("Bloqueado (cambios guardados)");
                                         });
-
                                         btnCancel.addEventListener("click", () => {
                                             input.value = valorAntes ?? localStorage.getItem(KEY_VAL) ?? "";
                                             const locked = localStorage.getItem(KEY_LOCKED) === "1";
                                             if (locked) {
                                                 setBloqueado("Bloqueado (sin cambios)");
                                             } else {
-                                                // Sigue siendo primera vez: permanece editable
                                                 setEditando("Primera configuración (sin cambios)");
                                             }
                                         });
                                     </script>
 
-
-
-
-
-                                    <!-- fecha -->
-
-                                    <!-- <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="fecha">Fecha</label>
-                                            <input type="date" id="fecha" class="form-control"
-                                                placeholder="Fecha" name="fecha">
-                                        </div>
-                                    </div> -->
-                                    <!-- turno -->
-
-
+                                    <!-- Turno -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="turno">Turno</label>
-                                            <input type="number" id="turno" class="form-control"
-                                                placeholder="Turno" name="turno">
+                                            <input type="number" id="turno" class="form-control" placeholder="Turno" name="turno">
                                         </div>
                                     </div>
 
-
+                                    <!-- Personal -->
                                     <div class="col-md-6 col-12">
-
                                         <label for="personal">Escoja el Personal</label>
-                                        <!-- nombre multiple -->
                                         <div class="form-group">
                                             <select class="choices form-select select-light-danger" multiple="multiple" name="personal[]">
                                                 <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
@@ -275,10 +204,9 @@
                                                 <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
                                             </select>
                                         </div>
-
                                     </div>
 
-                                    <!-- PRODUCTO SELECCIONAR NO MULTIPLE -->
+                                    <!-- Producto -->
                                     <div class="col-md-6 col-12">
                                         <label for="producto">Escoja el Producto</label>
                                         <div class="form-group">
@@ -296,53 +224,231 @@
                                         </div>
                                     </div>
 
-
-
+                                    <!-- Medida -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="medidas">Medida</label>
-                                            <input type="text" id="medidas" class="form-control"
-                                                placeholder="Medida" name="medidas">
-                                        </div>
-                                    </div>
-                                    <!-- hora de inicio  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_inicio">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control"
-                                                placeholder="Hora de Inicio" name="hora_inicio">
+                                            <input type="text" id="medidas" class="form-control" placeholder="Medida" name="medidas">
                                         </div>
                                     </div>
 
-                                    <!-- hora de fin  -->
+                                    <!-- Hora de Inicio (auto y bloqueada) -->
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
+                                                <div class="d-flex" style="gap:.5rem">
+                                                    <button type="button" class="btn btn-success btn-sm" id="btnIniciarTurno">Iniciar turno</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" id="btnFinalizarTurno" disabled>Finalizar turno</button>
+                                                </div>
+                                            </div>
+                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" readonly>
+                                            <small id="estadoTurno" class="form-text text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hora de fin (auto) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control"
-                                                placeholder="Hora de Fin" name="hora_fin">
+                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin" readonly>
                                         </div>
                                     </div>
 
-                                    <!-- cantidad  -->
+                                    <!-- Cantidad -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad</label>
-                                            <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad">
+                                            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad" name="cantidad">
                                         </div>
                                     </div>
 
+                                    <!-- Input oculto para enviar los intervalos generados -->
+                                    <input type="hidden" name="intervalos" id="intervalos_json" value="[]">
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="btnLimpiar">Limpiar</button>
                                     </div>
                                 </div>
                             </form>
+
+                            <script>
+                                // ====== CONFIG INTERVALOS ======
+                                const SLOT_MINUTES = 60; // 60 = 1 hora; cambia a 30 o 15 si quieres
+
+                                // ====== KEYS localStorage para estado del turno ======
+                                const LS_TURNO = "consumo_turno"; // {inicio:"HH:MM", fin:null| "HH:MM", activo:true|false}
+
+                                // -------- Utilidades de hora --------
+                                const pad2 = n => String(n).padStart(2, "0");
+                                const nowHHMM = () => {
+                                    const d = new Date();
+                                    return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+                                };
+                                function parseHHMM(hhmm) {
+                                    const [h, m] = hhmm.split(":").map(Number);
+                                    const d = new Date();
+                                    d.setHours(h, m, 0, 0);
+                                    return d;
+                                }
+                                function addMinutes(date, minutes) {
+                                    const d = new Date(date);
+                                    d.setMinutes(d.getMinutes() + minutes);
+                                    return d;
+                                }
+                                function generarIntervalos(hhmmInicio, hhmmFin, slotMin) {
+                                    const desde = parseHHMM(hhmmInicio);
+                                    const hasta = parseHHMM(hhmmFin);
+                                    const out = [];
+                                    let cur = new Date(desde);
+                                    while (cur < hasta) {
+                                        const nxt = addMinutes(cur, slotMin);
+                                        out.push({
+                                            desde: `${pad2(cur.getHours())}:${pad2(cur.getMinutes())}`,
+                                            hasta: `${pad2(nxt.getHours())}:${pad2(nxt.getMinutes())}`
+                                        });
+                                        cur = nxt;
+                                    }
+                                    return out;
+                                }
+
+                                // -------- UI refs --------
+                                const elInicio = document.getElementById("hora_inicio");
+                                const elFin = document.getElementById("hora_fin");
+                                const elEstado = document.getElementById("estadoTurno");
+                                const btnIniciar = document.getElementById("btnIniciarTurno");
+                                const btnFinalizar = document.getElementById("btnFinalizarTurno");
+                                const form = document.getElementById("formConsumo");
+                                const intervalosInput = document.getElementById("intervalos_json");
+                                const btnLimpiar = document.getElementById("btnLimpiar");
+
+                                // -------- Estado turno --------
+                                function loadTurno() {
+                                    const raw = localStorage.getItem(LS_TURNO);
+                                    return raw ? JSON.parse(raw) : null;
+                                }
+                                function saveTurno(obj) {
+                                    localStorage.setItem(LS_TURNO, JSON.stringify(obj));
+                                }
+                                function clearTurno() {
+                                    localStorage.removeItem(LS_TURNO);
+                                }
+
+                                function setUIInicio(inicio) {
+                                    elInicio.value = inicio;
+                                    elInicio.readOnly = true;
+                                    btnIniciar.disabled = true;
+                                    btnFinalizar.disabled = false;
+                                    elEstado.textContent = "Turno iniciado";
+                                }
+                                function setUIEsperando() {
+                                    elInicio.value = "";
+                                    elFin.value = "";
+                                    elInicio.readOnly = true;
+                                    elFin.readOnly = true;
+                                    btnIniciar.disabled = false;
+                                    btnFinalizar.disabled = true;
+                                    elEstado.textContent = "Sin turno activo";
+                                }
+                                function setUIFinalizado(fin) {
+                                    elFin.value = fin;
+                                    btnFinalizar.disabled = true;
+                                    elEstado.textContent = "Turno finalizado";
+                                }
+
+                                // Al cargar
+                                (function initTurno() {
+                                    const t = loadTurno();
+                                    if (t && t.activo && t.inicio) {
+                                        setUIInicio(t.inicio);
+                                    } else {
+                                        setUIEsperando();
+                                    }
+                                })();
+
+                                // Iniciar turno: fija hora actual y bloquea
+                                btnIniciar.addEventListener("click", () => {
+                                    const t = loadTurno();
+                                    if (t && t.activo) {
+                                        alert("Ya hay un turno activo iniciado a las " + t.inicio);
+                                        return;
+                                    }
+                                    const inicio = nowHHMM();
+                                    saveTurno({ inicio, fin: null, activo: true });
+                                    setUIInicio(inicio);
+                                });
+
+                                // Finalizar turno: fija hora actual, genera intervalos y no envía aún
+                                btnFinalizar.addEventListener("click", () => {
+                                    const t = loadTurno();
+                                    if (!t || !t.activo) {
+                                        alert("No hay un turno activo.");
+                                        return;
+                                    }
+                                    const fin = nowHHMM();
+                                    t.fin = fin;
+                                    t.activo = false;
+                                    saveTurno(t);
+                                    setUIFinalizado(fin);
+
+                                    // Generar intervalos y dejarlos listos en el input oculto
+                                    const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
+                                    intervalosInput.value = JSON.stringify(intervalos);
+                                });
+
+                                // Envío del formulario:
+                                // - si no está finalizado, fija hora de fin ahora
+                                // - genera intervalos automáticamente
+                                form.addEventListener("submit", (e) => {
+                                    let t = loadTurno();
+                                    if (!t || !t.inicio) {
+                                        // Si nunca iniciaron, forzamos inicio ahora (opcional)
+                                        const inicio = nowHHMM();
+                                        t = { inicio, fin: null, activo: true };
+                                        saveTurno(t);
+                                        setUIInicio(inicio);
+                                    }
+                                    if (!t.fin) {
+                                        // Si no finalizaron, fijamos fin ahora
+                                        const fin = nowHHMM();
+                                        t.fin = fin;
+                                        t.activo = false;
+                                        saveTurno(t);
+                                        setUIFinalizado(fin);
+                                    }
+                                    // Poner los valores en los inputs visibles
+                                    elInicio.value = t.inicio;
+                                    elFin.value = t.fin;
+
+                                    // Preparar intervalos
+                                    const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
+                                    intervalosInput.value = JSON.stringify(intervalos);
+
+                                    // IMPORTANTE: si tu endpoint /admin/consumo
+                                    // espera múltiples filas, allí (en el backend)
+                                    // parsea $_POST['intervalos'] (JSON) y crea
+                                    // N registros con cada tramo.
+                                    //
+                                    // Ejemplo PHP (idea):
+                                    // $intervalos = json_decode($_POST['intervalos'], true);
+                                    // foreach ($intervalos as $slot) { insertar($slot['desde'], $slot['hasta'], ...); }
+
+                                    // Tras enviar, limpiamos el estado local del turno
+                                    clearTurno();
+                                });
+
+                                // Reset manual limpia el estado del turno
+                                btnLimpiar.addEventListener("click", () => {
+                                    clearTurno();
+                                    setUIEsperando();
+                                    intervalosInput.value = "[]";
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 </div>
