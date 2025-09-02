@@ -296,164 +296,198 @@
                                     </div>
                                 </div>
                             </form>
+<script>
+(function(){
+  "use strict";
 
-                            <script>
-                                /* ====== Gestión de GRUPOS (múltiples personas) ====== */
-                                (function() {
-                                    // LS: { "YYYY-MM-DD": [ { id, personas:[...], inicio, fin, estado } ] }
-                                    const LS_GRUPOS = 'empaque_grupos_v1';
-                                    const fechaHoy = () => (new Date()).toISOString().slice(0, 10);
-                                    const pad2 = n => String(n).padStart(2, '0');
-                                    const nowHHMM = () => {
-                                        const d = new Date();
-                                        return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-                                    };
-                                    const uid = () => 'g_' + Math.random().toString(36).slice(2, 9);
+  /* =========================================================
+     1) HORAS DE TRABAJO (bloqueo con contraseña)
+     ========================================================= */
+  const PASSWORD    = "1234";
+  const KEY_VAL     = "horas_trabajo_val";
+  const KEY_LOCKED  = "horas_trabajo_lock";
+  const $horas      = document.getElementById("horas_trabajo");
+  const $btnEdit    = document.getElementById("btnEditarHoras");
+  const $btnSave    = document.getElementById("btnGuardarBloquear");
+  const $btnCancel  = document.getElementById("btnCancelar");
+  const $estado     = document.getElementById("estadoHoras");
 
-                                    // Storage helpers
-                                    const loadAll = () => {
-                                        try {
-                                            return JSON.parse(localStorage.getItem(LS_GRUPOS) || '{}');
-                                        } catch {
-                                            return {};
-                                        }
-                                    };
-                                    const saveAll = (obj) => localStorage.setItem(LS_GRUPOS, JSON.stringify(obj));
-                                    const loadDay = (day) => (loadAll()[day] || []);
+  let editando = false, valorAntes = null;
+  const norm = t => (t ?? "").toString().normalize("NFKC").trim();
 
-                                    function saveDay(day, arr) {
-                                        const all = loadAll();
-                                        all[day] = arr;
-                                        saveAll(all);
-                                    }
+  function setBloqueado(msg="Bloqueado"){
+    $horas.readOnly = true;
+    $btnEdit.disabled = false;  $btnSave.disabled = true; $btnCancel.disabled = true;
+    $btnEdit.className = "btn btn-secondary"; $btnEdit.textContent = "Editar";
+    $estado.textContent = msg;  editando = false;
+  }
+  function setEditando(msg="Editando…"){
+    $horas.readOnly = false;
+    $btnEdit.disabled = true;   $btnSave.disabled = false; $btnCancel.disabled = false;
+    $btnEdit.className = "btn btn-success"; $btnEdit.textContent = "Editar";
+    $estado.textContent = msg;  editando = true; $horas.focus();
+  }
 
-                                    // Refs
-                                    const form = document.getElementById('formConsumo');
-                                    let selPersonal = document.querySelector('select[name="personal[]"]');
-                                    const btnIniciarSeleccion = document.getElementById('btnIniciarSeleccion');
-                                    const btnVerDetalle = document.getElementById('btnVerDetalle');
-                                    const tbodyDetalle = document.getElementById('tbodyDetalle');
-                                    const fechaHoyLbl = document.getElementById('fechaHoyLbl');
-                                    const inpInicio = document.getElementById('hora_inicio');
-                                    const inpFin = document.getElementById('hora_fin');
-                                    const inpGrupoId = document.getElementById('grupo_id');
-                                    const btnLimpiar = document.getElementById('btnLimpiar');
+  (function initHoras(){
+    if (!$horas) return;
+    const val = localStorage.getItem(KEY_VAL);
+    const locked = localStorage.getItem(KEY_LOCKED) === "1";
+    if (val) $horas.value = val;
+    if (!locked){ valorAntes = $horas.value || ""; setEditando("Primera configuración: elige la hora y guarda para bloquear"); }
+    else setBloqueado("Bloqueado (pulse Editar para ingresar contraseña)");
+  })();
 
-                                    // === Soporte robusto para Choices.js o <select> nativo ===
-                                    let personalChoices = null;
+  $btnEdit?.addEventListener("click", () => {
+    if (editando) return;
+    const ingreso = prompt("Ingrese la contraseña para editar este campo:");
+    if (ingreso === null) return;
+    if (norm(ingreso) === norm(PASSWORD)) { valorAntes = $horas.value; setEditando(); }
+    else alert("Contraseña incorrecta.");
+  });
 
-                                    function ensureChoicesInstance() {
-                                        // si ya existe, úsala
-                                        if (personalChoices) return personalChoices;
+  $btnSave?.addEventListener("click", () => {
+    const val = $horas.value;
+    if (!/^\d{2}:\d{2}$/.test(val)){ alert("Ingrese una hora válida (HH:MM)."); return; }
+    localStorage.setItem(KEY_VAL, val);
+    localStorage.setItem(KEY_LOCKED, "1");
+    setBloqueado("Bloqueado (cambios guardados)");
+  });
 
-                                        // si la página NO la creó, la creamos nosotros (si Choices está disponible)
-                                        if (window.Choices) {
-                                            try {
-                                                personalChoices = new Choices(selPersonal, {
-                                                    removeItemButton: true,
-                                                    shouldSort: false
-                                                });
-                                            } catch (e) {
-                                                personalChoices = null;
-                                            }
-                                        }
-                                        return personalChoices;
-                                    }
+  $btnCancel?.addEventListener("click", () => {
+    $horas.value = valorAntes ?? localStorage.getItem(KEY_VAL) ?? "";
+    const locked = localStorage.getItem(KEY_LOCKED) === "1";
+    if (locked) setBloqueado("Bloqueado (sin cambios)");
+    else setEditando("Primera configuración (sin cambios)");
+  });
 
-                                    function setSelectedPeople(values) {
-                                        // 1) marcar en el <select>
-                                        Array.from(selPersonal.options).forEach(o => o.selected = values.includes(o.value));
+  /* =========================================================
+     2) GESTIÓN DE GRUPOS (múltiples personas) + Choices.js
+     ========================================================= */
+  // Estructura en localStorage:
+  // LS_GRUPOS = { "YYYY-MM-DD": [ { id, personas:[...], inicio:"HH:MM", fin:null|"HH:MM", estado:"activo"|"finalizado" } ] }
+  const LS_GRUPOS   = "empaque_grupos_v1";
+  const $form       = document.getElementById("formConsumo");
+  const $select     = document.getElementById("personalSelect"); // <select multiple name="personal[]">
+  const $btnInitSel = document.getElementById("btnIniciarSeleccion");
+  const $btnVerDet  = document.getElementById("btnVerDetalle");
+  const $tbody      = document.getElementById("tbodyDetalle");
+  const $lblHoy     = document.getElementById("fechaHoyLbl");
+  const $horaInicio = document.getElementById("hora_inicio");
+  const $horaFin    = document.getElementById("hora_fin");
+  const $grupoId    = document.getElementById("grupo_id");
+  const $btnLimpiar = document.getElementById("btnLimpiar");
 
-                                        // 2) si hay Choices, reflejar visualmente
-                                        const inst = ensureChoicesInstance();
-                                        if (inst) {
-                                            inst.removeActiveItems();
-                                            // setChoiceByValue marca como seleccionado los ya existentes
-                                            values.forEach(v => inst.setChoiceByValue(v));
-                                        }
+  const pad2 = n => String(n).padStart(2,"0");
+  const todayISO = () => (new Date()).toISOString().slice(0,10);
+  const nowHHMM  = () => { const d=new Date(); return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`; };
+  const uid      = () => "g_" + Math.random().toString(36).slice(2,9);
 
-                                        // 3) notificar cambios a cualquier listener
-                                        selPersonal.dispatchEvent(new Event('change', {
-                                            bubbles: true
-                                        }));
-                                        selPersonal.dispatchEvent(new Event('input', {
-                                            bubbles: true
-                                        }));
-                                    }
+  const loadAll  = () => { try { return JSON.parse(localStorage.getItem(LS_GRUPOS) || "{}"); } catch { return {}; } };
+  const saveAll  = (obj) => localStorage.setItem(LS_GRUPOS, JSON.stringify(obj));
+  const loadDay  = (day) => (loadAll()[day] || []);
+  const saveDay  = (day, arr) => { const all = loadAll(); all[day] = arr; saveAll(all); };
 
-                                    // Modal
-                                    let modalDetalle;
-                                    document.addEventListener('DOMContentLoaded', () => {
-                                        const el = document.getElementById('modalDetalle');
-                                        if (window.bootstrap && el) modalDetalle = new bootstrap.Modal(el);
-                                        // si el tema ya inicializó Choices externamente, intenta capturar instancia existente:
-                                        if (!personalChoices && window.Choices && selPersonal.closest('.choices')) {
-                                            try {
-                                                personalChoices = new Choices(selPersonal, {
-                                                    removeItemButton: true,
-                                                    shouldSort: false
-                                                });
-                                            } catch (e) {}
-                                        }
-                                    });
+  // === Choices.js ===
+  let choicesInst = null;
 
-                                    // Iniciar grupo con selección actual
-                                    btnIniciarSeleccion.addEventListener('click', (e) => {
-                                        e.preventDefault();
-                                        const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
-                                        if (personas.length === 0) {
-                                            alert('Selecciona al menos una persona.');
-                                            return;
-                                        }
+  function ensureChoicesInstance(){
+    if (!$select) return null;
 
-                                        const day = fechaHoy();
-                                        const lista = loadDay(day);
+    // Si ya la creamos antes, reutilizar
+    if (choicesInst) return choicesInst;
 
-                                        // Evitar que alguien esté ya en otro grupo ACTIVO
-                                        const enActivo = new Set();
-                                        lista.filter(g => g.estado === 'activo').forEach(g => g.personas.forEach(p => enActivo.add(p)));
-                                        const conflicto = personas.filter(p => enActivo.has(p));
-                                        if (conflicto.length) {
-                                            alert('No se pudo iniciar: ya están activos -> ' + conflicto.join(', '));
-                                            return;
-                                        }
+    // Si el tema la creó, a veces queda en $select.choices / _choices
+    if ($select.choices || $select._choices){
+      choicesInst = $select.choices || $select._choices;
+      return choicesInst;
+    }
 
-                                        const grupo = {
-                                            id: uid(),
-                                            personas: personas.slice(),
-                                            inicio: nowHHMM(),
-                                            fin: null,
-                                            estado: 'activo'
-                                        };
-                                        lista.push(grupo);
-                                        saveDay(day, lista);
-                                        alert('Grupo iniciado a las ' + grupo.inicio);
-                                    });
+    // Si existe un wrapper .choices (UI vieja), lo reemplazamos por el select para evitar doble UI
+    const wrap = $select.closest(".choices");
+    if (wrap) wrap.replaceWith($select);
 
-                                    // Ver detalle
-                                    btnVerDetalle.addEventListener('click', (e) => {
-                                        e.preventDefault();
-                                        fechaHoyLbl.textContent = fechaHoy();
-                                        renderTabla();
-                                        modalDetalle?.show();
-                                    });
+    if (window.Choices){
+      choicesInst = new Choices($select, { removeItemButton: true, shouldSort: false });
+    }
+    return choicesInst; // puede ser null si no hay Choices.js -> se usa select nativo
+  }
 
-                                    // Tabla 1 fila por grupo
-                                    function renderTabla() {
-                                        const day = fechaHoy();
-                                        const lista = loadDay(day);
-                                        tbodyDetalle.innerHTML = '';
-                                        if (!lista.length) {
-                                            tbodyDetalle.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sin grupos hoy.</td></tr>';
-                                            return;
-                                        }
-                                        lista.forEach(g => {
-                                            const tr = document.createElement('tr');
-                                            const personasHTML = g.personas.map(n => `<span class="badge bg-light text-dark me-1">${n}</span>`).join(' ');
-                                            tr.innerHTML = `
+  // Selecciona visualmente las personas (funciona con o sin Choices)
+  function setSelectedPeople(values){
+    if (!$select) return;
+    if (!Array.isArray(values)) values = [];
+
+    // marcar nativo
+    Array.from($select.options).forEach(o => { o.selected = values.includes(o.value); });
+
+    // UI de Choices
+    const inst = ensureChoicesInstance();
+    if (inst){
+      inst.removeActiveItems();
+      // Asegura que los valores existen como opciones; si no, se ignoran
+      inst.setChoiceByValue(values);
+    }
+
+    // Notificar cambios por si hay validaciones
+    $select.dispatchEvent(new Event("change", { bubbles: true }));
+    $select.dispatchEvent(new Event("input",  { bubbles: true }));
+  }
+
+  // Bootstrap Modal
+  let modalDetalle = null;
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("modalDetalle");
+    if (window.bootstrap && el) modalDetalle = new bootstrap.Modal(el);
+    ensureChoicesInstance();
+  });
+
+  // Iniciar grupo con la selección actual
+  $btnInitSel?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const personas = Array.from($select.selectedOptions).map(o => o.value);
+    if (personas.length === 0){ alert("Selecciona al menos una persona."); return; }
+
+    const day   = todayISO();
+    const lista = loadDay(day);
+
+    // Ninguna persona puede estar en otro grupo ACTIVO
+    const enActivo = new Set();
+    lista.filter(g => g.estado === "activo").forEach(g => g.personas.forEach(p => enActivo.add(p)));
+    const conflicto = personas.filter(p => enActivo.has(p));
+    if (conflicto.length){ alert("No se pudo iniciar: ya están activos -> " + conflicto.join(", ")); return; }
+
+    lista.push({ id: uid(), personas: personas.slice(), inicio: nowHHMM(), fin: null, estado: "activo" });
+    saveDay(day, lista);
+    alert("Grupo iniciado.");
+  });
+
+  // Abrir modal de detalle
+  $btnVerDet?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if ($lblHoy) $lblHoy.textContent = todayISO();
+    renderTabla();
+    modalDetalle?.show();
+  });
+
+  // Render de la tabla (1 fila por grupo)
+  function renderTabla(){
+    if (!$tbody) return;
+    const day   = todayISO();
+    const lista = loadDay(day);
+    $tbody.innerHTML = "";
+
+    if (!lista.length){
+      $tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sin grupos hoy.</td></tr>';
+      return;
+    }
+
+    lista.forEach(g => {
+      const tr = document.createElement("tr");
+      const personasHTML = g.personas.map(n => `<span class="badge bg-light text-dark me-1">${n}</span>`).join(" ");
+      tr.innerHTML = `
         <td>${personasHTML}</td>
-        <td>${g.inicio ?? '--:--'}</td>
-        <td>${g.fin ?? '--:--'}</td>
+        <td>${g.inicio ?? "--:--"}</td>
+        <td>${g.fin ?? "--:--"}</td>
         <td>${g.estado}</td>
         <td>
           <div class="btn-group btn-group-sm" role="group">
@@ -462,83 +496,65 @@
             <button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>
           </div>
         </td>`;
-                                            tr.querySelector('.btnCargar').addEventListener('click', (ev) => {
-                                                ev.preventDefault();
-                                                cargarGrupoEnFormulario(g.id);
-                                            });
-                                            tr.querySelector('.btnFinalizar').addEventListener('click', (ev) => {
-                                                ev.preventDefault();
-                                                finalizarGrupoAhora(g.id);
-                                            });
-                                            tr.querySelector('.btnEliminar').addEventListener('click', (ev) => {
-                                                ev.preventDefault();
-                                                eliminarGrupo(g.id);
-                                            });
-                                            tbodyDetalle.appendChild(tr);
-                                        });
-                                    }
+      tr.querySelector(".btnCargar").addEventListener("click", (ev) => { ev.preventDefault(); cargarGrupoEnFormulario(g.id); });
+      tr.querySelector(".btnFinalizar").addEventListener("click", (ev) => { ev.preventDefault(); finalizarGrupoAhora(g.id); });
+      tr.querySelector(".btnEliminar").addEventListener("click", (ev) => { ev.preventDefault(); eliminarGrupo(g.id); });
+      $tbody.appendChild(tr);
+    });
+  }
 
-                                    // Acciones del modal
-                                    function cargarGrupoEnFormulario(id) {
-                                        const day = fechaHoy();
-                                        let lista = loadDay(day);
-                                        const idx = lista.findIndex(x => x.id === id);
-                                        if (idx === -1) return;
-                                        const g = lista[idx];
+  // Cargar grupo: marca personas + horas y elimina el grupo del LS
+  function cargarGrupoEnFormulario(id){
+    const day   = todayISO();
+    let   lista = loadDay(day);
+    const idx   = lista.findIndex(x => x.id === id);
+    if (idx === -1) return;
+    const g = lista[idx];
 
-                                        // 1) Seleccionar EXACTAMENTE las personas del grupo en el multiselect (visual)
-                                        setSelectedPeople(g.personas);
+    setSelectedPeople(g.personas);
+    if ($horaInicio) $horaInicio.value = g.inicio || "";
+    if ($horaFin)    $horaFin.value    = g.fin || "";
+    if ($grupoId)    $grupoId.value    = g.id;
 
-                                        // 2) Colocar horas (si fin es null, queda vacío)
-                                        inpInicio.value = g.inicio || '';
-                                        inpFin.value = g.fin || '';
+    // Elimina el grupo del storage (como pediste)
+    lista.splice(idx, 1);
+    saveDay(day, lista);
 
-                                        // 3) Guardar id del grupo (opcional para backend)
-                                        inpGrupoId.value = g.id;
+    modalDetalle?.hide();
+  }
 
-                                        // 4) Quitar el grupo del localStorage (como pediste)
-                                        lista.splice(idx, 1);
-                                        saveDay(day, lista);
+  function finalizarGrupoAhora(id){
+    const day   = todayISO();
+    const lista = loadDay(day);
+    const g = lista.find(x => x.id === id);
+    if (!g) return;
+    if (g.estado === "finalizado"){ alert("El grupo ya está finalizado."); return; }
+    g.fin = nowHHMM(); g.estado = "finalizado";
+    saveDay(day, lista);
+    renderTabla();
+  }
 
-                                        // 5) Cerrar modal
-                                        modalDetalle?.hide();
-                                    }
+  function eliminarGrupo(id){
+    const day   = todayISO();
+    let   lista = loadDay(day);
+    if (!confirm("¿Eliminar este grupo local?")) return;
+    lista = lista.filter(x => x.id !== id);
+    saveDay(day, lista);
+    renderTabla();
+  }
 
-                                    function finalizarGrupoAhora(id) {
-                                        const day = fechaHoy();
-                                        const lista = loadDay(day);
-                                        const g = lista.find(x => x.id === id);
-                                        if (!g) return;
-                                        if (g.estado === 'finalizado') {
-                                            alert('El grupo ya está finalizado.');
-                                            return;
-                                        }
-                                        g.fin = nowHHMM();
-                                        g.estado = 'finalizado';
-                                        saveDay(day, lista);
-                                        renderTabla();
-                                    }
+  // Limpiar formulario (manual, sin submit automático)
+  $btnLimpiar?.addEventListener("click", (e) => {
+    e.preventDefault();
+    $form?.reset();
+    setSelectedPeople([]);
+    if ($grupoId)    $grupoId.value = "";
+    if ($horaInicio) $horaInicio.value = "";
+    if ($horaFin)    $horaFin.value = "";
+  });
 
-                                    function eliminarGrupo(id) {
-                                        const day = fechaHoy();
-                                        let lista = loadDay(day);
-                                        if (!confirm('¿Eliminar este grupo local?')) return;
-                                        lista = lista.filter(x => x.id !== id);
-                                        saveDay(day, lista);
-                                        renderTabla();
-                                    }
-
-                                    // Limpiar formulario manual
-                                    btnLimpiar.addEventListener('click', (e) => {
-                                        e.preventDefault(); // evita reset “duro” si tu tema lo maneja distinto
-                                        form.reset();
-                                        setSelectedPeople([]); // limpia el multiselect
-                                        inpGrupoId.value = '';
-                                        inpInicio.value = '';
-                                        inpFin.value = '';
-                                    });
-                                })();
-                            </script>
+})();
+</script>
 
                         </div>
                     </div>
