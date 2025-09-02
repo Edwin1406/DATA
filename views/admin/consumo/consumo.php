@@ -156,7 +156,7 @@
                                             btnSave.disabled = false;
                                             btnCancel.disabled = false;
                                             btnEditar.className = "btn btn-success";
-                                            btnEditar.textContent = "Editar (desbloqueado)";
+                                            btnEditar.textContent = "Editar";
                                             estado.textContent = msg;
                                             editando = true;
                                             input.focus();
