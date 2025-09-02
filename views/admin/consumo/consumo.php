@@ -25,9 +25,7 @@
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
-                <div class="toast-body">
-                    ¡Registro guardado exitosamente!
-                </div>
+                <div class="toast-body">¡Registro guardado exitosamente!</div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
@@ -55,7 +53,6 @@
         </div>
     </section>
 
-    <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
@@ -70,7 +67,7 @@
                             <form class="form" method="POST" action="/admin/consumo" id="formConsumo">
                                 <div class="row">
 
-                                    <!-- Horas de trabajo (con contraseña) -->
+                                    <!-- Horas de trabajo (bloqueo con contraseña) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
@@ -85,7 +82,7 @@
                                     </div>
 
                                     <script>
-                                        /* ====== BLOQUEO HORAS TRABAJO ====== */
+                                        // ====== BLOQUEO HORAS TRABAJO ======
                                         const PASSWORD = "1234";
                                         const KEY_VAL = "horas_trabajo_val";
                                         const KEY_LOCKED = "horas_trabajo_lock";
@@ -201,7 +198,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Hora de Inicio (solo input, SIN botones al lado) -->
+                                    <!-- Hora de Inicio (solo input) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
@@ -258,18 +255,18 @@
                                             </div>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
 
-                                    <!-- (opcional) input oculto si quieres enviar algo adicional -->
+                                    <!-- (opcional) id del grupo -->
                                     <input type="hidden" name="grupo_id" id="grupo_id" value="">
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="btnLimpiar">Limpiar</button>
+                                        <button type="reset"  class="btn btn-light-secondary me-1 mb-1" id="btnLimpiar">Limpiar</button>
                                     </div>
                                 </div>
                             </form>
@@ -278,11 +275,9 @@
                             <script>
                             (function(){
                               /* Estructura por día (localStorage):
-                                 LS_GRUPOS = {
-                                   "YYYY-MM-DD": [
-                                     { id, personas:[...], inicio:"HH:MM", fin:null|"HH:MM", estado:"activo"|"finalizado" }
-                                   ]
-                                 }
+                                 LS_GRUPOS = { "YYYY-MM-DD": [
+                                   { id, personas:[...], inicio:"HH:MM", fin:null|"HH:MM", estado:"activo"|"finalizado" }
+                                 ] }
                               */
                               const LS_GRUPOS = 'empaque_grupos_v1';
                               const fechaHoy = () => (new Date()).toISOString().slice(0,10);
@@ -290,13 +285,13 @@
                               const nowHHMM = () => { const d=new Date(); return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`; };
                               const uid = () => 'g_'+Math.random().toString(36).slice(2,9);
 
-                              // Storage helpers
-                              const loadAll = () => { try { return JSON.parse(localStorage.getItem(LS_GRUPOS) || '{}'); } catch { return {}; } };
-                              const saveAll = (obj) => localStorage.setItem(LS_GRUPOS, JSON.stringify(obj));
-                              const loadDay = (day) => (loadAll()[day] || []);
+                              // Storage
+                              const loadAll  = () => { try { return JSON.parse(localStorage.getItem(LS_GRUPOS) || '{}'); } catch { return {}; } };
+                              const saveAll  = (obj) => localStorage.setItem(LS_GRUPOS, JSON.stringify(obj));
+                              const loadDay  = (day) => (loadAll()[day] || []);
                               function saveDay(day, arr){ const all = loadAll(); all[day] = arr; saveAll(all); }
 
-                              // UI refs
+                              // Refs
                               const selPersonal = document.querySelector('select[name="personal[]"]');
                               const btnIniciarSeleccion = document.getElementById('btnIniciarSeleccion');
                               const btnVerDetalle = document.getElementById('btnVerDetalle');
@@ -305,32 +300,36 @@
                               const inpInicio = document.getElementById('hora_inicio');
                               const inpFin = document.getElementById('hora_fin');
                               const inpGrupoId = document.getElementById('grupo_id');
-                              const form = document.getElementById('formConsumo');
                               const btnLimpiar = document.getElementById('btnLimpiar');
 
-                              // Modal bootstrap
+                              // Si usas Choices.js, al cambiar selección programática hay que disparar 'change'
+                              function setSelectedPeople(values){
+                                const opts = Array.from(selPersonal.options);
+                                opts.forEach(o => o.selected = values.includes(o.value));
+                                selPersonal.dispatchEvent(new Event('change', { bubbles:true }));
+                              }
+
+                              // Modal
                               let modalDetalle;
                               document.addEventListener('DOMContentLoaded', () => {
                                 const el = document.getElementById('modalDetalle');
                                 if (window.bootstrap && el) modalDetalle = new bootstrap.Modal(el);
                               });
 
-                              // Crear grupo con selección actual
-                              btnIniciarSeleccion.addEventListener('click', () => {
+                              // Iniciar grupo con la selección actual
+                              btnIniciarSeleccion.addEventListener('click', (e) => {
+                                e.preventDefault(); // evitar submits accidentales
                                 const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
                                 if (personas.length === 0) { alert('Selecciona al menos una persona.'); return; }
 
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
 
-                                // Validar que ninguna de las personas esté ya en un grupo ACTIVO
+                                // Evitar que alguien pertenezca a otro grupo activo
                                 const enActivo = new Set();
                                 lista.filter(g => g.estado==='activo').forEach(g => g.personas.forEach(p => enActivo.add(p)));
                                 const conflicto = personas.filter(p => enActivo.has(p));
-                                if (conflicto.length) {
-                                  alert('No se pudo iniciar: ya están activos -> ' + conflicto.join(', '));
-                                  return;
-                                }
+                                if (conflicto.length) { alert('No se pudo iniciar: ya están activos -> ' + conflicto.join(', ')); return; }
 
                                 const grupo = { id: uid(), personas: personas.slice(), inicio: nowHHMM(), fin: null, estado: 'activo' };
                                 lista.push(grupo); saveDay(day, lista);
@@ -338,13 +337,14 @@
                               });
 
                               // Ver detalle
-                              btnVerDetalle.addEventListener('click', () => {
+                              btnVerDetalle.addEventListener('click', (e) => {
+                                e.preventDefault();
                                 fechaHoyLbl.textContent = fechaHoy();
                                 renderTabla();
                                 modalDetalle?.show();
                               });
 
-                              // Render tabla 1 fila por grupo
+                              // Tabla 1 fila por grupo
                               function renderTabla(){
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
@@ -363,37 +363,36 @@
                                     <td>${g.estado}</td>
                                     <td>
                                       <div class="btn-group btn-group-sm" role="group">
-                                        <button class="btn btn-outline-primary btnCargar">Cargar</button>
-                                        <button class="btn btn-outline-success btnFinalizar"${g.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
-                                        <button class="btn btn-outline-danger btnEliminar">Eliminar</button>
+                                        <button type="button" class="btn btn-outline-primary btnCargar">Cargar</button>
+                                        <button type="button" class="btn btn-outline-success btnFinalizar"${g.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
+                                        <button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>
                                       </div>
                                     </td>`;
-                                  tr.querySelector('.btnCargar').addEventListener('click', ()=> cargarGrupoEnFormulario(g.id));
-                                  tr.querySelector('.btnFinalizar').addEventListener('click', ()=> finalizarGrupoAhora(g.id));
-                                  tr.querySelector('.btnEliminar').addEventListener('click', ()=> eliminarGrupo(g.id));
+                                  tr.querySelector('.btnCargar').addEventListener('click', (ev)=> { ev.preventDefault(); cargarGrupoEnFormulario(g.id); });
+                                  tr.querySelector('.btnFinalizar').addEventListener('click', (ev)=> { ev.preventDefault(); finalizarGrupoAhora(g.id); });
+                                  tr.querySelector('.btnEliminar').addEventListener('click', (ev)=> { ev.preventDefault(); eliminarGrupo(g.id); });
                                   tbodyDetalle.appendChild(tr);
                                 });
                               }
 
-                              // Acciones
+                              // Acciones del modal
                               function cargarGrupoEnFormulario(id){
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
                                 const g = lista.find(x => x.id===id);
                                 if (!g) return;
 
-                                // Seleccionar EXACTAMENTE las personas del grupo
-                                Array.from(selPersonal.options).forEach(o => o.selected = false);
-                                Array.from(selPersonal.options).forEach(o => { if (g.personas.includes(o.value)) o.selected = true; });
+                                // 1) Seleccionar EXACTAMENTE las personas del grupo
+                                setSelectedPeople(g.personas);
 
-                                // Colocar horas
+                                // 2) Colocar horas (si fin es null, queda vacío)
                                 inpInicio.value = g.inicio || '';
                                 inpFin.value = g.fin || '';
 
-                                // Guardar id del grupo (opcional para backend)
+                                // 3) Guardar id del grupo por si lo usas en backend
                                 inpGrupoId.value = g.id;
 
-                                // Cerrar modal
+                                // 4) Cerrar modal
                                 modalDetalle?.hide();
                               }
 
@@ -403,7 +402,10 @@
                                 const g = lista.find(x => x.id===id);
                                 if (!g) return;
                                 if (g.estado === 'finalizado') { alert('El grupo ya está finalizado.'); return; }
-                                g.fin = nowHHMM(); g.estado = 'finalizado'; saveDay(day, lista);
+                                const d=new Date(); const pad=n=>String(n).padStart(2,'0');
+                                g.fin = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                                g.estado = 'finalizado';
+                                saveDay(day, lista);
                                 renderTabla();
                               }
 
@@ -416,29 +418,11 @@
                                 renderTabla();
                               }
 
-                              // Envío: NO se publica automáticamente nada extra.
-                              // Solo se envía lo que el usuario dejó en el formulario.
-                              form.addEventListener('reset', ()=>{
-                                inpGrupoId.value = '';
-                                inpInicio.value = '';
-                                inpFin.value = '';
-                              });
-
-                              // (Opcional) al enviar, si falta hora y existe un grupo con EXACTA selección, completar
-                            //   form.addEventListener('submit', ()=>{
-                            //     const seleccion = Array.from(selPersonal.selectedOptions).map(o=>o.value).sort().join('|');
-                            //     const day = fechaHoy();
-                            //     const lista = loadDay(day);
-                            //     const match = lista.find(g => g.personas.slice().sort().join('|') === seleccion);
-                            //     if (match) {
-                            //       if (!inpInicio.value) inpInicio.value = match.inicio || '';
-                            //       if (!inpFin.value)    inpFin.value    = match.fin || '';
-                            //       if (!inpGrupoId.value) inpGrupoId.value = match.id;
-                            //     }
-                            //   });
-
-                              // Limpiar
-                              btnLimpiar.addEventListener('click', ()=>{
+                              // Limpiar formulario manual
+                              btnLimpiar.addEventListener('click', (e)=>{
+                                e.preventDefault(); // evita reset de la página si así estuviera
+                                (document.getElementById('formConsumo')).reset();
+                                setSelectedPeople([]);  // limpia multiselect visualmente
                                 inpGrupoId.value = '';
                                 inpInicio.value = '';
                                 inpFin.value = '';
