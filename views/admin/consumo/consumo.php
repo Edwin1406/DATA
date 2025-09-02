@@ -110,7 +110,7 @@
                                             <div class="d-flex" style="gap:.5rem">
                                                 <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo">
                                                 <button type="button" id="btnEditarHoras" class="btn btn-secondary">Editar</button>
-                                                <button type="button" id="btnGuardarBloquear" class="btn btn-primary">Guardar y bloquear</button>
+                                                <button type="button" id="btnGuardarBloquear" class="btn btn-primary">Guardar</button>
                                                 <button type="button" id="btnCancelar" class="btn btn-outline-secondary">Cancelar</button>
                                             </div>
                                             <small id="estadoHoras" class="form-text text-muted"></small>
