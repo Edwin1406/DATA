@@ -57,7 +57,7 @@ class Prueba extends ActiveRecord
         $this->hora_fin = $args['hora_fin'] ?? '';
         $this->total_horas = $args['total_horas'] ?? '';
         $this->x_hora = $args['x_hora'] ?? '';
-        $this->horas_trabajo = $args['horas_trabajo'] ?? '10:00:00';
+        $this->horas_trabajo = $args['horas_trabajo'] ?? '';
     }
 
 

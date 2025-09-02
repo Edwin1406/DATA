@@ -114,7 +114,7 @@ class AdminController
                 $consumo->x_hora = 0;
             }
 
-            // DEBUGUEAR($consumo); // Para ver los datos que se envían
+            DEBUGUEAR($consumo); // Para ver los datos que se envían
             $alertas = $consumo->validar();
             if (empty($alertas)) {
                 $consumo->guardar();
