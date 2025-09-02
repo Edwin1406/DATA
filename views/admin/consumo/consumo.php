@@ -248,58 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
         allowClear: true
     });
 
-    // Función para renderizar tabla con registros guardados
-    function renderTabla() {
-        let registros = JSON.parse(localStorage.getItem("registros")) || [];
-        let tbody = document.getElementById("tablaRegistros");
-        tbody.innerHTML = "";
 
-        registros.forEach((reg, index) => {
-            let tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${reg.horaInicio}</td>
-                <td>${reg.horaFin}</td>
-                <td>${reg.personal.join(", ")}</td>
-                <td>
-                    <button class="btn btn-primary btn-sm" onclick="cargar(${index})">Cargar</button>
-                </td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // Guardar registro de prueba (esto sería dinámico en tu app real)
-    if (!localStorage.getItem("registros")) {
-        let demo = [
-            {horaInicio: "07:00", horaFin: "15:00", personal: ["ISRAEL CEDEÑO", "FABRICIO TANDAYAMO"]},
-            {horaInicio: "08:00", horaFin: "16:00", personal: ["ALEXANDER MOPOSA"]}
-        ];
-        localStorage.setItem("registros", JSON.stringify(demo));
-    }
-
-    renderTabla();
-
-    // Exponer función cargar al scope global
-    window.cargar = function(index) {
-        let registros = JSON.parse(localStorage.getItem("registros")) || [];
-        let registro = registros[index];
-        if (!registro) return;
-
-        // Cargar horas en el formulario
-        document.getElementById("horaInicio").value = registro.horaInicio;
-        document.getElementById("horaFin").value = registro.horaFin;
-
-        // Cargar personal en Select2
-        $('#personalSelect').val(registro.personal).trigger('change');
-
-        // Eliminar registro cargado del localStorage
-        registros.splice(index, 1);
-        localStorage.setItem("registros", JSON.stringify(registros));
-
-        // Volver a renderizar tabla
-        renderTabla();
-    };
-});
 </script>
 
 
