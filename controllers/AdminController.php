@@ -94,15 +94,28 @@ class AdminController
 
 
             // Calcular productividad cada 15 minutos
-            $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
-            $minutos_trabajados = $consumo->total_horas * 60;
+            // $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
+            // $minutos_trabajados = $consumo->total_horas * 60;
 
-            if ($cantidad > 0 && $minutos_trabajados > 0) {
-                // $control->x_hora = ($cantidad / $minutos_trabajados) * 15;
-                $consumo->x_hora = round(($cantidad / $minutos_trabajados) * 60);
+            // if ($cantidad > 0 && $minutos_trabajados > 0) {
+            //     // $control->x_hora = ($cantidad / $minutos_trabajados) * 15;
+            //     $consumo->x_hora = round(($cantidad / $minutos_trabajados) * 60);
+            // } else {
+            //     $consumo->x_hora = 0;
+            // }
+
+
+
+            // Calcular productividad por hora
+            $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
+            $total_horas = is_numeric($consumo->total_horas) ? (float)$consumo->total_horas : 0;
+
+            if ($cantidad > 0 && $total_horas > 0) {
+                $consumo->x_hora = round($cantidad / $total_horas);
             } else {
                 $consumo->x_hora = 0;
             }
+
 
             // DEBUGUEAR($consumo); // Para ver los datos que se envían
             $alertas = $consumo->validar();
