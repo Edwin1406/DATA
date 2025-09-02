@@ -105,6 +105,56 @@
 
                                     <!-- horas de trabajo -->
 
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="horas_trabajo">Horas de Trabajo</label>
+                                            <div class="d-flex gap-2">
+                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo" readonly>
+                                                <button type="button" id="btnEditarHoras" class="btn btn-secondary">Editar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        // Cambia esta contraseña por la tuya
+                                        const PASSWORD = "1234";
+
+                                        const inputHoras = document.getElementById("horas_trabajo");
+                                        const btnEditar = document.getElementById("btnEditarHoras");
+                                        let desbloqueado = false;
+
+                                        function normalizar(texto) {
+                                            // Elimina espacios, convierte Unicode raro a forma canónica
+                                            return (texto ?? "").toString().normalize("NFKC").trim();
+                                        }
+
+                                        btnEditar.addEventListener("click", () => {
+                                            if (desbloqueado) {
+                                                inputHoras.focus();
+                                                return;
+                                            }
+                                            const ingreso = prompt("Ingrese la contraseña para editar este campo:");
+                                            if (ingreso === null) return; // Canceló
+
+                                            if (normalizar(ingreso) === normalizar(PASSWORD)) {
+                                                inputHoras.readOnly = false;
+                                                desbloqueado = true;
+                                                btnEditar.textContent = "Editar (desbloqueado)";
+                                                btnEditar.classList.remove("btn-secondary");
+                                                btnEditar.classList.add("btn-success");
+                                                inputHoras.focus();
+                                            } else {
+                                                alert("Contraseña incorrecta. No puede editar este campo.");
+                                            }
+                                        });
+                                    </script>
+
+
+
+
+
+
+
 
                                     <!-- fecha -->
 
@@ -116,30 +166,7 @@
                                         </div>
                                     </div>
                                     <!-- turno -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <input type="time" id="horas_trabajo" class="form-control"
-                                                placeholder="Horas de Trabajo" name="horas_trabajo" readonly>
-                                        </div>
-                                    </div>
 
-                                    <script>
-                                        // Configura aquí tu contraseña
-                                        const passwordCorrecta = "1234";
-
-                                        const inputHoras = document.getElementById("horas_trabajo");
-
-                                        inputHoras.addEventListener("focus", function() {
-                                            const password = prompt("Ingrese la contraseña para editar este campo:");
-                                            if (password === passwordCorrecta) {
-                                                inputHoras.removeAttribute("readonly");
-                                            } else {
-                                                alert("Contraseña incorrecta. No puede editar este campo.");
-                                                inputHoras.blur();
-                                            }
-                                        });
-                                    </script>
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
