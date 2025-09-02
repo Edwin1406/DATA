@@ -104,110 +104,116 @@
 
 
                                     <!-- horas de trabajo -->
-
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <div class="d-flex gap-2" style="gap:.5rem">
-                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo" readonly>
+                                            <div class="d-flex" style="gap:.5rem">
+                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo">
                                                 <button type="button" id="btnEditarHoras" class="btn btn-secondary">Editar</button>
-                                                <button type="button" id="btnGuardarBloquear" class="btn btn-primary" disabled>Guardar</button>
-                                                <button type="button" id="btnCancelar" class="btn btn-outline-secondary" disabled>Cancelar</button>
+                                                <button type="button" id="btnGuardarBloquear" class="btn btn-primary">Guardar y bloquear</button>
+                                                <button type="button" id="btnCancelar" class="btn btn-outline-secondary">Cancelar</button>
                                             </div>
-                                            <small id="estadoHoras" class="form-text text-muted">Bloqueado</small>
+                                            <small id="estadoHoras" class="form-text text-muted"></small>
                                         </div>
                                     </div>
 
                                     <script>
-                                        // ==== Configura tu contraseña aquí ====
+                                        // ====== CONFIGURA AQUÍ TU CONTRASEÑA ======
                                         const PASSWORD = "1234";
-                                        // ======================================
+                                        // ==========================================
 
-                                        const STORAGE_KEY_VAL = "horas_trabajo_val"; // donde se guarda la hora
-                                        const inputHoras = document.getElementById("horas_trabajo");
+                                        const KEY_VAL = "horas_trabajo_val"; // almacena la hora "HH:MM"
+                                        const KEY_LOCKED = "horas_trabajo_lock"; // "1" si ya pasó la primera vez
+
+                                        const input = document.getElementById("horas_trabajo");
                                         const btnEditar = document.getElementById("btnEditarHoras");
-                                        const btnGuardar = document.getElementById("btnGuardarBloquear");
+                                        const btnSave = document.getElementById("btnGuardarBloquear");
                                         const btnCancel = document.getElementById("btnCancelar");
-                                        const lblEstado = document.getElementById("estadoHoras");
+                                        const estado = document.getElementById("estadoHoras");
 
-                                        let desbloqueado = false;
-                                        let valorAntesDeEditar = null;
+                                        let editando = false;
+                                        let valorAntes = null;
 
                                         function normalizar(t) {
                                             return (t ?? "").toString().normalize("NFKC").trim();
                                         }
 
-                                        // Cargar hora guardada al iniciar
+                                        // ---- Estado visual ----
+                                        function setBloqueado(msg = "Bloqueado") {
+                                            input.readOnly = true;
+                                            btnEditar.disabled = false;
+                                            btnSave.disabled = true;
+                                            btnCancel.disabled = true;
+                                            btnEditar.className = "btn btn-secondary";
+                                            btnEditar.textContent = "Editar";
+                                            estado.textContent = msg;
+                                            editando = false;
+                                        }
+
+                                        function setEditando(msg = "Editando…") {
+                                            input.readOnly = false;
+                                            btnEditar.disabled = true;
+                                            btnSave.disabled = false;
+                                            btnCancel.disabled = false;
+                                            btnEditar.className = "btn btn-success";
+                                            btnEditar.textContent = "Editar (desbloqueado)";
+                                            estado.textContent = msg;
+                                            editando = true;
+                                            input.focus();
+                                        }
+
+                                        // ---- Flujo ----
                                         (function init() {
-                                            const guardado = localStorage.getItem(STORAGE_KEY_VAL);
-                                            if (guardado) inputHoras.value = guardado; // formato "HH:MM"
-                                            bloquear(true); // siempre inicia bloqueado
+                                            const guardado = localStorage.getItem(KEY_VAL);
+                                            const locked = localStorage.getItem(KEY_LOCKED) === "1";
+
+                                            if (guardado) input.value = guardado;
+
+                                            if (!locked) {
+                                                // PRIMERA VEZ: desbloqueado sin contraseña
+                                                valorAntes = input.value || "";
+                                                setEditando("Primera configuración: elige la hora y guarda para bloquear");
+                                            } else {
+                                                // Ya configurado alguna vez: empieza bloqueado
+                                                setBloqueado("Bloqueado (pulse Editar para ingresar contraseña)");
+                                            }
                                         })();
 
-                                        function bloquear(inicial = false) {
-                                            inputHoras.readOnly = true;
-                                            desbloqueado = false;
-                                            btnGuardar.disabled = true;
-                                            btnCancel.disabled = true;
-                                            btnEditar.disabled = false;
-                                            btnEditar.textContent = "Editar";
-                                            btnEditar.className = "btn btn-secondary";
-                                            lblEstado.textContent = inicial ? "Bloqueado" : "Bloqueado (cambios guardados)";
-                                        }
-
-                                        function desbloquear() {
-                                            inputHoras.readOnly = false;
-                                            desbloqueado = true;
-                                            btnGuardar.disabled = false;
-                                            btnCancel.disabled = false;
-                                            btnEditar.disabled = true;
-                                            btnEditar.textContent = "Editar (desbloqueado)";
-                                            btnEditar.className = "btn btn-success";
-                                            lblEstado.textContent = "Editando…";
-                                            valorAntesDeEditar = inputHoras.value; // por si cancela
-                                            inputHoras.focus();
-                                        }
-
                                         btnEditar.addEventListener("click", () => {
-                                            if (desbloqueado) return;
+                                            if (editando) return;
                                             const ingreso = prompt("Ingrese la contraseña para editar este campo:");
-                                            if (ingreso === null) return; // Canceló el prompt
+                                            if (ingreso === null) return;
                                             if (normalizar(ingreso) === normalizar(PASSWORD)) {
-                                                desbloquear();
+                                                valorAntes = input.value;
+                                                setEditando();
                                             } else {
                                                 alert("Contraseña incorrecta.");
                                             }
                                         });
 
-                                        // Guardar en localStorage y bloquear
-                                        btnGuardar.addEventListener("click", () => {
-                                            // Validación simple de hora HH:MM
-                                            const val = inputHoras.value;
+                                        btnSave.addEventListener("click", () => {
+                                            const val = input.value;
                                             if (!/^\d{2}:\d{2}$/.test(val)) {
                                                 alert("Ingrese una hora válida (HH:MM).");
                                                 return;
                                             }
-                                            localStorage.setItem(STORAGE_KEY_VAL, val);
-                                            bloquear();
+                                            localStorage.setItem(KEY_VAL, val);
+                                            // A partir de ahora queda marcado como "ya configurado"
+                                            localStorage.setItem(KEY_LOCKED, "1");
+                                            setBloqueado("Bloqueado (cambios guardados)");
                                         });
 
-                                        // Cancelar cambios y volver al valor previo
                                         btnCancel.addEventListener("click", () => {
-                                            if (valorAntesDeEditar !== null) inputHoras.value = valorAntesDeEditar;
-                                            bloquear();
-                                        });
-
-                                        // Guardado automático cuando cambia (opcional)
-                                        inputHoras.addEventListener("change", () => {
-                                            if (desbloqueado) {
-                                                // si quieres auto-guardar mientras edita, descomenta:
-                                                localStorage.setItem(STORAGE_KEY_VAL, inputHoras.value);
+                                            input.value = valorAntes ?? localStorage.getItem(KEY_VAL) ?? "";
+                                            const locked = localStorage.getItem(KEY_LOCKED) === "1";
+                                            if (locked) {
+                                                setBloqueado("Bloqueado (sin cambios)");
+                                            } else {
+                                                // Sigue siendo primera vez: permanece editable
+                                                setEditando("Primera configuración (sin cambios)");
                                             }
                                         });
                                     </script>
-
-
-
 
 
 
