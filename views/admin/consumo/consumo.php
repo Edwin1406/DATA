@@ -70,7 +70,7 @@
                             <form class="form" method="POST" action="/admin/consumo" id="formConsumo">
                                 <div class="row">
 
-                                    <!-- Horas de trabajo (tu módulo con contraseña) -->
+                                    <!-- Horas de trabajo (con contraseña) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
@@ -85,7 +85,7 @@
                                     </div>
 
                                     <script>
-                                        // ====== CONFIG CONTRASEÑA HORAS DE TRABAJO ======
+                                        /* ====== BLOQUEO HORAS TRABAJO ====== */
                                         const PASSWORD = "1234";
                                         const KEY_VAL = "horas_trabajo_val";
                                         const KEY_LOCKED = "horas_trabajo_lock";
@@ -94,71 +94,40 @@
                                         const btnSave = document.getElementById("btnGuardarBloquear");
                                         const btnCancel = document.getElementById("btnCancelar");
                                         const estado = document.getElementById("estadoHoras");
-                                        let editando = false;
-                                        let valorAntes = null;
+                                        let editando = false, valorAntes = null;
 
-                                        function normalizar(t) { return (t ?? "").toString().normalize("NFKC").trim(); }
-                                        function setBloqueado(msg = "Bloqueado") {
-                                            input.readOnly = true;
-                                            btnEditar.disabled = false;
-                                            btnSave.disabled = true;
-                                            btnCancel.disabled = true;
-                                            btnEditar.className = "btn btn-secondary";
-                                            btnEditar.textContent = "Editar";
-                                            estado.textContent = msg;
-                                            editando = false;
+                                        const normalizar = t => (t ?? "").toString().normalize("NFKC").trim();
+                                        function setBloqueado(msg="Bloqueado") {
+                                            input.readOnly = true; btnEditar.disabled=false; btnSave.disabled=true; btnCancel.disabled=true;
+                                            btnEditar.className="btn btn-secondary"; btnEditar.textContent="Editar"; estado.textContent=msg; editando=false;
                                         }
-                                        function setEditando(msg = "Editando…") {
-                                            input.readOnly = false;
-                                            btnEditar.disabled = true;
-                                            btnSave.disabled = false;
-                                            btnCancel.disabled = false;
-                                            btnEditar.className = "btn btn-success";
-                                            btnEditar.textContent = "Editar";
-                                            estado.textContent = msg;
-                                            editando = true;
-                                            input.focus();
+                                        function setEditando(msg="Editando…") {
+                                            input.readOnly = false; btnEditar.disabled=true; btnSave.disabled=false; btnCancel.disabled=false;
+                                            btnEditar.className="btn btn-success"; btnEditar.textContent="Editar"; estado.textContent=msg; editando=true; input.focus();
                                         }
-                                        (function init() {
+                                        (function init(){
                                             const guardado = localStorage.getItem(KEY_VAL);
                                             const locked = localStorage.getItem(KEY_LOCKED) === "1";
                                             if (guardado) input.value = guardado;
-                                            if (!locked) {
-                                                valorAntes = input.value || "";
-                                                setEditando("Primera configuración: elige la hora y guarda para bloquear");
-                                            } else {
-                                                setBloqueado("Bloqueado (pulse Editar para ingresar contraseña)");
-                                            }
+                                            if (!locked) { valorAntes = input.value || ""; setEditando("Primera configuración: elige la hora y guarda para bloquear"); }
+                                            else setBloqueado("Bloqueado (pulse Editar para ingresar contraseña)");
                                         })();
-                                        btnEditar.addEventListener("click", () => {
+                                        btnEditar.addEventListener("click", ()=>{
                                             if (editando) return;
                                             const ingreso = prompt("Ingrese la contraseña para editar este campo:");
-                                            if (ingreso === null) return;
-                                            if (normalizar(ingreso) === normalizar(PASSWORD)) {
-                                                valorAntes = input.value;
-                                                setEditando();
-                                            } else {
-                                                alert("Contraseña incorrecta.");
-                                            }
+                                            if (ingreso===null) return;
+                                            if (normalizar(ingreso)===normalizar(PASSWORD)) { valorAntes=input.value; setEditando(); }
+                                            else alert("Contraseña incorrecta.");
                                         });
-                                        btnSave.addEventListener("click", () => {
+                                        btnSave.addEventListener("click", ()=>{
                                             const val = input.value;
-                                            if (!/^\d{2}:\d{2}$/.test(val)) {
-                                                alert("Ingrese una hora válida (HH:MM).");
-                                                return;
-                                            }
-                                            localStorage.setItem(KEY_VAL, val);
-                                            localStorage.setItem(KEY_LOCKED, "1");
-                                            setBloqueado("Bloqueado (cambios guardados)");
+                                            if (!/^\d{2}:\d{2}$/.test(val)) { alert("Ingrese una hora válida (HH:MM)."); return; }
+                                            localStorage.setItem(KEY_VAL, val); localStorage.setItem(KEY_LOCKED, "1"); setBloqueado("Bloqueado (cambios guardados)");
                                         });
-                                        btnCancel.addEventListener("click", () => {
+                                        btnCancel.addEventListener("click", ()=>{
                                             input.value = valorAntes ?? localStorage.getItem(KEY_VAL) ?? "";
                                             const locked = localStorage.getItem(KEY_LOCKED) === "1";
-                                            if (locked) {
-                                                setBloqueado("Bloqueado (sin cambios)");
-                                            } else {
-                                                setEditando("Primera configuración (sin cambios)");
-                                            }
+                                            if (locked) setBloqueado("Bloqueado (sin cambios)"); else setEditando("Primera configuración (sin cambios)");
                                         });
                                     </script>
 
@@ -232,22 +201,15 @@
                                         </div>
                                     </div>
 
-                                    <!-- Hora de Inicio (auto + botones individuales) -->
+                                    <!-- Hora de Inicio (solo input, SIN botones al lado) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
-                                                <div class="d-flex" style="gap:.5rem">
-                                                    <button type="button" class="btn btn-success btn-sm" id="btnIniciarTurno">Iniciar turno</button>
-                                                    <button type="button" class="btn btn-danger btn-sm" id="btnFinalizarTurno" disabled>Finalizar turno</button>
-                                                </div>
-                                            </div>
+                                            <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
                                             <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" readonly>
-                                            <small id="estadoTurno" class="form-text text-muted"></small>
                                         </div>
                                     </div>
 
-                                    <!-- Hora de fin (auto) -->
+                                    <!-- Hora de fin -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
@@ -263,16 +225,15 @@
                                         </div>
                                     </div>
 
-                                    <!-- Botones para MÚLTIPLES personas -->
+                                    <!-- Botones de grupos -->
                                     <div class="col-12">
                                         <div class="d-flex flex-wrap" style="gap:.5rem">
                                             <button type="button" class="btn btn-success btn-sm" id="btnIniciarSeleccion">Iniciar turnos (seleccionados)</button>
                                             <button type="button" class="btn btn-primary btn-sm" id="btnVerDetalle">Ver detalle</button>
-                                            <button type="button" class="btn btn-danger btn-sm" id="btnFinalizarMiTurno">Finalizar mi turno</button>
                                         </div>
                                     </div>
 
-                                    <!-- Modal Ver Detalle -->
+                                    <!-- Modal Ver Detalle (1 fila por GRUPO) -->
                                     <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
                                       <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                         <div class="modal-content">
@@ -285,7 +246,7 @@
                                               <table class="table table-sm align-middle">
                                                 <thead>
                                                   <tr>
-                                                    <th>Persona</th>
+                                                    <th>Personas</th>
                                                     <th>Inicio</th>
                                                     <th>Fin</th>
                                                     <th>Estado</th>
@@ -303,8 +264,8 @@
                                       </div>
                                     </div>
 
-                                    <!-- Input oculto para enviar los intervalos generados -->
-                                    <input type="hidden" name="intervalos" id="intervalos_json" value="[]">
+                                    <!-- (opcional) input oculto si quieres enviar algo adicional -->
+                                    <input type="hidden" name="grupo_id" id="grupo_id" value="">
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
@@ -313,265 +274,174 @@
                                 </div>
                             </form>
 
-                            <!-- ====== Lógica individual de turno (igual que antes) ====== -->
-                            <script>
-                                const SLOT_MINUTES = 60; // 60 = 1h
-
-                                const LS_TURNO = "consumo_turno"; // {inicio, fin, activo}
-
-                                const pad2 = n => String(n).padStart(2, "0");
-                                const nowHHMM = () => {
-                                    const d = new Date();
-                                    return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-                                };
-                                function parseHHMM(hhmm) {
-                                    const [h, m] = hhmm.split(":").map(Number);
-                                    const d = new Date();
-                                    d.setHours(h, m, 0, 0);
-                                    return d;
-                                }
-                                function addMinutes(date, minutes) {
-                                    const d = new Date(date);
-                                    d.setMinutes(d.getMinutes() + minutes);
-                                    return d;
-                                }
-                                function generarIntervalos(hhmmInicio, hhmmFin, slotMin) {
-                                    const desde = parseHHMM(hhmmInicio);
-                                    const hasta = parseHHMM(hhmmFin);
-                                    const out = [];
-                                    let cur = new Date(desde);
-                                    while (cur < hasta) {
-                                        const nxt = addMinutes(cur, slotMin);
-                                        out.push({
-                                            desde: `${pad2(cur.getHours())}:${pad2(cur.getMinutes())}`,
-                                            hasta: `${pad2(nxt.getHours())}:${pad2(nxt.getMinutes())}`
-                                        });
-                                        cur = nxt;
-                                    }
-                                    return out;
-                                }
-
-                                const elInicio = document.getElementById("hora_inicio");
-                                const elFin = document.getElementById("hora_fin");
-                                const elEstado = document.getElementById("estadoTurno");
-                                const btnIniciar = document.getElementById("btnIniciarTurno");
-                                const btnFinalizar = document.getElementById("btnFinalizarTurno");
-                                const form = document.getElementById("formConsumo");
-                                const intervalosInput = document.getElementById("intervalos_json");
-                                const btnLimpiar = document.getElementById("btnLimpiar");
-
-                                function loadTurno() {
-                                    const raw = localStorage.getItem(LS_TURNO);
-                                    return raw ? JSON.parse(raw) : null;
-                                }
-                                function saveTurno(obj) { localStorage.setItem(LS_TURNO, JSON.stringify(obj)); }
-                                function clearTurno() { localStorage.removeItem(LS_TURNO); }
-
-                                function setUIInicio(inicio) {
-                                    elInicio.value = inicio;
-                                    elInicio.readOnly = true;
-                                    btnIniciar.disabled = true;
-                                    btnFinalizar.disabled = false;
-                                    elEstado.textContent = "Turno iniciado";
-                                }
-                                function setUIEsperando() {
-                                    elInicio.value = "";
-                                    elFin.value = "";
-                                    elInicio.readOnly = true;
-                                    elFin.readOnly = true;
-                                    btnIniciar.disabled = false;
-                                    btnFinalizar.disabled = true;
-                                    elEstado.textContent = "Sin turno activo";
-                                }
-                                function setUIFinalizado(fin) {
-                                    elFin.value = fin;
-                                    btnFinalizar.disabled = true;
-                                    elEstado.textContent = "Turno finalizado";
-                                }
-
-                                (function initTurno() {
-                                    const t = loadTurno();
-                                    if (t && t.activo && t.inicio) setUIInicio(t.inicio);
-                                    else setUIEsperando();
-                                })();
-
-                                btnIniciar.addEventListener("click", () => {
-                                    const t = loadTurno();
-                                    if (t && t.activo) { alert("Ya hay un turno activo iniciado a las " + t.inicio); return; }
-                                    const inicio = nowHHMM();
-                                    saveTurno({ inicio, fin: null, activo: true });
-                                    setUIInicio(inicio);
-                                });
-
-                                btnFinalizar.addEventListener("click", () => {
-                                    const t = loadTurno();
-                                    if (!t || !t.activo) { alert("No hay un turno activo."); return; }
-                                    const fin = nowHHMM();
-                                    t.fin = fin; t.activo = false; saveTurno(t);
-                                    setUIFinalizado(fin);
-                                    const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
-                                    intervalosInput.value = JSON.stringify(intervalos);
-                                });
-
-                                form.addEventListener("submit", () => {
-                                    let t = loadTurno();
-                                    if (!t || !t.inicio) {
-                                        const inicio = nowHHMM();
-                                        t = { inicio, fin: null, activo: true };
-                                        saveTurno(t); setUIInicio(inicio);
-                                    }
-                                    if (!t.fin) {
-                                        const fin = nowHHMM();
-                                        t.fin = fin; t.activo = false; saveTurno(t); setUIFinalizado(fin);
-                                    }
-                                    elInicio.value = t.inicio; elFin.value = t.fin;
-                                    const intervalos = generarIntervalos(t.inicio, t.fin, SLOT_MINUTES);
-                                    intervalosInput.value = JSON.stringify(intervalos);
-                                    clearTurno();
-                                });
-
-                                btnLimpiar.addEventListener("click", () => {
-                                    clearTurno(); setUIEsperando(); intervalosInput.value = "[]";
-                                });
-                            </script>
-
-                            <!-- ====== Gestión de MÚLTIPLES personas (localStorage por día) ====== -->
+                            <!-- ====== Gestión de GRUPOS (múltiples personas) ====== -->
                             <script>
                             (function(){
-                              const LS_MULTI = 'empaque_turnos_v1';
+                              /* Estructura por día (localStorage):
+                                 LS_GRUPOS = {
+                                   "YYYY-MM-DD": [
+                                     { id, personas:[...], inicio:"HH:MM", fin:null|"HH:MM", estado:"activo"|"finalizado" }
+                                   ]
+                                 }
+                              */
+                              const LS_GRUPOS = 'empaque_grupos_v1';
                               const fechaHoy = () => (new Date()).toISOString().slice(0,10);
-                              const pad2b = n => String(n).padStart(2,'0');
-                              const nowHHMMb = () => { const d=new Date(); return `${pad2b(d.getHours())}:${pad2b(d.getMinutes())}`; };
+                              const pad2 = n => String(n).padStart(2,'0');
+                              const nowHHMM = () => { const d=new Date(); return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`; };
+                              const uid = () => 'g_'+Math.random().toString(36).slice(2,9);
 
-                              function loadAllDays(){ try { return JSON.parse(localStorage.getItem(LS_MULTI) || '{}'); } catch { return {}; } }
-                              function saveAllDays(map){ localStorage.setItem(LS_MULTI, JSON.stringify(map)); }
-                              function loadDay(day){ const all = loadAllDays(); return Array.isArray(all[day]) ? all[day] : []; }
-                              function saveDay(day, arr){ const all = loadAllDays(); all[day] = arr; saveAllDays(all); }
-                              function uid(){ return 't_'+Math.random().toString(36).slice(2,9); }
+                              // Storage helpers
+                              const loadAll = () => { try { return JSON.parse(localStorage.getItem(LS_GRUPOS) || '{}'); } catch { return {}; } };
+                              const saveAll = (obj) => localStorage.setItem(LS_GRUPOS, JSON.stringify(obj));
+                              const loadDay = (day) => (loadAll()[day] || []);
+                              function saveDay(day, arr){ const all = loadAll(); all[day] = arr; saveAll(all); }
 
+                              // UI refs
                               const selPersonal = document.querySelector('select[name="personal[]"]');
                               const btnIniciarSeleccion = document.getElementById('btnIniciarSeleccion');
                               const btnVerDetalle = document.getElementById('btnVerDetalle');
-                              const btnFinalizarMiTurno = document.getElementById('btnFinalizarMiTurno');
                               const tbodyDetalle = document.getElementById('tbodyDetalle');
                               const fechaHoyLbl = document.getElementById('fechaHoyLbl');
-
                               const inpInicio = document.getElementById('hora_inicio');
-                              const inpFin    = document.getElementById('hora_fin');
-                              const form      = document.getElementById('formConsumo');
+                              const inpFin = document.getElementById('hora_fin');
+                              const inpGrupoId = document.getElementById('grupo_id');
+                              const form = document.getElementById('formConsumo');
+                              const btnLimpiar = document.getElementById('btnLimpiar');
 
+                              // Modal bootstrap
                               let modalDetalle;
                               document.addEventListener('DOMContentLoaded', () => {
                                 const el = document.getElementById('modalDetalle');
                                 if (window.bootstrap && el) modalDetalle = new bootstrap.Modal(el);
                               });
 
+                              // Crear grupo con selección actual
                               btnIniciarSeleccion.addEventListener('click', () => {
+                                const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
+                                if (personas.length === 0) { alert('Selecciona al menos una persona.'); return; }
+
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
-                                const seleccionados = Array.from(selPersonal.selectedOptions).map(o => o.value);
-                                if (seleccionados.length === 0) { alert('Selecciona al menos una persona.'); return; }
-                                const ahora = nowHHMMb();
-                                let iniciados = 0, omitidos = [];
-                                seleccionados.forEach(persona => {
-                                  const yaActivo = lista.find(r => r.persona === persona && r.estado === 'activo');
-                                  if (yaActivo) omitidos.push(persona);
-                                  else { lista.push({ id: uid(), persona, inicio: ahora, fin: null, estado: 'activo' }); iniciados++; }
-                                });
-                                saveDay(day, lista);
-                                if (iniciados) alert(`Iniciados ${iniciados} turno(s) a las ${ahora}.`);
-                                if (omitidos.length) alert(`Omitidos (ya activos): ${omitidos.join(', ')}`);
+
+                                // Validar que ninguna de las personas esté ya en un grupo ACTIVO
+                                const enActivo = new Set();
+                                lista.filter(g => g.estado==='activo').forEach(g => g.personas.forEach(p => enActivo.add(p)));
+                                const conflicto = personas.filter(p => enActivo.has(p));
+                                if (conflicto.length) {
+                                  alert('No se pudo iniciar: ya están activos -> ' + conflicto.join(', '));
+                                  return;
+                                }
+
+                                const grupo = { id: uid(), personas: personas.slice(), inicio: nowHHMM(), fin: null, estado: 'activo' };
+                                lista.push(grupo); saveDay(day, lista);
+                                alert('Grupo iniciado a las ' + grupo.inicio);
                               });
 
+                              // Ver detalle
                               btnVerDetalle.addEventListener('click', () => {
-                                renderTablaDetalle();
                                 fechaHoyLbl.textContent = fechaHoy();
+                                renderTabla();
                                 modalDetalle?.show();
                               });
 
-                              btnFinalizarMiTurno.addEventListener('click', () => {
-                                const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
-                                if (personas.length !== 1) { alert('Selecciona exactamente 1 persona para finalizar su turno.'); return; }
-                                const persona = personas[0];
-                                const day = fechaHoy();
-                                const lista = loadDay(day);
-                                const reg = lista.find(r => r.persona === persona && r.estado === 'activo');
-                                if (!reg) { alert('No hay turno activo para esa persona.'); return; }
-                                reg.fin = nowHHMMb(); reg.estado = 'finalizado'; saveDay(day, lista);
-                                inpInicio.value = reg.inicio; inpFin.value = reg.fin;
-                                alert(`Turno de ${persona} finalizado a las ${reg.fin}.`);
-                              });
-
-                              function renderTablaDetalle(){
+                              // Render tabla 1 fila por grupo
+                              function renderTabla(){
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
                                 tbodyDetalle.innerHTML = '';
-                                if (!lista.length) { tbodyDetalle.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sin registros hoy.</td></tr>'; return; }
-                                lista.forEach(reg => {
+                                if (!lista.length) {
+                                  tbodyDetalle.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sin grupos hoy.</td></tr>';
+                                  return;
+                                }
+                                lista.forEach(g => {
                                   const tr = document.createElement('tr');
+                                  const personasHTML = g.personas.map(n => `<span class="badge bg-light text-dark me-1">${n}</span>`).join(' ');
                                   tr.innerHTML = `
-                                    <td>${reg.persona}</td>
-                                    <td>${reg.inicio ?? '-'}</td>
-                                    <td>${reg.fin ?? '--:--'}</td>
-                                    <td>${reg.estado}</td>
+                                    <td>${personasHTML}</td>
+                                    <td>${g.inicio ?? '--:--'}</td>
+                                    <td>${g.fin ?? '--:--'}</td>
+                                    <td>${g.estado}</td>
                                     <td>
                                       <div class="btn-group btn-group-sm" role="group">
                                         <button class="btn btn-outline-primary btnCargar">Cargar</button>
-                                        <button class="btn btn-outline-success btnFinalizar"${reg.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
+                                        <button class="btn btn-outline-success btnFinalizar"${g.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
                                         <button class="btn btn-outline-danger btnEliminar">Eliminar</button>
                                       </div>
                                     </td>`;
-                                  tr.querySelector('.btnCargar').addEventListener('click', () => cargarEnFormulario(reg.id));
-                                  tr.querySelector('.btnFinalizar').addEventListener('click', () => finalizarAhora(reg.id));
-                                  tr.querySelector('.btnEliminar').addEventListener('click', () => eliminarRegistro(reg.id));
+                                  tr.querySelector('.btnCargar').addEventListener('click', ()=> cargarGrupoEnFormulario(g.id));
+                                  tr.querySelector('.btnFinalizar').addEventListener('click', ()=> finalizarGrupoAhora(g.id));
+                                  tr.querySelector('.btnEliminar').addEventListener('click', ()=> eliminarGrupo(g.id));
                                   tbodyDetalle.appendChild(tr);
                                 });
                               }
 
-                              function cargarEnFormulario(id){
+                              // Acciones
+                              function cargarGrupoEnFormulario(id){
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
-                                const reg = lista.find(r => r.id === id);
-                                if (!reg) return;
+                                const g = lista.find(x => x.id===id);
+                                if (!g) return;
+
+                                // Seleccionar EXACTAMENTE las personas del grupo
                                 Array.from(selPersonal.options).forEach(o => o.selected = false);
-                                const opt = Array.from(selPersonal.options).find(o => o.value === reg.persona);
-                                if (opt) opt.selected = true;
-                                inpInicio.value = reg.inicio || '';
-                                inpFin.value = reg.fin || '';
+                                Array.from(selPersonal.options).forEach(o => { if (g.personas.includes(o.value)) o.selected = true; });
+
+                                // Colocar horas
+                                inpInicio.value = g.inicio || '';
+                                inpFin.value = g.fin || '';
+
+                                // Guardar id del grupo (opcional para backend)
+                                inpGrupoId.value = g.id;
+
+                                // Cerrar modal
                                 modalDetalle?.hide();
                               }
 
-                              function finalizarAhora(id){
+                              function finalizarGrupoAhora(id){
                                 const day = fechaHoy();
                                 const lista = loadDay(day);
-                                const reg = lista.find(r => r.id === id);
-                                if (!reg) return;
-                                if (reg.estado === 'finalizado') { alert('Ese registro ya está finalizado.'); return; }
-                                reg.fin = nowHHMMb(); reg.estado = 'finalizado'; saveDay(day, lista);
-                                renderTablaDetalle();
+                                const g = lista.find(x => x.id===id);
+                                if (!g) return;
+                                if (g.estado === 'finalizado') { alert('El grupo ya está finalizado.'); return; }
+                                g.fin = nowHHMM(); g.estado = 'finalizado'; saveDay(day, lista);
+                                renderTabla();
                               }
 
-                              function eliminarRegistro(id){
+                              function eliminarGrupo(id){
                                 const day = fechaHoy();
                                 let lista = loadDay(day);
-                                if (!confirm('¿Eliminar este registro local?')) return;
-                                lista = lista.filter(r => r.id !== id);
+                                if (!confirm('¿Eliminar este grupo local?')) return;
+                                lista = lista.filter(x => x.id !== id);
                                 saveDay(day, lista);
-                                renderTablaDetalle();
+                                renderTabla();
                               }
 
-                              // Al enviar: si hay exactamente 1 persona seleccionada, usa su registro del día
-                              form.addEventListener('submit', () => {
-                                const personas = Array.from(selPersonal.selectedOptions).map(o => o.value);
-                                if (personas.length === 1) {
-                                  const day = fechaHoy();
-                                  const lista = loadDay(day);
-                                  const reg = lista.find(r => r.persona === personas[0]);
-                                  if (reg) {
-                                    if (!inpInicio.value) inpInicio.value = reg.inicio || '';
-                                    if (!inpFin.value)    inpFin.value    = reg.fin || nowHHMMb();
-                                  }
+                              // Envío: NO se publica automáticamente nada extra.
+                              // Solo se envía lo que el usuario dejó en el formulario.
+                              form.addEventListener('reset', ()=>{
+                                inpGrupoId.value = '';
+                                inpInicio.value = '';
+                                inpFin.value = '';
+                              });
+
+                              // (Opcional) al enviar, si falta hora y existe un grupo con EXACTA selección, completar
+                              form.addEventListener('submit', ()=>{
+                                const seleccion = Array.from(selPersonal.selectedOptions).map(o=>o.value).sort().join('|');
+                                const day = fechaHoy();
+                                const lista = loadDay(day);
+                                const match = lista.find(g => g.personas.slice().sort().join('|') === seleccion);
+                                if (match) {
+                                  if (!inpInicio.value) inpInicio.value = match.inicio || '';
+                                  if (!inpFin.value)    inpFin.value    = match.fin || '';
+                                  if (!inpGrupoId.value) inpGrupoId.value = match.id;
                                 }
+                              });
+
+                              // Limpiar
+                              btnLimpiar.addEventListener('click', ()=>{
+                                inpGrupoId.value = '';
+                                inpInicio.value = '';
+                                inpFin.value = '';
                               });
 
                             })();
