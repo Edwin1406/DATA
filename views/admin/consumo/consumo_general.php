@@ -94,6 +94,8 @@
                                                 <option value="CANUTOS">CANUTOS</option>
                                                 <option value="MATERIA-DE-BAJA">MATERIA-DE-BAJA</option>
                                                 <option value="RETAZOS-BOBINA">RETAZOS-BOBINA</option>
+                                                <option value="PACAS">PACAS</option>
+
 
                                             </select>
                                         </div>
