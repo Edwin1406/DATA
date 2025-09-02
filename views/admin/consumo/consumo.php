@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
         placeholder: "Seleccione el personal",
         allowClear: true
     });
-
+});
 
 </script>
 
