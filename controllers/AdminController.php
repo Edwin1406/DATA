@@ -40,7 +40,7 @@ class AdminController
         if (!isset($_SESSION['email'])) {
             header('Location: /');
         }
-  
+
         $horas_trabajo = new HorasTrabajo;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -76,31 +76,21 @@ class AdminController
         //cerrar sesión
         // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
         $fecha_hoy = date('Y-m-d');
-        
-        
-        
+
+
+
         $alertas = [];
         $consumo = new Prueba();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+
             if (isset($_POST['personal']) && is_array($_POST['personal'])) {
                 $_POST['personal'] = implode(',', $_POST['personal']);
             }
-            
+
             $consumo->sincronizar($_POST);
-            
+
             // sacar total de horas.
             $consumo->sacarTotalHoras();
-            
-            
-//             $horas_trabajo = HorasTrabajo::where('fecha', $fecha_hoy);
-
-// foreach ($horas_trabajo as $h) {
-//     debuguear($h->hora_trabajo);
-// }
-
-            
-
 
 
             // Calcular productividad cada 15 minutos
@@ -109,7 +99,7 @@ class AdminController
 
             if ($cantidad > 0 && $minutos_trabajados > 0) {
                 // $control->x_hora = ($cantidad / $minutos_trabajados) * 15;
-                $consumo->x_hora = round(($cantidad / $minutos_trabajados) * 15);
+                $consumo->x_hora = round(($cantidad / $minutos_trabajados) * 60);
             } else {
                 $consumo->x_hora = 0;
             }
