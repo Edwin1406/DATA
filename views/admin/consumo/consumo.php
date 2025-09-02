@@ -105,52 +105,109 @@
 
                                     <!-- horas de trabajo -->
 
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <div class="d-flex gap-2">
-                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo" readonly>
-                                                <button type="button" id="btnEditarHoras" class="btn btn-secondary">Editar</button>
-                                            </div>
-                                        </div>
-                                    </div>
+<div class="col-md-6 col-12">
+  <div class="form-group">
+    <label for="horas_trabajo">Horas de Trabajo</label>
+    <div class="d-flex gap-2" style="gap:.5rem">
+      <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" placeholder="Horas de Trabajo" readonly>
+      <button type="button" id="btnEditarHoras" class="btn btn-secondary">Editar</button>
+      <button type="button" id="btnGuardarBloquear" class="btn btn-primary" disabled>Guardar y bloquear</button>
+      <button type="button" id="btnCancelar" class="btn btn-outline-secondary" disabled>Cancelar</button>
+    </div>
+    <small id="estadoHoras" class="form-text text-muted">Bloqueado</small>
+  </div>
+</div>
 
-                                    <script>
-                                        // Cambia esta contraseña por la tuya
-                                        const PASSWORD = "1234";
+<script>
+  // ==== Configura tu contraseña aquí ====
+  const PASSWORD = "1234";
+  // ======================================
 
-                                        const inputHoras = document.getElementById("horas_trabajo");
-                                        const btnEditar = document.getElementById("btnEditarHoras");
-                                        let desbloqueado = false;
+  const STORAGE_KEY_VAL = "horas_trabajo_val";  // donde se guarda la hora
+  const inputHoras = document.getElementById("horas_trabajo");
+  const btnEditar  = document.getElementById("btnEditarHoras");
+  const btnGuardar = document.getElementById("btnGuardarBloquear");
+  const btnCancel  = document.getElementById("btnCancelar");
+  const lblEstado  = document.getElementById("estadoHoras");
 
-                                        function normalizar(texto) {
-                                            // Elimina espacios, convierte Unicode raro a forma canónica
-                                            return (texto ?? "").toString().normalize("NFKC").trim();
-                                        }
+  let desbloqueado = false;
+  let valorAntesDeEditar = null;
 
-                                        btnEditar.addEventListener("click", () => {
-                                            if (desbloqueado) {
-                                                inputHoras.focus();
-                                                return;
-                                            }
-                                            const ingreso = prompt("Ingrese la contraseña para editar este campo:");
-                                            if (ingreso === null) return; // Canceló
+  function normalizar(t) {
+    return (t ?? "").toString().normalize("NFKC").trim();
+  }
 
-                                            if (normalizar(ingreso) === normalizar(PASSWORD)) {
-                                                inputHoras.readOnly = false;
-                                                desbloqueado = true;
-                                                btnEditar.textContent = "Editar (desbloqueado)";
-                                                btnEditar.classList.remove("btn-secondary");
-                                                btnEditar.classList.add("btn-success");
-                                                inputHoras.focus();
-                                            } else {
-                                                alert("Contraseña incorrecta. No puede editar este campo.");
-                                            }
-                                        });
-                                    </script>
+  // Cargar hora guardada al iniciar
+  (function init() {
+    const guardado = localStorage.getItem(STORAGE_KEY_VAL);
+    if (guardado) inputHoras.value = guardado; // formato "HH:MM"
+    bloquear(true); // siempre inicia bloqueado
+  })();
+
+  function bloquear(inicial = false) {
+    inputHoras.readOnly = true;
+    desbloqueado = false;
+    btnGuardar.disabled = true;
+    btnCancel.disabled = true;
+    btnEditar.disabled = false;
+    btnEditar.textContent = "Editar";
+    btnEditar.className = "btn btn-secondary";
+    lblEstado.textContent = inicial ? "Bloqueado" : "Bloqueado (cambios guardados)";
+  }
+
+  function desbloquear() {
+    inputHoras.readOnly = false;
+    desbloqueado = true;
+    btnGuardar.disabled = false;
+    btnCancel.disabled = false;
+    btnEditar.disabled = true;
+    btnEditar.textContent = "Editar (desbloqueado)";
+    btnEditar.className = "btn btn-success";
+    lblEstado.textContent = "Editando…";
+    valorAntesDeEditar = inputHoras.value; // por si cancela
+    inputHoras.focus();
+  }
+
+  btnEditar.addEventListener("click", () => {
+    if (desbloqueado) return;
+    const ingreso = prompt("Ingrese la contraseña para editar este campo:");
+    if (ingreso === null) return; // Canceló el prompt
+    if (normalizar(ingreso) === normalizar(PASSWORD)) {
+      desbloquear();
+    } else {
+      alert("Contraseña incorrecta.");
+    }
+  });
+
+  // Guardar en localStorage y bloquear
+  btnGuardar.addEventListener("click", () => {
+    // Validación simple de hora HH:MM
+    const val = inputHoras.value;
+    if (!/^\d{2}:\d{2}$/.test(val)) {
+      alert("Ingrese una hora válida (HH:MM).");
+      return;
+    }
+    localStorage.setItem(STORAGE_KEY_VAL, val);
+    bloquear();
+  });
+
+  // Cancelar cambios y volver al valor previo
+  btnCancel.addEventListener("click", () => {
+    if (valorAntesDeEditar !== null) inputHoras.value = valorAntesDeEditar;
+    bloquear();
+  });
+
+  // Guardado automático cuando cambia (opcional)
+  inputHoras.addEventListener("change", () => {
+    if (desbloqueado) {
+      // si quieres auto-guardar mientras edita, descomenta:
+      localStorage.setItem(STORAGE_KEY_VAL, inputHoras.value);
+    }
+  });
+</script>
 
 
-
+                                    
 
 
 
@@ -166,7 +223,7 @@
                                         </div>
                                     </div>
                                     <!-- turno -->
-
+                                    
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
