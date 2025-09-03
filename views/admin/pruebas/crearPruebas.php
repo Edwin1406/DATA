@@ -79,16 +79,27 @@
 
 
 
-                                    <!-- <div class="col-md-6 col-12">
-                                        <label for="tipo_maquina">Escoja el </label>
+                                    <div class="col-md-6 col-12">
+                                        <label for="tipo_clasificacion">Escoja la clasificación</label>
                                         <div class="form-group">
-                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina">
-                                                <option value="1">Producto 1</option>
-                                                <option value="2">Producto 2</option>
+                                            <select class="form-select" name="tipo_clasificacion" id="tipo_clasificacion">
+                                                <option value="CONTROLABLE">CONTROLABLE</option>
+                                                <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
 
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="tipo_maquina">TIPO MAQUINA</label>
+                                            <select id="tipo_maquina" class="choices form-control" name="tipo_maquina">
+                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un tipo de máquina</option>
+                                                <option value="CORRUGADOR" <?php echo isset($turno) && $turno->tipo_maquina === 'CORRUGADOR' ? 'selected' : ''; ?>>CORRUGADOR</option>
+                                                <option value="MICRO" <?php echo isset($turno) && $turno->tipo_maquina === 'MICRO' ? 'selected' : ''; ?>>MICRO</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
