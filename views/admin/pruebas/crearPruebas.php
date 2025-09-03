@@ -154,7 +154,7 @@
                                         </div>
                                     </div>
 
-
+<!-- 
 
                                     <div class="col-md-6 col-12">
                                         <label for="casos">Escoja el caso</label>
@@ -164,7 +164,7 @@
                                                 <option value="HUMEDO">HUMEDO</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- cantidad cajas  -->
                                     <div class="col-md-6 col-12">
