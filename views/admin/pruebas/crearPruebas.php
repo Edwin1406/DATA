@@ -143,7 +143,6 @@
                             <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th>
                             <th class="fs-6" style="min-width: 90px;">casos</th>
                             <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-                            <th class="fs-6" style="min-width: 155px;">Precio unitario</th>
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
                     </thead>
@@ -157,7 +156,7 @@
                                 <td><?= $contro->tipo_clasificacion ?></td>
                                 <td><?= $contro->casos ?></td>
                                 <td><?= $contro->cantidad ?></td>
-                                <td><?= $contro->precio_unitario ?></td>
+                    
                                 <td>
                                     <div class="d-flex gap-1">
                                         <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
