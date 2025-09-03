@@ -154,7 +154,7 @@
                             <tr>
                                 <td><?= $contro->id ?></td>
                                 <td><?= $contro->id_usuario ?></td>
-                                <td><?= $contro->id_producto ?></td>
+                                <td><?= $contro->tipo_maquina ?></td>
                                 <td><?= $contro->cantidad ?></td>
                                 <td><?= $contro->precio_unitario ?></td>
                                 <td>
