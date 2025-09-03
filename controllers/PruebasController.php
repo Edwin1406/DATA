@@ -115,7 +115,7 @@ public static function registrarVenta()
         // Calcular total
         $total = 0;
         foreach ($carritoTemporal as $item) {
-            $total += $item->precio_unitario;
+            $total += $item->cantidad;
         }
 
         // Crear venta
@@ -135,7 +135,7 @@ public static function registrarVenta()
             $detalle->id_venta = $id_venta;
             $detalle->id_producto = $item->id_producto;
             $detalle->cantidad = $item->cantidad;
-            $detalle->precio_unitario = $item->precio_unitario;
+            // $detalle->precio_unitario = $item->precio_unitario;
             $detalle->fecha = date('Y-m-d H:i:s');
             $detalle->guardarCarrito();
         }
