@@ -104,24 +104,14 @@
                                     </div>
 
                                     <div class="col-md-6 col-12">
+                                        <label for="casos">Escoja el caso</label>
                                         <div class="form-group">
-                                            <label for="refile">REFILE</label>
-                                            <input type="number" id="refile" class="form-control"
-                                                placeholder="REFILE" name="refile">
+                                            <select class="form-select" name="casos" id="casos">
+                                                <option value="REFILE">REFILE</option>
+                                                <option value="HUMEDO">HUMEDO</option>
+                                            </select>
                                         </div>
                                     </div>
-
-
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="humedo">HUMEDO</label>
-                                            <input type="number" id="humedo" class="form-control"
-                                                placeholder="HUMEDO" name="humedo">
-                                        </div>
-                                    </div>
-
-
 
 
 
