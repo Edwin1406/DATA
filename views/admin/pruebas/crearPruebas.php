@@ -79,9 +79,7 @@
 
 
 
-
-
-
+                                    <!-- 
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_clasificacion">Escoja la clasificación</label>
                                         <div class="form-group">
@@ -90,9 +88,13 @@
                                                 <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
+                                <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
+
+                                <?php if($nombre === 'CORRUGADOR'): ?>
+                                    <input type="hidden" name="tipo_maquina" value="CORRUGADOR">
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -153,18 +155,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-<!-- 
-
-                                    <div class="col-md-6 col-12">
-                                        <label for="casos">Escoja el caso</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="casos" id="casos">
-                                                <option value="REFILE">REFILE</option>
-                                                <option value="HUMEDO">HUMEDO</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
 
                                     <!-- cantidad cajas  -->
                                     <div class="col-md-6 col-12">
