@@ -93,8 +93,6 @@
 
                                 <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
 
-                                <?php if($nombre === 'CORRUGADOR'): ?>
-                                    <input type="hidden" name="tipo_maquina" value="CORRUGADOR">
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
