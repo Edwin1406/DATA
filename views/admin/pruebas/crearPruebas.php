@@ -79,15 +79,6 @@
 
 
 
-                                    <div class="col-md-6 col-12">
-                                        <label for="tipo_clasificacion">Escoja la clasificación</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="tipo_clasificacion" id="tipo_clasificacion">
-                                                <option value="CONTROLABLE">CONTROLABLE</option>
-                                                <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
-                                            </select>
-                                        </div>
-                                    </div>
 
 
                                     <div class="col-md-6 col-12">
@@ -101,7 +92,16 @@
                                         </div>
                                     </div>
 
-                                
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="tipo_clasificacion">Escoja la clasificación</label>
+                                        <div class="form-group">
+                                            <select class="form-select" name="tipo_clasificacion" id="tipo_clasificacion">
+                                                <option value="CONTROLABLE">CONTROLABLE</option>
+                                                <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
+                                            </select>
+                                        </div>
+                                    </div>                                
 
 
 
