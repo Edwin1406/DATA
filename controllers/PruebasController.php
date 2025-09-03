@@ -34,7 +34,7 @@ class PruebasController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Procesar el formulario
             $carrito->id_usuario = $_SESSION['id'];
-            $carrito->tipo_maquina = $email;
+            $carrito->tipo_maquina = $nombre;
             $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
             $carrito->cantidad = $_POST['cantidad'];
 
