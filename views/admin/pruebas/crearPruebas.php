@@ -79,7 +79,7 @@
 
 
 
-                                    <div class="col-md-6 col-12">
+                                    <!-- <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja el </label>
                                         <div class="form-group">
                                             <select class="form-select" name="tipo_maquina" id="tipo_maquina">
@@ -87,7 +87,7 @@
                                                 <option value="2">Producto 2</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
                                     <div class="col-md-6 col-12">
