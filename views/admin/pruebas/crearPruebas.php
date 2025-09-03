@@ -81,6 +81,16 @@
 
 
 
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="casos">CASOS</label>
+                                            <select id="casos" class="choices form-control" name="casos">
+                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un tipo de máquina</option>
+                                                <option value="CORRUGADOR" <?php echo isset($turno) && $turno->tipo_maquina === 'CORRUGADOR' ? 'selected' : ''; ?>>CORRUGADOR</option>
+                                                <option value="MICRO" <?php echo isset($turno) && $turno->tipo_maquina === 'MICRO' ? 'selected' : ''; ?>>MICRO</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
 
                                     <div class="col-md-6 col-12">
@@ -91,7 +101,25 @@
                                                 <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
                                             </select>
                                         </div>
-                                    </div>                                
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="refile">REFILE</label>
+                                            <input type="number" id="refile" class="form-control"
+                                                placeholder="REFILE" name="refile">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="humedo">HUMEDO</label>
+                                            <input type="number" id="humedo" class="form-control"
+                                                placeholder="HUMEDO" name="humedo">
+                                        </div>
+                                    </div>
 
 
 
