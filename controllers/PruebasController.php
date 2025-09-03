@@ -135,7 +135,7 @@ public static function registrarVenta()
             $detalle->id_venta = $id_venta;
             $detalle->id_producto = $item->id_producto;
             $detalle->cantidad = $item->cantidad;
-            // $detalle->precio_unitario = $item->precio_unitario;
+            $detalle->precio_unitario = $item->precio_unitario;
             $detalle->fecha = date('Y-m-d H:i:s');
             $detalle->guardarCarrito();
         }
