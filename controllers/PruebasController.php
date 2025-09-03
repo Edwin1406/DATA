@@ -37,7 +37,7 @@ class PruebasController
             $carrito->tipo_maquina = $_POST['tipo_maquina'];
             $carrito->cantidad = $_POST['cantidad'];
 
-            $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
+            // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
 
             // Validar los datos
             $alertas = $carrito->validar();

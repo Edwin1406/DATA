@@ -144,7 +144,6 @@
                             <th class="fs-6" style="min-width: 90px;">tipo_maquina</th>
                             <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                             <th class="fs-6" style="min-width: 155px;">Precio unitario</th>
-
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
                     </thead>
