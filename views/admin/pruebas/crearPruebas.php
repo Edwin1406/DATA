@@ -78,7 +78,7 @@
                                 <div class="row">
 
 
-
+<!-- 
                                     <div class="col-md-6 col-12">
                                         <label for="id_producto">Escoja el Producto</label>
                                         <div class="form-group">
@@ -87,7 +87,7 @@
                                                 <option value="2">Producto 2</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
                                     <div class="col-md-6 col-12">
