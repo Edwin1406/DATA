@@ -6,11 +6,11 @@ use DateTime;
 
 class DetalleVenta extends ActiveRecord {    
     protected static $tabla = 'DETALLE_VENTA';
-    protected static $columnasDB = ['id','id_venta','id_producto','cantidad','precio_unitario'];
+    protected static $columnasDB = ['id','id_venta','tipo_maquina','cantidad','precio_unitario'];
 
     public ?int $id;
     public ?int $id_venta;
-    public ?int $id_producto;
+    public ?string $tipo_maquina;
     public ?int $cantidad;
     public ?float $precio_unitario;
 
@@ -22,7 +22,7 @@ class DetalleVenta extends ActiveRecord {
 
         $this->id = $args['id'] ?? null;
         $this->id_venta = $args['id_venta'] ?? null;
-        $this->id_producto = $args['id_producto'] ?? null;
+        $this->tipo_maquina = $args['tipo_maquina'] ?? null;
         $this->cantidad = $args['cantidad'] ?? null;
         $this->precio_unitario = $args['precio_unitario'] ?? null;
        
