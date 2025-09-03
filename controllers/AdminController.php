@@ -107,25 +107,25 @@ class AdminController
 
 
             // // Calcular productividad por hora
-            // $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
-            // $total_horas = is_numeric($consumo->total_horas) ? (float)$consumo->total_horas : 0;
-
-            // if ($cantidad > 0 && $total_horas > 0) {
-            //     $consumo->x_hora = round($cantidad / $total_horas);
-            // } else {
-            //     $consumo->x_hora = 0;
-            // }
-
-
-            // Calcular productividad por hora
             $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
             $total_horas = is_numeric($consumo->total_horas) ? (float)$consumo->total_horas : 0;
 
             if ($cantidad > 0 && $total_horas > 0) {
-                $consumo->x_hora = $cantidad / $total_horas; // mantiene todos los decimales
+                $consumo->x_hora = round($cantidad / $total_horas);
             } else {
                 $consumo->x_hora = 0;
             }
+
+
+            // // Calcular productividad por hora
+            // $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
+            // $total_horas = is_numeric($consumo->total_horas) ? (float)$consumo->total_horas : 0;
+
+            // if ($cantidad > 0 && $total_horas > 0) {
+            //     $consumo->x_hora = $cantidad / $total_horas; // mantiene todos los decimales
+            // } else {
+            //     $consumo->x_hora = 0;
+            // }
 
 
 
