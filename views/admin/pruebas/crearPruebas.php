@@ -78,7 +78,7 @@
                                 <div class="row">
 
 
-<!-- 
+
                                     <div class="col-md-6 col-12">
                                         <label for="id_producto">Escoja el Producto</label>
                                         <div class="form-group">
@@ -87,16 +87,16 @@
                                                 <option value="2">Producto 2</option>
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
 
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="id_producto">TIPO MAQUINA</label>
-                                            <select id="id_producto" class="choices form-control" name="id_producto">
+                                            <label for="tipo_maquina">TIPO MAQUINA</label>
+                                            <select id="tipo_maquina" class="choices form-control" name="tipo_maquina">
                                                 <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un tipo de máquina</option>
-                                                <option value="CORRUGADOR" <?php echo isset($turno) && $turno->id_producto === 'CORRUGADOR' ? 'selected' : ''; ?>>CORRUGADOR</option>
-                                                <option value="MICRO" <?php echo isset($turno) && $turno->id_producto === 'MICRO' ? 'selected' : ''; ?>>MICRO</option>
+                                                <option value="CORRUGADOR" <?php echo isset($turno) && $turno->tipo_maquina === 'CORRUGADOR' ? 'selected' : ''; ?>>CORRUGADOR</option>
+                                                <option value="MICRO" <?php echo isset($turno) && $turno->tipo_maquina === 'MICRO' ? 'selected' : ''; ?>>MICRO</option>
                                             </select>
                                         </div>
                                     </div>
