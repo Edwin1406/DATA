@@ -287,7 +287,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'corrugador@megaecuador.com' ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_almidon">Consumo Almidón (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_almidon" class="form-control"
