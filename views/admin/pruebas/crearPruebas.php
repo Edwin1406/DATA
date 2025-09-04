@@ -91,7 +91,7 @@
                                     </div> -->
 
 
-                                <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
+                                    <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
 
 
                                     <div class="col-md-3 col-12">
@@ -225,70 +225,71 @@
             </div>
         </div>
     </section>
-
     <section class="section">
         <div class="card">
             <div class="card-header">
                 Tabla de Pruebas
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="table1">
-                    <thead>
-                        <tr>
-                            <th class="fs-6" style="min-width: 90px;">ID</th>
-                            <th class="fs-6" style="min-width: 90px;">id_usuario</th>
-                            <th class="fs-6" style="min-width: 90px;">tipo_maquina</th>
-                            <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
-                            <th class="fs-6" style="min-width: 90px;">casos</th>
-                            <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-                            <th class="fs-6" style="min-width: 120px;">Metros Lineales</th>
-                            <th class="fs-6" style="min-width: 100px;">N° de Laminas</th>
-                            <th class="fs-6" style="min-width: 100px;">N° de Cambios</th>
-                            <th class="fs-6" style="min-width: 130px;">Consumo Almidón (Kg)</th>
-                            <th class="fs-6" style="min-width: 130px;">Consumo Resina (Kg)</th>
-                            <th class="fs-6" style="min-width: 150px;">Consumo Recubrimiento (Kg)</th>
-                            <th class="fs-6" style="min-width: 100px;">Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach ($carritoTemporal as $contro): ?>
+                <!-- Contenedor responsive -->
+                <div class="table-responsive">
+                    <table class="table table-striped w-100" id="table1">
+                        <thead>
                             <tr>
-                                <td><?= $contro->id ?></td>
-                                <td><?= $contro->id_usuario ?></td>
-                                <td><?= $contro->tipo_maquina ?></td>
-                                <td><?= $contro->casos ?></td>
-                                <td><?= $contro->cantidad ?></td>
-                                <td><?= $contro->metros_lineales ?></td>
-                                <td><?= $contro->n_laminas ?></td>
-                                <td><?= $contro->n_cambios ?></td>
-                                <td><?= $contro->consumo_almidon ?></td>
-                                <td><?= $contro->consumo_resina ?></td>
-                                <td><?= $contro->consumo_recubrimiento ?></td>
-
-                                <td>
-                                    <div class="d-flex gap-1">
-                                        <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                                        <form action="/admin/eliminarCarrito" method="POST">
-                                            <input type="hidden" name="id" value="<?= $contro->id ?>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form>
-                                    </div>
-                                </td>
-
+                                <th class="fs-6" style="min-width: 90px;">ID</th>
+                                <th class="fs-6" style="min-width: 90px;">id_usuario</th>
+                                <th class="fs-6" style="min-width: 90px;">tipo_maquina</th>
+                                <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
+                                <th class="fs-6" style="min-width: 90px;">casos</th>
+                                <th class="fs-6" style="min-width: 80px;">Cantidad</th>
+                                <th class="fs-6" style="min-width: 120px;">Metros Lineales</th>
+                                <th class="fs-6" style="min-width: 100px;">N° de Laminas</th>
+                                <th class="fs-6" style="min-width: 100px;">N° de Cambios</th>
+                                <th class="fs-6" style="min-width: 130px;">Consumo Almidón (Kg)</th>
+                                <th class="fs-6" style="min-width: 130px;">Consumo Resina (Kg)</th>
+                                <th class="fs-6" style="min-width: 150px;">Consumo Recubrimiento (Kg)</th>
+                                <th class="fs-6" style="min-width: 100px;">Acciones</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                        </thead>
 
-                    <tfoot>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td><b>Total</b></td>
-                            <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                </table>
+                        <tbody>
+                            <?php foreach ($carritoTemporal as $contro): ?>
+                                <tr>
+                                    <td><?= $contro->id ?></td>
+                                    <td><?= $contro->id_usuario ?></td>
+                                    <td><?= $contro->tipo_maquina ?></td>
+                                    <td><?= $contro->casos ?></td>
+                                    <td><?= $contro->cantidad ?></td>
+                                    <td><?= $contro->metros_lineales ?></td>
+                                    <td><?= $contro->n_laminas ?></td>
+                                    <td><?= $contro->n_cambios ?></td>
+                                    <td><?= $contro->consumo_almidon ?></td>
+                                    <td><?= $contro->consumo_resina ?></td>
+                                    <td><?= $contro->consumo_recubrimiento ?></td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                            <form action="/admin/eliminarCarrito" method="POST">
+                                                <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td><b>Total</b></td>
+                                <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
+                                <td colspan="6"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
@@ -296,9 +297,16 @@
                 </form>
             </div>
             <!-- boton de registrar -->
-
         </div>
     </section>
+
+    <!-- CSS opcional para evitar que se rompa texto en celdas -->
+    <style>
+        #table1 th,
+        #table1 td {
+            white-space: nowrap;
+        }
+    </style>
 
 
 
