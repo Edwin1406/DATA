@@ -263,9 +263,9 @@
                         </div>
 
                         <!-- columna 2 -->
-                        
+
                         <div class="col-md-3 col-12">
-                                <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
+                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
                                 <div class="form-group">
                                     <label for="metros_lineales">Metros Lineales</label>
                                     <input type="number" id="metros_lineales" class="form-control"
@@ -278,53 +278,59 @@
                                 <input type="number" id="n_laminas" class="form-control"
                                     placeholder="N° de Laminas" name="n_laminas">
                             </div>
+                        </div>
+
+                        <!-- columna 3 -->
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="n_cambios">N° de Cambios</label>
+                                <input type="number" id="n_cambios" class="form-control"
+                                    placeholder="N° de Cambios" name="n_cambios">
                             </div>
 
-                            <!-- columna 3 -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="n_cambios">N° de Cambios</label>
-                                    <input type="number" id="n_cambios" class="form-control"
-                                        placeholder="N° de Cambios" name="n_cambios">
-                                </div>
-
+                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
                                 <div class="form-group">
                                     <label for="consumo_almidon">Consumo Almidón (Kg)</label>
                                     <input type="number" step="0.01" id="consumo_almidon" class="form-control"
                                         placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
                                 </div>
-                            </div>
+                            <?php }  ?>
+                        </div>
 
-                            <!-- columna 4 -->
-                            <div class="col-md-3 col-12">
+                        <!-- columna 4 -->
+                        <div class="col-md-3 col-12">
+                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
                                 <div class="form-group">
                                     <label for="consumo_resina">Consumo Resina (Kg)</label>
                                     <input type="number" step="0.01" id="consumo_resina" class="form-control"
                                         placeholder="Consumo Resina (Kg)" name="consumo_resina">
                                 </div>
+                            <?php }  ?>
 
+                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
                                 <div class="form-group">
                                     <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
                                     <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
                                         placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <!-- SELECT DE FLAUTA -->
-                                <div class="form-group">
-                                    <label for="tipo_flauta">Tipo de Flauta</label>
-                                    <select class="form-select" name="tipo_flauta" id="tipo_flauta">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="E">E</option>
-                                        <option value="BC">BC</option>
-                                        <option value="AC">AC</option>
-                                    </select>
+                            <?php }  ?>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <!-- SELECT DE FLAUTA -->
+                            <div class="form-group">
+                                <label for="tipo_flauta">Tipo de Flauta</label>
+                                <select class="form-select" name="tipo_flauta" id="tipo_flauta">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="E">E</option>
+                                    <option value="BC">BC</option>
+                                    <option value="AC">AC</option>
+                                </select>
 
 
-                                </div>
                             </div>
+                        </div>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end mt-3">
