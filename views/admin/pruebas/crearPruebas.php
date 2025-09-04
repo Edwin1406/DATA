@@ -281,7 +281,7 @@
 
                         <tfoot>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="3"></td>
                                 <td><b>Total</b></td>
                                 <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
                                 <td colspan="5"></td>
