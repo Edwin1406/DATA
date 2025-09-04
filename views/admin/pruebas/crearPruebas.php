@@ -263,12 +263,15 @@
                         </div>
 
                         <!-- columna 2 -->
+                    <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
+
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
                                     placeholder="Metros Lineales" name="metros_lineales">
                             </div>
+                    <?php }  ?>
 
                             <div class="form-group">
                                 <label for="n_laminas">N° de Laminas</label>
