@@ -230,6 +230,13 @@
             <div class="card-header">
                 Tabla de Pruebas
             </div>
+            <div class="col-md-3 col-12">
+                <div class="form-group">
+                    <label for="consumo_papel">Consumo papel (Kg)</label>
+                    <input type="number" step="0.01" id="consumo_papel" class="form-control"
+                        placeholder="Consumo papel (Kg)" name="consumo_papel">
+                </div>
+            </div>
             <div class="card-body">
                 <!-- Contenedor responsive -->
                 <div class="table-responsive">
