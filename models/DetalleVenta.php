@@ -13,12 +13,12 @@ class DetalleVenta extends ActiveRecord {
     public ?string $tipo_maquina;
     public ?int $cantidad;
     public $casos;
-    public $metros_lineales;
-    public $n_laminas;
-    public $n_cambios;
-    public $consumo_almidon;
-    public $consumo_resina;
-    public $consumo_recubrimiento;
+    public float $metros_lineales;
+    public float $n_laminas;
+    public int $n_cambios;
+    public float $consumo_almidon;
+    public float $consumo_resina;
+    public float $consumo_recubrimiento;
 
 
 
