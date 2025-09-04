@@ -100,6 +100,77 @@ class PruebasController
     }
 
 
+// public static function registrarVenta()
+// {
+//     session_start();
+//     if (!isset($_SESSION['email'])) {
+//         header('Location: /');
+//         exit;
+//     }
+
+//     // ✅ Solo continuar si la petición es POST
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+//         $id_usuario = $_SESSION['id'];
+//         $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+
+//         if (empty($carritoTemporal)) {
+//             header('Location: /carrito');
+//             exit;
+//         }
+
+//         // Calcular total
+//         $total = 0;
+//         foreach ($carritoTemporal as $item) {
+//             $total += $item->cantidad;
+//         }
+
+        
+//         // Obtener ID generado
+//         // Crear venta
+//         $venta = new Ventas;
+//         $venta->id_usuario = $id_usuario;
+//         // id_venta
+//         // $venta->id_venta = null;
+//         $venta->total = $total;
+//         $venta->fecha = date('Y-m-d H:i:s');
+//         $venta->guardarCarrito();
+
+//         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
+
+
+//         // Insertar detalles
+//         foreach ($carritoTemporal as $item) {
+//             $detalle = new DetalleVenta;
+//             $detalle->id_venta = $id_venta;
+//             $detalle->tipo_maquina = $item->tipo_maquina;
+//             $detalle->cantidad = $item->cantidad;
+//             $detalle->casos = $item->casos;
+//             $detalle->metros_lineales = $item->metros_lineales;
+//             $detalle->n_laminas = $item->n_laminas;
+//             $detalle->n_cambios = $item->n_cambios;
+//             $detalle->consumo_almidon = $item->consumo_almidon;
+//             $detalle->consumo_resina = $item->consumo_resina;
+//             $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
+//             // $detalle->fecha = date('Y-m-d H:i:s');
+//             $detalle->guardarCarrito();
+//         }
+
+//         // Vaciar carrito
+//         Carrito::eliminarPorColumna('id_usuario', $id_usuario);
+
+//         // Redirigir o mostrar mensaje de éxito
+//         header('Location: /admin/pruebas/crearPruebas?exito=1');
+//         exit;
+//     } else {
+//         // Si no es POST, redirige o muestra un error
+//         header('Location: /carrito');
+//         exit;
+//     }
+// }
+
+
+
 public static function registrarVenta()
 {
     session_start();
@@ -108,9 +179,7 @@ public static function registrarVenta()
         exit;
     }
 
-    // ✅ Solo continuar si la petición es POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
         $id_usuario = $_SESSION['id'];
         $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
 
@@ -125,19 +194,18 @@ public static function registrarVenta()
             $total += $item->cantidad;
         }
 
-        
-        // Obtener ID generado
+        // Obtener consumo de papel del form
+        $consumo_papel = $_POST['consumo_papel'] ?? 0;
+
         // Crear venta
         $venta = new Ventas;
         $venta->id_usuario = $id_usuario;
-        // id_venta
-        // $venta->id_venta = null;
         $venta->total = $total;
+        $venta->consumo_papel = $consumo_papel; // ✅ Nuevo campo
         $venta->fecha = date('Y-m-d H:i:s');
         $venta->guardarCarrito();
-        
-        $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
 
+        $id_venta = $venta->id; 
 
         // Insertar detalles
         foreach ($carritoTemporal as $item) {
@@ -152,23 +220,18 @@ public static function registrarVenta()
             $detalle->consumo_almidon = $item->consumo_almidon;
             $detalle->consumo_resina = $item->consumo_resina;
             $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
-            // $detalle->fecha = date('Y-m-d H:i:s');
             $detalle->guardarCarrito();
         }
 
-        // Vaciar carrito
         Carrito::eliminarPorColumna('id_usuario', $id_usuario);
 
-        // Redirigir o mostrar mensaje de éxito
         header('Location: /admin/pruebas/crearPruebas?exito=1');
         exit;
     } else {
-        // Si no es POST, redirige o muestra un error
         header('Location: /carrito');
         exit;
     }
 }
-
 
 
 

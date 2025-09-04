@@ -230,15 +230,9 @@
             <div class="card-header">
                 Tabla de Pruebas
             </div>
-          
+
             <div class="card-body">
-                  <div class="col-md-3 col-12">
-                <div class="form-group">
-                    <label for="consumo_papel">Consumo papel (Kg)</label>
-                    <input type="number" step="0.01" id="consumo_papel" class="form-control"
-                        placeholder="Consumo papel (Kg)" name="consumo_papel">
-                </div>
-            </div>
+
                 <!-- Contenedor responsive -->
                 <div class="table-responsive">
                     <table class="table table-striped w-100" id="table1">
@@ -291,7 +285,7 @@
                                 <td colspan="3"></td>
                                 <td><b>Total</b></td>
                                 <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
-                             
+
                                 <td colspan="5"></td>
                             </tr>
                         </tfoot>
@@ -299,6 +293,13 @@
                 </div>
 
                 <form action="/admin/pruebas/registrarVenta" method="POST">
+                    <div class="col-md-3 col-12">
+                        <div class="form-group">
+                            <label for="consumo_papel">Consumo papel (Kg)</label>
+                            <input type="number" step="0.01" id="consumo_papel"
+                                class="form-control" name="consumo_papel" required>
+                        </div>
+                    </div>
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
