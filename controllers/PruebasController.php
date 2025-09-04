@@ -128,6 +128,8 @@ public static function registrarVenta()
         // Crear venta
         $venta = new Ventas;
         $venta->id_usuario = $id_usuario;
+        // id_venta
+        $venta->id_venta = null;
         $venta->total = $total;
         $venta->fecha = date('Y-m-d H:i:s');
         $venta->guardarCarrito();
