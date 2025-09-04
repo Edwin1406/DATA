@@ -194,7 +194,7 @@
                                 <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
                                 <th class="fs-6" style="min-width: 90px;">casos</th>
                                 <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-                                
+
                                 <th class="fs-6" style="min-width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -207,7 +207,7 @@
                                     <td><?= $contro->tipo_maquina ?></td>
                                     <td><?= $contro->casos ?></td>
                                     <td><?= $contro->cantidad ?></td>
-                                    
+
                                     <td>
                                         <div class="d-flex gap-1">
                                             <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
@@ -234,25 +234,23 @@
 
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="row">
-
-                       
-
                         <!-- columna 1 -->
-                        <div class="col-md-4 col-12">
-                                 <!-- fecha -->
-                     
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
                                     name="fecha" value="<?php echo date('Y-m-d'); ?>" required>
                             </div>
-                        
+
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
                                     class="form-control" name="consumo_papel" required>
                             </div>
+                        </div>
 
+                        <!-- columna 2 -->
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
@@ -266,8 +264,8 @@
                             </div>
                         </div>
 
-                        <!-- columna 2 -->
-                        <div class="col-md-4 col-12">
+                        <!-- columna 3 -->
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
@@ -281,8 +279,8 @@
                             </div>
                         </div>
 
-                        <!-- columna 3 -->
-                        <div class="col-md-4 col-12">
+                        <!-- columna 4 -->
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="consumo_resina">Consumo Resina (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_resina" class="form-control"
@@ -294,7 +292,6 @@
                                 <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
-
                         </div>
                     </div>
 
@@ -302,6 +299,7 @@
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
                 </form>
+
 
 
 
