@@ -196,6 +196,8 @@ class PruebasController
             $consumo_almidon = $_POST['consumo_almidon'] ?? 0;
             $consumo_resina = $_POST['consumo_resina'] ?? 0;
             $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
+            // fecha manual
+            $fecha = $_POST['fecha'] ?? date('Y-m-d');
 
             // Crear venta
             $venta = new Ventas;

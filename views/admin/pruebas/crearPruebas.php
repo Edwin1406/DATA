@@ -234,6 +234,16 @@
 
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="row">
+
+                            <!-- fecha -->
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha" class="form-control"
+                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" required>
+                            </div>
+                        </div>
+
                         <!-- columna 1 -->
                         <div class="col-md-4 col-12">
                             <div class="form-group">
