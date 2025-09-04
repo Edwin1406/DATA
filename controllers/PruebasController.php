@@ -143,7 +143,13 @@ public static function registrarVenta()
             $detalle->tipo_maquina = $item->tipo_maquina;
             $detalle->cantidad = $item->cantidad;
             $detalle->casos = $item->casos;
-            $detalle->fecha = date('Y-m-d H:i:s');
+            $detalle->metros_lineales = $item->metros_lineales;
+            $detalle->n_laminas = $item->n_laminas;
+            $detalle->n_cambios = $item->n_cambios;
+            $detalle->consumo_almidon = $item->consumo_almidon;
+            $detalle->consumo_resina = $item->consumo_resina;
+            $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
+            // $detalle->fecha = date('Y-m-d H:i:s');
             $detalle->guardarCarrito();
         }
 
