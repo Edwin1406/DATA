@@ -296,7 +296,7 @@
                         </div>
 
                         <!-- columna 4 -->
-                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'corrugador@megaecuador.com' ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_resina">Consumo Resina (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_resina" class="form-control"
@@ -304,7 +304,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'corrugador@megaecuador.com' ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
