@@ -190,25 +190,24 @@ class PruebasController
 
             // Obtener consumo de papel del form
             $consumo_papel = $_POST['consumo_papel'] ?? 0;
-            $consumo_papel->metros_lineales = $_POST['metros_lineales'];
-            $consumo_papel->n_laminas = $_POST['n_laminas'];
-            $consumo_papel->n_cambios = $_POST['n_cambios'];
-            $consumo_papel->consumo_almidon = $_POST['consumo_almidon'];
-            $consumo_papel->consumo_resina = $_POST['consumo_resina'];
-            $consumo_papel->consumo_recubrimiento = $_POST['consumo_recubrimiento'];
-
+            $metros_lineales = $_POST['metros_lineales'] ?? 0;
+            $n_laminas = $_POST['n_laminas'] ?? 0;
+            $n_cambios = $_POST['n_cambios'] ?? 0;
+            $consumo_almidon = $_POST['consumo_almidon'] ?? 0;
+            $consumo_resina = $_POST['consumo_resina'] ?? 0;
+            $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
 
             // Crear venta
             $venta = new Ventas;
             $venta->id_usuario = $id_usuario;
             $venta->total = $total;
-            $venta->consumo_papel = $consumo_papel; // ✅ Nuevo campo
-            $venta->metros_lineales = $item->metros_lineales;
-            $venta->n_laminas = $item->n_laminas;
-            $venta->n_cambios = $item->n_cambios;
-            $venta->consumo_almidon = $item->consumo_almidon;
-            $venta->consumo_resina = $item->consumo_resina;
-            $venta->consumo_recubrimiento = $item->consumo_recubrimiento;
+            $venta->consumo_papel = $consumo_papel;
+            $venta->metros_lineales = $metros_lineales;
+            $venta->n_laminas = $n_laminas;
+            $venta->n_cambios = $n_cambios;
+            $venta->consumo_almidon = $consumo_almidon;
+            $venta->consumo_resina = $consumo_resina;
+            $venta->consumo_recubrimiento = $consumo_recubrimiento;
             $venta->fecha = date('Y-m-d H:i:s');
             $venta->guardarCarrito();
 
