@@ -262,7 +262,7 @@
                         </div>
 
                         <!-- columna 2 -->
-                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo $email !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
