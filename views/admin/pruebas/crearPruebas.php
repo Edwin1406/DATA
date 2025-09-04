@@ -249,7 +249,9 @@
                             <input type="number" step="0.01" id="consumo_papel"
                                 class="form-control" name="consumo_papel" required>
                         </div>
-                        <div class="col-md-3 col-12">
+                        
+                    </div>
+                    <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
@@ -300,7 +302,6 @@
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
                         </div>
-                    </div>
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
