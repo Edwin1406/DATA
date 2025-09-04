@@ -220,6 +220,8 @@ public static function registrarVenta()
             $detalle->consumo_almidon = $item->consumo_almidon;
             $detalle->consumo_resina = $item->consumo_resina;
             $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
+            // fecha
+            $detalle->fecha = date('Y-m-d H:i:s');
             $detalle->guardarCarrito();
         }
 
