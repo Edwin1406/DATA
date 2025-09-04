@@ -263,9 +263,9 @@
                         </div>
 
                         <!-- columna 2 -->
-                        <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
-
-                            <div class="col-md-3 col-12">
+                        
+                        <div class="col-md-3 col-12">
+                                <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
                                 <div class="form-group">
                                     <label for="metros_lineales">Metros Lineales</label>
                                     <input type="number" id="metros_lineales" class="form-control"
