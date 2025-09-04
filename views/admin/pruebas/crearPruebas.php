@@ -194,12 +194,7 @@
                                 <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
                                 <th class="fs-6" style="min-width: 90px;">casos</th>
                                 <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-                                <th class="fs-6" style="min-width: 120px;">Metros Lineales</th>
-                                <th class="fs-6" style="min-width: 100px;">N° de Laminas</th>
-                                <th class="fs-6" style="min-width: 100px;">N° de Cambios</th>
-                                <th class="fs-6" style="min-width: 130px;">C.Almidón (Kg)</th>
-                                <th class="fs-6" style="min-width: 130px;">C.Resina (Kg)</th>
-                                <th class="fs-6" style="min-width: 150px;">C.Recubrimiento (Kg)</th>
+                                
                                 <th class="fs-6" style="min-width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -212,12 +207,7 @@
                                     <td><?= $contro->tipo_maquina ?></td>
                                     <td><?= $contro->casos ?></td>
                                     <td><?= $contro->cantidad ?></td>
-                                    <td><?= $contro->metros_lineales ?></td>
-                                    <td><?= $contro->n_laminas ?></td>
-                                    <td><?= $contro->n_cambios ?></td>
-                                    <td><?= $contro->consumo_almidon ?></td>
-                                    <td><?= $contro->consumo_resina ?></td>
-                                    <td><?= $contro->consumo_recubrimiento ?></td>
+                                    
                                     <td>
                                         <div class="d-flex gap-1">
                                             <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
