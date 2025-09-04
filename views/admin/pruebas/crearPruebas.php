@@ -283,6 +283,10 @@
                                 <td colspan="3"></td>
                                 <td><b>Total</b></td>
                                 <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
+                                <!-- agregar un input de consumo -->
+                                <td>
+                                    <input type="number" name="consumo" class="form-control" placeholder="Consumo" required>
+                                </td>
                                 <td colspan="5"></td>
                             </tr>
                         </tfoot>
