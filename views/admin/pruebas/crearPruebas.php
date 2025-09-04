@@ -243,74 +243,70 @@
                 </div>
 
                 <form action="/admin/pruebas/registrarVenta" method="POST">
-
                     <div class="row">
-                        <div class="col-md-3 col-12">
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="consumo_papel">Consumo papel (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_papel"
-                                        class="form-control" name="consumo_papel" required>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="metros_lineales">Metros Lineales</label>
-                                    <input type="number" id="metros_lineales" class="form-control"
-                                        placeholder="Metros Lineales" name="metros_lineales">
-                                </div>
-                            </div>
-                            <!-- n de laminas -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="n_laminas">N° de Laminas</label>
-                                    <input type="number" id="n_laminas" class="form-control"
-                                        placeholder="N° de Laminas" name="n_laminas">
-                                </div>
+                        <!-- columna 1 -->
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label for="consumo_papel">Consumo papel (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_papel"
+                                    class="form-control" name="consumo_papel" required>
                             </div>
 
-                            <!-- n de cambios -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="n_cambios">N° de Cambios</label>
-                                    <input type="number" id="n_cambios" class="form-control"
-                                        placeholder="N° de Cambios" name="n_cambios">
-                                </div>
+                            <div class="form-group">
+                                <label for="metros_lineales">Metros Lineales</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales" name="metros_lineales">
                             </div>
 
-                            <!-- consumo almidon -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="consumo_almidon">Consumo Almidón (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_almidon" class="form-control"
-                                        placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
-                                </div>
+                            <div class="form-group">
+                                <label for="n_laminas">N° de Laminas</label>
+                                <input type="number" id="n_laminas" class="form-control"
+                                    placeholder="N° de Laminas" name="n_laminas">
+                            </div>
+                        </div>
+
+                        <!-- columna 2 -->
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label for="n_cambios">N° de Cambios</label>
+                                <input type="number" id="n_cambios" class="form-control"
+                                    placeholder="N° de Cambios" name="n_cambios">
                             </div>
 
-                            <!-- consumo resma -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="consumo_resina">Consumo Resina (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_resina" class="form-control"
-                                        placeholder="Consumo Resina (Kg)" name="consumo_resina">
-                                </div>
+                            <div class="form-group">
+                                <label for="consumo_almidon">Consumo Almidón (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_almidon" class="form-control"
+                                    placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
+                            </div>
+                        </div>
+
+                        <!-- columna 3 -->
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label for="consumo_resina">Consumo Resina (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_resina" class="form-control"
+                                    placeholder="Consumo Resina (Kg)" name="consumo_resina">
                             </div>
 
-                            <!-- consumo recubrimiento -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
-                                        placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
-                                </div>
+                            <div class="form-group">
+                                <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
+                                    placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-end">
+
+                    <div class="col-12 d-flex justify-content-end mt-3">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
                 </form>
+
+
+
+
+
+
+
             </div>
             <!-- boton de registrar -->
         </div>
