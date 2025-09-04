@@ -227,6 +227,7 @@ class PruebasController
                 $detalle->tipo_maquina = $item->tipo_maquina;
                 $detalle->cantidad = $item->cantidad;
                 $detalle->casos = $item->casos;
+                $detalle->observaciones = $item->observaciones;
 
                 // fecha
                 // $detalle->fecha = date('Y-m-d H:i:s');
