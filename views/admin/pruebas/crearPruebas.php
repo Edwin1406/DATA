@@ -94,7 +94,7 @@
                                 <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
 
 
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="casos">CASOS</label>
                                             <select id="casos" class="choices form-control" name="casos">
@@ -155,14 +155,14 @@
                                     </div>
 
                                     <!-- cantidad cajas  -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad</label>
                                             <input type="number" id="cantidad" class="form-control"
                                                 placeholder="Cantidad" name="cantidad">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="metros_lineales">Metros Lineales</label>
                                             <input type="number" id="metros_lineales" class="form-control"
@@ -170,7 +170,7 @@
                                         </div>
                                     </div>
                                     <!-- n de laminas -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="n_laminas">N° de Laminas</label>
                                             <input type="number" id="n_laminas" class="form-control"
@@ -179,7 +179,7 @@
                                     </div>
 
                                     <!-- n de cambios -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="n_cambios">N° de Cambios</label>
                                             <input type="number" id="n_cambios" class="form-control"
@@ -188,7 +188,7 @@
                                     </div>
 
                                     <!-- consumo almidon -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="consumo_almidon">Consumo Almidón (Kg)</label>
                                             <input type="number" step="0.01" id="consumo_almidon" class="form-control"
@@ -197,7 +197,7 @@
                                     </div>
 
                                     <!-- consumo resma -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="consumo_resma">Consumo Resma (Kg)</label>
                                             <input type="number" step="0.01" id="consumo_resma" class="form-control"
@@ -206,7 +206,7 @@
                                     </div>
 
                                     <!-- consumo recubrimiento -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
                                             <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
