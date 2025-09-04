@@ -206,7 +206,7 @@
                                 <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
                                 <th class="fs-6" style="min-width: 90px;">casos</th>
                                 <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-
+                                <th class="fs-6" style="min-width: 100px;">Observaciones</th>
                                 <th class="fs-6" style="min-width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -219,6 +219,7 @@
                                     <td><?= $contro->tipo_maquina ?></td>
                                     <td><?= $contro->casos ?></td>
                                     <td><?= $contro->cantidad ?></td>
+                                    <td><?= $contro->observaciones ?></td>
 
                                     <td>
                                         <div class="d-flex gap-1">
