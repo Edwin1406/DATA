@@ -293,6 +293,22 @@
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
                         </div>
+                        <div class="col-md-3 col-12">
+                            <!-- SELECT DE FLAUTA -->
+                            <div class="form-group">
+                                <label for="tipo_flauta">Tipo de Flauta</label>
+                                <select class="form-select" name="tipo_flauta" id="tipo_flauta">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="E">E</option>
+                                    <option value="BC">BC</option>
+                                    <option value="AC">AC</option>
+                                </select>
+
+
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-12 d-flex justify-content-end mt-3">
