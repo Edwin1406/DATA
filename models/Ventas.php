@@ -27,6 +27,13 @@ class Ventas extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->id_usuario = $args['id_usuario'] ?? null;
         $this->consumo_papel = $args['consumo_papel'] ?? null;
+        $this->metros_lineales = $args['metros_lineales'] ?? null;
+        $this->n_laminas = $args['n_laminas'] ?? null;
+        $this->n_cambios = $args['n_cambios'] ?? null;
+        $this->consumo_almidon = $args['consumo_almidon'] ?? null;
+        $this->consumo_resina = $args['consumo_resina'] ?? null;
+        $this->consumo_recubrimiento = $args['consumo_recubrimiento'] ?? null;
+        
         $this->total = $args['total'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
 
