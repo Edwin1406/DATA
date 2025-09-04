@@ -94,7 +94,7 @@
                                     <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
 
 
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="casos">CASOS</label>
                                             <select id="casos" class="choices form-control" name="casos">
@@ -155,7 +155,7 @@
                                     </div>
 
                                     <!-- cantidad cajas  -->
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad (Kg)</label>
                                             <input type="number" id="cantidad" class="form-control"
@@ -165,7 +165,7 @@
 
                                     <!-- observaciones -->
 
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="observaciones">Observaciones</label>
                                             <input type="text" id="observaciones" class="form-control"

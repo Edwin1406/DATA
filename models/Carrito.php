@@ -7,7 +7,7 @@ namespace Model;
 class Carrito extends ActiveRecord {
 
     protected static $tabla = 'carrito';
-    protected static $columnasDB = ['id', 'id_usuario','tipo_maquina','tipo_clasificacion','casos','cantidad'];
+    protected static $columnasDB = ['id', 'id_usuario','tipo_maquina','tipo_clasificacion','casos','cantidad', 'observaciones'];
 
     public $id;
     public $id_usuario;
@@ -15,6 +15,7 @@ class Carrito extends ActiveRecord {
     public $tipo_clasificacion;
     public $casos;
     public $cantidad;
+    public $observaciones;
     
     
 
@@ -27,6 +28,7 @@ class Carrito extends ActiveRecord {
         $this->tipo_clasificacion = $args['tipo_clasificacion'] ?? null;
         $this->casos = $args['casos'] ?? null;
         $this->cantidad = $args['cantidad'] ?? 0;
+        $this->observaciones = $args['observaciones'] ?? '';
     }
 
 
