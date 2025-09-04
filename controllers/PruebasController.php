@@ -133,7 +133,7 @@ public static function registrarVenta()
         $venta = new Ventas;
         $venta->id_usuario = $id_usuario;
         // id_venta
-        $venta->id_venta = null;
+        $venta->id_venta = $id_venta;
         $venta->total = $total;
         $venta->fecha = date('Y-m-d H:i:s');
         $venta->guardarCarrito();
