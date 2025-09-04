@@ -278,7 +278,6 @@
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
-
                         <tfoot>
                             <tr>
                                 <td colspan="3"></td>
