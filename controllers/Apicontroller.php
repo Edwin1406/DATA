@@ -5,6 +5,7 @@ namespace Controllers;
 use Model\CambiosTurno;
 use Model\Consumo_general;
 use Model\DetalleEmpaque;
+use Model\DetalleVenta;
 use Model\Mantenimiento;
 use Model\Prueba;
 use Model\TurnoDiseno;
@@ -110,6 +111,21 @@ class Apicontroller {
         exit;
     }
 
+
+    // api apiDesperdicioxSucesos
+
+    public static function apiDesperdicioxSucesos():void {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $desperdicio = DetalleVenta::all('ASC');
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($desperdicio);
+        exit;
+    }
 
 
 

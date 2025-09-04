@@ -256,9 +256,8 @@ $router->get('/admin/api/apiEmpaque', [Apicontroller::class, 'apiEmpaque']);
 // apiempaque tiemposmertos
 $router->get('/admin/api/apiEmpaqueTiemposMuertos', [Apicontroller::class, 'apiEmpaqueTiemposMuertos']);
 
-
-
-
+// apidesperdicioxsucesos
+$router->get('/admin/api/apiDesperdicioxSucesos', [Apicontroller::class, 'apiDesperdicioxSucesos']);
 
 
 
