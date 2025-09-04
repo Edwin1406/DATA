@@ -177,7 +177,7 @@
                      </li>
                  <?php } ?>
                  <!-- pruebas-->
-                 <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com'|| $userEmail === 'micro@megaecuador.com'|| $userEmail === 'flexo@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com'|| $userEmail === 'corrugador@megaecuador.com'|| $userEmail === 'flexo@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
