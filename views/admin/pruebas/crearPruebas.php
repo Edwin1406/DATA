@@ -235,17 +235,18 @@
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="row">
 
-                            <!-- fecha -->
+                       
+
+                        <!-- columna 1 -->
                         <div class="col-md-4 col-12">
+                                 <!-- fecha -->
+                     
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
                                     name="fecha" value="<?php echo date('Y-m-d'); ?>" required>
                             </div>
-                        </div>
-
-                        <!-- columna 1 -->
-                        <div class="col-md-4 col-12">
+                        
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
@@ -293,6 +294,7 @@
                                 <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
+
                         </div>
                     </div>
 
