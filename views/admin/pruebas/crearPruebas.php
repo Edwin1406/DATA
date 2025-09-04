@@ -237,7 +237,7 @@
                             <tr>
                                 <td colspan="3"></td>
                                 <td><b>Total</b></td>
-                                <td>$<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
+                                <td>(KG)<?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?></td>
 
                                 <td colspan="5"></td>
                             </tr>
