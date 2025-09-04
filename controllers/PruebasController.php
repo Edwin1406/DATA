@@ -38,6 +38,7 @@ class PruebasController
             $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
             $carrito->casos = $_POST['casos'];
             $carrito->cantidad = $_POST['cantidad'];
+            $carrito->observaciones = $_POST['observaciones'];
 
             // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
 

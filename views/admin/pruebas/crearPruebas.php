@@ -163,6 +163,18 @@
                                         </div>
                                     </div>
 
+                                    <!-- observaciones -->
+
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="observaciones">Observaciones</label>
+                                            <input type="text" id="observaciones" class="form-control"
+                                                placeholder="Observaciones" name="observaciones">
+                                        </div>
+                                    </div>
+
+
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Agregar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
