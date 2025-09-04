@@ -260,7 +260,8 @@ $router->get('/admin/api/apiEmpaqueTiemposMuertos', [Apicontroller::class, 'apiE
 $router->get('/admin/api/apiDesperdicioxSucesos', [Apicontroller::class, 'apiDesperdicioxSucesos']);
 
 
-
+// apitotaldesperdicioindividual
+$router->get('/admin/api/apiTotalDesperdicioIndividual', [Apicontroller::class, 'apiTotalDesperdicioIndividual']);  
 
 
 // CRUD DE PRUEBAS 

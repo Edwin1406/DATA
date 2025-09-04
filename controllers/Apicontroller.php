@@ -9,6 +9,7 @@ use Model\DetalleVenta;
 use Model\Mantenimiento;
 use Model\Prueba;
 use Model\TurnoDiseno;
+use Model\Ventas;
 
 class Apicontroller {
    
@@ -126,6 +127,34 @@ class Apicontroller {
         echo json_encode($desperdicio);
         exit;
     }
+
+    // api apiTotalDesperdicioIndividual
+    public static function apiTotalDesperdicioIndividual():void {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $desperdicioindividual = Ventas::all('ASC');
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($desperdicioindividual);
+        exit;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
