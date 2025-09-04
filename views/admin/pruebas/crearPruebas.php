@@ -245,9 +245,9 @@
                                 <th class="fs-6" style="min-width: 120px;">Metros Lineales</th>
                                 <th class="fs-6" style="min-width: 100px;">N° de Laminas</th>
                                 <th class="fs-6" style="min-width: 100px;">N° de Cambios</th>
-                                <th class="fs-6" style="min-width: 130px;">Consumo Almidón (Kg)</th>
-                                <th class="fs-6" style="min-width: 130px;">Consumo Resina (Kg)</th>
-                                <th class="fs-6" style="min-width: 150px;">Consumo Recubrimiento (Kg)</th>
+                                <th class="fs-6" style="min-width: 130px;">C.Almidón (Kg)</th>
+                                <th class="fs-6" style="min-width: 130px;">C.Resina (Kg)</th>
+                                <th class="fs-6" style="min-width: 150px;">C.Recubrimiento (Kg)</th>
                                 <th class="fs-6" style="min-width: 100px;">Acciones</th>
                             </tr>
                         </thead>
