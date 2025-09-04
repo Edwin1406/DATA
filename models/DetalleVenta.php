@@ -13,6 +13,7 @@ class DetalleVenta extends ActiveRecord {
     public ?string $tipo_maquina;
     public ?int $cantidad;
     public $casos;
+    
 
 
 
