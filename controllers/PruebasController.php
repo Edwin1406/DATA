@@ -210,7 +210,8 @@ class PruebasController
             $venta->consumo_almidon = $consumo_almidon;
             $venta->consumo_resina = $consumo_resina;
             $venta->consumo_recubrimiento = $consumo_recubrimiento;
-            $venta->fecha = date('Y-m-d H:i:s');
+            // $venta->fecha = date('Y-m-d H:i:s');
+            $venta->fecha = $fecha;
             $venta->guardarCarrito();
 
             $id_venta = $venta->id;
@@ -224,7 +225,8 @@ class PruebasController
                 $detalle->casos = $item->casos;
 
                 // fecha
-                $detalle->fecha = date('Y-m-d H:i:s');
+                // $detalle->fecha = date('Y-m-d H:i:s');
+                $detalle->fecha = $fecha;
                 $detalle->guardarCarrito();
             }
 
