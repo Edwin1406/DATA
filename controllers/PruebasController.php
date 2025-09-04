@@ -38,12 +38,6 @@ class PruebasController
             $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
             $carrito->casos = $_POST['casos'];
             $carrito->cantidad = $_POST['cantidad'];
-            $carrito->metros_lineales = $_POST['metros_lineales'];
-            $carrito->n_laminas = $_POST['n_laminas'];
-            $carrito->n_cambios = $_POST['n_cambios'];
-            $carrito->consumo_almidon = $_POST['consumo_almidon'];
-            $carrito->consumo_resina = $_POST['consumo_resina'];
-            $carrito->consumo_recubrimiento = $_POST['consumo_recubrimiento'];
 
             // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
 
@@ -100,155 +94,146 @@ class PruebasController
     }
 
 
-// public static function registrarVenta()
-// {
-//     session_start();
-//     if (!isset($_SESSION['email'])) {
-//         header('Location: /');
-//         exit;
-//     }
+    // public static function registrarVenta()
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //         exit;
+    //     }
 
-//     // ✅ Solo continuar si la petición es POST
-//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //     // ✅ Solo continuar si la petición es POST
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-//         $id_usuario = $_SESSION['id'];
-//         $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+    //         $id_usuario = $_SESSION['id'];
+    //         $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
 
-//         if (empty($carritoTemporal)) {
-//             header('Location: /carrito');
-//             exit;
-//         }
+    //         if (empty($carritoTemporal)) {
+    //             header('Location: /carrito');
+    //             exit;
+    //         }
 
-//         // Calcular total
-//         $total = 0;
-//         foreach ($carritoTemporal as $item) {
-//             $total += $item->cantidad;
-//         }
-
-        
-//         // Obtener ID generado
-//         // Crear venta
-//         $venta = new Ventas;
-//         $venta->id_usuario = $id_usuario;
-//         // id_venta
-//         // $venta->id_venta = null;
-//         $venta->total = $total;
-//         $venta->fecha = date('Y-m-d H:i:s');
-//         $venta->guardarCarrito();
-
-//         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
+    //         // Calcular total
+    //         $total = 0;
+    //         foreach ($carritoTemporal as $item) {
+    //             $total += $item->cantidad;
+    //         }
 
 
-//         // Insertar detalles
-//         foreach ($carritoTemporal as $item) {
-//             $detalle = new DetalleVenta;
-//             $detalle->id_venta = $id_venta;
-//             $detalle->tipo_maquina = $item->tipo_maquina;
-//             $detalle->cantidad = $item->cantidad;
-//             $detalle->casos = $item->casos;
-//             $detalle->metros_lineales = $item->metros_lineales;
-//             $detalle->n_laminas = $item->n_laminas;
-//             $detalle->n_cambios = $item->n_cambios;
-//             $detalle->consumo_almidon = $item->consumo_almidon;
-//             $detalle->consumo_resina = $item->consumo_resina;
-//             $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
-//             // $detalle->fecha = date('Y-m-d H:i:s');
-//             $detalle->guardarCarrito();
-//         }
+    //         // Obtener ID generado
+    //         // Crear venta
+    //         $venta = new Ventas;
+    //         $venta->id_usuario = $id_usuario;
+    //         // id_venta
+    //         // $venta->id_venta = null;
+    //         $venta->total = $total;
+    //         $venta->fecha = date('Y-m-d H:i:s');
+    //         $venta->guardarCarrito();
 
-//         // Vaciar carrito
-//         Carrito::eliminarPorColumna('id_usuario', $id_usuario);
-
-//         // Redirigir o mostrar mensaje de éxito
-//         header('Location: /admin/pruebas/crearPruebas?exito=1');
-//         exit;
-//     } else {
-//         // Si no es POST, redirige o muestra un error
-//         header('Location: /carrito');
-//         exit;
-//     }
-// }
+    //         $id_venta = $venta->id; // Asegúrate que ActiveRecord actualiza esta propiedad
 
 
+    //         // Insertar detalles
+    //         foreach ($carritoTemporal as $item) {
+    //             $detalle = new DetalleVenta;
+    //             $detalle->id_venta = $id_venta;
+    //             $detalle->tipo_maquina = $item->tipo_maquina;
+    //             $detalle->cantidad = $item->cantidad;
+    //             $detalle->casos = $item->casos;
+    //             $detalle->metros_lineales = $item->metros_lineales;
+    //             $detalle->n_laminas = $item->n_laminas;
+    //             $detalle->n_cambios = $item->n_cambios;
+    //             $detalle->consumo_almidon = $item->consumo_almidon;
+    //             $detalle->consumo_resina = $item->consumo_resina;
+    //             $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
+    //             // $detalle->fecha = date('Y-m-d H:i:s');
+    //             $detalle->guardarCarrito();
+    //         }
 
-public static function registrarVenta()
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
+    //         // Vaciar carrito
+    //         Carrito::eliminarPorColumna('id_usuario', $id_usuario);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $id_usuario = $_SESSION['id'];
-        $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+    //         // Redirigir o mostrar mensaje de éxito
+    //         header('Location: /admin/pruebas/crearPruebas?exito=1');
+    //         exit;
+    //     } else {
+    //         // Si no es POST, redirige o muestra un error
+    //         header('Location: /carrito');
+    //         exit;
+    //     }
+    // }
 
-        if (empty($carritoTemporal)) {
-            header('Location: /carrito');
+
+
+    public static function registrarVenta()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
             exit;
         }
 
-        // Calcular total
-        $total = 0;
-        foreach ($carritoTemporal as $item) {
-            $total += $item->cantidad;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_usuario = $_SESSION['id'];
+            $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+
+            if (empty($carritoTemporal)) {
+                header('Location: /carrito');
+                exit;
+            }
+
+            // Calcular total
+            $total = 0;
+            foreach ($carritoTemporal as $item) {
+                $total += $item->cantidad;
+            }
+
+            // Obtener consumo de papel del form
+            $consumo_papel = $_POST['consumo_papel'] ?? 0;
+            $consumo_papel->metros_lineales = $_POST['metros_lineales'];
+            $consumo_papel->n_laminas = $_POST['n_laminas'];
+            $consumo_papel->n_cambios = $_POST['n_cambios'];
+            $consumo_papel->consumo_almidon = $_POST['consumo_almidon'];
+            $consumo_papel->consumo_resina = $_POST['consumo_resina'];
+            $consumo_papel->consumo_recubrimiento = $_POST['consumo_recubrimiento'];
+
+
+            // Crear venta
+            $venta = new Ventas;
+            $venta->id_usuario = $id_usuario;
+            $venta->total = $total;
+            $venta->consumo_papel = $consumo_papel; // ✅ Nuevo campo
+            $venta->metros_lineales = $item->metros_lineales;
+            $venta->n_laminas = $item->n_laminas;
+            $venta->n_cambios = $item->n_cambios;
+            $venta->consumo_almidon = $item->consumo_almidon;
+            $venta->consumo_resina = $item->consumo_resina;
+            $venta->consumo_recubrimiento = $item->consumo_recubrimiento;
+            $venta->fecha = date('Y-m-d H:i:s');
+            $venta->guardarCarrito();
+
+            $id_venta = $venta->id;
+
+            // Insertar detalles
+            foreach ($carritoTemporal as $item) {
+                $detalle = new DetalleVenta;
+                $detalle->id_venta = $id_venta;
+                $detalle->tipo_maquina = $item->tipo_maquina;
+                $detalle->cantidad = $item->cantidad;
+                $detalle->casos = $item->casos;
+
+                // fecha
+                $detalle->fecha = date('Y-m-d H:i:s');
+                $detalle->guardarCarrito();
+            }
+
+            Carrito::eliminarPorColumna('id_usuario', $id_usuario);
+
+            header('Location: /admin/pruebas/crearPruebas?exito=1');
+            exit;
+        } else {
+            header('Location: /carrito');
+            exit;
         }
-
-        // Obtener consumo de papel del form
-        $consumo_papel = $_POST['consumo_papel'] ?? 0;
-
-        // Crear venta
-        $venta = new Ventas;
-        $venta->id_usuario = $id_usuario;
-        $venta->total = $total;
-        $venta->consumo_papel = $consumo_papel; // ✅ Nuevo campo
-        $venta->fecha = date('Y-m-d H:i:s');
-        $venta->guardarCarrito();
-
-        $id_venta = $venta->id; 
-
-        // Insertar detalles
-        foreach ($carritoTemporal as $item) {
-            $detalle = new DetalleVenta;
-            $detalle->id_venta = $id_venta;
-            $detalle->tipo_maquina = $item->tipo_maquina;
-            $detalle->cantidad = $item->cantidad;
-            $detalle->casos = $item->casos;
-            $detalle->metros_lineales = $item->metros_lineales;
-            $detalle->n_laminas = $item->n_laminas;
-            $detalle->n_cambios = $item->n_cambios;
-            $detalle->consumo_almidon = $item->consumo_almidon;
-            $detalle->consumo_resina = $item->consumo_resina;
-            $detalle->consumo_recubrimiento = $item->consumo_recubrimiento;
-            // fecha
-            $detalle->fecha = date('Y-m-d H:i:s');
-            $detalle->guardarCarrito();
-        }
-
-        Carrito::eliminarPorColumna('id_usuario', $id_usuario);
-
-        header('Location: /admin/pruebas/crearPruebas?exito=1');
-        exit;
-    } else {
-        header('Location: /carrito');
-        exit;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
