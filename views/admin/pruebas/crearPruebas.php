@@ -245,10 +245,9 @@
                     </table>
                 </div>
                 <form action="/admin/pruebas/registrarVenta" method="POST">
-                    <div class="row g-3"><!-- g-3 = espacio entre columnas -->
-
-                        <!-- Fecha -->
-                        <div class="col">
+                    <!-- Fila 1 -->
+                    <div class="row g-3">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
@@ -256,8 +255,7 @@
                             </div>
                         </div>
 
-                        <!-- Consumo Papel -->
-                        <div class="col">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
@@ -265,8 +263,7 @@
                             </div>
                         </div>
 
-                        <!-- Metros Lineales (solo corrugador) -->
-                        <div class="col <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
@@ -274,17 +271,18 @@
                             </div>
                         </div>
 
-                        <!-- N° de Laminas -->
-                        <div class="col">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
                                     placeholder="N° de Laminas" name="n_laminas">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- N° de Cambios -->
-                        <div class="col">
+                    <!-- Fila 2 -->
+                    <div class="row g-3 mt-1">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
@@ -292,8 +290,7 @@
                             </div>
                         </div>
 
-                        <!-- Consumo Almidón (solo corrugador) -->
-                        <div class="col <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_almidon">Consumo Almidón (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_almidon" class="form-control"
@@ -301,8 +298,7 @@
                             </div>
                         </div>
 
-                        <!-- Consumo Resina (solo corrugador) -->
-                        <div class="col <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_resina">Consumo Resina (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_resina" class="form-control"
@@ -310,17 +306,18 @@
                             </div>
                         </div>
 
-                        <!-- Consumo Recubrimiento (solo corrugador) -->
-                        <div class="col <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Tipo de Flauta -->
-                        <div class="col">
+                    <!-- Fila 3 -->
+                    <div class="row g-3 mt-1">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="tipo_flauta">Tipo de Flauta</label>
                                 <select class="form-select" name="tipo_flauta" id="tipo_flauta">
@@ -333,9 +330,9 @@
                                 </select>
                             </div>
                         </div>
-
                     </div>
 
+                    <!-- Botón -->
                     <div class="col-12 d-flex justify-content-end mt-3">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
