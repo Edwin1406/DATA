@@ -247,7 +247,7 @@
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="row">
                         <!-- columna 1 -->
-                        <div class="col">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
@@ -262,15 +262,15 @@
                         </div>
 
                         <!-- columna 2 -->
-                        <div class="col">
-                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
-                                <div class="form-group">
-                                    <label for="metros_lineales">Metros Lineales</label>
-                                    <input type="number" id="metros_lineales" class="form-control"
-                                        placeholder="Metros Lineales" name="metros_lineales">
-                                </div>
-                            <?php } ?>
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                            <div class="form-group">
+                                <label for="metros_lineales">Metros Lineales</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales" name="metros_lineales">
+                            </div>
+                        </div>
 
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
@@ -279,42 +279,41 @@
                         </div>
 
                         <!-- columna 3 -->
-                        <div class="col">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
                                     placeholder="N° de Cambios" name="n_cambios">
                             </div>
+                        </div>
 
-                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
-                                <div class="form-group">
-                                    <label for="consumo_almidon">Consumo Almidón (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_almidon" class="form-control"
-                                        placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
-                                </div>
-                            <?php } ?>
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                            <div class="form-group">
+                                <label for="consumo_almidon">Consumo Almidón (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_almidon" class="form-control"
+                                    placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
+                            </div>
                         </div>
 
                         <!-- columna 4 -->
-                        <div class="col">
-                            <?php if ($userEmail === 'pruebas@megaecuador.com') { ?>
-                                <div class="form-group">
-                                    <label for="consumo_resina">Consumo Resina (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_resina" class="form-control"
-                                        placeholder="Consumo Resina (Kg)" name="consumo_resina">
-                                </div>
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                            <div class="form-group">
+                                <label for="consumo_resina">Consumo Resina (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_resina" class="form-control"
+                                    placeholder="Consumo Resina (Kg)" name="consumo_resina">
+                            </div>
+                        </div>
 
-                                <div class="form-group">
-                                    <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
-                                        placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
-                                </div>
-                            <?php } ?>
+                        <div class="col-md-3 col-12 <?php echo $userEmail !== 'pruebas@megaecuador.com' ? 'd-none' : ''; ?>">
+                            <div class="form-group">
+                                <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
+                                    placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
+                            </div>
                         </div>
 
                         <!-- columna 5 -->
-                        <div class="col">
-                            <!-- SELECT DE FLAUTA -->
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="tipo_flauta">Tipo de Flauta</label>
                                 <select class="form-select" name="tipo_flauta" id="tipo_flauta">
