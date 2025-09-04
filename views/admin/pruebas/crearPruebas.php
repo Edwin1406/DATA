@@ -157,7 +157,7 @@
                                     <!-- cantidad cajas  -->
                                     <div class="col-md-3 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad">Cantidad</label>
+                                            <label for="cantidad">Cantidad (Kg)</label>
                                             <input type="number" id="cantidad" class="form-control"
                                                 placeholder="Cantidad" name="cantidad">
                                         </div>
