@@ -231,7 +231,7 @@
                 </table>
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Venta</button>
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                     </div>
                 </form>
             </div>
