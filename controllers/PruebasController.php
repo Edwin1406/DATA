@@ -38,6 +38,12 @@ class PruebasController
             $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
             $carrito->casos = $_POST['casos'];
             $carrito->cantidad = $_POST['cantidad'];
+            $carrito->metros_lineales = $_POST['metros_lineales'];
+            $carrito->n_laminas = $_POST['n_laminas'];
+            $carrito->n_cambios = $_POST['n_cambios'];
+            $carrito->consumo_almidon = $_POST['consumo_almidon'];
+            $carrito->consumo_resma = $_POST['consumo_resma'];
+            $carrito->consumo_recubrimiento = $_POST['consumo_recubrimiento'];
 
             // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
 

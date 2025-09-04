@@ -199,9 +199,9 @@
                                     <!-- consumo resma -->
                                     <div class="col-md-3 col-12">
                                         <div class="form-group">
-                                            <label for="consumo_resma">Consumo Resma (Kg)</label>
-                                            <input type="number" step="0.01" id="consumo_resma" class="form-control"
-                                                placeholder="Consumo Resma (Kg)" name="consumo_resma">
+                                            <label for="consumo_resina">Consumo Resina (Kg)</label>
+                                            <input type="number" step="0.01" id="consumo_resina" class="form-control"
+                                                placeholder="Consumo Resina (Kg)" name="consumo_resina">
                                         </div>
                                     </div>
 
