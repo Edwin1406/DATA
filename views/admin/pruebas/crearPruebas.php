@@ -97,60 +97,64 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="casos">CASOS</label>
-                                            <select id="casos" class="choices form-control" name="casos">
-                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
+                                         <select id="casos" class="choices form-control" name="casos">
+  <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
 
-                                                <!-- CONTROLABLES -->
-                                                <option value="GALLETEADO">GALLETEADO</option>
-                                                <option value="COMBADO">COMBADO</option>
-                                                <option value="HUMEDO">HUMEDO</option>
-                                                <option value="DESPEGADO">DESPEGADO</option>
-                                                <option value="ERROR MEDIDA">ERROR MEDIDA</option>
-                                                <option value="SF">SF</option>
-                                                <option value="EMPALME">EMPALME</option>
-                                                <option value="RECUBRIMIENTO">RECUBRIMIENTO</option>
-                                                <option value="PRE PRINTER">PRE PRINTER</option>
-                                                <option value="FALTA DE TINTA">FALTA DE TINTA</option>
-                                                <option value="MALTRATO TRANSPOTACION">MALTRATO TRANSPOTACION</option>
-                                                <option value="MALTRATO MONTACARGUISTA">MALTRATO MONTACARGUISTA</option>
-                                                <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
-                                                <option value="DERRAME DE TINTA">DERRAME DE TINTA</option>
-                                                <option value="VISCOSIDAD">VISCOSIDAD</option>
-                                                <option value="PH">PH</option>
-                                                <option value="CUADRE">CUADRE</option>
-                                                <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
-                                                <option value="FRENO">FRENO</option>
-                                                <option value="PRESION">PRESION</option>
-                                                <option value="MAL DOBLADO CEJA">MAL DOBLADO CEJA</option>
-                                                <option value="EXCESO DE GOMA">EXCESO DE GOMA</option>
-                                                <option value="CUADRE SIERRA">CUADRE SIERRA</option>
-                                                <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
+  <!-- CONTROLABLES -->
+  <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
+  <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
+  <option value="COMBADO">COMBADO</option>
+  <option value="CUADRE">CUADRE</option>
+  <option value="CUADRE SIERRA">CUADRE SIERRA</option>
+  <option value="DAÑO CLICHE">DAÑO CLICHE</option>
+  <option value="DERRAME DE TINTA">DERRAME DE TINTA</option>
+  <option value="DESPEGADO">DESPEGADO</option>
+  <option value="DISEÑO MAQUINA">DISEÑO MAQUINA</option>
+  <option value="EMPALME">EMPALME</option>
+  <option value="ERROR MEDIDA">ERROR MEDIDA</option>
+  <option value="EXCESO DE GOMA">EXCESO DE GOMA</option>
+  <option value="FALTA DE TINTA">FALTA DE TINTA</option>
+  <option value="FRENO">FRENO</option>
+  <option value="GALLETEADO">GALLETEADO</option>
+  <option value="HUMEDO">HUMEDO</option>
+  <option value="MAL DOBLADO CEJA">MAL DOBLADO CEJA</option>
+  <option value="MALTRATO OPERADOR MONTACARGAS">MALTRATO OPERADOR MONTACARGAS</option>
+  <option value="MALTRATO TRANSPORTACIÓN">MALTRATO TRANSPORTACIÓN</option>
+  <option value="PH">PH</option>
+  <option value="PRESION">PRESION</option>
+  <option value="PRE PRINTER">PRE PRINTER</option>
+  <option value="RECUBRIMIENTO">RECUBRIMIENTO</option>
+  <option value="SF">SF</option>
+  <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
+  <option value="VISCOSIDAD">VISCOSIDAD</option>
 
-                                                <!-- NO CONTROLABLES -->
-                                                <option value="DESHOJE">DESHOJE</option>
-                                                <option value="TROQUEL">TROQUEL</option>
-                                                <option value="FILOS ROTOS">FILOS ROTOS</option>
-                                                <option value="DESCUADRE DE DOBLADO">DESCUADRE DE DOBLADO</option>
-                                                <option value="COMBADA">COMBADA</option>
-                                                <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
-                                                <option value="REFILES">REFILES</option>
-                                                <option value="INICIO DE CORRIDA">INICIO DE CORRIDA</option>
-                                                <option value="MONTAJE CLICHE PROVEEDOR">MONTAJE CLICHE PROVEEDOR</option>
-                                                <option value="CIREL CORTADO">CIREL CORTADO</option>
-                                                <option value="LAMINA HUMEDA">LAMINA HUMEDA</option>
-                                                <option value="MERMA">MERMA</option>
-                                                <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
-                                                <option value="MECANICO">MECANICO</option>
-                                                <option value="ELECTRICO">ELECTRICO</option>
-                                                <option value="PEDIDOS CORTOS">PEDIDOS CORTOS</option>
-                                                <option value="SUSTRATO">SUSTRATO</option>
-                                                <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
-                                                <option value="REFILE PEQUEÑO">REFILE PEQUEÑO</option>
-                                                <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
-                                                <option value="EXTRA TRIM">EXTRA TRIM</option>
-                                                <option value="CAMBIO PEDIDO">CAMBIO PEDIDO</option>
-                                                <option value="ERROR MEDIDA CORRUGADOR">ERROR MEDIDA CORRUGADOR</option>
-                                            </select>
+  <!-- NO CONTROLABLES -->
+  <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
+  <option value="CAMBIO PEDIDO">CAMBIO PEDIDO</option>
+  <option value="CIREL CORTADO">CIREL CORTADO</option>
+  <option value="COMBADA">COMBADA</option>
+  <option value="DESCUADRE DE DOBLADO">DESCUADRE DE DOBLADO</option>
+  <option value="DESHOJE">DESHOJE</option>
+  <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
+  <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
+  <option value="ELECTRICO">ELECTRICO</option>
+  <option value="ERROR MEDIDA CORRUGADOR">ERROR MEDIDA CORRUGADOR</option>
+  <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
+  <option value="EXTRA TRIM">EXTRA TRIM</option>
+  <option value="FILOS ROTOS">FILOS ROTOS</option>
+  <option value="INICIO DE CORRIDA">INICIO DE CORRIDA</option>
+  <option value="LAMINA HUMEDA">LAMINA HUMEDA</option>
+  <option value="MECANICO">MECANICO</option>
+  <option value="MERMA">MERMA</option>
+  <option value="MONTAJE CLICHE PROVEEDOR">MONTAJE CLICHE PROVEEDOR</option>
+  <option value="PEDIDOS CORTOS">PEDIDOS CORTOS</option>
+  <option value="REFILE PEQUEÑO">REFILE PEQUEÑO</option>
+  <option value="REFILES">REFILES</option>
+  <option value="REGISTRO TROQUEL">REGISTRO TROQUEL</option>
+  <option value="SUSTRATO">SUSTRATO</option>
+  <option value="TROQUEL">TROQUEL</option>
+</select>
+
                                         </div>
                                     </div>
 
