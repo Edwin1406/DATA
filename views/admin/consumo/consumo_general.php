@@ -69,6 +69,14 @@
                             <form class="form" method="POST" action="/admin/consumo_general">
                                 <div class="row">
 
+                                  <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="created_at">Fecha</label>
+                                            <input type="date" id="created_at" class="form-control"
+                                                placeholder="Fecha" name="created_at" >
+                                        </div>
+                                    </div>
+
                                     <!-- operador SELECCIONAR NO MULTIPLE -->
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
