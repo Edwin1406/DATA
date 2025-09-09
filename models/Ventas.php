@@ -18,7 +18,7 @@ class Ventas extends ActiveRecord {
     public ?float $consumo_resina;
     public ?float $consumo_recubrimiento;
     public ?string $tipo_flauta;
-    public ?string $turno;
+    public $turno;
     public ?float $total;
     public ?string $fecha;
 
