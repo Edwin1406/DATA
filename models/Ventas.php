@@ -6,7 +6,7 @@ use DateTime;
 
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
-    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','n_laminas','n_cambios','consumo_almidon','consumo_resina','consumo_recubrimiento','tipo_flauta','total','fecha'];
+    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','n_laminas','n_cambios','consumo_almidon','consumo_resina','consumo_recubrimiento','tipo_flauta','turno','total','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
@@ -18,6 +18,7 @@ class Ventas extends ActiveRecord {
     public ?float $consumo_resina;
     public ?float $consumo_recubrimiento;
     public ?string $tipo_flauta;
+    public ?string $turno;
     public ?float $total;
     public ?string $fecha;
 
@@ -36,6 +37,7 @@ class Ventas extends ActiveRecord {
         $this->consumo_recubrimiento = $args['consumo_recubrimiento'] ?? null;
 
         $this->tipo_flauta = $args['tipo_flauta'] ?? null;
+        $this->turno = $args['turno'] ?? null;
         $this->total = $args['total'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
 

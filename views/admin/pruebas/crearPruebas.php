@@ -294,6 +294,16 @@
                             </div>
                         </div>
 
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="turno">Turno</label>
+                                <select class="form-select" name="turno" id="turno">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
                             <div class="form-group">
                                 <label for="consumo_almidon">Consumo Almidón (Kg)</label>
