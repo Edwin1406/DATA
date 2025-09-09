@@ -114,7 +114,7 @@
                                         <div class="form-group">
                                             <label for="total_general">TOTAL GENERAL</label>
                                             <input type="text" id="total_general" class="form-control"
-                                                placeholder="Total General" name="total_general">
+                                                placeholder="Total General" step="0.01" name="total_general">
                                         </div>
                                     </div>
 
