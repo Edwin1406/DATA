@@ -91,7 +91,7 @@
                                                 <option value="DOBLADO">DOBLADO</option>
                                                 <option value="CORTE CEJA">CORTE CEJA</option>
                                                 <option value="CONVERTIDOR">CONVERTIDOR</option>
-                                                <option value="GUILLOTINA LAMINA">GUILLLOTINA LAMINA</option>
+                                                <option value="GUILLOTINA LAMINA">GUILLOTINA LAMINA</option>
                                                 <option value="GUILLOTINA PAPEL">GUILLOTINA PAPEL</option>
                                                 <option value="EMPAQUE">EMPAQUE</option>
                                                 <option value="BODEGA">BODEGA</option>
