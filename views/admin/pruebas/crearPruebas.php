@@ -158,12 +158,12 @@
                                         </div>
                                     </div>
 
-                                    <!-- cantidad cajas  -->
+                                    <!-- cantidad cajas deciamles soporte  -->
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad (Kg)</label>
                                             <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad">
+                                                placeholder="Cantidad" name="cantidad" step="0.01">
                                         </div>
                                     </div>
 
