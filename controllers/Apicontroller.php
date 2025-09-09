@@ -166,6 +166,12 @@ class Apicontroller
         header('Access-Control-Allow-Headers: Content-Type');
 
         $desperdicioindividual = Ventas::all('ASC');
+        foreach ($desperdicioindividual as &$item) {
+            $item->metros_lineales = floatval($item->metros_lineales); 
+            $item->consumo_almidon = floatval($item->consumo_almidon);
+            $item->consumo_resina = floatval($item->consumo_resina);
+            $item->consumo_recubrimiento = floatval($item->consumo_recubrimiento);
+        }
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
         echo json_encode($desperdicioindividual);
