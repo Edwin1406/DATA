@@ -11,22 +11,45 @@ use Model\Prueba;
 use Model\TurnoDiseno;
 use Model\Ventas;
 
-class Apicontroller {
-   
-    public static function apiConsumoGeneral():void {
+class Apicontroller
+{
+
+    // public static function apiConsumoGeneral():void {
+    //     // CORS
+    //     header('Access-Control-Allow-Origin: *');
+    //     header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    //     header('Access-Control-Allow-Headers: Content-Type');
+
+    //     $consmogeneral = Consumo_general::all('ASC');
+    //     // Devolver los datos en formato JSON
+    //     header('Content-Type: application/json');
+    //     echo json_encode($consmogeneral);
+    //     exit;
+    // }
+    public static function apiConsumoGeneral(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
+        // Obtener los datos de la base de datos
         $consmogeneral = Consumo_general::all('ASC');
+
+        // Convertir los valores de 'total_general' a números (decimales)
+        foreach ($consmogeneral as &$registro) {
+            $registro->total_general = (float) $registro->total_general;
+        }
+
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
         echo json_encode($consmogeneral);
         exit;
     }
 
-    public static function apiMantenimiento():void {
+
+    public static function apiMantenimiento(): void
+    {
         $mantenimiento = Mantenimiento::all('ASC');
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
@@ -36,22 +59,22 @@ class Apicontroller {
 
 
 
-    public static function apiDetalle():void {
+    public static function apiDetalle(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
-       $id= $_GET['id'] ?? '';
-       $id = filter_var($id, FILTER_VALIDATE_INT);
+        $id = $_GET['id'] ?? '';
+        $id = filter_var($id, FILTER_VALIDATE_INT);
 
-       if(!$id){
-           echo json_encode([]);
-           return;
-            
+        if (!$id) {
+            echo json_encode([]);
+            return;
         }
 
-        $turno = TurnoDiseno::where('id',$id);
+        $turno = TurnoDiseno::where('id', $id);
 
         // $pedidos = Pedido::all();
         echo json_encode($turno);
@@ -60,7 +83,8 @@ class Apicontroller {
 
 
 
-    public static function apiCambiosDiseno(){
+    public static function apiCambiosDiseno()
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -71,19 +95,19 @@ class Apicontroller {
         if (!$codigo) {
             echo json_encode([]);
             return;
-
         }
-        
-        $cambios = CambiosTurno::whereCodigo('codigo',$codigo);
+
+        $cambios = CambiosTurno::whereCodigo('codigo', $codigo);
         echo json_encode($cambios);
     }
 
 
 
 
-// api apiEmpaque
+    // api apiEmpaque
 
-    public static function apiEmpaque():void {
+    public static function apiEmpaque(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -99,7 +123,8 @@ class Apicontroller {
 
     // api apiEmpaqueTiemposMuertos
 
-    public static function apiEmpaqueTiemposMuertos():void {
+    public static function apiEmpaqueTiemposMuertos(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -115,7 +140,8 @@ class Apicontroller {
 
     // api apiDesperdicioxSucesos
 
-    public static function apiDesperdicioxSucesos():void {
+    public static function apiDesperdicioxSucesos(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -129,7 +155,8 @@ class Apicontroller {
     }
 
     // api apiTotalDesperdicioIndividual
-    public static function apiTotalDesperdicioIndividual():void {
+    public static function apiTotalDesperdicioIndividual(): void
+    {
         // CORS
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -141,23 +168,4 @@ class Apicontroller {
         echo json_encode($desperdicioindividual);
         exit;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
