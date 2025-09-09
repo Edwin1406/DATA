@@ -198,6 +198,7 @@ class PruebasController
             $consumo_resina = $_POST['consumo_resina'] ?? 0;
             $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
             $tipo_flauta = $_POST['tipo_flauta'] ?? '';
+            $turno = $_POST['turno'] ?? '';
             
             // fecha manual
             $fecha = $_POST['fecha'] ?? date('Y-m-d');
@@ -214,6 +215,7 @@ class PruebasController
             $venta->consumo_resina = $consumo_resina;
             $venta->consumo_recubrimiento = $consumo_recubrimiento;
             $venta->tipo_flauta = $tipo_flauta;
+            $venta->turno = $turno;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
             $venta->guardarCarrito();
