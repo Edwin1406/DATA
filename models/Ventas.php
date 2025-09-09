@@ -14,7 +14,7 @@ class Ventas extends ActiveRecord {
     public $metros_lineales;
     public ?int $n_laminas;
     public ?int $n_cambios;
-    public ?float $consumo_almidon;
+    public $consumo_almidon;
     public ?float $consumo_resina;
     public ?float $consumo_recubrimiento;
     public ?string $tipo_flauta;
