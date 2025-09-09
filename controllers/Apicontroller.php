@@ -148,6 +148,9 @@ class Apicontroller
         header('Access-Control-Allow-Headers: Content-Type');
 
         $desperdicio = DetalleVenta::all('ASC');
+        foreach ($desperdicio as &$item) {
+            $item->cantidad = floatval($item->cantidad); // Convertir a número flotante
+        }
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
         echo json_encode($desperdicio);
