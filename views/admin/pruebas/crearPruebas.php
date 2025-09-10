@@ -283,9 +283,9 @@
                         <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
 
                             <div class="form-group">
-                                <label for="metros_lineales_C">Metros Lineales C</label>
-                                <input type="number" id="metros_lineales_C" class="form-control"
-                                    placeholder="Metros Lineales C" name="metros_lineales_C">
+                                <label for="metros_lineales">Metros Lineales C</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales C" name="metros_lineales">
                             </div>
 
                         </div>
@@ -303,8 +303,8 @@
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales E</label>
-                                <input type="number" id="metros_lineales" class="form-control"
-                                    placeholder="Metros Lineales " name="metros_lineales">
+                                <input type="number" id="metros_lineales_E" class="form-control"
+                                    placeholder="Metros Lineales E" name="metros_lineales_E">
                             </div>
                         </div>
 
