@@ -278,6 +278,18 @@
                                 <input type="number" id="metros_lineales_C" class="form-control"
                                     placeholder="Metros Lineales C" name="metros_lineales_C">
                             </div>
+
+                            <div class="form-group">
+                                <label for="metros_lineales_B">Metros Lineales B</label>
+                                <input type="number" id="metros_lineales_B" class="form-control"
+                                    placeholder="Metros Lineales B" name="metros_lineales_B">
+                            </div>
+                            <div class="form-group">
+                                <label for="metros_lineales_E">Metros Lineales E</label>
+                                <input type="number" id="metros_lineales_E" class="form-control"
+                                    placeholder="Metros Lineales E" name="metros_lineales_E">
+                            </div>
+                            
                         </div>
                      
 
@@ -335,24 +347,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Fila 3 -->
-                    <div class="row g-3 mt-1">
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <label for="tipo_flauta">Tipo de Flauta</label>
-                                <select class="form-select" name="tipo_flauta" id="tipo_flauta">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="E">E</option>
-                                    <option value="BC">BC</option>
-                                    <option value="AC">AC</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Botón -->
                     <div class="col-12 d-flex justify-content-end mt-3">
                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
