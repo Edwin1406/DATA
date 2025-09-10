@@ -302,9 +302,9 @@
                         </div>
                         <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label for="metros_lineales_E">Metros Lineales E</label>
-                                <input type="number" id="metros_lineales_E" class="form-control"
-                                    placeholder="Metros Lineales E" name="metros_lineales_E">
+                                <label for="metros_lineales">Metros Lineales E</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales " name="metros_lineales">
                             </div>
                         </div>
 
@@ -315,10 +315,24 @@
                                     placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
                             </div>
                         </div>
-                    </div>
 
+                                    <!-- NECESITO UN SELECT CON OPERADORES EN EL HTML  -->
+                        
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="operador">OPERADOR</label>
+                                            <select id="operador" class="choices form-control" name="operador">
+                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
+                                                <!-- CONTROLABLES -->
+                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
+                                                <option value="JHONNY VERA">JHONNY VERA</option>
+                                                <option value="JUAN CARLOS">JUAN CARLOS</option>
+                                                <option value="LUIS QUISHPE">LUIS QUISHPE</option>
+                                            </select>
 
+                                        </div>
+                                    </div>
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-3 col-12">
