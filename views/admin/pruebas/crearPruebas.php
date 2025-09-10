@@ -267,7 +267,7 @@
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
-                                    class="form-control" name="consumo_papel" required>
+                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
                             </div>
                         </div>
 
