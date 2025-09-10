@@ -171,6 +171,8 @@ class Apicontroller
             $item->consumo_almidon = floatval($item->consumo_almidon);
             $item->consumo_resina = floatval($item->consumo_resina);
             $item->consumo_recubrimiento = floatval($item->consumo_recubrimiento);
+            $item->metros_lineales_B = floatval($item->metros_lineales_B);
+            $item->metros_lineales_E = floatval($item->metros_lineales_E);
         }
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
