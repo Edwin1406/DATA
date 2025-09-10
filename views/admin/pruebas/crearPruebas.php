@@ -278,8 +278,6 @@
                                 <input type="number" id="metros_lineales_C" class="form-control"
                                     placeholder="Metros Lineales C" name="metros_lineales_C">
                             </div>
-                         
-
                         </div>
                      
 
