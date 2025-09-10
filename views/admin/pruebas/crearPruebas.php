@@ -294,19 +294,27 @@
 
                     <!-- Fila 2 -->
                     <div class="row g-3 mt-1">
- <div class="col-md-3 col-12">
-                        <div class="form-group">
-                            <label for="metros_lineales_B">Metros Lineales B</label>
-                            <input type="number" id="metros_lineales_B" class="form-control"
-                                placeholder="Metros Lineales B" name="metros_lineales_B">
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="metros_lineales_B">Metros Lineales B</label>
+                                <input type="number" id="metros_lineales_B" class="form-control"
+                                    placeholder="Metros Lineales B" name="metros_lineales_B">
+                            </div>
                         </div>
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="metros_lineales_E">Metros Lineales E</label>
+                                <input type="number" id="metros_lineales_E" class="form-control"
+                                    placeholder="Metros Lineales E" name="metros_lineales_E">
+                            </div>
                         </div>
-                         <div class="col-md-3 col-12">
-                        <div class="form-group">
-                            <label for="metros_lineales_E">Metros Lineales E</label>
-                            <input type="number" id="metros_lineales_E" class="form-control"
-                                placeholder="Metros Lineales E" name="metros_lineales_E">
-                        </div>
+
+                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                            <div class="form-group">
+                                <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
+                                    placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
+                            </div>
                         </div>
                     </div>
 
@@ -348,13 +356,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
-                            <div class="form-group">
-                                <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
-                                <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
-                                    placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
-                            </div>
-                        </div>
+
                     </div>
                     <!-- Botón -->
                     <div class="col-12 d-flex justify-content-end mt-3">
