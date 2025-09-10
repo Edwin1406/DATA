@@ -192,6 +192,8 @@ class PruebasController
             // Obtener consumo de papel del form
             $consumo_papel = $_POST['consumo_papel'] ?? 0;
             $metros_lineales = $_POST['metros_lineales'] ?? 0;
+            $metros_lineales_C = $_POST['metros_lineales_C'] ?? 0;
+
             $n_laminas = $_POST['n_laminas'] ?? 0;
             $n_cambios = $_POST['n_cambios'] ?? 0;
             $consumo_almidon = $_POST['consumo_almidon'] ?? 0;
@@ -212,6 +214,7 @@ class PruebasController
             $venta->total = $total;
             $venta->consumo_papel = $consumo_papel;
             $venta->metros_lineales = $metros_lineales;
+            $venta->metros_lineales_C = $metros_lineales_C;
             $venta->n_laminas = $n_laminas;
             $venta->n_cambios = $n_cambios;
             $venta->consumo_almidon = $consumo_almidon;
