@@ -283,9 +283,9 @@
                         <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
 
                             <div class="form-group">
-                                <label for="metros_lineales">Metros Lineales C</label>
-                                <input type="number" id="metros_lineales" class="form-control"
-                                    placeholder="Metros Lineales C" name="metros_lineales">
+                                <label for="metros_lineales_C">Metros Lineales C</label>
+                                <input type="number" id="metros_lineales_C" class="form-control"
+                                    placeholder="Metros Lineales C" name="metros_lineales_C">
                             </div>
 
                         </div>
@@ -325,10 +325,11 @@
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
-                                    <option value="EDWIN DIAZ">EDWIN DIAZ</option>
-                                    <option value="JHONNY VERA">JHONNY VERA</option>
-                                    <option value="JUAN CARLOS">JUAN CARLOS</option>
-                                    <option value="LUIS QUISHPE">LUIS QUISHPE</option>
+                                    <option value="RAFAEL ORTEGA">RAFAEL ORTEGA</option>
+                                    <option value="GEOVANNY MANTILLA">GEOVANNY MANTILLA</option>
+                                    <option value="WILLIAM NAULA">WILLIAM NAULA</option>
+                                    <option value="MARCO TAPIA">MARCO TAPIA</option>
+                                    <option value="KEVIN DELGADO">KEVIN DELGADO</option>
                                 </select>
 
                             </div>
@@ -371,6 +372,22 @@
 
 
                         </div>
+                        <div class="row g-3 mt-1">
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="form-group">
+                                    <label for="metros_lineales">Metros Lineales</label>
+                                    <input type="number" id="metros_lineales" class="form-control"
+                                        placeholder="Metros Lineales" name="metros_lineales">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
                         <!-- Botón -->
                         <div class="col-12 d-flex justify-content-end mt-3">
                             <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
