@@ -316,65 +316,65 @@
                             </div>
                         </div>
 
-                                    <!-- NECESITO UN SELECT CON OPERADORES EN EL HTML  -->
-                        
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="operador">OPERADOR</label>
-                                            <select id="operador" class="choices form-control" name="operador">
-                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
-
-                                                <!-- CONTROLABLES -->
-                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
-                                                <option value="JHONNY VERA">JHONNY VERA</option>
-                                                <option value="JUAN CARLOS">JUAN CARLOS</option>
-                                                <option value="LUIS QUISHPE">LUIS QUISHPE</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-
-                    <div class="row g-3 mt-1">
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <label for="n_cambios">N° de Cambios</label>
-                                <input type="number" id="n_cambios" class="form-control"
-                                    placeholder="N° de Cambios" name="n_cambios">
-                            </div>
-                        </div>
+                        <!-- NECESITO UN SELECT CON OPERADORES EN EL HTML  -->
 
                         <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label for="turno">Turno</label>
-                                <select class="form-select" name="turno" id="turno">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                <label for="operador">OPERADOR</label>
+                                <select id="operador" class="choices form-control" name="operador">
+                                    <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
+
+                                    <!-- CONTROLABLES -->
+                                    <option value="EDWIN DIAZ">EDWIN DIAZ</option>
+                                    <option value="JHONNY VERA">JHONNY VERA</option>
+                                    <option value="JUAN CARLOS">JUAN CARLOS</option>
+                                    <option value="LUIS QUISHPE">LUIS QUISHPE</option>
                                 </select>
+
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
-                            <div class="form-group">
-                                <label for="consumo_almidon">Consumo Almidón (Kg)</label>
-                                <input type="number" step="0.01" id="consumo_almidon" class="form-control"
-                                    placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
+                        <div class="row g-3 mt-1">
+                            <div class="col-md-3 col-12">
+                                <div class="form-group">
+                                    <label for="n_cambios">N° de Cambios</label>
+                                    <input type="number" id="n_cambios" class="form-control"
+                                        placeholder="N° de Cambios" name="n_cambios">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
-                            <div class="form-group">
-                                <label for="consumo_resina">Consumo Resina (Kg)</label>
-                                <input type="number" step="0.01" id="consumo_resina" class="form-control"
-                                    placeholder="Consumo Resina (Kg)" name="consumo_resina">
+                            <div class="col-md-3 col-12">
+                                <div class="form-group">
+                                    <label for="turno">Turno</label>
+                                    <select class="form-select" name="turno" id="turno">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </div>
                             </div>
+
+                            <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                                <div class="form-group">
+                                    <label for="consumo_almidon">Consumo Almidón (Kg)</label>
+                                    <input type="number" step="0.01" id="consumo_almidon" class="form-control"
+                                        placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                                <div class="form-group">
+                                    <label for="consumo_resina">Consumo Resina (Kg)</label>
+                                    <input type="number" step="0.01" id="consumo_resina" class="form-control"
+                                        placeholder="Consumo Resina (Kg)" name="consumo_resina">
+                                </div>
+                            </div>
+
+
                         </div>
-
-
-                    </div>
-                    <!-- Botón -->
-                    <div class="col-12 d-flex justify-content-end mt-3">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
-                    </div>
+                        <!-- Botón -->
+                        <div class="col-12 d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
+                        </div>
                 </form>
 
 
