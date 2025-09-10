@@ -294,16 +294,19 @@
 
                     <!-- Fila 2 -->
                     <div class="row g-3 mt-1">
-
+ <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label for="metros_lineales_B">Metros Lineales B</label>
                             <input type="number" id="metros_lineales_B" class="form-control"
                                 placeholder="Metros Lineales B" name="metros_lineales_B">
                         </div>
+                        </div>
+                         <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label for="metros_lineales_E">Metros Lineales E</label>
                             <input type="number" id="metros_lineales_E" class="form-control"
                                 placeholder="Metros Lineales E" name="metros_lineales_E">
+                        </div>
                         </div>
                     </div>
 
