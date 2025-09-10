@@ -199,6 +199,8 @@ class PruebasController
             $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
             $metros_lineales_B = $_POST['metros_lineales_B'] ?? 0;
             $metros_lineales_E = $_POST['metros_lineales_E'] ?? 0;
+            // operador
+            $operador =$_POST['operador'] ?? '';
             $turno = $_POST['turno'] ?? '';
             
             // fecha manual
@@ -217,6 +219,7 @@ class PruebasController
             $venta->consumo_recubrimiento = $consumo_recubrimiento;
             $venta->metros_lineales_B = $metros_lineales_B;
             $venta->metros_lineales_E = $metros_lineales_E;
+            $venta->operador = $operador;
             $venta->turno = $turno;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;

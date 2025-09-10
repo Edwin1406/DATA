@@ -6,7 +6,7 @@ use DateTime;
 
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
-    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','n_laminas','n_cambios','consumo_almidon','consumo_resina','consumo_recubrimiento','metros_lineales_B','metros_lineales_E','turno','total','fecha'];
+    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','n_laminas','n_cambios','consumo_almidon','consumo_resina','consumo_recubrimiento','metros_lineales_B','metros_lineales_E','operador','turno','total','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
@@ -19,6 +19,7 @@ class Ventas extends ActiveRecord {
     public $consumo_recubrimiento;
     public $metros_lineales_B;
     public $metros_lineales_E;
+    public $operador;
     public $turno;
     public ?float $total;
     public ?string $fecha;
@@ -38,6 +39,7 @@ class Ventas extends ActiveRecord {
         $this->consumo_recubrimiento = $args['consumo_recubrimiento'] ?? null;
         $this->metros_lineales_B = $args['metros_lineales_B'] ?? null;
         $this->metros_lineales_E = $args['metros_lineales_E'] ?? null;
+        $this->operador = $args['operador'] ?? null;    
         $this->turno = $args['turno'] ?? null;
         $this->total = $args['total'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
