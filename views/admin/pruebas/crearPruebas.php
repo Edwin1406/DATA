@@ -153,6 +153,10 @@
                                                 <option value="REGISTRO TROQUEL">REGISTRO TROQUEL</option>
                                                 <option value="SUSTRATO">SUSTRATO</option>
                                                 <option value="TROQUEL">TROQUEL</option>
+                                                <option value="SOPLADO">SOPLADO</option>
+                                                <option value="CALDERO">CALDERO</option>
+                                                <option value="COMPRESOR">COMPRESOR</option>
+
                                             </select>
 
                                         </div>
