@@ -59,31 +59,48 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" >
+                            <form class="form" method="POST">
                                 <div class="row">
+
+
+
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="created_at">Fecha</label>
+                                            <input type="date" id="created_at" class="form-control"
+                                                placeholder="Fecha" name="created_at">
+                                        </div>
+                                    </div>
+
+
 
                                     <!-- operador SELECCIONAR NO MULTIPLE -->
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
                                         <div class="form-group">
-                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina" >
+                                            <select class="form-select" name="tipo_maquina" id="tipo_maquina">
                                                 <option value="" disabled selected>Seleccione tipo de máquina</option>
-                                                <option value="CORRUGADOR"<?= $consumoGeneral->tipo_maquina === 'CORRUGADOR' ? 'selected' : '' ?>>CORRUGADOR</option>
-                                                <option value="MICRO"<?= $consumoGeneral->tipo_maquina === 'MICRO' ? 'selected' : '' ?>>MICRO</option>
-                                                <option value="TROQUEL"<?= $consumoGeneral->tipo_maquina === 'TROQUEL' ? 'selected' : '' ?>>TROQUEL</option>
-                                                <option value="FLEXOGRAFICA"<?= $consumoGeneral->tipo_maquina === 'FLEXOGRAFICA' ? 'selected' : '' ?>>FLEXOGRAFICA</option>
-                                                <option value="PRE-PRINTER"<?= $consumoGeneral->tipo_maquina === 'PRE-PRINTER' ? 'selected' : '' ?>>PRE-PRINTER</option>
-                                                <option value="DOBLADO"<?= $consumoGeneral->tipo_maquina === 'DOBLADO' ? 'selected' : '' ?>>DOBLADO</option>
-                                                <option value="CORTE CEJA"<?= $consumoGeneral->tipo_maquina === 'CORTE CEJA' ? 'selected' : '' ?>>CORTE CEJA</option>
-                                                <option value="CONVERTIDOR"<?= $consumoGeneral->tipo_maquina === 'CONVERTIDOR' ? 'selected' : '' ?>>CONVERTIDOR</option>
-                                                <option value="GUILLLOTINA LAMINA"<?= $consumoGeneral->tipo_maquina === 'GUILLLOTINA LAMINA' ? 'selected' : '' ?>>GUILLLOTINA LAMINA</option>
-                                                <option value="GUILLOTINA PAPEL"<?= $consumoGeneral->tipo_maquina === 'GUILLOTINA PAPEL' ? 'selected' : '' ?>>GUILLOTINA PAPEL</option>
-                                                <option value="EMPAQUE"<?= $consumoGeneral->tipo_maquina === 'EMPAQUE' ? 'selected' : '' ?>>EMPAQUE</option>
-                                                <option value="BODEGA"<?= $consumoGeneral->tipo_maquina === 'BODEGA' ? 'selected' : '' ?>>BODEGA</option>
+                                                <option value="CORRUGADOR" <?= $consumoGeneral->tipo_maquina === 'CORRUGADOR' ? 'selected' : '' ?>>CORRUGADOR</option>
+                                                <option value="MICRO" <?= $consumoGeneral->tipo_maquina === 'MICRO' ? 'selected' : '' ?>>MICRO</option>
+                                                <option value="TROQUEL" <?= $consumoGeneral->tipo_maquina === 'TROQUEL' ? 'selected' : '' ?>>TROQUEL</option>
+                                                <option value="FLEXOGRAFICA" <?= $consumoGeneral->tipo_maquina === 'FLEXOGRAFICA' ? 'selected' : '' ?>>FLEXOGRAFICA</option>
+                                                <option value="PRE-PRINTER" <?= $consumoGeneral->tipo_maquina === 'PRE-PRINTER' ? 'selected' : '' ?>>PRE-PRINTER</option>
+                                                <option value="DOBLADO" <?= $consumoGeneral->tipo_maquina === 'DOBLADO' ? 'selected' : '' ?>>DOBLADO</option>
+                                                <option value="CORTE CEJA" <?= $consumoGeneral->tipo_maquina === 'CORTE CEJA' ? 'selected' : '' ?>>CORTE CEJA</option>
+                                                <option value="CONVERTIDOR" <?= $consumoGeneral->tipo_maquina === 'CONVERTIDOR' ? 'selected' : '' ?>>CONVERTIDOR</option>
+                                                <option value="GUILLLOTINA LAMINA" <?= $consumoGeneral->tipo_maquina === 'GUILLLOTINA LAMINA' ? 'selected' : '' ?>>GUILLLOTINA LAMINA</option>
+                                                <option value="GUILLOTINA PAPEL" <?= $consumoGeneral->tipo_maquina === 'GUILLOTINA PAPEL' ? 'selected' : '' ?>>GUILLOTINA PAPEL</option>
+                                                <option value="EMPAQUE" <?= $consumoGeneral->tipo_maquina === 'EMPAQUE' ? 'selected' : '' ?>>EMPAQUE</option>
+                                                <option value="BODEGA" <?= $consumoGeneral->tipo_maquina === 'BODEGA' ? 'selected' : '' ?>>BODEGA</option>
 
                                             </select>
                                         </div>
                                     </div>
+
+
+                                    <!-- fecha created -->
 
 
                                     <div class="col-md-6 col-12">
@@ -91,7 +108,7 @@
                                             <label for="total_general">TOTAL GENERAL</label>
                                             <input type="text" id="total_general" class="form-control"
                                                 placeholder="Total General" name="total_general"
-                                                value="<?= htmlspecialchars($consumoGeneral->total_general ?? '') ?>" >
+                                                value="<?= htmlspecialchars($consumoGeneral->total_general ?? '') ?>">
                                         </div>
                                     </div>
 
