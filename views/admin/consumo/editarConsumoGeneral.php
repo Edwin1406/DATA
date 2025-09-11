@@ -70,7 +70,9 @@
                                         <div class="form-group">
                                             <label for="created_at">Fecha</label>
                                             <input type="date" id="created_at" class="form-control"
-                                                placeholder="Fecha" name="created_at">
+                                                placeholder="Fecha" name="created_at"
+                                                value="<?= htmlspecialchars($consumoGeneral->created_at ?? '') ?>"
+                                                >
                                         </div>
                                     </div>
 
