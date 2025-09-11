@@ -280,7 +280,7 @@
                         </div>
 
 
-                        <div class="col-md-3 col-12 <?php echo (trim(strtolower($email)) !== 'corrugador@megaecuador.com') ? 'd-none' : ''; ?>">
+                        <div class="col-md-3 col-12">
 
                             <div class="form-group">
                                 <label for="metros_lineales_C">Metros Lineales C</label>
