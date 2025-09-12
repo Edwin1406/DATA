@@ -74,7 +74,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/pruebas/crearPruebas" enctype="multipart/form-data">
+                            <form class="form" method="POST" action="/admin/pruebas/crearPruebas" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
 
@@ -390,7 +390,7 @@
 
                         <!-- Botón -->
                         <div class="col-12 d-flex justify-content-end mt-3">
-                            <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
+                            <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
                         </div>
                 </form>
 
@@ -417,6 +417,14 @@
 
 
 
+<script>
+function bloquearBoton(form) {
+  const btn = form.querySelector('#btnRegistrar');
+  btn.disabled = true; // Deshabilita el botón
+  btn.innerText = "Registrando..."; // Cambia el texto (opcional)
+  return true; // Permite que el formulario se envíe
+}
+</script>
 
 
 
