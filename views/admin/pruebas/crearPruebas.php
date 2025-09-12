@@ -435,29 +435,3 @@ function bloquearBoton(form) {
 
 
 
-
-<?php
-$url = "https://developers.hostinger.com/api/vps/v1/virtual-machines";
-
-// Inicializar cURL
-$ch = curl_init($url);
-
-// Configuración
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    "Content-Type: application/json",
-    "Authorization: Bearer Fp5uzN1eDzVLkdtHporroLZoWa7n9WNI1DIJWKfXdf4700cc" // si tu API necesita token
-]);
-
-// Ejecutar
-$response = curl_exec($ch);
-
-// Cerrar
-curl_close($ch);
-
-// Decodificar JSON
-$data = json_decode($response, true);
-
-// Mostrar
-print_r($data);
-?>  
