@@ -403,13 +403,36 @@
                             </div>
 
                             <!-- horas de inactividad -->
+                            <!-- horas de inactividad -->
                             <div class="col-md-3 col-12">
                                 <div class="form-group">
                                     <label for="horas_inactividad">Horas de Inactividad</label>
-                                    <input type="number" id="horas_inactividad" class="form-control"
-                                        placeholder="Horas de Inactividad" name="horas_inactividad">
+                                    <div class="input-group">
+                                        <!-- Campo de número -->
+                                        <input type="number" id="horas_inactividad" class="form-control" placeholder="Cantidad" name="horas_inactividad">
+
+                                        <!-- Selector de unidades -->
+                                        <select id="unidad_inactividad" class="form-control" name="unidad_inactividad">
+                                            <option value="horas">Horas</option>
+                                            <option value="minutos">Minutos</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
+                            <script>
+                                document.getElementById("horas_inactividad").addEventListener("input", function() {
+                                    const cantidad = parseInt(this.value);
+                                    const unidad = document.getElementById("unidad_inactividad").value;
+
+                                    if (unidad === "horas" && cantidad > 24) {
+                                        alert("El número de horas no puede ser mayor a 24.");
+                                    }
+
+                                    if (unidad === "minutos" && cantidad > 1440) { // 1440 minutos = 24 horas
+                                        alert("El número de minutos no puede ser mayor a 1440.");
+                                    }
+                                });
+                            </script>
 
                         </div>
 
