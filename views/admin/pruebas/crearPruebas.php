@@ -401,6 +401,16 @@
                                         name="hora_fin" required>
                                 </div>
                             </div>
+
+                            <!-- horas de inactividad -->
+                            <div class="col-md-3 col-12">
+                                <div class="form-group">
+                                    <label for="horas_inactividad">Horas de Inactividad</label>
+                                    <input type="number" id="horas_inactividad" class="form-control"
+                                        placeholder="Horas de Inactividad" name="horas_inactividad">
+                                </div>
+                            </div>
+
                         </div>
 
 
