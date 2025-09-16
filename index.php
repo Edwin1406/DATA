@@ -7,21 +7,21 @@ ini_set('display_errors', 1);
 
 
 
-require_once __DIR__ . '/includes/app.php';
+// require_once __DIR__ . '/includes/app.php';
 
-use MVC\Router;
+// use MVC\Router;
 
-use Controllers\AuthController;
-use Controllers\AdminController;
-use Controllers\Apicontroller;
-use Controllers\ControlController;
-use Controllers\DiseñoController;
-use Controllers\GraficasController;
-use Controllers\PruebasController;
-use Controllers\LocalizarController;
-use Controllers\MantenimientoController;
+// use Controllers\AuthController;
+// use Controllers\AdminController;
+// use Controllers\Apicontroller;
+// use Controllers\ControlController;
+// use Controllers\DiseñoController;
+// use Controllers\GraficasController;
+// use Controllers\PruebasController;
+// use Controllers\LocalizarController;
+// use Controllers\MantenimientoController;
 
-$router = new Router();
+// $router = new Router();
 
 
 // Login
