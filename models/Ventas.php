@@ -8,7 +8,7 @@ class Ventas extends ActiveRecord {
     protected static $tabla = 'VENTAS';
     protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','metros_lineales_C','n_laminas','n_cambios','consumo_almidon','consumo_resina',
     'consumo_recubrimiento','metros_lineales_B','metros_lineales_E','operador',
-    'turno','total','horas_programada','hora_inicio','hora_fin','horas_inactividad','motivo_inactividad','fecha'];
+    'turno','total','hora_programada','hora_inicio','hora_fin','horas_inactividad','motivo_inactividad','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
