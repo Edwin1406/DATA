@@ -383,6 +383,17 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-3 col-12">
+                                <div class="form-group">
+                                    <label for="hora_programada">Hora Programada</label>
+                                    <input type="time" id="hora_programada" class="form-control"
+                                        name="hora_programada" required>
+
+                                </div>
+                            </div>
+
+
+
                             <!-- fecha inicio -->
                             <div class="col-md-3 col-12">
                                 <div class="form-group">
