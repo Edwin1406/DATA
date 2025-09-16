@@ -6,7 +6,9 @@ use DateTime;
 
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
-    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','metros_lineales_C','n_laminas','n_cambios','consumo_almidon','consumo_resina','consumo_recubrimiento','metros_lineales_B','metros_lineales_E','operador','turno','total','fecha'];
+    protected static $columnasDB = ['id','id_usuario','consumo_papel','metros_lineales','metros_lineales_C','n_laminas','n_cambios','consumo_almidon','consumo_resina',
+    'consumo_recubrimiento','metros_lineales_B','metros_lineales_E','operador',
+    'turno','total','horas_programada','hora_inicio','hora_fin','horas_inactividad','motivo_inactividad','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
@@ -23,6 +25,11 @@ class Ventas extends ActiveRecord {
     public $operador;
     public $turno;
     public ?float $total;
+    public  $hora_programada;
+    public  $hora_inicio;
+    public  $hora_fin;
+    public  $horas_inactividad;
+    public ?string $motivo_inactividad;
     public ?string $fecha;
 
     public function __construct(array $args = []) {
@@ -44,6 +51,11 @@ class Ventas extends ActiveRecord {
         $this->operador = $args['operador'] ?? null;    
         $this->turno = $args['turno'] ?? null;
         $this->total = $args['total'] ?? null;
+        $this->hora_programada = $args['hora_programada'] ?? null;
+        $this->hora_inicio = $args['hora_inicio'] ?? null;
+        $this->hora_fin = $args['hora_fin'] ?? null;
+        $this->horas_inactividad = $args['horas_inactividad'] ?? null;
+        $this->motivo_inactividad = $args['motivo_inactividad'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
 
     }

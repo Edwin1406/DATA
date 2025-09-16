@@ -204,6 +204,12 @@ class PruebasController
             // operador
             $operador =$_POST['operador'] ?? '';
             $turno = $_POST['turno'] ?? '';
+            $hora_programada = $_POST['hora_programada'] ?? '';
+            $hora_inicio = $_POST['hora_inicio'] ?? '';
+            $hora_fin = $_POST['hora_fin'] ?? '';
+            $horas_inactividad = $_POST['horas_inactividad'] ?? 0;
+            $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
+
             
             // fecha manual
             $fecha = $_POST['fecha'] ?? date('Y-m-d');
@@ -224,6 +230,11 @@ class PruebasController
             $venta->metros_lineales_E = $metros_lineales_E;
             $venta->operador = $operador;
             $venta->turno = $turno;
+            $venta->hora_programada = $hora_programada;
+            $venta->hora_inicio = $hora_inicio;
+            $venta->hora_fin = $hora_fin;
+            $venta->horas_inactividad = $horas_inactividad;
+            $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
             $venta->guardarCarrito();
