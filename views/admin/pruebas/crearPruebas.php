@@ -407,14 +407,11 @@
                                 <div class="form-group">
                                     <label for="horas_inactividad">Horas de Inactividad</label>
                                     <div class="input-group">
-                                        <!-- Campo de número -->
-                                        <input type="number" id="horas_inactividad" class="form-control" placeholder="Cantidad" name="horas_inactividad">
+                                        <!-- Campo de horas -->
+                                        <input type="number" id="horas_inactividad" class="form-control" placeholder="Horas" name="horas_inactividad" min="0" step="1">
 
-                                        <!-- Selector de unidades -->
-                                        <select id="unidad_inactividad" class="form-control" name="unidad_inactividad">
-                                            <option value="horas">Horas</option>
-                                            <option value="minutos">Minutos</option>
-                                        </select>
+                                        <!-- Campo de minutos -->
+                                        <input type="number" id="minutos_inactividad" class="form-control" placeholder="Minutos" name="minutos_inactividad" min="0" step="1">
                                     </div>
                                 </div>
                             </div>
@@ -426,6 +423,7 @@
                                     <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
                                 </div>
                             </div>
+
 
                             <script>
                                 document.getElementById("horas_inactividad").addEventListener("input", function() {
