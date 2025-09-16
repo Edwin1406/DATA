@@ -389,8 +389,7 @@
                                     <label for="hora_inicio">Hora Inicio</label>
                                     <input type="time" id="hora_inicio" class="form-control"
                                         name="hora_inicio" required>
-                                    <div class="invalid-feedback">Por favor ingrese la hora de inicio.</div>
-                                    <div class="valid-feedback">Hora de inicio válida.</div>
+
                                 </div>
                             </div>
 
@@ -400,15 +399,6 @@
                                     <label for="hora_fin">Hora Fin</label>
                                     <input type="time" id="hora_fin" class="form-control"
                                         name="hora_fin" required>
-                                    <div class="invalid-feedback">Por favor ingrese la hora de fin.</div>
-                                    <div class="valid-feedback">Hora de fin válida.</div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="trabajo_continuo" name="trabajo_continuo">
-                                        <label class="form-check-label" for="trabajo_continuo">
-                                            Trabajo continuo (pasa de un día a otro)
-                                        </label>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
