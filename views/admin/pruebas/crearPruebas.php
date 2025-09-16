@@ -403,7 +403,6 @@
                             </div>
 
                             <!-- horas de inactividad -->
-                            <!-- horas de inactividad -->
                             <div class="col-md-3 col-12">
                                 <div class="form-group">
                                     <label for="horas_inactividad">Horas de Inactividad</label>
@@ -419,6 +418,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Motivo de Inactividad -->
+                            <div class="col-md-12 col-12">
+                                <div class="form-group">
+                                    <label for="motivo_inactividad">Motivo de la Inactividad</label>
+                                    <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                                </div>
+                            </div>
+
                             <script>
                                 document.getElementById("horas_inactividad").addEventListener("input", function() {
                                     const cantidad = parseInt(this.value);
