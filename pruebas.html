@@ -4,102 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla Dinámica de Productos</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- Incluir Bootstrap para mejorar el diseño -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/handsontable@11.0.0/dist/handsontable.full.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@11.0.0/dist/handsontable.full.min.js"></script>
 </head>
 <body>
 
+<div class="container mt-5">
     <h1>Seleccionar o Agregar Productos en la Tabla</h1>
 
-    <!-- Tabla donde se agregarán los productos -->
-    <table id="productos" class="display">
-        <thead>
-            <tr>
-                <th>Cant.</th>
-                <th>Prenda</th>
-                <th>Composición</th>
-                <th>Precio</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Las filas se agregarán dinámicamente aquí -->
-        </tbody>
-    </table>
+    <div id="tablaProductos"></div>
 
     <br><br>
 
-    <!-- Botón para agregar nueva fila -->
-    <button id="agregarProducto">Agregar Producto</button>
+    <!-- Botones -->
+    <button id="agregarProducto" class="btn btn-primary">Agregar Producto</button>
+    <button id="guardarProductos" class="btn btn-success">Guardar Productos</button>
 
     <br><br>
+    
+    <h4>Total de los Productos: <span id="totalPrice">0.00</span></h4>
+</div>
 
-    <!-- Botón para guardar los productos -->
-    <button id="guardarProductos">Guardar Productos</button>
+<script>
+    // Lista de prendas y sus composiciones (Ejemplo)
+    const prendas = {
+        "Camiseta": "Algodón 100%",
+        "Jeans": "Denim 100%",
+        "Sudadera": "Poliéster 80%, Algodón 20%",
+    };
 
-    <script>
-        $(document).ready(function() {
-            var table = $('#productos').DataTable();
+    // Precios de las prendas (Ejemplo)
+    const precios = {
+        "Camiseta": 20.00,
+        "Jeans": 40.00,
+        "Sudadera": 35.00,
+    };
 
-            // Lista de prendas y sus composiciones (Ejemplo)
-            const prendas = {
-                "Camiseta": "Algodón 100%",
-                "Jeans": "Denim 100%",
-                "Sudadera": "Poliéster 80%, Algodón 20%",
-            };
+    let productos = [
+        // Datos iniciales de ejemplo
+        ['', '', '', 0.00]
+    ];
 
-            // Función para agregar una nueva fila vacía
-            function agregarFilaVacia() {
-                table.row.add([
-                    '<input type="number" class="form-control cantidad" value="0">',  // Cantidad editable
-                    '<select class="form-control prenda"><option value="">Seleccionar Prenda</option><option value="Camiseta">Camiseta</option><option value="Jeans">Jeans</option><option value="Sudadera">Sudadera</option></select>',        // Selección de prenda
-                    '<input type="text" class="form-control composicion" value="" readonly>',  // Composición editable (solo lectura)
-                    '<input type="number" class="form-control precio" value="0" step="0.01">', // Precio editable
-                    '<button class="eliminar">Eliminar</button>'  // Botón de eliminar
-                ]).draw(false);
-            }
-
-            // Evento para eliminar una fila
-            $('#productos tbody').on('click', 'button.eliminar', function () {
-                table.row($(this).parents('tr')).remove().draw();
-            });
-
-            // Evento para agregar una fila vacía
-            $('#agregarProducto').on('click', function() {
-                agregarFilaVacia();
-                $(this).hide();  // Esconde el botón de agregar después de agregar una fila
-            });
-
-            // Evento para guardar los productos
-            $('#guardarProductos').on('click', function() {
-                var data = table.rows().data().toArray(); // Obtener todos los datos de la tabla
-                $.ajax({
-                    url: 'guardar_productos.php',
-                    type: 'POST',
-                    data: { productos: JSON.stringify(data) },
-                    success: function(response) {
-                        alert('Productos guardados correctamente');
-                    },
-                    error: function() {
-                        alert('Error al guardar los productos');
+    // Inicializar Handsontable
+    const container = document.getElementById('tablaProductos');
+    const hot = new Handsontable(container, {
+        data: productos,
+        colHeaders: ['Cant.', 'Prenda', 'Composición', 'Precio', 'Total'],
+        columns: [
+            {type: 'numeric', title: 'Cantidad'},  // Cantidad
+            {
+                type: 'dropdown',
+                source: ['Camiseta', 'Jeans', 'Sudadera'],
+                title: 'Prenda'
+            },  // Prenda (dropdown)
+            {type: 'text', readOnly: true},  // Composición (solo lectura)
+            {type: 'numeric', format: '0.00'},  // Precio
+            {type: 'numeric', format: '0.00', readOnly: true},  // Total (calculado)
+        ],
+        rowHeaders: true,
+        contextMenu: true,
+        height: 300,
+        width: '100%',
+        licenseKey: 'non-commercial-and-evaluation',
+        afterChange: function(changes, source) {
+            if (source === 'edit') {
+                changes.forEach(([row, col, oldValue, newValue]) => {
+                    if (col === 0 || col === 3) {  // Si se cambia la cantidad o el precio
+                        updateTotal(row);  // Actualizar total por fila
+                        updateGrandTotal();  // Actualizar el total general
+                    } else if (col === 1) {  // Si se cambia la prenda
+                        const prenda = hot.getDataAtCell(row, 1);
+                        const composicion = prendas[prenda] || '';
+                        const precio = precios[prenda] || 0;
+                        hot.setDataAtCell(row, 2, composicion);  // Establecer la composición
+                        hot.setDataAtCell(row, 3, precio);  // Establecer el precio
+                        updateTotal(row);  // Actualizar total por fila
+                        updateGrandTotal();  // Actualizar el total general
                     }
                 });
-            });
-
-            // Detectar cuando se selecciona una prenda y llenar la composición
-            $('#productos tbody').on('change', 'select.prenda', function() {
-                var prendaSeleccionada = $(this).val();
-                var composicion = prendas[prendaSeleccionada] || ''; // Obtener la composición según la prenda
-                $(this).parents('tr').find('.composicion').val(composicion);  // Llenar la composición en la fila correspondiente
-            });
-
-            // Si la tabla está vacía al inicio, mostrar el botón de agregar fila
-            if (table.rows().count() === 0) {
-                $('#agregarProducto').show(); // Mostrar el botón de agregar producto si la tabla está vacía
             }
-        });
-    </script>
+        }
+    });
+
+    // Función para agregar una fila
+    document.getElementById('agregarProducto').addEventListener('click', function() {
+        hot.alter('insert_row');  // Insertar nueva fila
+    });
+
+    // Función para guardar los productos
+    document.getElementById('guardarProductos').addEventListener('click', function() {
+        const data = hot.getData();
+
+        // Filtrar las filas vacías (que contienen valores null o cadenas vacías)
+        const filteredData = data.filter(row => row[0] && row[1] && row[3] && row[4]); // Filtrar filas con datos completos
+
+        console.log(filteredData); // Mostrar datos filtrados
+
+        // Enviar los datos al servidor solo si contienen información
+        if (filteredData.length > 0) {
+            $.ajax({
+                url: 'guardar_productos.php',
+                type: 'POST',
+                data: { productos: JSON.stringify(filteredData) },
+                success: function(response) {
+                    alert('Productos guardados correctamente');
+                },
+                error: function() {
+                    alert('Error al guardar los productos');
+                }
+            });
+        } else {
+            alert('No hay productos válidos para guardar.');
+        }
+    });
+
+    // Función para actualizar el total de cada fila (Precio * Cantidad)
+    function updateTotal(row) {
+        const cantidad = hot.getDataAtCell(row, 0);
+        const precio = hot.getDataAtCell(row, 3);
+        const total = cantidad * precio;
+        hot.setDataAtCell(row, 4, total.toFixed(2));  // Establecer el total
+    }
+
+    // Función para actualizar el total general
+    function updateGrandTotal() {
+        let total = 0;
+        const rowCount = hot.countRows();
+        for (let i = 0; i < rowCount; i++) {
+            const rowTotal = parseFloat(hot.getDataAtCell(i, 4) || 0); // Solo considerar celdas con total
+            if (!isNaN(rowTotal)) {
+                total += rowTotal;
+            }
+        }
+        document.getElementById('totalPrice').textContent = total.toFixed(2);  // Mostrar el total en la interfaz
+    }
+
+    // Función para actualizar la composición y precio al cargar una prenda
+    hot.addHook('afterChange', function(changes, source) {
+        if (source === 'edit') {
+            changes.forEach(([row, col, oldValue, newValue]) => {
+                if (col === 1) {  // Si se cambió la prenda
+                    const prenda = hot.getDataAtCell(row, 1);
+                    const composicion = prendas[prenda] || '';
+                    const precio = precios[prenda] || 0;
+                    hot.setDataAtCell(row, 2, composicion);  // Establecer la composición
+                    hot.setDataAtCell(row, 3, precio);  // Establecer el precio
+                    updateTotal(row);  // Actualizar el total de la fila
+                    updateGrandTotal();  // Actualizar el total general
+                }
+            });
+        }
+    });
+</script>
 
 </body>
 </html>
