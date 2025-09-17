@@ -3,55 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Editable de Productos</title>
+    <title>Tabla Dinámica de Productos</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 
-    <h1>Seleccionar Producto Directamente en la Tabla</h1>
+    <h1>Seleccionar o Agregar Productos en la Tabla</h1>
 
+    <!-- Tabla donde se agregarán los productos -->
     <table id="productos" class="display">
         <thead>
             <tr>
                 <th>Cant.</th>
                 <th>Prenda</th>
                 <th>Composición</th>
+                <th>Precio</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
             <!-- Las filas se agregarán dinámicamente aquí -->
-            <tr>
-                <td contenteditable="true">10</td>
-                <td contenteditable="true">Blusa</td>
-                <td contenteditable="true">100% Algodón</td>
-                <td><button class="eliminar">Eliminar</button></td>
-            </tr>
-            <tr>
-                <td contenteditable="true">5</td>
-                <td contenteditable="true">Abrigo</td>
-                <td contenteditable="true">60% Lana, 30% Poliéster</td>
-                <td><button class="eliminar">Eliminar</button></td>
-            </tr>
         </tbody>
     </table>
 
     <br><br>
 
+    <!-- Botón para agregar nueva fila -->
+    <button id="agregarProducto">Agregar Producto</button>
+
+    <br><br>
+
+    <!-- Botón para guardar los productos -->
     <button id="guardarProductos">Guardar Productos</button>
 
     <script>
         $(document).ready(function() {
             var table = $('#productos').DataTable();
 
-            // Evento para eliminar una fila de la tabla
+            // Lista de prendas y sus composiciones (Ejemplo)
+            const prendas = {
+                "Camiseta": "Algodón 100%",
+                "Jeans": "Denim 100%",
+                "Sudadera": "Poliéster 80%, Algodón 20%",
+            };
+
+            // Función para agregar una nueva fila vacía
+            function agregarFilaVacia() {
+                table.row.add([
+                    '<input type="number" class="form-control cantidad" value="0">',  // Cantidad editable
+                    '<select class="form-control prenda"><option value="">Seleccionar Prenda</option><option value="Camiseta">Camiseta</option><option value="Jeans">Jeans</option><option value="Sudadera">Sudadera</option></select>',        // Selección de prenda
+                    '<input type="text" class="form-control composicion" value="" readonly>',  // Composición editable (solo lectura)
+                    '<input type="number" class="form-control precio" value="0" step="0.01">', // Precio editable
+                    '<button class="eliminar">Eliminar</button>'  // Botón de eliminar
+                ]).draw(false);
+            }
+
+            // Evento para eliminar una fila
             $('#productos tbody').on('click', 'button.eliminar', function () {
                 table.row($(this).parents('tr')).remove().draw();
             });
 
-            // Evento para guardar los productos en la base de datos (con AJAX)
+            // Evento para agregar una fila vacía
+            $('#agregarProducto').on('click', function() {
+                agregarFilaVacia();
+                $(this).hide();  // Esconde el botón de agregar después de agregar una fila
+            });
+
+            // Evento para guardar los productos
             $('#guardarProductos').on('click', function() {
                 var data = table.rows().data().toArray(); // Obtener todos los datos de la tabla
                 $.ajax({
@@ -67,12 +87,17 @@
                 });
             });
 
-            // Se pueden editar las celdas directamente en la tabla
-            $('#productos td[contenteditable="true"]').on('blur', function() {
-                // Aquí puedes manejar el evento cuando el contenido editable se cambia
-                var rowData = table.row($(this).closest('tr')).data();
-                console.log(rowData); // Solo para ver los datos cambiados en consola
+            // Detectar cuando se selecciona una prenda y llenar la composición
+            $('#productos tbody').on('change', 'select.prenda', function() {
+                var prendaSeleccionada = $(this).val();
+                var composicion = prendas[prendaSeleccionada] || ''; // Obtener la composición según la prenda
+                $(this).parents('tr').find('.composicion').val(composicion);  // Llenar la composición en la fila correspondiente
             });
+
+            // Si la tabla está vacía al inicio, mostrar el botón de agregar fila
+            if (table.rows().count() === 0) {
+                $('#agregarProducto').show(); // Mostrar el botón de agregar producto si la tabla está vacía
+            }
         });
     </script>
 
