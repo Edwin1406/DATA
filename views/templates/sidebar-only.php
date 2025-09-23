@@ -40,15 +40,15 @@
                          <i class="bi bi-stack"></i>
                          <span>Producción</span>
                      </a>
-                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com'|| $userEmail === 'empaque@megaecuador.com') { ?>
+                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                          <ul class="submenu ">
                              <li class="sidebar-title"><b><i class="bi bi-archive"></i> Registros</b></li>
 
-                             <?php if ($email !== 'planta@megaecuador.com'|| $email !== 'empaque@megaecuador.com') { ?>
+                         
                                  <li class="submenu-item ">
                                      <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
                                  </li>
-                             <?php }  ?>
+                         
 
                              <!-- icono de flecha -->
                              <li class="submenu-item ">
