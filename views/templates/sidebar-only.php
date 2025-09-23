@@ -40,7 +40,7 @@
                          <i class="bi bi-stack"></i>
                          <span>Producción</span>
                      </a>
-                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
+                     <?php if ($userEmail === 'control@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'planta@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com'|| $userEmail === 'empaque@megaecuador.com') { ?>
                          <ul class="submenu ">
                              <li class="sidebar-title"><b><i class="bi bi-archive"></i> Registros</b></li>
 
