@@ -2210,7 +2210,6 @@ class ActiveRecord
 
 
 
-
 public static function updateHorasTrabajo($fecha, $horas_trabajo)
 {
     // Verificar si las horas_trabajo para esa fecha ya son iguales
@@ -2220,9 +2219,9 @@ public static function updateHorasTrabajo($fecha, $horas_trabajo)
 
     // Si ya existen registros para esa fecha
     if ($resultadoCheck) {
-        $registro = $resultadoCheck[0]; // Suponiendo que obtienes un solo registro por fecha
+        $registro = $resultadoCheck[0]; // Obtienes el primer registro que es un objeto
         // Si las horas son las mismas, no hacer nada
-        if ($registro['horas_trabajo'] === $horas_trabajo) {
+        if ($registro->horas_trabajo === $horas_trabajo) {  // Acceder a la propiedad del objeto
             return false; // No se realiza ninguna actualización
         }
     }
