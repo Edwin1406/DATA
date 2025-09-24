@@ -239,7 +239,7 @@ class AdminController
                 $consumo = Prueba::find($id);
                 if ($consumo) {
                     $consumo->eliminar();
-                    header('Location: /admin/tablaConsumo?exito=1');
+                    header('Location: /admin/tablaConsumo?eliminado=3');
                 } else {
                     header('Location: /admin/tablaConsumo?error=1');
                 }
