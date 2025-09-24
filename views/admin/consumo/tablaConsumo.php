@@ -79,8 +79,6 @@
                              <th class="fs-6" style="min-width: 98px;">Cantidad</th>
                              <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
                              <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
-                             <!-- <th class="fs-6" style="min-width: 118px;">Total Horas</th>
-                             <th class="fs-6" style="min-width: 85px;">x Hora</th> -->
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
