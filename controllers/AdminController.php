@@ -282,7 +282,9 @@ public static function consumo(Router $router)
                 exit;
             } else {
                 // Si las horas no cambiaron o hubo algún error
-                $alertas[] = "Las horas de trabajo ya están actualizadas o no ha habido cambios.";
+                header('Location: /admin/consumo?exito=1');
+                exit;
+                // $alertas[] = "Las horas de trabajo ya están actualizadas o no ha habido cambios.";
             }
         }
     }
