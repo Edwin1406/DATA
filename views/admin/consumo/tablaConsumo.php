@@ -77,8 +77,8 @@
                              <th class="fs-6" style="min-width: 98px;">Cantidad</th>
                              <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
                              <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
-                             <th class="fs-6" style="min-width: 118px;">Total Horas</th>
-                             <th class="fs-6" style="min-width: 85px;">x Hora</th>
+                             <!-- <th class="fs-6" style="min-width: 118px;">Total Horas</th>
+                             <th class="fs-6" style="min-width: 85px;">x Hora</th> -->
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
@@ -93,8 +93,7 @@
                                  <td><?= $consumo->medidas ?></td>
                                  <td><?= $consumo->cantidad ?></td>
                                  <td><?= $consumo->hora_inicio ?></td>
-                                 <td><?= $consumo->hora_fin ?></td>
-                                 <td><?= $consumo->total_horas ?></td>
+                            
                                  <td><?= $consumo->x_hora ?></td>
                                  <!-- los botones en horizontal -->
 
