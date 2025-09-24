@@ -88,7 +88,7 @@
                              <tr>
                                     <td><?= $consumo->id ?></td>
                                  <td><?= $consumo->fecha ?></td>
-                                 <td><?= $consumo->turno ?></td>
+                                 <td><?= $consumo->n_orden ?></td>
                                  <td><?= $consumo->personal ?></td>
                                  <td><?= $consumo->producto ?></td>
                                  <td><?= $consumo->medidas ?></td>
