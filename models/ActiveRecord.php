@@ -2187,21 +2187,24 @@ class ActiveRecord
 
 public static function updateHorasTrabajo($fecha, $horas_trabajo)
 {
-    $query = "UPDATE " . static::$tabla . " SET horas_trabajo = :horas_trabajo WHERE fecha = :fecha";
+    // La consulta SQL con placeholders
+    $query = "UPDATE " . static::$tabla . " SET horas_trabajo = ? WHERE fecha = ?";
 
-    // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL)
+    // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL con parámetros)
     $params = [
-        ':horas_trabajo' => $horas_trabajo,
-        ':fecha' => $fecha
+        $horas_trabajo, // El valor de horas_trabajo
+        $fecha          // La fecha que se usará en la cláusula WHERE
     ];
 
+    // Ahora llamamos a consultarSQL1 con la consulta preparada y los parámetros
     $resultado = self::consultarSQL1($query, $params);
 
+    // Si la actualización fue exitosa, retornamos true
     if ($resultado) {
-        return true; // Si la actualización fue exitosa
+        return true;
     }
 
-    return false; // Si no se realizó ninguna actualización
+    return false; // Si no se realizó la actualización, retornamos false
 }
 
 
