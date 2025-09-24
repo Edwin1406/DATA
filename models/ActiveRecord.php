@@ -2239,6 +2239,47 @@ public static function updateHorasTrabajo($fecha, $horas_trabajo)
 
 
 
+// public static function consultarSQL3($query, $params)
+// {
+//     // Prepara la consulta
+//     $stmt = self::$db->prepare($query);
+    
+//     if ($stmt === false) {
+//         // Maneja el error de preparación
+//         die('Error en la preparación de la consulta: ' . self::$db->error);
+//     }
+
+//     // Define los tipos de los parámetros (esto depende de los tipos de datos)
+//     // Ejemplo: "si $params[0] es un número entero y $params[1] es una cadena"
+//     // Cambia 's' y 'i' según los tipos correctos para tus datos
+//     $types = str_repeat('s', count($params)); // Asumiendo que todos son strings
+//     $stmt->bind_param($types, ...$params);
+
+//     // Ejecuta la consulta
+//     $stmt->execute();
+
+//     // Si es una consulta SELECT, obtenemos el resultado
+//     if (strpos(strtoupper($query), 'SELECT') === 0) {
+//         $resultado = $stmt->get_result();
+//         $array = [];
+//         while ($registro = $resultado->fetch_assoc()) {
+//             $array[] = static::crearObjeto($registro);
+//         }
+
+//         // Liberamos los resultados
+//         $resultado->free();
+
+//         return $array;
+//     } else {
+//         // Si no es un SELECT, solo verificamos si la ejecución fue exitosa
+//         return $stmt->affected_rows > 0;
+//     }
+
+//     // Cierra la declaración
+//     $stmt->close();
+// }
+
+
 public static function consultarSQL3($query, $params)
 {
     // Prepara la consulta
@@ -2250,8 +2291,6 @@ public static function consultarSQL3($query, $params)
     }
 
     // Define los tipos de los parámetros (esto depende de los tipos de datos)
-    // Ejemplo: "si $params[0] es un número entero y $params[1] es una cadena"
-    // Cambia 's' y 'i' según los tipos correctos para tus datos
     $types = str_repeat('s', count($params)); // Asumiendo que todos son strings
     $stmt->bind_param($types, ...$params);
 
@@ -2262,8 +2301,8 @@ public static function consultarSQL3($query, $params)
     if (strpos(strtoupper($query), 'SELECT') === 0) {
         $resultado = $stmt->get_result();
         $array = [];
-        while ($registro = $resultado->fetch_assoc()) {
-            $array[] = static::crearObjeto($registro);
+        while ($registro = $resultado->fetch_object('Model\Prueba')) {  // Cambiar fetch_assoc() a fetch_object()
+            $array[] = $registro;
         }
 
         // Liberamos los resultados
@@ -2278,7 +2317,6 @@ public static function consultarSQL3($query, $params)
     // Cierra la declaración
     $stmt->close();
 }
-
 
 
 
