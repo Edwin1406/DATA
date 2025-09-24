@@ -157,8 +157,8 @@
                                     <!-- Turno -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="turno">Turno</label>
-                                            <input type="number" id="turno" class="form-control" placeholder="Turno" name="turno">
+                                            <label for="n_orden">Número de Orden</label>
+                                            <input type="number" id="n_orden" class="form-control" placeholder="Número de Orden" name="n_orden">
                                         </div>
                                     </div>
 

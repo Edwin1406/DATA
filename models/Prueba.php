@@ -7,12 +7,12 @@ use DateTime;
 class Prueba extends ActiveRecord
 {
     protected static $tabla = 'control_empaque';
-    protected static $columnasDB = ['id', 'fecha', 'turno', 'personal', 'producto', 'medidas', 'cantidad', 'hora_inicio', 'hora_fin', 'total_horas', 'x_hora','horas_trabajo'];
+    protected static $columnasDB = ['id', 'fecha', 'n_orden', 'personal', 'producto', 'medidas', 'cantidad', 'hora_inicio', 'hora_fin', 'total_horas', 'x_hora','horas_trabajo'];
 
 
     public ?int $id;
     public string $fecha = '';
-    public string $turno = '';
+    public string $n_orden = '';
     // public array $personal = [];
     // En Model\Prueba.php
     public string $personal;
@@ -36,7 +36,7 @@ class Prueba extends ActiveRecord
 
         $this->id = $args['id'] ?? null;
         $this->fecha = date('Y-m-d');
-        $this->turno = $args['turno'] ?? '';
+        $this->n_orden = $args['n_orden'] ?? '';
         // $this->personal = $args['personal'] ?? [];
 
 
@@ -69,8 +69,8 @@ class Prueba extends ActiveRecord
         if (!$this->fecha) {
             self::$alertas['error'][] = 'La Fecha es Obligatoria';
         }
-        if (!$this->turno) {
-            self::$alertas['error'][] = 'El Turno es Obligatorio';
+        if (!$this->n_orden) {
+            self::$alertas['error'][] = 'El Número de Orden es Obligatorio';
         }
 
         if (!$this->producto) {
