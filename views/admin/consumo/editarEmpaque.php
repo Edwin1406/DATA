@@ -146,7 +146,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="medidas">Medida</label>
-                                            <input type="text" id="medidas" class="form-control" placeholder="Medida" name="medidas">
+                                            <input type="text" id="medidas" class="form-control" placeholder="Medida" name="medidas" value="<?php echo $consumo->medidas; ?>">
                                         </div>
                                     </div>
 
@@ -154,7 +154,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio">
+                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" value="<?php echo $consumo->hora_inicio; ?>">
                                         </div>
                                     </div>
 
@@ -163,14 +163,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad</label>
-                                            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad" name="cantidad">
+                                            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad" name="cantidad" value="<?php echo $consumo->cantidad; ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin">
+                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin" value="<?php echo $consumo->hora_fin; ?>">
                                         </div>
                                     </div>
 
