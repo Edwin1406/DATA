@@ -118,7 +118,7 @@ class AdminController
 
 
             // // Calcular productividad por hora
-       
+
 
 
             // DEBUGUEAR($consumo); // Para ver los datos que se envían
@@ -157,7 +157,22 @@ class AdminController
             header('Location: /admin/tablaConsumo?error=1');
         }
 
-        debuguear($id);
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $alertas = [];
+        $consumo = Prueba::find($id);
+
+
+
+
+        $router->render('admin/consumo/editarEmpaque', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'alertas' => $alertas,
+            'nombre' => $nombre,
+            'email' => $email,
+            'consumo' => $consumo
+        ]);
     }
 
 
