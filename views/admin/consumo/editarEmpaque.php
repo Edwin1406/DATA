@@ -197,7 +197,7 @@
                                     <input type="hidden" name="grupo_id" id="grupo_id" value="">
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="btnRegistrar">Registrar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="btnRegistrar">Actualizar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="btnLimpiar">Limpiar</button>
                                     </div>
 
