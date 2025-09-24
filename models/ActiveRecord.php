@@ -2185,26 +2185,56 @@ class ActiveRecord
         return 0;
     }
 
+// public static function updateHorasTrabajo($fecha, $horas_trabajo)
+// {
+//     // La consulta SQL con placeholders
+//     $query = "UPDATE " . static::$tabla . " SET horas_trabajo = ? WHERE fecha = ?";
+
+//     // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL con parámetros)
+//     $params = [
+//         $horas_trabajo, // El valor de horas_trabajo
+//         $fecha          // La fecha que se usará en la cláusula WHERE
+//     ];
+
+//     // Ahora llamamos a consultarSQL1 con la consulta preparada y los parámetros
+//     $resultado = self::consultarSQL3($query, $params);
+
+//     // Si la actualización fue exitosa, retornamos true
+//     if ($resultado) {
+//         return true;
+//     }
+
+//     return false; // Si no se realizó la actualización, retornamos false
+// }
+
+
+
+
+
 public static function updateHorasTrabajo($fecha, $horas_trabajo)
 {
-    // La consulta SQL con placeholders
-    $query = "UPDATE " . static::$tabla . " SET horas_trabajo = ? WHERE fecha = ?";
+    // Verificar si las horas_trabajo para esa fecha ya son iguales
+    $queryCheck = "SELECT horas_trabajo FROM " . static::$tabla . " WHERE fecha = ?";
+    $paramsCheck = [$fecha];
+    $resultadoCheck = self::consultarSQL3($queryCheck, $paramsCheck);
 
-    // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL con parámetros)
-    $params = [
-        $horas_trabajo, // El valor de horas_trabajo
-        $fecha          // La fecha que se usará en la cláusula WHERE
-    ];
-
-    // Ahora llamamos a consultarSQL1 con la consulta preparada y los parámetros
-    $resultado = self::consultarSQL3($query, $params);
-
-    // Si la actualización fue exitosa, retornamos true
-    if ($resultado) {
-        return true;
+    // Si ya existen registros para esa fecha
+    if ($resultadoCheck) {
+        $registro = $resultadoCheck[0]; // Suponiendo que obtienes un solo registro por fecha
+        // Si las horas son las mismas, no hacer nada
+        if ($registro['horas_trabajo'] === $horas_trabajo) {
+            return false; // No se realiza ninguna actualización
+        }
     }
 
-    return false; // Si no se realizó la actualización, retornamos false
+    // Si las horas no son iguales, entonces se actualiza
+    $query = "UPDATE " . static::$tabla . " SET horas_trabajo = ? WHERE fecha = ?";
+    $params = [$horas_trabajo, $fecha];
+
+    // Ejecutar la actualización
+    $resultado = self::consultarSQL3($query, $params);
+    
+    return $resultado;
 }
 
 

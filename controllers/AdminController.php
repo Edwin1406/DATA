@@ -148,6 +148,83 @@ class AdminController
 
 
 // consumo
+// public static function consumo(Router $router)
+// {
+//     session_start();
+//     if (!isset($_SESSION['email'])) {
+//         header('Location: /');
+//     }
+
+//     // NOMBRE DE LA PERSONA LOGEADA
+//     $nombre = $_SESSION['nombre'];
+//     $email = $_SESSION['email'];
+
+//     // solo que me aparezca la hora que fue registrada en la fecha actual de hoy
+//     $fecha_hoy = date('Y-m-d');
+
+//     $controlEmpaque = Prueba::all();
+
+//     $alertas = [];
+//     $consumo = new Prueba();
+    
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//         if (isset($_POST['personal']) && is_array($_POST['personal'])) {
+//             $_POST['personal'] = implode(',', $_POST['personal']);
+//         }
+
+//         $consumo->sincronizar($_POST);
+
+//         // sacar total de horas.
+//         $consumo->sacarTotalHoras();
+
+//         // Calcular productividad por hora
+//         $cantidad = is_numeric($consumo->cantidad) ? (float)$consumo->cantidad : 0;
+//         $total_horas = is_numeric($consumo->total_horas) ? (float)$consumo->total_horas : 0;
+
+//         if ($cantidad > 0 && $total_horas > 0) {
+//             $consumo->x_hora = round($cantidad / $total_horas);
+//         } else {
+//             $consumo->x_hora = 0;
+//         }
+
+//         // DEBUGUEAR($consumo); // Para ver los datos que se envían
+//         $alertas = $consumo->validar();
+        
+//         if (empty($alertas)) {
+//             // Guardamos el nuevo registro
+//             $consumo->guardar();
+            
+//             // Esperar 3 segundos antes de actualizar todos los registros de esa fecha
+//             sleep(3); // Pausa de 3 segundos
+
+//             // Usar el método updateHorasTrabajo para actualizar todos los registros de la misma fecha
+//             $resultado = Prueba::updateHorasTrabajo($consumo->fecha, $consumo->horas_trabajo);
+
+//             if ($resultado) {
+//                 // Si la actualización fue exitosa, redirigimos
+//                 header('Location: /admin/consumo?exito=1');
+//                 exit;
+//             } else {
+//                 // Si la actualización falló, mostramos un mensaje de error
+//                 $alertas[] = "Hubo un error al actualizar las horas de trabajo.";
+//             }
+//         }
+//     } else {
+//         $alertas = [];
+//     }
+
+//     $router->render('admin/consumo/consumo', [
+//         'titulo' => 'MEGASTOCK-DESARROLLO',
+//         'alertas' => $alertas,
+//         'nombre' => $nombre,
+//         'email' => $email
+//     ]);
+// }
+
+
+
+
+
 public static function consumo(Router $router)
 {
     session_start();
@@ -187,30 +264,27 @@ public static function consumo(Router $router)
             $consumo->x_hora = 0;
         }
 
-        // DEBUGUEAR($consumo); // Para ver los datos que se envían
         $alertas = $consumo->validar();
         
         if (empty($alertas)) {
             // Guardamos el nuevo registro
             $consumo->guardar();
-            
-            // Esperar 3 segundos antes de actualizar todos los registros de esa fecha
-            sleep(3); // Pausa de 3 segundos
 
-            // Usar el método updateHorasTrabajo para actualizar todos los registros de la misma fecha
+            // Verificamos si es necesario actualizar las horas
             $resultado = Prueba::updateHorasTrabajo($consumo->fecha, $consumo->horas_trabajo);
 
             if ($resultado) {
-                // Si la actualización fue exitosa, redirigimos
+                // Si la actualización fue exitosa (horas cambiadas), esperamos 3 segundos
+                sleep(3);  // Pausa de 3 segundos antes de redirigir
+
+                // Redirigir con éxito
                 header('Location: /admin/consumo?exito=1');
                 exit;
             } else {
-                // Si la actualización falló, mostramos un mensaje de error
-                $alertas[] = "Hubo un error al actualizar las horas de trabajo.";
+                // Si las horas no cambiaron o hubo algún error
+                $alertas[] = "Las horas de trabajo ya están actualizadas o no ha habido cambios.";
             }
         }
-    } else {
-        $alertas = [];
     }
 
     $router->render('admin/consumo/consumo', [
