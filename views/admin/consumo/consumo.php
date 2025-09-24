@@ -96,7 +96,16 @@
 
                                         const normalizar = t => (t ?? "").toString().normalize("NFKC").trim();
 
-                                     
+                                        function setBloqueado(msg = "Bloqueado") {
+                                            input.readOnly = true;
+                                            btnEditar.disabled = false;
+                                            btnSave.disabled = true;
+                                            btnCancel.disabled = true;
+                                            btnEditar.className = "btn btn-secondary";
+                                            btnEditar.textContent = "Editar";
+                                            estado.textContent = msg;
+                                            editando = false;
+                                        }
 
                                         function setEditando(msg = "Editando…") {
                                             input.readOnly = false;
