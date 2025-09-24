@@ -127,6 +127,7 @@ class AdminController
                 $consumo->guardar();
                 // header('Location: /admin/consumo');
                 header('Location: /admin/consumo?exito=1');
+                exit;
             }
         } else {
             $alertas = [];
@@ -172,6 +173,7 @@ class AdminController
             if (empty($alertas)) {
                 $consumo->guardar();
                 header('Location: /admin/tablaConsumo?editado=2');
+                exit;
             }
         } else {
             $id = $_GET['id'] ?? null;
@@ -179,9 +181,11 @@ class AdminController
                 $consumo = Prueba::find($id);
                 if (!$consumo) {
                     header('Location: /admin/tablaConsumo?error=1');
+                    exit;
                 }
             } else {
                 header('Location: /admin/tablaConsumo?error=1');
+                exit;
             }
         }
 
