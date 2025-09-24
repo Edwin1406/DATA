@@ -2185,18 +2185,25 @@ class ActiveRecord
         return 0;
     }
 
-    public static function countTicketsCerrados()
-    {
-        $query = "SELECT COUNT(*) as total FROM " . static::$tabla . " WHERE estado = 'cerrado'";
+public static function updateHorasTrabajo($fecha, $horas_trabajo)
+{
+    $query = "UPDATE " . static::$tabla . " SET horas_trabajo = :horas_trabajo WHERE fecha = :fecha";
 
-        $resultado = self::consultarSQL1($query);
+    // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL)
+    $params = [
+        ':horas_trabajo' => $horas_trabajo,
+        ':fecha' => $fecha
+    ];
 
-        if (is_array($resultado) && isset($resultado[0]['total'])) {
-            return (int) $resultado[0]['total'];
-        }
+    $resultado = self::consultarSQL1($query, $params);
 
-        return 0;
+    if ($resultado) {
+        return true; // Si la actualización fue exitosa
     }
+
+    return false; // Si no se realizó ninguna actualización
+}
+
 
 
 
