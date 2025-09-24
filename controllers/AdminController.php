@@ -163,7 +163,27 @@ class AdminController
         $alertas = [];
         $consumo = Prueba::find($id);
 
-// debuguear($consumo);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $consumo->sincronizar($_POST);
+            debuguear($consumo);
+
+            $alertas = $consumo->validar();
+            if (empty($alertas)) {
+                $consumo->guardar();
+                header('Location: /admin/tablaConsumo?editado=2');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $consumo = Prueba::find($id);
+                if (!$consumo) {
+                    header('Location: /admin/tablaConsumo?error=1');
+                }
+            } else {
+                header('Location: /admin/tablaConsumo?error=1');
+            }
+        }
 
 
         $router->render('admin/consumo/editarEmpaque', [
