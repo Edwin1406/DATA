@@ -142,6 +142,30 @@ class AdminController
 
 
 
+    // editar consumo empaque
+    public static function editarEmpaque(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/tablaConsumo?error=1');
+        }
+
+        debuguear($id);
+    }
+
+
+
+
+
+
+
     // tabla de consumo
     public static function tablaConsumo(Router $router)
     {

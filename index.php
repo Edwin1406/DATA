@@ -57,16 +57,8 @@ $router->get('/admin/index', [AdminController::class, 'index']);
 $router->get('/admin/consumo', [AdminController::class, 'consumo']);
 $router->post('/admin/consumo', [AdminController::class, 'consumo']);
 
+
 $router->post('/admin/horas_trabajo', [AdminController::class, 'horasTrabajo']);
-
-
-
-
-
-
-
-
-
 
 
 
@@ -131,6 +123,10 @@ $router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios'
 
 
 
+
+// editar consumo empaque
+$router->get('/admin/editarEmpaque', [AdminController::class, 'editarEmpaque']);
+$router->post('/admin/editarEmpaque', [AdminController::class, 'editarEmpaque']);
 
 
 
