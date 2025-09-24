@@ -49,14 +49,7 @@
 
                                     <!-- Horas de trabajo (bloqueo con contraseña) -->
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <div class="d-flex" style="gap:.5rem">
-                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="" placeholder="Horas de Trabajo" readonly>
-
-                                            </div>
-                                            <!-- <small id="estadoHoras" class="form-text text-muted"></small> -->
-                                        </div>
+                                        
                                     </div>
 
 
