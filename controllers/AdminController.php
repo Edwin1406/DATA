@@ -163,7 +163,7 @@ class AdminController
         $alertas = [];
         $consumo = Prueba::find($id);
 
-debuguear($consumo);
+// debuguear($consumo);
 
 
         $router->render('admin/consumo/editarEmpaque', [
