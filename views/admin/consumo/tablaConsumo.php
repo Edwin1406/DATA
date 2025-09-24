@@ -72,7 +72,7 @@
 
                              <th class="fs-6" style="min-width: 50px;">id</th>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
-                             <th class="fs-6" style="min-width: 80px;">Turno</th>
+                             <th class="fs-6" style="min-width: 80px;">N Orden</th>
                              <th class="fs-6" style="min-width: 160px;">Personal</th>
                              <th class="fs-6" style="min-width: 100px;">Producto</th>
                              <th class="fs-6" style="min-width: 93px;">Medidas</th>
