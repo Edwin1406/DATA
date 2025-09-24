@@ -52,7 +52,7 @@
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
                                             <div class="d-flex" style="gap:.5rem">
-                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo" readonly>
+                                                <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="" placeholder="Horas de Trabajo" readonly>
 
                                             </div>
                                             <!-- <small id="estadoHoras" class="form-text text-muted"></small> -->
