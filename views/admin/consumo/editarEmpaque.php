@@ -58,13 +58,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO DE CONTROL EMPAQUE</h4>
+                        <h4 class="card-title">EDITAR CONTROL EMPAQUE</h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
                     </div>
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/consumo" id="formConsumo" onsubmit="return bloquearBoton(this);">
+                            <form class="form" method="POST" action="/admin/editarEmpaque" id="formConsumo" onsubmit="return bloquearBoton(this);">
                                 <div class="row">
 
                                     <!-- Horas de trabajo (bloqueo con contraseña) -->
@@ -162,7 +162,7 @@
                                         </div>
                                     </div>
 
-                                   
+
 
                                     <div class="col-md-6 col-12">
                                         <label for="personalSelect">Escoja el Personal</label>
@@ -237,7 +237,7 @@
                                                 <option value="PAPEL PERIODICO">PAPEL COPIA RESMAS</option>
                                                 <option value="PEGADO CAJAS">PEGADO CAJAS</option>
                                                 <option value="PEGADO CAPUCHONES">PEGADO CAPUCHONES</option>
-                                            
+
 
                                             </select>
                                         </div>
@@ -255,7 +255,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" >
+                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio">
                                         </div>
                                     </div>
 
@@ -268,7 +268,7 @@
                                         </div>
                                     </div>
 
-                                       <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
                                             <input type="time" id="hora_fin" class="form-control" name="hora_fin">
