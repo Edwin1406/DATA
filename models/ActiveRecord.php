@@ -2185,29 +2185,6 @@ class ActiveRecord
         return 0;
     }
 
-// public static function updateHorasTrabajo($fecha, $horas_trabajo)
-// {
-//     // La consulta SQL con placeholders
-//     $query = "UPDATE " . static::$tabla . " SET horas_trabajo = ? WHERE fecha = ?";
-
-//     // Usamos el método consultarSQL1 (que asumo ejecuta una consulta SQL con parámetros)
-//     $params = [
-//         $horas_trabajo, // El valor de horas_trabajo
-//         $fecha          // La fecha que se usará en la cláusula WHERE
-//     ];
-
-//     // Ahora llamamos a consultarSQL1 con la consulta preparada y los parámetros
-//     $resultado = self::consultarSQL3($query, $params);
-
-//     // Si la actualización fue exitosa, retornamos true
-//     if ($resultado) {
-//         return true;
-//     }
-
-//     return false; // Si no se realizó la actualización, retornamos false
-// }
-
-
 
 
 public static function updateHorasTrabajo($fecha, $horas_trabajo)
@@ -2238,45 +2215,7 @@ public static function updateHorasTrabajo($fecha, $horas_trabajo)
 
 
 
-// public static function consultarSQL3($query, $params)
-// {
-//     // Prepara la consulta
-//     $stmt = self::$db->prepare($query);
-    
-//     if ($stmt === false) {
-//         // Maneja el error de preparación
-//         die('Error en la preparación de la consulta: ' . self::$db->error);
-//     }
 
-//     // Define los tipos de los parámetros (esto depende de los tipos de datos)
-//     // Ejemplo: "si $params[0] es un número entero y $params[1] es una cadena"
-//     // Cambia 's' y 'i' según los tipos correctos para tus datos
-//     $types = str_repeat('s', count($params)); // Asumiendo que todos son strings
-//     $stmt->bind_param($types, ...$params);
-
-//     // Ejecuta la consulta
-//     $stmt->execute();
-
-//     // Si es una consulta SELECT, obtenemos el resultado
-//     if (strpos(strtoupper($query), 'SELECT') === 0) {
-//         $resultado = $stmt->get_result();
-//         $array = [];
-//         while ($registro = $resultado->fetch_assoc()) {
-//             $array[] = static::crearObjeto($registro);
-//         }
-
-//         // Liberamos los resultados
-//         $resultado->free();
-
-//         return $array;
-//     } else {
-//         // Si no es un SELECT, solo verificamos si la ejecución fue exitosa
-//         return $stmt->affected_rows > 0;
-//     }
-
-//     // Cierra la declaración
-//     $stmt->close();
-// }
 
 
 public static function consultarSQL3($query, $params)
