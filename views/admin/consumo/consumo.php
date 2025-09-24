@@ -158,7 +158,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="n_orden">Número de Orden</label>
-                                            <input type="number" id="n_orden" class="form-control" placeholder="Número de Orden" name="n_orden">
+                                            <input type="text" id="n_orden" class="form-control" placeholder="Número de Orden" name="n_orden">
                                         </div>
                                     </div>
 
