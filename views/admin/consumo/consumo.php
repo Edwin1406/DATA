@@ -260,19 +260,18 @@
                                     </div>
 
                                     <!-- Hora de fin -->
-                                    <!-- readonly PARA BLOQEAR  -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin">
-                                        </div>
-                                    </div>
-
                                     <!-- Cantidad -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad</label>
                                             <input type="number" id="cantidad" class="form-control" placeholder="Cantidad" name="cantidad">
+                                        </div>
+                                    </div>
+
+                                       <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="hora_fin">Hora de Fin</label>
+                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin">
                                         </div>
                                     </div>
 
