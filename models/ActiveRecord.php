@@ -2214,10 +2214,6 @@ public static function updateHorasTrabajo($fecha, $horas_trabajo)
 }
 
 
-
-
-
-
 public static function consultarSQL3($query, $params)
 {
     // Prepara la consulta
