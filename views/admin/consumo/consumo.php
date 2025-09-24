@@ -284,7 +284,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" >
+                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio"  readonly>
                                         </div>
                                     </div>
 
