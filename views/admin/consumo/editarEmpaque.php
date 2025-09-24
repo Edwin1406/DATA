@@ -73,7 +73,7 @@
                                             <label for="horas_trabajo">Horas de Trabajo</label>
                                             <div class="d-flex" style="gap:.5rem">
                                                 <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo">
-                                             
+
                                             </div>
                                             <small id="estadoHoras" class="form-text text-muted"></small>
                                         </div>
@@ -91,19 +91,16 @@
 
 
                                     <div class="col-md-6 col-12">
-                                        <label for="personalSelect">Escoja el Personal</label>
+                                        <label for="personalInput">Personal</label>
                                         <div class="form-group">
-                                            <select id="personalSelect" class="form-select" multiple name="personal[]">
-                                                    <!-- con php -->
-                                                <?php foreach ($consumo->personal as $persona) : ?>
-                                                    <option value="<?php echo $persona; ?>"><?php echo $persona; ?></option>
-                                                <?php endforeach; ?>
-                                                    
-                                              
-
-                                            </select>
+                                            <input type="text" id="personalInput"
+                                                class="form-control"
+                                                name="personal"
+                                                value="<?php echo $consumo->personal; ?>"
+                                                readonly>
                                         </div>
                                     </div>
+
 
 
                                     <!-- Select2 -->
@@ -132,7 +129,7 @@
                                                 <?php foreach ($productoOptions as $producto) : ?>
                                                     <option value="<?php echo $producto; ?>"><?php echo $producto; ?></option>
                                                 <?php endforeach; ?>
-                                                
+
 
 
                                             </select>
