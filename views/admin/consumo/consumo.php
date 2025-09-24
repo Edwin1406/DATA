@@ -284,16 +284,16 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio" class="mb-0">Hora de Inicio</label>
-                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio"  readonly>
+                                            <input type="time" id="hora_inicio" class="form-control mt-2" name="hora_inicio" readonly>
                                         </div>
                                     </div>
 
                                     <!-- Hora de fin -->
-                                     <!-- readonly PARA BLOQEAR  -->
+                                    <!-- readonly PARA BLOQEAR  -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora de Fin</label>
-                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin" >
+                                            <input type="time" id="hora_fin" class="form-control" name="hora_fin">
                                         </div>
                                     </div>
 
@@ -348,9 +348,22 @@
                                     <input type="hidden" name="grupo_id" id="grupo_id" value="">
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="btnRegistrar">Registrar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="btnLimpiar">Limpiar</button>
                                     </div>
+
+                                    <script>
+                                        function bloquearBoton(form) {
+                                            const btn = form.querySelector('#btnRegistrar');
+                                            btn.disabled = true; // Deshabilita el botón
+                                            btn.innerText = "Registrando..."; // Cambia el texto (opcional)
+                                            return true; // Permite que el formulario se envíe
+                                        }
+                                    </script>
+
+
+
+
                                 </div>
                             </form>
                             <script>
