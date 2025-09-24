@@ -83,7 +83,7 @@
 
                                     <script>
                                         // ====== BLOQUEO HORAS TRABAJO ======
-                                        const PASSWORD = "1234";
+                                        const PASSWORD = "123456789";
                                         const KEY_VAL = "horas_trabajo_val";
                                         const KEY_LOCKED = "horas_trabajo_lock";
                                         const input = document.getElementById("horas_trabajo");
