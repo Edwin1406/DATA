@@ -120,17 +120,23 @@
 
 
 
-                                    <!-- Producto -->
                                     <div class="col-md-6 col-12">
                                         <label for="producto">Escoja el Producto</label>
                                         <div class="form-group">
                                             <select class="form-select" name="producto">
                                                 <option value="" disabled selected>Seleccione el producto</option>
-                                                <?php foreach ($productoOptions as $producto) : ?>
-                                                    <option value="<?php echo $producto; ?>"><?php echo $producto; ?></option>
-                                                <?php endforeach; ?>
-
-
+                                                  <option value="LAMINA B/B" <?= $consumo->producto === 'LAMINA B/B' ? 'selected' : '' ?>>LAMINA B/B</option>
+                                                <option value="LAMINA K/K" <?= $consumo->producto === 'LAMINA K/K' ? 'selected' : '' ?>>LAMINA K/K</option>
+                                                <option value="LAMINA T - R" <?= $consumo->producto === 'LAMINA T - R' ? 'selected' : '' ?>>LAMINA T - R</option>
+                                                <option value="LAMINA DOBLADA" <?= $consumo->producto === 'LAMINA DOBLADA' ? 'selected' : '' ?>>LAMINA DOBLADA</option>
+                                                <option value="LINER LAMINA" <?= $consumo->producto === 'LINER LAMINA' ? 'selected' : '' ?>>LINER LAMINA</option>
+                                                <option value="LAMINADA LISA" <?= $consumo->producto === 'LAMINADA LISA' ? 'selected' : '' ?>>LAMINADA LISA</option>
+                                                <option value="CORREAS" <?= $consumo->producto === 'CORREAS' ? 'selected' : '' ?>>CORREAS</option>
+                                                <option value="SEPARADORES" <?= $consumo->producto === 'SEPARADORES' ? 'selected' : '' ?>>SEPARADORES</option>
+                                                <option value="PAPEL PERIODICO RESMAS" <?= $consumo->producto === 'PAPEL PERIODICO RESMAS' ? 'selected' : '' ?>>PAPEL PERIODICO RESMAS</option>
+                                                <option value="PAPEL PERIODICO" <?= $consumo->producto === 'PAPEL PERIODICO' ? 'selected' : '' ?>>PAPEL COPIA RESMAS</option>
+                                                <option value="PEGADO CAJAS" <?= $consumo->producto === 'PEGADO CAJAS' ? 'selected' : '' ?>>PEGADO CAJAS</option>
+                                                <option value="PEGADO CAPUCHONES" <?= $consumo->producto === 'PEGADO CAPUCHONES' ? 'selected' : '' ?>>PEGADO CAPUCHONES</option>
 
                                             </select>
                                         </div>
