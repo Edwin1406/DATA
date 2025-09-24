@@ -238,8 +238,6 @@
                                                 <option value="PAPEL PERIODICO">PAPEL COPIA RESMAS</option>
                                                 <option value="PEGADO CAJAS">PEGADO CAJAS</option>
                                                 <option value="PEGADO CAPUCHONES">PEGADO CAPUCHONES</option>
-                                            
-
                                             </select>
                                         </div>
                                     </div>
