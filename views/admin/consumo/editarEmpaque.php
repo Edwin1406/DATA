@@ -47,16 +47,13 @@
                             <form class="form" method="POST" action="/admin/editarEmpaque?id=<?php echo $consumo->id; ?>" id="formConsumo" onsubmit="return bloquearBoton(this);">
                                 <div class="row">
 
-                                    <!-- Horas de trabajo (bloqueo con contraseña) -->
-                                    <div class="col-md-6 col-12">
-                                        
-                                    </div>
+                                    
 
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="horas_trabajo">Horas de Trabajo</label>
-                                            <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo" readonly>
+                                            <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo" disabled>
                                         </div>
                                     </div>
 
