@@ -64,7 +64,7 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/editarEmpaque" id="formConsumo" onsubmit="return bloquearBoton(this);">
+                            <form class="form" method="POST" action="/admin/editarEmpaque " id="formConsumo" onsubmit="return bloquearBoton(this);">
                                 <div class="row">
 
                                     <!-- Horas de trabajo (bloqueo con contraseña) -->
