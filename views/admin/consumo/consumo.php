@@ -343,7 +343,7 @@
                                     /* =========================================================
                                      * 1) HORAS DE TRABAJO (bloqueo con contraseña)
                                      * ======================================================= */
-                                    const PASSWORD = "Sistemas2025.";
+                                    const PASSWORD = "123456789";
                                     const KEY_VAL = "horas_trabajo_val";
                                     const KEY_LOCKED = "horas_trabajo_lock";
 
