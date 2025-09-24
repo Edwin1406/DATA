@@ -69,6 +69,8 @@
                  <table class="table table-striped" id="table1">
                      <thead>
                          <tr>
+
+                             <th class="fs-6" style="min-width: 50px;">id</th>
                              <th class="fs-6" style="min-width: 90px;">Fecha</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
                              <th class="fs-6" style="min-width: 160px;">Personal</th>
@@ -86,6 +88,7 @@
                      <tbody>
                          <?php foreach ($consumos as $consumo): ?>
                              <tr>
+                                    <td><?= $consumo->id ?></td>
                                  <td><?= $consumo->fecha ?></td>
                                  <td><?= $consumo->turno ?></td>
                                  <td><?= $consumo->personal ?></td>
