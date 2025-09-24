@@ -260,20 +260,19 @@
                                         <div class="form-group">
                                             <select class="form-select" name="producto">
                                                 <option value="" disabled selected>Seleccione el producto</option>
-                                                <option value="LAMINA DOBLADA">LAMINA DOBLADA</option>
-                                                <option value="LAMINA T - R">LAMINA T - R</option>
-                                                
-                                                <option value="LINER LAMINA">LINER LAMINA</option>
-                                                <option value="LAMINADA LISA">LAMINADA LISA</option>
                                                 <option value="LAMINA B/B">LAMINA B/B</option>
                                                 <option value="LAMINA K/K">LAMINA K/K</option>
+                                                <option value="LAMINA T - R">LAMINA T - R</option>
+                                                <option value="LAMINA DOBLADA">LAMINA DOBLADA</option>
+                                                <option value="LINER LAMINA">LINER LAMINA</option>
+                                                <option value="LAMINADA LISA">LAMINADA LISA</option>
                                                 <option value="CORREAS">CORREAS</option>
                                                 <option value="SEPARADORES">SEPARADORES</option>
+                                                <option value="PAPEL PERIODICO RESMAS">PAPEL PERIODICO RESMAS</option>
                                                 <option value="PAPEL PERIODICO">PAPEL COPIA RESMAS</option>
                                                 <option value="PEGADO CAJAS">PEGADO CAJAS</option>
                                                 <option value="PEGADO CAPUCHONES">PEGADO CAPUCHONES</option>
                                             
-                                                <option value="PAPEL PERIODICO RESMAS">PAPEL PERIODICO RESMAS</option>
 
                                             </select>
                                         </div>
