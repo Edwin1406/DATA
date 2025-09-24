@@ -22,7 +22,7 @@
         </div>
     </div>
 
-  
+
     <section class="section">
         <div class="card">
             <ul class="nav nav-tabs">
@@ -55,9 +55,19 @@
                                                 <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo" readonly>
 
                                             </div>
-                                            <small id="estadoHoras" class="form-text text-muted"></small>
+                                            <!-- <small id="estadoHoras" class="form-text text-muted"></small> -->
                                         </div>
                                     </div>
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="horas_trabajo">Horas de Trabajo</label>
+                                            <input type="time" id="horas_trabajo" class="form-control" name="horas_trabajo" value="<?php echo $consumo->horas_trabajo; ?>" placeholder="Horas de Trabajo" readonly>
+                                        </div>
+                                    </div>
+
+
 
 
                                     <!-- Turno -->
