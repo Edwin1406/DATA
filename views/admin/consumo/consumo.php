@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
 
-                                    <script>
+                                    <!-- <script>
                                         // ====== BLOQUEO HORAS TRABAJO ======
                                         const PASSWORD = "123456789";
                                         const KEY_VAL = "horas_trabajo_val";
@@ -152,7 +152,7 @@
                                             if (locked) setBloqueado("Bloqueado (sin cambios)");
                                             else setEditando("Primera configuración (sin cambios)");
                                         });
-                                    </script>
+                                    </script> -->
 
 
                                     <!-- Turno -->
