@@ -78,6 +78,10 @@ class AdminController
         $fecha_hoy = date('Y-m-d');
 
 
+        $controlEmpaque = Prueba::all();
+        debuguear($controlEmpaque);
+
+
 
         $alertas = [];
         $consumo = new Prueba();
