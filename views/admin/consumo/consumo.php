@@ -230,6 +230,8 @@
                                                 <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
                                                 <option value="LUIS GOVEA">LUIS GOVEA</option>
                                                 <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
+                                                <option value="DAVID ALVARADO">DAVID ALVARADO</option>
+
                                             </select>
                                         </div>
                                     </div>
