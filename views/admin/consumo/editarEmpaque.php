@@ -22,22 +22,54 @@
         </div>
     </div>
 
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="toastExito" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">¡Registro guardado exitosamente!</div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    <?php
+    $toastId = null;
+    $toastMessage = null;
+    $toastClass = null;
+    $paramToRemove = null;
+
+    if (isset($_GET['exito']) && $_GET['exito'] == '1') {
+        $toastId = 'toastExito';
+        $toastMessage = '¡Registro creado!';
+        $toastClass = 'text-bg-success';
+        $paramToRemove = 'exito';
+    } elseif (isset($_GET['editado']) && $_GET['editado'] == '2') {
+        $toastId = 'toastEditado';
+        $toastMessage = '¡Registro editado correctamente!';
+        $toastClass = 'text-bg-primary';
+        $paramToRemove = 'editado';
+    } elseif (isset($_GET['eliminado']) && $_GET['eliminado'] == '3') {
+        $toastId = 'toastEliminado';
+        $toastMessage = '¡Registro eliminado correctamente!';
+        $toastClass = 'text-bg-danger';
+        $paramToRemove = 'eliminado';
+    }
+    ?>
+
+    <?php if ($toastId) : ?>
+        <!-- Toast HTML -->
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="<?php echo $toastId; ?>" class="toast align-items-center <?php echo $toastClass; ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?php echo $toastMessage; ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
             </div>
         </div>
-    </div>
-    <?php if (isset($_GET['exito']) && $_GET['exito'] == '1') : ?>
+
+        <!-- Toast JS -->
         <script>
             window.addEventListener('DOMContentLoaded', function() {
-                var toastEl = document.getElementById('toastExito');
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
+                var toastEl = document.getElementById('<?php echo $toastId; ?>');
+                if (toastEl) {
+                    var toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                }
+
                 const url = new URL(window.location);
-                url.searchParams.delete('exito');
+                url.searchParams.delete('<?php echo $paramToRemove; ?>');
                 window.history.replaceState({}, document.title, url.toString());
             });
         </script>
@@ -125,7 +157,7 @@
                                         <div class="form-group">
                                             <select class="form-select" name="producto">
                                                 <option value="" disabled selected>Seleccione el producto</option>
-                                                  <option value="LAMINA B/B" <?= $consumo->producto === 'LAMINA B/B' ? 'selected' : '' ?>>LAMINA B/B</option>
+                                                <option value="LAMINA B/B" <?= $consumo->producto === 'LAMINA B/B' ? 'selected' : '' ?>>LAMINA B/B</option>
                                                 <option value="LAMINA K/K" <?= $consumo->producto === 'LAMINA K/K' ? 'selected' : '' ?>>LAMINA K/K</option>
                                                 <option value="LAMINA T - R" <?= $consumo->producto === 'LAMINA T - R' ? 'selected' : '' ?>>LAMINA T - R</option>
                                                 <option value="LAMINA DOBLADA" <?= $consumo->producto === 'LAMINA DOBLADA' ? 'selected' : '' ?>>LAMINA DOBLADA</option>
