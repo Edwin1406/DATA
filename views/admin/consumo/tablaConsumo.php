@@ -93,8 +93,8 @@
                                  <td><?= $consumo->medidas ?></td>
                                  <td><?= $consumo->cantidad ?></td>
                                  <td><?= $consumo->hora_inicio ?></td>
-                            
-                                 <td><?= $consumo->x_hora ?></td>
+                                 <td><?= $consumo->hora_fin ?></td>
+                                
                                  <!-- los botones en horizontal -->
 
                                  <td>
