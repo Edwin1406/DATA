@@ -95,7 +95,7 @@
                                         <div class="form-group">
                                             <select id="personalSelect" class="form-select" multiple name="personal[]">
                                                     <!-- con php -->
-                                                <?php foreach ($personalOptions as $persona) : ?>
+                                                <?php foreach ($consumo->personal as $persona) : ?>
                                                     <option value="<?php echo $persona; ?>"><?php echo $persona; ?></option>
                                                 <?php endforeach; ?>
                                                     
