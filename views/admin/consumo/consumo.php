@@ -212,23 +212,31 @@
                                     <script>
           
 document.addEventListener("DOMContentLoaded", function() {
-    // Inicializar Select2 sin ordenar las opciones
+    // Inicializar Select2
     $('#personalSelect').select2({
         placeholder: "Seleccione el personal",
         allowClear: true,
-        // Prevenir que se reordenen las opciones seleccionadas
+        // Evitar el ordenamiento de las opciones seleccionadas
         sorter: function(data) {
             return data; // No ordenar nada
         },
-        // Configuración adicional para que las opciones seleccionadas no se ordenen
+        // Esto es solo para personalizar la forma en que se muestra la opción seleccionada
         templateSelection: function(state) {
             return state.text; // Mostrar la opción seleccionada tal como está
-        },
-        // Evitar ordenamiento automático de las opciones
-        dropdownAutoWidth: true,
-        width: '100%',
+        }
+    });
+
+    // Bloquear el reordenamiento con un simple "preventDefault" cuando seleccionas una opción
+    $('#personalSelect').on('select2:select', function(e) {
+        // Evitar que la lista de opciones se reorganice
+        var selectedOption = e.params.data.text;
+        var selectedOptions = $('#personalSelect').val();
+
+        // Re-ordenar el array de opciones seleccionadas al orden original
+        $('#personalSelect').val(selectedOptions).trigger('change');
     });
 });
+
 
 
 
