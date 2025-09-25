@@ -221,6 +221,10 @@
                                                 removeItemButton: true, // Habilitar el botón para eliminar ítems seleccionados
                                                 searchEnabled: true, // Habilitar búsqueda en las opciones
                                                 shouldSort: false, // Deshabilitar el ordenamiento de las opciones seleccionadas
+                                                placeholderValue: 'Seleccione el personal', // Texto del placeholder
+                                                noResultsText: 'No se encontraron resultados', // Texto cuando no hay resultados
+                                                noChoicesText: 'No hay opciones disponibles' // Texto cuando no hay opciones
+                                                
                                             });
                                         });
                                     </script>
