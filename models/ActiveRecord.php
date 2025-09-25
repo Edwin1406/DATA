@@ -2235,7 +2235,7 @@ public static function consultarSQL3($query, $params)
     if (strpos(strtoupper($query), 'SELECT') === 0) {
         $resultado = $stmt->get_result();
         $array = [];
-        while ($registro = $resultado->fetch_object('Model\Prueba')) {  // Cambiar fetch_assoc() a fetch_object()
+        while ($registro = $resultado->fetch_object('Model\Prueba')) {  
             $array[] = $registro;
         }
 

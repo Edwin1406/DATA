@@ -205,7 +205,7 @@
 
 
                                     <!-- Select2 -->
-                                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+                                    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
                                     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
                                     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
@@ -217,7 +217,7 @@
                                                 allowClear: true
                                             });
                                         });
-                                    </script>
+                                    </script> -->
 
 
 
@@ -571,17 +571,17 @@
                                             const tr = document.createElement("tr");
                                             const personasHTML = g.personas.map(n => `<span class="badge bg-light text-dark me-1">${n}</span>`).join(" ");
                                             tr.innerHTML = `
-        <td>${personasHTML}</td>
-        <td>${g.inicio ?? "--:--"}</td>
-        <td>${g.fin ?? "--:--"}</td>
-        <td>${g.estado}</td>
-        <td>
-          <div class="btn-group btn-group-sm" role="group">
-            <button type="button" class="btn btn-outline-primary btnCargar">Cargar</button>
-            <button type="button" class="btn btn-outline-success btnFinalizar"${g.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
-            <button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>
-          </div>
-        </td>`;
+                                            <td>${personasHTML}</td>
+                                            <td>${g.inicio ?? "--:--"}</td>
+                                            <td>${g.fin ?? "--:--"}</td>
+                                            <td>${g.estado}</td>
+                                            <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <button type="button" class="btn btn-outline-primary btnCargar">Cargar</button>
+                                                <button type="button" class="btn btn-outline-success btnFinalizar"${g.estado==='finalizado'?' disabled':''}>Finalizar ahora</button>
+                                                <button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>
+                                            </div>
+                                            </td>`;
                                             tr.querySelector(".btnCargar").addEventListener("click", (ev) => {
                                                 ev.preventDefault();
                                                 cargarGrupoEnFormulario(g.id);
