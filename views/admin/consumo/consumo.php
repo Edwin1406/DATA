@@ -165,7 +165,7 @@
 
 
 
-                                    <!-- <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <label for="personalSelect">Escoja el Personal</label>
                                         <div class="form-group">
                                             <select id="personalSelect" class="form-select" multiple name="personal[]">
@@ -201,61 +201,29 @@
 
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
 
 
-                                  <div class="col-md-6 col-12">
-    <label for="personalSelect">Escoja el Personal</label>
-    <div class="form-group">
-        <select id="personalSelect" class="form-select" multiple name="personal[]">
-            <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
-            <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
-            <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
-            <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
-            <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
-            <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
-            <option value="MILTON COYAGO">MILTON COYAGO</option>
-            <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
-            <option value="LOURDES FARINANGO">LOURDES FARINANGO</option>
-            <option value="MERY CHAUCA">MERY CHAUCA</option>
-            <option value="GINA TUQUERRES">GINA TUQUERRES</option>
-            <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
-            <option value="JESSY BERMEO">JESSY BERMEO</option>
-            <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
-            <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
-            <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
-            <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
-            <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
-            <option value="DE LA CRUZ BLANCA">DE LA CRUZ BLANCA</option>
-            <option value="GLORIA GUALAN">GLORIA GUALAN</option>
-            <option value="JEFFERSON PINANGO">JEFFERSON PINANGO</option>
-            <option value="YORVI VILLEGAS">YORVI VILLEGAS</option>
-            <option value="VERÓNICA LANDETA">VERÓNICA LANDETA</option>
-            <option value="ALVARO POGO">ALVARO POGO</option>
-            <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
-            <option value="LUIS GOVEA">LUIS GOVEA</option>
-            <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
-            <option value="DAVID ALVARADO">DAVID ALVARADO</option>
-            <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
-        </select>
-    </div>
-</div>
+                                    <!-- Select2 -->
+                                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+                                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!-- Código JavaScript para manejar la selección -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var selectElement = document.getElementById('personalSelect');
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            // Inicializar Select2
+                                            $('#personalSelect').select2({
+                                                placeholder: "Seleccione el personal",
+                                                allowClear: true,
+                                            });
 
-        // Mantener el orden de selección sin reorganizar
-        selectElement.addEventListener('change', function() {
-            var selectedOptions = Array.from(selectElement.selectedOptions);
-            var selectedValues = selectedOptions.map(option => option.value);
-
-            // Establecer nuevamente el valor del select para mantener el orden
-            selectElement.value = selectedValues;
-        });
-    });
-</script>
+                                            // Evento de selección: mantener el orden de selección
+                                            $('#personalSelect').on('select2:select', function(e) {
+                                                var selectedOptions = $(this).val(); // Obtener las opciones seleccionadas
+                                                $(this).val(selectedOptions).trigger('change'); // Reasignar el valor para mantener el orden
+                                            });
+                                        });
+                                    </script>
 
 
 
