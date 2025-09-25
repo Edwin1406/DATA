@@ -214,7 +214,10 @@
                                             // Inicializar Select2
                                             $('#personalSelect').select2({
                                                 placeholder: "Seleccione el personal",
-                                                allowClear: true
+                                                allowClear: true,
+                                                sorter:function(data){
+                                                    return data;
+                                                }
                                             });
                                         });
                                     </script>
