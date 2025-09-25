@@ -194,7 +194,7 @@
                                                 <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
                                                 <option value="JESSY BERMEO">JESSY BERMEO</option>
                                                 <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
-                                                <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
+                                                <option value="PRISCILA ACHIÑA">PRISCILA ACHIÑA</option>
                                                 <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
                                                 <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
                                                 <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
@@ -224,7 +224,7 @@
                                                 placeholderValue: 'Seleccione el personal', // Texto del placeholder
                                                 noResultsText: 'No se encontraron resultados', // Texto cuando no hay resultados
                                                 noChoicesText: 'No hay opciones disponibles' // Texto cuando no hay opciones
-                                                
+
                                             });
                                         });
                                     </script>
