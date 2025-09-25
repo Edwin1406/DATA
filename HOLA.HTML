@@ -1,96 +1,59 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Consumo General</title>
-  <!-- Librería para exportar a Excel -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    th { background: #f2f2f2; }
-    button { padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer; font-size: 14px; }
-    button:hover { background: #218838; }
-  </style>
-</head>
-<body>
-  <h2>📊 Consumo General</h2>
-  <button id="btnExcel">📥 Descargar Excel</button>
+<!-- Incluir el CSS de Choices.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
-  <table id="tablaDatos">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Tipo de Máquina</th>
-        <th>Total General</th>
-        <th>Fecha</th>
-        <th>Acción</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<!-- Incluir jQuery (opcional si lo necesitas) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
-    const apiUrl = "https://pruebas.megawebsistem.com/admin/api/apiConsumoGeneral";
-    let datosAPI = [];
+<!-- Incluir el JS de Choices.js -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
-    // 1. Consumir API y mostrar en tabla
-    async function cargarDatos() {
-      try {
-        const res = await fetch(apiUrl);
-        datosAPI = await res.json();
 
-        const tbody = document.querySelector("#tablaDatos tbody");
-        tbody.innerHTML = "";
 
-        datosAPI.forEach(reg => {
-          let fila = `
-            <tr>
-              <td>${reg.id}</td>
-              <td>${reg.tipo_maquina}</td>
-              <td>${reg.total_general}</td>
-              <td>${reg.created_at}</td>
-              <td>${reg.accion}</td>
-            </tr>
-          `;
-          tbody.innerHTML += fila;
+<div class="col-md-6 col-12">
+    <label for="personalSelect">Escoja el Personal</label>
+    <div class="form-group">
+        <select id="personalSelect" class="form-select" multiple name="personal[]">
+            <option value="ISRAEL CEDEÑO">ISRAEL CEDEÑO</option>
+            <option value="FABRICIO TANDAYAMO">FABRICIO TANDAYAMO</option>
+            <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
+            <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
+            <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
+            <option value="VICTOR MENDEZ">VICTOR MENDEZ</option>
+            <option value="MILTON COYAGO">MILTON COYAGO</option>
+            <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
+            <option value="LOURDES FARINANGO">LOURDES FARINANGO</option>
+            <option value="MERY CHAUCA">MERY CHAUCA</option>
+            <option value="GINA TUQUERRES">GINA TUQUERRES</option>
+            <option value="GUADALUPE TOLAGASI">GUADALUPE TOLAGASI</option>
+            <option value="JESSY BERMEO">JESSY BERMEO</option>
+            <option value="VIVIANA RUIZ">VIVIANA RUIZ</option>
+            <option value="PRISCILIA ACHIÑA">PRISCILIA ACHIÑA</option>
+            <option value="TANYA FERNANDEZ">TANYA FERNANDEZ</option>
+            <option value="SHIRLEY CETRE">SHIRLEY CETRE</option>
+            <option value="KATHERIN CARVAJAL">KATHERIN CARVAJAL</option>
+            <option value="DE LA CRUZ BLANCA">DE LA CRUZ BLANCA</option>
+            <option value="GLORIA GUALAN">GLORIA GUALAN</option>
+            <option value="JEFFERSON PINANGO">JEFFERSON PINANGO</option>
+            <option value="YORVI VILLEGAS">YORVI VILLEGAS</option>
+            <option value="VERÓNICA LANDETA">VERÓNICA LANDETA</option>
+            <option value="ALVARO POGO">ALVARO POGO</option>
+            <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
+            <option value="LUIS GOVEA">LUIS GOVEA</option>
+            <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
+            <option value="DAVID ALVARADO">DAVID ALVARADO</option>
+            <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar Choices.js en el select
+        var element = document.getElementById('personalSelect');
+        var choices = new Choices(element, {
+            removeItemButton: true, // Habilitar el botón para eliminar ítems seleccionados
+            searchEnabled: true,    // Habilitar búsqueda en las opciones
+            shouldSort: false,      // Deshabilitar el ordenamiento de las opciones seleccionadas
         });
-      } catch (err) {
-        console.error("❌ Error al cargar datos:", err);
-      }
-    }
-
-    // 2. Exportar a Excel con encabezados en español
-    function descargarExcel() {
-      if (datosAPI.length === 0) {
-        alert("No hay datos para exportar");
-        return;
-      }
-
-      // Mapear datos con encabezados en español
-      const datosFormateados = datosAPI.map(reg => ({
-        "ID": reg.id,
-        "Tipo de Máquina": reg.tipo_maquina,
-        "Total General": reg.total_general,
-        "Fecha": reg.created_at,
-        "Acción": reg.accion
-      }));
-
-      // Crear hoja y libro de Excel
-      const ws = XLSX.utils.json_to_sheet(datosFormateados);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Consumo");
-
-      // Descargar archivo
-      XLSX.writeFile(wb, "ConsumoGeneral.xlsx");
-    }
-
-    // Eventos
-    document.getElementById("btnExcel").addEventListener("click", descargarExcel);
-
-    // Cargar datos al abrir la página
-    cargarDatos();
-  </script>
-</body>
-</html>
+    });
+</script>

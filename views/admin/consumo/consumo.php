@@ -165,6 +165,17 @@
 
 
 
+                                    <!-- Incluir el CSS de Choices.js -->
+                                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+                                    <!-- Incluir jQuery (opcional si lo necesitas) -->
+                                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                                    <!-- Incluir el JS de Choices.js -->
+                                    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+
+
                                     <div class="col-md-6 col-12">
                                         <label for="personalSelect">Escoja el Personal</label>
                                         <div class="form-group">
@@ -198,29 +209,18 @@
                                                 <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
                                                 <option value="DAVID ALVARADO">DAVID ALVARADO</option>
                                                 <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
-
                                             </select>
                                         </div>
                                     </div>
 
-
-                                    <!-- Select2 -->
-                                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-                                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
                                     <script>
-                                        document.addEventListener("DOMContentLoaded", function() {
-                                            // Inicializar Select2
-                                            $('#personalSelect').select2({
-                                                placeholder: "Seleccione el personal",
-                                                allowClear: true,
-                                            });
-
-                                            // Evento de selección: mantener el orden de selección
-                                            $('#personalSelect').on('select2:select', function(e) {
-                                                var selectedOptions = $(this).val(); // Obtener las opciones seleccionadas
-                                                $(this).val(selectedOptions).trigger('change'); // Reasignar el valor para mantener el orden
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            // Inicializar Choices.js en el select
+                                            var element = document.getElementById('personalSelect');
+                                            var choices = new Choices(element, {
+                                                removeItemButton: true, // Habilitar el botón para eliminar ítems seleccionados
+                                                searchEnabled: true, // Habilitar búsqueda en las opciones
+                                                shouldSort: false, // Deshabilitar el ordenamiento de las opciones seleccionadas
                                             });
                                         });
                                     </script>
