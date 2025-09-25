@@ -105,7 +105,7 @@
                              <th class="fs-6" style="min-width: 100px;">Producto</th>
                              <th class="fs-6" style="min-width: 93px;">Medidas</th>
                              <th class="fs-6" style="min-width: 98px;">Cantidad</th>
-                             <!-- <th class="fs-6" style="min-width: 98px;">Cantidad</th> -->
+                             <th class="fs-6" style="min-width: 98px;">Horas_trabajo</th>
 
                              <th class="fs-6" style="min-width: 110px;">Hora Inicio</th>
                              <th class="fs-6" style="min-width: 98px;">Hora Fin</th>
@@ -123,6 +123,7 @@
                                  <td><?= $consumo->producto ?></td>
                                  <td><?= $consumo->medidas ?></td>
                                  <td><?= $consumo->cantidad ?></td>
+                                    <td><?= $consumo->horas_trabajo ?></td>
                                  <td><?= $consumo->hora_inicio ?></td>
                                  <td><?= $consumo->hora_fin ?></td>
 
