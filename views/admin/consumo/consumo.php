@@ -210,21 +210,29 @@
                                     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
                                     <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-    // Inicializar Select2 sin que reordene las opciones
+          
+document.addEventListener("DOMContentLoaded", function() {
+    // Inicializar Select2 sin ordenar las opciones
     $('#personalSelect').select2({
         placeholder: "Seleccione el personal",
         allowClear: true,
-        // Evitar que se reordenen las opciones al hacer selecciones
+        // Prevenir que se reordenen las opciones seleccionadas
         sorter: function(data) {
-            return data; // Deja las opciones tal como están
+            return data; // No ordenar nada
         },
+        // Configuración adicional para que las opciones seleccionadas no se ordenen
         templateSelection: function(state) {
-            // Esto es opcional, sirve para cambiar cómo se muestra el texto de las opciones seleccionadas
-            return state.text;
-        }
+            return state.text; // Mostrar la opción seleccionada tal como está
+        },
+        // Evitar ordenamiento automático de las opciones
+        dropdownAutoWidth: true,
+        width: '100%',
     });
 });
+
+
+
+
 
                                     </script>
 
