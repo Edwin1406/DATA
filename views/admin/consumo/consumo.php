@@ -210,16 +210,17 @@
                                     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
                                     <script>
-                                        document.addEventListener("DOMContentLoaded", function() {
-                                            // Inicializar Select2
-                                            $('#personalSelect').select2({
-                                                placeholder: "Seleccione el personal",
-                                                allowClear: true,
-                                                sorter:function(data){
-                                                    return data;
-                                                }
-                                            });
-                                        });
+                                     document.addEventListener("DOMContentLoaded", function() {
+    // Inicializar Select2 sin ordenar las opciones
+    $('#personalSelect').select2({
+        placeholder: "Seleccione el personal",
+        allowClear: true,
+        matcher: function(term, text) {
+            return text.toUpperCase().indexOf(term.toUpperCase()) === 0 ? true : false;
+        }
+    });
+});
+
                                     </script>
 
 
