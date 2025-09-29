@@ -109,54 +109,36 @@
   </div>
 
 
+  <div class="col-md-3 col-12">
+    <div class="form-group">
+      <label for="unidades_x_procesar">Unidades x procesar</label>
+      <input type="text" id="unidades_x_procesar" class="form-control"
+        placeholder="Unidades x procesar" name="unidades_x_procesar"
+        value="<?php echo isset($diseno) ? s($diseno->unidades_x_procesar) : ''; ?>">
+    </div>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="col-md-3 col-12">
+    <div class="form-group">
+      <label for="kilos_x_procesar">Kilos x procesar</label>
+      <input type="text" id="kilos_x_procesar" class="form-control"
+        placeholder="Kilos x procesar" name="kilos_x_procesar"
+        value="<?php echo isset($diseno) ? s($diseno->kilos_x_procesar) : ''; ?>">
+    </div>
+  </div>
 
 
   <!-- informacion -->
   <div class="col-md-3 col-12">
     <div class="form-group">
-      <label for="estado">Estado</label>
-      <select class="form-select" name="estado" id="estado">
-        <option value="ARTE" <?php echo isset($diseno) && s($diseno->estado) === 'ARTE' ? 'selected' : ''; ?>>Arte</option>
-        <option value="APROBADO" <?php echo isset($diseno) && s($diseno->estado) === 'APROBADO' ? 'selected' : ''; ?>>Aprobado</option>
-        <option value="CLICHE" <?php echo isset($diseno) && s($diseno->estado) === 'CLICHE' ? 'selected' : ''; ?>>Cliché</option>
+      <label for="linea">Linea de Producción</label>
+      <select class="form-select" name="linea" id="linea">
+        <option value="MICRO" <?php echo isset($diseno) && s($diseno->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
+        <option value="SEPARADORES" <?php echo isset($diseno) && s($diseno->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
+        <option value="PERIODICO" <?php echo isset($diseno) && s($diseno->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option>
+        <option value="CORRUGADOR PLANCHAS" <?php echo isset($diseno) && s($diseno->linea) === 'CORRUGADOR PLANCHAS' ? 'selected' : ''; ?>>Corrugado de Planchas</option>
+        <option value="CORRUGADOR CAJAS" <?php echo isset($diseno) && s($diseno->linea) === 'CORRUGADOR CAJAS' ? 'selected' : ''; ?>>Corrugado de Cajas</option>
+        <option value="CORRUGADOR PLANCHAS/CAJAS" <?php echo isset($diseno) && s($diseno->linea) === 'CORRUGADOR PLANCHAS/CAJAS' ? 'selected' : ''; ?>>Corrugado Planchas/Cajas</option>
       </select>
     </div>
   </div>
