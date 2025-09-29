@@ -1,5 +1,5 @@
   <!-- FECHA -->
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="fecha">Fecha</label>
       <input type="date" id="fecha" class="form-control"
@@ -11,7 +11,7 @@
 
   <!-- NOMBRE X DIA -->
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
@@ -21,7 +21,7 @@
   </div>
 
   <!-- METROS LINEALES -->
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="metros_lineales">Metros Lineales</label>
       <input type="text" id="metros_lineales" class="form-control"
@@ -31,7 +31,7 @@
   </div>
 
   <!-- KILOS X DIA -->
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="kilos_x_dia">Kilos x dia</label>
       <input type="text" id="kilos_x_dia" class="form-control"
@@ -41,7 +41,7 @@
   </div>
 
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="refile_std">Refile STD</label>
       <input type="text" id="refile_std" class="form-control"
@@ -51,7 +51,7 @@
   </div>
 
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="extra_trim">Extra Trim</label>
       <input type="text" id="extra_trim" class="form-control"
@@ -62,7 +62,7 @@
 
 
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="desperdicio_lamina">Desperdicio Lamina</label>
       <input type="text" id="desperdicio_lamina" class="form-control"
@@ -72,7 +72,7 @@
   </div>
 
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="turno">Turno</label>
       <input type="text" id="turno" class="form-control"
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="horas_maquina">Horas de Maquina</label>
       <input type="text" id="horas_maquina" class="form-control"
@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="cambios">Cambios</label>
       <input type="text" id="cambios" class="form-control"
@@ -99,7 +99,7 @@
     </div>
   </div>
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="tiempo_x_cambio">Tiempo x cambio de medida</label>
       <input type="text" id="tiempo_x_cambio" class="form-control"
@@ -109,7 +109,7 @@
   </div>
 
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="unidades_x_procesar">Unidades x procesar</label>
       <input type="text" id="unidades_x_procesar" class="form-control"
@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="kilos_x_procesar">Kilos x procesar</label>
       <input type="text" id="kilos_x_procesar" class="form-control"
@@ -129,7 +129,7 @@
 
 
   <!-- informacion -->
-  <div class="col-md-3 col-12">
+  <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="linea">Linea de Producción</label>
       <select class="form-select" name="linea" id="linea">
@@ -142,3 +142,7 @@
       </select>
     </div>
   </div>
+
+
+
+  
