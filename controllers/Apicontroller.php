@@ -193,6 +193,8 @@ class Apicontroller
         $producciondiaria = ProduccionDiaria::all('ASC');
         foreach ($producciondiaria as &$item) {
             $item->id = intval($item->id);
+            $item->fecha = $item->fecha; // Mantener como cadena
+            $item->peso_un = floatval($item->peso_un);
             $item->unidad_x_dia = floatval($item->unidad_x_dia);
             $item->metros_lineales = floatval($item->metros_lineales);
             $item->kilos_x_dia = floatval($item->kilos_x_dia);
