@@ -69,7 +69,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/consumo/produccion_diaria" enctype="multipart/form-data">
+                            <form class="form" method="POST" action="/admin/diaria/produccion_diaria" enctype="multipart/form-data">
                                 <div class="row">
 
                                       <?php include_once __DIR__.'/formulariodiaria.php'  ?>
