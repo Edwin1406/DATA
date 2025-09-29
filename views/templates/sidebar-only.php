@@ -78,6 +78,17 @@
                                  </li>
                              <?php }  ?>
 
+
+                                
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/consumo/produccion_diaria"><i class="bi bi-arrow-right"> </i>PRODUCCION DIARIA </a>
+                                 </li>
+                             <?php }  ?>
+
+
+
+
                              <li class="sidebar-title"><b><i class="bi bi-table"></i> Tablas</b></li>
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
@@ -112,21 +123,6 @@
                                      <a href="/admin/control/guillotina/tablaConsumoGuillotinaPapel"><i class="bi bi-arrow-right"> </i>Tabla Consumo Guillotina Pape</a>
                                  </li>
                              <?php }  ?>
-
-
-                             <?php if ($email !== 'planta@megaecuador.com') { ?>
-                                 <li class="submenu-item ">
-                                     <a href="/admin/consumo/produccion_diaria"><i class="bi bi-arrow-right"> </i>PRODUCCION DIARIA </a>
-                                 </li>
-                             <?php }  ?>
-
-                                   <?php if ($email !== 'planta@megaecuador.com') { ?>
-                                 <li class="submenu-item ">
-                                     <a href="/admin/consumo/produccion_diaria"><i class="bi bi-arrow-right"> </i>PRODUCCION DIARIA </a>
-                                 </li>
-                             <?php }  ?>
-
-
 
                          </ul>
                      <?php }  ?>
