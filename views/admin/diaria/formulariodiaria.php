@@ -4,7 +4,7 @@
       <label for="fecha">Fecha</label>
       <input type="date" id="fecha" class="form-control"
         placeholder="Fecha" name="fecha"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->fecha) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->fecha) : date('Y-m-d'); ?>">
     </div>
   </div>
 
