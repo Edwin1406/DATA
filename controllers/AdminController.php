@@ -603,6 +603,10 @@ class AdminController
 
             $produccion_diaria->sincronizar($_POST);
 
+            $peso_un= $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
+            $produccion_diaria->peso_un = round($peso_un, 2);
+            
+
             // debuguear($produccion_diaria);
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {

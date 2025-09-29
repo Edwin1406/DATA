@@ -10,6 +10,7 @@ class ProduccionDiaria extends ActiveRecord {
     protected static $columnasDB = [
         'id',
         'fecha',
+        'peso_un',
         'unidad_x_dia',
         'metros_lineales',
         'kilos_x_dia',
@@ -28,6 +29,7 @@ class ProduccionDiaria extends ActiveRecord {
 
     public $id;
     public $fecha;
+    public $peso_un;
     public $unidad_x_dia;
     public $metros_lineales;
     public $kilos_x_dia;
@@ -48,6 +50,7 @@ class ProduccionDiaria extends ActiveRecord {
 
         $this->id = $args['id'] ?? null;
         $this->fecha = $args['fecha'] ?? null;
+        $this->peso_un = $args['peso_un'] ?? null;
         $this->unidad_x_dia = $args['unidad_x_dia'] ?? null;
         $this->metros_lineales = $args['metros_lineales'] ?? null;
         $this->kilos_x_dia = $args['kilos_x_dia'] ?? null;
