@@ -6,6 +6,7 @@ use DateTime;
 
 class HorasTrabajo extends ActiveRecord {    
     protected static $tabla = 'horas_trabajo';
+    
     protected static $columnasDB = ['id','hora_trabajo','fecha'];
 
     public  $id;

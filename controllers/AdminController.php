@@ -5,6 +5,7 @@ namespace Controllers;
 
 use Model\Consumo_general;
 use Model\HorasTrabajo;
+use Model\ProduccionDiaria;
 use Model\Prueba;
 use MVC\Router;
 
@@ -596,6 +597,21 @@ class AdminController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
+        $produccion_diaria = new ProduccionDiaria;
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $produccion_diaria->sincronizar($_POST);
+
+            // debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/produccion_diaria?exito=1');
+            }
+        } else {
+            $alertas = [];
+        }
      
 
 
