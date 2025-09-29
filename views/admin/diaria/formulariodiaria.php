@@ -99,11 +99,19 @@
     </div>
   </div>
 
+  <div class="col-md-3 col-12">
+    <div class="form-group">
+      <label for="tiempo_x_cambio">Tiempo x cambio de medida</label>
+      <input type="text" id="tiempo_x_cambio" class="form-control"
+        placeholder="Tiempo x cambio de medida" name="tiempo_x_cambio"
+        value="<?php echo isset($diseno) ? s($diseno->tiempo_x_cambio) : ''; ?>">
+    </div>
+  </div>
 
 
-  
 
-  
+
+
 
 
 
