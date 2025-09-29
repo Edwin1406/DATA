@@ -1,10 +1,10 @@
-  <!-- NOMBRE DEL CLIENTE -->
+  <!-- FECHA -->
   <div class="col-md-6 col-12">
       <div class="form-group">
-          <label for="nombre_cliente">Nombre del Cliente</label>
-          <input type="text" id="nombre_cliente" class="form-control"
-              placeholder="Nombre del Cliente" name="nombre_cliente"
-                 value="<?php echo isset($diseno) ? s($diseno->nombre_cliente) : ''; ?>">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" class="form-control"
+              placeholder="Fecha" name="fecha"
+                 value="<?php echo isset($diseno) ? s($diseno->fecha) : ''; ?>">
       </div>
   </div>
 
