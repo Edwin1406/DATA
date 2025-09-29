@@ -601,7 +601,7 @@ class AdminController
 
 
         // debuguear($nombre);
-        $router->render('admin/consumo/produccion_diaria', [
+        $router->render('admin/diaria/produccion_diaria', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
             'email' => $email

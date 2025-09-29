@@ -122,8 +122,8 @@ $router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios'
 
 
 //REGISTRO DE PRODUCCION DIARIA 
-$router->get('/admin/consumo/produccion_diaria', [AdminController::class, 'produccion_diaria']);
-$router->post('/admin/consumo/produccion_diaria', [AdminController::class, 'produccion_diaria']);
+$router->get('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
+$router->post('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
 
 
 
