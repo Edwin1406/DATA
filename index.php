@@ -121,8 +121,17 @@ $router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios'
 
 
 
+//REGISTRO DE PRODUCCION DIARIA 
+$router->get('/admin/consumo/produccion_diaria', [AdminController::class, 'produccion_diaria']);
+$router->post('/admin/consumo/produccion_diaria', [AdminController::class, 'produccion_diaria']);
 
 
+
+
+
+
+
+// EDITAR
 
 // editar consumo empaque
 $router->get('/admin/editarEmpaque', [AdminController::class, 'editarEmpaque']);

@@ -586,6 +586,34 @@ class AdminController
 
 
 
+    // REGISTRO DE PRODUCCION DIARIA
+    public static function produccion_diaria(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        // debuguear($nombre);
+        $router->render('admin/consumo/produccion_diaria', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     // error 404
     public static function error404(Router $router)
