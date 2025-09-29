@@ -202,7 +202,7 @@ class Apicontroller
             $item->extra_trim = floatval($item->extra_trim);
             $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
             $item->turno = floatval($item->turno);
-            $item->horas_maquina = floatval($item->horas_maquina);
+            $item->horas_maquina = $item->horas_maquina; 
             $item->cambios = floatval($item->cambios);
             $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
             $item->unidades_x_procesar = floatval($item->unidades_x_procesar);
