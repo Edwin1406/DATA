@@ -35,8 +35,8 @@ class Prueba extends ActiveRecord
                 date_default_timezone_set('America/Guayaquil');
 
         $this->id = $args['id'] ?? null;
-        // $this->fecha = date('Y-m-d');
-        $this->fecha = $args['fecha'] ?? '';
+        $this->fecha = date('Y-m-d');
+        // $this->fecha = $args['fecha'] ?? '';
         $this->n_orden = $args['n_orden'] ?? '';
         // $this->personal = $args['personal'] ?? [];
 
