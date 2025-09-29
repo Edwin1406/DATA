@@ -67,6 +67,16 @@
                             <form class="form" method="POST" action="/admin/consumo" id="formConsumo" onsubmit="return bloquearBoton(this);">
                                 <div class="row">
 
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="fecha">Fecha</label>
+                                            <input type="date" id="fecha" class="form-control"
+                                                placeholder="Fecha" name="fecha" value="<?php echo date('Y-m-d'); ?>"> 
+                                        </div>
+                                    </div>
+
                                     <!-- Horas de trabajo (bloqueo con contraseña) -->
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -81,7 +91,7 @@
                                         </div>
                                     </div>
 
-                                    
+
 
                                     <!-- Turno -->
                                     <div class="col-md-6 col-12">

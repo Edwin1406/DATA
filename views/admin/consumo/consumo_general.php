@@ -69,18 +69,18 @@
                             <form class="form" method="POST" action="/admin/consumo_general" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
-                                  <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="created_at">Fecha</label>
                                             <input type="date" id="created_at" class="form-control"
-                                                placeholder="Fecha" name="created_at" >
+                                                placeholder="Fecha" name="created_at">
                                         </div>
                                     </div>
 
                                     <!-- operador SELECCIONAR NO MULTIPLE -->
                                     <div class="col-md-6 col-12">
                                         <label for="tipo_maquina">Escoja tipo_maquina</label>
-                                        <div class="form-group"> 
+                                        <div class="form-group">
                                             <select class="form-select" name="tipo_maquina" id="tipo_maquina">
                                                 <option value="" disabled selected>Seleccione tipo de máquina</option>
                                                 <option value="CORRUGADOR">CORRUGADOR</option>
@@ -139,11 +139,10 @@
 
 
 <script>
-function bloquearBoton(form) {
-  const btn = form.querySelector('#btnRegistrar');
-  btn.disabled = true; // Deshabilita el botón
-  btn.innerText = "Registrando..."; // Cambia el texto (opcional)
-  return true; // Permite que el formulario se envíe
-}
+    function bloquearBoton(form) {
+        const btn = form.querySelector('#btnRegistrar');
+        btn.disabled = true; // Deshabilita el botón
+        btn.innerText = "Registrando..."; // Cambia el texto (opcional)
+        return true; // Permite que el formulario se envíe
+    }
 </script>
-
