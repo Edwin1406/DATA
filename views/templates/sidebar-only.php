@@ -44,11 +44,11 @@
                          <ul class="submenu ">
                              <li class="sidebar-title"><b><i class="bi bi-archive"></i> Registros</b></li>
 
-                         
-                                 <li class="submenu-item ">
-                                     <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
-                                 </li>
-                         
+
+                             <li class="submenu-item ">
+                                 <a href="/admin/consumo"><i class="bi bi-arrow-right"> </i>Registro Empaque</a>
+                             </li>
+
 
                              <!-- icono de flecha -->
                              <li class="submenu-item ">
@@ -113,6 +113,14 @@
                                  </li>
                              <?php }  ?>
 
+
+                             <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/consumo/produccion_diaria"><i class="bi bi-arrow-right"> </i>PRODUCCION DIARIA </a>
+                                 </li>
+                             <?php }  ?>
+
+
                          </ul>
                      <?php }  ?>
 
@@ -127,8 +135,14 @@
                              <li class="submenu-item ">
                                  <a href="/admin/tablaAdminConsumoGeneral"><i class="bi bi-arrow-right"> </i>Habilitar Consumo General</a>
                              </li>
-
                          </ul>
+
+
+
+
+
+
+
                      </li>
                  <?php } ?>
 
@@ -177,7 +191,7 @@
                      </li>
                  <?php } ?>
                  <!-- pruebas-->
-                 <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com'|| $userEmail === 'corrugador@megaecuador.com'|| $userEmail === 'flexo@megaecuador.com'|| $userEmail === 'micro@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'corrugador@megaecuador.com' || $userEmail === 'flexo@megaecuador.com' || $userEmail === 'micro@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
@@ -218,11 +232,3 @@
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
  </div>
-
-
-
-
-
-
-
-
