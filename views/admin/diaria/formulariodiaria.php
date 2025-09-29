@@ -84,7 +84,7 @@
   <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="horas_maquina">Horas de Maquina</label>
-      <input type="text" id="horas_maquina" class="form-control"
+      <input type="time" id="horas_maquina" class="form-control"
         placeholder="Horas de Maquina" name="horas_maquina"
         value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->horas_maquina) : ''; ?>">
     </div>
