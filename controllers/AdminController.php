@@ -595,6 +595,11 @@ class AdminController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
+
+     
+
+
+
         // debuguear($nombre);
         $router->render('admin/consumo/produccion_diaria', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
@@ -602,6 +607,9 @@ class AdminController
             'email' => $email
         ]);
     }
+
+    
+
 
 
 
