@@ -147,6 +147,8 @@
                                                 <option value="GUILLERMO BONILLA">GUILLERMO BONILLA</option>
                                                 <option value="DAVID ALVARADO">DAVID ALVARADO</option>
                                                 <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
+                                                <option value="VELENTIN PÉREZ">VELENTIN PÉREZ</option>
+
                                             </select>
                                         </div>
                                     </div>
