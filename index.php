@@ -126,6 +126,10 @@ $router->get('/admin/diaria/produccion_diaria', [AdminController::class, 'produc
 $router->post('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
 
 
+//APIPRODUCCION DIARIA
+$router->get('/admin/api/apiProduccionDiaria', [ApiController::class, 'apiProduccionDiaria']);
+$router->post('/admin/api/apiProduccionDiaria', [ApiController::class, 'apiProduccionDiaria']);
+
 
 
 

@@ -7,6 +7,7 @@ use Model\Consumo_general;
 use Model\DetalleEmpaque;
 use Model\DetalleVenta;
 use Model\Mantenimiento;
+use Model\ProduccionDiaria;
 use Model\Prueba;
 use Model\TurnoDiseno;
 use Model\Ventas;
@@ -180,4 +181,60 @@ class Apicontroller
         echo json_encode($desperdicioindividual);
         exit;
     }
+
+
+    public static function apiProduccionDiaria(): void
+    {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $producciondiaria = ProduccionDiaria::all('ASC');
+        foreach ($producciondiaria as &$item) {
+            $item->id = intval($item->id);
+            $item->unidad_x_dia = floatval($item->unidad_x_dia);
+            $item->metros_lineales = floatval($item->metros_lineales);
+            $item->kilos_x_dia = floatval($item->kilos_x_dia);
+            $item->refile_std = floatval($item->refile_std);
+            $item->extra_trim = floatval($item->extra_trim);
+            $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
+            $item->turno = floatval($item->turno);
+            $item->horas_maquina = floatval($item->horas_maquina);
+            $item->cambios = floatval($item->cambios);
+            $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
+            $item->unidades_x_procesar = floatval($item->unidades_x_procesar);
+            $item->kilos_x_procesar = floatval($item->kilos_x_procesar);
+        }
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($producciondiaria);
+        exit;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
