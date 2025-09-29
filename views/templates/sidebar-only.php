@@ -120,6 +120,12 @@
                                  </li>
                              <?php }  ?>
 
+                                   <?php if ($email !== 'planta@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/consumo/produccion_diaria"><i class="bi bi-arrow-right"> </i>PRODUCCION DIARIA </a>
+                                 </li>
+                             <?php }  ?>
+
 
 
                          </ul>
