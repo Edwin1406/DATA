@@ -10,7 +10,7 @@
 <!-- Linea de Producción -->
 <div class="col-md-2 col-12">
   <div class="form-group">
-    <label for="linea">Linea de Producción</label>
+    <label for="lineas">Linea de Producción</label>
     <select class="form-select" name="linea" id="linea">
       <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
       <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
