@@ -145,4 +145,65 @@
 
 
 
-  
+  <script>
+
+$(document).ready(function() {
+  // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
+  $('#linea').change(function() {
+    var selectedLinea = $(this).val();  // Obtiene el valor seleccionado
+
+    // Reseteamos la visibilidad de todos los campos
+    $('.form-group').show();
+
+    // Lógica para ocultar los campos según la opción seleccionada
+    switch(selectedLinea) {
+      case 'SEPARADORES':
+        // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
+        $('#kilos_x_procesar').closest('.form-group').hide();
+        $('#kilos_x_dia').closest('.form-group').hide();
+        $('#metros_lineales').closest('.form-group').hide();
+        break;
+        
+      case 'MICRO':
+        // Ocultar metros_lineales
+        $('#metros_lineales').closest('.form-group').hide();
+        break;
+        
+      case 'PERIODICO':
+        // Ocultar metros_lineales
+        $('#metros_lineales').closest('.form-group').hide();
+        break;
+        
+      case 'CORRUGADOR PLANCHAS/CAJAS':
+        // Mostrar todos los campos (por defecto ya se están mostrando)
+        break;
+        
+      case 'CORRUGADOR CAJAS':
+        // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
+        $('#unidades_x_dia').closest('.form-group').hide();
+        $('#metros_lineales').closest('.form-group').hide();
+        $('#kilos_x_dia').closest('.form-group').hide();
+        break;
+        
+      case 'CORRUGADOR PLANCHAS':
+        // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
+        $('#unidades_x_dia').closest('.form-group').hide();
+        $('#metros_lineales').closest('.form-group').hide();
+        $('#kilos_x_dia').closest('.form-group').hide();
+        break;
+        
+      default:
+        // Si no se selecciona ninguna de las opciones relevantes, mostramos todo
+        $('.form-group').show();
+    }
+  });
+
+  // Llamar a la función al cargar la página en caso de que ya haya un valor seleccionado
+  $('#linea').change();
+});
+
+
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
