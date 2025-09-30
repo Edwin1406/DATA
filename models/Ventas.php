@@ -7,7 +7,7 @@ use DateTime;
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
     protected static $columnasDB = ['id','id_usuario','consumo_papel','n_laminas','metros_lineales','turno','n_cambios','consumo_almidon','consumo_resina',
-    'consumo_recubrimiento','operador','total','hora_inicio','hora_fin','motivo_inactividad','fecha'];
+    'consumo_recubrimiento','operador','total','hora_inicio','hora_fin','motivo_inactividad','unidades_pendientes','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
@@ -24,6 +24,7 @@ class Ventas extends ActiveRecord {
     public ?string $hora_inicio;
     public ?string $hora_fin;
     public ?string $motivo_inactividad;
+    public ?int $unidades_pendientes;
     public ?string $fecha;
 
     public function __construct(array $args = []) {
@@ -45,6 +46,7 @@ class Ventas extends ActiveRecord {
         $this->hora_inicio = $args['hora_inicio'] ?? null;
         $this->hora_fin = $args['hora_fin'] ?? null;
         $this->motivo_inactividad = $args['motivo_inactividad'] ?? null;
+        $this->unidades_pendientes = $args['unidades_pendientes'] ?? 0;
         $this->fecha = $args['fecha'] ?? $fecha;
     }
 

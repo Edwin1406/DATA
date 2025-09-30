@@ -253,4 +253,51 @@ class PruebasController
             exit;
         }
     }
+
+
+    // tabla de pruebas
+    public static function tablaPruebas(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Obtener los diseños de la base de datos
+        $corrgador = DetalleVenta::where('tipo_maquina', 'CORRUGADOR');
+
+
+        debuguear($corrgador);
+
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/tablaPruebas', [
+            'titulo' => 'CORRUGADOR - Tabla de Producción',
+            'nombre' => $nombre,
+            'email' => $email,
+            'corrgador' => $corrgador
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

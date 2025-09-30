@@ -289,6 +289,11 @@ $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarr
 $router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'registrarVenta']);
 
 
+// TABLA DE PRUEBAS
+$router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
+
+
+
 
 
 
