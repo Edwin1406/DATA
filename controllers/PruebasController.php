@@ -192,22 +192,19 @@ class PruebasController
             // Obtener consumo de papel del form
             $consumo_papel = $_POST['consumo_papel'] ?? 0;
             $metros_lineales = $_POST['metros_lineales'] ?? 0;
-            $metros_lineales_C = $_POST['metros_lineales_C'] ?? 0;
+           
 
             $n_laminas = $_POST['n_laminas'] ?? 0;
             $n_cambios = $_POST['n_cambios'] ?? 0;
             $consumo_almidon = $_POST['consumo_almidon'] ?? 0;
             $consumo_resina = $_POST['consumo_resina'] ?? 0;
             $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
-            $metros_lineales_B = $_POST['metros_lineales_B'] ?? 0;
-            $metros_lineales_E = $_POST['metros_lineales_E'] ?? 0;
+       
             // operador
             $operador =$_POST['operador'] ?? '';
             $turno = $_POST['turno'] ?? '';
-            $hora_programada = $_POST['hora_programada'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
-            $horas_inactividad = $_POST['horas_inactividad'] ?? 0;
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
 
             
@@ -220,20 +217,16 @@ class PruebasController
             $venta->total = $total;
             $venta->consumo_papel = $consumo_papel;
             $venta->metros_lineales = $metros_lineales;
-            $venta->metros_lineales_C = $metros_lineales_C;
             $venta->n_laminas = $n_laminas;
             $venta->n_cambios = $n_cambios;
             $venta->consumo_almidon = $consumo_almidon;
             $venta->consumo_resina = $consumo_resina;
             $venta->consumo_recubrimiento = $consumo_recubrimiento;
-            $venta->metros_lineales_B = $metros_lineales_B;
-            $venta->metros_lineales_E = $metros_lineales_E;
+          
             $venta->operador = $operador;
             $venta->turno = $turno;
-            $venta->hora_programada = $hora_programada;
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
-            $venta->horas_inactividad = $horas_inactividad;
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
