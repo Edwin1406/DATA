@@ -9,6 +9,22 @@
   </div>
 
 
+
+  <!-- informacion -->
+  <div class="col-md-2 col-12">
+    <div class="form-group">
+      <label for="linea">Linea de Producción</label>
+      <select class="form-select" name="linea" id="linea">
+        <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
+        <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
+        <option value="PERIODICO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option>
+        <option value="CORRUGADOR PLANCHAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS' ? 'selected' : ''; ?>>Corrugado de Planchas</option>
+        <option value="CORRUGADOR CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR CAJAS' ? 'selected' : ''; ?>>Corrugado de Cajas</option>
+        <option value="CORRUGADOR PLANCHAS/CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS/CAJAS' ? 'selected' : ''; ?>>Corrugado Planchas/Cajas</option>
+      </select>
+    </div>
+  </div>
+
   <!-- NOMBRE X DIA -->
 
   <div class="col-md-2 col-12">
@@ -128,86 +144,67 @@
   </div>
 
 
-  <!-- informacion -->
-  <div class="col-md-2 col-12">
-    <div class="form-group">
-      <label for="linea">Linea de Producción</label>
-      <select class="form-select" name="linea" id="linea">
-        <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
-        <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
-        <option value="PERIODICO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option>
-        <option value="CORRUGADOR PLANCHAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS' ? 'selected' : ''; ?>>Corrugado de Planchas</option>
-        <option value="CORRUGADOR CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR CAJAS' ? 'selected' : ''; ?>>Corrugado de Cajas</option>
-        <option value="CORRUGADOR PLANCHAS/CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS/CAJAS' ? 'selected' : ''; ?>>Corrugado Planchas/Cajas</option>
-      </select>
-    </div>
-  </div>
 
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script>
+    $(document).ready(function() {
+      // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
+      $('#linea').change(function() {
+        var selectedLinea = $(this).val(); // Obtiene el valor seleccionado
 
-$(document).ready(function() {
-  // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
-  $('#linea').change(function() {
-    var selectedLinea = $(this).val();  // Obtiene el valor seleccionado
-
-    // Reseteamos la visibilidad de todos los campos
-    $('.form-group').show();
-
-    // Lógica para ocultar los campos según la opción seleccionada
-    switch(selectedLinea) {
-      case 'SEPARADORES':
-        // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
-        $('#kilos_x_procesar').closest('.form-group').hide();
-        $('#kilos_x_dia').closest('.form-group').hide();
-        $('#metros_lineales').closest('.form-group').hide();
-        $('#refile_std').closest('.form-group').hide();
-        $('#extra_trim').closest('.form-group').hide();
-        break;
-        
-      case 'MICRO':
-        // Ocultar metros_lineales
-        $('#metros_lineales').closest('.form-group').hide();
-        break;
-        
-      case 'PERIODICO':
-        // Ocultar metros_lineales
-        $('#metros_lineales').closest('.form-group').hide();
-        break;
-        
-      case 'CORRUGADOR PLANCHAS/CAJAS':
-        // Mostrar todos los campos (por defecto ya se están mostrando)
-        break;
-        
-      case 'CORRUGADOR CAJAS':
-        // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
-        $('#unidades_x_dia').closest('.form-group').hide();
-        $('#metros_lineales').closest('.form-group').hide();
-        $('#kilos_x_dia').closest('.form-group').hide();
-        break;
-        
-      case 'CORRUGADOR PLANCHAS':
-        // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
-        $('#unidades_x_dia').closest('.form-group').hide();
-        $('#metros_lineales').closest('.form-group').hide();
-        $('#kilos_x_dia').closest('.form-group').hide();
-        break;
-        
-      default:
-        // Si no se selecciona ninguna de las opciones relevantes, mostramos todo
+        // Reseteamos la visibilidad de todos los campos
         $('.form-group').show();
-    }
-  });
 
-  // Llamar a la función al cargar la página en caso de que ya haya un valor seleccionado
-  $('#linea').change();
-});
+        // Lógica para ocultar los campos según la opción seleccionada
+        switch (selectedLinea) {
+          case 'SEPARADORES':
+            // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
+            $('#kilos_x_procesar').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
+            $('#metros_lineales').closest('.form-group').hide();
+            $('#refile_std').closest('.form-group').hide();
+            $('#extra_trim').closest('.form-group').hide();
+            break;
 
+          case 'MICRO':
+            // Ocultar metros_lineales
+            $('#metros_lineales').closest('.form-group').hide();
+            break;
 
+          case 'PERIODICO':
+            // Ocultar metros_lineales
+            $('#metros_lineales').closest('.form-group').hide();
+            break;
 
+          case 'CORRUGADOR PLANCHAS/CAJAS':
+            // Mostrar todos los campos (por defecto ya se están mostrando)
+            break;
 
+          case 'CORRUGADOR CAJAS':
+            // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
+            $('#unidades_x_dia').closest('.form-group').hide();
+            $('#metros_lineales').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
+            break;
+
+          case 'CORRUGADOR PLANCHAS':
+            // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
+            $('#unidades_x_dia').closest('.form-group').hide();
+            $('#metros_lineales').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
+            break;
+
+          default:
+            // Si no se selecciona ninguna de las opciones relevantes, mostramos todo
+            $('.form-group').show();
+        }
+      });
+
+      // Llamar a la función al cargar la página en caso de que ya haya un valor seleccionado
+      $('#linea').change();
+    });
   </script>
- 
