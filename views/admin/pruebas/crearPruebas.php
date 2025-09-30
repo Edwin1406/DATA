@@ -330,15 +330,6 @@
                             </div>
                         </div>
 
-                        <!-- horas de inactividad -->
-                        <div class="col-md-12 col-12">
-                            <div class="form-group">
-                                <label for="motivo_inactividad">Motivo de la Inactividad</label>
-                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
-                            </div>
-                        </div>
-
-
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
@@ -358,13 +349,24 @@
                             </div>
                         </div>
 
+                        <!-- horas de inactividad -->
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="motivo_inactividad">Motivo de la Inactividad</label>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
 
 
-                        <!-- Botón -->
-                        <div class="col-12 d-flex justify-content-end mt-3">
-                            <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
-                        </div>
+                    <!-- Botón -->
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
+                    </div>
                 </form>
 
 
