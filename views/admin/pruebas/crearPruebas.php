@@ -288,7 +288,23 @@
                             </div>
 
                         </div>
-                        
+
+
+
+                        <div class="col-md-3 col-12 ">
+
+                            <div class="form-group">
+                                <label for="turno">Turno</label>
+                                <input type="time" id="turno" class="form-control"
+                                    placeholder="Turno" name="turno">
+                            </div>
+
+                        </div>
+
+
+
+
+
                     </div>
 
                     <!-- Fila 2 -->
@@ -346,15 +362,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="turno">Turno</label>
-                                    <select class="form-select" name="turno" id="turno">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-                                </div>
-                            </div>
+
 
                             <div class="col-md-3 col-12 ">
                                 <div class="form-group">
