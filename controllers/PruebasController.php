@@ -270,7 +270,7 @@ class PruebasController
         $corrgador = DetalleVenta::where('tipo_maquina', 'CORRUGADOR');
 
 
-        debuguear($corrgador);
+        // debuguear($corrgador);
 
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/tablaPruebas', [
