@@ -99,7 +99,7 @@
     </div>
   </div>
 
-  <div class="col-md-2 col-12">
+  <div class="col-md-3 col-12">
     <div class="form-group">
       <label for="tiempo_x_cambio">Tiempo x cambio medida</label>
       <input type="text" id="tiempo_x_cambio" class="form-control"
