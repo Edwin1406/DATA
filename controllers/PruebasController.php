@@ -267,7 +267,7 @@ class PruebasController
         $email = $_SESSION['email'];
 
         // Obtener los diseños de la base de datos
-        $corrgador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
+        $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
 
 
         // debuguear($corrgador);
@@ -277,7 +277,7 @@ class PruebasController
             'titulo' => 'CORRUGADOR - Tabla de Producción',
             'nombre' => $nombre,
             'email' => $email,
-            'corrgador' => $corrgador
+            'corrugador' => $corrugador
         ]);
     }
 
