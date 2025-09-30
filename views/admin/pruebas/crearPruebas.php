@@ -339,45 +339,6 @@
                         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-                    </div>
-
-                    <!-- Fila 2 -->
-                    <div class="row g-3 mt-1">
-                        <div class="col-md-3 col-12 ">
-                            <div class="form-group">
-                                <label for="metros_lineales_B ">Metros Lineales B</label>
-                                <input type="number" id="metros_lineales_B" class="form-control"
-                                    placeholder="Metros Lineales B" name="metros_lineales_B">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12 ">
-                            <div class="form-group">
-                                <label for="metros_lineales">Metros Lineales E</label>
-                                <input type="number" id="metros_lineales_E" class="form-control"
-                                    placeholder="Metros Lineales E" name="metros_lineales_E">
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-12 ">
-                            <div class="form-group">
-                                <label for="consumo_recubrimiento">Consumo Recubrimiento (Kg)</label>
-                                <input type="number" step="0.01" id="consumo_recubrimiento" class="form-control"
-                                    placeholder="Consumo Recubrimiento (Kg)" name="consumo_recubrimiento">
-                            </div>
-                        </div>
-
-                        <!-- NECESITO UN SELECT CON OPERADORES EN EL HTML  -->
-
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
@@ -397,63 +358,7 @@
                             </div>
                         </div>
 
-                        <div class="row g-3 mt-1">
-
-
-
-
-                            <div class="col-md-3 col-12 ">
-                                <div class="form-group">
-                                    <label for="consumo_almidon">Consumo Almidón (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_almidon" class="form-control"
-                                        placeholder="Consumo Almidón (Kg)" name="consumo_almidon">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-12 ">
-                                <div class="form-group">
-                                    <label for="consumo_resina">Consumo Resina (Kg)</label>
-                                    <input type="number" step="0.01" id="consumo_resina" class="form-control"
-                                        placeholder="Consumo Resina (Kg)" name="consumo_resina">
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="row g-3 mt-1">
-
-                            <div class="col-md-3 col-12 ">
-
-                                <div class="form-group">
-                                    <label for="metros_lineales">Metros Lineales</label>
-                                    <input type="number" id="metros_lineales" class="form-control"
-                                        placeholder="Metros Lineales" name="metros_lineales">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="hora_programada">Hora Programada</label>
-                                    <input type="time" id="hora_programada" class="form-control"
-                                        name="hora_programada" required>
-
-                                </div>
-                            </div>
-
-
-
-
-
-                            <!-- Motivo de Inactividad -->
-
-
-
-
-
-                        </div>
-
-
-
+                    </div>
 
 
                         <!-- Botón -->
