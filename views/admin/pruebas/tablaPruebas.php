@@ -109,14 +109,11 @@
                      <thead>
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Id</th>
-                             <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
-                             <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
-                             <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
-                             <th class="fs-6" style="min-width: 100px;">Proveedor</th>
-                             <th class="fs-6" style="min-width: 80px;">Fecha</th>
-                             <th class="fs-6" style="min-width: 88px;">Estado</th>
-                             <th class="fs-6" style="min-width: 100px;">Pdf</th>
-                             <th class="fs-6" style="min-width: 100px;">Descargar</th>
+                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
+                             <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
+                             <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
+                             <th class="fs-6" style="min-width: 80px;">Turno</th>
+                             <th class="fs-6" style="min-width: 100px;">Unidades Pendientes</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
