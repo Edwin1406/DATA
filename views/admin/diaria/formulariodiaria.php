@@ -164,6 +164,7 @@ $(document).ready(function() {
         $('#kilos_x_procesar').closest('.form-group').hide();
         $('#kilos_x_dia').closest('.form-group').hide();
         $('#metros_lineales').closest('.form-group').hide();
+        $('#refile_std').closest('.form-group').hide();
         break;
         
       case 'MICRO':
