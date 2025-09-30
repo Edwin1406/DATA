@@ -302,6 +302,50 @@
                         </div>
 
 
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="n_cambios">N° de Cambios</label>
+                                <input type="number" id="n_cambios" class="form-control"
+                                    placeholder="N° de Cambios" name="n_cambios">
+                            </div>
+                        </div>
+
+
+                        <!-- fecha inicio -->
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="hora_inicio">Hora Inicio</label>
+                                <input type="time" id="hora_inicio" class="form-control"
+                                    name="hora_inicio" required>
+
+                            </div>
+                        </div>
+
+                        <!-- fecha fin -->
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="hora_fin">Hora Fin</label>
+                                <input type="time" id="hora_fin" class="form-control"
+                                    name="hora_fin" required>
+                            </div>
+                        </div>
+
+                        <!-- horas de inactividad -->
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="motivo_inactividad">Motivo de la Inactividad</label>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -354,13 +398,7 @@
                         </div>
 
                         <div class="row g-3 mt-1">
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="n_cambios">N° de Cambios</label>
-                                    <input type="number" id="n_cambios" class="form-control"
-                                        placeholder="N° de Cambios" name="n_cambios">
-                                </div>
-                            </div>
+
 
 
 
@@ -404,45 +442,10 @@
 
 
 
-                            <!-- fecha inicio -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="hora_inicio">Hora Inicio</label>
-                                    <input type="time" id="hora_inicio" class="form-control"
-                                        name="hora_inicio" required>
-
-                                </div>
-                            </div>
-
-                            <!-- fecha fin -->
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="hora_fin">Hora Fin</label>
-                                    <input type="time" id="hora_fin" class="form-control"
-                                        name="hora_fin" required>
-                                </div>
-                            </div>
-
-                            <!-- horas de inactividad -->
-
-
-
-                            <div class="col-md-3 col-12">
-                                <div class="form-group">
-                                    <label for="horas_inactividad">Horas de Inactividad</label>
-                                    <input type="time" id="horas_inactividad" class="form-control"
-                                        name="horas_inactividad" required>
-                                </div>
-                            </div>
 
 
                             <!-- Motivo de Inactividad -->
-                            <div class="col-md-12 col-12">
-                                <div class="form-group">
-                                    <label for="motivo_inactividad">Motivo de la Inactividad</label>
-                                    <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
-                                </div>
-                            </div>
+
 
 
 
