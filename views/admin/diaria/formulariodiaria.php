@@ -43,7 +43,8 @@
       <label for="metros_lineales">Metros Lineales</label>
       <input type="text" id="metros_lineales" class="form-control"
         placeholder="Metros Lineales" name="metros_lineales"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->metros_lineales) : ''; ?>">
+            value="<?php echo isset($produccion_diaria) && $produccion_diaria->metros_lineales !== '' ? s($produccion_diaria->metros_lineales) : '0'; ?>">
+
     </div>
   </div>
 
@@ -63,7 +64,7 @@
       <label for="refile_std">Refile STD</label>
       <input type="text" id="refile_std" class="form-control"
         placeholder="Refile STD" name="refile_std"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->refile_std) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->refile_std) : '0'; ?>">
     </div>
   </div>
 
@@ -73,7 +74,7 @@
       <label for="extra_trim">Extra Trim</label>
       <input type="text" id="extra_trim" class="form-control"
         placeholder="Extra Trim" name="extra_trim"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->extra_trim) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->extra_trim) : '0'; ?>">
     </div>
   </div>
 
@@ -84,7 +85,7 @@
       <label for="desperdicio_lamina">Desperdicio Lamina</label>
       <input type="text" id="desperdicio_lamina" class="form-control"
         placeholder="Desperdicio Lamina" name="desperdicio_lamina"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->desperdicio_lamina) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->desperdicio_lamina) : '0'; ?>">
     </div>
   </div>
 
@@ -94,7 +95,7 @@
       <label for="turno">Turno</label>
       <input type="text" id="turno" class="form-control"
         placeholder="Turno" name="turno"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->turno) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->turno) : '0'; ?>">
     </div>
   </div>
 
@@ -112,7 +113,7 @@
       <label for="cambios">Cambios</label>
       <input type="text" id="cambios" class="form-control"
         placeholder="Cambios" name="cambios"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->cambios) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->cambios) : '0'; ?>">
     </div>
   </div>
 
@@ -131,7 +132,7 @@
       <label for="unidades_x_procesar">Unidades x procesar</label>
       <input type="text" id="unidades_x_procesar" class="form-control"
         placeholder="Unidades x procesar" name="unidades_x_procesar"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->unidades_x_procesar) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->unidades_x_procesar) : '0'; ?>">
     </div>
   </div>
 
@@ -140,7 +141,7 @@
       <label for="kilos_x_procesar">Kilos x procesar</label>
       <input type="text" id="kilos_x_procesar" class="form-control"
         placeholder="Kilos x procesar" name="kilos_x_procesar"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->kilos_x_procesar) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->kilos_x_procesar) : '0'; ?>">
     </div>
   </div>
 
