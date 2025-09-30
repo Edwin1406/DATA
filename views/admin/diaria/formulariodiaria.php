@@ -33,7 +33,7 @@
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
         placeholder="Unidad x dia" name="unidad_x_dia"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->unidad_x_dia) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->unidad_x_dia) : '0'; ?>">
     </div>
   </div>
 
