@@ -588,7 +588,8 @@ class AdminController
 
 
     // REGISTRO DE PRODUCCION DIARIA
-    public static function produccion_diaria(Router $router){
+    public static function produccion_diaria(Router $router)
+    {
         session_start();
         if (!isset($_SESSION['email'])) {
             header('Location: /');
@@ -598,14 +599,20 @@ class AdminController
         $email = $_SESSION['email'];
 
         $produccion_diaria = new ProduccionDiaria;
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $produccion_diaria->sincronizar($_POST);
 
-            $peso_un= $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
-            $produccion_diaria->peso_un = round($peso_un, 2);
-            
+            // Verifica si la unidad por día no es cero
+            if ($produccion_diaria->unidad_x_dia != 0) {
+                $peso_un = $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
+                $produccion_diaria->peso_un = round($peso_un, 2);
+            } else {
+                // Si la unidad por día es cero, no hacer nada o asignar un valor por defecto
+                $produccion_diaria->peso_un = 0; // O cualquier valor predeterminado que quieras
+            }
+
 
             // debuguear($produccion_diaria);
             $alertas = $produccion_diaria->validar();
@@ -616,7 +623,7 @@ class AdminController
         } else {
             $alertas = [];
         }
-     
+
 
 
 
@@ -628,7 +635,7 @@ class AdminController
         ]);
     }
 
-    
+
 
 
 
