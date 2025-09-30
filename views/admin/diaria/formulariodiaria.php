@@ -168,6 +168,12 @@
             $('#metros_lineales').closest('.form-group').hide();
             $('#refile_std').closest('.form-group').hide();
             $('#extra_trim').closest('.form-group').hide();
+            $('#desperdicio_lamina').closest('.form-group').hide();
+            $('#turno').closest('.form-group').hide();
+            $('#horas_maquina').closest('.form-group').hide();
+            $('#cambios').closest('.form-group').hide();
+            $('#tiempo_x_cambio').closest('.form-group').hide();
+
             break;
 
           case 'MICRO':
