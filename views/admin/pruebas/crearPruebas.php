@@ -254,7 +254,7 @@
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
