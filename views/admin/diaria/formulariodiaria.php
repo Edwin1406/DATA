@@ -6,11 +6,10 @@
       value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->fecha) : date('Y-m-d'); ?>">
   </div>
 </div>
-
 <!-- Linea de Producción -->
 <div class="col-md-2 col-12">
   <div class="form-group">
-    <label for="lineas">Linea de Producción</label>
+    <label for="linea">Linea de Producción</label>
     <select class="form-select" name="linea" id="linea">
       <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
       <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
@@ -132,15 +131,28 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+Otro código del formulario omitido para brevedad... -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
   $(document).ready(function() {
+    console.log("Página cargada y script listo.");
+
+    // Verificar si el selector de 'linea' está presente
+    if ($('#linea').length === 0) {
+      console.error("El selector de 'linea' no se encuentra.");
+      return;
+    }
+
     // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
     $('#linea').change(function() {
       var selectedLinea = $(this).val(); // Obtiene el valor seleccionado
+      console.log("Linea seleccionada: " + selectedLinea);
 
       // Reseteamos la visibilidad de todos los campos
       $('.form-group').show();
-      
+
       // Ocultamos todos los elementos inicialmente
       $('.form-group').css('display', 'none');
 
