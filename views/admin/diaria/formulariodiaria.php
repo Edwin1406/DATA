@@ -131,28 +131,15 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-Otro código del formulario omitido para brevedad... -->
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
   $(document).ready(function() {
-    console.log("Página cargada y script listo.");
-
-    // Verificar si el selector de 'linea' está presente
-    if ($('#linea').length === 0) {
-      console.error("El selector de 'linea' no se encuentra.");
-      return;
-    }
-
     // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
     $('#linea').change(function() {
       var selectedLinea = $(this).val(); // Obtiene el valor seleccionado
-      console.log("Linea seleccionada: " + selectedLinea);
 
       // Reseteamos la visibilidad de todos los campos
       $('.form-group').show();
-
+      
       // Ocultamos todos los elementos inicialmente
       $('.form-group').css('display', 'none');
 
