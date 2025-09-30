@@ -51,7 +51,7 @@ class ProduccionDiaria extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->fecha = $args['fecha'] ?? null;
         $this->peso_un = $args['peso_un'] ?? null;
-        $this->unidad_x_dia = $args['unidad_x_dia'] ?? null;
+        $this->unidad_x_dia = $args['unidad_x_dia'] ?? 0;
         $this->metros_lineales = $args['metros_lineales'] ?? null;
         $this->kilos_x_dia = $args['kilos_x_dia'] ?? null;
         $this->refile_std = $args['refile_std'] ?? null;
