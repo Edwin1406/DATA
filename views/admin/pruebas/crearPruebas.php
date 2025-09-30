@@ -262,7 +262,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
@@ -270,7 +270,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
@@ -302,7 +302,7 @@
                         </div>
 
 
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
@@ -312,7 +312,7 @@
 
 
                         <!-- fecha inicio -->
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="hora_inicio">Hora Inicio</label>
                                 <input type="time" id="hora_inicio" class="form-control"
@@ -322,7 +322,7 @@
                         </div>
 
                         <!-- fecha fin -->
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="hora_fin">Hora Fin</label>
                                 <input type="time" id="hora_fin" class="form-control"
@@ -330,7 +330,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
                                 <select id="operador" class="choices form-control" name="operador">
