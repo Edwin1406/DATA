@@ -15,6 +15,7 @@
     <div class="form-group">
       <label for="linea">Linea de Producción</label>
       <select class="form-select" name="linea" id="linea">
+        <option value="">-- Seleccione --</option>
         <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
         <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
         <option value="PERIODICO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option>
