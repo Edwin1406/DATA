@@ -62,7 +62,7 @@ class PruebasController
 
         // Renderizar la vista de crear pruebas
         $router->render('admin/pruebas/crearPruebas', [
-            'titulo' => 'Crear Pruebas',
+            'titulo' => 'CORRUGADOR - Registro de Producción',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
