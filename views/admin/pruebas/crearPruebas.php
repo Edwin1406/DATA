@@ -279,7 +279,7 @@
                         </div>
 
 
-                        <div class="col-md-3 col-12 ">
+                        <div class="col-md-2 col-12 ">
 
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
@@ -291,7 +291,7 @@
 
 
 
-                        <div class="col-md-3 col-12 ">
+                        <div class="col-md-2 col-12 ">
 
                             <div class="form-group">
                                 <label for="turno">Turno</label>
