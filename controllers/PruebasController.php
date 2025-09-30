@@ -196,9 +196,6 @@ class PruebasController
 
             $n_laminas = $_POST['n_laminas'] ?? 0;
             $n_cambios = $_POST['n_cambios'] ?? 0;
-            $consumo_almidon = $_POST['consumo_almidon'] ?? 0;
-            $consumo_resina = $_POST['consumo_resina'] ?? 0;
-            $consumo_recubrimiento = $_POST['consumo_recubrimiento'] ?? 0;
        
             // operador
             $operador =$_POST['operador'] ?? '';
@@ -219,9 +216,7 @@ class PruebasController
             $venta->metros_lineales = $metros_lineales;
             $venta->n_laminas = $n_laminas;
             $venta->n_cambios = $n_cambios;
-            $venta->consumo_almidon = $consumo_almidon;
-            $venta->consumo_resina = $consumo_resina;
-            $venta->consumo_recubrimiento = $consumo_recubrimiento;
+           
           
             $venta->operador = $operador;
             $venta->turno = $turno;
