@@ -103,7 +103,6 @@
                                                 <!-- CONTROLABLES -->
                                                 <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
                                                 <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
-                                                <option value="COMBADO">COMBADO</option>
                                                 <option value="CUADRE">CUADRE</option>
                                                 <option value="CUADRE SIERRA">CUADRE SIERRA</option>
                                                 <option value="DAÑO CLICHE">DAÑO CLICHE</option>
@@ -127,18 +126,18 @@
                                                 <option value="SF">SF</option>
                                                 <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
                                                 <option value="VISCOSIDAD">VISCOSIDAD</option>
-
+                                                
                                                 <!-- NO CONTROLABLES -->
                                                 <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
+                                                <option value="COMBADO">COMBADO</option>
                                                 <option value="CAMBIO PEDIDO">CAMBIO PEDIDO</option>
                                                 <option value="CIREL CORTADO">CIREL CORTADO</option>
-                                                <option value="COMBADA">COMBADA</option>
                                                 <option value="DESCUADRE DE DOBLADO">DESCUADRE DE DOBLADO</option>
                                                 <option value="DESHOJE">DESHOJE</option>
                                                 <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
                                                 <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
                                                 <option value="ELECTRICO">ELECTRICO</option>
-                                                <option value="ERROR MEDIDA CORRUGADOR">ERROR MEDIDA CORRUGADOR</option>
+                                            
                                                 <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
                                                 <option value="EXTRA TRIM">EXTRA TRIM</option>
                                                 <option value="FILOS ROTOS">FILOS ROTOS</option>
