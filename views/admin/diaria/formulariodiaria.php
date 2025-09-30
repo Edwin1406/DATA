@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <div class="col-md-2 col-12">
+  <div class="col-md-1 col-12">
     <div class="form-group">
       <label for="cambios">Cambios</label>
       <input type="text" id="cambios" class="form-control"
