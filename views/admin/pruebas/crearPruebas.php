@@ -365,7 +365,7 @@
 
                     <!-- Botón -->
                     <div class="col-12 d-flex justify-content-end mt-3">
-                        <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar Sucesos</button>
+                        <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar </button>
                     </div>
                 </form>
 
