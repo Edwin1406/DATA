@@ -126,7 +126,7 @@
                                                 <option value="SF">SF</option>
                                                 <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
                                                 <option value="VISCOSIDAD">VISCOSIDAD</option>
-                                                
+
                                                 <!-- NO CONTROLABLES -->
                                                 <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
                                                 <option value="COMBADO">COMBADO</option>
@@ -137,7 +137,7 @@
                                                 <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
                                                 <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
                                                 <option value="ELECTRICO">ELECTRICO</option>
-                                            
+
                                                 <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
                                                 <option value="EXTRA TRIM">EXTRA TRIM</option>
                                                 <option value="FILOS ROTOS">FILOS ROTOS</option>
@@ -282,12 +282,13 @@
                         <div class="col-md-3 col-12 ">
 
                             <div class="form-group">
-                                <label for="metros_lineales_C">Metros Lineales C</label>
-                                <input type="number" id="metros_lineales_C" class="form-control"
-                                    placeholder="Metros Lineales C" name="metros_lineales_C">
+                                <label for="metros_lineales">Metros Lineales</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales" name="metros_lineales">
                             </div>
 
                         </div>
+                        
                     </div>
 
                     <!-- Fila 2 -->
