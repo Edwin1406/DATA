@@ -604,7 +604,7 @@ class AdminController
 
         $corrugador = Ventas::where('id', $id);
 
-        debuguear($corrugador);
+        // debuguear($corrugador);
 
 
 
