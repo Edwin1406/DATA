@@ -1,12 +1,5 @@
   <!-- FECHA -->
-  <div class="col-md-2 col-12">
-    <div class="form-group">
-      <label for="fecha">Fecha</label>
-      <input type="date" id="fecha" class="form-control"
-        placeholder="Fecha" name="fecha"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->fecha) : date('Y-m-d'); ?>">
-    </div>
-  </div>
+
 
 
 

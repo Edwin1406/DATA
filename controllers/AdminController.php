@@ -604,7 +604,7 @@ class AdminController
 
         $corrugador = Ventas::where('id', $id);
 
-        debuguear($corrugador);
+        // debuguear($corrugador);
 
 
 
@@ -612,7 +612,10 @@ class AdminController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+
+
             $produccion_diaria->sincronizar($_POST);
+            $produccion_diaria->fecha = $corrugador->fecha;
 
             // Verifica si la unidad por día no es cero
             if ($produccion_diaria->unidad_x_dia != 0) {
@@ -641,7 +644,8 @@ class AdminController
         $router->render('admin/diaria/produccion_diaria', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
-            'email' => $email
+            'email' => $email,
+            'corrugador' => $corrugador,
         ]);
     }
 
