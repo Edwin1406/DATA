@@ -628,6 +628,9 @@ class AdminController
             }
 
 
+            debuguear($produccion_diaria);
+
+
             // debuguear($produccion_diaria);
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
