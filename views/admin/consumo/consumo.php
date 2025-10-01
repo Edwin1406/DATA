@@ -144,7 +144,6 @@
                                                 <option value="ALVARO POGO">ALVARO POGO</option>
                                                 <option value="EVELYN OVIEDO">EVELYN OVIEDO</option>
                                                 <option value="LUIS GOVEA">LUIS GOVEA</option>
-                                              
                                                 <option value="DAVID ALVARADO">DAVID ALVARADO</option>
                                                 <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
                                                 <option value="VELENTIN PÉREZ">VELENTIN PÉREZ</option>
