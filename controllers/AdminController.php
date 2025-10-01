@@ -604,7 +604,7 @@ class AdminController
 
         $corrugador = Ventas::where('id', $id);
 
-        // debuguear($corrugador);
+        debuguear($corrugador);
 
 
 
@@ -616,6 +616,7 @@ class AdminController
 
             $produccion_diaria->sincronizar($_POST);
             $produccion_diaria->fecha = $corrugador->fecha;
+
 
             // Verifica si la unidad por día no es cero
             if ($produccion_diaria->unidad_x_dia != 0) {
