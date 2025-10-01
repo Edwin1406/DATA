@@ -177,6 +177,22 @@
                         </div>
 
 
+                        <div class="col-md-6 col-12">
+                            <label for="operador">Escoja OPERADOR</label>
+                            <div class="form-group">
+                                <select class="form-select" name="operador" id="operador">
+                                    <option value="" disabled selected>Seleccione un operador</option>
+                                    <option value="RAFAEL ORTEGA" <?= $venta->operador === 'RAFAEL ORTEGA' ? 'selected' : '' ?>>RAFAEL ORTEGA</option>
+                                    <option value="WILLIAM NAULA" <?= $venta->operador === 'WILLIAM NAULA' ? 'selected' : '' ?>>WILLIAM NAULA</option>
+                                    <option value="MARCO TAPIA" <?= $venta->operador === 'MARCO TAPIA' ? 'selected' : '' ?>>MARCO TAPIA</option>
+                                    <option value="KEVIN DELGADO" <?= $venta->operador === 'KEVIN DELGADO' ? 'selected' : '' ?>>KEVIN DELGADO</option>
+                                    <option value="MENTOR" <?= $venta->operador === 'MENTOR' ? 'selected' : '' ?>>MENTOR</option>
+                                    <option value="WILLIAM NAULA" <?= $venta->operador === 'WILLIAM NAULA' ? 'selected' : '' ?>>WILLIAM NAULA</option>
+                                </select>
+                            </div>
+                        </div>
+
+
                         <!-- horas de inactividad -->
                         <div class="col-md-5 col-12">
                             <div class="form-group">
