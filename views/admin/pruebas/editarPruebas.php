@@ -159,22 +159,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <label for="operador">OPERADOR</label>
-                                <select id="operador" class=" form-control" name="operador">
-                                    <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
-
-                                    <!-- CONTROLABLES -->
-                                    <option value="RAFAEL ORTEGA" <?php echo (isset($venta) && $venta->operador === 'RAFAEL ORTEGA') ? 'selected' : ''; ?>>RAFAEL ORTEGA</option>
-                                    <option value="GEOVANNY MANTILLA" <?php echo (isset($venta) && $venta->operador === 'GEOVANNY MANTILLA') ? 'selected' : ''; ?>>GEOVANNY MANTILLA</option>
-                                    <option value="WILLIAM NAULA" <?php echo (isset($venta) && $venta->operador === 'WILLIAM NAULA') ? 'selected' : ''; ?>>WILLIAM NAULA</option>
-                                    <option value="MARCO TAPIA" <?php echo (isset($venta) && $venta->operador === 'MARCO TAPIA') ? 'selected' : ''; ?>>MARCO TAPIA</option>
-                                    <option value="KEVIN DELGADO" <?php echo (isset($venta) && $venta->operador === 'KEVIN DELGADO') ? 'selected' : ''; ?>>KEVIN DELGADO</option>
-                                    <option value="MENTOR" <?php echo (isset($venta) && $venta->operador === 'MENTOR') ? 'selected' : ''; ?>>MENTOR</option>
-                                </select>
-                            </div>
-                        </div>
+                        
 
 
                         <div class="col-md-6 col-12">
