@@ -148,6 +148,7 @@
                                                 <option value="DAVID ALVARADO">DAVID ALVARADO</option>
                                                 <option value="MARTIN CABEZAS">MARTIN CABEZAS</option>
                                                 <option value="VELENTIN PÉREZ">VELENTIN PÉREZ</option>
+                                                <option value="ADRIAN PILLAJO">ADRIAN PILLAJO</option>
 
                                             </select>
                                         </div>
