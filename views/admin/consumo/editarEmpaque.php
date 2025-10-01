@@ -77,7 +77,7 @@
                                                 class="form-control"
                                                 name="personal"
                                                 value="<?php echo $consumo->personal; ?>"
-                                                readonly>
+                                                >
                                         </div>
                                     </div>
 
