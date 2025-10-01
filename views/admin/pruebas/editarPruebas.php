@@ -86,7 +86,7 @@
                                 <input type="number" step="0.01" id="consumo_papel"
                                     class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel"
                                     value="<?php echo $venta->consumo_papel ?? ''; ?>"
-                                    required>
+                                    readonly>
                             </div>
                         </div>
 
@@ -95,7 +95,7 @@
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
                                     placeholder="N° de Laminas" name="n_laminas"
-                                    value="<?php echo $venta->n_laminas ?? ''; ?>">
+                                    value="<?php echo $venta->n_laminas ?? ''; ?>" readonly>
                             </div>
                         </div>
 
@@ -106,7 +106,7 @@
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
                                     placeholder="Metros Lineales" name="metros_lineales"
-                                    value="<?php echo $venta->metros_lineales ?? ''; ?>">
+                                    value="<?php echo $venta->metros_lineales ?? ''; ?>" readonly>
                             </div>
 
                         </div>
@@ -119,7 +119,7 @@
                                 <label for="turno">Turno</label>
                                 <input type="time" id="turno" class="form-control"
                                     placeholder="Turno" name="turno"
-                                    value="<?php echo $venta->turno ?? ''; ?>">
+                                    value="<?php echo $venta->turno ?? ''; ?>" readonly>
                             </div>
 
                         </div>
@@ -131,7 +131,7 @@
                                 <input type="number" id="n_cambios" class="form-control"
                                     placeholder="N° de Cambios"
                                     value="<?php echo $venta->n_cambios ?? ''; ?>"
-                                    name="n_cambios">
+                                    name="n_cambios" readonly>
                             </div>
                         </div>
 
@@ -143,7 +143,7 @@
                                 <input type="time" id="hora_inicio" class="form-control"
                                     name="hora_inicio"
                                     value="<?php echo $venta->hora_inicio ?? ''; ?>"
-                                    required>
+                                    readonly>
 
                             </div>
                         </div>
@@ -155,14 +155,14 @@
                                 <input type="time" id="hora_fin" class="form-control"
                                     name="hora_fin"
                                     value="<?php echo $venta->hora_fin ?? ''; ?>"
-                                    required>
+                                    readonly>
                             </div>
                         </div>
 
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
-                                <select id="operador" class="choices form-control" name="operador">
+                                <select id="operador" class="choices form-control" name="operador" readonly>
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
@@ -182,7 +182,7 @@
                         <div class="col-md-5 col-12">
                             <div class="form-group">
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
-                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3" readonly><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
                             </div>
 
 
