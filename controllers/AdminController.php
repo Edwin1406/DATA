@@ -7,6 +7,7 @@ use Model\Consumo_general;
 use Model\HorasTrabajo;
 use Model\ProduccionDiaria;
 use Model\Prueba;
+use Model\Ventas;
 use MVC\Router;
 
 
@@ -597,6 +598,15 @@ class AdminController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
+
+        $id = $_GET['id'] ?? null;
+
+
+        $corrugador = Ventas::where('id', $id);
+
+        debuguear($corrugador);
+
+
 
         $produccion_diaria = new ProduccionDiaria;
 
