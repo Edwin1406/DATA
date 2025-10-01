@@ -185,6 +185,11 @@
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
                             </div>
 
+
+                        </div>
+                        <div class="col-md-5 col-12">
+
+
                             <div class="form-group">
                                 <label for="unidades_pendientes">Unidades x procesar </label>
                                 <input type="number" id="unidades_pendientes" class="form-control"
