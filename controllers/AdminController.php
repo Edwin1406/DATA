@@ -614,7 +614,7 @@ class AdminController
 
 
 
-            // $produccion_diaria->fecha = $corrugador->fecha;
+            $produccion_diaria->fecha = $_POST['fecha'] ?? null;
             $produccion_diaria->sincronizar($_POST);
 
 
