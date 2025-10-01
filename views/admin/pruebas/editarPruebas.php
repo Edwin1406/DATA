@@ -184,15 +184,17 @@
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label for="unidades_pendientes">Unidades x procesar </label>
+                                <input type="number" id="unidades_pendientes" class="form-control"
+                                    placeholder="Unidades x procesar" name="unidades_pendientes"
+                                    value="<?php echo $venta->unidades_pendientes ?? ''; ?>">
+                            </div>
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="unidades_pendientes">Unidades x procesar </label>
-                            <input type="number" id="unidades_pendientes" class="form-control"
-                                placeholder="Unidades x procesar" name="unidades_pendientes"
-                                value="<?php echo $venta->unidades_pendientes ?? ''; ?>">
-                        </div>
+
 
                     </div>
 
