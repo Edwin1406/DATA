@@ -614,8 +614,8 @@ class AdminController
 
 
 
-            $produccion_diaria->sincronizar($_POST);
             $produccion_diaria->fecha = $corrugador->fecha;
+            $produccion_diaria->sincronizar($_POST);
 
 
             // Verifica si la unidad por día no es cero
