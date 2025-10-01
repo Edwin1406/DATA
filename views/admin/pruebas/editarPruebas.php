@@ -162,7 +162,7 @@
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
-                                <select id="operador" class="choices form-control" name="operador" readonly>
+                                <select id="operador" class="choices form-control" name="operador">
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
@@ -172,11 +172,10 @@
                                     <option value="MARCO TAPIA" <?php echo (isset($venta) && $venta->operador === 'MARCO TAPIA') ? 'selected' : ''; ?>>MARCO TAPIA</option>
                                     <option value="KEVIN DELGADO" <?php echo (isset($venta) && $venta->operador === 'KEVIN DELGADO') ? 'selected' : ''; ?>>KEVIN DELGADO</option>
                                     <option value="MENTOR" <?php echo (isset($venta) && $venta->operador === 'MENTOR') ? 'selected' : ''; ?>>MENTOR</option>
-
                                 </select>
-
                             </div>
                         </div>
+
 
                         <!-- horas de inactividad -->
                         <div class="col-md-5 col-12">
