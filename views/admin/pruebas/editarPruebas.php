@@ -159,10 +159,10 @@
                             </div>
                         </div>
 
-                        
 
 
-                        <div class="col-md-6 col-12">
+
+                        <div class="col-md-4 col-12">
                             <label for="operador">Escoja OPERADOR</label>
                             <div class="form-group">
                                 <select class="form-select" name="operador" id="operador">
