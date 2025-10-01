@@ -169,12 +169,13 @@
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
-                                    <option value="RAFAEL ORTEGA">RAFAEL ORTEGA</option>
-                                    <option value="GEOVANNY MANTILLA">GEOVANNY MANTILLA</option>
-                                    <option value="WILLIAM NAULA">WILLIAM NAULA</option>
-                                    <option value="MARCO TAPIA">MARCO TAPIA</option>
-                                    <option value="KEVIN DELGADO">KEVIN DELGADO</option>
-                                    <option value="MENTOR">MENTOR</option>
+                                    <option value="JHONNY" <?php echo (isset($venta) && $venta->operador === 'JHONNY') ? 'selected' : ''; ?>>JHONNY</option>
+                                    <option value="JUAN" <?php echo (isset($venta) && $venta->operador === 'JUAN') ? 'selected' : ''; ?>>JUAN</option>
+                                    <option value="CARLOS" <?php echo (isset($venta) && $venta->operador === 'CARLOS') ? 'selected' : ''; ?>>CARLOS</option>
+                                    <option value="MARIO" <?php echo (isset($venta) && $venta->operador === 'MARIO') ? 'selected' : ''; ?>>MARIO</option>
+                                    <option value="WILSON" <?php echo (isset($venta) && $venta->operador === 'WILSON') ? 'selected' : ''; ?>>WILSON</option>
+                                    <option value="OTRO" <?php echo (isset($venta) && $venta->operador === 'OTRO') ? 'selected' : ''; ?>>OTRO</option>
+                                        
 
                                 </select>
 
