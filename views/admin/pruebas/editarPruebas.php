@@ -162,7 +162,7 @@
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
-                                <select id="operador" class="choices form-control" name="operador">
+                                <select id="operador" class=" form-control" name="operador">
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
