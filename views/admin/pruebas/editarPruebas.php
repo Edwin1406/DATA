@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
-                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                    name="fecha" value="<?php echo $venta->fecha ?? ''; ?>" readonly>
                             </div>
                         </div>
 
@@ -85,7 +85,7 @@
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
                                     class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel"
-                                    value="<?php echo $ventas->consumo_papel ?? ''; ?>"
+                                    value="<?php echo $venta->consumo_papel ?? ''; ?>"
                                     required>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
                                     placeholder="N° de Laminas" name="n_laminas"
-                                    value="<?php echo $ventas->n_laminas ?? ''; ?>"
+                                    value="<?php echo $venta->n_laminas ?? ''; ?>"
                                     >
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
                                     placeholder="Metros Lineales" name="metros_lineales"
-                                    value="<?php echo $ventas->metros_lineales ?? ''; ?>"
+                                    value="<?php echo $venta->metros_lineales ?? ''; ?>"
                                     >
                             </div>
 
@@ -121,7 +121,7 @@
                                 <label for="turno">Turno</label>
                                 <input type="time" id="turno" class="form-control"
                                     placeholder="Turno" name="turno"
-                                    value="<?php echo $ventas->turno ?? ''; ?>"
+                                    value="<?php echo $venta->turno ?? ''; ?>"
                                     >
                             </div>
 
@@ -132,7 +132,9 @@
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
-                                    placeholder="N° de Cambios" name="n_cambios">
+                                    placeholder="N° de Cambios" 
+                                    value="<?php echo $venta->n_cambios ?? ''; ?>"
+                                    name="n_cambios">
                             </div>
                         </div>
 
@@ -142,7 +144,9 @@
                             <div class="form-group">
                                 <label for="hora_inicio">Hora Inicio</label>
                                 <input type="time" id="hora_inicio" class="form-control"
-                                    name="hora_inicio" required>
+                                    name="hora_inicio" 
+                                    value="<?php echo $venta->hora_inicio ?? ''; ?>"
+                                    required>
 
                             </div>
                         </div>
@@ -152,7 +156,9 @@
                             <div class="form-group">
                                 <label for="hora_fin">Hora Fin</label>
                                 <input type="time" id="hora_fin" class="form-control"
-                                    name="hora_fin" required>
+                                    name="hora_fin" 
+                                    value="<?php echo $venta->hora_fin ?? ''; ?>"
+                                    required>
                             </div>
                         </div>
 
