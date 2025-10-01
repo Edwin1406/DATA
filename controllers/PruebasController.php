@@ -308,7 +308,7 @@ class PruebasController
         // Obtener el registro a editar
         $venta = Ventas::find($id);
 
-        debuguear($venta);
+        // debuguear($venta);
 
         if (!$venta) {
             header('Location: /admin/pruebas/tablaPruebas');
