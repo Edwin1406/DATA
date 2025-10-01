@@ -292,11 +292,9 @@ $router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'regis
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
 
-
-
-
-
-
+// EDITAR PRUEBAS
+$router->get('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
+$router->post('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
 
 
 

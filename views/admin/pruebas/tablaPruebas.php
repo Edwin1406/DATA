@@ -138,9 +138,9 @@
 
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <form action="/admin/eliminarDiseno" method="POST">
-                                             <input type="hidden" name="id" value="<?= $diseno->id ?>">
+                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <form action="/admin/eliminarPruebas" method="POST">
+                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
