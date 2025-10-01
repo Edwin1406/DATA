@@ -169,13 +169,12 @@
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
 
                                     <!-- CONTROLABLES -->
-                                    <option value="JHONNY" <?php echo (isset($venta) && $venta->operador === 'JHONNY') ? 'selected' : ''; ?>>JHONNY</option>
-                                    <option value="JUAN" <?php echo (isset($venta) && $venta->operador === 'JUAN') ? 'selected' : ''; ?>>JUAN</option>
-                                    <option value="CARLOS" <?php echo (isset($venta) && $venta->operador === 'CARLOS') ? 'selected' : ''; ?>>CARLOS</option>
-                                    <option value="MARIO" <?php echo (isset($venta) && $venta->operador === 'MARIO') ? 'selected' : ''; ?>>MARIO</option>
-                                    <option value="WILSON" <?php echo (isset($venta) && $venta->operador === 'WILSON') ? 'selected' : ''; ?>>WILSON</option>
-                                    <option value="OTRO" <?php echo (isset($venta) && $venta->operador === 'OTRO') ? 'selected' : ''; ?>>OTRO</option>
-                                        
+                                    <option value="RAFAEL ORTEGA" <?php echo (isset($venta) && $venta->operador === 'RAFAEL ORTEGA') ? 'selected' : ''; ?>>RAFAEL ORTEGA</option>
+                                    <option value="GEOVANNY MANTILLA" <?php echo (isset($venta) && $venta->operador === 'GEOVANNY MANTILLA') ? 'selected' : ''; ?>>GEOVANNY MANTILLA</option>
+                                    <option value="WILLIAM NAULA" <?php echo (isset($venta) && $venta->operador === 'WILLIAM NAULA') ? 'selected' : ''; ?>>WILLIAM NAULA</option>
+                                    <option value="MARCO TAPIA" <?php echo (isset($venta) && $venta->operador === 'MARCO TAPIA') ? 'selected' : ''; ?>>MARCO TAPIA</option>
+                                    <option value="KEVIN DELGADO" <?php echo (isset($venta) && $venta->operador === 'KEVIN DELGADO') ? 'selected' : ''; ?>>KEVIN DELGADO</option>
+                                    <option value="MENTOR" <?php echo (isset($venta) && $venta->operador === 'MENTOR') ? 'selected' : ''; ?>>MENTOR</option>
 
                                 </select>
 
