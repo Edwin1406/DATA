@@ -84,7 +84,9 @@
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
-                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
+                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel"
+                                    value="<?php echo $ventas->consumo_papel ?? ''; ?>"
+                                    required>
                             </div>
                         </div>
 
@@ -92,7 +94,9 @@
                             <div class="form-group">
                                 <label for="n_laminas">N° de Laminas</label>
                                 <input type="number" id="n_laminas" class="form-control"
-                                    placeholder="N° de Laminas" name="n_laminas">
+                                    placeholder="N° de Laminas" name="n_laminas"
+                                    value="<?php echo $ventas->n_laminas ?? ''; ?>"
+                                    >
                             </div>
                         </div>
 
@@ -102,7 +106,9 @@
                             <div class="form-group">
                                 <label for="metros_lineales">Metros Lineales</label>
                                 <input type="number" id="metros_lineales" class="form-control"
-                                    placeholder="Metros Lineales" name="metros_lineales">
+                                    placeholder="Metros Lineales" name="metros_lineales"
+                                    value="<?php echo $ventas->metros_lineales ?? ''; ?>"
+                                    >
                             </div>
 
                         </div>
@@ -114,7 +120,9 @@
                             <div class="form-group">
                                 <label for="turno">Turno</label>
                                 <input type="time" id="turno" class="form-control"
-                                    placeholder="Turno" name="turno">
+                                    placeholder="Turno" name="turno"
+                                    value="<?php echo $ventas->turno ?? ''; ?>"
+                                    >
                             </div>
 
                         </div>
