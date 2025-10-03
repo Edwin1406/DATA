@@ -202,7 +202,7 @@
                              <span>Maquinas</span>
                          </a>
                          <ul class="submenu ">
-                             <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'corrugador@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
                                  </li>
@@ -211,7 +211,7 @@
                                  </li>
                              <?php } ?>
 
-                             <?php if ($userEmail !== 'flexo@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'flexo@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
                                  </li>
