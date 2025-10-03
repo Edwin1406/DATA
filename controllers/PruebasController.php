@@ -142,10 +142,7 @@ class PruebasController
 
 
 
-
-
-    // registroDetalleCorrugador
- public static function registroDetalleCorrugador(Router $router)
+public static function registroDetalleCorrugador(Router $router)
 {
     session_start();
     if (!isset($_SESSION['email'])) {
@@ -161,36 +158,32 @@ class PruebasController
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Recibir los datos del formulario via AJAX
-                $detallecorrugador->id_venta = $_POST['id_venta'];
-                $detallecorrugador->tipo_maquina = $_POST['tipo_maquina'];
-                $detallecorrugador->cantidad = $_POST['cantidad'];
-                $detallecorrugador->casos = $_POST['casos'];
-                $detallecorrugador->observaciones = $_POST['observaciones'];
+        $detallecorrugador->id_venta = $_POST['id_venta'];
+        $detallecorrugador->tipo_maquina = $_POST['tipo_maquina'];
+        $detallecorrugador->cantidad = $_POST['cantidad'];
+        $detallecorrugador->casos = $_POST['casos'];
+        $detallecorrugador->observaciones = $_POST['observaciones'];
 
-                // Validar los datos
-                $alertas = $detallecorrugador->validar();
+        // Validar los datos
+        $alertas = $detallecorrugador->validar();
 
-                if (empty($alertas)) {
-                    // Guardar en la base de datos
-                    $resultado = $detallecorrugador->guardar();
-                    if ($resultado) {
-                        // Responder éxito
-                        echo json_encode(['success' => true, 'message' => 'Registro guardado exitosamente']);
-                    } else {
-                        // Responder error al guardar
-                        echo json_encode(['success' => false, 'message' => 'Error al guardar el registro']);
-                    }
-                } else {
-                    // Responder con errores de validación
-                    echo json_encode(['success' => false, 'message' => 'Errores de validación', 'errors' => $alertas]);
-                }
-                exit;
+        if (empty($alertas)) {
+            // Guardar en la base de datos
+            $resultado = $detallecorrugador->guardar();
+            if ($resultado) {
+                // Responder éxito
+                echo json_encode(['success' => true, 'message' => 'Registro guardado exitosamente']);
+            } else {
+                // Responder error al guardar
+                echo json_encode(['success' => false, 'message' => 'Error al guardar el registro']);
             }
+        } else {
+            // Responder con errores de validación
+            echo json_encode(['success' => false, 'message' => 'Errores de validación', 'errors' => $alertas]);
         }
-
-    
-    
+        exit;
     }
+}
 
 
 
