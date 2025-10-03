@@ -56,10 +56,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
                 </li>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                    data-bs-target="#inlineForm">
-                    Launch Modal
-                </button>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#inlineForm" data-bs-toggle="modal">Modal</a>
+                </li>
+              
             </ul>
         </div>
     </section>
