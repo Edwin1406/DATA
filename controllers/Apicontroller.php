@@ -223,12 +223,12 @@ public static function apiProduccionDiariaCorrugador(): void {
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
 
-    // SQL query with corrected table and column names
+    // SQL query with corrected table and column names, reversed join
     $producciondiariacorrugador = Ventas::SQL("
-        SELECT pd.*, v.consumo_papel AS nombre_corrugador 
-        FROM produccion_diaria pd
-        LEFT JOIN VENTAS v ON pd.id_corrugador = v.id
-        ORDER BY pd.id ASC
+        SELECT v.*, pd.nombre_corrugador 
+        FROM VENTAS v
+        LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador
+        ORDER BY v.id ASC
     ");
 
     // Process the results
