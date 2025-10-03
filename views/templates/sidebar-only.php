@@ -199,7 +199,7 @@
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
                              <i class="bi bi-code-slash"></i>
-                             <span>Pruebas</span>
+                             <span>Maquinas</span>
                          </a>
                          <ul class="submenu ">
                              <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
