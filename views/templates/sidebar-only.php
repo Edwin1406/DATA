@@ -245,7 +245,7 @@
 
  <section id="form-and-scrolling-components">
      <div class="row">
-         <div class="col-md-6 col-12">
+         <div class="col-md-4 col-12">
              <div class="card">
                  <div class="card-content">
                      <div class="card-body">
