@@ -203,8 +203,6 @@
             <div class="card-body">
 
                 <!-- Contenedor responsive -->
-
-
                 <div class="table-responsive">
                     <table class="table table-striped w-100" id="table1">
                         <thead>
@@ -212,6 +210,7 @@
                                 <th class="fs-6" style="min-width: 90px;">ID</th>
                                 <th class="fs-6" style="min-width: 90px;">id_usuario</th>
                                 <th class="fs-6" style="min-width: 90px;">tipo_maquina</th>
+                                <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
                                 <th class="fs-6" style="min-width: 90px;">casos</th>
                                 <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                                 <th class="fs-6" style="min-width: 100px;">Observaciones</th>
@@ -224,7 +223,8 @@
                             foreach ($carritoTemporal as $contro):
                                 if ($tipo_maqina !== $contro->tipo_maquina) continue;
                             ?>
-                                <tr id="row_<?= $contro->id ?>">
+
+                                <tr>
                                     <td><?= $contro->id ?></td>
                                     <td><?= $contro->id_usuario ?></td>
                                     <td><?= $contro->tipo_maquina ?></td>
@@ -234,219 +234,173 @@
 
                                     <td>
                                         <div class="d-flex gap-1">
-                                            <!-- Botón de eliminación -->
-                                            <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
+                                            <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                            <form action="/admin/eliminarCarrito" method="POST">
+                                                <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td><b>Total</b></td>
+                                <td><?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?>(KG)</td>
+
+                                <td colspan="5"></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
+                <form action="/admin/pruebas/registrarVenta" method="POST">
+                    <!-- Fila 1 -->
+                    <div class="row g-3">
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha" class="form-control"
+                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
+                            </div>
+                        </div>
 
-                <script>
-                    // Event listener para los botones de eliminación
-                    document.querySelectorAll('.eliminar-btn').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const id = this.getAttribute('data-id'); // Obtener el ID del carrito
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="consumo_papel">Consumo papel (Kg)</label>
+                                <input type="number" step="0.01" id="consumo_papel"
+                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
+                            </div>
+                        </div>
 
-                            // Usamos SweetAlert2 para confirmar la eliminación
-                            Swal.fire({
-                                title: '¿Estás seguro?',
-                                text: "¡Esta acción no se puede deshacer!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonText: 'Sí, eliminar',
-                                cancelButtonText: 'Cancelar',
-                                reverseButtons: true
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // Realizamos la petición AJAX para eliminar
-                                    const formData = new FormData();
-                                    formData.append('id', id); // Añadir el ID al formulario
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="n_laminas">N° de Laminas</label>
+                                <input type="number" id="n_laminas" class="form-control"
+                                    placeholder="N° de Laminas" name="n_laminas">
+                            </div>
+                        </div>
 
-                                    fetch('/admin/eliminarCarrito', {
-                                            method: 'POST',
-                                            body: formData
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (data.success) {
-                                                // Si la eliminación fue exitosa, eliminamos la fila del carrito
-                                                document.getElementById('row_' + id).remove();
-                                                Swal.fire(
-                                                    'Eliminado',
-                                                    'El artículo ha sido eliminado del carrito.',
-                                                    'success'
-                                                );
-                                            } else {
-                                                Swal.fire(
-                                                    'Error',
-                                                    'Hubo un problema al eliminar el artículo.',
-                                                    'error'
-                                                );
-                                            }
-                                        })
-                                        .catch(error => {
-                                            Swal.fire(
-                                                'Error',
-                                                'Hubo un error al procesar la solicitud',
-                                                'error'
-                                            );
-                                        });
-                                }
-                            });
-                        });
-                    });
-                </script>
+
+                        <div class="col-md-2 col-12 ">
+
+                            <div class="form-group">
+                                <label for="metros_lineales">Metros Lineales</label>
+                                <input type="number" id="metros_lineales" class="form-control"
+                                    placeholder="Metros Lineales" name="metros_lineales">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-md-2 col-12 ">
+
+                            <div class="form-group">
+                                <label for="turno">Turno</label>
+                                <input type="time" id="turno" class="form-control"
+                                    placeholder="Turno" name="turno">
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="n_cambios">N° de Cambios</label>
+                                <input type="number" id="n_cambios" class="form-control"
+                                    placeholder="N° de Cambios" name="n_cambios">
+                            </div>
+                        </div>
+
+
+                        <!-- fecha inicio -->
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="hora_inicio">Hora Inicio</label>
+                                <input type="time" id="hora_inicio" class="form-control"
+                                    name="hora_inicio" required>
+
+                            </div>
+                        </div>
+
+                        <!-- fecha fin -->
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="hora_fin">Hora Fin</label>
+                                <input type="time" id="hora_fin" class="form-control"
+                                    name="hora_fin" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label for="operador">OPERADOR</label>
+                                <select id="operador" class="choices form-control" name="operador">
+                                    <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
+                                    <!-- CONTROLABLES -->
+                                    <option value="RAFAEL ORTEGA">RAFAEL ORTEGA</option>
+                                    <option value="GEOVANNY MANTILLA">GEOVANNY MANTILLA</option>
+                                    <option value="WILLIAM NAULA">WILLIAM NAULA</option>
+                                    <option value="MARCO TAPIA">MARCO TAPIA</option>
+                                    <option value="KEVIN DELGADO">KEVIN DELGADO</option>
+                                    <option value="MENTOR">MENTOR</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- horas de inactividad -->
+                        <div class="col-md-5 col-12">
+                            <div class="form-group">
+                                <label for="motivo_inactividad">Motivo de la Inactividad</label>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    <!-- Botón -->
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar </button>
+                    </div>
+                </form>
+
+
+
+
+
+
+
 
             </div>
-            <form action="/admin/pruebas/registrarVenta" method="POST">
-                <!-- Fila 1 -->
-                <div class="row g-3">
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="fecha">Fecha</label>
-                            <input type="date" id="fecha" class="form-control"
-                                name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="consumo_papel">Consumo papel (Kg)</label>
-                            <input type="number" step="0.01" id="consumo_papel"
-                                class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="n_laminas">N° de Laminas</label>
-                            <input type="number" id="n_laminas" class="form-control"
-                                placeholder="N° de Laminas" name="n_laminas">
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-2 col-12 ">
-
-                        <div class="form-group">
-                            <label for="metros_lineales">Metros Lineales</label>
-                            <input type="number" id="metros_lineales" class="form-control"
-                                placeholder="Metros Lineales" name="metros_lineales">
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-2 col-12 ">
-
-                        <div class="form-group">
-                            <label for="turno">Turno</label>
-                            <input type="time" id="turno" class="form-control"
-                                placeholder="Turno" name="turno">
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="n_cambios">N° de Cambios</label>
-                            <input type="number" id="n_cambios" class="form-control"
-                                placeholder="N° de Cambios" name="n_cambios">
-                        </div>
-                    </div>
-
-
-                    <!-- fecha inicio -->
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="hora_inicio">Hora Inicio</label>
-                            <input type="time" id="hora_inicio" class="form-control"
-                                name="hora_inicio" required>
-
-                        </div>
-                    </div>
-
-                    <!-- fecha fin -->
-                    <div class="col-md-2 col-12">
-                        <div class="form-group">
-                            <label for="hora_fin">Hora Fin</label>
-                            <input type="time" id="hora_fin" class="form-control"
-                                name="hora_fin" required>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-12">
-                        <div class="form-group">
-                            <label for="operador">OPERADOR</label>
-                            <select id="operador" class="choices form-control" name="operador">
-                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
-                                <!-- CONTROLABLES -->
-                                <option value="RAFAEL ORTEGA">RAFAEL ORTEGA</option>
-                                <option value="GEOVANNY MANTILLA">GEOVANNY MANTILLA</option>
-                                <option value="WILLIAM NAULA">WILLIAM NAULA</option>
-                                <option value="MARCO TAPIA">MARCO TAPIA</option>
-                                <option value="KEVIN DELGADO">KEVIN DELGADO</option>
-                                <option value="MENTOR">MENTOR</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- horas de inactividad -->
-                    <div class="col-md-5 col-12">
-                        <div class="form-group">
-                            <label for="motivo_inactividad">Motivo de la Inactividad</label>
-                            <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-
-
-                <!-- Botón -->
-                <div class="col-12 d-flex justify-content-end mt-3">
-                    <button type="submit" id="btnRegistrar" class="btn btn-primary me-1 mb-1">Registrar </button>
-                </div>
-            </form>
-
-
-
-
-
-
-
-
+            <!-- boton de registrar -->
         </div>
-        <!-- boton de registrar -->
-</div>
-</section>
+    </section>
 
-<!-- CSS opcional para evitar que se rompa texto en celdas -->
-<style>
-    #table1 th,
-    #table1 td {
-        white-space: nowrap;
-    }
-</style>
+    <!-- CSS opcional para evitar que se rompa texto en celdas -->
+    <style>
+        #table1 th,
+        #table1 td {
+            white-space: nowrap;
+        }
+    </style>
 
 
 
 
-<script>
-    function bloquearBoton(form) {
-        const btn = form.querySelector('#btnRegistrar');
-        btn.disabled = true; // Deshabilita el botón
-        btn.innerText = "Registrando..."; // Cambia el texto (opcional)
-        return true; // Permite que el formulario se envíe
-    }
-</script>
+    <script>
+        function bloquearBoton(form) {
+            const btn = form.querySelector('#btnRegistrar');
+            btn.disabled = true; // Deshabilita el botón
+            btn.innerText = "Registrando..."; // Cambia el texto (opcional)
+            return true; // Permite que el formulario se envíe
+        }
+    </script>
 
 
 
