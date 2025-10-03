@@ -43,8 +43,7 @@
       <label for="metros_lineales">Metros Lineales</label>
       <input type="text" id="metros_lineales" class="form-control"
         placeholder="Metros Lineales" name="metros_lineales"
-            value="<?php echo isset($corrugador) && $corrugador->metros_lineales !== '' ? s($corrugador->metros_lineales) : '0'; ?>">
-
+            value="<?php echo isset($corrugador) && $corrugador->metros_lineales !== '' && $corrugador->metros_lineales != '0' ? s($corrugador->metros_lineales) : '0'; ?>">
     </div>
   </div>
 
