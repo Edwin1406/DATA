@@ -86,6 +86,8 @@ class PruebasController
         // NOMBRE DE LA PERSONA LOGEADA
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
+
+        debuguear($nombre);
         // $id_usuario = $_SESSION['id'];
         // debuguear($id_usuario);
 
