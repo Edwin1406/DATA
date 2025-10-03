@@ -94,6 +94,10 @@ class PruebasController
 
         $carritoTemporal = Carrito::all();
 
+
+        $corrugador= DetalleVenta::all();
+
+
         $carrito = new Carrito;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -132,6 +136,7 @@ class PruebasController
             'nombre' => $nombre,
             'email' => $email,
             'carritoTemporal' => $carritoTemporal,
+            'corrugador' => $corrugador
         ]);
     }
 
