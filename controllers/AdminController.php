@@ -618,11 +618,11 @@ class AdminController
             $produccion_diaria->linea = $_POST['linea'] ?? null;
 
             if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-    $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
-}
+                $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
+            }
 
 
-          
+
 
 
 

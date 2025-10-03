@@ -112,7 +112,7 @@
       <label for="cambios">Cambios</label>
       <input type="text" id="cambios" class="form-control"
         placeholder="Cambios" name="cambios"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->cambios) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->n_cambios) : '0'; ?>">
     </div>
   </div>
 
