@@ -92,9 +92,9 @@
   <div class="col-md-1 col-12">
     <div class="form-group">
       <label for="turno">Turno</label>
-      <input type="text" id="turno" class="form-control"
+      <input type="time" id="turno" class="form-control"
         placeholder="Turno" name="turno"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->turno) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->turno) : '0'; ?>">
     </div>
   </div>
 
