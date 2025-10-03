@@ -205,9 +205,11 @@
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
                              </li>
+                             <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
                              <li class="submenu-item ">
-                                 <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
+                                 <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrgador</a>
                              </li>
+                                <?php } ?>
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
                              </li>
