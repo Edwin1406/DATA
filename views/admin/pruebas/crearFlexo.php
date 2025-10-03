@@ -435,7 +435,7 @@
 
 
 
-                    
+
                     <div class="form-group">
                         <label for="fecha">Fecha:</label>
                         <input type="date" class="form-control" id="fecha" name="fecha">
@@ -443,7 +443,7 @@
                     <div class="form-group">
                         <label for="tipo_maquina">Selecciona una opción:</label>
                         <select class="form-control" id="tipo_maquina" name="tipo_maquina">
-                            <option value="CORRUGADOR">Corrugadora</option>
+                            <option value="CORRUGADOR">Corrugador</option>
 
                         </select>
                     </div>
@@ -518,20 +518,22 @@
                     </div>
 
 
+                    <!-- observaciones -->
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones:</label>
+                        <input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Escribe algo aquí">
+                    </div>
 
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Cerrar</span>
-                    </button>
-                    <button type="submit" class="btn btn-primary ml-1">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Enviar</span>
-                    </button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Cerrar</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary ml-1">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Enviar</span>
+                        </button>
+                    </div>
             </form>
         </div>
     </div>
