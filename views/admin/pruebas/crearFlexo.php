@@ -417,7 +417,7 @@
 </div>
 
 
-<!-- Modal con formulario y opción en dos columnas -->
+<!-- Modal con formulario y opción en dos columnas (Responsive) -->
 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -429,7 +429,7 @@
             </div>
             <form action="#">
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="form-row">
                         <!-- Fecha -->
                         <div class="col-md-6 col-12">
                             <div class="form-group">
