@@ -202,10 +202,10 @@
                              <span>Pruebas</span>
                          </a>
                          <ul class="submenu ">
+                             <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
                              </li>
-                             <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
                              <li class="submenu-item ">
                                  <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrgador</a>
                              </li>
