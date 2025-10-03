@@ -416,7 +416,6 @@
 
 </div>
 
-
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -436,13 +435,19 @@
             </div>
             <form id="detalleCorrugadorForm" action="/admin/pruebas/registroDetalleCorrugador" method="POST">
                 <div class="modal-body">
+                    <!-- id_venta -->
+                    <div class="form-group">
+                        <label for="id_venta">ID Venta:</label>
+                        <input type="text" class="form-control" id="id_venta" name="id_venta" placeholder="ID de venta">
+                    </div>
+
                     <!-- fecha -->
                     <div class="form-group">
                         <label for="fecha">Fecha:</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" 
-                            value="<?php echo date('Y-m-d'); ?>" readonly>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
                     </div>
 
+                    <!-- tipo_maquina -->
                     <div class="form-group">
                         <label for="tipo_maquina">Selecciona una opción:</label>
                         <select class="form-control" id="tipo_maquina" name="tipo_maquina">
@@ -450,18 +455,19 @@
                         </select>
                     </div>
 
+                    <!-- cantidad -->
                     <div class="form-group">
                         <label for="cantidad">CANTIDAD:</label>
                         <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
                     </div>
 
+                    <!-- casos -->
                     <div class="form-group">
                         <label for="casos">CASOS</label>
                         <select id="casos" class="form-control" name="casos">
-                            <option value="" disabled>Seleccione un caso</option>
                             <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
                             <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
-                            <!-- ... otros casos ... -->
+                            <!-- Agrega aquí otros casos según sea necesario -->
                         </select>
                     </div>
 
@@ -494,15 +500,14 @@
             e.preventDefault(); // Evitar el envío normal del formulario
 
             var formData = $(this).serialize(); // Serializar los datos del formulario
-console.log(formData); // Verifica los datos que se envían
 
             // Enviar la solicitud AJAX
             $.ajax({
                 url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
                 type: 'POST',
                 data: formData,
-                
                 success: function (response) {
+                    console.log(response);  // Verifica la respuesta
                     if (response.success) {
                         alert('Registro guardado exitosamente');
                         $('#inlineForm').modal('hide');  // Cerrar el modal
@@ -511,7 +516,10 @@ console.log(formData); // Verifica los datos que se envían
                         alert('Error: ' + response.message);
                     }
                 },
-                error: function () {
+                error: function (xhr, status, error) {
+                    console.log('Error AJAX:', error);
+                    console.log('Status:', status);
+                    console.log('Response:', xhr.responseText);
                     alert('Ocurrió un error al procesar la solicitud');
                 }
             });

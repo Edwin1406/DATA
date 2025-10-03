@@ -141,7 +141,6 @@ class PruebasController
     }
 
 
-
 public static function registroDetalleCorrugador(Router $router)
 {
     session_start();
@@ -163,6 +162,7 @@ public static function registroDetalleCorrugador(Router $router)
         $detallecorrugador->cantidad = $_POST['cantidad'];
         $detallecorrugador->casos = $_POST['casos'];
         $detallecorrugador->observaciones = $_POST['observaciones'];
+        $detallecorrugador->fecha = $_POST['fecha'];
 
         // Validar los datos
         $alertas = $detallecorrugador->validar();
@@ -184,7 +184,6 @@ public static function registroDetalleCorrugador(Router $router)
         exit;
     }
 }
-
 
 
 
