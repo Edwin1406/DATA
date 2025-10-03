@@ -438,7 +438,7 @@
                             <th class="fs-6" style="min-width: 90px;">Id</th>
                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
                             <th class="fs-6" style="min-width: 93px;">tipo_maquina</th>
-                            <th class="fs-6" style="min-width: 53px;">casos</th>
+                            <th class="fs-6" style="min-width: 43px;">casos</th>
                             <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                         
 
