@@ -616,11 +616,7 @@ class AdminController
 
             $produccion_diaria->fecha = $_POST['fecha'] ?? null;
 
-            var_dump($produccion_diaria->linea); // Verifica el valor de la línea
-            if ($produccion_diaria->linea === 'CORRUGADOR CAJAS' || $produccion_diaria->linea === 'CORRUGADOR PLANCHAS') {
-                $produccion_diaria->metros_lineales = 0;
-                var_dump($produccion_diaria->metros_lineales); // Verifica si se asigna correctamente
-            }
+          $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ?? null;
 
 
 
