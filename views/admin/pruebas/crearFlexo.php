@@ -57,7 +57,7 @@
                     <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#inlineForm" data-bs-toggle="modal">Modal</a>
+                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Modal</a>
                 </li>
               
             </ul>
