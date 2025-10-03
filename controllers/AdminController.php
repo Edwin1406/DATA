@@ -612,6 +612,7 @@ class AdminController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $produccion_diaria->linea = $_POST['linea'] ?? '';
 
 
         debuguear($produccion_diaria->linea); // Verifica el valor de linea antes de la comparación
