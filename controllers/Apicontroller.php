@@ -224,7 +224,7 @@ public static function apiProduccionDiariaCorrugador(): void {
     header('Access-Control-Allow-Headers: Content-Type');
 
     $consulta ="SELECT v.*,pd.* ";
-    $consulta.="FROM ventas v ";
+    $consulta.="FROM VENTAS v ";
     $consulta.="LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador ";
 
     $produccionDiariaCorrugador = ProduccionDiaria::SQL($consulta);
