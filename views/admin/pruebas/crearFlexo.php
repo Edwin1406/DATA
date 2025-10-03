@@ -494,12 +494,14 @@
             e.preventDefault(); // Evitar el envío normal del formulario
 
             var formData = $(this).serialize(); // Serializar los datos del formulario
+console.log(formData); // Verifica los datos que se envían
 
             // Enviar la solicitud AJAX
             $.ajax({
                 url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
                 type: 'POST',
                 data: formData,
+                
                 success: function (response) {
                     if (response.success) {
                         alert('Registro guardado exitosamente');
