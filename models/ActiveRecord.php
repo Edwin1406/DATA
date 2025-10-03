@@ -813,6 +813,9 @@ class ActiveRecord
     }
 
 
+    
+
+
     public static function whereDosCondiciones($columna1, $valor1, $columna2, $valor2)
     {
         $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna1} = '{$valor1}' AND {$columna2} = '{$valor2}'";
@@ -2294,4 +2297,14 @@ public static function consultarSQL3($query, $params)
         $resultado = self::consultarSQL($query);
         return $resultado; // Devuelve array con todos los objetos encontrados
     }
+
+
+
+
+    // consulta plana utilizar cuando los metodos no son suficientes para la consulta
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
 }

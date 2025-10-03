@@ -131,6 +131,8 @@ $router->get('/admin/api/apiProduccionDiaria', [ApiController::class, 'apiProduc
 $router->post('/admin/api/apiProduccionDiaria', [ApiController::class, 'apiProduccionDiaria']);
 
 
+// APIPRODUCCION DIARIA CORRUGADOR
+$router->get('/admin/api/apiProduccionDiariaCorrugador', [ApiController::class, 'apiProduccionDiariaCorrugador']);
 
 
 
