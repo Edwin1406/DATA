@@ -217,44 +217,22 @@ class Apicontroller
 
 
 // api apiProduccionDiariaCorrugador
-// api apiProduccionDiariaCorrugador
 public static function apiProduccionDiariaCorrugador(): void {
     // CORS headers
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
 
-    // SQL query with corrected table and column names, reversed join
-    $producciondiariacorrugador = Ventas::SQL("
-        SELECT v.*, pd.peso_un, pd.unidad_x_dia, pd.kilos_x_dia, pd.desperdicio_lamina, 
-               pd.horas_maquina, pd.cambios, pd.tiempo_x_cambio, pd.unidades_x_procesar, 
-               pd.kilos_x_procesar, pd.nombre_corrugador
-        FROM VENTAS v
-        LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador
-        ORDER BY v.id ASC
-    ");
+    $consulta ="SELECT v.*,pd.* ";
+    $consulta.="FROM ventas v ";
+    $consulta.="LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador ";
 
-    // Process the results
-    foreach ($producciondiariacorrugador as &$item) {
-        // Ensure you're accessing the correct table columns for "produccion_diaria"
-        $item->peso_un = floatval($item->peso_un);
-        $item->unidad_x_dia = floatval($item->unidad_x_dia);
-        $item->kilos_x_dia = floatval($item->kilos_x_dia);
-        $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
-        $item->horas_maquina = $item->horas_maquina; 
-        $item->cambios = floatval($item->cambios);
-        $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
-        $item->unidades_x_procesar = floatval($item->unidades_x_procesar);
-        $item->kilos_x_procesar = floatval($item->kilos_x_procesar);
-        $item->nombre_corrugador = $item->nombre_corrugador ?? null; // Handle null value
-    }
+    $produccionDiariaCorrugador = ProduccionDiaria::SQL($consulta);
 
-    // Return the data as JSON
+    // convertir a json 
     header('Content-Type: application/json');
-    echo json_encode($producciondiariacorrugador);
-    exit;
+    echo json_encode($produccionDiariaCorrugador);
 }
-
 
 
 
