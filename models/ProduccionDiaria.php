@@ -14,8 +14,8 @@ class ProduccionDiaria extends ActiveRecord {
         'unidad_x_dia',
         'metros_lineales',
         'kilos_x_dia',
-        'refile_std',
-        'extra_trim',
+        'hora_inicio',
+        'hora_fin',
         'desperdicio_lamina',
         'turno',
         'horas_maquina',
@@ -33,8 +33,8 @@ class ProduccionDiaria extends ActiveRecord {
     public $unidad_x_dia;
     public $metros_lineales;
     public $kilos_x_dia;
-    public $refile_std;
-    public $extra_trim;
+    public $hora_inicio;
+    public $hora_fin;
     public $desperdicio_lamina;
     public $turno;
     public $horas_maquina;
@@ -54,8 +54,8 @@ class ProduccionDiaria extends ActiveRecord {
         $this->unidad_x_dia = $args['unidad_x_dia'] ?? 0;
         $this->metros_lineales = $args['metros_lineales'] ?? null;
         $this->kilos_x_dia = $args['kilos_x_dia'] ?? null;
-        $this->refile_std = $args['refile_std'] ?? null;
-        $this->extra_trim = $args['extra_trim'] ?? null;
+        $this->hora_inicio = $args['hora_inicio'] ?? null;
+        $this->hora_fin = $args['hora_fin'] ?? null;
         $this->desperdicio_lamina = $args['desperdicio_lamina'] ?? null;
         $this->turno = $args['turno'] ?? null;
         $this->horas_maquina = $args['horas_maquina'] ?? null;
