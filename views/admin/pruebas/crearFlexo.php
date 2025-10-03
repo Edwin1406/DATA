@@ -433,7 +433,9 @@
                     <!-- fecha -->
                     <div class="form-group">
                         <label for="fecha">Fecha:</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha">
+                        <input type="date" class="form-control" id="fecha" name="fecha" 
+                            value="<?php echo date('Y-m-d'); ?>" readonly
+                        >
                     </div>
                     <div class="form-group">
                         <label for="tipo_maquina">Selecciona una opción:</label>
