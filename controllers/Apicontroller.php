@@ -217,6 +217,7 @@ class Apicontroller
 
 
 // api apiProduccionDiariaCorrugador
+// api apiProduccionDiariaCorrugador
 public static function apiProduccionDiariaCorrugador(): void {
     // CORS headers
     header('Access-Control-Allow-Origin: *');
@@ -225,7 +226,9 @@ public static function apiProduccionDiariaCorrugador(): void {
 
     // SQL query with corrected table and column names, reversed join
     $producciondiariacorrugador = Ventas::SQL("
-        SELECT v.*, pd.*
+        SELECT v.*, pd.peso_un, pd.unidad_x_dia, pd.kilos_x_dia, pd.desperdicio_lamina, 
+               pd.horas_maquina, pd.cambios, pd.tiempo_x_cambio, pd.unidades_x_procesar, 
+               pd.kilos_x_procesar, pd.nombre_corrugador
         FROM VENTAS v
         LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador
         ORDER BY v.id ASC
@@ -233,14 +236,11 @@ public static function apiProduccionDiariaCorrugador(): void {
 
     // Process the results
     foreach ($producciondiariacorrugador as &$item) {
-        $item->id = intval($item->id);
-        $item->fecha = $item->fecha; // Keep as string
+        // Ensure you're accessing the correct table columns for "produccion_diaria"
         $item->peso_un = floatval($item->peso_un);
         $item->unidad_x_dia = floatval($item->unidad_x_dia);
-        $item->metros_lineales = floatval($item->metros_lineales);
         $item->kilos_x_dia = floatval($item->kilos_x_dia);
         $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
-        $item->turno = floatval($item->turno);
         $item->horas_maquina = $item->horas_maquina; 
         $item->cambios = floatval($item->cambios);
         $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
@@ -254,6 +254,7 @@ public static function apiProduccionDiariaCorrugador(): void {
     echo json_encode($producciondiariacorrugador);
     exit;
 }
+
 
 
 
