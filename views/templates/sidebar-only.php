@@ -209,6 +209,9 @@
                                  <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Pruebas</a>
                              </li>
                              <li class="submenu-item ">
+                                 <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
+                             </li>
+                             <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
                          </ul>
