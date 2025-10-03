@@ -432,35 +432,54 @@
             </div>
             <div class="modal-body">
                 <!-- DataTable -->
-                <table id="example" class="display">
+                <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
+                            <th class="fs-6" style="min-width: 90px;">Id</th>
+                            <th class="fs-6" style="min-width: 93px;">Fecha</th>
+                            <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
+                            <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
+                            <th class="fs-6" style="min-width: 80px;">Turno</th>
+                            <th class="fs-6" style="min-width: 100px;">Unidades Pendientes</th>
+
+                            <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>john.doe@example.com</td>
-                            <td>
-                                <button class="btn btn-info btn-sm">Edit</button>
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>jane.smith@example.com</td>
-                            <td>
-                                <button class="btn btn-info btn-sm">Edit</button>
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>
-                        <!-- Más filas aquí -->
+                        <?php foreach ($corrugador as $corrugado): ?>
+                            <tr>
+                                <td><?= $corrugado->id ?></td>
+                                <td><?= $corrugado->fecha ?></td>
+                                <td><?= $corrugado->consumo_papel ?></td>
+                                <td><?= $corrugado->n_laminas ?></td>
+                                <td><?= $corrugado->turno ?></td>
+                                <td><?= $corrugado->unidades_pendientes ?></td>
+
+
+
+
+                                <td>
+                                    <!-- usuario -->
+
+
+
+                                    <div class="d-flex gap-1">
+                                        <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                        <a href="/admin/diaria/produccion_diaria?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                        <form action="/admin/eliminarPruebas" method="POST">
+                                            <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </div>
+
+
+
+
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
