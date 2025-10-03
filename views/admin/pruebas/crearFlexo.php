@@ -221,32 +221,34 @@
                         <tbody>
                             <!-- IF PARTA QE SI ES TIPO FLEXO NO APAREZCA LO DEL CORRUGADOR -->
 
-                          <?php if( $nombre == $contro->tipo_maquina ): ?> 
-    <?php foreach ($carritoTemporal as $contro): ?>
-        <tr>
-            <td><?= $contro->id ?></td>
-            <td><?= $contro->id_usuario ?></td>
-            <td><?= $contro->tipo_maquina ?></td>
-            <td><?= $contro->casos ?></td>
-            <td><?= $contro->cantidad ?></td>
-            <td><?= $contro->observaciones ?></td>
+                         <?php $tipo_maqina = $nombre; 
+                            foreach($carritoTemporal as $contro):
+                                if($tipo_maqina !== $contro->tipo_maquina) continue;
+                         ?>
+                           
+                                <tr>
+                                    <td><?= $contro->id ?></td>
+                                    <td><?= $contro->id_usuario ?></td>
+                                    <td><?= $contro->tipo_maquina ?></td>
+                                    <td><?= $contro->casos ?></td>
+                                    <td><?= $contro->cantidad ?></td>
+                                    <td><?= $contro->observaciones ?></td>
 
-            <td>
-                <div class="d-flex gap-1">
-                    <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                    <form action="/admin/eliminarCarrito" method="POST">
-                        <input type="hidden" name="id" value="<?= $contro->id ?>">
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-<?php endif; ?>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
+                                            <form action="/admin/eliminarCarrito" method="POST">
+                                                <input type="hidden" name="id" value="<?= $contro->id ?>">
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                       
 
 
-
-
+                            
                         </tbody>
                         <tfoot>
                             <tr>
