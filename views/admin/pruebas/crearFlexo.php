@@ -494,35 +494,56 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        // Cuando se envíe el formulario
-        $('#detalleCorrugadorForm').on('submit', function (e) {
-            e.preventDefault(); // Evitar el envío normal del formulario
+   $(document).ready(function () {
+    // Cuando se envíe el formulario
+    $('#detalleCorrugadorForm').on('submit', function (e) {
+        e.preventDefault(); // Evitar el envío normal del formulario
 
-            var formData = $(this).serialize(); // Serializar los datos del formulario
+        var formData = $(this).serialize(); // Serializar los datos del formulario
 
-            // Enviar la solicitud AJAX
-            $.ajax({
-                url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
-                type: 'POST',
-                data: formData,
-                success: function (response) {
-                    console.log(response);  // Verifica la respuesta
-                    if (response.success) {
-                        alert('Registro guardado exitosamente');
+        // Enviar la solicitud AJAX
+        $.ajax({
+            url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
+            type: 'POST',
+            data: formData,
+            dataType: 'json', // Espera una respuesta en formato JSON
+            success: function (response) {
+                // Manejo de la respuesta usando SweetAlert2
+                if (response.success) {
+                    // Si la respuesta es exitosa
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registro guardado',
+                        text: response.message,
+                        showConfirmButton: true
+                    }).then(function() {
                         $('#inlineForm').modal('hide');  // Cerrar el modal
                         $('#detalleCorrugadorForm')[0].reset();  // Limpiar el formulario
-                    } else {
-                        alert('Error: ' + response.message);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.log('Error AJAX:', error);
-                    console.log('Status:', status);
-                    console.log('Response:', xhr.responseText);
-                    alert('Ocurrió un error al procesar la solicitud');
+                    });
+                } else {
+                    // Si hay algún error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.message,
+                        showConfirmButton: true
+                    });
                 }
-            });
+            },
+            error: function (xhr, status, error) {
+                // En caso de que haya un error en la solicitud AJAX
+                console.log('Error AJAX:', error);
+                console.log('Status:', status);
+                console.log('Response:', xhr.responseText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ocurrió un error',
+                    text: 'No se pudo procesar la solicitud. Por favor, inténtalo más tarde.',
+                    showConfirmButton: true
+                });
+            }
         });
     });
+});
+
 </script>

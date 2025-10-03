@@ -173,6 +173,13 @@ public static function registroDetalleCorrugador(Router $router)
             if ($resultado) {
                 // Responder éxito
                 echo json_encode(['success' => true, 'message' => 'Registro guardado exitosamente']);
+                // sweet aalert 2
+                
+
+
+
+
+
             } else {
                 // Responder error al guardar
                 echo json_encode(['success' => false, 'message' => 'Error al guardar el registro']);
