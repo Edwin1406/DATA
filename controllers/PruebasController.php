@@ -174,7 +174,7 @@ public static function registroDetalleCorrugador(Router $router)
                 // Responder éxito
                 echo json_encode(['success' => true, 'message' => 'Registro guardado exitosamente']);
                 // sweet aalert 2
-                
+
 
 
 
@@ -214,34 +214,62 @@ public static function registroDetalleCorrugador(Router $router)
 
 
 
-    public static function eliminarCarrito()
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
+    // public static function eliminarCarrito()
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //     }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
-            $carrito = Carrito::find($id);
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         $id = $_POST['id'];
+    //         $carrito = Carrito::find($id);
 
-            if ($carrito) {
-                $carrito->eliminar();
-                header('Location: /admin/pruebas/crearPruebas?exito=1');
-                exit;
-            } else {
-                // Manejar el caso en que no se encuentra el registro
-                header('Location: /admin/pruebas/crearPruebas?error=1');
-                exit;
-            }
-        }
+    //         if ($carrito) {
+    //             $carrito->eliminar();
+    //             header('Location: /admin/pruebas/crearPruebas?exito=1');
+    //             exit;
+    //         } else {
+    //             // Manejar el caso en que no se encuentra el registro
+    //             header('Location: /admin/pruebas/crearPruebas?error=1');
+    //             exit;
+    //         }
+    //     }
+    // }
+
+
+
+
+
+
+public static function eliminarCarrito()
+{
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        echo json_encode(['success' => false, 'message' => 'No autorizado']);
+        exit;
     }
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'];
+        $carrito = Carrito::find($id);
 
-
-
-
-
+        if ($carrito) {
+            $carrito->eliminar();
+            // Respuesta en formato JSON para AJAX
+            echo json_encode(['success' => true, 'message' => 'Carrito eliminado con éxito']);
+            exit;
+        } else {
+            // Si no se encuentra el carrito
+            echo json_encode(['success' => false, 'message' => 'Carrito no encontrado']);
+            exit;
+        }
+    } else {
+        // Método incorrecto
+        echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+        exit;
+    }
+}
 
 
 

@@ -207,6 +207,7 @@
             <div class="card-body">
 
                 <!-- Contenedor responsive -->
+
                 <div class="table-responsive">
                     <table class="table table-striped w-100" id="table1">
                         <thead>
@@ -214,7 +215,6 @@
                                 <th class="fs-6" style="min-width: 90px;">ID</th>
                                 <th class="fs-6" style="min-width: 90px;">id_usuario</th>
                                 <th class="fs-6" style="min-width: 90px;">tipo_maquina</th>
-                                <!-- <th class="fs-6" style="min-width: 90px;">tipo_clasificacion</th> -->
                                 <th class="fs-6" style="min-width: 90px;">casos</th>
                                 <th class="fs-6" style="min-width: 80px;">Cantidad</th>
                                 <th class="fs-6" style="min-width: 100px;">Observaciones</th>
@@ -223,14 +223,11 @@
                         </thead>
 
                         <tbody>
-                            <!-- IF PARTA QE SI ES TIPO FLEXO NO APAREZCA LO DEL CORRUGADOR -->
-
                             <?php $tipo_maqina = $nombre;
                             foreach ($carritoTemporal as $contro):
                                 if ($tipo_maqina !== $contro->tipo_maquina) continue;
                             ?>
-
-                                <tr>
+                                <tr id="row_<?= $contro->id ?>">
                                     <td><?= $contro->id ?></td>
                                     <td><?= $contro->id_usuario ?></td>
                                     <td><?= $contro->tipo_maquina ?></td>
@@ -240,31 +237,58 @@
 
                                     <td>
                                         <div class="d-flex gap-1">
-                                            <!-- <a href="/admin/editarConsumo?id=<?= $contro->id ?>" class="btn btn-primary btn-sm">Editar</a> -->
-                                            <form action="/admin/eliminarCarrito" method="POST">
-                                                <input type="hidden" name="id" value="<?= $contro->id ?>">
-                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                            </form>
+                                            <!-- Formulario de eliminación con AJAX -->
+                                            <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
                                         </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-
-
-
-
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3"></td>
-                                <td><b>Total</b></td>
-                                <td><?= array_sum(array_column($carritoTemporal, 'cantidad'))  ?>(KG)</td>
-
-                                <td colspan="5"></td>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
+
+                <script>
+                    // Event listener para los botones de eliminación
+                    document.querySelectorAll('.eliminar-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id'); // Obtener el ID del carrito
+
+                            // Confirmar la eliminación
+                            if (confirm('¿Estás seguro de que quieres eliminar este artículo del carrito?')) {
+                                // Realizar la petición AJAX para eliminar
+                                const formData = new FormData();
+                                formData.append('id', id); // Añadir el ID al formulario
+
+                                fetch('/admin/eliminarCarrito', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            // Si la eliminación fue exitosa, eliminamos la fila del carrito
+                                            document.getElementById('row_' + id).remove();
+                                            alert('Carrito eliminado con éxito');
+                                        } else {
+                                            alert('Error al eliminar el carrito');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        alert('Hubo un error al procesar la solicitud');
+                                    });
+                            }
+                        });
+                    });
+                </script>
+
+
+
+
+
+
+
+
+
                 <form action="/admin/pruebas/registrarVenta" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
@@ -494,56 +518,55 @@
 </div>
 
 <script>
-   $(document).ready(function () {
-    // Cuando se envíe el formulario
-    $('#detalleCorrugadorForm').on('submit', function (e) {
-        e.preventDefault(); // Evitar el envío normal del formulario
+    $(document).ready(function() {
+        // Cuando se envíe el formulario
+        $('#detalleCorrugadorForm').on('submit', function(e) {
+            e.preventDefault(); // Evitar el envío normal del formulario
 
-        var formData = $(this).serialize(); // Serializar los datos del formulario
+            var formData = $(this).serialize(); // Serializar los datos del formulario
 
-        // Enviar la solicitud AJAX
-        $.ajax({
-            url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
-            type: 'POST',
-            data: formData,
-            dataType: 'json', // Espera una respuesta en formato JSON
-            success: function (response) {
-                // Manejo de la respuesta usando SweetAlert2
-                if (response.success) {
-                    // Si la respuesta es exitosa
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Registro guardado',
-                        text: response.message,
-                        showConfirmButton: true
-                    }).then(function() {
-                        $('#inlineForm').modal('hide');  // Cerrar el modal
-                        $('#detalleCorrugadorForm')[0].reset();  // Limpiar el formulario
-                    });
-                } else {
-                    // Si hay algún error
+            // Enviar la solicitud AJAX
+            $.ajax({
+                url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
+                type: 'POST',
+                data: formData,
+                dataType: 'json', // Espera una respuesta en formato JSON
+                success: function(response) {
+                    // Manejo de la respuesta usando SweetAlert2
+                    if (response.success) {
+                        // Si la respuesta es exitosa
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registro guardado',
+                            text: response.message,
+                            showConfirmButton: true
+                        }).then(function() {
+                            $('#inlineForm').modal('hide'); // Cerrar el modal
+                            $('#detalleCorrugadorForm')[0].reset(); // Limpiar el formulario
+                        });
+                    } else {
+                        // Si hay algún error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.message,
+                            showConfirmButton: true
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // En caso de que haya un error en la solicitud AJAX
+                    console.log('Error AJAX:', error);
+                    console.log('Status:', status);
+                    console.log('Response:', xhr.responseText);
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
-                        text: response.message,
+                        title: 'Ocurrió un error',
+                        text: 'No se pudo procesar la solicitud. Por favor, inténtalo más tarde.',
                         showConfirmButton: true
                     });
                 }
-            },
-            error: function (xhr, status, error) {
-                // En caso de que haya un error en la solicitud AJAX
-                console.log('Error AJAX:', error);
-                console.log('Status:', status);
-                console.log('Response:', xhr.responseText);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ocurrió un error',
-                    text: 'No se pudo procesar la solicitud. Por favor, inténtalo más tarde.',
-                    showConfirmButton: true
-                });
-            }
+            });
         });
     });
-});
-
 </script>
