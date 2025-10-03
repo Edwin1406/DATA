@@ -216,7 +216,7 @@ class Apicontroller
 
 
 
-    // api apiProduccionDiariaCorrugador
+// api apiProduccionDiariaCorrugador
 public static function apiProduccionDiariaCorrugador(): void {
     // CORS headers
     header('Access-Control-Allow-Origin: *');
@@ -225,7 +225,7 @@ public static function apiProduccionDiariaCorrugador(): void {
 
     // SQL query with corrected table and column names, reversed join
     $producciondiariacorrugador = Ventas::SQL("
-        SELECT v.*, pd.metros_lineales
+        SELECT v.*, pd.*
         FROM VENTAS v
         LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador
         ORDER BY v.id ASC
@@ -254,6 +254,7 @@ public static function apiProduccionDiariaCorrugador(): void {
     echo json_encode($producciondiariacorrugador);
     exit;
 }
+
 
 
 
