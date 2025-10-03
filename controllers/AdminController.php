@@ -615,7 +615,14 @@ class AdminController
 
 
             $produccion_diaria->fecha = $_POST['fecha'] ?? null;
+
+
+            // si produccion_diaria linea es igual a cajas no se guarde een el post  metras lineales 
+            if ($produccion_diaria->linea === 'CORRUGADOR CAJAS' || $produccion_diaria->linea === 'CORRUGADOR PLANCHAS') {
+                $_POST['metros_lineales'] = 0;
+            }
             
+                
             
             $produccion_diaria->sincronizar($_POST);
 
