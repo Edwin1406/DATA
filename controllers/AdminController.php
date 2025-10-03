@@ -651,7 +651,7 @@ class AdminController
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
                 $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diaria?exito=1');
+                header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
             }
         } else {
             $alertas = [];
