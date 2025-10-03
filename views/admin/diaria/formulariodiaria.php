@@ -1,5 +1,5 @@
   <!-- hidden fields -->
-  <input type="hiden" name="id" value="<?php echo isset($corrugador) ? s($corrugador->id) : ''; ?>">
+  <input type="hidden" name="id" value="<?php echo isset($corrugador) ? s($corrugador->id) : ''; ?>">
 
   <!-- FECHA -->
   
