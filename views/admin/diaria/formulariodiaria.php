@@ -33,7 +33,7 @@
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
         placeholder="Unidad x dia" name="unidad_x_dia"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->unidad_x_dia) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->n_laminas) : '0'; ?>">
     </div>
   </div>
 
@@ -43,7 +43,7 @@
       <label for="metros_lineales">Metros Lineales</label>
       <input type="text" id="metros_lineales" class="form-control"
         placeholder="Metros Lineales" name="metros_lineales"
-            value="<?php echo isset($produccion_diaria) && $produccion_diaria->metros_lineales !== '' ? s($produccion_diaria->metros_lineales) : '0'; ?>">
+            value="<?php echo isset($corrugador) && $corrugador->metros_lineales !== '' ? s($corrugador->metros_lineales) : '0'; ?>">
 
     </div>
   </div>
