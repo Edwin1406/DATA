@@ -237,7 +237,7 @@
 
                                     <td>
                                         <div class="d-flex gap-1">
-                                            <!-- Formulario de eliminación con AJAX -->
+                                            <!-- Botón de eliminación -->
                                             <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
                                         </div>
                                     </td>
@@ -253,30 +253,52 @@
                         button.addEventListener('click', function() {
                             const id = this.getAttribute('data-id'); // Obtener el ID del carrito
 
-                            // Confirmar la eliminación
-                            if (confirm('¿Estás seguro de que quieres eliminar este artículo del carrito?')) {
-                                // Realizar la petición AJAX para eliminar
-                                const formData = new FormData();
-                                formData.append('id', id); // Añadir el ID al formulario
+                            // Usamos SweetAlert2 para confirmar la eliminación
+                            Swal.fire({
+                                title: '¿Estás seguro?',
+                                text: "¡Esta acción no se puede deshacer!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Sí, eliminar',
+                                cancelButtonText: 'Cancelar',
+                                reverseButtons: true
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Realizamos la petición AJAX para eliminar
+                                    const formData = new FormData();
+                                    formData.append('id', id); // Añadir el ID al formulario
 
-                                fetch('/admin/eliminarCarrito', {
-                                        method: 'POST',
-                                        body: formData
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            // Si la eliminación fue exitosa, eliminamos la fila del carrito
-                                            document.getElementById('row_' + id).remove();
-                                            alert('Carrito eliminado con éxito');
-                                        } else {
-                                            alert('Error al eliminar el carrito');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        alert('Hubo un error al procesar la solicitud');
-                                    });
-                            }
+                                    fetch('/admin/eliminarCarrito', {
+                                            method: 'POST',
+                                            body: formData
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                // Si la eliminación fue exitosa, eliminamos la fila del carrito
+                                                document.getElementById('row_' + id).remove();
+                                                Swal.fire(
+                                                    'Eliminado',
+                                                    'El artículo ha sido eliminado del carrito.',
+                                                    'success'
+                                                );
+                                            } else {
+                                                Swal.fire(
+                                                    'Error',
+                                                    'Hubo un problema al eliminar el artículo.',
+                                                    'error'
+                                                );
+                                            }
+                                        })
+                                        .catch(error => {
+                                            Swal.fire(
+                                                'Error',
+                                                'Hubo un error al procesar la solicitud',
+                                                'error'
+                                            );
+                                        });
+                                }
+                            });
                         });
                     });
                 </script>
