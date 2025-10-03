@@ -225,7 +225,7 @@ public static function apiProduccionDiariaCorrugador(): void {
 
     // SQL query with corrected table and column names, reversed join
     $producciondiariacorrugador = Ventas::SQL("
-        SELECT v.*, pd.nombre_corrugador 
+        SELECT v.*, pd.consumo_papel 
         FROM VENTAS v
         LEFT JOIN produccion_diaria pd ON v.id = pd.id_corrugador
         ORDER BY v.id ASC
