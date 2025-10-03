@@ -614,9 +614,11 @@ class AdminController
 
 
 
-       if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-    // Asigna 0 a los dos campos
-    $produccion_diaria->metros_lineales = $_POST['metros_lineales'] = 0;
+            $produccion_diaria->fecha = $_POST['fecha'] ?? null;
+            $produccion_diaria->linea = $_POST['linea'] ?? null;
+
+            if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
+    $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
 }
 
 
