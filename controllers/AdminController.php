@@ -618,7 +618,7 @@ class AdminController
                 // Asigna 0 a los dos campos
                 // $produccion_diaria->metros_lineales = $_POST['metros_lineales'] = 0;
 
-                echo "si es corrugador cajas o planchas";
+                debuguear('es corrugador');
             }
 
 
