@@ -437,10 +437,10 @@
                         <tr>
                             <th class="fs-6" style="min-width: 90px;">Id</th>
                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
-                            <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
-                            <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
-                            <th class="fs-6" style="min-width: 80px;">Turno</th>
-                            <th class="fs-6" style="min-width: 100px;">Unidades Pendientes</th>
+                            <th class="fs-6" style="min-width: 93px;">tipo_maquina</th>
+                            <th class="fs-6" style="min-width: 93px;">casos</th>
+                            <th class="fs-6" style="min-width: 80px;">Cantidad</th>
+                        
 
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
@@ -451,10 +451,10 @@
                             <tr>
                                 <td><?= $corrugado->id ?></td>
                                 <td><?= $corrugado->fecha ?></td>
-                                <td><?= $corrugado->consumo_papel ?></td>
-                                <td><?= $corrugado->n_laminas ?></td>
-                                <td><?= $corrugado->turno ?></td>
-                                <td><?= $corrugado->unidades_pendientes ?></td>
+                                <td><?= $corrugado->tipo_maquina ?></td>
+                                <td><?= $corrugado->casos ?></td>
+                                <td><?= $corrugado->cantidad ?></td>
+                             
 
 
 
