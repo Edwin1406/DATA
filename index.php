@@ -2,8 +2,8 @@
     
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 
 
@@ -124,6 +124,15 @@ $router->post('/admin/turnoDiseno/cambios', [DiseñoController::class, 'cambios'
 //REGISTRO DE PRODUCCION DIARIA 
 $router->get('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
 $router->post('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
+
+
+
+
+// CREAR FLEXO
+$router->get('/admin/flexo/crearFlexo', [PruebasController::class, 'crearFlexo']);
+$router->post('/admin/flexo/crearFlexo', [PruebasController::class, 'crearFlexo']);
+
+
 
 
 //APIPRODUCCION DIARIA
