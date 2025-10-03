@@ -6,8 +6,7 @@ use DateTime;
 
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
-    protected static $columnasDB = ['id','id_usuario','consumo_papel','n_laminas','metros_lineales','turno','n_cambios','consumo_almidon','consumo_resina',
-    'consumo_recubrimiento','operador','total','hora_inicio','hora_fin','motivo_inactividad','unidades_pendientes','fecha'];
+    protected static $columnasDB = ['id','id_usuario','consumo_papel','n_laminas','metros_lineales','turno','n_cambios','operador','total','hora_inicio','hora_fin','motivo_inactividad','unidades_pendientes','fecha'];
 
     public ?int $id;
     public ?int $id_usuario;
@@ -16,9 +15,7 @@ class Ventas extends ActiveRecord {
     public ?float $metros_lineales;
     public ?string $turno;
     public ?int $n_cambios;
-    public ?float $consumo_almidon;
-    public ?float $consumo_resina;
-    public ?float $consumo_recubrimiento;
+   
     public ?string $operador;
     public ?float $total;
     public ?string $hora_inicio;
@@ -38,9 +35,7 @@ class Ventas extends ActiveRecord {
         $this->metros_lineales = $args['metros_lineales'] ?? null;
         $this->turno = $args['turno'] ?? null;
         $this->n_cambios = $args['n_cambios'] ?? null;
-        $this->consumo_almidon = $args['consumo_almidon'] ?? null;
-        $this->consumo_resina = $args['consumo_resina'] ?? null;
-        $this->consumo_recubrimiento = $args['consumo_recubrimiento'] ?? null;
+      
         $this->operador = $args['operador'] ?? null;
         $this->total = $args['total'] ?? null;
         $this->hora_inicio = $args['hora_inicio'] ?? null;
