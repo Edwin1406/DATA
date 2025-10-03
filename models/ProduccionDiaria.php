@@ -23,7 +23,8 @@ class ProduccionDiaria extends ActiveRecord {
         'tiempo_x_cambio',
         'unidades_x_procesar',
         'kilos_x_procesar',
-        'linea'
+        'linea',
+        'id_corrugador'
     ];
 
 
@@ -43,6 +44,7 @@ class ProduccionDiaria extends ActiveRecord {
     public $unidades_x_procesar;
     public $kilos_x_procesar;
     public $linea;
+    public $id_corrugador;
 
     public function __construct($args = []) {
         //date_default_timezone_set('America/Guayaquil');
@@ -64,6 +66,7 @@ class ProduccionDiaria extends ActiveRecord {
         $this->unidades_x_procesar = $args['unidades_x_procesar'] ?? null;
         $this->kilos_x_procesar = $args['kilos_x_procesar'] ?? null;
         $this->linea = $args['linea'] ?? null;
+        $this->id_corrugador = $args['id_corrugador'] ?? null;
     }
 }
 ?>
