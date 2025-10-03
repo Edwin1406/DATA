@@ -79,7 +79,7 @@
                              <?php }  ?>
 
 
-                                
+
                              <?php if ($email !== 'planta@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/diaria/produccion_diaria"><i class="bi bi-arrow-right"> </i>Producción Diaria</a>
@@ -203,16 +203,20 @@
                          </a>
                          <ul class="submenu ">
                              <?php if ($userEmail !== 'corrugador@megaecuador.com') { ?>
-                             <li class="submenu-item ">
-                                 <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
-                             </li>
-                             <li class="submenu-item ">
-                                 <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrgador</a>
-                             </li>
-                                <?php } ?>
-                             <li class="submenu-item ">
-                                 <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
-                             </li>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
+                                 </li>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrgador</a>
+                                 </li>
+                             <?php } ?>
+
+                             <?php if ($userEmail !== 'flexo@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
+                                 </li>
+                             <?php } ?>
+
                              <li class="submenu-item ">
                                  <a href="/admin/vehiculos/registroVehiculos"><i class="bi bi-arrow-right"> </i>Registro localizacion de Vehículos</a>
                              </li>
@@ -240,4 +244,3 @@
          <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
      </div>
  </div>
-
