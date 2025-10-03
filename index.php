@@ -134,6 +134,13 @@ $router->post('/admin/pruebas/crearFlexo', [PruebasController::class, 'crearFlex
 
 
 
+// registro detallecorrugador
+$router->get('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
+$router->post('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
+
+
+
+
 
 //APIPRODUCCION DIARIA
 $router->get('/admin/api/apiProduccionDiaria', [ApiController::class, 'apiProduccionDiaria']);
