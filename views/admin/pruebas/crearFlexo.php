@@ -418,91 +418,43 @@
 
 
 
-<style>
-
-
-#table1 th, #table1 td {
-        white-space: nowrap;
-    }
-   
-</style>
-
-<!-- Modal con DataTables -->
+<!-- Modal con formulario y opción -->
 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel33">DataTable Example</h4>
+                <h4 class="modal-title" id="myModalLabel33">Formulario con Opción</h4>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <!-- DataTable -->
-                <table class="table table-striped" id="table1">
-                    <thead>
-                        <tr>
-                            <th class="fs-6" style="min-width: 90px;">Id</th>
-                            <th class="fs-6" style="min-width: 93px;">Fecha</th>
-                            <th class="fs-6" style="min-width: 93px;">tipo_maquina</th>
-                            <th class="fs-6" style="min-width: 43px;">casos</th>
-                            <th class="fs-6" style="min-width: 80px;">Cantidad</th>
-                        
-
-                            <th class="fs-6" style="min-width: 100px;">Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach ($corrugador as $corrugado): ?>
-                            <tr>
-                                <td><?= $corrugado->id ?></td>
-                                <td><?= $corrugado->fecha ?></td>
-                                <td><?= $corrugado->tipo_maquina ?></td>
-                                <td><?= $corrugado->casos ?></td>
-                                <td><?= $corrugado->cantidad ?></td>
-                             
-
-
-
-
-                                <td>
-                                    <!-- usuario -->
-
-
-
-                                    <div class="d-flex gap-1">
-                                        <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                        <a href="/admin/diaria/produccion_diaria?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                        <form action="/admin/eliminarPruebas" method="POST">
-                                            <input type="hidden" name="id" value="<?= $corrugado->id ?>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form>
-                                    </div>
-
-
-
-
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Close</span>
-                </button>
-            </div>
+            <form action="#">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleSelect">Selecciona una opción:</label>
+                        <select class="form-control" id="exampleSelect">
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                            <option value="4">Opción 4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputText">Texto adicional:</label>
+                        <input type="text" class="form-control" id="inputText" placeholder="Escribe algo aquí">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Cerrar</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary ml-1">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Enviar</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
-<!-- Agregar el script para activar DataTables -->
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
