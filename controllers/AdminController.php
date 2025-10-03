@@ -612,16 +612,15 @@ class AdminController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $produccion_diaria->linea = $_POST['linea'] ?? '';
 
 
-        debuguear($produccion_diaria->linea); // Verifica el valor de linea antes de la comparación
-if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-    debuguear('Se ha seleccionado: ' . $_POST['linea']);
-    debuguear('es corrugador');
+       if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
+    // Asigna 0 a los dos campos
+    $produccion_diaria->metros_lineales = $_POST['metros_lineales'] = 0;
 }
 
 
+          
 
 
 
