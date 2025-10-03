@@ -422,7 +422,7 @@
 
 
 #table1 th, #table1 td {
-        white-space: none;
+        white-space: nowrap;
     }
    
 </style>
