@@ -219,7 +219,11 @@
                         </thead>
 
                         <tbody>
-                            <?php foreach ($carritoTemporal as $contro): ?>
+                            <?php $tipo_maqina = $nombre;
+                            foreach ($carritoTemporal as $contro):
+                                if ($tipo_maqina !== $contro->tipo_maquina) continue;
+                            ?>
+
                                 <tr>
                                     <td><?= $contro->id ?></td>
                                     <td><?= $contro->id_usuario ?></td>
