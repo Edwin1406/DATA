@@ -217,9 +217,7 @@ class Apicontroller
 
 
     // api apiProduccionDiariaCorrugador
-
-    // como unir dos tablas en una sola consulta
- public static function apiProduccionDiariaCorrugador(): void {
+public static function apiProduccionDiariaCorrugador(): void {
     // CORS headers
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -256,7 +254,6 @@ class Apicontroller
     echo json_encode($producciondiariacorrugador);
     exit;
 }
-
 
 
 
