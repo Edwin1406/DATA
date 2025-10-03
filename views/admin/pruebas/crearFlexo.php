@@ -431,11 +431,6 @@
             <form action="#">
                 <div class="modal-body">
                     <!-- fecha -->
-
-
-
-
-
                     <div class="form-group">
                         <label for="fecha">Fecha:</label>
                         <input type="date" class="form-control" id="fecha" name="fecha">
