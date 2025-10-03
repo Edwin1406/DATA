@@ -616,7 +616,8 @@ class AdminController
 
             $produccion_diaria->fecha = $_POST['fecha'] ?? null;
             $produccion_diaria->linea = $_POST['linea'] ?? null;
-            $produccion_diaria->id_corrugador = $id ?? null;
+            $produccion_diaria->id_corrugador = $id = $_GET['id'] ?? null;
+
 
 
             // debuguear($produccion_diaria->id_corrugador);
