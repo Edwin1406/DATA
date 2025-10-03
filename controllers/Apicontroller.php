@@ -225,7 +225,7 @@ class Apicontroller
         header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type');
 
-        $producciondiariacorrugador = ProduccionDiaria::SQL("SELECT pd.*, c.nombre AS nombre_corrugador 
+        $producciondiariacorrugador = Ventas::SQL("SELECT pd.*, c.nombre AS nombre_corrugador 
         FROM produccion_diaria pd
         LEFT JOIN corrugadores c ON pd.id_corrugador = c.id
         ORDER BY pd.id ASC");

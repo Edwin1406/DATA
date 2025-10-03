@@ -644,7 +644,7 @@ class AdminController
             }
 
 
-            debuguear($produccion_diaria);
+            // debuguear($produccion_diaria);
 
 
             // debuguear($produccion_diaria);
