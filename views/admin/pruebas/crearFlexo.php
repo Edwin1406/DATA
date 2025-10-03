@@ -428,7 +428,7 @@
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <form action="#">
+            <form action="/admin/pruebas/crearFlexo" method="POST">
                 <div class="modal-body">
                     <!-- fecha -->
                     <div class="form-group">
