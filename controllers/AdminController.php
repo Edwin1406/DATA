@@ -614,18 +614,11 @@ class AdminController
 
 
 
-            if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-                // Mensaje de depuración para ver el valor de $_POST['linea']
-                debuguear('Se ha seleccionado: ' . $_POST['linea']);
-                // O si prefieres un var_dump
-                // var_dump($_POST['linea']); // Muestra el valor de la línea seleccionada
-
-                // Asigna 0 a los dos campos
-                // $produccion_diaria->metros_lineales = $_POST['metros_lineales'] = 0;
-
-                debuguear('es corrugador');
-            }
-
+        debuguear($produccion_diaria->linea); // Verifica el valor de linea antes de la comparación
+if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
+    debuguear('Se ha seleccionado: ' . $_POST['linea']);
+    debuguear('es corrugador');
+}
 
 
 
@@ -644,7 +637,7 @@ class AdminController
             }
 
 
-            // debuguear($produccion_diaria);
+            debuguear($produccion_diaria);
 
 
             // debuguear($produccion_diaria);
