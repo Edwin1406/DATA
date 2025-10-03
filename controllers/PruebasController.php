@@ -157,7 +157,7 @@ public static function registroDetalleCorrugador(Router $router)
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Recibir los datos del formulario via AJAX
-        $detallecorrugador->id_venta = $_POST['id_venta'];
+        $detallecorrugador->id_venta = 33;
         $detallecorrugador->tipo_maquina = $_POST['tipo_maquina'];
         $detallecorrugador->cantidad = $_POST['cantidad'];
         $detallecorrugador->casos = $_POST['casos'];

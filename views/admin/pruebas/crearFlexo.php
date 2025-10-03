@@ -481,11 +481,7 @@
             </div>
             <form id="detalleCorrugadorForm" action="/admin/pruebas/registroDetalleCorrugador" method="POST">
                 <div class="modal-body">
-                    <!-- id_venta -->
-                    <div class="form-group">
-                        <label for="id_venta">ID Venta:</label>
-                        <input type="text" class="form-control" id="id_venta" name="id_venta" placeholder="ID de venta">
-                    </div>
+                  
 
                     <!-- fecha -->
                     <div class="form-group">
