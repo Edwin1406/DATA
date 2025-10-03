@@ -227,7 +227,7 @@ class Apicontroller
 
         $producciondiariacorrugador = Ventas::SQL("SELECT pd.*, c.nombre AS nombre_corrugador 
         FROM produccion_diaria pd
-        LEFT JOIN corrugadores c ON pd.id_corrugador = c.id
+        LEFT JOIN VENTAS c ON pd.id_corrugador = c.id
         ORDER BY pd.id ASC");
 
         foreach ($producciondiariacorrugador as &$item) {
