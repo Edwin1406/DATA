@@ -418,7 +418,14 @@
 
 
 
+<style>
 
+
+#table1 th, #table1 td {
+        white-space: none;
+    }
+   
+</style>
 
 <!-- Modal con DataTables -->
 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
