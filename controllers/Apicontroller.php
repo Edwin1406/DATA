@@ -219,39 +219,43 @@ class Apicontroller
     // api apiProduccionDiariaCorrugador
 
     // como unir dos tablas en una sola consulta
-    public static function apiProduccionDiariaCorrugador(): void{
-        // CORS
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-        header('Access-Control-Allow-Headers: Content-Type');
+ public static function apiProduccionDiariaCorrugador(): void {
+    // CORS headers
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
 
-        $producciondiariacorrugador = Ventas::SQL("SELECT pd.* AS nombre_corrugador 
+    // SQL query with corrected table and column names
+    $producciondiariacorrugador = Ventas::SQL("
+        SELECT pd.*, v.nombre AS nombre_corrugador 
         FROM produccion_diaria pd
-        LEFT JOIN VENTAS c ON pd.id_corrugador = c.id
-        ORDER BY pd.id ASC");
+        LEFT JOIN VENTAS v ON pd.id_corrugador = v.id
+        ORDER BY pd.id ASC
+    ");
 
-        foreach ($producciondiariacorrugador as &$item) {
-            $item->id = intval($item->id);
-            $item->fecha = $item->fecha; // Mantener como cadena
-            $item->peso_un = floatval($item->peso_un);
-            $item->unidad_x_dia = floatval($item->unidad_x_dia);
-            $item->metros_lineales = floatval($item->metros_lineales);
-            $item->kilos_x_dia = floatval($item->kilos_x_dia);
-            $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
-            $item->turno = floatval($item->turno);
-            $item->horas_maquina = $item->horas_maquina; 
-            $item->cambios = floatval($item->cambios);
-            $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
-            $item->unidades_x_procesar = floatval($item->unidades_x_procesar);
-            $item->kilos_x_procesar = floatval($item->kilos_x_procesar);
-            $item->nombre_corrugador = $item->nombre_corrugador ?? null; // Manejar valor nulo
-        }
-
-        // Devolver los datos en formato JSON
-        header('Content-Type: application/json');
-        echo json_encode($producciondiariacorrugador);
-        exit;
+    // Process the results
+    foreach ($producciondiariacorrugador as &$item) {
+        $item->id = intval($item->id);
+        $item->fecha = $item->fecha; // Keep as string
+        $item->peso_un = floatval($item->peso_un);
+        $item->unidad_x_dia = floatval($item->unidad_x_dia);
+        $item->metros_lineales = floatval($item->metros_lineales);
+        $item->kilos_x_dia = floatval($item->kilos_x_dia);
+        $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
+        $item->turno = floatval($item->turno);
+        $item->horas_maquina = $item->horas_maquina; 
+        $item->cambios = floatval($item->cambios);
+        $item->tiempo_x_cambio = floatval($item->tiempo_x_cambio);
+        $item->unidades_x_procesar = floatval($item->unidades_x_procesar);
+        $item->kilos_x_procesar = floatval($item->kilos_x_procesar);
+        $item->nombre_corrugador = $item->nombre_corrugador ?? null; // Handle null value
     }
+
+    // Return the data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($producciondiariacorrugador);
+    exit;
+}
 
 
 
