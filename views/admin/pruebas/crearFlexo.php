@@ -430,6 +430,16 @@
             </div>
             <form action="#">
                 <div class="modal-body">
+                    <!-- fecha -->
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha">
+                    </div>
                     <div class="form-group">
                         <label for="exampleSelect">Selecciona una opción:</label>
                         <select class="form-control" id="exampleSelect">
