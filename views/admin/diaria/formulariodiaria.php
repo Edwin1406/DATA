@@ -1,4 +1,8 @@
+  <!-- hidden fields -->
+  <input type="hiden" name="id" value="<?php echo isset($corrugador) ? s($corrugador->id) : ''; ?>">
+
   <!-- FECHA -->
+  
   <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="fecha">Fecha</label>
