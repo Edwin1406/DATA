@@ -732,7 +732,7 @@ public static function editarFlexo(Router $router)
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
         if (!$id) {
-            header('Location: /admin/pruebas/tablaPruebas');
+            header('Location: /admin/pruebas/tablaFlexo');
             exit;
         }
 
@@ -742,7 +742,7 @@ public static function editarFlexo(Router $router)
         // debuguear($venta);
 
         if (!$venta) {
-            header('Location: /admin/pruebas/tablaPruebas');
+            header('Location: /admin/pruebas/tablaFlexo');
             exit;
         }
 
@@ -758,7 +758,7 @@ public static function editarFlexo(Router $router)
             if (empty($alertas)) {
                 $resultado = $venta->guardar();
                 if ($resultado) {
-                    header('Location: /admin/pruebas/tablaPruebas?exito=1');
+                    header('Location: /admin/pruebas/tablaFlexo?exito=1');
                     exit;
                 } else {
                     $alertas['error'][] = 'Error al actualizar el registro';
@@ -767,8 +767,8 @@ public static function editarFlexo(Router $router)
         }
 
         // Renderizar la vista de editar
-        $router->render('admin/pruebas/editarPruebas', [
-            'titulo' => 'CORRUGADOR - Editar Registro',
+        $router->render('admin/pruebas/editarFlexo', [
+            'titulo' => 'FLEXOGRAFICA - Editar Registro',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
