@@ -64,7 +64,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Tabla de Pruebas
+                Tabla de Flexo
             </div>
 
             <div class="card-body">
