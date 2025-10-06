@@ -760,7 +760,7 @@ public static function editarFlexo(Router $router)
             if (empty($alertas)) {
                 $resultado = $venta->guardar();
                 if ($resultado) {
-                    header('Location: /admin/pruebas/tablaFlexo?exito=1');
+                    header('Location: /admin/pruebas/tablaFlexo?editado=1');
                     exit;
                 } else {
                     $alertas['error'][] = 'Error al actualizar el registro';
