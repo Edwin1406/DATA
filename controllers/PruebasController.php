@@ -692,7 +692,7 @@ class PruebasController
 
             $venta->sincronizar($args);
 
-            debuguear($venta);
+            // debuguear($venta);
 
             // Validar
             $alertas = $venta->validar();
