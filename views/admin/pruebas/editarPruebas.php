@@ -68,8 +68,6 @@
             </div>
 
             <div class="card-body">
-
-                <!-- <form action="/admin/pruebas/editarPruebas?id=<?php echo $venta->id ?? ''; ?>" method="POST"> -->
                     <form action="/admin/pruebas/editarPruebas?id=<?php echo $venta->id; ?>" method="POST" onsubmit="return bloquearBoton(this)">
 
                     <!-- Fila 1 -->
