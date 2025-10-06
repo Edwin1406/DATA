@@ -700,7 +700,7 @@ class PruebasController
             if (empty($alertas)) {
                 $resultado = $venta->guardar();
                 if ($resultado) {
-                    header('Location: /admin/pruebas/tablaPruebas?exito=1');
+                    header('Location: /admin/pruebas/tablaPruebas?editado=2');
                     exit;
                 } else {
                     $alertas['error'][] = 'Error al actualizar el registro';
