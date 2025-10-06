@@ -57,7 +57,7 @@
                     <a class="nav-link active" href="/admin/pruebas/tablaFlexo">Tabla producción - FLEXOGRAFICA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Modal</a>
+                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-Corrugador</a>
                 </li>
 
             </ul>
