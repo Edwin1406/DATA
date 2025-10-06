@@ -307,6 +307,9 @@ $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarr
 // REGISTRAR VENTA
 $router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'registrarVenta']);
 
+// REGISTRAR VENFLEXO
+$router->post('/admin/pruebas/registrarVenFlexo', [PruebasController::class, 'registrarVenFlexo']);
+
 
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);

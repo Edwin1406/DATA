@@ -264,7 +264,7 @@
 
 
 
-                <form action="/admin/pruebas/registrarVenta" method="POST">
+                <form action="/admin/pruebas/registrarVenFlexo" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
@@ -292,15 +292,7 @@
                         </div>
 
 
-                        <div class="col-md-2 col-12 ">
-
-                            <div class="form-group">
-                                <label for="metros_lineales">Metros Lineales</label>
-                                <input type="number" id="metros_lineales" class="form-control"
-                                    placeholder="Metros Lineales" name="metros_lineales">
-                            </div>
-
-                        </div>
+                    
 
 
 
