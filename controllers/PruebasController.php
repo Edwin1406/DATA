@@ -737,7 +737,7 @@ public static function editarFlexo(Router $router)
         }
 
         // Obtener el registro a editar
-        $venta = Ventas::find($id);
+        $venta = VenFlexo::find($id);
 
         // debuguear($venta);
 
