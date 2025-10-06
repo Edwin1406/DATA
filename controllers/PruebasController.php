@@ -627,7 +627,7 @@ public static function eliminarCarrito()
      
         $flexografica = VenFlexo::all();
         debuguear($flexografica);
-         $router->render('admin/pruebas/tablaPruebas', [
+        $router->render('admin/pruebas/tablaFlexo', [
             'titulo' => 'FLEXOGRAFICA - Tabla de Producción',
             'nombre' => $nombre,
             'email' => $email,
