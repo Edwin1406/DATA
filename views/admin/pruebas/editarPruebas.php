@@ -69,7 +69,7 @@
 
             <div class="card-body">
 
-                <form action="/admin/pruebas/registrarVenta" method="POST">
+                <form action="/admin/pruebas/editarPruebas?id=<?php echo $venta->id ?? ''; ?>" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
