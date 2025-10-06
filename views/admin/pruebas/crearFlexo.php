@@ -285,9 +285,9 @@
 
                         <div class="col-md-2 col-12">
                             <div class="form-group">
-                                <label for="n_laminas">N° de Laminas</label>
-                                <input type="number" id="n_laminas" class="form-control"
-                                    placeholder="N° de Laminas" name="n_laminas">
+                                <label for="n_unidades">N° de Unidades</label>
+                                <input type="number" id="n_unidades" class="form-control"
+                                    placeholder="N° de Unidades" name="n_unidades" required>
                             </div>
                         </div>
 
