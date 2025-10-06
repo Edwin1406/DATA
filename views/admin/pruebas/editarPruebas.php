@@ -187,16 +187,7 @@
 
 
                         </div>
-                        <div class="col-md-5 col-12">
-
-
-                            <div class="form-group">
-                                <label for="unidades_pendientes">Unidades x procesar </label>
-                                <input type="number" id="unidades_pendientes" class="form-control"
-                                    placeholder="Unidades x procesar" name="unidades_pendientes"
-                                    value="<?php echo $venta->unidades_pendientes ?? ''; ?>">
-                            </div>
-                        </div>
+                   
 
 
 
