@@ -69,7 +69,7 @@
 
             <div class="card-body">
 
-                <form action="/admin/pruebas/registrarVenFlexo?<?php echo http_build_query(['id' => $venta->id ?? '']); ?>" method="POST">
+                <form action="/admin/pruebas/editarFlexo" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
