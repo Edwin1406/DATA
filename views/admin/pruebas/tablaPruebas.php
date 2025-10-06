@@ -113,7 +113,7 @@
                              <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
                              <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 100px;">Descripcion</th>
+                             <th class="fs-6" style="min-width: 100px;">Motivo de Inactividad</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
@@ -127,7 +127,7 @@
                                  <td><?= $corrugado->consumo_papel ?></td>
                                  <td><?= $corrugado->n_laminas ?></td>
                                  <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->descripcion ?></td>
+                                 <td><?= $corrugado->motivo_inactividad ?></td>
 
 
 
