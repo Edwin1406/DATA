@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaFlexo">Tabla Flexo</a>
                 </li>
             </ul>
         </div>
@@ -69,7 +69,7 @@
 
             <div class="card-body">
 
-                <form action="/admin/pruebas/registrarVenta" method="POST">
+                <form action="/admin/pruebas/registrarVenFlexo" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
@@ -92,24 +92,14 @@
 
                         <div class="col-md-2 col-12">
                             <div class="form-group">
-                                <label for="n_laminas">N° de Laminas</label>
-                                <input type="number" id="n_laminas" class="form-control"
-                                    placeholder="N° de Laminas" name="n_laminas"
-                                    value="<?php echo $venta->n_laminas ?? ''; ?>" readonly>
+                                <label for="n_unidades">N° de Unidades</label>
+                                <input type="number" id="n_unidades" class="form-control"
+                                    placeholder="N° de Unidades" name="n_unidades"
+                                    value="<?php echo $venta->n_unidades ?? ''; ?>" readonly>
                             </div>
                         </div>
 
 
-                        <div class="col-md-2 col-12 ">
-
-                            <div class="form-group">
-                                <label for="metros_lineales">Metros Lineales</label>
-                                <input type="number" id="metros_lineales" class="form-control"
-                                    placeholder="Metros Lineales" name="metros_lineales"
-                                    value="<?php echo $venta->metros_lineales ?? ''; ?>" readonly>
-                            </div>
-
-                        </div>
 
 
 
@@ -187,17 +177,7 @@
 
 
                         </div>
-                        <div class="col-md-5 col-12">
-
-
-                            <div class="form-group">
-                                <label for="unidades_pendientes">Unidades x procesar </label>
-                                <input type="number" id="unidades_pendientes" class="form-control"
-                                    placeholder="Unidades x procesar" name="unidades_pendientes"
-                                    value="<?php echo $venta->unidades_pendientes ?? ''; ?>">
-                            </div>
-                        </div>
-
+                
 
 
 
