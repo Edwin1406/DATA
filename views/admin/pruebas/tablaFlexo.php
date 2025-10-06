@@ -89,7 +89,7 @@
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
                      <li class="nav-item">
-                         <a class="nav-link active" href="/admin/pruebas/crearPruebas">Registro Pruebas</a>
+                         <a class="nav-link active" href="/admin/pruebas/crearFlexo">Registro Flexo</a>
                      </li>
                  <?php } ?>
              </ul>
@@ -120,23 +120,22 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($corrugador as $corrugado): ?>
+                         <?php foreach ($flexografica as $flexo): ?>
                              <tr>
-                                 <td><?= $corrugado->id ?></td>
-                                 <td><?= $corrugado->fecha ?></td>
-                                 <td><?= $corrugado->consumo_papel ?></td>
-                                 <td><?= $corrugado->n_laminas ?></td>
-                                 <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->motivo_inactividad ?></td>
+                                 <td><?= $flexo->id ?></td>
+                                 <td><?= $flexo->fecha ?></td>
+                                 <td><?= $flexo->consumo_papel ?></td>
+                                 <td><?= $flexo->n_unidades ?></td>
+                                 <td><?= $flexo->turno ?></td>
+                                 <td><?= $flexo->motivo_inactividad ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <a href="/admin/pruebas/editarFlexo?id=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarPruebas" method="POST">
-                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                             <input type="hidden" name="id" value="<?= $flexo->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
