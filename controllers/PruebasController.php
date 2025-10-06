@@ -613,6 +613,45 @@ public static function eliminarCarrito()
     }
 
 
+    // tabla de flexo
+    public static function tablaFlexo(Router $router){
+
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+     
+        $flexografica = VenFlexo::all();
+         $router->render('admin/pruebas/tablaPruebas', [
+            'titulo' => 'FLEXOGRAFICA - Tabla de Producción',
+            'nombre' => $nombre,
+            'email' => $email,
+            'flexografica' => $flexografica
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // editar pruebas
     public static function editarPruebas(Router $router)
     {

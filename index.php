@@ -314,6 +314,9 @@ $router->post('/admin/pruebas/registrarVenFlexo', [PruebasController::class, 're
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
 
+// TABLA DE FLEXO
+$router->get('/admin/pruebas/tablaFlexo', [PruebasController::class, 'tablaFlexo']);
+
 // EDITAR PRUEBAS
 $router->get('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
 $router->post('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
