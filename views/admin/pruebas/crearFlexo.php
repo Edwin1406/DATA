@@ -197,6 +197,23 @@
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" class="text-end">Total:</th>
+                                <th>
+                                    <?php
+                                    $totalCantidad = 0;
+                                    foreach ($carritoTemporal as $contro) {
+                                        if ($tipo_maqina === $contro->tipo_maquina) {
+                                            $totalCantidad += $contro->cantidad;
+                                        }
+                                    }
+                                    echo number_format($totalCantidad, 2);
+                                    ?>
+                                </th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
 
