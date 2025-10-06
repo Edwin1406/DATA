@@ -752,6 +752,8 @@ public static function editarFlexo(Router $router)
 
             $venta->sincronizar($args);
 
+            debuguear($venta);
+
             // Validar
             $alertas = $venta->validar();
 
