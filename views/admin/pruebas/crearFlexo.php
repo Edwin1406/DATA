@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla pruebas</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaFlexo">Tabla producción - FLEXOGRAFICA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Modal</a>
