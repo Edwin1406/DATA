@@ -323,6 +323,12 @@ $router->post('/admin/pruebas/editarPruebas', [PruebasController::class, 'editar
 
 
 
+// eDITAR FLEXO
+$router->get('/admin/pruebas/editarFlexo', [PruebasController::class, 'editarFlexo']);
+$router->post('/admin/pruebas/editarFlexo', [PruebasController::class, 'editarFlexo']);
+
+
+
 
 
 
