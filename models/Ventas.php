@@ -27,7 +27,6 @@ class Ventas extends ActiveRecord {
     public function __construct(array $args = []) {
         date_default_timezone_set('America/Guayaquil');
         $fecha = date('Y-m-d H:i:s');
-
         $this->id = $args['id'] ?? null;
         $this->id_usuario = $args['id_usuario'] ?? null;
         $this->consumo_papel = $args['consumo_papel'] ?? null;
