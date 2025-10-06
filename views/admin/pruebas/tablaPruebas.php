@@ -130,12 +130,7 @@
                                  <td><?= $corrugado->motivo_inactividad ?></td>
 
 
-
-
                                  <td>
-                                     <!-- usuario -->
-
-
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
