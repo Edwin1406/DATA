@@ -99,15 +99,7 @@ $router->post('/admin/turnoDiseno/generarTurno', [DiseñoController::class, 'gen
 
 
 
-// registro de localizacion de vehiculos
-$router->get('/admin/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
 
-$router->post('/admin/vehiculos/registroVehiculos', [LocalizarController::class, 'registroVehiculos']);
-
-
-
-$router->post('/api/locations/store', [LocalizarController::class, 'apiGuardarUbicacion']);
-$router->get('/api/locations/latest', [LocalizarController::class, 'apiUltimas']);
 
 
 
