@@ -351,6 +351,7 @@
                                     name="hora_fin" required>
                             </div>
                         </div>
+                     
 
                         <div class="col-md-3 col-12">
                             <div class="form-group">
@@ -370,6 +371,16 @@
                             <div class="form-group">
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+
+                           <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="tiempo_cambio_medida">tiempo_cambio_medida</label>
+                                <input type="number" id="tiempo_cambio_medida" class="form-control"
+                                    name="tiempo_cambio_medida" required>
                             </div>
                         </div>
 
