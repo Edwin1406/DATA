@@ -650,6 +650,15 @@ class AdminController
 
             if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
                 $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
+                $produccion_diaria->desperdicio_lamina = $_POST['desperdicio_lamina'] = 0 ?? null;
+                $produccion_diaria->peso_un = $_POST['peso_un'] = 0 ?? null;
+                $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] = 0 ?? null;
+                $produccion_diaria->kilos_x_dia = $_POST['kilos_x_dia'] = 0 ?? null;
+                $produccion_diaria->turno = $_POST['turno'] = null ?? null;
+                $produccion_diaria->horas_maquina = $_POST['horas_maquina'] = null ?? null;
+                $produccion_diaria->cambios = $_POST['cambios'] = 0 ?? null;
+                $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] = 0 ?? null;
+                
             }
 
 
