@@ -358,12 +358,9 @@
                                 <select id="operador" class="choices form-control" name="operador">
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
                                     <!-- CONTROLABLES -->
-                                    <option value="RAFAEL ORTEGA">RAFAEL ORTEGA</option>
-                                    <option value="GEOVANNY MANTILLA">GEOVANNY MANTILLA</option>
-                                    <option value="WILLIAM NAULA">WILLIAM NAULA</option>
-                                    <option value="MARCO TAPIA">MARCO TAPIA</option>
-                                    <option value="KEVIN DELGADO">KEVIN DELGADO</option>
-                                    <option value="MENTOR">MENTOR</option>
+                                    <option value="WILLIAM">WILLIAM</option>
+                                    <option value="RAFAEL">RAFAEL</option>
+                                    
                                 </select>
                             </div>
                         </div>
