@@ -611,11 +611,10 @@ class AdminController
 
         $turnoCorrugador = $corrugador->turno ?? null;
 
-$turnoCorrugador1 = $turnoCorrugador 
-    ? (new DateTime($turnoCorrugador))->modify('-1 hour')->format('H:i') 
-    : null;
+            $turnoCorrugador1 = $turnoCorrugador 
+                ? (new DateTime($turnoCorrugador))->modify('-1 hour')->format('H:i') 
+                : null;
 
-debuguear($turnoCorrugador1);
 
 
         // debuguear($corrugador);
@@ -707,6 +706,7 @@ debuguear($turnoCorrugador1);
             'email' => $email,
             'corrugador' => $corrugador,
             'id_corrugador' => $id_corrugador,
+            'turnoCorrugador1' => $turnoCorrugador1,
         ]);
     }
 
