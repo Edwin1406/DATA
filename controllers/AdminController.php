@@ -628,7 +628,7 @@ class AdminController
 
 
 
-            debuguear($produccion_diaria);
+            // debuguear($produccion_diaria);
 
 
             $produccion_diaria->sincronizar($_POST);
