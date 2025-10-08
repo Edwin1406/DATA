@@ -753,7 +753,7 @@ class AdminController
         $produccion_diaria = ProduccionDiaria::find($id);
 
 
-        debuguear($produccion_diaria);
+        // debuguear($produccion_diaria);
 
         
 
