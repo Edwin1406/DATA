@@ -588,194 +588,111 @@ class AdminController
 
 
 
-    // // REGISTRO DE PRODUCCION DIARIA
-    // public static function produccion_diaria(Router $router)
-    // {
-    //     session_start();
-    //     if (!isset($_SESSION['email'])) {
-    //         header('Location: /');
-    //     }
-    //     // NOMBRE DE LA PERSONA LOGEADA
-    //     $nombre = $_SESSION['nombre'];
-    //     $email = $_SESSION['email'];
+    // REGISTRO DE PRODUCCION DIARIA
+    public static function produccion_diaria(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
 
-    //     $id_corrugador = $_GET['id'] ?? null;
+        $id_corrugador = $_GET['id'] ?? null;
         
 
 
 
-    //     $corrugador = Ventas::where('id', $id_corrugador);
+        $corrugador = Ventas::where('id', $id_corrugador);
 
 
 
-    //     // debuguear($corrugador);
+        // debuguear($corrugador);
 
 
 
-    //     $produccion_diaria = new ProduccionDiaria;
+        $produccion_diaria = new ProduccionDiaria;
 
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
-    //     unset($_POST['id']); // <- clave
-
-    //         $produccion_diaria->fecha = $_POST['fecha'] ?? null;
-    //         $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
-    //         $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] ?? 0;
-    //         $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ?? 0;
-    //         $produccion_diaria->id_corrugador = $_POST['id'] ?? null;
-    //         $produccion_diaria->hora_inicio = $_POST['hora_inicio'] ?? null;
-    //         $produccion_diaria->hora_fin = $_POST['hora_fin'] ?? null;
-    //         $produccion_diaria->desperdicio_lamina = $_POST['desperdicio_lamina'] ?? 0;
-    //         $produccion_diaria->kilos_x_dia = $_POST['kilos_x_dia'] ?? 0;
-    //         $produccion_diaria->turno = $_POST['turno'] ?? null;
-    //         $produccion_diaria->horas_maquina = $_POST['horas_maquina'] ?? 0;
-    //         $produccion_diaria->cambios = $_POST['cambios'] ?? 0;
-    //         $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] ?? 0;
-    //         $produccion_diaria->unidades_x_procesar = $_POST['unidades_x_procesar'] ?? 0;
-    //         $produccion_diaria->kilos_x_procesar = $_POST['kilos_x_procesar'] ?? 0;
-    //         $produccion_diaria->linea = $_POST['linea'] ?? null;
-
-            
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
+        // unset($_POST['id']); // <- clave
 
-
-
-
-    //         // debuguear($produccion_diaria->id_corrugador);
-
-    //         if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-    //             $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
-    //         }
-
-
+            $produccion_diaria->fecha = $_POST['fecha'] ?? null;
+            $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
+            $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] ?? 0;
+            $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ?? 0;
+            $produccion_diaria->hora_inicio = $_POST['hora_inicio'] ?? null;
+            $produccion_diaria->hora_fin = $_POST['hora_fin'] ?? null;
+            $produccion_diaria->desperdicio_lamina = $_POST['desperdicio_lamina'] ?? 0;
+            $produccion_diaria->kilos_x_dia = $_POST['kilos_x_dia'] ?? 0;
+            $produccion_diaria->turno = $_POST['turno'] ?? null;
+            $produccion_diaria->horas_maquina = $_POST['horas_maquina'] ?? 0;
+            $produccion_diaria->cambios = $_POST['cambios'] ?? 0;
+            $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] ?? 0;
+            $produccion_diaria->unidades_x_procesar = $_POST['unidades_x_procesar'] ?? 0;
+            $produccion_diaria->kilos_x_procesar = $_POST['kilos_x_procesar'] ?? 0;
+            $produccion_diaria->linea = $_POST['linea'] ?? null;
 
             
+
+
+
+
+
+
+            // debuguear($produccion_diaria->id_corrugador);
+
+            if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
+                $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
+            }
+
+
+
             
-    //         $produccion_diaria->sincronizar($_POST);
             
-    //         // debuguear($produccion_diaria);
+            $produccion_diaria->sincronizar($_POST);
+            
+            // debuguear($produccion_diaria);
 
-    //         // Verifica si la unidad por día no es cero
-    //         if ($produccion_diaria->unidad_x_dia != 0) {
-    //             $peso_un = $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
-    //             $produccion_diaria->peso_un = round($peso_un, 2);
-    //         } else {
-    //             // Si la unidad por día es cero, no hacer nada o asignar un valor por defecto
-    //             $produccion_diaria->peso_un = 0; // O cualquier valor predeterminado que quieras
-    //         }
-
-
-    //         // debuguear($produccion_diaria);
-
-
-    //         // debuguear($produccion_diaria);
-    //         $alertas = $produccion_diaria->validar();
-    //         if (empty($alertas)) {
-    //             $produccion_diaria->guardar();
-    //             header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
-    //         }
-    //     } else {
-    //         $alertas = [];
-    //     }
+            // Verifica si la unidad por día no es cero
+            if ($produccion_diaria->unidad_x_dia != 0) {
+                $peso_un = $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
+                $produccion_diaria->peso_un = round($peso_un, 2);
+            } else {
+                // Si la unidad por día es cero, no hacer nada o asignar un valor por defecto
+                $produccion_diaria->peso_un = 0; // O cualquier valor predeterminado que quieras
+            }
 
 
+            // debuguear($produccion_diaria);
 
 
-    //     // debuguear($nombre);
-    //     $router->render('admin/diaria/produccion_diaria', [
-    //         'titulo' => 'MEGASTOCK-DESARROLLO',
-    //         'nombre' => $nombre,
-    //         'email' => $email,
-    //         'corrugador' => $corrugador,
-    //     ]);
-    // }
-
-
-
-public static function produccion_diaria(Router $router)
-{
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        header('Location: /');
-        exit;
-    }
-
-    $nombre = $_SESSION['nombre'];
-    $email  = $_SESSION['email'];
-
-    // 1) Mantener/leer SIEMPRE el id por GET
-    $id_corrugador = isset($_GET['id']) ? (int) $_GET['id'] : null;
-    if (!$id_corrugador) {
-        // Manejo básico de error
-        header('Location: /admin/diaria'); 
-        exit;
-    }
-
-    $corrugador = Ventas::where('id', $id_corrugador);
-    $produccion_diaria = new ProduccionDiaria;
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-        // 2) Filtrar POST para que no toque claves reservadas
-        $data = $_POST;
-
-        // Nunca aceptar estos desde el form:
-        unset($data['id'], $data['id_corrugador']);
-
-        // 3) Asignar id_corrugador desde GET, no desde POST
-        $produccion_diaria->id_corrugador = $id_corrugador;
-
-        // 4) Sincronizar SOLO con campos permitidos
-        $produccion_diaria->fecha               = $data['fecha'] ?? null;
-        $produccion_diaria->peso_un             = 0; // se recalcula más abajo
-        $produccion_diaria->unidad_x_dia        = (float)($data['unidad_x_dia'] ?? 0);
-        $produccion_diaria->metros_lineales     = (float)($data['metros_lineales'] ?? 0);
-        $produccion_diaria->hora_inicio         = $data['hora_inicio'] ?? null;
-        $produccion_diaria->hora_fin            = $data['hora_fin'] ?? null;
-        $produccion_diaria->desperdicio_lamina  = (float)($data['desperdicio_lamina'] ?? 0);
-        $produccion_diaria->kilos_x_dia         = (float)($data['kilos_x_dia'] ?? 0);
-        $produccion_diaria->turno               = $data['turno'] ?? null;
-        $produccion_diaria->horas_maquina       = (float)($data['horas_maquina'] ?? 0);
-        $produccion_diaria->cambios             = (int)($data['cambios'] ?? 0);
-        $produccion_diaria->tiempo_x_cambio     = (float)($data['tiempo_x_cambio'] ?? 0);
-        $produccion_diaria->unidades_x_procesar = (float)($data['unidades_x_procesar'] ?? 0);
-        $produccion_diaria->kilos_x_procesar    = (float)($data['kilos_x_procesar'] ?? 0);
-        $produccion_diaria->linea               = $data['linea'] ?? null;
-
-        // 5) Regla de negocio: si es corrugador, metros_lineales = 0
-        if ($produccion_diaria->linea === 'CORRUGADOR CAJAS' || $produccion_diaria->linea === 'CORRUGADOR PLANCHAS') {
-            $produccion_diaria->metros_lineales = 0;
+            // debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
+            }
+        } else {
+            $alertas = [];
         }
 
-        // 6) Calcular peso_un con seguridad
-        if ($produccion_diaria->unidad_x_dia > 0) {
-            $produccion_diaria->peso_un = round($produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia, 2);
-        }
 
-        // 7) Validar y guardar
-        $alertas = $produccion_diaria->validar();
-        if (empty($alertas)) {
-            $produccion_diaria->guardar();
 
-            // 8) Redirect manteniendo el id por URL (GET)
-            header('Location: /admin/diaria/produccion_diaria?id=' . $id_corrugador . '&exito=1');
-            exit;
-        }
-    } else {
-        $alertas = [];
+
+        // debuguear($nombre);
+        $router->render('admin/diaria/produccion_diaria', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'corrugador' => $corrugador,
+        ]);
     }
 
-    // Render
-    $router->render('admin/diaria/produccion_diaria', [
-        'titulo'      => 'MEGASTOCK-DESARROLLO',
-        'nombre'      => $nombre,
-        'email'       => $email,
-        'corrugador'  => $corrugador,
-        'alertas'     => $alertas ?? [],
-    ]);
-}
+
+
 
 
 
