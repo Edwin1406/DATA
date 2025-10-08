@@ -711,11 +711,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $alertas = $produccion_diaria->validar();
     if (empty($alertas)) {
         $produccion_diaria->guardar();
+        
         header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
         exit;
     }
 }
 
+
+// En el GET inicial, carga $corrugador desde id_corrugador (no desde 'id'):
+$idCorr = $_GET['id_corrugador'] ?? null;
+$corrugador = $idCorr ? Ventas::where('id', $idCorr) : null;
 
 
 
