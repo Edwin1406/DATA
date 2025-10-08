@@ -112,7 +112,7 @@
                              <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
                              <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 60px;">Motivo de Inactividad</th>
+                             <th class="fs-6" style="min-width: 60px;">Tiempo Cambio Medida </th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
@@ -126,7 +126,7 @@
                                  <td><?= $flexo->consumo_papel ?></td>
                                  <td><?= $flexo->n_unidades ?></td>
                                  <td><?= $flexo->turno ?></td>
-                                 <td><?= $flexo->motivo_inactividad ?></td>
+                                 <td><?= $flexo->tiempo_cambio_medida ?></td>
 
 
                                  <td>
