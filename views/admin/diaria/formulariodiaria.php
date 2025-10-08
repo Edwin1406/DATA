@@ -106,7 +106,7 @@
       <label for="horas_maquina">Horas de Maquina</label>
       <input type="time" id="horas_maquina" class="form-control"
         placeholder="Horas de Maquina" name="horas_maquina"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->horas_maquina) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->turno - 1) : ''; ?>">
     </div>
   </div>
 
