@@ -207,7 +207,7 @@
 
           case 'CORRUGADOR CAJAS':
             // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
-            $('#unidades_x_dia').closest('.form-group').hide();
+            $('#unidad_x_dia').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
             $('#hora_inicio').closest('.form-group').hide();
             $('#hora_fin').closest('.form-group').hide();
@@ -223,7 +223,7 @@
 
           case 'CORRUGADOR PLANCHAS':
             // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
-            $('#unidades_x_dia').closest('.form-group').hide();
+            $('#unidad_x_dia').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
             $('#kilos_x_dia').closest('.form-group').hide();
             $('#desperdicio_lamina').closest('.form-group').hide();
