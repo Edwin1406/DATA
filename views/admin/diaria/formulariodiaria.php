@@ -20,10 +20,10 @@
     <div class="form-group">
       <label for="linea">Linea de Producción</label>
       <select class="form-select" name="linea" id="linea">
-        <option value="" disabled selected>-- Seleccione --</option>
+        <!-- <option value="" disabled selected>-- Seleccione --</option>
         <option value="MICRO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'MICRO' ? 'selected' : ''; ?>>Micro</option>
         <option value="SEPARADORES" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'SEPARADORES' ? 'selected' : ''; ?>>Separadores</option>
-        <option value="PERIODICO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option>
+        <option value="PERIODICO" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'PERIODICO' ? 'selected' : ''; ?>>Periódico</option> -->
         <option value="CORRUGADOR PLANCHAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS' ? 'selected' : ''; ?>>Corrugado de Planchas</option>
         <option value="CORRUGADOR CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR CAJAS' ? 'selected' : ''; ?>>Corrugado de Cajas</option>
         <option value="CORRUGADOR PLANCHAS/CAJAS" <?php echo isset($produccion_diaria) && s($produccion_diaria->linea) === 'CORRUGADOR PLANCHAS/CAJAS' ? 'selected' : ''; ?>>Corrugado Planchas/Cajas</option>
@@ -165,41 +165,41 @@
 
         // Lógica para ocultar los campos según la opción seleccionada
         switch (selectedLinea) {
-          case 'SEPARADORES':
-            // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
-            $('#kilos_x_procesar').closest('.form-group').hide();
-            $('#kilos_x_dia').closest('.form-group').hide();
-            $('#metros_lineales').closest('.form-group').hide();
+          // case 'SEPARADORES':
+          //   // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
+          //   $('#kilos_x_procesar').closest('.form-group').hide();
+          //   $('#kilos_x_dia').closest('.form-group').hide();
+          //   $('#metros_lineales').closest('.form-group').hide();
         
-            $('#desperdicio_lamina').closest('.form-group').hide();
-            $('#turno').closest('.form-group').hide();
-            $('#horas_maquina').closest('.form-group').hide();
-            $('#cambios').closest('.form-group').hide();
-            $('#tiempo_x_cambio').closest('.form-group').hide();
+          //   $('#desperdicio_lamina').closest('.form-group').hide();
+          //   $('#turno').closest('.form-group').hide();
+          //   $('#horas_maquina').closest('.form-group').hide();
+          //   $('#cambios').closest('.form-group').hide();
+          //   $('#tiempo_x_cambio').closest('.form-group').hide();
 
-            break;
+          //   break;
 
-          case 'MICRO':
-            // Ocultar metros_lineales
-            $('#metros_lineales').closest('.form-group').hide();
+          // case 'MICRO':
+          //   // Ocultar metros_lineales
+          //   $('#metros_lineales').closest('.form-group').hide();
         
-            $('#desperdicio_lamina').closest('.form-group').hide();
-            $('#turno').closest('.form-group').hide();
-            $('#horas_maquina').closest('.form-group').hide();
-            $('#cambios').closest('.form-group').hide();
-            $('#tiempo_x_cambio').closest('.form-group').hide();
-            break;
+          //   $('#desperdicio_lamina').closest('.form-group').hide();
+          //   $('#turno').closest('.form-group').hide();
+          //   $('#horas_maquina').closest('.form-group').hide();
+          //   $('#cambios').closest('.form-group').hide();
+          //   $('#tiempo_x_cambio').closest('.form-group').hide();
+          //   break;
 
-          case 'PERIODICO':
-            // Ocultar metros_lineales
-            $('#metros_lineales').closest('.form-group').hide();
+          // case 'PERIODICO':
+          //   // Ocultar metros_lineales
+          //   $('#metros_lineales').closest('.form-group').hide();
           
-            $('#desperdicio_lamina').closest('.form-group').hide();
-            $('#turno').closest('.form-group').hide();
-            $('#horas_maquina').closest('.form-group').hide();
-            $('#cambios').closest('.form-group').hide();
-            $('#tiempo_x_cambio').closest('.form-group').hide();
-            break;
+          //   $('#desperdicio_lamina').closest('.form-group').hide();
+          //   $('#turno').closest('.form-group').hide();
+          //   $('#horas_maquina').closest('.form-group').hide();
+          //   $('#cambios').closest('.form-group').hide();
+          //   $('#tiempo_x_cambio').closest('.form-group').hide();
+          //   break;
 
           case 'CORRUGADOR PLANCHAS/CAJAS':
             // Mostrar todos los campos (por defecto ya se están mostrando)
