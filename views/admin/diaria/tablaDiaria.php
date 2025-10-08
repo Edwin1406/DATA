@@ -128,7 +128,7 @@
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarproduccion_diaria?id=<?= $produccionDiaria->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/diaria/editarproduccion_diaria?id=<?= $produccionDiaria->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarDiaria" method="POST">
                                              <input type="hidden" name="id" value="<?= $produccionDiaria->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
