@@ -709,7 +709,27 @@ class AdminController
 
 
 
+// tabladiaria
+    public static function tablaDiaria(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
 
+        $produccionDiarias = ProduccionDiaria::all();
+        debuguear($produccionDiarias);
+
+        $router->render('admin/diaria/tablaDiaria', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA PRODUCCIÓN DIARIA',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccionDiarias' => $produccionDiarias
+        ]);
+    }
 
 
 
