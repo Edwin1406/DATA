@@ -240,6 +240,15 @@ $router->post('/admin/eliminarDiseno', [DiseñoController::class, 'eliminarDisen
 $router->get('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 $router->post('/admin/editarAdminConsumoGeneral', [AdminController::class, 'editarAdminConsumoGeneral']);
 
+
+// editar produccion diaria
+$router->get('/admin/diaria/editarproduccion_diaria', [AdminController::class, 'editarproduccion_diaria']);
+$router->post('/admin/diaria/editarproduccion_diaria', [AdminController::class, 'editarproduccion_diaria']);
+
+
+
+
+
 // eliminar consumo doblado
 $router->post('/admin/eliminarConsumoDoblado', [ControlController::class, 'eliminarConsumoDoblado']);
 
