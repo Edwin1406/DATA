@@ -69,7 +69,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                              <input type="hidden" name="id" value="<?php echo isset($corrugador) ? s($corrugador->id) : ''; ?>">
+                            
 
                             <form class="form" method="POST" action="/admin/diaria/produccion_diaria?id=<?= htmlspecialchars($id_corrugador) ?>" enctype="multipart/form-data">
                                 <div class="row">
