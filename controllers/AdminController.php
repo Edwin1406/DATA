@@ -606,10 +606,13 @@ class AdminController
 
         $corrugador = Ventas::where('id', $id_corrugador);
 
-        
 
 
-        
+
+        $turnoCorrugador = $corrugador->turno ?? null;
+
+
+        debuguear($turnoCorrugador);
 
 
 
