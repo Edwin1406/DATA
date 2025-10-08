@@ -617,7 +617,7 @@ class AdminController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-        // unset($_POST['id']); // <- clave
+        unset($_POST['id']); // <- clave
 
             $produccion_diaria->fecha = $_POST['fecha'] ?? null;
             $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
