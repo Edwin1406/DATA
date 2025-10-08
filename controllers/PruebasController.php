@@ -508,6 +508,7 @@ class PruebasController
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
+            
 
 
             // fecha manual
