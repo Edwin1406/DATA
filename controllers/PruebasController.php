@@ -550,7 +550,7 @@ class PruebasController
 
             Carrito::eliminarPorColumna('id_usuario', $id_usuario);
 
-            header('Location: /admin/pruebas/crearPruebas?exito=1');
+            header('Location: /admin/pruebas/crearFlexo?exito=1');
             exit;
         } else {
             header('Location: /carrito');
