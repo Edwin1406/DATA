@@ -58,7 +58,7 @@
       <label for="kilos_x_dia">Kilos x dia</label>
       <input type="text" id="kilos_x_dia" class="form-control"
         placeholder="Kilos x dia" name="kilos_x_dia"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->kilos_x_dia) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->consumo_papel) : '0'; ?>">
     </div>
   </div>
 
