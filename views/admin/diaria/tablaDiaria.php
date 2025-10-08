@@ -106,9 +106,10 @@
                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
                             <th class="fs-6" style="min-width: 80px;">Unidad x dia</th>
                             <th class="fs-6" style="min-width: 80px;">Metros lineales</th>
-                            <th class="fs-6" style="min-width: 80px;">Turno</th>
                             <th class="fs-6" style="min-width: 60px;">Desperdicio</th>
                             <th class="fs-6" style="min-width: 60px;">Linea</th>
+                            <th class="fs-6" style="min-width: 60px;">Unidades x prc</th>
+                            <th class="fs-6" style="min-width: 60px;">Kilos x prc</th>
 
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
@@ -121,9 +122,10 @@
                                 <td><?= $produccionDiaria->fecha ?></td>
                                 <td><?= $produccionDiaria->unidad_x_dia ?></td>
                                 <td><?= $produccionDiaria->metros_lineales ?></td>
-                                <td><?= $produccionDiaria->turno ?></td>
                                 <td><?= $produccionDiaria->desperdicio_lamina ?></td>
                                 <td><?= $produccionDiaria->linea ?></td>
+                                <td><?= $produccionDiaria->unidades_x_prc ?></td>
+                                <td><?= $produccionDiaria->kilos_x_prc ?></td>
 
 
                                 <td>
