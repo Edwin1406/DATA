@@ -675,6 +675,8 @@ class AdminController
         //     $alertas = [];
         // }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        unset($_POST['id']); // <- clave
+
     // 1) Sincroniza primero lo que venga del form
     $produccion_diaria->sincronizar($_POST);
 
