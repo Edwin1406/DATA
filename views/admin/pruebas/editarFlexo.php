@@ -178,7 +178,7 @@
                         <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="tiempo_cambio_medida">tiempo_cambio_medida</label>
-                                <input type="float" id="tiempo_cambio_medida" class="form-control"
+                                <input type="number" id="tiempo_cambio_medida" class="form-control"
                                     name="tiempo_cambio_medida"
                                     value="<?php echo $venta->tiempo_cambio_medida ?? ''; ?>"
                                     step="0.01"

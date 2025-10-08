@@ -21,7 +21,7 @@ class VenFlexo extends ActiveRecord {
     public ?string $hora_inicio;
     public ?string $hora_fin;
     public ?string $estandar;
-    public ?int $tiempo_cambio_medida;
+    public $tiempo_cambio_medida;
     public ?string $motivo_inactividad;
   
     public ?string $fecha;
