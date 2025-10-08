@@ -104,11 +104,11 @@
                         <tr>
                             <th class="fs-6" style="min-width: 90px;">Id</th>
                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
-                            <th class="fs-6" style="min-width: 80px;">Unidad x dia</th>
+                            <th class="fs-6" style="min-width: 80px;">Unid x dia</th>
                             <th class="fs-6" style="min-width: 80px;">Metros lineales</th>
                             <th class="fs-6" style="min-width: 60px;">Desperdicio</th>
                             <th class="fs-6" style="min-width: 60px;">Linea</th>
-                            <th class="fs-6" style="min-width: 60px;">Unidades x prc</th>
+                            <th class="fs-6" style="min-width: 60px;">Unid x prc</th>
                             <th class="fs-6" style="min-width: 60px;">Kilos x prc</th>
 
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
