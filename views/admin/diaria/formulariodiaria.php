@@ -169,8 +169,7 @@
             $('#kilos_x_procesar').closest('.form-group').hide();
             $('#kilos_x_dia').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
-            $('#refile_std').closest('.form-group').hide();
-            $('#extra_trim').closest('.form-group').hide();
+        
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
@@ -182,8 +181,7 @@
           case 'MICRO':
             // Ocultar metros_lineales
             $('#metros_lineales').closest('.form-group').hide();
-            $('#refile_std').closest('.form-group').hide();
-            $('#extra_trim').closest('.form-group').hide();
+        
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
@@ -194,8 +192,7 @@
           case 'PERIODICO':
             // Ocultar metros_lineales
             $('#metros_lineales').closest('.form-group').hide();
-            $('#refile_std').closest('.form-group').hide();
-            $('#extra_trim').closest('.form-group').hide();
+          
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
@@ -212,8 +209,7 @@
             $('#unidades_x_dia').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
             $('#kilos_x_dia').closest('.form-group').hide();
-            $('#refile_std').closest('.form-group').hide();
-            $('#extra_trim').closest('.form-group').hide();
+       
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
@@ -226,8 +222,6 @@
             $('#unidades_x_dia').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
             $('#kilos_x_dia').closest('.form-group').hide();
-            $('#refile_std').closest('.form-group').hide();
-            $('#extra_trim').closest('.form-group').hide();
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
