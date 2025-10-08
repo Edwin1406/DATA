@@ -102,7 +102,7 @@
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th class="fs-6" style="min-width: 90px;">Id</th>
+                            <th class="fs-6" style="min-width: 50px;">Id</th>
                             <th class="fs-6" style="min-width: 93px;">Fecha</th>
                             <th class="fs-6" style="min-width: 80px;">Unid x dia</th>
                             <th class="fs-6" style="min-width: 80px;">Metros lineales</th>
