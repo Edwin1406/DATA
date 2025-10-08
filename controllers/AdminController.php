@@ -615,11 +615,14 @@ class AdminController
 
 
             $produccion_diaria->fecha = $_POST['fecha'] ?? null;
+            $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
+            $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] ?? 0;
+            $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ??
             $produccion_diaria->linea = $_POST['linea'] ?? null;
             $produccion_diaria->id_corrugador = $_POST['id'] ?? null;
             $produccion_diaria->hora_inicio = $_POST['hora_inicio'] ?? null;
             $produccion_diaria->hora_fin = $_POST['hora_fin'] ?? null;
-            
+
 
 
 
