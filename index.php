@@ -205,8 +205,19 @@ $router->get('/admin/control/convertidor/tablaConsumoConvertidor', [ControlContr
 // tabla consumo guillotina papel
 $router->get('/admin/control/guillotina/tablaConsumoGuillotinaPapel', [ControlController::class, 'tablaConsumoGuillotinaPapel']);
 
+
+
+// tabladiaria
+$router->get('/admin/diaria/tablaDiaria', [AdminController::class, 'tablaDiaria']);
+
+
+
+
+
 // turnotabladiseno
 $router->get('/admin/turnoDiseno/turnotablaDiseno', [DiseñoController::class, 'turnotablaDiseno']);
+
+
 
 
 
