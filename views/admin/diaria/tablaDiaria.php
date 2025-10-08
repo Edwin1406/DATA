@@ -108,7 +108,7 @@
                              <th class="fs-6" style="min-width: 80px;">Unidad x dia</th>
                              <th class="fs-6" style="min-width: 80px;">Metros lineales</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                             <th class="fs-6" style="min-width: 60px;">Motivo de Inactividad</th>
+                             <th class="fs-6" style="min-width: 60px;">Desperdicio</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
