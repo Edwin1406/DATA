@@ -721,6 +721,36 @@ class PruebasController
 
 
 
+    // ELIMINAR CORRUGADOR
+    public static function eliminarCorrugado(){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $corrugador = Ventas::find($id);
+
+            if ($corrugador) {
+                $corrugador->eliminar();
+                header('Location: /admin/pruebas/tablaPruebas?eliminado=3');
+                exit;
+            } else {
+                // Manejar el caso en que no se encuentra el registro
+                header('Location: /admin/pruebas/tablaPruebas?error=1');
+                exit;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
     public static function editarFlexo(Router $router)
     {

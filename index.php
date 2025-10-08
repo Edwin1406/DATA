@@ -255,6 +255,8 @@ $router->post('/admin/eliminarTurnoDiseno', [DiseñoController::class, 'eliminar
 // eliminar diaria
 $router->post('/admin/eliminarDiaria', [AdminController::class, 'eliminarDiaria']);
 
+// eliminar corrugador
+$router->post('/admin/eliminarCorrugado', [PruebasController::class, 'eliminarCorrugado']);
 
 
 

@@ -135,7 +135,7 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                         <form action="/admin/eliminarPruebas" method="POST">
+                                         <form action="/admin/eliminarCorrugado" method="POST">
                                              <input type="hidden" name="id" value="<?= $corrugado->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
