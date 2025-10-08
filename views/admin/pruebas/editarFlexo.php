@@ -281,12 +281,7 @@
     </div>
   </div>
 
-  <p class="note">
-    Fórmulas: <code>subtotal = tiempo × cantidad</code> ·
-    <code>totalCantidad = Σ cantidades</code> ·
-    <code>totalMinutos = Σ subtotales</code> ·
-    <code>promedio = totalMinutos ÷ totalCantidad</code>
-  </p>
+
 
   <script>
     (function () {
