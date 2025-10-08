@@ -219,6 +219,142 @@
 
 
 
+ <table id="tabla">
+    <thead>
+      <tr>
+        <th class="left">Proceso</th>
+        <th>Tiempo (Min) <span class="muted">[input]</span></th>
+        <th>Cantidad <span class="muted">[input]</span></th>
+        <th>Tiempo × Cantidad (Min)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="left">TAPAS</td>
+        <td class="input-cell">
+          <input type="number" min="0" step="0.1" value="40" data-role="tiempo">
+        </td>
+        <td class="input-cell">
+          <input type="number" min="0" step="1" value="6" data-role="cantidad">
+        </td>
+        <td data-role="subtotal">0</td>
+      </tr>
+      <tr>
+        <td class="left">BASES</td>
+        <td class="input-cell">
+          <input type="number" min="0" step="0.1" value="20" data-role="tiempo">
+        </td>
+        <td class="input-cell">
+          <input type="number" min="0" step="1" value="6" data-role="cantidad">
+        </td>
+        <td data-role="subtotal">0</td>
+      </tr>
+      <tr>
+        <td class="left">FONDOS</td>
+        <td class="input-cell">
+          <input type="number" min="0" step="0.1" value="8" data-role="tiempo">
+        </td>
+        <td class="input-cell">
+          <input type="number" min="0" step="1" value="2" data-role="cantidad">
+        </td>
+        <td data-role="subtotal">0</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="left">Totales</td>
+        <td class="muted">—</td>
+        <td id="total-cantidad">0</td>
+        <td id="total-minutos">0</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="summary">
+    <div>
+      Promedio (Min por unidad)
+      <b id="promedio">0</b>
+    </div>
+    <div>
+      Observación
+      <b id="observacion">—</b>
+    </div>
+  </div>
+
+  <p class="note">
+    Fórmulas: <code>subtotal = tiempo × cantidad</code> ·
+    <code>totalCantidad = Σ cantidades</code> ·
+    <code>totalMinutos = Σ subtotales</code> ·
+    <code>promedio = totalMinutos ÷ totalCantidad</code>
+  </p>
+
+  <script>
+    (function () {
+      const tabla = document.getElementById('tabla');
+      const filas = Array.from(tabla.tBodies[0].rows);
+
+      const $totalCantidad = document.getElementById('total-cantidad');
+      const $totalMinutos  = document.getElementById('total-minutos');
+      const $promedio      = document.getElementById('promedio');
+      const $obs           = document.getElementById('observacion');
+
+      function num(v) {
+        const n = parseFloat(v);
+        return Number.isFinite(n) ? n : 0;
+      }
+      function fmt(n, dec = 1) {
+        return n.toLocaleString('es-ES', { maximumFractionDigits: dec, minimumFractionDigits: dec });
+      }
+
+      function recalcular() {
+        let totalCant = 0;
+        let totalMins = 0;
+
+        filas.forEach(tr => {
+          const tiempo   = num(tr.querySelector('input[data-role="tiempo"]').value);
+          const cantidad = num(tr.querySelector('input[data-role="cantidad"]').value);
+          const subtotal = tiempo * cantidad;
+
+          tr.querySelector('[data-role="subtotal"]').textContent = fmt(subtotal, 0);
+
+          totalCant += cantidad;
+          totalMins += subtotal;
+        });
+
+        $totalCantidad.textContent = fmt(totalCant, 0);
+        $totalMinutos.textContent  = fmt(totalMins, 0);
+
+        const prom = totalCant > 0 ? (totalMins / totalCant) : 0;
+        $promedio.textContent = fmt(prom, 1);
+
+        // Mensajito útil para detectar rarezas
+        if (totalCant === 0 && totalMins > 0) {
+          $obs.textContent = 'Revisa cantidades (están en 0)';
+        } else if (totalCant > 0 && totalMins === 0) {
+          $obs.textContent = 'Faltan tiempos o están en 0';
+        } else {
+          $obs.textContent = 'OK';
+        }
+      }
+
+      // Listeners en todos los inputs
+      filas.forEach(tr => {
+        tr.querySelectorAll('input').forEach(inp => {
+          inp.addEventListener('input', recalcular);
+          inp.addEventListener('change', recalcular);
+        });
+      });
+
+      // Primera pasada con los valores iniciales
+      recalcular();
+    })();
+  </script>
+
+
+
+
+
+
     <script>
         function bloquearBoton(form) {
             const btn = form.querySelector('#btnRegistrar');
