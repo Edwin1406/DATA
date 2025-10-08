@@ -610,70 +610,110 @@ class AdminController
 
         $produccion_diaria = new ProduccionDiaria;
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-            $produccion_diaria->fecha = $_POST['fecha'] ?? null;
-            $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
-            $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] ?? 0;
-            $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ?? 0;
-            $produccion_diaria->id_corrugador = $_POST['id'] ?? null;
-            $produccion_diaria->hora_inicio = $_POST['hora_inicio'] ?? null;
-            $produccion_diaria->hora_fin = $_POST['hora_fin'] ?? null;
-            $produccion_diaria->desperdicio_lamina = $_POST['desperdicio_lamina'] ?? 0;
-            $produccion_diaria->kilos_x_dia = $_POST['kilos_x_dia'] ?? 0;
-            $produccion_diaria->turno = $_POST['turno'] ?? null;
-            $produccion_diaria->horas_maquina = $_POST['horas_maquina'] ?? 0;
-            $produccion_diaria->cambios = $_POST['cambios'] ?? 0;
-            $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] ?? 0;
-            $produccion_diaria->unidades_x_procesar = $_POST['unidades_x_procesar'] ?? 0;
-            $produccion_diaria->kilos_x_procesar = $_POST['kilos_x_procesar'] ?? 0;
-            $produccion_diaria->linea = $_POST['linea'] ?? null;
-
-            
-
-
-
-
-
-
-            // debuguear($produccion_diaria->id_corrugador);
-
-            if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
-                $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
-            }
-
-
+        //     $produccion_diaria->fecha = $_POST['fecha'] ?? null;
+        //     $produccion_diaria->peso_un = $_POST['peso_un'] ?? 0;
+        //     $produccion_diaria->unidad_x_dia = $_POST['unidad_x_dia'] ?? 0;
+        //     $produccion_diaria->metros_lineales = $_POST['metros_lineales'] ?? 0;
+        //     $produccion_diaria->id_corrugador = $_POST['id'] ?? null;
+        //     $produccion_diaria->hora_inicio = $_POST['hora_inicio'] ?? null;
+        //     $produccion_diaria->hora_fin = $_POST['hora_fin'] ?? null;
+        //     $produccion_diaria->desperdicio_lamina = $_POST['desperdicio_lamina'] ?? 0;
+        //     $produccion_diaria->kilos_x_dia = $_POST['kilos_x_dia'] ?? 0;
+        //     $produccion_diaria->turno = $_POST['turno'] ?? null;
+        //     $produccion_diaria->horas_maquina = $_POST['horas_maquina'] ?? 0;
+        //     $produccion_diaria->cambios = $_POST['cambios'] ?? 0;
+        //     $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] ?? 0;
+        //     $produccion_diaria->unidades_x_procesar = $_POST['unidades_x_procesar'] ?? 0;
+        //     $produccion_diaria->kilos_x_procesar = $_POST['kilos_x_procesar'] ?? 0;
+        //     $produccion_diaria->linea = $_POST['linea'] ?? null;
 
             
+
+
+
+
+
+
+        //     // debuguear($produccion_diaria->id_corrugador);
+
+        //     if ($produccion_diaria->linea == 'CORRUGADOR CAJAS' || $produccion_diaria->linea == 'CORRUGADOR PLANCHAS') {
+        //         $produccion_diaria->metros_lineales = $_POST['metros_lineales'] =  0 ?? null;
+        //     }
+
+
+
             
-            $produccion_diaria->sincronizar($_POST);
             
-            debuguear($produccion_diaria);
+        //     $produccion_diaria->sincronizar($_POST);
+            
+        //     debuguear($produccion_diaria);
 
-            // Verifica si la unidad por día no es cero
-            if ($produccion_diaria->unidad_x_dia != 0) {
-                $peso_un = $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
-                $produccion_diaria->peso_un = round($peso_un, 2);
-            } else {
-                // Si la unidad por día es cero, no hacer nada o asignar un valor por defecto
-                $produccion_diaria->peso_un = 0; // O cualquier valor predeterminado que quieras
-            }
+        //     // Verifica si la unidad por día no es cero
+        //     if ($produccion_diaria->unidad_x_dia != 0) {
+        //         $peso_un = $produccion_diaria->kilos_x_dia / $produccion_diaria->unidad_x_dia;
+        //         $produccion_diaria->peso_un = round($peso_un, 2);
+        //     } else {
+        //         // Si la unidad por día es cero, no hacer nada o asignar un valor por defecto
+        //         $produccion_diaria->peso_un = 0; // O cualquier valor predeterminado que quieras
+        //     }
 
 
-            // debuguear($produccion_diaria);
+        //     // debuguear($produccion_diaria);
 
 
-            // debuguear($produccion_diaria);
-            $alertas = $produccion_diaria->validar();
-            if (empty($alertas)) {
-                $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
-            }
-        } else {
-            $alertas = [];
-        }
+        //     // debuguear($produccion_diaria);
+        //     $alertas = $produccion_diaria->validar();
+        //     if (empty($alertas)) {
+        //         $produccion_diaria->guardar();
+        //         header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
+        //     }
+        // } else {
+        //     $alertas = [];
+        // }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 1) Sincroniza primero lo que venga del form
+    $produccion_diaria->sincronizar($_POST);
+
+    // 2) Completa defaults seguros
+    $produccion_diaria->unidad_x_dia      = (int)($_POST['unidad_x_dia'] ?? 0);
+    $produccion_diaria->kilos_x_dia       = (float)($_POST['kilos_x_dia'] ?? 0);
+    $produccion_diaria->metros_lineales   = isset($_POST['metros_lineales']) ? (float)$_POST['metros_lineales'] : 0;
+    $produccion_diaria->desperdicio_lamina= (float)($_POST['desperdicio_lamina'] ?? 0);
+    $produccion_diaria->cambios           = (int)($_POST['cambios'] ?? 0);
+    $produccion_diaria->tiempo_x_cambio   = (float)($_POST['tiempo_x_cambio'] ?? 0);
+    $produccion_diaria->unidades_x_procesar = (int)($_POST['unidades_x_procesar'] ?? 0);
+    $produccion_diaria->kilos_x_procesar  = (float)($_POST['kilos_x_procesar'] ?? 0);
+    $produccion_diaria->id_corrugador     = $_POST['id'] ?? null;
+
+    // 3) Reglas por línea
+    if (in_array($produccion_diaria->linea, ['CORRUGADOR CAJAS', 'CORRUGADOR PLANCHAS'], true)) {
+        $produccion_diaria->metros_lineales = 0;
+        $produccion_diaria->unidad_x_dia    = 0;
+        $produccion_diaria->kilos_x_dia     = 0;
+    }
+
+    // 4) Calcular peso_un solo si procede
+    if (!empty($produccion_diaria->unidad_x_dia)) {
+        $produccion_diaria->peso_un = round(
+            (float)$produccion_diaria->kilos_x_dia / (float)$produccion_diaria->unidad_x_dia,
+            2
+        );
+    } else {
+        $produccion_diaria->peso_un = 0;
+    }
+
+    // 5) Validar y guardar
+    $alertas = $produccion_diaria->validar();
+    if (empty($alertas)) {
+        $produccion_diaria->guardar();
+        header('Location: /admin/diaria/produccion_diaria?id=' . $produccion_diaria->id_corrugador . '&exito=1');
+        exit;
+    }
+}
 
 
 
