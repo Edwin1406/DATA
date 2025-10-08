@@ -16,6 +16,7 @@ class ProduccionDiaria extends ActiveRecord {
         'kilos_x_dia',
         'hora_inicio',
         'hora_fin',
+        'desperdicio_lamina',
         'turno',
         'horas_maquina',
         'cambios',
