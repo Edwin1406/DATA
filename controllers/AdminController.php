@@ -646,11 +646,11 @@ class AdminController
 
 
 
-            // debuguear($produccion_diaria);
-
-
+            
+            
             $produccion_diaria->sincronizar($_POST);
-
+            
+            debuguear($produccion_diaria);
 
             // Verifica si la unidad por día no es cero
             if ($produccion_diaria->unidad_x_dia != 0) {
