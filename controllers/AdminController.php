@@ -618,7 +618,7 @@ class AdminController
                 $corrugador->hora_maquina= $turnoCorrugador1;
 
 
-        debuguear($corrugador->hora_maquina);
+        // debuguear($corrugador->hora_maquina);
 
 
 
@@ -707,6 +707,7 @@ class AdminController
             'email' => $email,
             'corrugador' => $corrugador,
             'id_corrugador' => $id_corrugador,
+            
             // 'turnoCorrugador1' => $turnoCorrugador1,
         ]);
     }
