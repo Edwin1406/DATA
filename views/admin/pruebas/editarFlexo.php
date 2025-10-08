@@ -168,19 +168,21 @@
                         <div class="col-md-5 col-12">
                             <div class="form-group">
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
-                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3" ><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
                             </div>
 
 
                         </div>
 
 
-                             <div class="col-md-2 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="tiempo_cambio_medida">tiempo_cambio_medida</label>
                                 <input type="number" id="tiempo_cambio_medida" class="form-control"
                                     name="tiempo_cambio_medida"
                                     value="<?php echo $venta->tiempo_cambio_medida ?? ''; ?>"
+                                    step="0.01"
+
                                     required>
                             </div>
                         </div>
@@ -218,195 +220,207 @@
 
 
 
-<style>
-
-
-.note {
-  font-size: 0.9em;
-  color: #666;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-    #tabla {
-        border-collapse: collapse;
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        font-family: Arial, sans-serif;
-    }
-    #tabla th, #tabla td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: center;
-    }
-    #tabla th {
-        background-color: #f4f4f4;
-    }
-    #tabla td.left {
-        text-align: left;
-    }
-    #tabla td.input-cell {
-        padding: 0;
-    }
-    #tabla td.input-cell input {
-        width: 100%;
-        box-sizing: border-box;
-        border: none;
-        padding: 6px;
-        text-align: center;
-    }
-    #tabla tfoot td {
-        font-weight: bold;
-        background-color: #f9f9f9;
-    }
-    .summary {
-        max-width: 600px;
-        margin: 20px auto;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: space-between;
-    }
-    .summary div {
-        font-size: 1.1em;
-    }
-    .summary b {
-        margin-left: 10px;
-    }
-    .muted {
-        color: #999;
-        font-size: 0.9em;
-    }
-
-</style>
-
-
-
- <table id="tabla">
-    <thead>
-      <tr>
-        <th class="left">Proceso</th>
-        <th>Tiempo (Min) <span class="muted">[input]</span></th>
-        <th>Cantidad <span class="muted">[input]</span></th>
-        <th>Tiempo × Cantidad (Min)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="left">TAPAS</td>
-        <td class="input-cell">
-          <input type="number" min="0" step="0.1" value="40" data-role="tiempo">
-        </td>
-        <td class="input-cell">
-          <input type="number" min="0" step="1" value="6" data-role="cantidad">
-        </td>
-        <td data-role="subtotal">0</td>
-      </tr>
-      <tr>
-        <td class="left">BASES</td>
-        <td class="input-cell">
-          <input type="number" min="0" step="0.1" value="20" data-role="tiempo">
-        </td>
-        <td class="input-cell">
-          <input type="number" min="0" step="1" value="6" data-role="cantidad">
-        </td>
-        <td data-role="subtotal">0</td>
-      </tr>
-      <tr>
-        <td class="left">FONDOS</td>
-        <td class="input-cell">
-          <input type="number" min="0" step="0.1" value="8" data-role="tiempo">
-        </td>
-        <td class="input-cell">
-          <input type="number" min="0" step="1" value="2" data-role="cantidad">
-        </td>
-        <td data-role="subtotal">0</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td class="left">Totales</td>
-        <td class="muted">—</td>
-        <td id="total-cantidad">0</td>
-        <td id="total-minutos">0</td>
-      </tr>
-    </tfoot>
-  </table>
-
-  <div class="summary">
-    <div>
-      Promedio (Min por unidad)
-      <b id="promedio">0</b>
-    </div>
-    <div>
-      Observación
-      <b id="observacion">—</b>
-    </div>
-  </div>
-
-
-
-  <script>
-    (function () {
-      const tabla = document.getElementById('tabla');
-      const filas = Array.from(tabla.tBodies[0].rows);
-
-      const $totalCantidad = document.getElementById('total-cantidad');
-      const $totalMinutos  = document.getElementById('total-minutos');
-      const $promedio      = document.getElementById('promedio');
-      const $obs           = document.getElementById('observacion');
-
-      function num(v) {
-        const n = parseFloat(v);
-        return Number.isFinite(n) ? n : 0;
-      }
-      function fmt(n, dec = 1) {
-        return n.toLocaleString('es-ES', { maximumFractionDigits: dec, minimumFractionDigits: dec });
-      }
-
-      function recalcular() {
-        let totalCant = 0;
-        let totalMins = 0;
-
-        filas.forEach(tr => {
-          const tiempo   = num(tr.querySelector('input[data-role="tiempo"]').value);
-          const cantidad = num(tr.querySelector('input[data-role="cantidad"]').value);
-          const subtotal = tiempo * cantidad;
-
-          tr.querySelector('[data-role="subtotal"]').textContent = fmt(subtotal, 0);
-
-          totalCant += cantidad;
-          totalMins += subtotal;
-        });
-
-        $totalCantidad.textContent = fmt(totalCant, 0);
-        $totalMinutos.textContent  = fmt(totalMins, 0);
-
-        const prom = totalCant > 0 ? (totalMins / totalCant) : 0;
-        $promedio.textContent = fmt(prom, 1);
-
-        // Mensajito útil para detectar rarezas
-        if (totalCant === 0 && totalMins > 0) {
-          $obs.textContent = 'Revisa cantidades (están en 0)';
-        } else if (totalCant > 0 && totalMins === 0) {
-          $obs.textContent = 'Faltan tiempos o están en 0';
-        } else {
-          $obs.textContent = 'OK';
+    <style>
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 10px;
         }
-      }
 
-      // Listeners en todos los inputs
-      filas.forEach(tr => {
-        tr.querySelectorAll('input').forEach(inp => {
-          inp.addEventListener('input', recalcular);
-          inp.addEventListener('change', recalcular);
-        });
-      });
+        #tabla {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
 
-      // Primera pasada con los valores iniciales
-      recalcular();
-    })();
-  </script>
+        #tabla th,
+        #tabla td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #tabla th {
+            background-color: #f4f4f4;
+        }
+
+        #tabla td.left {
+            text-align: left;
+        }
+
+        #tabla td.input-cell {
+            padding: 0;
+        }
+
+        #tabla td.input-cell input {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            padding: 6px;
+            text-align: center;
+        }
+
+        #tabla tfoot td {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+
+        .summary {
+            max-width: 600px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .summary div {
+            font-size: 1.1em;
+        }
+
+        .summary b {
+            margin-left: 10px;
+        }
+
+        .muted {
+            color: #999;
+            font-size: 0.9em;
+        }
+    </style>
+
+
+
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th class="left">Proceso</th>
+                <th>Tiempo (Min) <span class="muted">[input]</span></th>
+                <th>Cantidad <span class="muted">[input]</span></th>
+                <th>Tiempo × Cantidad (Min)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">TAPAS</td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="0.1" value="40" data-role="tiempo">
+                </td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="1" value="6" data-role="cantidad">
+                </td>
+                <td data-role="subtotal">0</td>
+            </tr>
+            <tr>
+                <td class="left">BASES</td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="0.1" value="20" data-role="tiempo">
+                </td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="1" value="6" data-role="cantidad">
+                </td>
+                <td data-role="subtotal">0</td>
+            </tr>
+            <tr>
+                <td class="left">FONDOS</td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="0.1" value="8" data-role="tiempo">
+                </td>
+                <td class="input-cell">
+                    <input type="number" min="0" step="1" value="2" data-role="cantidad">
+                </td>
+                <td data-role="subtotal">0</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="left">Totales</td>
+                <td class="muted">—</td>
+                <td id="total-cantidad">0</td>
+                <td id="total-minutos">0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="summary">
+        <div>
+            Promedio (Min por unidad)
+            <b id="promedio">0</b>
+        </div>
+        <div>
+            Observación
+            <b id="observacion">—</b>
+        </div>
+    </div>
+
+
+
+    <script>
+        (function() {
+            const tabla = document.getElementById('tabla');
+            const filas = Array.from(tabla.tBodies[0].rows);
+
+            const $totalCantidad = document.getElementById('total-cantidad');
+            const $totalMinutos = document.getElementById('total-minutos');
+            const $promedio = document.getElementById('promedio');
+            const $obs = document.getElementById('observacion');
+
+            function num(v) {
+                const n = parseFloat(v);
+                return Number.isFinite(n) ? n : 0;
+            }
+
+            function fmt(n, dec = 1) {
+                return n.toLocaleString('es-ES', {
+                    maximumFractionDigits: dec,
+                    minimumFractionDigits: dec
+                });
+            }
+
+            function recalcular() {
+                let totalCant = 0;
+                let totalMins = 0;
+
+                filas.forEach(tr => {
+                    const tiempo = num(tr.querySelector('input[data-role="tiempo"]').value);
+                    const cantidad = num(tr.querySelector('input[data-role="cantidad"]').value);
+                    const subtotal = tiempo * cantidad;
+
+                    tr.querySelector('[data-role="subtotal"]').textContent = fmt(subtotal, 0);
+
+                    totalCant += cantidad;
+                    totalMins += subtotal;
+                });
+
+                $totalCantidad.textContent = fmt(totalCant, 0);
+                $totalMinutos.textContent = fmt(totalMins, 0);
+
+                const prom = totalCant > 0 ? (totalMins / totalCant) : 0;
+                $promedio.textContent = fmt(prom, 1);
+
+                // Mensajito útil para detectar rarezas
+                if (totalCant === 0 && totalMins > 0) {
+                    $obs.textContent = 'Revisa cantidades (están en 0)';
+                } else if (totalCant > 0 && totalMins === 0) {
+                    $obs.textContent = 'Faltan tiempos o están en 0';
+                } else {
+                    $obs.textContent = 'OK';
+                }
+            }
+
+            // Listeners en todos los inputs
+            filas.forEach(tr => {
+                tr.querySelectorAll('input').forEach(inp => {
+                    inp.addEventListener('input', recalcular);
+                    inp.addEventListener('change', recalcular);
+                });
+            });
+
+            // Primera pasada con los valores iniciales
+            recalcular();
+        })();
+    </script>
 
 
 
