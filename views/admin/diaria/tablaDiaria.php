@@ -77,19 +77,19 @@
 
          </div>
      </div>
-<!-- 
+
      <section class="section">
          <div class="card">
              <ul class="nav nav-tabs">
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
                      <li class="nav-item">
-                         <a class="nav-link active" href="/admin/">Registro Diaria</a>
+                         <a class="nav-link active" href="/admin/pruebas/tablaPruebas/">Tabla Diaria</a>
                      </li>
                  <?php } ?>
              </ul>
          </div>
-     </section> -->
+     </section> 
 
 
 
