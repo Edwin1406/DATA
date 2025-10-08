@@ -218,6 +218,69 @@
 
 
 
+<style>
+
+
+.note {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+    #tabla {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+    #tabla th, #tabla td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+    #tabla th {
+        background-color: #f4f4f4;
+    }
+    #tabla td.left {
+        text-align: left;
+    }
+    #tabla td.input-cell {
+        padding: 0;
+    }
+    #tabla td.input-cell input {
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        padding: 6px;
+        text-align: center;
+    }
+    #tabla tfoot td {
+        font-weight: bold;
+        background-color: #f9f9f9;
+    }
+    .summary {
+        max-width: 600px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: space-between;
+    }
+    .summary div {
+        font-size: 1.1em;
+    }
+    .summary b {
+        margin-left: 10px;
+    }
+    .muted {
+        color: #999;
+        font-size: 0.9em;
+    }
+
+</style>
+
+
 
  <table id="tabla">
     <thead>
