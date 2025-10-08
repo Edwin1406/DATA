@@ -638,9 +638,7 @@ class AdminController
             $produccion_diaria->unidades_x_procesar = $_POST['unidades_x_procesar'] ?? 0;
             $produccion_diaria->kilos_x_procesar = $_POST['kilos_x_procesar'] ?? 0;
             $produccion_diaria->linea = $_POST['linea'] ?? null;
-            $produccion_diaria->hora_inicio= $_POST['hora_inicio'] ?? null;
-            $produccion_diaria->hora_fin= $_POST['hora_fin'] ?? null;
-            
+    
 
             
 
@@ -661,6 +659,8 @@ class AdminController
                 $produccion_diaria->horas_maquina = $_POST['horas_maquina'] = null ?? null;
                 $produccion_diaria->cambios = $_POST['cambios'] = 0 ?? null;
                 $produccion_diaria->tiempo_x_cambio = $_POST['tiempo_x_cambio'] = 0 ?? null;
+                $produccion_diaria->hora_inicio = $_POST['hora_inicio'] = null ?? null;
+                $produccion_diaria->hora_fin = $_POST['hora_fin'] = null ?? null;
 
             }
 
