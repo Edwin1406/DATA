@@ -9,7 +9,7 @@
       <label for="fecha">Fecha</label>
       <input type="date" id="fecha" class="form-control"
         placeholder="Fecha" name="fecha"
-        value="<?php echo isset($corrugador) ? s($corrugador->fecha) : date('Y-m-d'); ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->fecha) : date('Y-m-d'); ?>" readonly>
     </div>
   </div>
 
