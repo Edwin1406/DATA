@@ -124,8 +124,8 @@
                                 <td><?= $produccionDiaria->metros_lineales ?></td>
                                 <td><?= $produccionDiaria->desperdicio_lamina ?></td>
                                 <td><?= $produccionDiaria->linea ?></td>
-                                <td><?= $produccionDiaria->unidades_x_prc ?></td>
-                                <td><?= $produccionDiaria->kilos_x_prc ?></td>
+                                <td><?= $produccionDiaria->unidades_x_procesar ?></td>
+                                <td><?= $produccionDiaria->kilos_x_procesar ?></td>
 
 
                                 <td>
