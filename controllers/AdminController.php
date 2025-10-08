@@ -707,7 +707,7 @@ class AdminController
             'email' => $email,
             'corrugador' => $corrugador,
             'id_corrugador' => $id_corrugador,
-            'turnoCorrugador1' => $turnoCorrugador1,
+            // 'turnoCorrugador1' => $turnoCorrugador1,
         ]);
     }
 
