@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-
+use DateTime;
 use Model\Consumo_general;
 use Model\HorasTrabajo;
 use Model\ProduccionDiaria;
@@ -612,8 +612,9 @@ class AdminController
         $turnoCorrugador = $corrugador->turno ?? null;
 
 
-        debuguear($turnoCorrugador);
+$turnoCorrugador1 = $turnoCorrugador ? (new DateTime($turnoCorrugador))->modify('-1 hour')->format('H:i') : null;
 
+decbin($turnoCorrugador1);
 
 
         // debuguear($corrugador);
