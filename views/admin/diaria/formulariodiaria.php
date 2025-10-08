@@ -124,7 +124,7 @@
       <label for="tiempo_x_cambio">Tiempo x cambio medida</label>
       <input type="text" id="tiempo_x_cambio" class="form-control"
         placeholder="Tiempo x cambio de medida" name="tiempo_x_cambio"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->tiempo_x_cambio) : ''; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->tiempo_x_cambio) : '10'; ?>">
     </div>
   </div>
 
