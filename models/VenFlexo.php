@@ -42,7 +42,7 @@ class VenFlexo extends ActiveRecord {
         $this->hora_inicio = $args['hora_inicio'] ?? null;
         $this->hora_fin = $args['hora_fin'] ?? null;
         $this->estandar = $args['estandar'] ?? 4500;
-        $this->tiempo_cambio_medida = $args['tiempo_cambio_medida'] ?? null;
+        $this->tiempo_cambio_medida = $args['tiempo_cambio_medida'] ?? 0;
         $this->motivo_inactividad = $args['motivo_inactividad'] ?? null;
         $this->fecha = $args['fecha'] ?? $fecha;
     }

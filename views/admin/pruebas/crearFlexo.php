@@ -309,7 +309,7 @@
                         </div>
 
 
-                    
+
 
 
 
@@ -351,7 +351,7 @@
                                     name="hora_fin" required>
                             </div>
                         </div>
-                     
+
 
                         <div class="col-md-3 col-12">
                             <div class="form-group">
@@ -361,7 +361,7 @@
                                     <!-- CONTROLABLES -->
                                     <option value="WILLIAM">WILLIAM</option>
                                     <option value="RAFAEL">RAFAEL</option>
-                                    
+
                                 </select>
                             </div>
                         </div>
@@ -376,7 +376,7 @@
 
 
 
-                           <div class="col-md-2 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="tiempo_cambio_medida">tiempo_cambio_medida</label>
                                 <input type="number" id="tiempo_cambio_medida" class="form-control"
@@ -451,7 +451,7 @@
             </div>
             <form id="detalleCorrugadorForm" action="/admin/pruebas/registroDetalleCorrugador" method="POST">
                 <div class="modal-body">
-                  
+
 
                     <!-- fecha -->
                     <div class="form-group">
