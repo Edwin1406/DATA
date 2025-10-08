@@ -599,11 +599,11 @@ class AdminController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        $id = $_GET['id'] ?? null;
-        debuguear($id);
+        $id_corrugador = $_GET['id'] ?? null;
+        // debuguear($id_corrugador);
 
 
-        $corrugador = Ventas::where('id', $id);
+        $corrugador = Ventas::where('id', $id_corrugador);
 
         // debuguear($corrugador);
 
