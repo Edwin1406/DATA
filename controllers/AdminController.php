@@ -720,7 +720,7 @@ class AdminController
         $email = $_SESSION['email'];
 
         $produccionDiarias = ProduccionDiaria::all();
-        debuguear($produccionDiarias);
+        // debuguear($produccionDiarias);
 
         $router->render('admin/diaria/tablaDiaria', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
