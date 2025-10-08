@@ -38,7 +38,7 @@
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
         placeholder="Unidad x dia" name="unidad_x_dia"
-        value="<?php echo isset($corrugador) ? s($corrugador->n_laminas) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->n_laminas) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
       <label for="metros_lineales">Metros Lineales</label>
       <input type="text" id="metros_lineales" class="form-control"
         placeholder="Metros Lineales" name="metros_lineales"
-        value="<?php echo isset($corrugador) ? s($corrugador->metros_lineales) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->metros_lineales) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -58,7 +58,7 @@
       <label for="kilos_x_dia">Kilos x dia</label>
       <input type="text" id="kilos_x_dia" class="form-control"
         placeholder="Kilos x dia" name="kilos_x_dia"
-        value="<?php echo isset($corrugador) ? s($corrugador->consumo_papel) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->consumo_papel) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -68,7 +68,7 @@
       <label for="hora_inicio">Horas inicio</label>
       <input type="time" id="hora_inicio" class="form-control"
         placeholder="Horas inicio" name="hora_inicio"
-        value="<?php echo isset($corrugador) ? s($corrugador->hora_inicio) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->hora_inicio) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
       <label for="hora_fin">Horas fin</label>
       <input type="time" id="hora_fin" class="form-control"
         placeholder="Horas fin" name="hora_fin"
-        value="<?php echo isset($corrugador) ? s($corrugador->hora_fin) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->hora_fin) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -87,7 +87,7 @@
       <label for="desperdicio_lamina">Desperdicio Lamina</label>
       <input type="text" id="desperdicio_lamina" class="form-control"
         placeholder="Desperdicio Lamina" name="desperdicio_lamina"
-        value="<?php echo isset($corrugador) ? s($corrugador->total) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->total) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -97,7 +97,7 @@
       <label for="turno">Turno</label>
       <input type="time" id="turno" class="form-control"
         placeholder="Turno" name="turno"
-        value="<?php echo isset($corrugador) ? s($corrugador->turno) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->turno) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -115,7 +115,7 @@
       <label for="cambios">Cambios</label>
       <input type="text" id="cambios" class="form-control"
         placeholder="Cambios" name="cambios"
-        value="<?php echo isset($corrugador) ? s($corrugador->n_cambios) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->n_cambios) : '0'; ?>" readonly>
     </div>
   </div>
 
@@ -124,7 +124,7 @@
       <label for="tiempo_x_cambio">Tiempo x cambio medida</label>
       <input type="text" id="tiempo_x_cambio" class="form-control"
         placeholder="Tiempo x cambio de medida" name="tiempo_x_cambio"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->tiempo_x_cambio) : '10'; ?>">
+        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->tiempo_x_cambio) : '10'; ?>" readonly>
     </div>
   </div>
 
