@@ -733,7 +733,29 @@ class AdminController
 
 
 
+// eliminarDiaria
+    public static function eliminarDiaria(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $produccionDiaria = ProduccionDiaria::find($id);
+                if ($produccionDiaria) {
+                    $produccionDiaria->eliminar();
+                    header('Location: /admin/diaria/tablaDiaria?exito=1');
+                } else {
+                    header('Location: /admin/diaria/tablaDiaria?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiaria?error=1');
+            }
+        }
+    }
 
 
 

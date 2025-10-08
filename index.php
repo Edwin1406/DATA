@@ -252,6 +252,8 @@ $router->post('/admin/eliminarConsumoGuillotina', [ControlController::class, 'el
 // eliminar turno diseño
 $router->post('/admin/eliminarTurnoDiseno', [DiseñoController::class, 'eliminarTurnoDiseno']);
 
+// eliminar diaria
+$router->post('/admin/eliminarDiaria', [AdminController::class, 'eliminarDiaria']);
 
 
 
