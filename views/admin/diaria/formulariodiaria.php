@@ -227,7 +227,7 @@
             $('#hora_inicio').closest('.form-group').hide();
             $('#hora_fin').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
-            $('#kilos_x_dia').closest('.form-group').hide();
+            // $('#kilos_x_dia').closest('.form-group').hide();
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
