@@ -73,7 +73,7 @@
                             <form class="form" method="POST" action="/admin/diaria/produccion_diaria" enctype="multipart/form-data">
                                 <div class="row">
 
-                                      <?php include_once __DIR__.'/formulariodiaria.php'  ?>
+                                      <?php include_once __DIR__.'/formulariodiariaedit.php'  ?>
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
