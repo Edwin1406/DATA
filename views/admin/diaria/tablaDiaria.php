@@ -105,8 +105,8 @@
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Id</th>
                              <th class="fs-6" style="min-width: 93px;">Fecha</th>
-                             <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
-                             <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
+                             <th class="fs-6" style="min-width: 80px;">Unidad x dia</th>
+                             <th class="fs-6" style="min-width: 80px;">Metros lineales</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
                              <th class="fs-6" style="min-width: 60px;">Motivo de Inactividad</th>
 
@@ -119,8 +119,8 @@
                              <tr>
                                  <td><?= $produccionDiaria->id ?></td>
                                  <td><?= $produccionDiaria->fecha ?></td>
-                                 <td><?= $produccionDiaria->consumo_papel ?></td>
-                                 <td><?= $produccionDiaria->n_unidades ?></td>
+                                 <td><?= $produccionDiaria->unidad_x_dia ?></td>
+                                 <td><?= $produccionDiaria->metros_lineales ?></td>
                                  <td><?= $produccionDiaria->turno ?></td>
                                  <td><?= $produccionDiaria->desperdicio_lamina ?></td>
 
