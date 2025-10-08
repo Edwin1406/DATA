@@ -128,9 +128,9 @@
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarFlexo?id=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/pruebas/editarDiaria?id=<?= $produccionDiaria->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <form action="/admin/eliminarPruebas" method="POST">
-                                             <input type="hidden" name="id" value="<?= $flexo->id ?>">
+                                             <input type="hidden" name="id" value="<?= $produccionDiaria->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
