@@ -64,24 +64,22 @@
 
   <div class="col-md-2 col-12">
     <div class="form-group">
-      <label for="refile_std">Refile STD</label>
-      <input type="text" id="refile_std" class="form-control"
-        placeholder="Refile STD" name="refile_std"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->refile_std) : '0'; ?>">
+      <label for="hora_inicio">Horas inicio</label>
+      <input type="time" id="hora_inicio" class="form-control"
+        placeholder="Horas inicio" name="hora_inicio"
+        value="<?php echo isset($corrugador) ? s($corrugador->hora_inicio) : '0'; ?>">
     </div>
   </div>
 
 
   <div class="col-md-2 col-12">
     <div class="form-group">
-      <label for="extra_trim">Extra Trim</label>
-      <input type="text" id="extra_trim" class="form-control"
-        placeholder="Extra Trim" name="extra_trim"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->extra_trim) : '0'; ?>">
+      <label for="hora_fin">Horas fin</label>
+      <input type="time" id="hora_fin" class="form-control"
+        placeholder="Horas fin" name="hora_fin"
+        value="<?php echo isset($corrugador) ? s($corrugador->hora_fin) : '0'; ?>">
     </div>
   </div>
-
-
 
   <div class="col-md-2 col-12">
     <div class="form-group">
