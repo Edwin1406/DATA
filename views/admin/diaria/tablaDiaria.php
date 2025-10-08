@@ -115,14 +115,14 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($flexografica as $flexo): ?>
+                         <?php foreach ($produccionDiarias as $produccionDiaria): ?>
                              <tr>
-                                 <td><?= $flexo->id ?></td>
-                                 <td><?= $flexo->fecha ?></td>
-                                 <td><?= $flexo->consumo_papel ?></td>
-                                 <td><?= $flexo->n_unidades ?></td>
-                                 <td><?= $flexo->turno ?></td>
-                                 <td><?= $flexo->motivo_inactividad ?></td>
+                                 <td><?= $produccionDiaria->id ?></td>
+                                 <td><?= $produccionDiaria->fecha ?></td>
+                                 <td><?= $produccionDiaria->consumo_papel ?></td>
+                                 <td><?= $produccionDiaria->n_unidades ?></td>
+                                 <td><?= $produccionDiaria->turno ?></td>
+                                 <td><?= $produccionDiaria->desperdicio_lamina ?></td>
 
 
                                  <td>
