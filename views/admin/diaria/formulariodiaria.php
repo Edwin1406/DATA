@@ -86,7 +86,7 @@
       <label for="desperdicio_lamina">Desperdicio Lamina</label>
       <input type="text" id="desperdicio_lamina" class="form-control"
         placeholder="Desperdicio Lamina" name="desperdicio_lamina"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->desperdicio_lamina) : '0'; ?>">
+        value="<?php echo isset($corrugador) ? s($corrugador->total) : '0'; ?>">
     </div>
   </div>
 
