@@ -747,7 +747,7 @@ class AdminController
                 $produccionDiaria = ProduccionDiaria::find($id);
                 if ($produccionDiaria) {
                     $produccionDiaria->eliminar();
-                    header('Location: /admin/diaria/tablaDiaria?exito=1');
+                    header('Location: /admin/diaria/tablaDiaria?eliminado=3');
                 } else {
                     header('Location: /admin/diaria/tablaDiaria?error=1');
                 }
