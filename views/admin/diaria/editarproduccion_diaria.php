@@ -69,14 +69,14 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            
-                            <form class="form" method="POST" action="/admin/diaria/produccion_diaria" enctype="multipart/form-data">
+
+                            <form class="form" method="POST" action="/admin/diaria/editarproduccion_diaria?id=<?php echo isset($produccion_diaria) ? s($produccion_diaria->id) : ''; ?>" enctype="multipart/form-data">
                                 <div class="row">
 
                                       <?php include_once __DIR__.'/formulariodiariaedit.php'  ?>
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Actualizar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
                                     </div>
                                 </div>
