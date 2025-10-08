@@ -640,12 +640,7 @@ class AdminController
             $produccion_diaria->linea = $_POST['linea'] ?? null;
     
 
-            
-
-
-
-
-
+    
 
             // debuguear($produccion_diaria->id_corrugador);
 
