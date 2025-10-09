@@ -813,7 +813,7 @@ class AdminController
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
                 $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diaria?id_corrugador=' . $produccion_diaria->id_corrugador . '&exito=1');
+                header('Location: /admin/diaria/produccion_diaria?id_micro=' . $produccion_diaria->id_micro . '&exito=1');
             }
         } else {
             $alertas = [];
@@ -828,7 +828,7 @@ class AdminController
             'nombre' => $nombre,
             'email' => $email,
             'corrugador' => $corrugador,
-            'id_corrugador' => $id_corrugador,
+            'id_micro' => $id_micro,
             
             
             'turnoCorrugador1' => $turnoCorrugador1,
