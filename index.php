@@ -356,6 +356,11 @@ $router->post('/admin/pruebas/registrarVenFlexo', [PruebasController::class, 're
 // REGISTRAR VENTA MICRO
 $router->post('/admin/pruebas/registrarVentaMicro', [PruebasController::class, 'registrarVentaMicro']);
 
+// REGISTRAR VENPERIODICO
+$router->post('/admin/pruebas/registrarVenPeriodico', [PruebasController::class, 'registrarVenPeriodico']);
+// REGISTRAR VENSEPARADORES
+$router->post('/admin/pruebas/registrarVenSeparadores', [PruebasController::class, 'registrarVenSeparadores']);
+
 
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
