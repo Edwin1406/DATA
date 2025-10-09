@@ -823,7 +823,7 @@ class AdminController
 
 
         // debuguear($nombre);
-        $router->render('admin/diaria/produccion_diaria', [
+        $router->render('admin/diaria/produccion_diariaMicro', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
             'email' => $email,
