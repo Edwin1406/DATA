@@ -358,6 +358,9 @@ class PruebasController
             exit;
         }
 
+                $nombre = $_SESSION['nombre'];
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usuario = $_SESSION['id'];
             $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
@@ -409,7 +412,7 @@ class PruebasController
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
-            $venta->linea = 'CORRUGADOR';
+            $venta->linea = $nombre;
             $venta->guardarCarrito();
 
             $id_venta = $venta->id;
@@ -860,7 +863,7 @@ class PruebasController
         }
 
 
-
+        $nombre = $_SESSION['nombre'];
 
 
 
@@ -916,7 +919,7 @@ class PruebasController
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
-            $venta->linea = 'MICRO';
+            $venta->linea = $nombre;
             
             $venta->guardarCarrito();
 
