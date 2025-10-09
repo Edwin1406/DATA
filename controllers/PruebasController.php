@@ -966,10 +966,13 @@ class PruebasController
 
         // Obtener los diseños de la base de datos
         // $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
-        $corrugador = Ventas::all();
+        $micro = Ventas::whereArray('tipo_maquina', 'MICRO');
 
 
-        // debuguear($corrgador);
+
+
+
+        // debuguear($micro);
 
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/micro/tablaMicro', [
@@ -977,7 +980,7 @@ class PruebasController
             'subtitulo' => 'Micro',
             'nombre' => $nombre,
             'email' => $email,
-            'corrugador' => $corrugador
+            'micro' => $micro
         ]);
     }
 
