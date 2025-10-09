@@ -120,23 +120,23 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($corrugador as $corrugado): ?>
+                         <?php foreach ($periodico as $periodicos): ?>
                              <tr>
-                                 <td><?= $corrugado->id ?></td>
-                                 <td><?= $corrugado->fecha ?></td>
-                                 <td><?= $corrugado->consumo_papel ?></td>
-                                 <td><?= $corrugado->n_laminas ?></td>
-                                 <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->motivo_inactividad ?></td>
+                                 <td><?= $periodicos->id ?></td>
+                                 <td><?= $periodicos->fecha ?></td>
+                                 <td><?= $periodicos->consumo_papel ?></td>
+                                 <td><?= $periodicos->n_laminas ?></td>
+                                 <td><?= $periodicos->turno ?></td>
+                                 <td><?= $periodicos->motivo_inactividad ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                         <form action="/admin/eliminarCorrugado" method="POST">
-                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                         <a href="/admin/pruebas/editarPeriodico?id=<?= $periodicos->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/diaria/produccion_diaria?id_periodico=<?= $periodicos->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <form action="/admin/eliminarPeriodico" method="POST">
+                                             <input type="hidden" name="id" value="<?= $periodicos->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
