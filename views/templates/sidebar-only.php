@@ -221,6 +221,11 @@
                                      <a href="/admin/pruebas/crearMicro"><i class="bi bi-arrow-right"> </i>Crear Micro</a>
                                  </li>
                              <?php } ?>
+                             <?php if ($userEmail == 'periodico@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearPeriodico"><i class="bi bi-arrow-right"> </i>Crear Periodico</a>
+                                 </li>
+                             <?php } ?>
 
                         
                          </ul>
