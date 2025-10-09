@@ -277,39 +277,6 @@ class PruebasController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // public static function registrarVenta()
     // {
     //     session_start();
