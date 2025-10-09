@@ -89,7 +89,7 @@
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
                      <li class="nav-item">
-                         <a class="nav-link active" href="/admin/pruebas/crearPruebas">Registro Pruebas</a>
+                         <a class="nav-link active" href="/admin/pruebas/crearSeparadores">Registro Separadores</a>
                      </li>
                  <?php } ?>
              </ul>
@@ -102,7 +102,7 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 Tabla de Producción - CORRUGADOR
+                 Tabla de Producción -  SEPARADORES
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
@@ -120,23 +120,23 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($corrugador as $corrugado): ?>
+                         <?php foreach ($separadores as $separador): ?>
                              <tr>
-                                 <td><?= $corrugado->id ?></td>
-                                 <td><?= $corrugado->fecha ?></td>
-                                 <td><?= $corrugado->consumo_papel ?></td>
-                                 <td><?= $corrugado->n_laminas ?></td>
-                                 <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->motivo_inactividad ?></td>
+                                 <td><?= $separador->id ?></td>
+                                 <td><?= $separador->fecha ?></td>
+                                 <td><?= $separador->consumo_papel ?></td>
+                                 <td><?= $separador->n_laminas ?></td>
+                                 <td><?= $separador->turno ?></td>
+                                 <td><?= $separador->motivo_inactividad ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                         <form action="/admin/eliminarCorrugado" method="POST">
-                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                         <a href="/admin/pruebas/editarSeparadores?id=<?= $separador->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/diaria/produccion_diaria?id_separador=<?= $separador->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <form action="/admin/eliminarSeparador" method="POST">
+                                             <input type="hidden" name="id" value="<?= $separador->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
