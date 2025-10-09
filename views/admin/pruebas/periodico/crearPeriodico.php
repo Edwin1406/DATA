@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla Periodico</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaPeriodico">Tabla Periodico</a>
                 </li>
             </ul>
         </div>
