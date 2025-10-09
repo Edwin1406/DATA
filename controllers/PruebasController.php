@@ -819,7 +819,7 @@ class PruebasController
                 // Guardar en la base de datos
                 $resultado = $carrito->guardar();
                 if ($resultado) {
-                    header('Location: /admin/pruebas/micro/crearMicro?exito=1');
+                    header('Location: /admin/pruebas/crearMicro?exito=1');
                     exit;
                 } else {
                     $alertas['error'][] = 'Error al guardar el registro';
