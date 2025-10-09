@@ -134,7 +134,7 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarPeriodico?id=<?= $periodicos->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_periodico=<?= $periodicos->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <a href="/admin/diaria/produccion_diariaPeriodico?id_corrugador=<?= $periodicos->id ?>" class="btn btn-primary btn-sm">Diaria</a>
                                          <form action="/admin/eliminarPeriodico" method="POST">
                                              <input type="hidden" name="id" value="<?= $periodicos->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
