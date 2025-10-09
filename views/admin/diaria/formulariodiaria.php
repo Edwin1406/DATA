@@ -203,6 +203,8 @@
 
           case 'CORRUGADOR PLANCHAS/CAJAS':
             // Mostrar todos los campos (por defecto ya se están mostrando)
+            $('#unidades_x_procesar').closest('.form-group').hide();
+
             break;
 
           case 'CORRUGADOR CAJAS':
