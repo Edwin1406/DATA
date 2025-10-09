@@ -967,7 +967,9 @@ class PruebasController
 
         // Obtener los diseños de la base de datos
         // $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
-        $micro = Ventas::whereArray('tipo_maquina', 'MICRO');
+        // $micro = Ventas::whereArray('tipo_maquina', 'MICRO');
+                // $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
+        $micro = Ventas::wherenuevo('linea', 'MICRO');
 
 
 
