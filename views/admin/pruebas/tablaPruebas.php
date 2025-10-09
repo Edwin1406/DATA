@@ -114,6 +114,7 @@
                              <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
                              <th class="fs-6" style="min-width: 60px;">Motivo de Inactividad</th>
+                             <th class="fs-6" style="min-width: 60px;">Linea</th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
@@ -128,6 +129,7 @@
                                  <td><?= $corrugado->n_laminas ?></td>
                                  <td><?= $corrugado->turno ?></td>
                                  <td><?= $corrugado->motivo_inactividad ?></td>
+                                 <td><?= $corrugado->linea ?></td>
 
 
                                  <td>
