@@ -732,6 +732,9 @@ class AdminController
         $corrugador = Ventas::where('id', $id_micro);
 
 
+        debuguear($corrugador);
+
+
 
 
         $turnoCorrugador = $corrugador->turno ?? null;

@@ -126,6 +126,8 @@ $router->post('/admin/diaria/produccion_diariaMicro', [AdminController::class, '
 
 
 
+
+
 // CREAR FLEXO
 $router->get('/admin/pruebas/crearFlexo', [PruebasController::class, 'crearFlexo']);
 $router->post('/admin/pruebas/crearFlexo', [PruebasController::class, 'crearFlexo']);
