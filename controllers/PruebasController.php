@@ -1062,7 +1062,7 @@ class PruebasController
 
 
 
-   public static function crearPeriodic(Router $router)
+   public static function crearPeriodico(Router $router)
     {
         session_start();
         if (!isset($_SESSION['email'])) {
