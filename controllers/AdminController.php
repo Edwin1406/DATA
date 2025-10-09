@@ -849,17 +849,11 @@ class AdminController
         $email = $_SESSION['email'];
 
         $id_corrugador = $_GET['id_corrugador'] ?? null;
-        
-
-
+    
 
         $corrugador = Ventas::where('id', $id_corrugador);
 
-
         // debuguear($corrugador);
-
-
-
 
         $turnoCorrugador = $corrugador->turno ?? null;
 
@@ -914,10 +908,6 @@ class AdminController
                 $produccion_diaria->hora_fin = $_POST['hora_fin'] = null ?? null;
 
             }
-
-
-
-            
             
             $produccion_diaria->sincronizar($_POST);
             
