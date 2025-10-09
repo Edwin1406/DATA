@@ -813,7 +813,7 @@ class AdminController
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
                 $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diaria?id_micro=' . $produccion_diaria->id_micro . '&exito=1');
+                header('Location: /admin/diaria/produccion_diariaMicro?id_micro=' . $produccion_diaria->id_micro . '&exito=1');
             }
         } else {
             $alertas = [];
