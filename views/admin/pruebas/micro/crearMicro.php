@@ -273,7 +273,7 @@
 
 
 
-                <form action="/admin/pruebas/registrarVentaMicro" method="POST">
+                <form action="/admin/pruebas/registrarVenMicro" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
