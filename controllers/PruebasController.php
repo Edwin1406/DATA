@@ -572,7 +572,7 @@ class PruebasController
 
         // Obtener los diseños de la base de datos
         // $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
-        $corrugador = Ventas::all();
+        $corrugador = Ventas::whereArray('tipo_maquina', 'CORRUGADOR');
 
 
         // debuguear($corrgador);
