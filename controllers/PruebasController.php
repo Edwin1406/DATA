@@ -605,20 +605,20 @@ class PruebasController
         $email = $_SESSION['email'];
 
         // Obtener los diseños de la base de datos
-        $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
-        // debuguear($corrugador);
-        // $corrugador = Ventas::all();
+        $periodico = Ventas::wherenuevo('linea', 'PERIODICO');
+        // debuguear($periodico);
+        // $periodico = Ventas::all();
 
 
-        // debuguear($corrgador);
+        // debuguear($periodico);
 
         // Renderizar la vista de la tabla de diseños
-        $router->render('admin/pruebas/tablaPruebas', [
-            'titulo' => 'CORRUGADOR - Tabla de Producción',
-            'subtitulo' => 'Corrugador',
+        $router->render('admin/pruebas/periodico/tablaPeriodico', [
+            'titulo' => 'PERIODICO - Tabla de Producción',
+            'subtitulo' => 'Periodico',
             'nombre' => $nombre,
             'email' => $email,
-            'corrugador' => $corrugador
+            'periodico' => $periodico
         ]);
     }
 
@@ -638,20 +638,20 @@ class PruebasController
         $email = $_SESSION['email'];
 
         // Obtener los diseños de la base de datos
-        $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
-        // debuguear($corrugador);
-        // $corrugador = Ventas::all();
+        $separadores = Ventas::wherenuevo('linea', 'SEPARADORES');
+        // debuguear($separadores);
+        // $separadores = Ventas::all();
 
 
-        // debuguear($corrgador);
+        // debuguear($separadores);
 
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/tablaPruebas', [
-            'titulo' => 'CORRUGADOR - Tabla de Producción',
-            'subtitulo' => 'Corrugador',
+            'titulo' => 'SEPARADORES - Tabla de Producción',
+            'subtitulo' => 'Separadores',
             'nombre' => $nombre,
             'email' => $email,
-            'corrugador' => $corrugador
+            'separadores' => $separadores
         ]);
     }
 
