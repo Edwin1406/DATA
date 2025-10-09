@@ -134,7 +134,7 @@
 
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Diaria</a>
                                          <form action="/admin/eliminarMicro" method="POST">
                                              <input type="hidden" name="id" value="<?= $microS->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
