@@ -127,6 +127,15 @@ $router->post('/admin/pruebas/crearFlexo', [PruebasController::class, 'crearFlex
 
 
 
+// CREAR MICRO
+$router->get('/admin/pruebas/crearMicro', [PruebasController::class, 'crearMicro']);
+$router->post('/admin/pruebas/crearMicro', [PruebasController::class, 'crearMicro']);
+
+
+
+
+
+
 // registro detallecorrugador
 $router->get('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
 $router->post('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
