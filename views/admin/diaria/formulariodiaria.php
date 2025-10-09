@@ -176,6 +176,8 @@
             $('#horas_maquina').closest('.form-group').hide();
             $('#cambios').closest('.form-group').hide();
             $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
 
             break;
 
@@ -188,6 +190,8 @@
             $('#horas_maquina').closest('.form-group').hide();
             $('#cambios').closest('.form-group').hide();
             $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
             break;
 
           case 'PERIODICO':
@@ -199,6 +203,8 @@
             $('#horas_maquina').closest('.form-group').hide();
             $('#cambios').closest('.form-group').hide();
             $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
             break;
 
           case 'CORRUGADOR PLANCHAS/CAJAS':
