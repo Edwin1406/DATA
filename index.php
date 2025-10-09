@@ -124,6 +124,10 @@ $router->get('/admin/diaria/produccion_diariaMicro', [AdminController::class, 'p
 $router->post('/admin/diaria/produccion_diariaMicro', [AdminController::class, 'produccion_diariaMicro']);
 
 
+// PRODUCCION DIARIA PERIODICO
+$router->get('/admin/diaria/produccion_diariaPeriodico', [AdminController::class, 'produccion_diariaPeriodico']);
+$router->post('/admin/diaria/produccion_diariaPeriodico', [AdminController::class, 'produccion_diariaPeriodico']);
+
 
 
 
