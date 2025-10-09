@@ -329,6 +329,20 @@ $router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPr
 
 
 
+// crearperiodico
+$router->get('/admin/pruebas/crearPeriodico', [PruebasController::class, 'crearPeriodico']);
+$router->post('/admin/pruebas/crearPeriodico', [PruebasController::class, 'crearPeriodico']);
+
+// crearseparadores
+$router->get('/admin/pruebas/crearSeparadores', [PruebasController::class, 'crearSeparadores']);
+$router->post('/admin/pruebas/crearSeparadores', [PruebasController::class, 'crearSeparadores']);
+
+
+
+
+
+
+
 // eliminar carrito
 $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
 
