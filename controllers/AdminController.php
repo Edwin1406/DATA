@@ -618,7 +618,7 @@ class AdminController
                 $corrugador->hora_maquina= $turnoCorrugador1;
 
 
-        // debuguear($corrugador->hora_maquina);
+        debuguear($corrugador->hora_maquina);
 
 
 
