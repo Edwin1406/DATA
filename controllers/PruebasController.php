@@ -589,6 +589,73 @@ class PruebasController
     }
 
 
+
+
+
+    
+    // tabla de pruebas
+    public static function tablaPeriodico(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Obtener los diseños de la base de datos
+        $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
+        // debuguear($corrugador);
+        // $corrugador = Ventas::all();
+
+
+        // debuguear($corrgador);
+
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/tablaPruebas', [
+            'titulo' => 'CORRUGADOR - Tabla de Producción',
+            'subtitulo' => 'Corrugador',
+            'nombre' => $nombre,
+            'email' => $email,
+            'corrugador' => $corrugador
+        ]);
+    }
+
+
+
+
+    
+    // tabla de pruebas
+    public static function tablaSeparadores(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Obtener los diseños de la base de datos
+        $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
+        // debuguear($corrugador);
+        // $corrugador = Ventas::all();
+
+
+        // debuguear($corrgador);
+
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/tablaPruebas', [
+            'titulo' => 'CORRUGADOR - Tabla de Producción',
+            'subtitulo' => 'Corrugador',
+            'nombre' => $nombre,
+            'email' => $email,
+            'corrugador' => $corrugador
+        ]);
+    }
+
+
     // tabla de flexo
     public static function tablaFlexo(Router $router)
     {
