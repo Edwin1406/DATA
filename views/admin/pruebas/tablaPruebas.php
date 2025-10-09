@@ -121,34 +121,31 @@
 
                      <tbody>
                          <?php foreach ($corrugador as $corrugado): ?>
-                             <tr>
-                                 <td><?= $corrugado->id ?></td>
-                                 <td><?= $corrugado->fecha ?></td>
-                                 <td><?= $corrugado->consumo_papel ?></td>
-                                 <td><?= $corrugado->n_laminas ?></td>
-                                 <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->motivo_inactividad ?></td>
+                             <!-- Aseguramos que solo se muestren los registros de la línea específica -->
+                             <?php if ($corrugado->linea == $linea): ?>
+                                 <tr>
+                                     <td><?= $corrugado->id ?></td>
+                                     <td><?= $corrugado->fecha ?></td>
+                                     <td><?= $corrugado->consumo_papel ?></td>
+                                     <td><?= $corrugado->n_laminas ?></td>
+                                     <td><?= $corrugado->turno ?></td>
+                                     <td><?= $corrugado->motivo_inactividad ?></td>
 
-
-                                 <td>
-
-                                     <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                         <form action="/admin/eliminarCorrugado" method="POST">
-                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                         </form>
-                                     </div>
-
-
-
-
-                                 </td>
-
-                             </tr>
+                                     <td>
+                                         <div class="d-flex gap-1">
+                                             <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                             <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                             <form action="/admin/eliminarCorrugado" method="POST">
+                                                 <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                             </form>
+                                         </div>
+                                     </td>
+                                 </tr>
+                             <?php endif; ?>
                          <?php endforeach; ?>
                      </tbody>
+
                  </table>
              </div>
          </div>
