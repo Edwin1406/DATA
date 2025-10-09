@@ -89,7 +89,7 @@
 
                  <?php if ($email !== 'ventas@megaecuador.com') { ?>
                      <li class="nav-item">
-                         <a class="nav-link active" href="/admin/pruebas/crearPruebas">Registro Pruebas</a>
+                         <a class="nav-link active" href="/admin/pruebas/crearPeriodico">Registro Periodico</a>
                      </li>
                  <?php } ?>
              </ul>
