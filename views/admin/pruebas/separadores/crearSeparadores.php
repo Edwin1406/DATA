@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaPruebas">Tabla Corrugador</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaSeparadores">Tabla Separadores</a>
                 </li>
             </ul>
         </div>
@@ -67,14 +67,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">REGISTRO CORRUGADOR</h4>
+                        <h4 class="card-title">REGISTRO SEPARADORES </h4>
                         <?php include_once __DIR__ . '/../../templates/alertas.php'  ?>
 
 
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/pruebas/crearPruebas" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
+                            <form class="form" method="POST" action="/admin/pruebas/crearSeparadores" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
 
@@ -101,63 +101,8 @@
                                                 <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
 
                                                 <!-- CONTROLABLES -->
-                                                <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
-                                                <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
-                                                <option value="CUADRE">CUADRE</option>
-                                                <option value="CUADRE SIERRA">CUADRE SIERRA</option>
-                                                <option value="DAÑO CLICHE">DAÑO CLICHE</option>
-                                                <option value="DERRAME DE TINTA">DERRAME DE TINTA</option>
-                                                <option value="DESPEGADO">DESPEGADO</option>
-                                                <option value="DISEÑO MAQUINA">DISEÑO MAQUINA</option>
-                                                <option value="EMPALME">EMPALME</option>
-                                                <option value="ERROR MEDIDA">ERROR MEDIDA</option>
-                                                <option value="EXCESO DE GOMA">EXCESO DE GOMA</option>
-                                                <option value="FALTA DE TINTA">FALTA DE TINTA</option>
-                                                <option value="FRENO">FRENO</option>
-                                                <option value="GALLETEADO">GALLETEADO</option>
-                                                <option value="HUMEDO">HUMEDO</option>
-                                                <option value="MAL DOBLADO CEJA">MAL DOBLADO CEJA</option>
-                                                <option value="MALTRATO OPERADOR MONTACARGAS">MALTRATO OPERADOR MONTACARGAS</option>
-                                                <option value="MALTRATO TRANSPORTACIÓN">MALTRATO TRANSPORTACIÓN</option>
-                                                <option value="PH">PH</option>
-                                                <option value="PRESION">PRESION</option>
-                                                <option value="PRE PRINTER">PRE PRINTER</option>
-                                                <option value="RECUBRIMIENTO">RECUBRIMIENTO</option>
-                                                <option value="SF">SF</option>
-                                                <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
-                                                <option value="VISCOSIDAD">VISCOSIDAD</option>
-
-                                                <!-- NO CONTROLABLES -->
-                                                <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
-                                                <option value="COMBADO">COMBADO</option>
-                                                <option value="CAMBIO PEDIDO">CAMBIO PEDIDO</option>
-                                                <option value="CIREL CORTADO">CIREL CORTADO</option>
-                                                <option value="DESCUADRE DE DOBLADO">DESCUADRE DE DOBLADO</option>
-                                                <option value="DESHOJE">DESHOJE</option>
-                                                <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
-                                                <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
-                                                <option value="ELECTRICO">ELECTRICO</option>
-
-                                                <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
-                                                <option value="EXTRA TRIM">EXTRA TRIM</option>
-                                                <option value="FILOS ROTOS">FILOS ROTOS</option>
-                                                <option value="INICIO DE CORRIDA">INICIO DE CORRIDA</option>
-                                                <option value="LAMINA HUMEDA">LAMINA HUMEDA</option>
-                                                <option value="MECANICO">MECANICO</option>
-                                                <option value="MERMA">MERMA</option>
-                                                <option value="MONTAJE CLICHE PROVEEDOR">MONTAJE CLICHE PROVEEDOR</option>
-                                                <option value="PEDIDOS CORTOS">PEDIDOS CORTOS</option>
-                                                <option value="REFILE PEQUEÑO">REFILE PEQUEÑO</option>
-                                                <option value="REFILES">REFILES</option>
-                                                <option value="REGISTRO TROQUEL">REGISTRO TROQUEL</option>
-                                                <option value="SUSTRATO">SUSTRATO</option>
-                                                <option value="TROQUEL">TROQUEL</option>
-                                                <option value="SOPLADO">SOPLADO</option>
-                                                <option value="CALDERO">CALDERO</option>
-                                                <option value="COMPRESOR">COMPRESOR</option>
-                                                <option value="PRUEBAS">PRUEBAS</option>
-
-
+                                                <option value="CUADRE DE MAQUINA">CUADRE DE MAQUINA</option>
+                                    
                                             </select>
 
                                         </div>
@@ -324,7 +269,7 @@
 
 
 
-                <form action="/admin/pruebas/registrarVenta" method="POST">
+                <form action="/admin/pruebas/registrarVenSeparadores" method="POST">
                     <!-- Fila 1 -->
                     <div class="row g-3">
                         <div class="col-md-2 col-12">
