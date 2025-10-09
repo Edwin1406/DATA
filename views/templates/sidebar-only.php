@@ -204,7 +204,7 @@
                          <ul class="submenu ">
                              <?php if ($userEmail == 'corrugador@megaecuador.com') { ?>
                                  <li class="submenu-item ">
-                                     <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
+                                     <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Corrugador</a>
                                  </li>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrugador</a>
