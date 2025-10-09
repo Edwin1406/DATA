@@ -858,6 +858,14 @@ class PruebasController
             exit;
         }
 
+
+        $nombre = $_SESSION['nombre'];
+
+
+        debuguear($nombre);
+
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usuario = $_SESSION['id'];
             $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
