@@ -102,7 +102,7 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 Tabla de Producción - CORRUGADOR
+                 Tabla de Producción - MICRO
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
@@ -120,23 +120,23 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($corrugador as $corrugado): ?>
+                         <?php foreach ($micro as $microS): ?>
                              <tr>
-                                 <td><?= $corrugado->id ?></td>
-                                 <td><?= $corrugado->fecha ?></td>
-                                 <td><?= $corrugado->consumo_papel ?></td>
-                                 <td><?= $corrugado->n_laminas ?></td>
-                                 <td><?= $corrugado->turno ?></td>
-                                 <td><?= $corrugado->motivo_inactividad ?></td>
+                                 <td><?= $microS->id ?></td>
+                                 <td><?= $microS->fecha ?></td>
+                                 <td><?= $microS->consumo_papel ?></td>
+                                 <td><?= $microS->n_laminas ?></td>
+                                 <td><?= $microS->turno ?></td>
+                                 <td><?= $microS->motivo_inactividad ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPruebas?id=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/diaria/produccion_diaria?id_corrugador=<?= $corrugado->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                         <form action="/admin/eliminarCorrugado" method="POST">
-                                             <input type="hidden" name="id" value="<?= $corrugado->id ?>">
+                                         <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/diaria/produccion_diaria?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+                                         <form action="/admin/eliminarMicro" method="POST">
+                                             <input type="hidden" name="id" value="<?= $microS->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
