@@ -367,6 +367,15 @@ $router->get('/admin/pruebas/tablaMicro', [PruebasController::class, 'tablaMicro
 // TABLA DE FLEXO
 $router->get('/admin/pruebas/tablaFlexo', [PruebasController::class, 'tablaFlexo']);
 
+// TABLA DE PERIODICO
+$router->get('/admin/pruebas/periodico/tablaMicro', [PruebasController::class, 'tablaMicroPeriodico']);
+
+// TABLA DE SEPARADORES
+$router->get('/admin/pruebas/separadores/tablaSeparadores', [PruebasController::class, 'tablaSeparadores']);
+
+
+
+
 // EDITAR PRUEBAS
 $router->get('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
 $router->post('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
