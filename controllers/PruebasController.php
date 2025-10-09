@@ -646,7 +646,7 @@ class PruebasController
         // debuguear($separadores);
 
         // Renderizar la vista de la tabla de diseños
-        $router->render('admin/pruebas/tablaPruebas', [
+        $router->render('admin/pruebas/separadores/tablaSeparadores', [
             'titulo' => 'SEPARADORES - Tabla de Producción',
             'subtitulo' => 'Separadores',
             'nombre' => $nombre,
