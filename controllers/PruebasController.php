@@ -859,10 +859,8 @@ class PruebasController
         }
 
 
-        $nombre = $_SESSION['nombre'];
 
 
-        debuguear($nombre);
 
 
 
@@ -917,6 +915,7 @@ class PruebasController
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
+            
             $venta->guardarCarrito();
 
             $id_venta = $venta->id;
