@@ -572,8 +572,8 @@ class PruebasController
 
         // Obtener los diseños de la base de datos
         $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
-        debuguear($corrugador);
-        $corrugador = Ventas::all();
+        // debuguear($corrugador);
+        // $corrugador = Ventas::all();
 
 
         // debuguear($corrgador);
