@@ -216,6 +216,11 @@
                                      <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
                                  </li>
                              <?php } ?>
+                             <?php if ($userEmail == 'micro@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearMicro"><i class="bi bi-arrow-right"> </i>Crear Micro</a>
+                                 </li>
+                             <?php } ?>
 
                         
                          </ul>
