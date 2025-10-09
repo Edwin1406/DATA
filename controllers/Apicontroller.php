@@ -236,33 +236,6 @@ public static function apiProduccionDiariaCorrugador(): void {
 
 
 
-// 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

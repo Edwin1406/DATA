@@ -64,6 +64,7 @@ class PruebasController
         // Renderizar la vista de crear pruebas
         $router->render('admin/pruebas/crearPruebas', [
             'titulo' => 'CORRUGADOR - Registro de Producción',
+            'subtitulo' => 'Corrugador',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
@@ -133,6 +134,7 @@ class PruebasController
         // Renderizar la vista de crear pruebas
         $router->render('admin/pruebas/crearFlexo', [
             'titulo' => 'FLEXO - Registro de Producción',
+            'subtitulo' => 'Flexo',
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
@@ -574,6 +576,7 @@ class PruebasController
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/tablaPruebas', [
             'titulo' => 'CORRUGADOR - Tabla de Producción',
+            'subtitulo' => 'Corrugador',
             'nombre' => $nombre,
             'email' => $email,
             'corrugador' => $corrugador
@@ -598,6 +601,7 @@ class PruebasController
         // debuguear($flexografica);
         $router->render('admin/pruebas/tablaFlexo', [
             'titulo' => 'FLEXOGRAFICA - Tabla de Producción',
+            'subtitulo' => 'Flexo',
             'nombre' => $nombre,
             'email' => $email,
             'flexografica' => $flexografica
