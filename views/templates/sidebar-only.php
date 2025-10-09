@@ -207,7 +207,7 @@
                                      <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Pruebas</a>
                                  </li>
                                  <li class="submenu-item ">
-                                     <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrgador</a>
+                                     <a href="/admin/pruebas/crearPruebas"><i class="bi bi-arrow-right"> </i>Crear Corrugador</a>
                                  </li>
                              <?php } ?>
 
