@@ -339,6 +339,10 @@ $router->post('/admin/pruebas/registrarVenta', [PruebasController::class, 'regis
 $router->post('/admin/pruebas/registrarVenFlexo', [PruebasController::class, 'registrarVenFlexo']);
 
 
+// REGISTRAR VENTA MICRO
+$router->post('/admin/pruebas/registrarVentaMicro', [PruebasController::class, 'registrarVentaMicro']);
+
+
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
 
