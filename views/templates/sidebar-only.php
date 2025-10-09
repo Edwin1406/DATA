@@ -226,6 +226,11 @@
                                      <a href="/admin/pruebas/crearPeriodico"><i class="bi bi-arrow-right"> </i>Crear Periodico</a>
                                  </li>
                              <?php } ?>
+                             <?php if ($userEmail == 'separadores@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearSeparadores"><i class="bi bi-arrow-right"> </i>Crear Separadores</a>
+                                 </li>
+                             <?php } ?>
 
                         
                          </ul>
