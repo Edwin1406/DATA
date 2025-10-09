@@ -368,10 +368,10 @@ $router->get('/admin/pruebas/tablaMicro', [PruebasController::class, 'tablaMicro
 $router->get('/admin/pruebas/tablaFlexo', [PruebasController::class, 'tablaFlexo']);
 
 // TABLA DE PERIODICO
-$router->get('/admin/pruebas/periodico/tablaMicro', [PruebasController::class, 'tablaMicroPeriodico']);
+$router->get('/admin/pruebas/tablaMicro', [PruebasController::class, 'tablaMicroPeriodico']);
 
 // TABLA DE SEPARADORES
-$router->get('/admin/pruebas/separadores/tablaSeparadores', [PruebasController::class, 'tablaSeparadores']);
+$router->get('/admin/pruebas/tablaSeparadores', [PruebasController::class, 'tablaSeparadores']);
 
 
 
