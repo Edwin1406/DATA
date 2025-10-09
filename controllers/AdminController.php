@@ -615,9 +615,9 @@ class AdminController
                 ? (new DateTime($turnoCorrugador))->modify('-1 hour')->format('H:i') 
                 : null;
 
-            $corrugador->hora_maquina= $turnoCorrugador1;
+            $corrugador->horas_maquina= $turnoCorrugador1;
 
-        // debuguear($corrugador->hora_maquina);
+        //debuguear($corrugador->hora_maquina);
 
         $produccion_diaria = new ProduccionDiaria;
 
