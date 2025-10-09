@@ -155,6 +155,8 @@
                                                 <option value="SOPLADO">SOPLADO</option>
                                                 <option value="CALDERO">CALDERO</option>
                                                 <option value="COMPRESOR">COMPRESOR</option>
+                                                <option value="PRUEBAS">PRUEBAS</option>
+
 
                                             </select>
 
