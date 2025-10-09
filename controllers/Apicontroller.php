@@ -198,8 +198,6 @@ class Apicontroller
             $item->unidad_x_dia = floatval($item->unidad_x_dia);
             $item->metros_lineales = floatval($item->metros_lineales);
             $item->kilos_x_dia = floatval($item->kilos_x_dia);
-            $item->refile_std = floatval($item->refile_std);
-            $item->extra_trim = floatval($item->extra_trim);
             $item->desperdicio_lamina = floatval($item->desperdicio_lamina);
             $item->turno = floatval($item->turno);
             $item->horas_maquina = $item->horas_maquina; 
@@ -233,6 +231,12 @@ public static function apiProduccionDiariaCorrugador(): void {
     header('Content-Type: application/json');
     echo json_encode($produccionDiariaCorrugador);
 }
+
+
+
+
+
+// 
 
 
 
