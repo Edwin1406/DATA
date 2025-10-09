@@ -3,7 +3,7 @@
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_corrugador) ? s($id_corrugador) : ''; ?>">
 
   <!-- FECHA -->
-  
+
   <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="fecha">Fecha</label>
@@ -170,7 +170,7 @@
           //   $('#kilos_x_procesar').closest('.form-group').hide();
           //   $('#kilos_x_dia').closest('.form-group').hide();
           //   $('#metros_lineales').closest('.form-group').hide();
-        
+
           //   $('#desperdicio_lamina').closest('.form-group').hide();
           //   $('#turno').closest('.form-group').hide();
           //   $('#horas_maquina').closest('.form-group').hide();
@@ -182,7 +182,7 @@
           // case 'MICRO':
           //   // Ocultar metros_lineales
           //   $('#metros_lineales').closest('.form-group').hide();
-        
+
           //   $('#desperdicio_lamina').closest('.form-group').hide();
           //   $('#turno').closest('.form-group').hide();
           //   $('#horas_maquina').closest('.form-group').hide();
@@ -193,7 +193,7 @@
           // case 'PERIODICO':
           //   // Ocultar metros_lineales
           //   $('#metros_lineales').closest('.form-group').hide();
-          
+
           //   $('#desperdicio_lamina').closest('.form-group').hide();
           //   $('#turno').closest('.form-group').hide();
           //   $('#horas_maquina').closest('.form-group').hide();
@@ -211,12 +211,14 @@
           case 'CORRUGADOR CAJAS':
             // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
             $('#unidad_x_dia').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
+
             $('#metros_lineales').closest('.form-group').hide();
             $('#hora_inicio').closest('.form-group').hide();
             $('#hora_fin').closest('.form-group').hide();
 
             // $('#kilos_x_dia').closest('.form-group').hide();
-       
+
             $('#desperdicio_lamina').closest('.form-group').hide();
             $('#turno').closest('.form-group').hide();
             $('#horas_maquina').closest('.form-group').hide();
@@ -227,6 +229,7 @@
           case 'CORRUGADOR PLANCHAS':
             // Ocultar unidades_x_dia, metros_lineales, kilos_x_dia
             $('#unidad_x_dia').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
             $('#hora_inicio').closest('.form-group').hide();
             $('#hora_fin').closest('.form-group').hide();
             $('#metros_lineales').closest('.form-group').hide();
