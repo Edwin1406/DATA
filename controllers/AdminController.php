@@ -617,13 +617,7 @@ class AdminController
 
             $corrugador->hora_maquina= $turnoCorrugador1;
 
-
-
-
-
         // debuguear($corrugador->hora_maquina);
-
-
 
         $produccion_diaria = new ProduccionDiaria;
 
