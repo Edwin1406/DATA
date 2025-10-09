@@ -954,5 +954,36 @@ class PruebasController
 
 
 
+        public static function tablaMicro(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Obtener los diseños de la base de datos
+        // $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
+        $corrugador = Ventas::all();
+
+
+        // debuguear($corrgador);
+
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/micro/tablaMicro', [
+            'titulo' => 'MICRO - Tabla de Producción',
+            'subtitulo' => 'Micro',
+            'nombre' => $nombre,
+            'email' => $email,
+            'corrugador' => $corrugador
+        ]);
+    }
+
+
+
+
+
 
 }

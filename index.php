@@ -223,6 +223,8 @@ $router->get('/admin/diaria/tablaDiaria', [AdminController::class, 'tablaDiaria'
 
 
 
+
+
 // turnotabladiseno
 $router->get('/admin/turnoDiseno/turnotablaDiseno', [DiseñoController::class, 'turnotablaDiseno']);
 
@@ -326,6 +328,7 @@ $router->get('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPru
 $router->post('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPruebas']);
 
 
+
 // eliminar carrito
 $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
 
@@ -338,6 +341,10 @@ $router->post('/admin/pruebas/registrarVenFlexo', [PruebasController::class, 're
 
 // TABLA DE PRUEBAS
 $router->get('/admin/pruebas/tablaPruebas', [PruebasController::class, 'tablaPruebas']);
+
+
+// TABLA DE MICRO
+$router->get('/admin/pruebas/tablaMicro', [PruebasController::class, 'tablaMicro']);
 
 // TABLA DE FLEXO
 $router->get('/admin/pruebas/tablaFlexo', [PruebasController::class, 'tablaFlexo']);
