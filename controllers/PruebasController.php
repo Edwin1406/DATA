@@ -575,6 +575,9 @@ class PruebasController
         $corrugador = Ventas::whereArray('linea', 'CORRUGADOR');
 
 
+        debuguear($corrugador);
+
+
         // debuguear($corrgador);
 
         // Renderizar la vista de la tabla de diseños
