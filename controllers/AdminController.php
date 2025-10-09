@@ -831,7 +831,7 @@ class AdminController
             'nombre' => $nombre,
             'email' => $email,
             'corrugador' => $corrugador,
-            'id_micro' => $id_micro,
+            'id_corrugador' => $id_corrugador,
             
             
             'turnoCorrugador1' => $turnoCorrugador1,
