@@ -119,6 +119,11 @@ $router->get('/admin/diaria/produccion_diaria', [AdminController::class, 'produc
 $router->post('/admin/diaria/produccion_diaria', [AdminController::class, 'produccion_diaria']);
 
 
+// PRODUCCION DIARIA MICRO
+$router->get('/admin/diaria/produccion_diariaMicro', [AdminController::class, 'produccion_diariaMicro']);
+$router->post('/admin/diaria/produccion_diariaMicro', [AdminController::class, 'produccion_diariaMicro']);
+
+
 
 
 // CREAR FLEXO
