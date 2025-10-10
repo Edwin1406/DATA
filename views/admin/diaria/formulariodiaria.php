@@ -1,21 +1,6 @@
-<?php
-// Asegúrate de que la sesión esté iniciada
-// session_start();
-
-// Obtén el nombre del usuario desde la sesión
-$nombreUsuario = $_SESSION['nombre'] ?? ''; // Si no existe, asigna una cadena vacía
-
-// Debuguear el nombre del usuario
-// debuguear($nombreUsuario);
-
-// Asignación condicional para cada input oculto
-?>
-<input type="hidden" name="id_corrugador" value="<?php echo ($nombreUsuario != 'CORRUGADOR' && !empty($id_corrugador)) ? $id_corrugador : ''; ?>">
-<input type="hidden" name="id_micro" value="<?php echo ($nombreUsuario == 'MICRO' && !empty($id_micro)) ? $id_micro : ''; ?>">
-<input type="hidden" name="id_periodico" value="<?php echo ($nombreUsuario != 'PERIODICO' && !empty($id_periodico)) ? $id_periodico : ''; ?>">
-<input type="hidden" name="separadores" value="<?php echo ($nombreUsuario == 'SEPARADORES' && !empty($id_separadores)) ? $id_separadores : ''; ?>">
-
-
+  <!-- hidden fields -->
+  <!-- id_corrugador -->
+  <input type="hidden" name="id_corrugador" value="<?php echo isset($id_corrugador) ? s($id_corrugador) : ''; ?>">
 
   <!-- FECHA -->
 

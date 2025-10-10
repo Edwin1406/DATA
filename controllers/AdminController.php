@@ -931,7 +931,7 @@ class AdminController
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
                 $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diariaPeriodico?id_periodico=' . $produccion_diaria->id_corrugador . '&exito=1');
+                header('Location: /admin/diaria/produccion_diariaPeriodico?id_periodico=' . $_GET['id_periodico'] . '&exito=1');
             }
         } else {
             $alertas = [];
