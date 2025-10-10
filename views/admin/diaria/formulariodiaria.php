@@ -1,6 +1,7 @@
   <!-- hidden fields -->
   <!-- id_corrugador -->
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_corrugador) ? s($id_corrugador) : ''; ?>">
+  <input type="hidden" name="id_corrugador" value="<?php echo isset($id_periodico) ? s($id_periodico) : ''; ?>">
 
   <!-- FECHA -->
 
