@@ -724,12 +724,12 @@ class AdminController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        $id_corrugador = $_GET['id_corrugador'] ?? null;
+        $id_micro = $_GET['id_micro'] ?? null;
         
 
 
 
-        $corrugador = Ventas::where('id', $id_corrugador);
+        $corrugador = Ventas::where('id', $id_micro);
 
 
         // debuguear($corrugador);
@@ -816,7 +816,7 @@ class AdminController
             $alertas = $produccion_diaria->validar();
             if (empty($alertas)) {
                 $produccion_diaria->guardar();
-                header('Location: /admin/diaria/produccion_diariaMicro?id_corrugador=' . $produccion_diaria->id_corrugador . '&exito=1');
+                header('Location: /admin/diaria/produccion_diariaMicro?id_micro=' . $produccion_diaria->id_micro . '&exito=1');
             }
         } else {
             $alertas = [];
@@ -829,7 +829,7 @@ class AdminController
             'nombre' => $nombre,
             'email' => $email,
             'corrugador' => $corrugador,
-            'id_corrugador' => $id_corrugador,
+            'id_micro' => $id_micro,
             'turnoCorrugador1' => $turnoCorrugador1,
         ]);
     }
