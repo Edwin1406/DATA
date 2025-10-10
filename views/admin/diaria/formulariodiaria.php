@@ -1,8 +1,23 @@
   <!-- hidden fields -->
   <!-- id_corrugador -->
-  <input type="hidden" name="id_corrugador" value="<?php echo isset($id_corrugador) ? s($id_corrugador) : ''; ?>">
-  <input type="hidden" name="id_micro" value="<?php echo isset($id_micro) ? s($id_micro) : ''; ?>">
-  <input type="hidden" name="id_periodico" value="<?php echo isset($id_periodico) ? s($id_periodico) : ''; ?>">
+<?php
+// Asegúrate de que la sesión esté iniciada
+// session_start();
+
+// Obtén el nombre del usuario desde la sesión
+$nombreUsuario = $_SESSION['nombre'] ?? ''; // Si no existe, asigna una cadena vacía
+
+debuguear($nombreUsuario);
+
+// Determina el valor correcto según el nombre del usuario
+$idCorrecto = ($nombreUsuario == 'micro') ? (isset($id_micro) ? s($id_micro) : '') : (isset($id_corrugador) ? s($id_corrugador) : '');
+
+// Asigna el valor al input correspondiente
+?>
+<input type="hidden" name="id_corrugador" value="<?php echo ($nombreUsuario != 'CORRUGADOR' && isset($id_corrugador)) ? s($id_corrugador) : ''; ?>">
+<input type="hidden" name="id_micro" value="<?php echo ($nombreUsuario == 'MICRO' && isset($id_micro)) ? s($id_micro) : ''; ?>">
+<input type="hidden" name="id_periodico" value="<?php echo isset($id_periodico) ? s($id_periodico) : ''; ?>">
+
 
   <!-- FECHA -->
 
