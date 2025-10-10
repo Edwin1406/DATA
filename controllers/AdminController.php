@@ -944,7 +944,7 @@ class AdminController
             'nombre' => $nombre,
             'email' => $email,
             'corrugador' => $corrugador,
-            'id_periodico' => $id_periodico,
+            // 'id_periodico' => $id_periodico,
             'turnoCorrugador1' => $turnoCorrugador1,
         ]);
     }

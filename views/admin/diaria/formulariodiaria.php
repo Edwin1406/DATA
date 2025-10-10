@@ -1,8 +1,12 @@
   <!-- hidden fields -->
   <!-- id_corrugador -->
+   <?php if($nombre = $_SESSION['nombre']== 'CORRUGADOR') { ?>
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_corrugador) ? s($id_corrugador) : ''; ?>">
+  <?php } elseif($nombre = $_SESSION['nombre']== 'PERIODICO') { ?>
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_periodico) ? s($id_periodico) : ''; ?>">
-
+  <?php } elseif($nombre = $_SESSION['nombre']== 'MICRO') { ?>
+  <input type="hidden" name="id_corrugador" value="<?php echo isset($id_micro) ? s($id_micro) : ''; ?>">
+  <?php } ?>
   <!-- FECHA -->
 
   <div class="col-md-2 col-12">
