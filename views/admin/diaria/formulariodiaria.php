@@ -6,6 +6,8 @@
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_periodico) ? s($id_periodico) : ''; ?>">
   <?php } elseif($nombre = $_SESSION['nombre']== 'MICRO') { ?>
   <input type="hidden" name="id_corrugador" value="<?php echo isset($id_micro) ? s($id_micro) : ''; ?>">
+  <?php } elseif($nombre = $_SESSION['nombre']== 'SEPARADORES') { ?>
+  <input type="hidden" name="id_corrugador" value="<?php echo isset($id_separadores) ? s($id_separadores) : ''; ?>">
   <?php } ?>
   <!-- FECHA -->
 
