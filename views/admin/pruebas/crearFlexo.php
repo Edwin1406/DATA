@@ -290,7 +290,7 @@
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
-                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" >
                             </div>
                         </div>
 
@@ -298,7 +298,7 @@
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
-                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
+                                    class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" >
                             </div>
                         </div>
 
@@ -306,7 +306,7 @@
                             <div class="form-group">
                                 <label for="n_unidades">N° de Unidades</label>
                                 <input type="number" id="n_unidades" class="form-control"
-                                    placeholder="N° de Unidades" name="n_unidades" required>
+                                    placeholder="N° de Unidades" name="n_unidades" >
                             </div>
                         </div>
 
