@@ -111,6 +111,8 @@
                                                 <option value="COMBADO">COMBADO</option>
                                                 <option value="DESPEGADO">DESPEGADO</option>
                                                 <option value="EXCESO DE RECUBRIMIENTO">EXCESO DE RECUBRIMIENTO</option>
+                                                <option value="MOVIMIENTO DE REGISTROS">MOVIMIENTO DE REGISTROS</option>
+
                                                 <option value="OTRO">OTRO</option>
 
                                             </select>
