@@ -155,7 +155,7 @@
 
                 <!-- Contenedor responsive -->
                 <div class="table-responsive">
-                       <table class="table table-striped w-100" id="table1">
+                    <table class="table table-striped w-100" id="table1">
                         <thead>
                             <tr>
                                 <th class="fs-6" style="min-width: 90px;">ID</th>
@@ -280,7 +280,7 @@
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" id="fecha" class="form-control"
-                                    name="fecha" value="<?php echo date('Y-m-d'); ?>" >
+                                    name="fecha" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
 
@@ -364,6 +364,8 @@
                                     <option value="MARCO TAPIA">MARCO TAPIA</option>
                                     <option value="KEVIN DELGADO">KEVIN DELGADO</option>
                                     <option value="MENTOR">MENTOR</option>
+                                    <option value="DIEGO DE LA CRUZ">DIEGO DE LA CRUZ</option>
+                                    <option value="JAVIER CUASCOTA">JAVIER CUASCOTA</option>
                                 </select>
                             </div>
                         </div>
