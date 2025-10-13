@@ -107,6 +107,8 @@
                                                 <option value="EMPALME">Empalme</option>
                                                 <option value="SOPLADO">Soplado</option>
                                                 <option value="RECUBRIMIENTO">Recubrimiento</option>
+                                                <option value="ELECTRICO">Electrico</option>
+                                                <option value="MECANICO">Mecanico</option>
                                             </select>
 
                                         </div>
