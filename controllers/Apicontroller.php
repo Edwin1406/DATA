@@ -248,7 +248,7 @@ public static function apiProduccionDiariaCorrugador(): void {
             $item->id = intval($item->id);
             $item->id_usuario = intval($item->id_usuario);
             $item->consumo_papel = intval($item->consumo_papel);
-            $item->n_laminas = intval($item->n_laminas);
+            $item->n_unidades = intval($item->n_unidades);
             $item->un_programadas = intval($item->un_programadas);
             $item->turno = $item->turno;
             $item->n_cambios = intval($item->n_cambios);
