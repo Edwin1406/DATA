@@ -10,6 +10,7 @@ use Model\Mantenimiento;
 use Model\ProduccionDiaria;
 use Model\Prueba;
 use Model\TurnoDiseno;
+use Model\VenFlexo;
 use Model\Ventas;
 
 class Apicontroller
@@ -232,6 +233,40 @@ public static function apiProduccionDiariaCorrugador(): void {
     echo json_encode($produccionDiariaCorrugador);
 }
 
+
+// API PODUCCION DIARIA FLEXO
+
+   public static function apiProduccionDiariaFlexo(): void
+    {
+        // CORS
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type');
+
+        $producciondiaria = VenFlexo::all('ASC');
+        foreach ($producciondiaria as &$item) {
+            $item->id = intval($item->id);
+            $item->id_usuario = intval($item->id_usuario);
+            $item->consumo_papel = intval($item->consumo_papel);
+            $item->n_laminas = intval($item->n_laminas);
+            $item->un_programadas = intval($item->un_programadas);
+            $item->turno = $item->turno;
+            $item->n_cambios = intval($item->n_cambios);
+            $item->operador = $item->operador;
+            $item->total = floatval($item->total);
+            $item->hora_inicio = $item->hora_inicio;
+            $item->hora_fin = $item->hora_fin;
+            $item->estandar = intval($item->estandar);
+            $item->tiempo_cambio_medida = intval($item->tiempo_cambio_medida);
+            $item->tiempo_inactivo = intval($item->tiempo_inactivo);
+            $item->motivo_inactividad = $item->motivo_inactividad;
+
+        }
+        // Devolver los datos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($producciondiaria);
+        exit;
+    }
 
 
 

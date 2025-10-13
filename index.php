@@ -368,6 +368,10 @@ $router->get('/admin/api/apiDesperdicioxSucesos', [Apicontroller::class, 'apiDes
 $router->get('/admin/api/apiTotalDesperdicioIndividual', [Apicontroller::class, 'apiTotalDesperdicioIndividual']);  
 
 
+// apiProduccionDiariaFlexo
+$router->get('/admin/api/apiProduccionDiariaFlexo', [Apicontroller::class, 'apiProduccionDiariaFlexo']);
+
+
 // CRUD DE PRUEBAS 
 // Crear prueba
 $router->get('/admin/pruebas/crearPruebas', [PruebasController::class, 'crearPruebas']);
