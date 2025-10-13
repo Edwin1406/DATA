@@ -1138,6 +1138,59 @@ class AdminController
     }
 
 
+    // tablaDiariaPeriodico
+    public static function tablaDiariaPeriodico(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $produccionDiarias = ProduccionDiaria::all();
+        // debuguear($produccionDiarias);
+
+        $router->render('admin/diaria/tablaDiariaPeriodico', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA PRODUCCIÓN DIARIA PERIÓDICO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccionDiarias' => $produccionDiarias
+        ]);
+    }
+
+
+    // tablaDiariaSeparadores
+    public static function tablaDiariaSeparadores(Router $router){
+
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $produccionDiarias = ProduccionDiaria::all();
+        // debuguear($produccionDiarias);
+
+        $router->render('admin/diaria/tablaDiariaSeparadores', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA PRODUCCIÓN DIARIA SEPARADORES',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccionDiarias' => $produccionDiarias
+        ]);
+    }
+
+
+
+
+
+
+
+
 
 
 
