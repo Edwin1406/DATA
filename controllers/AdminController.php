@@ -1191,7 +1191,7 @@ class AdminController
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
         if (!$id) {
-            header('Location: /admin/diaria/tablaDiaria?error=1');
+            header('Location: /admin/diaria/tablaDiariaMicro?error=1');
         }
 
         // NOMBRE DE LA PERSONA LOGEADA
