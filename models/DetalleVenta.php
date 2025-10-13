@@ -34,6 +34,22 @@ class DetalleVenta extends ActiveRecord {
 
     }
 
+    // validar
+    public function validar() {
+        if(!$this->id_venta) {
+            self::$alertas['error'][] = 'El id de la venta es obligatorio';
+        }
+        if(!$this->tipo_maquina) {
+            self::$alertas['error'][] = 'El tipo de maquina es obligatorio';
+        }
+        if(!$this->cantidad) {
+            self::$alertas['error'][] = 'La cantidad es obligatoria';
+        }
+        if(!$this->casos) {
+            self::$alertas['error'][] = 'El numero de casos es obligatorio';
+        }
+        return self::$alertas;
+    }
 
 
 
