@@ -111,11 +111,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        foreach ($produccionDiarias as $produccionDiaria):
-                            if ($tipo_maqina == 'CORRUGADOR PLANCHAS/CAJAS' || $tipo_maqina == 'CORRUGADOR CAJAS' || $tipo_maqina == 'CORRUGADOR PLANCHAS') {
-                                if ($tipo_maqina !== $produccionDiaria->linea) continue;
-                        ?>
+                     <?php 
+foreach ($produccionDiarias as $produccionDiaria):
+    // Verifica los valores de tipo_maqina y linea
+    echo "tipo_maqina: " . $tipo_maqina . " - linea: " . $produccionDiaria->linea . "<br>";
+
+    if ($tipo_maqina == 'CORRUGADOR PLANCHAS/CAJAS' || $tipo_maqina == 'CORRUGADOR CAJAS' || $tipo_maqina == 'CORRUGADOR PLANCHAS') {
+        if ($tipo_maqina !== $produccionDiaria->linea) continue;
+?>
+
                                 <tr>
                                     <td><?= $produccionDiaria->id ?></td>
                                     <td><?= $produccionDiaria->fecha ?></td>
