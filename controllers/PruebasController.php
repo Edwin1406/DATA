@@ -480,6 +480,7 @@ class PruebasController
             $turno = $_POST['turno'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
             
 
@@ -501,6 +502,7 @@ class PruebasController
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
             $venta->motivo_inactividad = $motivo_inactividad;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
             $venta->guardarCarrito();
