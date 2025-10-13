@@ -116,7 +116,13 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach ($produccionDiarias as $produccionDiaria): ?>
+                              <?php $tipo_maqina = 'PERIODICO';
+                            foreach ($produccionDiarias as $produccionDiaria):
+                                if ($tipo_maqina !== $produccionDiaria->linea) continue;
+                            ?>    
+
+
+
                             <tr>
                                 <td><?= $produccionDiaria->id ?></td>
                                 <td><?= $produccionDiaria->fecha ?></td>
