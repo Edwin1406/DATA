@@ -237,6 +237,12 @@ $router->get('/admin/diaria/tablaDiaria', [AdminController::class, 'tablaDiaria'
 // tabladiaria micro
 $router->get('/admin/diaria/tablaDiariaMicro', [AdminController::class, 'tablaDiariaMicro']);
 
+// tabladiaria periodico
+$router->get('/admin/diaria/tablaDiariaPeriodico', [AdminController::class, 'tablaDiariaPeriodico']);
+
+// tabladiaria separadores
+$router->get('/admin/diaria/tablaDiariaSeparadores', [AdminController::class, 'tablaDiariaSeparadores']);
+
 
 
 
@@ -300,6 +306,12 @@ $router->post('/admin/eliminarDiaria', [AdminController::class, 'eliminarDiaria'
 
 // eliminar diaria micro
 $router->post('/admin/eliminarDiariaMicro', [AdminController::class, 'eliminarDiariaMicro']);
+
+// eliminar diaria periodico
+$router->post('/admin/eliminarDiariaPeriodico', [AdminController::class, 'eliminarDiariaPeriodico']);
+
+// eliminar diaria separadores
+$router->post('/admin/eliminarDiariaSeparadores', [AdminController::class, 'eliminarDiariaSeparadores']);
 
 // eliminar corrugador
 $router->post('/admin/eliminarCorrugado', [PruebasController::class, 'eliminarCorrugado']);
