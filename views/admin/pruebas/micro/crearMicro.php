@@ -57,7 +57,7 @@
                     <a class="nav-link active" href="/admin/pruebas/tablaMicro">Tabla Micro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-Corrugador</a>
+                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-PREPRINTER</a>
                 </li>
             </ul>
         </div>
