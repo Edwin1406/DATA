@@ -39,7 +39,7 @@
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
         placeholder="Unidad x dia" name="unidad_x_dia"
-        value="<?php echo isset($corrugador) ? s($corrugador->n_laminas) : '0'; ?>" readonly>
+        value="<?php echo isset($corrugador) ? s($corrugador->unidad_x_dia) : '0'; ?>" readonly>
     </div>
   </div>
 
