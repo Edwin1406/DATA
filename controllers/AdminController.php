@@ -1161,9 +1161,26 @@ class AdminController
         $alertas = [];
         $produccion_diaria = ProduccionDiaria::find($id);
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $produccion_diaria->sincronizar($_POST);
+            // debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
 
-
-        
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/tablaDiaria?editado=3');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $produccion_diaria = ProduccionDiaria::find($id);
+                if (!$produccion_diaria) {
+                    header('Location: /admin/diaria/tablaDiaria?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiaria?error=1');
+            }
+        }
 
   // debuguear($nombre);
         $router->render('admin/diaria/editarproduccion_diaria', [
@@ -1264,6 +1281,30 @@ class AdminController
                 }
             } else {
                 header('Location: /admin/diaria/tablaDiaria?error=1');
+            }
+        }
+    }
+
+
+    // eliminarDiariaMicro
+    public static function eliminarDiariaMicro(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $produccionDiaria = ProduccionDiaria::find($id);
+                if ($produccionDiaria) {
+                    $produccionDiaria->eliminar();
+                    header('Location: /admin/diaria/tablaDiariaMicro?eliminado=3');
+                } else {
+                    header('Location: /admin/diaria/tablaDiariaMicro?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaMicro?error=1');
             }
         }
     }
