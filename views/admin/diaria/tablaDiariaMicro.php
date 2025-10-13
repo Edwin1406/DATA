@@ -126,8 +126,6 @@
                                 <td><?= $produccionDiaria->linea ?></td>
                                 <td><?= $produccionDiaria->unidades_x_procesar ?></td>
                                 <td><?= $produccionDiaria->kilos_x_procesar ?></td>
-
-
                                 <td>
 
                                     <div class="d-flex gap-1">
