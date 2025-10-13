@@ -1115,6 +1115,32 @@ class AdminController
     }
 
 
+    // tablaDiariaMicro
+    public static function tablaDiariaMicro(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $produccionDiarias = ProduccionDiaria::all();
+        // debuguear($produccionDiarias);
+
+        $router->render('admin/diaria/tablaDiariaMicro', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'subtitulo' => 'TABLA PRODUCCIÓN DIARIA MICRO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccionDiarias' => $produccionDiarias
+        ]);
+    }
+
+
+
+
+
     // editar produccion diaria
     public static function editarproduccion_diaria(Router $router){
         session_start();

@@ -234,6 +234,9 @@ $router->get('/admin/control/guillotina/tablaConsumoGuillotinaPapel', [ControlCo
 // tabladiaria
 $router->get('/admin/diaria/tablaDiaria', [AdminController::class, 'tablaDiaria']);
 
+// tabladiaria micro
+$router->get('/admin/diaria/tablaDiariaMicro', [AdminController::class, 'tablaDiariaMicro']);
+
 
 
 
