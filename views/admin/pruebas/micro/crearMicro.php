@@ -112,7 +112,7 @@
                                                 <option value="RECUBRIMIENTO">Recubrimiento</option>
                                                 <option value="ELECTRICO">Electrico</option>
                                                 <option value="MECANICO">Mecanico</option>
-                                                <option value="EXTRA-TRIM">Extra-Trim</option>
+                                                <option value="EXTRA TRIM">Extra-Trim</option>
 
                                             </select>
 
