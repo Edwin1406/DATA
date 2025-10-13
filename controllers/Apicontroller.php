@@ -257,7 +257,7 @@ public static function apiProduccionDiariaCorrugador(): void {
             $item->hora_inicio = $item->hora_inicio;
             $item->hora_fin = $item->hora_fin;
             $item->estandar = intval($item->estandar);
-            $item->tiempo_cambio_medida = intval($item->tiempo_cambio_medida);
+            $item->tiempo_cambio_medida = floatval($item->tiempo_cambio_medida);
             $item->tiempo_inactivo = intval($item->tiempo_inactivo);
             $item->motivo_inactividad = $item->motivo_inactividad;
 
