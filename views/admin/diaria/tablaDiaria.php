@@ -90,6 +90,9 @@
         </div>
     </section>
 
+
+
+
     <section class="section">
         <div class="card">
             <div class="card-header">
@@ -107,50 +110,52 @@
                             <th class="fs-6" style="min-width: 60px;">Linea</th>
                             <th class="fs-6" style="min-width: 70px;">Unid x prc</th>
                             <th class="fs-6" style="min-width: 70px;">Kilos x prc</th>
+
                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                     <?php 
-foreach ($produccionDiarias as $produccionDiaria):
-    // Verifica los valores de tipo_maqina y linea
-    echo "tipo_maqina: " . $tipo_maqina . " - linea: " . $produccionDiaria->linea . "<br>";
 
-    if ($tipo_maqina == 'CORRUGADOR PLANCHAS/CAJAS' || $tipo_maqina == 'CORRUGADOR CAJAS' || $tipo_maqina == 'CORRUGADOR PLANCHAS') {
-        if ($tipo_maqina !== $produccionDiaria->linea) continue;
-?>
 
-                                <tr>
-                                    <td><?= $produccionDiaria->id ?></td>
-                                    <td><?= $produccionDiaria->fecha ?></td>
-                                    <td><?= $produccionDiaria->unidad_x_dia ?></td>
-                                    <td><?= $produccionDiaria->metros_lineales ?></td>
-                                    <td><?= $produccionDiaria->desperdicio_lamina ?></td>
-                                    <td><?= $produccionDiaria->linea ?></td>
-                                    <td><?= $produccionDiaria->unidades_x_procesar ?></td>
-                                    <td><?= $produccionDiaria->kilos_x_procesar ?></td>
-                                    <td>
-                                        <div class="d-flex gap-1">
-                                            <a href="/admin/diaria/editarproduccion_diaria?id=<?= $produccionDiaria->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                            <form action="/admin/eliminarDiaria" method="POST">
-                                                <input type="hidden" name="id" value="<?= $produccionDiaria->id ?>">
-                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                        <?php
-                            }
-                        endforeach;
-                        ?>
+                      <?php $tipo_maqina = 'CORRUGADOR PLANCHAS/CAJAS' || $tipo_maqina = 'CORRUGADOR CAJAS';
+                            foreach ($produccionDiarias as $produccionDiaria):
+                                if ($tipo_maqina !== $produccionDiaria->linea) continue;
+                            ?>
+                       
+                            <tr>
+                                <td><?= $produccionDiaria->id ?></td>
+                                <td><?= $produccionDiaria->fecha ?></td>
+                                <td><?= $produccionDiaria->unidad_x_dia ?></td>
+                                <td><?= $produccionDiaria->metros_lineales ?></td>
+                                <td><?= $produccionDiaria->desperdicio_lamina ?></td>
+                                <td><?= $produccionDiaria->linea ?></td>
+                                <td><?= $produccionDiaria->unidades_x_procesar ?></td>
+                                <td><?= $produccionDiaria->kilos_x_procesar ?></td>
+
+
+                                <td>
+
+                                    <div class="d-flex gap-1">
+                                        <a href="/admin/diaria/editarproduccion_diaria?id=<?= $produccionDiaria->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                        <form action="/admin/eliminarDiaria" method="POST">
+                                            <input type="hidden" name="id" value="<?= $produccionDiaria->id ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </div>
+
+
+
+
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
-
-
-
 </div>
 
 
