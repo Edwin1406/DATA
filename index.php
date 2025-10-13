@@ -275,6 +275,11 @@ $router->get('/admin/diaria/editarproduccion_diaria', [AdminController::class, '
 $router->post('/admin/diaria/editarproduccion_diaria', [AdminController::class, 'editarproduccion_diaria']);
 
 
+// editar produccion diaria micro
+$router->get('/admin/diaria/editarproduccion_diariaMicro', [AdminController::class, 'editarproduccion_diariaMicro']);
+$router->post('/admin/diaria/editarproduccion_diariaMicro', [AdminController::class, 'editarproduccion_diariaMicro']);
+
+
 
 
 
