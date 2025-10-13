@@ -118,7 +118,7 @@
                     <tbody>
 
 
-                      <?php $tipo_maqina = 'CORRUGADOR PLANCHAS/CAJAS';
+                      <?php $tipo_maqina = 'CORRUGADOR PLANCHAS/CAJAS' || $tipo_maqina = 'CORRUGADOR CAJAS' || $tipo_maqina = 'CORRUGADOR PLANCHAS';
                             foreach ($produccionDiarias as $produccionDiaria):
                                 if ($tipo_maqina !== $produccionDiaria->linea) continue;
                             ?>
