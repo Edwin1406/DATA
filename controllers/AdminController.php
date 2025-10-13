@@ -1307,6 +1307,113 @@ class AdminController
     }
 
 
+    // editar produccion diaria separadores
+    public static function editarproduccion_diariaSeparadores(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/diaria/tablaDiariaSeparadores?error=1');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $alertas = [];
+        $produccion_diaria = ProduccionDiaria::find($id);
+
+        // debuguear($produccion_diaria);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $produccion_diaria->sincronizar($_POST);
+            // debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
+
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/tablaDiariaSeparadores?editado=3');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $produccion_diaria = ProduccionDiaria::find($id);
+                if (!$produccion_diaria) {
+                    header('Location: /admin/diaria/tablaDiariaSeparadores?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaSeparadores?error=1');
+            }
+        }
+
+        // debuguear($nombre);
+        $router->render('admin/diaria/editarproduccion_diariaSeparadores', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccion_diaria' => $produccion_diaria,
+            'alertas' => $alertas
+        ]);
+    }
+
+    // editar produccion diaria periodico
+    public static function editarproduccion_diariaPeriodico(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/diaria/tablaDiariaPeriodico?error=1');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $alertas = [];
+        $produccion_diaria = ProduccionDiaria::find($id);
+
+        // debuguear($produccion_diaria);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $produccion_diaria->sincronizar($_POST);
+            // debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
+
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/tablaDiariaPeriodico?editado=3');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $produccion_diaria = ProduccionDiaria::find($id);
+                if (!$produccion_diaria) {
+                    header('Location: /admin/diaria/tablaDiariaPeriodico?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaPeriodico?error=1');
+            }
+        }
+
+        // debuguear($nombre);
+        $router->render('admin/diaria/editarproduccion_diariaPeriodico', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccion_diaria' => $produccion_diaria,
+            'alertas' => $alertas
+        ]);
+    }
+
+
 
 
 
