@@ -49,7 +49,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/diaria/tablaDiaria">Tabla Producción Diaria</a>
+                    <a class="nav-link active" href="/admin/diaria/tablaDiariaPeriodico">Tabla Producción Diaria Periódico</a>
                 </li>
             </ul>
         </div>
