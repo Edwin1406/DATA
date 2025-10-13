@@ -118,11 +118,12 @@
                     <tbody>
 
 
-                      <?php $tipo_maqina = 'CORRUGADOR PLANCHAS/CAJAS' ;
-                            foreach ($produccionDiarias as $produccionDiaria):
-                                if ($tipo_maqina !== $produccionDiaria->linea) continue;
-                            ?>
-                       
+                        <?php
+                        $tipos_maquina = ['CORRUGADOR PLANCHAS/CAJAS', 'CORRUGADOR PLANCHAS', 'CORRUGADOR CAJAS'];
+                        foreach ($produccionDiarias as $produccionDiaria):
+                            if (!in_array($produccionDiaria->linea, $tipos_maquina)) continue;
+                        ?>
+
                             <tr>
                                 <td><?= $produccionDiaria->id ?></td>
                                 <td><?= $produccionDiaria->fecha ?></td>
