@@ -1180,6 +1180,49 @@ class AdminController
 
 
 
+    // editar produccion diaria
+    public static function editarproduccion_diariaMicro(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/diaria/tablaDiaria?error=1');
+        }
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+        $alertas = [];
+        $produccion_diaria = ProduccionDiaria::find($id);
+
+
+
+        
+
+  // debuguear($nombre);
+        $router->render('admin/diaria/editarproduccion_diaria', [
+            'titulo' => 'MEGASTOCK-DESARROLLO',
+            'nombre' => $nombre,
+            'email' => $email,
+            'produccion_diaria' => $produccion_diaria,
+            'alertas' => $alertas
+        ]);
+
+
+        
+    }
+
+
+
+
+
+
+
 
 
 // eliminarDiaria
