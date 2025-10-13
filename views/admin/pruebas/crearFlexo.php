@@ -373,7 +373,7 @@
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="tiempo_inactivo">Horas de Inactividad</label>
-                                <input type="number" step="0.01" id="tiempo_inactivo" class="form-control"
+                                <input type="time" id="tiempo_inactivo" class="form-control"
                                     name="tiempo_inactivo" placeholder="Horas de inactividad">
                             </div>
                         </div>
