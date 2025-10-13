@@ -476,7 +476,7 @@
                     <!-- casos -->
                     <div class="form-group">
                         <label for="casos">CASOS</label>
-                        <select id="casos" class="form-control" name="casos">
+                        <select id="casos" class="choices form-control" name="casos">
 
                             <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
                             <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
