@@ -467,7 +467,7 @@
                     <div class="form-group">
                         <label for="tipo_maquina">Selecciona una opción:</label>
                         <select class="form-control" id="tipo_maquina" name="tipo_maquina">
-                            <option value="CORRUGADOR">Corrugador</option>
+                            <option value="PRE-PRINTER">PRE-PRINTER</option>
                         </select>
                     </div>
 
