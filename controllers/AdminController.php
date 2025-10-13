@@ -1204,7 +1204,7 @@ class AdminController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $produccion_diaria->sincronizar($_POST);
-            debuguear($produccion_diaria);
+            // debuguear($produccion_diaria);
             $alertas = $produccion_diaria->validar();
 
             if (empty($alertas)) {
