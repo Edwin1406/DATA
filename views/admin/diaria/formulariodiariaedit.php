@@ -153,8 +153,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script>
+ <script>
     $(document).ready(function() {
       // Función que se ejecuta cada vez que se cambia la selección de "Linea de Producción"
       $('#linea').change(function() {
@@ -165,41 +164,47 @@
 
         // Lógica para ocultar los campos según la opción seleccionada
         switch (selectedLinea) {
-          // case 'SEPARADORES':
-          //   // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
-          //   $('#kilos_x_procesar').closest('.form-group').hide();
-          //   $('#kilos_x_dia').closest('.form-group').hide();
-          //   $('#metros_lineales').closest('.form-group').hide();
+          case 'SEPARADORES':
+            // Ocultar kilos_x_procesar, kilos_x_dia y metros_lineales
+            $('#kilos_x_procesar').closest('.form-group').hide();
+            $('#kilos_x_dia').closest('.form-group').hide();
+            $('#metros_lineales').closest('.form-group').hide();
 
-          //   $('#desperdicio_lamina').closest('.form-group').hide();
-          //   $('#turno').closest('.form-group').hide();
-          //   $('#horas_maquina').closest('.form-group').hide();
-          //   $('#cambios').closest('.form-group').hide();
-          //   $('#tiempo_x_cambio').closest('.form-group').hide();
+            $('#desperdicio_lamina').closest('.form-group').hide();
+            $('#turno').closest('.form-group').hide();
+            $('#horas_maquina').closest('.form-group').hide();
+            $('#cambios').closest('.form-group').hide();
+            $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
 
-          //   break;
+            break;
 
-          // case 'MICRO':
-          //   // Ocultar metros_lineales
-          //   $('#metros_lineales').closest('.form-group').hide();
+          case 'MICRO':
+            // Ocultar metros_lineales
+            $('#metros_lineales').closest('.form-group').hide();
 
-          //   $('#desperdicio_lamina').closest('.form-group').hide();
-          //   $('#turno').closest('.form-group').hide();
-          //   $('#horas_maquina').closest('.form-group').hide();
-          //   $('#cambios').closest('.form-group').hide();
-          //   $('#tiempo_x_cambio').closest('.form-group').hide();
-          //   break;
+            $('#desperdicio_lamina').closest('.form-group').hide();
+            $('#turno').closest('.form-group').hide();
+            $('#horas_maquina').closest('.form-group').hide();
+            $('#cambios').closest('.form-group').hide();
+            $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
+            break;
 
-          // case 'PERIODICO':
-          //   // Ocultar metros_lineales
-          //   $('#metros_lineales').closest('.form-group').hide();
+          case 'PERIODICO':
+            // Ocultar metros_lineales
+            $('#metros_lineales').closest('.form-group').hide();
 
-          //   $('#desperdicio_lamina').closest('.form-group').hide();
-          //   $('#turno').closest('.form-group').hide();
-          //   $('#horas_maquina').closest('.form-group').hide();
-          //   $('#cambios').closest('.form-group').hide();
-          //   $('#tiempo_x_cambio').closest('.form-group').hide();
-          //   break;
+            $('#desperdicio_lamina').closest('.form-group').hide();
+            $('#turno').closest('.form-group').hide();
+            $('#horas_maquina').closest('.form-group').hide();
+            $('#cambios').closest('.form-group').hide();
+            $('#tiempo_x_cambio').closest('.form-group').hide();
+              $('#hora_inicio').closest('.form-group').hide();
+            $('#hora_fin').closest('.form-group').hide();
+            break;
 
           case 'CORRUGADOR PLANCHAS/CAJAS':
             // Mostrar todos los campos (por defecto ya se están mostrando)
