@@ -588,7 +588,7 @@
 
             // Enviar la solicitud AJAX
             $.ajax({
-                url: '/admin/pruebas/registroDetalleCorrugador', // URL de tu archivo PHP
+                url: '/admin/pruebas/registroDetallePreprinter', // URL de tu archivo PHP
                 type: 'POST',
                 data: formData,
                 dataType: 'json', // Espera una respuesta en formato JSON
