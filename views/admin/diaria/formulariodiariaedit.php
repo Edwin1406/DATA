@@ -33,12 +33,13 @@
 
   <!-- NOMBRE X DIA -->
 
+
   <div class="col-md-2 col-12">
     <div class="form-group">
       <label for="unidad_x_dia">Unidad x dia</label>
       <input type="text" id="unidad_x_dia" class="form-control"
         placeholder="Unidad x dia" name="unidad_x_dia"
-        value="<?php echo isset($produccion_diaria) ? s($produccion_diaria->n_laminas) : '0'; ?>" readonly>
+        value="<?php echo isset($corrugador) ? s($corrugador->n_laminas) : '0'; ?>" readonly>
     </div>
   </div>
 
