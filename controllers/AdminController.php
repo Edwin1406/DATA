@@ -1202,11 +1202,28 @@ class AdminController
 
         // debuguear($produccion_diaria);
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $produccion_diaria->sincronizar($_POST);
+            debuguear($produccion_diaria);
+            $alertas = $produccion_diaria->validar();
 
+            if (empty($alertas)) {
+                $produccion_diaria->guardar();
+                header('Location: /admin/diaria/tablaDiariaMicro?editado=3');
+            }
+        } else {
+            $id = $_GET['id'] ?? null;
+            if ($id) {
+                $produccion_diaria = ProduccionDiaria::find($id);
+                if (!$produccion_diaria) {
+                    header('Location: /admin/diaria/tablaDiariaMicro?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaMicro?error=1');
+            }
+        }
 
-        
-
-  // debuguear($nombre);
+        // debuguear($nombre);
         $router->render('admin/diaria/editarproduccion_diariaMicro', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
