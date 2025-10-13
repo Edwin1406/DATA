@@ -298,6 +298,9 @@ $router->post('/admin/eliminarTurnoDiseno', [DiseñoController::class, 'eliminar
 // eliminar diaria
 $router->post('/admin/eliminarDiaria', [AdminController::class, 'eliminarDiaria']);
 
+// eliminar diaria micro
+$router->post('/admin/eliminarDiariaMicro', [AdminController::class, 'eliminarDiariaMicro']);
+
 // eliminar corrugador
 $router->post('/admin/eliminarCorrugado', [PruebasController::class, 'eliminarCorrugado']);
 
