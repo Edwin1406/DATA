@@ -1200,6 +1200,8 @@ class AdminController
         $alertas = [];
         $produccion_diaria = ProduccionDiaria::find($id);
 
+        debuguear($produccion_diaria);
+
 
 
         
