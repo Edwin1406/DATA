@@ -285,6 +285,14 @@ $router->post('/admin/diaria/editarproduccion_diaria', [AdminController::class, 
 $router->get('/admin/diaria/editarproduccion_diariaMicro', [AdminController::class, 'editarproduccion_diariaMicro']);
 $router->post('/admin/diaria/editarproduccion_diariaMicro', [AdminController::class, 'editarproduccion_diariaMicro']);
 
+// editar produccion diaria periodico
+$router->get('/admin/diaria/editarproduccion_diariaPeriodico', [AdminController::class, 'editarproduccion_diariaPeriodico']);
+$router->post('/admin/diaria/editarproduccion_diariaPeriodico', [AdminController::class, 'editarproduccion_diariaPeriodico']);
+
+// editar produccion diaria separadores
+$router->get('/admin/diaria/editarproduccion_diariaSeparadores', [AdminController::class, 'editarproduccion_diariaSeparadores']);
+$router->post('/admin/diaria/editarproduccion_diariaSeparadores', [AdminController::class, 'editarproduccion_diariaSeparadores']);
+
 
 
 
