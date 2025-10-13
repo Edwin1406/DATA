@@ -453,7 +453,7 @@
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <form id="detalleCorrugadorForm" action="/admin/pruebas/registroDetalleCorrugador" method="POST">
+            <form id="detalleCorrugadorForm" action="/admin/pruebas/registroDetallePreprinter" method="POST">
                 <div class="modal-body">
 
 
