@@ -1205,7 +1205,7 @@ class AdminController
         
 
   // debuguear($nombre);
-        $router->render('admin/diaria/editarproduccion_diaria', [
+        $router->render('admin/diaria/editarproduccion_diariaMicro', [
             'titulo' => 'MEGASTOCK-DESARROLLO',
             'nombre' => $nombre,
             'email' => $email,
