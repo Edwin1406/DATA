@@ -155,6 +155,10 @@ $router->post('/admin/pruebas/crearMicro', [PruebasController::class, 'crearMicr
 $router->get('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
 $router->post('/admin/pruebas/registroDetalleCorrugador', [PruebasController::class, 'registroDetalleCorrugador']);
 
+// registro detalle preprinter
+$router->get('/admin/pruebas/registroDetallePreprinter', [PruebasController::class, 'registroDetallePreprinter']);
+$router->post('/admin/pruebas/registroDetallePreprinter', [PruebasController::class, 'registroDetallePreprinter']);
+
 
 
 

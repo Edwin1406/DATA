@@ -195,6 +195,57 @@ class PruebasController
         }
     }
 
+    public static function registroDetallePreprinter(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'Usuario no autenticado']);
+            exit;
+        }
+
+        $alertas = [];
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $detallecorrugador = new DetalleVenta;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Recibir los datos del formulario via AJAX
+            $detallecorrugador->id_venta = 36;
+            $detallecorrugador->tipo_maquina = $_POST['tipo_maquina'];
+            $detallecorrugador->cantidad = $_POST['cantidad'];
+            $detallecorrugador->casos = $_POST['casos'];
+            $detallecorrugador->observaciones = $_POST['observaciones'];
+            $detallecorrugador->fecha = $_POST['fecha'];
+
+            // Validar los datos
+            $alertas = $detallecorrugador->validar();
+
+            if (empty($alertas)) {
+                // Guardar en la base de datos
+                $resultado = $detallecorrugador->guardar();
+                if ($resultado) {
+                    // Responder éxito
+                    echo json_encode(['success' => true, 'message' => 'Registro guardado exitosamente']);
+                    // sweet aalert 2
+
+
+
+
+
+
+                } else {
+                    // Responder error al guardar
+                    echo json_encode(['success' => false, 'message' => 'Error al guardar el registro']);
+                }
+            } else {
+                // Responder con errores de validación
+                echo json_encode(['success' => false, 'message' => 'Errores de validación', 'errors' => $alertas]);
+            }
+            exit;
+        }
+    }
+
 
 
 
