@@ -1470,6 +1470,53 @@ class AdminController
     }
 
 
+    // eliminarDiariaPeriodico
+    public static function eliminarDiariaPeriodico(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $produccionDiaria = ProduccionDiaria::find($id);
+                if ($produccionDiaria) {
+                    $produccionDiaria->eliminar();
+                    header('Location: /admin/diaria/tablaDiariaPeriodico?eliminado=3');
+                } else {
+                    header('Location: /admin/diaria/tablaDiariaPeriodico?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaPeriodico?error=1');
+            }
+        }
+    }
+
+    // eliminarDiariaSeparadores
+    public static function eliminarDiariaSeparadores(Router $router){
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $produccionDiaria = ProduccionDiaria::find($id);
+                if ($produccionDiaria) {
+                    $produccionDiaria->eliminar();
+                    header('Location: /admin/diaria/tablaDiariaSeparadores?eliminado=3');
+                } else {
+                    header('Location: /admin/diaria/tablaDiariaSeparadores?error=1');
+                }
+            } else {
+                header('Location: /admin/diaria/tablaDiariaSeparadores?error=1');
+            }
+        }
+    }
+
+
 
 
     // error 404
