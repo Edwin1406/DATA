@@ -440,6 +440,7 @@ class PruebasController
             $turno = $_POST['turno'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
 
 
@@ -460,6 +461,7 @@ class PruebasController
             $venta->turno = $turno;
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
@@ -1017,6 +1019,7 @@ class PruebasController
             $turno = $_POST['turno'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
 
 
@@ -1037,6 +1040,7 @@ class PruebasController
             $venta->turno = $turno;
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
@@ -1233,6 +1237,7 @@ class PruebasController
             $turno = $_POST['turno'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
 
 
@@ -1253,6 +1258,7 @@ class PruebasController
             $venta->turno = $turno;
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;
@@ -1411,6 +1417,7 @@ class PruebasController
             $turno = $_POST['turno'] ?? '';
             $hora_inicio = $_POST['hora_inicio'] ?? '';
             $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
             $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
 
 
@@ -1431,6 +1438,7 @@ class PruebasController
             $venta->turno = $turno;
             $venta->hora_inicio = $hora_inicio;
             $venta->hora_fin = $hora_fin;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
             $venta->motivo_inactividad = $motivo_inactividad;
             // $venta->fecha = date('Y-m-d H:i:s');
             $venta->fecha = $fecha;

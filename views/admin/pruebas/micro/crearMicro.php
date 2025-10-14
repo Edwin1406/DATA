@@ -377,13 +377,26 @@
                             </div>
                         </div>
 
+
+
                         <!-- horas de inactividad -->
-                        <div class="col-md-5 col-12">
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="tiempo_inactivo">Horas de Inactividad</label>
+                                <input type="time" id="tiempo_inactivo" class="form-control"
+                                    name="tiempo_inactivo" placeholder="Horas de inactividad">
+                            </div>
+                        </div>
+
+
+                        <!-- horas de inactividad -->
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
                             </div>
                         </div>
+
 
 
 
