@@ -149,7 +149,7 @@
                                                 <option value="VELENTIN PÉREZ">VELENTIN PÉREZ</option>
                                                 <option value="ADRIAN PILLAJO">ADRIAN PILLAJO</option>
                                                 <option value="SEGUNDO MENDOZA">SEGUNDO MENDOZA</option>
-                                                <option value="VINIVIO CHARRO">VINIVIO CHARRO</option>
+                                                <option value="VINICIO CHARRO">VINICIO CHARRO</option>
                                                 <option value="DARWIN PUJOTA">DARWIN PUJOTA</option>
                                                 <option value="CRISTIAN PERGACHI">CRISTIAN PERGACHI</option>
                                                 <option value="ROSA TAPUY">ROSA TAPUY</option>
