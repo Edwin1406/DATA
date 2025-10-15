@@ -104,15 +104,13 @@
                                                 <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
 
                                                 <!-- CONTROLABLES -->
-                                                <option value="DESHOJE">Deshoje</option>
-                                                <option value="SF">SF</option>
-                                                <option value="CUADRE">Cuadre</option>
+                                                <option value="INICIO DE CORRIDA">Inicio de Corrida</option>
+                                                <option value="APROBACION DE COLOR">Aprobación de Color</option>
                                                 <option value="EMPALME">Empalme</option>
-                                                <option value="SOPLADO">Soplado</option>
-                                                <option value="RECUBRIMIENTO">Recubrimiento</option>
-                                                <option value="ELECTRICO">Electrico</option>
-                                                <option value="MECANICO">Mecanico</option>
-                                                <option value="EXTRA TRIM">Extra-Trim</option>
+                                                <option value="FALTA TINTA">Falta Tinta</option>
+                                                <option value="MOVIMIENTO CIREL">Movimiento Cirel</option>
+                                                <option value="MANCHAS AGUA">Manchas de Agua</option>
+                                                
 
                                             </select>
 
