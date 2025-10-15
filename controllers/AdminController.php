@@ -169,6 +169,7 @@ class AdminController
 
         $controlEmpaque = Prueba::all();
         $totalxdia = Prueba::SUMAXDIA($fecha_hoy); // Contará los registros del 15 de octubre de 2025
+        $totalxdia = number_format($totalxdia / 1000, 3); // Divides entre 1000 y lo formateas a 3 decimales
 
 
         $alertas = [];
