@@ -1521,7 +1521,7 @@ class PruebasController
                 // Guardar en la base de datos
                 $resultado = $carrito->guardar();
                 if ($resultado) {
-                    header('Location: /admin/pruebas/crearSeparadores?exito=1');
+                    header('Location: /admin/pruebas/crearPrePrinter?exito=1');
                     exit;
                 } else {
                     $alertas['error'][] = 'Error al guardar el registro';
