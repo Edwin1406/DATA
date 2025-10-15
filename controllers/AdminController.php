@@ -225,7 +225,8 @@ class AdminController
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
-            'totalxdia' => $totalxdia
+            'totalxdia' => $totalxdia,
+            'fecha_hoy' => $fecha_hoy,
         ]);
     }
 
