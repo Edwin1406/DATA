@@ -168,7 +168,7 @@ class AdminController
         $fecha_hoy = date('Y-m-d');
 
         $controlEmpaque = Prueba::all();
-        $totalxdia = Prueba::SUMAXDIA('2025-10-15'); // Contará los registros del 15 de octubre de 2025
+        $totalxdia = Prueba::SUMAXDIA($fecha_hoy); // Contará los registros del 15 de octubre de 2025
 
 
         $alertas = [];
