@@ -751,21 +751,6 @@
                             <option value="COMPRESOR">COMPRESOR</option>
                             <option value="MOVIMIENTO CIREL">MOVIMIENTO CIREL</option>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             <!-- Agrega aquí otros casos según sea necesario -->
                         </select>
                     </div>
