@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link "  style="border: 1px solid;" data-bs-toggle="modal"><B>TOTAL X DIA = </B> <?php echo $totalxdia; ?> <B>FECHA:</B> <?php echo $fecha_hoy; ?></a>
+                    <a class="nav-link " style="border: 1px solid;" data-bs-toggle="modal"><B>TOTAL X DIA = </B> <?php echo $totalxdia; ?> <B>FECHA:</B> <?php echo $fecha_hoy; ?></a>
                 </li>
 
 
@@ -686,11 +686,7 @@
                         </select>
                     </div>
 
-                    <!-- cantidad -->
-                    <div class="form-group">
-                        <label for="cantidad">CANTIDAD:</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
-                    </div>
+
 
                     <!-- casos -->
                     <div class="form-group">
@@ -756,6 +752,12 @@
 
                             <!-- Agrega aquí otros casos según sea necesario -->
                         </select>
+                    </div>
+
+                    <!-- cantidad -->
+                    <div class="form-group">
+                        <label for="cantidad">CANTIDAD:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
                     </div>
 
                     <!-- observaciones -->
