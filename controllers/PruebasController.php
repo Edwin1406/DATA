@@ -1490,11 +1490,6 @@ class PruebasController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        // debuguear($nombre);
-        // $id_usuario = $_SESSION['id'];
-        // debuguear($id_usuario);
-
-
         $carritoTemporal = Carrito::all();
 
 
