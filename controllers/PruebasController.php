@@ -1710,6 +1710,110 @@ class PruebasController
 
 
 
+       public static function registrarVenDoblado()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+            exit;
+        }
+
+
+        $nombre = $_SESSION['nombre'];
+
+
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_usuario = $_SESSION['id'];
+            $carritoTemporal = Carrito::wherenuevo('id_usuario', $id_usuario);
+
+            if (empty($carritoTemporal)) {
+                header('Location: /carrito');
+                exit;
+            }
+
+            // Calcular total
+            $total = 0;
+            foreach ($carritoTemporal as $item) {
+                $total += $item->cantidad;
+            }
+
+            // Obtener consumo de papel del form
+            $consumo_papel = $_POST['consumo_papel'] ?? 0;
+            $metros_lineales = $_POST['metros_lineales'] ?? 0;
+
+
+            $n_laminas = $_POST['n_laminas'] ?? 0;
+            $n_cambios = $_POST['n_cambios'] ?? 0;
+
+            // operador
+            $operador = $_POST['operador'] ?? '';
+            $turno = $_POST['turno'] ?? '';
+            $hora_inicio = $_POST['hora_inicio'] ?? '';
+            $hora_fin = $_POST['hora_fin'] ?? '';
+            $tiempo_inactivo = $_POST['tiempo_inactivo'] ?? '';
+            $motivo_inactividad = $_POST['motivo_inactividad'] ?? '';
+
+
+            // fecha manual
+            $fecha = $_POST['fecha'] ?? date('Y-m-d');
+
+            // Crear venta
+            $venta = new Ventas;
+            $venta->id_usuario = $id_usuario;
+            $venta->total = $total;
+            $venta->consumo_papel = $consumo_papel;
+            $venta->metros_lineales = $metros_lineales;
+            $venta->n_laminas = $n_laminas;
+            $venta->n_cambios = $n_cambios;
+
+
+            $venta->operador = $operador;
+            $venta->turno = $turno;
+            $venta->hora_inicio = $hora_inicio;
+            $venta->hora_fin = $hora_fin;
+            $venta->tiempo_inactivo = $tiempo_inactivo;
+            $venta->motivo_inactividad = $motivo_inactividad;
+            // $venta->fecha = date('Y-m-d H:i:s');
+            $venta->fecha = $fecha;
+            $venta->linea = $nombre;
+            
+            $venta->guardarCarrito();
+
+            $id_venta = $venta->id;
+
+            // Insertar detalles
+            foreach ($carritoTemporal as $item) {
+                $detalle = new DetalleVenta;
+                $detalle->id_venta = $id_venta;
+                $detalle->tipo_maquina = $item->tipo_maquina;
+                $detalle->cantidad = $item->cantidad;
+                $detalle->casos = $item->casos;
+                $detalle->observaciones = $item->observaciones;
+
+                // fecha
+                // $detalle->fecha = date('Y-m-d H:i:s');
+                $detalle->fecha = $fecha;
+                $detalle->guardarCarrito();
+            }
+
+            Carrito::eliminarPorColumna('id_usuario', $id_usuario);
+
+            header('Location: /admin/pruebas/crearDoblado?exito=1');
+            exit;
+        } else {
+            header('Location: /carrito');
+            exit;
+        }
+    }
+
+
+
+
+
+
+
 
 
 
