@@ -1997,10 +1997,10 @@ public static function SUMAXDIA($fecha = '')
     if ($fecha === '') {
         $fecha = date('Y-m-d'); // Formato de fecha 'YYYY-MM-DD'
     }
-    
-    // Consulta SQL para contar registros del día especificado
-    $sql = "SELECT COUNT(*) as cantidad FROM " . static::$tabla . " WHERE DATE(fecha) = ?";
-    
+
+    // Consulta SQL para SUMAR CANTIDAD de registros del día especificado
+    $sql = "SELECT SUM(cantidad) as cantidad FROM " . static::$tabla . " WHERE DATE(fecha) = ?";
+
     // Preparar la consulta
     $stmt = self::$db->prepare($sql);
     $stmt->bind_param('s', $fecha);  // 's' significa que la variable es una cadena
