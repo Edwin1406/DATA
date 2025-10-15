@@ -421,6 +421,14 @@ $router->post('/admin/pruebas/registrarVentaMicro', [PruebasController::class, '
 $router->post('/admin/pruebas/registrarVenPeriodico', [PruebasController::class, 'registrarVenPeriodico']);
 // REGISTRAR VENSEPARADORES
 $router->post('/admin/pruebas/registrarVenSeparadores', [PruebasController::class, 'registrarVenSeparadores']);
+// REGISTRAR VENPREPRINTER
+$router->post('/admin/pruebas/registrarVenPrePrinter', [PruebasController::class, 'registrarVenPrePrinter']);
+
+// REGISTRAR VENDOBLADO
+$router->post('/admin/pruebas/registrarVenDoblado', [PruebasController::class, 'registrarVenDoblado']);
+
+
+
 
 
 // TABLA DE PRUEBAS
