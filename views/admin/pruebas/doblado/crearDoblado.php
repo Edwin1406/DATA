@@ -57,7 +57,7 @@
                     <a class="nav-link active" href="/admin/pruebas/tablaDoblado">Tabla Doblado</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-PREPRINTER</a>
+                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">DESPERDICIOS</a>
                 </li>
             </ul>
         </div>
@@ -104,15 +104,8 @@
                                                 <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
 
                                                 <!-- CONTROLABLES -->
-                                                <option value="DESHOJE">Deshoje</option>
-                                                <option value="SF">SF</option>
-                                                <option value="CUADRE">Cuadre</option>
-                                                <option value="EMPALME">Empalme</option>
-                                                <option value="SOPLADO">Soplado</option>
-                                                <option value="RECUBRIMIENTO">Recubrimiento</option>
-                                                <option value="ELECTRICO">Electrico</option>
-                                                <option value="MECANICO">Mecanico</option>
-                                                <option value="EXTRA TRIM">Extra-Trim</option>
+                                                <option value="CUADRE MAQUINA">Cuadre Maquina</option>
+                                   
 
                                             </select>
 
