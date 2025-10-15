@@ -480,13 +480,8 @@
                         </select>
                     </div>
 
-                    <!-- cantidad -->
-                    <div class="form-group">
-                        <label for="cantidad">CANTIDAD:</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
-                    </div>
 
-                    <!-- casos -->
+                             <!-- casos -->
                     <div class="form-group">
                         <label for="casos">CASOS</label>
                         <select id="casos" class="choices form-control" name="casos">
@@ -512,6 +507,14 @@
                             <!-- Agrega aquí otros casos según sea necesario -->
                         </select>
                     </div>
+
+                    <!-- cantidad -->
+                    <div class="form-group">
+                        <label for="cantidad">CANTIDAD:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
+                    </div>
+
+           
 
                     <!-- observaciones -->
                     <div class="form-group">
