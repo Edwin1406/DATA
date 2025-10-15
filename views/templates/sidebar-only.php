@@ -194,7 +194,7 @@
                      </li>
                  <?php } ?>
                  <!-- pruebas-->
-                 <?php if ($userEmail === 'pruebas@megaecuador.com' || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'corrugador@megaecuador.com' || $userEmail === 'flexo@megaecuador.com' || $userEmail === 'micro@megaecuador.com' || $userEmail === 'periodico@megaecuador.com' || $userEmail === 'separadores@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'pruebas@megaecuador.com'|| $userEmail === 'preprinter@megaecuador.com'  || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'corrugador@megaecuador.com' || $userEmail === 'flexo@megaecuador.com' || $userEmail === 'micro@megaecuador.com' || $userEmail === 'periodico@megaecuador.com' || $userEmail === 'separadores@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
