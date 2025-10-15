@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link "  style="border: 1px solid;" data-bs-toggle="modal">TOTAL X DIA = <?php echo $totalxdia; ?> FECHA: <?php echo $fecha_hoy; ?></a>
+                    <a class="nav-link "  style="border: 1px solid;" data-bs-toggle="modal"><B>TOTAL X DIA = </B> <?php echo $totalxdia; ?> <B>FECHA:</B> <?php echo $fecha_hoy; ?></a>
                 </li>
 
 
