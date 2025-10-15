@@ -54,7 +54,7 @@
         <div class="card">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaMicro">Tabla Micro</a>
+                    <a class="nav-link active" href="/admin/pruebas/tablaPrePrinter">Tabla Preprinter</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-PREPRINTER</a>
