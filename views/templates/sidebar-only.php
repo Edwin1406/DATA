@@ -194,7 +194,7 @@
                      </li>
                  <?php } ?>
                  <!-- pruebas-->
-                 <?php if ($userEmail === 'pruebas@megaecuador.com'|| $userEmail === 'preprinter@megaecuador.com'  || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'corrugador@megaecuador.com' || $userEmail === 'flexo@megaecuador.com' || $userEmail === 'micro@megaecuador.com' || $userEmail === 'periodico@megaecuador.com' || $userEmail === 'separadores@megaecuador.com') { ?>
+                 <?php if ($userEmail === 'pruebas@megaecuador.com'|| $userEmail === 'preprinter@megaecuador.com'|| $userEmail === 'doblado@megaecuador.com'  || $userEmail === 'produccion@megaecuador.com' || $userEmail === 'corrugador@megaecuador.com' || $userEmail === 'flexo@megaecuador.com' || $userEmail === 'micro@megaecuador.com' || $userEmail === 'periodico@megaecuador.com' || $userEmail === 'separadores@megaecuador.com') { ?>
                      <li class="sidebar-item  has-sub">
                          <a href="#" class='sidebar-link'>
                              <!-- <i class="bi bi-collection-fill"></i> -->
@@ -231,9 +231,16 @@
                                      <a href="/admin/pruebas/crearSeparadores"><i class="bi bi-arrow-right"> </i>Crear Separadores</a>
                                  </li>
                              <?php } ?>
+
                              <?php if ($userEmail == 'preprinter@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearPrePrinter"><i class="bi bi-arrow-right"> </i>Crear Pre-Printer</a>
+                                 </li>
+                             <?php } ?>
+
+                               <?php if ($userEmail == 'doblado@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearDoblado"><i class="bi bi-arrow-right"> </i>Crear Doblado</a>
                                  </li>
                              <?php } ?>
 
