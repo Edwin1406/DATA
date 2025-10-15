@@ -1991,6 +1991,28 @@ class ActiveRecord
 
 
 
+public static function SUMAXDIA($fecha = '')
+{
+    // Si no se pasa una fecha, usamos la fecha actual
+    if ($fecha === '') {
+        $fecha = date('Y-m-d'); // Formato de fecha 'YYYY-MM-DD'
+    }
+    
+    // Consulta SQL para contar registros del día especificado
+    $sql = "SELECT COUNT(*) as cantidad FROM " . static::$tabla . " WHERE DATE(fecha) = ?";
+    
+    // Preparar la consulta
+    $stmt = self::$db->prepare($sql);
+    $stmt->bind_param('s', $fecha);  // 's' significa que la variable es una cadena
+    $stmt->execute();
+    
+    // Obtener el resultado
+    $resultado = $stmt->get_result();
+    $fila = $resultado->fetch_assoc();
+    
+    // Devolver el total de registros
+    return $fila['cantidad'];
+}
 
 
 
