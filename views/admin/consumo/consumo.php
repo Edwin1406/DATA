@@ -674,9 +674,11 @@
                     <!-- tipo_maquina -->
                     <div class="form-group">
                         <label for="tipo_maquina">Selecciona una opción:</label>
+
                         <select class="form-control" id="tipo_maquina" name="tipo_maquina">
                             <option value="MICRO">MICRO</option>
                             <option value="PRE-PRINTER">PRE-PRINTER</option>
+                            <option value="DOBLADO">DOBLADO</option>
 
                         </select>
                     </div>
@@ -695,6 +697,7 @@
                             <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
                             <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
                             <option value="CUADRE">CUADRE</option>
+                            <option value="CUADRE MAQUINA">CUADRE MAQUINA</option>
                             <option value="CUADRE SIERRA">CUADRE SIERRA</option>
                             <option value="DAÑO CLICHE">DAÑO CLICHE</option>
                             <option value="DERRAME DE TINTA">DERRAME DE TINTA</option>
