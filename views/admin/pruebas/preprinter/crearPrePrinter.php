@@ -56,9 +56,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin/pruebas/tablaPrePrinter">Tabla Preprinter</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-PREPRINTER</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </section>
@@ -257,24 +257,6 @@
                         });
                     });
                 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
