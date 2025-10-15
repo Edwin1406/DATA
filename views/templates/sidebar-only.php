@@ -231,6 +231,11 @@
                                      <a href="/admin/pruebas/crearSeparadores"><i class="bi bi-arrow-right"> </i>Crear Separadores</a>
                                  </li>
                              <?php } ?>
+                             <?php if ($userEmail == 'pre-printer@megaecuador.com') { ?>
+                                 <li class="submenu-item ">
+                                     <a href="/admin/pruebas/crearPrePrinter"><i class="bi bi-arrow-right"> </i>Crear Pre-Printer</a>
+                                 </li>
+                             <?php } ?>
 
                         
                          </ul>

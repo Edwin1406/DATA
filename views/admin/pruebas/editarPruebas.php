@@ -184,14 +184,7 @@
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3" readonly><?php echo $venta->motivo_inactividad ?? ''; ?></textarea>
                             </div>
-
-
                         </div>
-                   
-
-
-
-
                     </div>
 
 
