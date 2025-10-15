@@ -105,7 +105,7 @@
 
                                                 <!-- CONTROLABLES -->
                                                 <option value="CUADRE MAQUINA">Cuadre Maquina</option>
-                                   
+
 
                                             </select>
 
@@ -476,6 +476,7 @@
                         <label for="tipo_maquina">Selecciona una opción:</label>
                         <select class="form-control" id="tipo_maquina" name="tipo_maquina">
                             <option value="PRE-PRINTER">PRE-PRINTER</option>
+                            <option value="MICRO">MICRO</option>
                         </select>
                     </div>
 
@@ -490,76 +491,23 @@
                         <label for="casos">CASOS</label>
                         <select id="casos" class="choices form-control" name="casos">
 
-                            <option value="APROBACION DE COLOR">APROBACION DE COLOR</option>
-                            <option value="CAMBIO DE MEDIDA">CAMBIO DE MEDIDA</option>
-                            <option value="CUADRE">CUADRE</option>
-                            <option value="CUADRE SIERRA">CUADRE SIERRA</option>
-                            <option value="DAÑO CLICHE">DAÑO CLICHE</option>
-                            <option value="DERRAME DE TINTA">DERRAME DE TINTA</option>
-                            <option value="DESPEGADO">DESPEGADO</option>
-                            <option value="DISEÑO MAQUINA">DISEÑO MAQUINA</option>
-                            <option value="EMPALME">EMPALME</option>
-                            <option value="ERROR MEDIDA">ERROR MEDIDA</option>
-                            <option value="EXCESO DE GOMA">EXCESO DE GOMA</option>
-                            <option value="FALTA DE TINTA">FALTA DE TINTA</option>
-                            <option value="FRENO">FRENO</option>
-                            <option value="GALLETEADO">GALLETEADO</option>
-                            <option value="HUMEDO">HUMEDO</option>
-                            <option value="MAL DOBLADO CEJA">MAL DOBLADO CEJA</option>
-                            <option value="MALTRATO OPERADOR MONTACARGAS">MALTRATO OPERADOR MONTACARGAS</option>
-                            <option value="MALTRATO TRANSPORTACIÓN">MALTRATO TRANSPORTACIÓN</option>
-                            <option value="PH">PH</option>
-                            <option value="PRESION">PRESION</option>
-                            <option value="PRE PRINTER">PRE PRINTER</option>
-                            <option value="RECUBRIMIENTO">RECUBRIMIENTO</option>
+                            <option value="DESHOJE">Deshoje</option>
                             <option value="SF">SF</option>
-                            <option value="TONALIDAD TINTAS">TONALIDAD TINTAS</option>
-                            <option value="VISCOSIDAD">VISCOSIDAD</option>
-
-                            <!-- NO CONTROLABLES -->
-                            <option value="CAMBIO DE GRAMAJE">CAMBIO DE GRAMAJE</option>
-                            <option value="COMBADO">COMBADO</option>
-                            <option value="CAMBIO PEDIDO">CAMBIO PEDIDO</option>
-                            <option value="CIREL CORTADO">CIREL CORTADO</option>
-                            <option value="DESCUADRE DE DOBLADO">DESCUADRE DE DOBLADO</option>
-                            <option value="DESHOJE">DESHOJE</option>
-                            <option value="DIFERENCIA DE PESO">DIFERENCIA DE PESO</option>
-                            <option value="DIFERENTES ANCHOS">DIFERENTES ANCHOS</option>
-                            <option value="ELECTRICO">ELECTRICO</option>
-
-                            <option value="EXCEDENTES DE PLANCHA">EXCEDENTES DE PLANCHA</option>
-                            <option value="EXTRA TRIM">EXTRA TRIM</option>
-                            <option value="FILOS ROTOS">FILOS ROTOS</option>
-                            <option value="INICIO DE CORRIDA">INICIO DE CORRIDA</option>
-                            <option value="LAMINA HUMEDA">LAMINA HUMEDA</option>
-                            <option value="MECANICO">MECANICO</option>
-                            <option value="MERMA">MERMA</option>
-                            <option value="MONTAJE CLICHE PROVEEDOR">MONTAJE CLICHE PROVEEDOR</option>
-                            <option value="PEDIDOS CORTOS">PEDIDOS CORTOS</option>
-                            <option value="REFILE PEQUEÑO">REFILE PEQUEÑO</option>
-                            <option value="REFILES">REFILES</option>
-                            <option value="REGISTRO TROQUEL">REGISTRO TROQUEL</option>
-                            <option value="SUSTRATO">SUSTRATO</option>
-                            <option value="TROQUEL">TROQUEL</option>
-                            <option value="SOPLADO">SOPLADO</option>
-                            <option value="CALDERO">CALDERO</option>
-                            <option value="COMPRESOR">COMPRESOR</option>
-                            <option value="MOVIMIENTO CIREL">MOVIMIENTO CIREL</option>
+                            <option value="CUADRE">Cuadre</option>
+                            <option value="EMPALME">Empalme</option>
+                            <option value="SOPLADO">Soplado</option>
+                            <option value="RECUBRIMIENTO">Recubrimiento</option>
+                            <option value="ELECTRICO">Electrico</option>
+                            <option value="MECANICO">Mecanico</option>
+                            <option value="EXTRA TRIM">Extra-Trim</option>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            <option value="INICIO DE CORRIDA">Inicio de Corrida</option>
+                            <option value="APROBACION DE COLOR">Aprobación de Color</option>
+                            <option value="EMPALME">Empalme</option>
+                            <option value="FALTA TINTA">Falta Tinta</option>
+                            <option value="MOVIMIENTO CIREL">Movimiento Cirel</option>
+                            <option value="MANCHAS AGUA">Manchas de Agua</option>
 
                             <!-- Agrega aquí otros casos según sea necesario -->
                         </select>
