@@ -49,6 +49,13 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin/tablaConsumo">Tabla Consumo Empaque</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">Des-PREPRINTER</a>
+                </li>
+
+
+
             </ul>
         </div>
     </section>
