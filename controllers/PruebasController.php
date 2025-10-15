@@ -1540,69 +1540,6 @@ class PruebasController
     }
 
 
-   public static function crearDoblado(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
-        $alertas = [];
-
-        // NOMBRE DE LA PERSONA LOGEADA
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-
-        $carritoTemporal = Carrito::all();
-
-
-        $doblado = DetalleVenta::all();
-
-
-        $carrito = new Carrito;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Procesar el formulario
-            $carrito->id_usuario = $_SESSION['id'];
-            $carrito->tipo_maquina = $nombre;
-            $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
-            $carrito->casos = $_POST['casos'];
-            $carrito->cantidad = $_POST['cantidad'];
-            $carrito->observaciones = $_POST['observaciones'];
-
-            // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
-
-            // Validar los datos
-            $alertas = $carrito->validar();
-
-            if (empty($alertas)) {
-                // Guardar en la base de datos
-                $resultado = $carrito->guardar();
-                if ($resultado) {
-                    header('Location: /admin/pruebas/crearPrePrinter?exito=1');
-                    exit;
-                } else {
-                    $alertas['error'][] = 'Error al guardar el registro';
-                }
-            }
-        }
-
-
-
-
-        // Renderizar la vista de crear pruebas
-        $router->render('admin/pruebas/doblado/crearDoblado', [
-            'titulo' => 'DOBLADO - Registro de Producción',
-            'subtitulo' => 'Doblado',
-            'alertas' => $alertas,
-            'nombre' => $nombre,
-            'email' => $email,
-            'carritoTemporal' => $carritoTemporal,
-            'doblado' => $doblado
-        ]);
-    }
-
-
-
     
     public static function registrarVenPrePrinter()
     {
@@ -1702,6 +1639,73 @@ class PruebasController
         }
     }
 
+
+
+
+
+
+
+// CREAR DOBLADO
+   public static function crearDoblado(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        $alertas = [];
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        $carritoTemporal = Carrito::all();
+
+
+        $doblado = DetalleVenta::all();
+
+
+        $carrito = new Carrito;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Procesar el formulario
+            $carrito->id_usuario = $_SESSION['id'];
+            $carrito->tipo_maquina = $nombre;
+            $carrito->tipo_clasificacion = $_POST['tipo_clasificacion'];
+            $carrito->casos = $_POST['casos'];
+            $carrito->cantidad = $_POST['cantidad'];
+            $carrito->observaciones = $_POST['observaciones'];
+
+            // $carrito->precio_unitario = $carrito->cantidad * 20; // Ejemplo de cálculo
+
+            // Validar los datos
+            $alertas = $carrito->validar();
+
+            if (empty($alertas)) {
+                // Guardar en la base de datos
+                $resultado = $carrito->guardar();
+                if ($resultado) {
+                    header('Location: /admin/pruebas/crearPrePrinter?exito=1');
+                    exit;
+                } else {
+                    $alertas['error'][] = 'Error al guardar el registro';
+                }
+            }
+        }
+
+
+
+
+        // Renderizar la vista de crear pruebas
+        $router->render('admin/pruebas/doblado/crearDoblado', [
+            'titulo' => 'DOBLADO - Registro de Producción',
+            'subtitulo' => 'Doblado',
+            'alertas' => $alertas,
+            'nombre' => $nombre,
+            'email' => $email,
+            'carritoTemporal' => $carritoTemporal,
+            'doblado' => $doblado
+        ]);
+    }
 
 
 
