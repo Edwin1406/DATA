@@ -147,6 +147,13 @@ $router->get('/admin/pruebas/crearMicro', [PruebasController::class, 'crearMicro
 $router->post('/admin/pruebas/crearMicro', [PruebasController::class, 'crearMicro']);
 
 
+// CREAR PREPRINTER
+$router->get('/admin/pruebas/crearPrePrinter', [PruebasController::class, 'crearPrePrinter']);
+$router->post('/admin/pruebas/crearPrePrinter', [PruebasController::class, 'crearPrePrinter']);
+
+// CREAR DOBLADO
+$router->get('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDoblado']);
+$router->post('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDoblado']);
 
 
 
