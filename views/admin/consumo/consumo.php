@@ -54,6 +54,10 @@
                     <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">DESPERDICIO</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link "  style="border: 1px solid;" data-bs-toggle="modal">TOTAL X DIA = </a>
+                </li>
+
 
 
             </ul>
@@ -679,7 +683,6 @@
                             <option value="MICRO">MICRO</option>
                             <option value="PRE-PRINTER">PRE-PRINTER</option>
                             <option value="DOBLADO">DOBLADO</option>
-
                         </select>
                     </div>
 
