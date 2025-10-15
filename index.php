@@ -398,6 +398,10 @@ $router->post('/admin/pruebas/crearPeriodico', [PruebasController::class, 'crear
 $router->get('/admin/pruebas/crearSeparadores', [PruebasController::class, 'crearSeparadores']);
 $router->post('/admin/pruebas/crearSeparadores', [PruebasController::class, 'crearSeparadores']);
 
+// crearDoblado
+$router->get('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDoblado']);
+$router->post('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDoblado']);
+
 
 
 
