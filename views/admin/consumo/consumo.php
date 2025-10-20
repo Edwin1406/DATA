@@ -750,6 +750,7 @@
                             <option value="COMPRESOR">COMPRESOR</option>
                             <option value="MOVIMIENTO CIREL">MOVIMIENTO CIREL</option>
                             <option value="IVÁN CASCO">IVÁN CASCO</option>
+                            
 
 
                             <!-- Agrega aquí otros casos según sea necesario -->
