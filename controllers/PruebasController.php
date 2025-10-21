@@ -374,9 +374,17 @@ class PruebasController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
+            // sanitizar id
+            $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+            
             $flexo = VenFlexo::find($id);
 
+            $detalleventa = DetalleVenta::where('id_venta', $id);
+            
             if ($flexo) {
+                foreach ($detalleventa as $detalle) {
+                    $detalle->eliminar();
+                }
                 $flexo->eliminar();
                 // Respuesta en formato JSON para AJAX
                 echo json_encode(['success' => true, 'message' => 'Registro de flexo eliminado con éxito']);
