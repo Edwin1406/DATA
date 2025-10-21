@@ -376,10 +376,10 @@ class PruebasController
             $id = $_POST['id'];
             // sanitizar id
             $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-            
+
             $flexo = VenFlexo::find($id);
 
-            $detalleventa = DetalleVenta::where('id_venta', $id);
+            $detalleventa = DetalleVenta::wherenuevo('id_venta', $id);
             
             if ($flexo) {
                 foreach ($detalleventa as $detalle) {
