@@ -1827,9 +1827,9 @@ class PruebasController
         }
 
 
-        $desperdicio= DetalleVenta::wherenuevo('id_venta', $id_venta);
+        $desperdicios= DetalleVenta::wherenuevo('id_venta', $id_venta);
 
-        debuguear($desperdicio);
+        // debuguear($desperdicio);
           $alertas = [];
 
 
@@ -1844,7 +1844,7 @@ class PruebasController
             'titulo' => 'DESPERDICIOS - Registro de Producción',
             'subtitulo' => 'Desperdicios',
             'alertas' => $alertas,
-            'desperdicio' => $desperdicio
+            'desperdicios' => $desperdicios
            
         ]);
 
