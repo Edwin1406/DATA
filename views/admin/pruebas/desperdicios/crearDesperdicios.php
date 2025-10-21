@@ -87,11 +87,11 @@
          <div class="card">
              <ul class="nav nav-tabs">
 
-                 <?php if ($email !== 'ventas@megaecuador.com') { ?>
-                     <li class="nav-item">
-                         <a class="nav-link active" href="/admin/diseno/crearDiseno">Registro Diseño</a>
-                     </li>
-                 <?php } ?>
+
+                 <li class="nav-item">
+                     <a class="nav-link active" href="/admin/pruebas/tablaFlexo">Tabla producción - FLEXOGRAFICA</a>
+                 </li>
+
              </ul>
          </div>
      </section>
@@ -151,7 +151,7 @@
              }
 
              Swal.fire({
-                // CARGAR EL ID
+                 // CARGAR EL ID
 
                  title: '¿Estás seguro ID : ' + id + ' de eliminar este registro?',
                  text: '¡Esta acción no se puede deshacer!',
