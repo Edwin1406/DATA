@@ -1827,13 +1827,13 @@ class PruebasController
         }
 
 
-        $desperdicio= DetalleVenta::find('id_venta', $id_venta);
+        $desperdicio= DetalleVenta::wherenuevo('id_venta', $id_venta);
 
+        debuguear($desperdicio);
           $alertas = [];
 
 
 
-          debuguear($desperdicio);
 
 
 
