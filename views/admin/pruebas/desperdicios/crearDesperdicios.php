@@ -125,10 +125,11 @@
                          <?php foreach ($desperdicios as $desperdicio): ?>
                              <tr>
                                  <td><?= $desperdicio->id ?></td>
-                                 <td><?= $desperdicio->codigo_producto ?></td>
-                                 <td><?= $desperdicio->nombre_cliente ?></td>
-                                 <td><?= $desperdicio->nombre_producto ?></td>
-                                 <td><?= $desperdicio->proveedor ?></td>
+                                 <td><?= $desperdicio->id_venta ?></td>
+                                 <td><?= $desperdicio->tipo_maquina ?></td>
+                                 <td><?= $desperdicio->casos ?></td>
+                                 <td><?= $desperdicio->cantidad ?></td>
+                                 <td><?= $desperdicio->observaciones ?></td>
                                  <td><?= $desperdicio->fecha ?></td>
                                  <?php
                                     $estado = trim($diseno->estado);
