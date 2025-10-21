@@ -140,15 +140,15 @@
                                      <!-- usuario -->
 
 
-                                     <?php if ($email !== 'ventas@megaecuador.com') { ?>
+                                
                                          <div class="d-flex gap-1">
-                                             <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                             <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
                                              <form action="/admin/eliminarDiseno" method="POST">
                                                  <input type="hidden" name="id" value="<?= $diseno->id ?>">
                                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                              </form>
                                          </div>
-                                     <?php } ?>
+                                 
 
 
 
@@ -161,6 +161,70 @@
              </div>
          </div>
      </section>
+
+
+
+                <script>
+                    // Event listener para los botones de eliminación
+                    document.querySelectorAll('.eliminar-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id'); // Obtener el ID del carrito
+
+                            // Usamos SweetAlert2 para confirmar la eliminación
+                            Swal.fire({
+                                title: '¿Estás seguro?',
+                                text: "¡Esta acción no se puede deshacer!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Sí, eliminar',
+                                cancelButtonText: 'Cancelar',
+                                reverseButtons: true
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Realizamos la petición AJAX para eliminar
+                                    const formData = new FormData();
+                                    formData.append('id', id); // Añadir el ID al formulario
+
+                                    fetch('/admin/eliminarCarrito', {
+                                            method: 'POST',
+                                            body: formData
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                // Si la eliminación fue exitosa, eliminamos la fila del carrito
+                                                document.getElementById('row_' + id).remove();
+                                                Swal.fire(
+                                                    'Eliminado',
+                                                    'El artículo ha sido eliminado del carrito.',
+                                                    'success'
+                                                );
+                                            } else {
+                                                Swal.fire(
+                                                    'Error',
+                                                    'Hubo un problema al eliminar el artículo.',
+                                                    'error'
+                                                );
+                                            }
+                                        })
+                                        .catch(error => {
+                                            Swal.fire(
+                                                'Error',
+                                                'Hubo un error al procesar la solicitud',
+                                                'error'
+                                            );
+                                        });
+                                }
+                            });
+                        });
+                    });
+                </script>
+
+
+
+
+
+
  </div>
 
 
