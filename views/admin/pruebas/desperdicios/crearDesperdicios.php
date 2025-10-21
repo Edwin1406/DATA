@@ -143,10 +143,7 @@
                                 
                                          <div class="d-flex gap-1">
                                              <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
-                                             <form action="/admin/eliminarDiseno" method="POST">
-                                                 <input type="hidden" name="id" value="<?= $diseno->id ?>">
-                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                             </form>
+                                         
                                          </div>
                                  
 
