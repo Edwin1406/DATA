@@ -175,7 +175,6 @@
 
 
                 </div>
-                </div>
             </div>
         </div>
     </section>
@@ -204,3 +203,19 @@
 
 
 </div>
+
+
+
+
+ <script>
+     document.addEventListener("DOMContentLoaded", function() {
+         const dataTable = new simpleDatatables.DataTable("#table1", {
+             scrollX: true,
+             columnDefs: [{
+                     width: "110px",
+                     targets: [6, 7, 8]
+                 } // índices de columnas Hora Inicio, Hora Fin, Total Horas
+             ]
+         });
+     });
+ </script>
