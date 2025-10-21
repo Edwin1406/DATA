@@ -1180,7 +1180,7 @@ class PruebasController
 
         $produccioduccionMicro = ProduccionDiaria::all();
 
-        debuguear($produccioduccionMicro);
+        // debuguear($produccioduccionMicro);
 
 
 
@@ -1192,7 +1192,8 @@ class PruebasController
             'subtitulo' => 'Micro',
             'nombre' => $nombre,
             'email' => $email,
-            'micro' => $micro
+            'micro' => $micro,
+            'produccioduccionMicro' => $produccioduccionMicro
         ]);
     }
 
