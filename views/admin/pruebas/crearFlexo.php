@@ -113,6 +113,9 @@
                                                 <option value="EXCESO DE RECUBRIMIENTO">EXCESO DE RECUBRIMIENTO</option>
                                                 <option value="MOVIMIENTO DE REGISTROS">MOVIMIENTO DE REGISTROS</option>
                                                 <option value="MALTRATO TRANSPORTACION">MALTRATO TRANSPORTACION</option>
+                                                <option value="MECANICO">MECANICO</option>
+                                                <option value="ELECTRICO">ELECTRICO</option>
+
 
                                                 <option value="OTRO">OTRO</option>
 

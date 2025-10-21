@@ -134,11 +134,9 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarFlexo?id=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                          <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Desperdicios</a>
+                                         <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Desperdicios</a>
 
-                                         <form action="/admin/eliminarPruebas" method="POST">
-                                             <input type="hidden" name="id" value="<?= $flexo->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                         </form>
+                                       
                                      </div>
 
 
