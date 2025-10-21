@@ -327,6 +327,10 @@ class PruebasController
 
 
 
+    // ELIMINAR DETA
+
+
+
 
 
     public static function eliminarDetalleDesperdicios()
@@ -358,6 +362,36 @@ class PruebasController
         }
     }
 
+
+    // ELIMINAR FLEXO
+    public static function eliminarFlexo()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $flexo = VenFlexo::find($id);
+
+            if ($flexo) {
+                $flexo->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Registro de flexo eliminado con éxito']);
+                exit;
+            } else {
+                // Si no se encuentra el registro de flexo
+                echo json_encode(['success' => false, 'message' => 'Registro de flexo no encontrado']);
+                exit;
+            }
+        } else {
+            // Método incorrecto
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            exit;
+        }
+    }
 
 
 

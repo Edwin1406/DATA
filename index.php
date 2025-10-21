@@ -416,6 +416,10 @@ $router->post('/admin/pruebas/crearDesperdicios', [PruebasController::class, 'cr
 $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarrito']);
 
 
+// eliminarFlexo
+$router->post('/admin/eliminarFlexo', [PruebasController::class, 'eliminarFlexo']);
+
+
 // ELIMINAR DETALLE DESPERDICIOS
 $router->post('/admin/eliminarDetalleDesperdicios', [PruebasController::class, 'eliminarDetalleDesperdicios']);
 
