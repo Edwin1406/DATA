@@ -164,7 +164,7 @@
       const formData = new FormData();
       formData.append('id', id);
 
-      fetch('/admin/desperdicios/eliminar', { // <-- AJUSTA ESTA RUTA
+      fetch('/admin/eliminarCarrito', { // <-- AJUSTA ESTA RUTA
         method: 'POST',
         body: formData
       })
