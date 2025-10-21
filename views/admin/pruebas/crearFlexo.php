@@ -367,7 +367,7 @@
                                     <!-- CONTROLABLES -->
                                     <option value="WILLIAM">WILLIAM</option>
                                     <option value="RAFAEL">RAFAEL</option>
-                                    <option value="JEOVANY">JEOVANY</option>
+                                    <option value="JEOVANNY">JEOVANNY</option>
 
                                 </select>
                             </div>
