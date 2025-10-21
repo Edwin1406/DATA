@@ -1810,6 +1810,36 @@ class PruebasController
     }
 
 
+    //CrearDesperdicios
+    public static function crearDesperdicios(Router $router)
+     {
+          session_start();
+          if (!isset($_SESSION['email'])) {
+                header('Location: /');
+          }
+          $alertas = [];
+
+
+
+
+
+   // Renderizar la vista de crear pruebas
+        $router->render('admin/pruebas/desperdicios/crearDesperdicios', [
+            'titulo' => 'DESPERDICIOS - Registro de Producción',
+            'subtitulo' => 'Desperdicios',
+            'alertas' => $alertas,
+           
+        ]);
+
+
+        }
+
+
+
+
+
+
+
 
 
 

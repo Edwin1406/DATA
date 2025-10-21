@@ -403,6 +403,10 @@ $router->get('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDob
 $router->post('/admin/pruebas/crearDoblado', [PruebasController::class, 'crearDoblado']);
 
 
+// crearDesperdicios
+$router->get('/admin/pruebas/crearDesperdicios', [PruebasController::class, 'crearDesperdicios']);
+$router->post('/admin/pruebas/crearDesperdicios', [PruebasController::class, 'crearDesperdicios']);
+
 
 
 
@@ -457,6 +461,8 @@ $router->get('/admin/pruebas/tablaSeparadores', [PruebasController::class, 'tabl
 // EDITAR PRUEBAS
 $router->get('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
 $router->post('/admin/pruebas/editarPruebas', [PruebasController::class, 'editarPruebas']);
+
+
 
 
 
