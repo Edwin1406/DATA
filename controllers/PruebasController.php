@@ -1254,6 +1254,7 @@ class PruebasController
             $venta->n_cambios = $n_cambios;
 
 
+
             $venta->operador = $operador;
             $venta->turno = $turno;
             $venta->hora_inicio = $hora_inicio;

@@ -165,6 +165,9 @@
                                                 <option value="CRISTIAN PERGACHI">CRISTIAN PERGACHI</option>
                                                 <option value="ROSA TAPUY">ROSA TAPUY</option>
                                                 <option value="BRAYAN ABAD">BRAYAN ABAD</option>
+                                                <option value="IVÁN CASCO">IVÁN CASCO</option>
+                                                <option value="EDWIN DIAZ">EDWIN DIAZ</option>
+
 
 
                                             </select>
@@ -749,8 +752,6 @@
                             <option value="CALDERO">CALDERO</option>
                             <option value="COMPRESOR">COMPRESOR</option>
                             <option value="MOVIMIENTO CIREL">MOVIMIENTO CIREL</option>
-                            <option value="IVÁN CASCO">IVÁN CASCO</option>
-                            <option value="EDWIN DIAZ">EDWIN DIAZ</option>
 
 
 
