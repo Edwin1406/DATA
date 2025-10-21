@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Carrito;
 use Model\DetalleVenta;
+use Model\ProduccionDiaria;
 use Model\VenFlexo;
 use Model\Ventas;
 use MVC\Router;
@@ -1177,6 +1178,9 @@ class PruebasController
         $micro = Ventas::wherenuevo('linea', 'MICRO');
 
 
+        $produccioduccionMicro = ProduccionDiaria::all();
+
+        debuguear($produccioduccionMicro);
 
 
 
