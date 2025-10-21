@@ -102,7 +102,7 @@
      <section class="section">
          <div class="card">
              <div class="card-header">
-                 Tabla de consumo
+                TABLA DESPERDICIOS FLEXOGRAFICA
              </div>
              <div class="card-body">
                  <table class="table table-striped" id="table1">
