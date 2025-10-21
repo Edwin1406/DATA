@@ -96,7 +96,7 @@
                             <tbody>
                                 <?php $tipo_maqina = $nombre;
                                 foreach ($desperdicios as $contro):
-                                    if ($tipo_maqina !== $contro->tipo_maquina) continue;
+                                    
                                 ?>
                                     <tr id="row_<?= $contro->id ?>">
                                         <td><?= $contro->id ?></td>
