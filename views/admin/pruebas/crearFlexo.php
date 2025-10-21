@@ -473,7 +473,7 @@
                     <!-- cantidad -->
                     <div class="form-group">
                         <label for="cantidad">CANTIDAD:</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí" step="0.01" required>
                     </div>
 
                     <!-- casos -->
