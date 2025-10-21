@@ -109,28 +109,27 @@
                      <thead>
                          <tr>
                              <th class="fs-6" style="min-width: 90px;">Id</th>
-                             <th class="fs-6" style="min-width: 93px;">Codigo producto</th>
-                             <th class="fs-6" style="min-width: 80px;">Nombre Cliente</th>
-                             <th class="fs-6" style="min-width: 100px;">Nombre Producto</th>
-                             <th class="fs-6" style="min-width: 100px;">Proveedor</th>
-                             <th class="fs-6" style="min-width: 80px;">Fecha</th>
-                             <th class="fs-6" style="min-width: 88px;">Estado</th>
-                             <th class="fs-6" style="min-width: 100px;">Pdf</th>
-                                <th class="fs-6" style="min-width: 100px;">Descargar</th>
+                             <th class="fs-6" style="min-width: 93px;">iD_caso</th>
+                             <th class="fs-6" style="min-width: 80px;">tipo Maquina</th>
+                             <th class="fs-6" style="min-width: 100px;">Casos</th>
+                             <th class="fs-6" style="min-width: 100px;">Cantidad</th>
+                             <th class="fs-6" style="min-width: 80px;">observaciones</th>
+                             <th class="fs-6" style="min-width: 88px;">Fecha</th>
+                           
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
                          </tr>
                      </thead>
 
                      <tbody>
-                         <?php foreach ($disenos as $diseno): ?>
+                         <?php foreach ($desperdicios as $desperdicio): ?>
                              <tr>
-                                 <td><?= $diseno->id ?></td>
-                                 <td><?= $diseno->codigo_producto ?></td>
-                                 <td><?= $diseno->nombre_cliente ?></td>
-                                 <td><?= $diseno->nombre_producto ?></td>
-                                 <td><?= $diseno->proveedor ?></td>
-                                 <td><?= $diseno->fecha ?></td>
+                                 <td><?= $desperdicio->id ?></td>
+                                 <td><?= $desperdicio->codigo_producto ?></td>
+                                 <td><?= $desperdicio->nombre_cliente ?></td>
+                                 <td><?= $desperdicio->nombre_producto ?></td>
+                                 <td><?= $desperdicio->proveedor ?></td>
+                                 <td><?= $desperdicio->fecha ?></td>
                                  <?php
                                     $estado = trim($diseno->estado);
                                     switch ($estado) {
