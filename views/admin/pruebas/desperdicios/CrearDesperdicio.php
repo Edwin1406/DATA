@@ -97,7 +97,7 @@
 
                             <tbody>
                                 <?php $tipo_maqina = $nombre;
-                                foreach ($carritoTemporal as $contro):
+                                foreach ($desperdicios as $contro):
                                     if ($tipo_maqina !== $contro->tipo_maquina) continue;
                                 ?>
                                     <tr id="row_<?= $contro->id ?>">

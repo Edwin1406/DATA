@@ -1844,6 +1844,7 @@ class PruebasController
             'titulo' => 'DESPERDICIOS - Registro de Producción',
             'subtitulo' => 'Desperdicios',
             'alertas' => $alertas,
+            'desperdicio' => $desperdicio
            
         ]);
 
