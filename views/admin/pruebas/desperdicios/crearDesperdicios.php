@@ -139,7 +139,7 @@
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $contro->id ?>">Eliminar</button>
+                                         <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $desperdicio->id ?>">Eliminar</button>
 
                                      </div>
 
