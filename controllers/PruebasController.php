@@ -1817,11 +1817,23 @@ class PruebasController
           if (!isset($_SESSION['email'])) {
                 header('Location: /');
           }
+
+
+        $id_venta = $_GET['id_venta'];
+        $id_venta = filter_var($id_venta, FILTER_VALIDATE_INT);
+        if (!$id_venta) {
+            header('Location: /admin/pruebas/tablaFlexo');
+            exit;
+        }
+
+
+        $desperdicio= DetalleVenta::whereArray('id_venta', $id_venta);
+
           $alertas = [];
 
 
 
-          debuguear($_SESSION['nombre']);
+          debuguear($desperdicio);
 
 
 
