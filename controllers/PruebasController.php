@@ -1817,7 +1817,8 @@ class PruebasController
           if (!isset($_SESSION['email'])) {
                 header('Location: /');
           }
-
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
 
         $id_venta = $_GET['id_venta'];
         $id_venta = filter_var($id_venta, FILTER_VALIDATE_INT);
@@ -1844,7 +1845,9 @@ class PruebasController
             'titulo' => 'DESPERDICIOS - Registro de Producción',
             'subtitulo' => 'Desperdicios',
             'alertas' => $alertas,
-            'desperdicios' => $desperdicios
+            'desperdicios' => $desperdicios,
+            'nombre' => $nombre,
+            'email' => $email,
            
         ]);
 
