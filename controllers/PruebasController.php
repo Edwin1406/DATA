@@ -1827,7 +1827,7 @@ class PruebasController
         }
 
 
-        $desperdicio= DetalleVenta::whereArray('id_venta', $id_venta);
+        $desperdicio= DetalleVenta::find('id_venta', $id_venta);
 
           $alertas = [];
 
