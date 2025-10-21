@@ -1829,7 +1829,7 @@ class PruebasController
 
         $desperdicio= DetalleVenta::wherenuevo('id_venta', $id_venta);
 
-        debuguear($desperdicio);
+        // debuguear($desperdicio);
           $alertas = [];
 
 
