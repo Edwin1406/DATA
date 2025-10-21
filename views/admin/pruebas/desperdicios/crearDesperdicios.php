@@ -131,45 +131,9 @@
                                  <td><?= $desperdicio->cantidad ?></td>
                                  <td><?= $desperdicio->observaciones ?></td>
                                  <td><?= $desperdicio->fecha ?></td>
-                                 <?php
-                                    $estado = trim($diseno->estado);
-                                    switch ($estado) {
-                                        case 'ARTE':
-                                            $badgeClass = 'bg-secondary'; // CELESTE
-                                            break;
-                                        case 'APROBADO':
-                                            $badgeClass = 'bg-success'; // verde
-                                            break;
-                                        case 'CLICHE':
-                                            $badgeClass = 'bg-warning'; // naranja
-                                            break;
-                                        default:
-                                            $badgeClass = 'bg-secondary'; // gris por defecto
-                                    }
-                                    ?>
-                                 <td data-id="<?php echo $diseno->id; ?>">
-                                     <span class="badge <?php echo $badgeClass; ?>"><?php echo htmlspecialchars($estado); ?></span>
-                                 </td>
+                        
 
                               
-                                     <?php
-                                        $rutaArchivo = "/src/visor/" . htmlspecialchars($diseno->pdf);
-                                        ?>
-                                     <!-- <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info rounded-pill">Ver PDF</a> -->
-                                 
-
-                                 <td>
-                                     <!-- Ver PDF en navegador -->
-                                     <a href="<?php echo $rutaArchivo ?>" target="_blank" class="btn btn-info btn-sm">Ver PDF</a>
-
-                                     <!-- Descargar con nombre personalizado -->
-
-                                 </td>
-                                 <td>
-                                     <a href="/descargar.php?file=<?= urlencode($diseno->pdf) ?>&nombre=<?= urlencode($diseno->codigo_producto . " - " . $diseno->nombre_producto) ?>"
-                                         class="btn btn-success btn-sm">Descargar</a>
-                                 </td>
-
 
 
                                  <td>
