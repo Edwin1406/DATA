@@ -98,121 +98,96 @@
 
 
 
+<section class="section">
+  <div class="card">
+    <div class="card-header">TABLA DESPERDICIOS FLEXOGRAFICA</div>
+    <div class="card-body">
+      <table class="table table-striped" id="table1">
+        <thead>
+          <tr>
+            <th class="fs-6" style="min-width: 90px;">Id</th>
+            <th class="fs-6" style="min-width: 93px;">iD_caso</th>
+            <th class="fs-6" style="min-width: 80px;">tipo Maquina</th>
+            <th class="fs-6" style="min-width: 100px;">Casos</th>
+            <th class="fs-6" style="min-width: 100px;">Cantidad</th>
+            <th class="fs-6" style="min-width: 80px;">observaciones</th>
+            <th class="fs-6" style="min-width: 88px;">Fecha</th>
+            <th class="fs-6" style="min-width: 100px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($desperdicios as $desperdicio): ?>
+            <tr id="row_<?= $desperdicio->id ?>">
+              <td><?= $desperdicio->id ?></td>
+              <td><?= $desperdicio->id_venta ?></td>
+              <td><?= $desperdicio->tipo_maquina ?></td>
+              <td><?= $desperdicio->casos ?></td>
+              <td><?= $desperdicio->cantidad ?></td>
+              <td><?= $desperdicio->observaciones ?></td>
+              <td><?= $desperdicio->fecha ?></td>
+              <td>
+                <button class="btn btn-danger btn-sm eliminar-btn"
+                        data-id="<?= $desperdicio->id ?>">Eliminar</button>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-     <section class="section">
-         <div class="card">
-             <div class="card-header">
-                 TABLA DESPERDICIOS FLEXOGRAFICA
-             </div>
-             <div class="card-body">
-                 <table class="table table-striped" id="table1">
-                     <thead>
-                         <tr>
-                             <th class="fs-6" style="min-width: 90px;">Id</th>
-                             <th class="fs-6" style="min-width: 93px;">iD_caso</th>
-                             <th class="fs-6" style="min-width: 80px;">tipo Maquina</th>
-                             <th class="fs-6" style="min-width: 100px;">Casos</th>
-                             <th class="fs-6" style="min-width: 100px;">Cantidad</th>
-                             <th class="fs-6" style="min-width: 80px;">observaciones</th>
-                             <th class="fs-6" style="min-width: 88px;">Fecha</th>
+<!-- Asegúrate de tener cargado SweetAlert2 y que esta etiqueta esté FUERA del foreach -->
+<script>
+  // Delegación de eventos para evitar añadir listeners por fila
+  document.getElementById('table1').addEventListener('click', function(e) {
+    const btn = e.target.closest('.eliminar-btn');
+    if (!btn) return;
 
+    const id = btn.getAttribute('data-id');
+    if (!id) {
+      Swal.fire('Error', 'No se encontró el ID del registro.', 'error');
+      return;
+    }
 
-                             <th class="fs-6" style="min-width: 100px;">Acciones</th>
-                         </tr>
-                     </thead>
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta acción no se puede deshacer!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (!result.isConfirmed) return;
 
-                     <tbody>
-                         <?php foreach ($desperdicios as $desperdicio): ?>
-                             <tr>
-                                 <td><?= $desperdicio->id ?></td>
-                                 <td><?= $desperdicio->id_venta ?></td>
-                                 <td><?= $desperdicio->tipo_maquina ?></td>
-                                 <td><?= $desperdicio->casos ?></td>
-                                 <td><?= $desperdicio->cantidad ?></td>
-                                 <td><?= $desperdicio->observaciones ?></td>
-                                 <td><?= $desperdicio->fecha ?></td>
+      const formData = new FormData();
+      formData.append('id', id);
 
-
-
-
-
-                                 <td>
-
-                                     <div class="d-flex gap-1">
-                                         <button class="btn btn-danger btn-sm eliminar-btn" data-id="<?= $desperdicio->id ?>">Eliminar</button>
-
-                                     </div>
-
-                                     <script>
-                                         // Event listener para los botones de eliminación
-                                         document.querySelectorAll('.eliminar-btn').forEach(button => {
-                                             button.addEventListener('click', function() {
-                                                 const id = this.getAttribute('data-id'); // Obtener el ID del carrito
-
-                                                 // Usamos SweetAlert2 para confirmar la eliminación
-                                                 Swal.fire({
-                                                     title: '¿Estás seguro?',
-                                                     text: "¡Esta acción no se puede deshacer!",
-                                                     icon: 'warning',
-                                                     showCancelButton: true,
-                                                     confirmButtonText: 'Sí, eliminar',
-                                                     cancelButtonText: 'Cancelar',
-                                                     reverseButtons: true
-                                                 }).then((result) => {
-                                                     if (result.isConfirmed) {
-                                                         // Realizamos la petición AJAX para eliminar
-                                                         const formData = new FormData();
-                                                         formData.append('id', id); // Añadir el ID al formulario
-
-                                                         fetch('/admin/eliminarCarrito', {
-                                                                 method: 'POST',
-                                                                 body: formData
-                                                             })
-                                                             .then(response => response.json())
-                                                             .then(data => {
-                                                                 if (data.success) {
-                                                                     // Si la eliminación fue exitosa, eliminamos la fila del carrito
-                                                                     document.getElementById('row_' + id).remove();
-                                                                     Swal.fire(
-                                                                         'Eliminado',
-                                                                         'El artículo ha sido eliminado del carrito.',
-                                                                         'success'
-                                                                     );
-                                                                 } else {
-                                                                     Swal.fire(
-                                                                         'Error',
-                                                                         'Hubo un problema al eliminar el artículo.',
-                                                                         'error'
-                                                                     );
-                                                                 }
-                                                             })
-                                                             .catch(error => {
-                                                                 Swal.fire(
-                                                                     'Error',
-                                                                     'Hubo un error al procesar la solicitud',
-                                                                     'error'
-                                                                 );
-                                                             });
-                                                     }
-                                                 });
-                                             });
-                                         });
-                                     </script>
-
-
-
-
-
-
-                                 </td>
-
-                             </tr>
-                         <?php endforeach; ?>
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-     </section>
+      fetch('/admin/desperdicios/eliminar', { // <-- AJUSTA ESTA RUTA
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        // Intenta parsear JSON; si no es JSON, forzamos error para que caiga al catch
+        try { return await response.json(); } catch (err) { throw new Error('Respuesta no JSON'); }
+      })
+      .then((data) => {
+        if (data && data.success) {
+          const row = document.getElementById('row_' + id);
+          if (row) row.remove();
+          Swal.fire('Eliminado', 'El registro fue eliminado.', 'success');
+        } else {
+          Swal.fire('Error', (data && data.message) || 'No se pudo eliminar.', 'error');
+        }
+      })
+      .catch((err) => {
+        Swal.fire('Error', 'Hubo un error al procesar la solicitud.', 'error');
+        console.error(err);
+      });
+    });
+  });
+</script>
 
 
 
