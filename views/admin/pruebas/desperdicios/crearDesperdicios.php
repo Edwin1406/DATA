@@ -56,7 +56,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin/pruebas/tablaFlexo">Tabla producción - FLEXOGRAFICA</a>
                 </li>
-            
+
 
             </ul>
         </div>
@@ -93,19 +93,17 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <?php $tipo_maqina = $nombre;
-                                foreach ($desperdicios as $contro):
-                                    
-                                ?>
-                                    <tr id="row_<?= $contro->id ?>">
-                                        <td><?= $contro->id ?></td>
-                                        <td><?= $contro->id_usuario ?></td>
-                                        <td><?= $contro->tipo_maquina ?></td>
-                                        <td><?= $contro->casos ?></td>
-                                        <td><?= $contro->cantidad ?></td>
-                                        <td><?= $contro->observaciones ?></td>
+                         
 
+
+                            <tbody>
+                                <?php foreach ($desperdicios as $desperdicio): ?>
+                                    <tr>
+                                        <td><?= $desperdicio->id ?></td>
+                                        <td><?= $desperdicio->id_usuario ?></td>
+                                        <td><?= $desperdicio->tipo_maquina ?></td>
+                                        <td><?= $desperdicio->casos ?></td>
+                                        <td><?= $diseno->cantidad ?></td>
                                         <td>
                                             <div class="d-flex gap-1">
                                                 <!-- Botón de eliminación -->
@@ -115,6 +113,20 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <tfoot>
                                 <tr>
                                     <th colspan="4" class="text-end">Total:</th>
@@ -199,7 +211,7 @@
             </div>
         </div>
     </section>
- 
+
 
     <!-- CSS opcional para evitar que se rompa texto en celdas -->
     <style>
