@@ -166,7 +166,7 @@
                  const formData = new FormData();
                  formData.append('id', id);
 
-                 fetch('/admin/eliminarCarrito', {
+                 fetch('/admin/eliminarDetalleDesperdicios', {
                          method: 'POST',
                          body: formData
                      })

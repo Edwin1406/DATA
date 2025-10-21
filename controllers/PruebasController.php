@@ -329,6 +329,45 @@ class PruebasController
 
 
 
+    public static function eliminarDetalleDesperdicios()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $carrito = DetalleVenta::find($id);
+
+            if ($carrito) {
+                $carrito->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Detalle de desperdicio eliminado con éxito']);
+                exit;
+            } else {
+                // Si no se encuentra el detalle de desperdicio
+                echo json_encode(['success' => false, 'message' => 'Detalle de desperdicio no encontrado']);
+                exit;
+            }
+        } else {
+            // Método incorrecto
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            exit;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     // public static function registrarVenta()
     // {
