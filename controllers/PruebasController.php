@@ -1821,6 +1821,10 @@ class PruebasController
 
 
 
+          debuguear($_SESSION['nombre']);
+
+
+
 
 
    // Renderizar la vista de crear pruebas
