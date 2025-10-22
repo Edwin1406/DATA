@@ -133,7 +133,7 @@
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/pruebas/editarDoblado?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
                                         <!-- desabilitar el boton si ya existe en prodccion diaria ese mismo id de registro  -->
                                         <?php if (isset($produccioduccionMicro) && in_array($microS->id, array_column($produccioduccionMicro, 'id_corrugador'))) : ?>
