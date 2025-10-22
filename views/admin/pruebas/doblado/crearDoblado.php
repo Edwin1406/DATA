@@ -362,7 +362,7 @@
                                  
                                   
                                     <option value="MILTON COYAGO">MILTON COYAGO</option>
-                                    <option value="CRISTIAN ORTIZ">CRISTIAN ORTIZ</option>
+                               
                                     <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
                                     <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
                                     <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
