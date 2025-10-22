@@ -158,8 +158,8 @@ if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
             ? ($registroExistente['id'] ?? null)
             : ($registroExistente->id ?? null);
     ?>
-    
-    <a href="/admin/diaria/produccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>" 
+
+    <a href="/admin/diaria/produccion_diariaMicro?id=<?= htmlspecialchars($microS->id) ?>" 
        class="btn btn-primary btn-sm">
         Diaria
     </a>
