@@ -158,8 +158,8 @@ $index = array_search($microS->id, $ids_corrugador);
     // Ya existe → obtenemos el ID del registro de producción diaria correspondiente
     $idEncontrado = $produccioduccionMicro[$index]['id']; 
     ?>
-    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $idEncontrado ?>" class="btn btn-secondary btn-sm">Editar Diaria</a>
 <?php else: ?>
+    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $idEncontrado ?>" class="btn btn-secondary btn-sm">Editar Diaria</a>
     <!-- Si no existe, se usa el ID original del micro -->
     <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Nueva Diaria</a>
 <?php endif; ?>
