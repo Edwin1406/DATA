@@ -139,6 +139,9 @@
                                             // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
                                             $registroExistente = null;
 
+
+                                            debuguear( $registroExistente);
+
                                             if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
                                                 foreach ($produccioduccionMicro as $registro) {
                                                     // Permitir tanto objeto como array
