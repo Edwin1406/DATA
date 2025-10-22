@@ -751,6 +751,10 @@
                             <option value="SOPLADO">SOPLADO</option>
                             <option value="CALDERO">CALDERO</option>
                             <option value="COMPRESOR">COMPRESOR</option>
+                            <option value="CUADRE DE LINEA">CUADRE DE LINEA</option>
+                            <option value="MANCHAS">MANCHAS</option>
+                            <option value="PEGADO GOMA">PEGADO GOMA</option>
+                            <option value="TRIZADO">TRIZADO</option>
                             <option value="MOVIMIENTO CIREL">MOVIMIENTO CIREL</option>
 
 
