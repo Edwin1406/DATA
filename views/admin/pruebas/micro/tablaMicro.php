@@ -165,8 +165,9 @@ if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
     </a>
 <?php else: ?>
     <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>" 
-       class="btn btn-primary btn-sm">
-        Registrado
+       class="btn btn-secondary btn-sm">
+        <!-- visto icono -->
+          <i class="bi bi-eye"></i>
     </a>
 <?php endif; ?>
 
