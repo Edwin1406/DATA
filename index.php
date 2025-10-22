@@ -464,6 +464,10 @@ $router->get('/admin/pruebas/tablaPeriodico', [PruebasController::class, 'tablaP
 $router->get('/admin/pruebas/tablaSeparadores', [PruebasController::class, 'tablaSeparadores']);
 
 
+// TABLA DE PREPRINTER
+$router->get('/admin/pruebas/tablaPrePrinter', [PruebasController::class, 'tablaPrePrinter']);
+// TABLA DE DOBLADO
+$router->get('/admin/pruebas/tablaDoblado', [PruebasController::class, 'tablaDoblado']);
 
 
 // EDITAR PRUEBAS
