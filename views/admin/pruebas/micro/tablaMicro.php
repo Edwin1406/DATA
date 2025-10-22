@@ -140,12 +140,12 @@
                                             $registroExistente = null;
 
 
-                                            
+
                                             if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
                                                 foreach ($produccioduccionMicro as $registro) {
                                                     // Permitir tanto objeto como array
                                                     $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
-                                                    
+
                                                     if ($idCorrugador == $microS->id) {
                                                         $registroExistente = $registro;
                                                         break;
@@ -154,19 +154,18 @@
                                             }
                                             ?>
 
-<?php if ($registroExistente): ?>
-    <?php
-                                                debuguear( $registroExistente);
+                                         <?php if ($registroExistente): ?>
+                                             <?php
+                                                // debuguear($registroExistente);
                                                 $idRegistro = is_array($registroExistente)
                                                     ? ($registroExistente['id'] ?? null)
                                                     : ($registroExistente->id ?? null);
                                                 ?>
-
                                              <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">-</a>
                                          <?php else: ?>
                                              <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
                                                  class="btn btn-secondary btn-sm">
-                                                  +
+                                                 +
                                              </a>
                                          <?php endif; ?>
 
