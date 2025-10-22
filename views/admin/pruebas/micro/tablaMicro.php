@@ -76,6 +76,19 @@
 
 
 
+<?php
+// Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
+$registroExistente = null;
+
+if (isset($produccioduccionMicro)) {
+    foreach ($produccioduccionMicro as $registro) {
+        if ($registro['id_corrugador'] == $microS->id) {
+            $registroExistente = $registro; // guardamos el registro encontrado
+            break;
+        }
+    }
+}
+?>
 
 
 
@@ -136,19 +149,6 @@
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
                                       <!-- Deshabilitar el botón si ya existe en producción diaria ese mismo id de registro -->
-<?php
-// Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
-$registroExistente = null;
-
-if (isset($produccioduccionMicro)) {
-    foreach ($produccioduccionMicro as $registro) {
-        if ($registro['id_corrugador'] == $microS->id) {
-            $registroExistente = $registro; // guardamos el registro encontrado
-            break;
-        }
-    }
-}
-?>
 
 <?php if ($registroExistente): ?>
     <!-- Si existe, usar el id del registro encontrado -->
