@@ -202,7 +202,7 @@
                              <span>Maquinas</span>
                          </a>
                          <ul class="submenu ">
-                             <?php if ($userEmail == 'corrugador@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'corrugador@megaecuador.com' ||$userEmail === 'pruebas@megaecuador.com' ) { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/tablaPruebas"><i class="bi bi-arrow-right"> </i>Tabla Corrugador</a>
                                  </li>
@@ -211,34 +211,34 @@
                                  </li>
                              <?php } ?>
 
-                             <?php if ($userEmail == 'flexo@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'flexo@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearFlexo"><i class="bi bi-arrow-right"> </i>Crear Flexo</a>
                                  </li>
                              <?php } ?>
-                             <?php if ($userEmail == 'micro@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'micro@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearMicro"><i class="bi bi-arrow-right"> </i>Crear Micro</a>
                                  </li>
                              <?php } ?>
-                             <?php if ($userEmail == 'periodico@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'periodico@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearPeriodico"><i class="bi bi-arrow-right"> </i>Crear Periodico</a>
                                  </li>
                              <?php } ?>
-                             <?php if ($userEmail == 'separadores@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'separadores@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearSeparadores"><i class="bi bi-arrow-right"> </i>Crear Separadores</a>
                                  </li>
                              <?php } ?>
 
-                             <?php if ($userEmail == 'preprinter@megaecuador.com') { ?>
+                             <?php if ($userEmail == 'preprinter@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearPrePrinter"><i class="bi bi-arrow-right"> </i>Crear Pre-Printer</a>
                                  </li>
                              <?php } ?>
 
-                               <?php if ($userEmail == 'doblado@megaecuador.com') { ?>
+                               <?php if ($userEmail == 'doblado@megaecuador.com' || $userEmail === 'pruebas@megaecuador.com') { ?>
                                  <li class="submenu-item ">
                                      <a href="/admin/pruebas/crearDoblado"><i class="bi bi-arrow-right"> </i>Crear Doblado</a>
                                  </li>
