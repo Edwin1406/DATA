@@ -159,7 +159,7 @@ if ($index !== false) {
 <?php
 } else {
 ?>
-    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Diaria</a>
+    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $idEncontrado ?>" class="btn btn-primary btn-sm">Diaria</a>
 <?php
 }
 ?>
