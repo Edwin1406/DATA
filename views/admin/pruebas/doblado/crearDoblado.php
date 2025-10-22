@@ -324,7 +324,7 @@
                         </div>
 
                         <!-- fecha fin -->
-                        <div class="col-md-2 col-12">
+                        <div class="col-md-1 col-12">
                             <div class="form-group">
                                 <label for="hora_fin">Hora Fin</label>
                                 <input type="time" id="hora_fin" class="form-control"
