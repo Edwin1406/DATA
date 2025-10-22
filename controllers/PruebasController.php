@@ -1229,7 +1229,7 @@ class PruebasController
 
    
         // $doblado = Ventas::wherenuevo('linea', 'DOBLADO');
-        $produccioduccionDoblado = ProduccionDiaria::all();
+        $produccioduccionDoblado = Ventas::all();
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/doblado/tablaDoblado', [
             'titulo' => 'DOBLADO - Tabla de Producción',

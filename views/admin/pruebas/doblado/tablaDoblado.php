@@ -124,7 +124,7 @@
                              <tr>
                                  <td><?= $microS->id ?></td>
                                  <td><?= $microS->fecha ?></td>
-                                 <td><?= $microS->consumo_papel ?></td>
+                                 <td><?= $microS->turno ?></td>
                                  <td><?= $microS->n_laminas ?></td>
                                  <td><?= $microS->turno ?></td>
                                  <td><?= $microS->motivo_inactividad ?></td>
