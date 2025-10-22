@@ -140,13 +140,12 @@
                                             $registroExistente = null;
 
 
-                                            debuguear( $registroExistente);
-
+                                            
                                             if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
                                                 foreach ($produccioduccionMicro as $registro) {
                                                     // Permitir tanto objeto como array
                                                     $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
-
+                                                    
                                                     if ($idCorrugador == $microS->id) {
                                                         $registroExistente = $registro;
                                                         break;
@@ -155,8 +154,9 @@
                                             }
                                             ?>
 
-                                         <?php if ($registroExistente): ?>
-                                             <?php
+<?php if ($registroExistente): ?>
+    <?php
+                                                debuguear( $registroExistente);
                                                 $idRegistro = is_array($registroExistente)
                                                     ? ($registroExistente['id'] ?? null)
                                                     : ($registroExistente->id ?? null);
