@@ -136,7 +136,7 @@
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
                                      <div class="d-flex gap-1">
-    <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+   
 
     <?php
     // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
