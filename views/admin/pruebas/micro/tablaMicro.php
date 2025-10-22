@@ -135,44 +135,47 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
-                                       <?php
-// Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
-$registroExistente = null;
+                                         <?php
+                                            // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
+                                            $registroExistente = null;
 
-if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
-    foreach ($produccioduccionMicro as $registro) {
-        // Permitir tanto objeto como array
-        $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
+                                            if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
+                                                foreach ($produccioduccionMicro as $registro) {
+                                                    // Permitir tanto objeto como array
+                                                    $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
 
-        if ($idCorrugador == $microS->id) {
-            $registroExistente = $registro;
-            break;
-        }
-    }
-}
-?>
+                                                    if ($idCorrugador == $microS->id) {
+                                                        $registroExistente = $registro;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            ?>
 
-<?php if ($registroExistente): ?>
-    <?php
-        $idRegistro = is_array($registroExistente)
-            ? ($registroExistente['id'] ?? null)
-            : ($registroExistente->id ?? null);
-    ?>
-
-    <a href="/admin/diaria/produccion_diariaMicro?id=<?= htmlspecialchars($microS->id) ?>" 
-       class="btn btn-primary btn-sm">
-        Diaria
-    </a>
-<?php else: ?>
-    <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>" 
-       class="btn btn-secondary btn-sm">
-        <!-- visto icono -->
-          <i class="bi bi-eye"></i>
-    </a>
-<?php endif; ?>
+                                         <?php if ($registroExistente): ?>
+                                             <?php
+                                                $idRegistro = is_array($registroExistente)
+                                                    ? ($registroExistente['id'] ?? null)
+                                                    : ($registroExistente->id ?? null);
+                                                ?>
 
 
-                                                
+
+                                             <a href="/admin/diaria/produccion_diariaMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+
+
+
+
+                                         <?php else: ?>
+                                             <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
+                                                 class="btn btn-secondary btn-sm">
+                                                 <!-- visto icono -->
+                                                 <i class="bi bi-eye"></i>
+                                             </a>
+                                         <?php endif; ?>
+
+
+
 
                                          <form action="/admin/eliminarMicro" method="POST">
                                              <input type="hidden" name="id" value="<?= $microS->id ?>">
