@@ -1202,7 +1202,7 @@ class PruebasController
         $email = $_SESSION['email'];
 
    
-        $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
+        // $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
         $produccioduccionPreprinter = ProduccionDiaria::all();
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/preprinter/tablaPreprinter', [
@@ -1210,7 +1210,7 @@ class PruebasController
             'subtitulo' => 'Preprinter',
             'nombre' => $nombre,
             'email' => $email,
-            'preprinter' => $preprinter,
+            // 'preprinter' => $preprinter,
             'produccioduccionPreprinter' => $produccioduccionPreprinter
         ]);
     }
@@ -1228,7 +1228,7 @@ class PruebasController
         $email = $_SESSION['email'];
 
    
-        $doblado = Ventas::wherenuevo('linea', 'DOBLADO');
+        // $doblado = Ventas::wherenuevo('linea', 'DOBLADO');
         $produccioduccionDoblado = ProduccionDiaria::all();
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/doblado/tablaDoblado', [
@@ -1236,7 +1236,7 @@ class PruebasController
             'subtitulo' => 'Doblado',
             'nombre' => $nombre,
             'email' => $email,
-            'doblado' => $doblado,
+            // 'doblado' => $doblado,
             'produccioduccionDoblado' => $produccioduccionDoblado
         ]);
     }

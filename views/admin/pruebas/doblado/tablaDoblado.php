@@ -120,7 +120,7 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($micro as $microS): ?>
+                         <?php foreach ($produccioduccionDoblado as $microS): ?>
                              <tr>
                                  <td><?= $microS->id ?></td>
                                  <td><?= $microS->fecha ?></td>
