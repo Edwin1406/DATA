@@ -145,25 +145,26 @@
 
 
 
-
-                                         <?php
+<?php
+// Sacamos la lista de id_corrugador de los registros existentes
 $ids_corrugador = array_column($produccioduccionMicro, 'id_corrugador');
+
+// Buscamos si el micro actual ($microS->id) ya existe en la lista
 $index = array_search($microS->id, $ids_corrugador);
-
-if ($index !== false) {
-    // Aquí tienes la fila correspondiente
-    $fila = $produccioduccionMicro[$index];
-    $idEncontrado = $fila['id']; // o la columna que quieras usar
-?>
-    <button class="btn btn-secondary btn-sm" disabled>Diaria (ID <?= $idEncontrado ?>)</button>
-<?php
-} else {
-?>
-    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $idEncontrado ?>" class="btn btn-primary btn-sm">Diaria</a>
-<?php
-}
 ?>
 
+<?php if ($index !== false): ?>
+    <?php
+    // Ya existe → obtenemos el ID del registro de producción diaria correspondiente
+    $idEncontrado = $produccioduccionMicro[$index]['id']; 
+    ?>
+    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $idEncontrado ?>" class="btn btn-secondary btn-sm">Editar Diaria</a>
+<?php else: ?>
+    <!-- Si no existe, se usa el ID original del micro -->
+    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Nueva Diaria</a>
+<?php endif; ?>
+
+                                         
 
 
 
