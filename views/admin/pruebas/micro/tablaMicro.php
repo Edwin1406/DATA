@@ -135,15 +135,17 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
-                                      <!-- Deshabilitar el botón si ya existe en producción diaria ese mismo id de registro -->
-<?php
+                                       <?php
 // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
 $registroExistente = null;
 
-if (isset($produccioduccionMicro)) {
+if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
     foreach ($produccioduccionMicro as $registro) {
-        if ($registro['id_corrugador'] == $microS->id) {
-            $registroExistente = $registro; // guardamos el registro encontrado
+        // Permitir tanto objeto como array
+        $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
+
+        if ($idCorrugador == $microS->id) {
+            $registroExistente = $registro;
             break;
         }
     }
@@ -151,15 +153,19 @@ if (isset($produccioduccionMicro)) {
 ?>
 
 <?php if ($registroExistente): ?>
-    <!-- Si existe, usar el id del registro encontrado -->
-    <a href="/admin/diaria/produccion_diariaMicro?id=<?= $registroExistente['id'] ?>" 
+    <?php
+        $idRegistro = is_array($registroExistente)
+            ? ($registroExistente['id'] ?? null)
+            : ($registroExistente->id ?? null);
+    ?>
+    <a href="/admin/diaria/produccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>" 
        class="btn btn-primary btn-sm">
         Diaria
     </a>
 <?php else: ?>
-    <!-- Si no existe, deshabilitar el botón -->
     <button class="btn btn-secondary btn-sm" disabled>Diaria</button>
 <?php endif; ?>
+
 
                                                 
 
