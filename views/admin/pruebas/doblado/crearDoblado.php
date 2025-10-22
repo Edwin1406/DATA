@@ -366,6 +366,8 @@
                                     <option value="MENTOR">MENTOR</option>
                                     <option value="DIEGO DE LA CRUZ">DIEGO DE LA CRUZ</option>
                                     <option value="JAVIER CUASCOTA">JAVIER CUASCOTA</option>
+                                    <option value="MILTON COYAGO">MILTON COYAGO</option>
+                                    <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
                                 </select>
                             </div>
                         </div>
