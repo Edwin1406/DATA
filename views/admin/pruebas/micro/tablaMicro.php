@@ -163,7 +163,7 @@
                                          <?php else: ?>
                                              <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
                                                  class="btn btn-secondary btn-sm">
-                                                 +
+                                                  +
                                              </a>
                                          <?php endif; ?>
 
