@@ -135,40 +135,43 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
-                                         <?php
-                                            // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
-                                            $registroExistente = null;
+                                     <div class="d-flex gap-1">
+    <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
+    <?php
+    // Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
+    $registroExistente = null;
 
+    if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
+        foreach ($produccioduccionMicro as $registro) {
+            // Permitir tanto objeto como array
+            $idCorrugador = is_array($registro) ? ($registro['id_corrugador'] ?? null) : ($registro->id_corrugador ?? null);
 
-                                            if (isset($produccioduccionMicro) && is_iterable($produccioduccionMicro)) {
-                                                foreach ($produccioduccionMicro as $registro) {
-                                                    // Permitir tanto objeto como array
-                                                    $idCorrugador = is_array($registro) ? $registro['id_corrugador'] ?? null : ($registro->id_corrugador ?? null);
+            if ($idCorrugador == $microS->id) {
+                $registroExistente = $registro;
+                break;
+            }
+        }
+    }
 
-                                                    if ($idCorrugador == $microS->id) {
-                                                        $registroExistente = $registro;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            ?>
+    // Obtener el id y la fecha del registro encontrado (si existe)
+    $idRegistro = null;
+    $fechaRegistro = null;
+    if ($registroExistente) {
+        $idRegistro = is_array($registroExistente) ? ($registroExistente['id'] ?? null) : ($registroExistente->id ?? null);
+        $fechaRegistro = is_array($registroExistente) ? ($registroExistente['fecha'] ?? null) : ($registroExistente->fecha ?? null);
+    }
+    ?>
 
-                                         <?php if ($registroExistente): ?>
-                                             <?php
-                                                // debuguear($registroExistente);
-                                                $idRegistro = is_array($registroExistente)
-                                                    ? ($registroExistente['id'] ?? null)
-                                                    : ($registroExistente->id ?? null);
-                                                ?>
-                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">-</a>
-                                         <?php else: ?>
-                                             <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
-                                                 class="btn btn-secondary btn-sm">
-                                                 +
-                                             </a>
-                                         <?php endif; ?>
-
+    <?php if ($registroExistente && $fechaRegistro == $microS->fecha): ?>
+        <!-- Si existe y la fecha coincide: deshabilitado -->
+        <button class="btn btn-secondary btn-sm" disabled>+</button>
+    <?php else: ?>
+        <!-- Si no existe o la fecha es diferente: habilitado -->
+        <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro ?? '') ?>" 
+           class="btn btn-primary btn-sm">+</a>
+    <?php endif; ?>
+</div>
 
 
 
