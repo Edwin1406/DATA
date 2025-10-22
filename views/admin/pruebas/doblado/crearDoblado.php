@@ -105,6 +105,8 @@
 
                                                 <!-- CONTROLABLES -->
                                                 <option value="CUADRE MAQUINA">Cuadre Maquina</option>
+                                                <option value="MECANICO">Mecanico</option>
+                                                <option value="ELECTRICO">Electrico</option>
 
 
                                             </select>
