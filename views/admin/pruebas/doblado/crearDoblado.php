@@ -284,14 +284,14 @@
                                     name="fecha" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
-
+<!-- 
                         <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="consumo_papel">Consumo papel (Kg)</label>
                                 <input type="number" step="0.01" id="consumo_papel"
                                     class="form-control" placeholder="Consumo papel (Kg)" name="consumo_papel" required>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-2 col-12">
                             <div class="form-group">
@@ -301,7 +301,7 @@
                             </div>
                         </div>
 
-
+<!-- 
                         <div class="col-md-2 col-12 ">
 
                             <div class="form-group">
@@ -310,7 +310,7 @@
                                     placeholder="Metros Lineales" name="metros_lineales">
                             </div>
 
-                        </div>
+                        </div> -->
 
 
 
@@ -325,13 +325,13 @@
                         </div>
 
 
-                        <div class="col-md-2 col-12">
+                        <!-- <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="n_cambios">N° de Cambios</label>
                                 <input type="number" id="n_cambios" class="form-control"
                                     placeholder="N° de Cambios" name="n_cambios">
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <!-- fecha inicio -->
@@ -374,22 +374,22 @@
 
 
                         <!-- horas de inactividad -->
-                        <div class="col-md-2 col-12">
+                        <!-- <div class="col-md-2 col-12">
                             <div class="form-group">
                                 <label for="tiempo_inactivo">Horas de Inactividad</label>
                                 <input type="time" id="tiempo_inactivo" class="form-control"
                                     name="tiempo_inactivo" placeholder="Horas de inactividad">
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <!-- horas de inactividad -->
-                        <div class="col-md-3 col-12">
+                        <!-- <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="motivo_inactividad">Motivo de la Inactividad</label>
                                 <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
