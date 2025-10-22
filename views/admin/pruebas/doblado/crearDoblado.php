@@ -108,7 +108,6 @@
                                                 <option value="MECANICO">Mecanico</option>
                                                 <option value="ELECTRICO">Electrico</option>
 
-
                                             </select>
 
                                         </div>
