@@ -332,7 +332,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-2 col-12">
+                        <div class="col-md-2.5 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
                                 <select id="operador" class="choices form-control" name="operador">
