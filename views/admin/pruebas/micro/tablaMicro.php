@@ -159,7 +159,7 @@
                                                     : ($registroExistente->id ?? null);
                                                 ?>
 
-                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">-</a>
                                          <?php else: ?>
                                              <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
                                                  class="btn btn-secondary btn-sm">
