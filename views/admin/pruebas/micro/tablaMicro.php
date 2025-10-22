@@ -135,13 +135,31 @@
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarMicro?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
-                                         <!-- desabilitar el boton si ya existe en prodccion diaria ese mismo id de registro  -->
-                                         <?php if (isset($produccioduccionMicro) && in_array($microS->id, array_column($produccioduccionMicro, 'id_corrugador'))) : ?>
+                                      <!-- Deshabilitar el botón si ya existe en producción diaria ese mismo id de registro -->
+<?php
+// Buscar si el corrugador actual ($microS->id) ya existe en producción diaria
+$registroExistente = null;
 
-                                            <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">Diaria</a>
-                                            <?php else : ?>
-                                                <button class="btn btn-secondary btn-sm" disabled>Diaria</button>
-                                         <?php endif; ?>
+if (isset($produccioduccionMicro)) {
+    foreach ($produccioduccionMicro as $registro) {
+        if ($registro['id_corrugador'] == $microS->id) {
+            $registroExistente = $registro; // guardamos el registro encontrado
+            break;
+        }
+    }
+}
+?>
+
+<?php if ($registroExistente): ?>
+    <!-- Si existe, usar el id del registro encontrado -->
+    <a href="/admin/diaria/produccion_diariaMicro?id=<?= $registroExistente['id'] ?>" 
+       class="btn btn-primary btn-sm">
+        Diaria
+    </a>
+<?php else: ?>
+    <!-- Si no existe, deshabilitar el botón -->
+    <button class="btn btn-secondary btn-sm" disabled>Diaria</button>
+<?php endif; ?>
 
                                                 
 
