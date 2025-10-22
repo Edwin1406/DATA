@@ -140,7 +140,7 @@
 
                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $produccioduccionMicro->id ?>" class="btn btn-primary btn-sm">Diaria</a>
                                             <?php else : ?>
-                                                <button class="btn btn-secondary btn-sm" d >Diaria</button>
+                                                <button class="btn btn-secondary btn-sm" disabled>Diaria</button>
                                          <?php endif; ?>
 
                                                 
