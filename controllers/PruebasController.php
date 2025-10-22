@@ -1171,20 +1171,12 @@ class PruebasController
         $nombre = $_SESSION['nombre'];
         $email = $_SESSION['email'];
 
-        // Obtener los diseños de la base de datos
-        // $corrugador = DetalleVenta::wherenuevo('tipo_maquina', 'CORRUGADOR');
-        // $micro = Ventas::whereArray('tipo_maquina', 'MICRO');
-                // $corrugador = Ventas::wherenuevo('linea', 'CORRUGADOR');
+   
         $micro = Ventas::wherenuevo('linea', 'MICRO');
 
 
         $produccioduccionMicro = ProduccionDiaria::all();
 
-        // debuguear($produccioduccionMicro);
-
-
-
-        // debuguear($micro);
 
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/micro/tablaMicro', [
@@ -1196,6 +1188,63 @@ class PruebasController
             'produccioduccionMicro' => $produccioduccionMicro
         ]);
     }
+
+    // TABLA DE PREPRINTER
+
+    public static function tablaPreprinter(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+   
+        $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
+        $produccioduccionPreprinter = ProduccionDiaria::all();
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/preprinter/tablaPreprinter', [
+            'titulo' => 'PREPRINTER - Tabla de Producción',
+            'subtitulo' => 'Preprinter',
+            'nombre' => $nombre,
+            'email' => $email,
+            'preprinter' => $preprinter,
+            'produccioduccionPreprinter' => $produccioduccionPreprinter
+        ]);
+    }
+
+
+    // TABLA DE DOBLADO
+    public static function tablaDoblado(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+   
+        $doblado = Ventas::wherenuevo('linea', 'DOBLADO');
+        $produccioduccionDoblado = ProduccionDiaria::all();
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/doblado/tablaDoblado', [
+            'titulo' => 'DOBLADO - Tabla de Producción',
+            'subtitulo' => 'Doblado',
+            'nombre' => $nombre,
+            'email' => $email,
+            'doblado' => $doblado,
+            'produccioduccionDoblado' => $produccioduccionDoblado
+        ]);
+    }
+
+
+
+
+
 
 
 
