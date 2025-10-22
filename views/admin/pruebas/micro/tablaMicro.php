@@ -165,11 +165,11 @@
                                                 <!--  -->
 
 
-                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm bi bi-plus-circle" ></a>
+                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">+</a>
                                          <?php else: ?>
                                              <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
                                                  class="btn btn-secondary btn-sm">
-                                                 +
+                                                 -
                                              </a>
                                          <?php endif; ?>
 
