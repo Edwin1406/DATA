@@ -119,7 +119,7 @@
 
 
                                 <!-- hora_inicio -->
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-2 col-12">
                                         <div class="form-group">
                                             <label for="hora_inicio">Hora Inicio</label>
                                             <input type="time" id="hora_inicio" class="form-control"
@@ -132,7 +132,7 @@
 
                                     <!-- hora_fin -->
                                     <!-- hora_fin -->
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-2 col-12">
                                         <div class="form-group">
                                             <label for="hora_fin">Hora Fin</label>
                                             <input type="time" id="hora_fin" class="form-control"
@@ -144,7 +144,7 @@
                                     </div>
                                     
                                     <!-- tiempo_inactivo -->
-                                    <div class="col-md-3 col-12">
+                                    <div class="col-md-2 col-12">
                                         <div class="form-group">
                                             <label for="tiempo_inactivo">Tiempo Inactivo</label>
                                             <input type="text" id="tiempo_inactivo" class="form-control"
@@ -155,7 +155,7 @@
                                     </div>
                                     
                                     <!-- motivo_inactividad -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="motivo_inactividad">Motivo de Inactividad</label>
                                             <input type="text" id="motivo_inactividad" class="form-control"
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
 
-                                    
+
 
 
 
