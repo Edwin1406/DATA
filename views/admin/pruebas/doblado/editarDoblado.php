@@ -87,7 +87,7 @@
                                                 placeholder="Consumo papel" name="consumo_papel" step="0.01"
                                                 value="<?php echo $doblado->consumo_papel ?>"
                                                 
-                                                >
+                                                readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -96,7 +96,7 @@
                                             <input type="number" id="n_laminas" class="form-control"
                                                 placeholder="N laminas" name="n_laminas" step="0.01"
                                                 value="<?php echo $doblado->n_laminas ?>"
-                                                >
+                                                readonly>
                                         </div>
                                     </div>
                                     
