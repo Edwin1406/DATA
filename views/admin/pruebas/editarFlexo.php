@@ -159,7 +159,7 @@
                                     <option value="" disabled selected>Seleccione un operador</option>
                                     <option value="RAFAEL" <?= $venta->operador === 'RAFAEL' ? 'selected' : '' ?>>RAFAEL</option>
                                     <option value="WILLIAM" <?= $venta->operador === 'WILLIAM' ? 'selected' : '' ?>>WILLIAM</option>
-                                     <option value="JEOVANNY">JEOVANNY</option>
+                                    <option value="JEOVANNY" <?= $venta->operador === 'JEOVANNY' ? 'selected' : '' ?>>JEOVANNY</option>
                                 </select>
                             </div>
                         </div>
