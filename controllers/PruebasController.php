@@ -1228,8 +1228,8 @@ class PruebasController
         $email = $_SESSION['email'];
 
    
-        // $doblado = Ventas::wherenuevo('linea', 'DOBLADO');
-        $produccioduccionDoblado = Ventas::all();
+        $produccioduccionDoblado = Ventas::wherenuevo('linea', 'DOBLADO');
+        // $produccioduccionDoblado = Ventas::all();
         // Renderizar la vista de la tabla de diseños
         $router->render('admin/pruebas/doblado/tablaDoblado', [
             'titulo' => 'DOBLADO - Tabla de Producción',
