@@ -118,6 +118,69 @@
                                     </div>
 
 
+                                <!-- hora_inicio -->
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="hora_inicio">Hora Inicio</label>
+                                            <input type="time" id="hora_inicio" class="form-control"
+                                                placeholder="Hora Inicio" name="hora_inicio"
+                                                value="<?php echo $doblado->hora_inicio ?>"
+
+                                                >
+                                        </div>
+                                    </div>
+
+                                    <!-- hora_fin -->
+                                    <!-- hora_fin -->
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="hora_fin">Hora Fin</label>
+                                            <input type="time" id="hora_fin" class="form-control"
+                                            placeholder="Hora Fin" name="hora_fin"
+                                            value="<?php echo $doblado->hora_fin ?>"
+                                            
+                                            >
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- tiempo_inactivo -->
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="tiempo_inactivo">Tiempo Inactivo</label>
+                                            <input type="text" id="tiempo_inactivo" class="form-control"
+                                            placeholder="Tiempo Inactivo" name="tiempo_inactivo"
+                                            value="<?php echo $doblado->tiempo_inactivo ?>"
+                                            >
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- motivo_inactividad -->
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="motivo_inactividad">Motivo de Inactividad</label>
+                                            <input type="text" id="motivo_inactividad" class="form-control"
+                                                placeholder="Motivo de Inactividad" name="motivo_inactividad"
+                                                value="<?php echo $doblado->motivo_inactividad ?>"
+
+                                                >
+                                        </div>
+                                    </div>
+
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                                     <!-- observaciones -->
