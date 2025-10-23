@@ -53,12 +53,7 @@
     <section class="section">
         <div class="card">
             <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin/pruebas/tablaDoblado">Tabla Doblado</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#inlineForm" style="border: 1px solid;" data-bs-toggle="modal">DESPERDICIOS</a>
-                </li>
+              
             </ul>
         </div>
     </section>
