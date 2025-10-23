@@ -72,7 +72,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/pruebas/editarDoblado?id=<?php echo $id; ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
+                            <form class="form" method="POST" action="/admin/pruebas/editarDoblado<?php echo http_build_query(['id' => $doblado->id ?? '']); ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
 
