@@ -54,6 +54,10 @@ class Ventas extends ActiveRecord {
     public function validar() {
      
     
+       
+        if (!$this->operador) {
+            self::$alertas['error'][] = 'El operador es obligatorio';
+        }
       
         if (!$this->hora_inicio) {
             self::$alertas['error'][] = 'La hora de inicio es obligatoria';
