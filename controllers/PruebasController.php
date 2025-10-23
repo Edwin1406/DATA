@@ -1283,8 +1283,7 @@ class PruebasController
 
             $doblado->sincronizar($_POST);
 
-            debuguear($doblado);
-
+            
             // Validar
             $alertas = $doblado->validar();
 
