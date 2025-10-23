@@ -53,20 +53,14 @@ class Ventas extends ActiveRecord {
     // Validar
     public function validar() {
      
-        if (!$this->consumo_papel) {
-            self::$alertas['error'][] = 'El consumo de papel es obligatorio';
-        }
-     
-        if (!$this->turno) {
-            self::$alertas['error'][] = 'El turno es obligatorio';
-        }
     
-       
-        if (!$this->operador) {
-            self::$alertas['error'][] = 'El operador es obligatorio';
-        }
       
-     
+        if (!$this->hora_inicio) {
+            self::$alertas['error'][] = 'La hora de inicio es obligatoria';
+        }
+        if (!$this->hora_fin) {
+            self::$alertas['error'][] = 'La hora de fin es obligatoria';
+        }
      
 
         return self::$alertas;
