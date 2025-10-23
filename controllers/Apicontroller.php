@@ -160,7 +160,7 @@ class Apicontroller
     }
 
     // api apiTotalDesperdicioIndividual
-    public static function apiTotalDesperdicioIndividual(): void
+    public static function apiproduccionimpulsa(): void
     {
         // CORS
         header('Access-Control-Allow-Origin: *');

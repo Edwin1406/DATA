@@ -376,7 +376,7 @@ $router->get('/admin/api/apiDesperdicioxSucesos', [Apicontroller::class, 'apiDes
 
 
 // apitotaldesperdicioindividual
-$router->get('/admin/api/apiTotalDesperdicioIndividual', [Apicontroller::class, 'apiTotalDesperdicioIndividual']);  
+$router->get('/admin/api/apiproduccionimpulsa', [Apicontroller::class, 'apiproduccionimpulsa']);  
 
 
 // apiProduccionDiariaFlexo
