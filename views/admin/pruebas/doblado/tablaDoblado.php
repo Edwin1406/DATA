@@ -120,25 +120,25 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($produccioduccionDoblado as $microS): ?>
+                         <?php foreach ($produccioduccionDoblado as $doblado): ?>
                              <tr>
-                                 <td><?= $microS->id ?></td>
-                                 <td><?= $microS->fecha ?></td>
-                                 <td><?= $microS->linea ?></td>
-                                 <td><?= $microS->n_laminas ?></td>
-                                 <td><?= $microS->turno ?></td>
-                                 <td><?= $microS->motivo_inactividad ?></td>
+                                 <td><?= $doblado->id ?></td>
+                                 <td><?= $doblado->fecha ?></td>
+                                 <td><?= $doblado->linea ?></td>
+                                 <td><?= $doblado->n_laminas ?></td>
+                                 <td><?= $doblado->turno ?></td>
+                                 <td><?= $doblado->motivo_inactividad ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarDoblado?id=<?= $microS->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/pruebas/editarDoblado?id=<?= $doblado->id ?>" class="btn btn-primary btn-sm">Editar</a>
 
                                         
 
                                          <form action="/admin/eliminarMicro" method="POST">
-                                             <input type="hidden" name="id" value="<?= $microS->id ?>">
+                                             <input type="hidden" name="id" value="<?= $doblado->id ?>">
                                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                          </form>
                                      </div>
