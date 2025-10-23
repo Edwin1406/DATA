@@ -1279,11 +1279,11 @@ class PruebasController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Asignar los valores
-            $args = $_POST;
+      
 
-            $doblado->sincronizar($args);
+            $doblado->sincronizar($_POST);
 
-            // debuguear($doblado);
+            debuguear($doblado);
 
             // Validar
             $alertas = $doblado->validar();
