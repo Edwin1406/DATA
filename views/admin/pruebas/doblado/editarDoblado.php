@@ -90,6 +90,16 @@
                                                 >
                                         </div>
                                     </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="n_laminas">N laminas</label>
+                                            <input type="number" id="n_laminas" class="form-control"
+                                                placeholder="N laminas" name="n_laminas" step="0.01"
+                                                value="<?php echo $doblado->n_laminas ?>"
+                                                >
+                                        </div>
+                                    </div>
+                                    
 
                                     <!-- observaciones -->
 
