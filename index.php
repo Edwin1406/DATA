@@ -484,7 +484,9 @@ $router->post('/admin/pruebas/editarFlexo', [PruebasController::class, 'editarFl
 
 
 
-
+//EDITAR DOBLADO
+$router->get('/admin/pruebas/editarDoblado', [PruebasController::class, 'editarDoblado']);
+$router->post('/admin/pruebas/editarDoblado', [PruebasController::class, 'editarDoblado']);
 
 
 

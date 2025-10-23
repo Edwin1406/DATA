@@ -1245,6 +1245,84 @@ class PruebasController
 
 
 
+    //EDITAR DOBLADO
+    public static function editarDoblado(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        $alertas = [];
+
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
+
+        // Validar el ID
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/pruebas/tablaDoblado');
+            exit;
+        }
+
+        // Obtener el registro a editar
+        $venta = Ventas::find($id);
+
+        // debuguear($venta);
+
+        if (!$venta) {
+            header('Location: /admin/pruebas/tablaDoblado');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Asignar los valores
+            $args = $_POST;
+
+            $venta->sincronizar($args);
+
+            // debuguear($venta);
+
+            // Validar
+            $alertas = $venta->validar();
+
+            if (empty($alertas)) {
+                $resultado = $venta->guardar();
+                if ($resultado) {
+                    header('Location: /admin/pruebas/tablaDoblado?editado=2');
+                    exit;
+                } else {
+                    $alertas['error'][] = 'Error al actualizar el registro';
+                }
+            }
+        }
+
+        // Renderizar la vista de editar
+        $router->render('admin/pruebas/doblado/editarDoblado', [
+            'titulo' => 'DOBLADO - Editar Registro',
+            'alertas' => $alertas,
+            'nombre' => $nombre,
+            'email' => $email,
+            'venta' => $venta
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
