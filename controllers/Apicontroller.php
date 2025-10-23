@@ -173,6 +173,8 @@ class Apicontroller
             $item->consumo_papel = floatval($item->consumo_papel);
             $item->n_laminas = floatval($item->n_laminas);
             $item->metros_lineales = floatval($item->metros_lineales); 
+            $item->estandar = intval($item->estandar); 
+            
             $item->turno = floatval($item->turno);
             $item->n_cambios = intval($item->n_cambios);
             $item->operador = $item->operador;
