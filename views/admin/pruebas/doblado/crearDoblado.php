@@ -285,7 +285,7 @@
                             </div>
                         </div>
 
-                 
+
 
                         <div class="col-md-2 col-12">
                             <div class="form-group">
@@ -310,7 +310,7 @@
                         </div>
 
 
-                  
+
 
 
                         <!-- fecha inicio -->
@@ -332,17 +332,33 @@
                             </div>
                         </div>
 
+                        <!-- horas de inactividad -->
+                        <div class="col-md-2 col-12">
+                            <div class="form-group">
+                                <label for="tiempo_inactivo">Horas de Inactividad</label>
+                                <input type="time" id="tiempo_inactivo" class="form-control"
+                                    name="tiempo_inactivo" placeholder="Horas de inactividad">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-12">
+                            <div class="form-group">
+                                <label for="motivo_inactividad">Motivo de la Inactividad</label>
+                                <textarea id="motivo_inactividad" class="form-control" name="motivo_inactividad" placeholder="Describe el motivo de la inactividad" rows="3"></textarea>
+                            </div>
+                        </div>
+
                         <div class="col-md-3 col-12">
                             <div class="form-group">
                                 <label for="operador">OPERADOR</label>
                                 <select id="operador" class="choices form-control" name="operador">
                                     <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
                                     <!-- CONTROLABLES -->
-                                   
-                                 
-                                  
+
+
+
                                     <option value="MILTON COYAGO">MILTON COYAGO</option>
-                               
+
                                     <option value="GUSTAVO SANCHEZ">GUSTAVO SANCHEZ</option>
                                     <option value="MARCO QUIHUIRI">MARCO QUIHUIRI</option>
                                     <option value="ALEXANDER MOPOSA">ALEXANDER MOPOSA</option>
@@ -443,7 +459,7 @@
                     </div>
 
 
-                             <!-- casos -->
+                    <!-- casos -->
                     <div class="form-group">
                         <label for="casos">CASOS</label>
                         <select id="casos" class="choices form-control" name="casos">
@@ -476,7 +492,7 @@
                         <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Escribe algo aquí">
                     </div>
 
-           
+
 
                     <!-- observaciones -->
                     <div class="form-group">
