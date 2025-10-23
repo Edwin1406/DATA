@@ -53,7 +53,7 @@
     <section class="section">
         <div class="card">
             <ul class="nav nav-tabs">
-              
+
             </ul>
         </div>
     </section>
@@ -77,7 +77,7 @@
 
 
 
-                                 
+
 
                                     <!-- cantidad cajas deciamles soporte  -->
                                     <div class="col-md-4 col-12">
@@ -86,7 +86,7 @@
                                             <input type="number" id="consumo_papel" class="form-control"
                                                 placeholder="Consumo papel" name="consumo_papel" step="0.01"
                                                 value="<?php echo $doblado->consumo_papel ?>"
-                                                
+
                                                 readonly>
                                         </div>
                                     </div>
@@ -99,7 +99,26 @@
                                                 readonly>
                                         </div>
                                     </div>
-                                    
+
+
+
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="operador">OPERADOR</label>
+                                            <select id="operador" class="choices form-control" name="operador">
+                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un operador</option>
+                                                <!-- CONTROLABLES -->
+                                                <option value="MILTON COYAGO" <?php echo (isset($doblado->operador) && $doblado->operador === 'MILTON COYAGO') ? 'selected' : ''; ?>>MILTON COYAGO</option>
+                                                <option value="RAFAEL LOPEZ" <?php echo (isset($doblado->operador) && $doblado->operador === 'RAFAEL LOPEZ') ? 'selected' : ''; ?>>RAFAEL LOPEZ</option>
+                                                <option value="GUSTAVO SANCHEZ" <?php echo (isset($doblado->operador) && $doblado->operador === 'GUSTAVO SANCHEZ') ? 'selected' : ''; ?>>GUSTAVO SANCHEZ</option>
+                                                <option value="MARCO QUIHUIRI" <?php echo (isset($doblado->operador) && $doblado->operador === 'MARCO QUIHUIRI') ? 'selected' : ''; ?>>MARCO QUIHUIRI</option>
+                                                <option value="ALEXANDER MOPOSA" <?php echo (isset($doblado->operador) && $doblado->operador === 'ALEXANDER MOPOSA') ? 'selected' : ''; ?>>ALEXANDER MOPOSA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
 
                                     <!-- observaciones -->
 
@@ -152,5 +171,3 @@
 
 
 </div>
-
-
