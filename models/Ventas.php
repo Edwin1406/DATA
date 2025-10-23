@@ -6,13 +6,14 @@ use DateTime;
 
 class Ventas extends ActiveRecord {    
     protected static $tabla = 'VENTAS';
-    protected static $columnasDB = ['id','id_usuario','consumo_papel','n_laminas','metros_lineales','turno','n_cambios','operador','total','hora_inicio','hora_fin','tiempo_inactivo','motivo_inactividad','fecha','linea'];
+    protected static $columnasDB = ['id','id_usuario','consumo_papel','n_laminas','metros_lineales','estandar','turno','n_cambios','operador','total','hora_inicio','hora_fin','tiempo_inactivo','motivo_inactividad','fecha','linea'];
 
     public ?int $id;
     public ?int $id_usuario;
     public ?float $consumo_papel;
     public ?int $n_laminas;
     public ?float $metros_lineales;
+    public ?int $estandar;
     public ?string $turno;
     public ?int $n_cambios;
    
@@ -34,6 +35,7 @@ class Ventas extends ActiveRecord {
         $this->consumo_papel = $args['consumo_papel'] ?? null;
         $this->n_laminas = $args['n_laminas'] ?? null;
         $this->metros_lineales = $args['metros_lineales'] ?? null;
+        $this->estandar = $args['estandar'] ?? null;
         $this->turno = $args['turno'] ?? null;
         $this->n_cambios = $args['n_cambios'] ?? null;
       
