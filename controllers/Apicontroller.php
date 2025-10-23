@@ -169,13 +169,21 @@ class Apicontroller
 
         $desperdicioindividual = Ventas::all('ASC');
         foreach ($desperdicioindividual as &$item) {
+            $item->id_usuario = floatval($item->id_usuario);
+            $item->consumo_papel = floatval($item->consumo_papel);
+            $item->n_laminas = floatval($item->n_laminas);
             $item->metros_lineales = floatval($item->metros_lineales); 
-            $item->metros_lineales_C = floatval($item->metros_lineales_C);
-            $item->consumo_almidon = floatval($item->consumo_almidon);
-            $item->consumo_resina = floatval($item->consumo_resina);
-            $item->consumo_recubrimiento = floatval($item->consumo_recubrimiento);
-            $item->metros_lineales_B = floatval($item->metros_lineales_B);
-            $item->metros_lineales_E = floatval($item->metros_lineales_E);
+            $item->turno = floatval($item->turno);
+            $item->n_cambios = intval($item->n_cambios);
+            $item->operador = $item->operador;
+            $item->total = $item->total;
+            $item->hora_inicio = $item->hora_inicio;
+            $item->hora_fin = $item->hora_fin;
+            $item->tiempo_inactivo = $item->tiempo_inactivo;
+            $item->motivo_inactividad = $item->motivo_inactividad;
+            $item->fecha = $item->fecha;
+            $item->linea = $item->linea;
+
         }
         // Devolver los datos en formato JSON
         header('Content-Type: application/json');
