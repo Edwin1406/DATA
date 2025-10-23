@@ -143,7 +143,7 @@
                                     <div class="col-md-2 col-12">
                                         <div class="form-group">
                                             <label for="tiempo_inactivo">Tiempo Inactivo</label>
-                                            <input type="text" id="tiempo_inactivo" class="form-control"
+                                            <input type="time" id="tiempo_inactivo" class="form-control"
                                                 placeholder="Tiempo Inactivo" name="tiempo_inactivo"
                                                 value="<?php echo $doblado->tiempo_inactivo ?>">
                                         </div>
