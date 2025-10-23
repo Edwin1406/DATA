@@ -72,48 +72,22 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="POST" action="/admin/pruebas/crearDoblado" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
+                            <form class="form" method="POST" action="/admin/pruebas/editarDoblado?id=<?php echo $id; ?>" enctype="multipart/form-data" onsubmit="return bloquearBoton(this)">
                                 <div class="row">
 
 
 
-                                    <!-- 
-                                    <div class="col-md-6 col-12">
-                                        <label for="tipo_clasificacion">Escoja la clasificación</label>
-                                        <div class="form-group">
-                                            <select class="form-select" name="tipo_clasificacion" id="tipo_clasificacion">
-                                                <option value="CONTROLABLE">CONTROLABLE</option>
-                                                <option value="NO_CONTROLABLE">NO CONTROLABLE</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
-
-
-                                    <!-- quiero tomar el nombre del usuario y si es corruugador solo me parezcan del corrgador-->
-
-
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="casos">CASOS</label>
-                                            <select id="casos" class="choices form-control" name="casos">
-                                                <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
-
-                                                <!-- CONTROLABLES -->
-                                                <option value="CUADRE MAQUINA">Cuadre Maquina</option>
-                                                <option value="MECANICO">Mecanico</option>
-                                                <option value="ELECTRICO">Electrico</option>
-
-                                            </select>
-
-                                        </div>
-                                    </div>
+                                 
 
                                     <!-- cantidad cajas deciamles soporte  -->
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="cantidad">Cantidad (Kg)</label>
-                                            <input type="number" id="cantidad" class="form-control"
-                                                placeholder="Cantidad" name="cantidad" step="0.01">
+                                            <label for="consumo_papel">Consumo papel</label>
+                                            <input type="number" id="consumo_papel" class="form-control"
+                                                placeholder="Consumo papel" name="consumo_papel" step="0.01"
+                                                value="<?php echo $doblado->consumo_papel ?>"
+                                                
+                                                >
                                         </div>
                                     </div>
 

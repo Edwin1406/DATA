@@ -1268,11 +1268,11 @@ class PruebasController
         }
 
         // Obtener el registro a editar
-        $venta = Ventas::find($id);
+        $doblado = Ventas::find($id);
 
-        // debuguear($venta);
+        // debuguear($doblado);
 
-        if (!$venta) {
+        if (!$doblado) {
             header('Location: /admin/pruebas/tablaDoblado');
             exit;
         }
@@ -1281,15 +1281,15 @@ class PruebasController
             // Asignar los valores
             $args = $_POST;
 
-            $venta->sincronizar($args);
+            $doblado->sincronizar($args);
 
-            // debuguear($venta);
+            // debuguear($doblado);
 
             // Validar
-            $alertas = $venta->validar();
+            $alertas = $doblado->validar();
 
             if (empty($alertas)) {
-                $resultado = $venta->guardar();
+                $resultado = $doblado->guardar();
                 if ($resultado) {
                     header('Location: /admin/pruebas/tablaDoblado?editado=2');
                     exit;
@@ -1305,7 +1305,7 @@ class PruebasController
             'alertas' => $alertas,
             'nombre' => $nombre,
             'email' => $email,
-            'venta' => $venta
+            'doblado' => $doblado
         ]);
     }
 
