@@ -85,7 +85,7 @@
                                             <label for="fecha">Fecha</label>
                                             <input type="date" id="fecha" class="form-control"
                                                 placeholder="Fecha" name="fecha"
-                                                value="<?php echo $doblado->fecha ?>" readonly>
+                                                value="<?php echo $doblado->fecha ?>" >
                                         </div>
                                     </div>
 
