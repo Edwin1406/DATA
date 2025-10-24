@@ -96,7 +96,7 @@
                                             <input type="number" id="n_laminas" class="form-control"
                                                 placeholder="N laminas" name="n_laminas" step="0.01"
                                                 value="<?php echo $doblado->n_laminas ?>"
-                                                readonly>
+                                                >
                                         </div>
                                     </div>
 
@@ -124,7 +124,7 @@
                                             <label for="hora_inicio">Hora Inicio</label>
                                             <input type="time" id="hora_inicio" class="form-control"
                                                 placeholder="Hora Inicio" name="hora_inicio"
-                                                value="<?php echo $doblado->hora_inicio ?>">
+                                                value="<?php echo $doblado->hora_inicio ?>" readonly>
                                         </div>
                                     </div>
 
@@ -135,7 +135,7 @@
                                             <label for="hora_fin">Hora Fin</label>
                                             <input type="time" id="hora_fin" class="form-control"
                                                 placeholder="Hora Fin" name="hora_fin"
-                                                value="<?php echo $doblado->hora_fin ?>">
+                                                value="<?php echo $doblado->hora_fin ?>" readonly>
                                         </div>
                                     </div>
 
