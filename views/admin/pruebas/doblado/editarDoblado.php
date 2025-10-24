@@ -82,6 +82,32 @@
                                     <!-- cantidad cajas deciamles soporte  -->
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
+                                            <label for="fecha">Fecha</label>
+                                            <input type="date" id="fecha" class="form-control"
+                                                placeholder="Fecha" name="fecha"
+                                                value="<?php echo $doblado->fecha ?>" readonly>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="consumo_papel">Consumo papel</label>
+                                            <input type="number" id="consumo_papel" class="form-control"
+                                                placeholder="Consumo papel" name="consumo_papel" step="0.01"
+                                                value="<?php echo $doblado->consumo_papel ?>"
+
+                                                readonly>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
                                             <label for="consumo_papel">Consumo papel</label>
                                             <input type="number" id="consumo_papel" class="form-control"
                                                 placeholder="Consumo papel" name="consumo_papel" step="0.01"
@@ -95,8 +121,7 @@
                                             <label for="n_laminas">N laminas</label>
                                             <input type="number" id="n_laminas" class="form-control"
                                                 placeholder="N laminas" name="n_laminas" step="0.01"
-                                                value="<?php echo $doblado->n_laminas ?>"
-                                                >
+                                                value="<?php echo $doblado->n_laminas ?>">
                                         </div>
                                     </div>
 
@@ -172,7 +197,7 @@
 
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        
+
                                         <button id="btnRegistrar" type="submit" class="btn btn-primary me-1 mb-1">Editar</button>
 
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
