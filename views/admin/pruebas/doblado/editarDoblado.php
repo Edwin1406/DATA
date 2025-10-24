@@ -80,7 +80,7 @@
 
 
                                     <!-- cantidad cajas deciamles soporte  -->
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="fecha">Fecha</label>
                                             <input type="date" id="fecha" class="form-control"
@@ -92,7 +92,7 @@
 
 
 
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="consumo_papel">Consumo papel</label>
                                             <input type="number" id="consumo_papel" class="form-control"
@@ -106,7 +106,7 @@
 
 
 
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="consumo_papel">Consumo papel</label>
                                             <input type="number" id="consumo_papel" class="form-control"
@@ -116,7 +116,7 @@
                                                 readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-3 col-12">
                                         <div class="form-group">
                                             <label for="n_laminas">N laminas</label>
                                             <input type="number" id="n_laminas" class="form-control"
