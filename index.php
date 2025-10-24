@@ -419,6 +419,9 @@ $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarr
 // eliminarFlexo
 $router->post('/admin/eliminarFlexo', [PruebasController::class, 'eliminarFlexo']);
 
+// eliminarDoblado
+$router->post('/admin/eliminarDoblado', [PruebasController::class, 'eliminarDoblado']);
+
 
 // ELIMINAR DETALLE DESPERDICIOS
 $router->post('/admin/eliminarDetalleDesperdicios', [PruebasController::class, 'eliminarDetalleDesperdicios']);

@@ -401,6 +401,42 @@ class PruebasController
             exit;
         }
     }
+    public static function eliminarDoblado()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            // sanitizar id
+            $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+            $doblado = Ventas::find($id);
+
+            $detalleventa = DetalleVenta::wherenuevo('id_venta', $id);
+
+            if ($doblado) {
+                foreach ($detalleventa as $detalle) {
+                    $detalle->eliminar();
+                }
+                $doblado->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Registro de doblado eliminado con éxito']);
+                exit;
+            } else {
+                // Si no se encuentra el registro de doblado
+                echo json_encode(['success' => false, 'message' => 'Registro de doblado no encontrado']);
+                exit;
+            }
+        } else {
+            // Método incorrecto
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            exit;
+        }
+    }
 
 
 

@@ -128,24 +128,12 @@
                                  <td><?= $doblado->n_laminas ?></td>
                                  <td><?= $doblado->turno ?></td>
                                  <td><?= $doblado->motivo_inactividad ?></td>
-
-
                                  <td>
-
                                      <div class="d-flex gap-1">
                                          <a href="/admin/pruebas/editarDoblado?id=<?= $doblado->id ?>" class="btn btn-primary btn-sm">Editar</a>
-
-                                        
-
-                                         <form action="/admin/eliminarMicro" method="POST">
-                                             <input type="hidden" name="id" value="<?= $doblado->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                         </form>
+                                         <button class="btn btn-danger btn-sm eliminar-btn"
+                                             data-id="<?= $doblado->id ?>">Eliminar</button>
                                      </div>
-
-
-
-
                                  </td>
 
                              </tr>
