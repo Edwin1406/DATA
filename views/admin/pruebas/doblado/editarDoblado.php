@@ -85,23 +85,10 @@
                                             <label for="fecha">Fecha</label>
                                             <input type="date" id="fecha" class="form-control"
                                                 placeholder="Fecha" name="fecha"
-                                                value="<?php echo $doblado->fecha ?>" >
+                                                value="<?php echo $doblado->fecha ?>">
                                         </div>
                                     </div>
 
-
-
-
-                                    <div class="col-md-3 col-12">
-                                        <div class="form-group">
-                                            <label for="consumo_papel">Consumo papel</label>
-                                            <input type="number" id="consumo_papel" class="form-control"
-                                                placeholder="Consumo papel" name="consumo_papel" step="0.01"
-                                                value="<?php echo $doblado->consumo_papel ?>"
-
-                                                readonly>
-                                        </div>
-                                    </div>
 
 
 
