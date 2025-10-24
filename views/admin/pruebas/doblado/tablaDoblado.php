@@ -140,10 +140,80 @@
                          <?php endforeach; ?>
                      </tbody>
                  </table>
+
+
+                 <!-- Asegúrate de tener cargado SweetAlert2 y que esta etiqueta esté FUERA del foreach -->
+                 <script>
+                     // Delegación de eventos para evitar añadir listeners por fila
+                     document.getElementById('table1').addEventListener('click', function(e) {
+                         const btn = e.target.closest('.eliminar-btn');
+                         if (!btn) return;
+
+                         const id = btn.getAttribute('data-id');
+                         if (!id) {
+                             Swal.fire('Error', 'No se encontró el ID del registro.', 'error');
+                             return;
+                         }
+
+                         Swal.fire({
+                             // CARGAR EL ID
+
+                             title: '¿Estás seguro ID : ' + id + ' de eliminar este registro?',
+                             text: '¡Esta acción no se puede deshacer!',
+                             icon: 'warning',
+                             showCancelButton: true,
+                             confirmButtonText: 'Sí, eliminar',
+                             cancelButtonText: 'Cancelar',
+                             reverseButtons: true
+                         }).then((result) => {
+                             if (!result.isConfirmed) return;
+
+                             const formData = new FormData();
+                             formData.append('id', id);
+
+                             fetch('/admin/eliminarDoblado', {
+                                     method: 'POST',
+                                     body: formData
+                                 })
+                                 .then(async (response) => {
+                                     // Intenta parsear JSON; si no es JSON, forzamos error para que caiga al catch
+                                     try {
+                                         return await response.json();
+                                     } catch (err) {
+                                         throw new Error('Respuesta no JSON');
+                                     }
+                                 })
+                                 .then((data) => {
+                                     if (data && data.success) {
+                                         const row = document.getElementById('row_' + id);
+                                         if (row) row.remove();
+                                         Swal.fire('Eliminado', 'El registro fue eliminado.', 'success');
+                                     } else {
+                                         Swal.fire('Error', (data && data.message) || 'No se pudo eliminar.', 'error');
+                                     }
+                                 })
+                                 .catch((err) => {
+                                     Swal.fire('Error', 'Hubo un error al procesar la solicitud.', 'error');
+                                     console.error(err);
+                                 });
+                         });
+                     });
+                 </script>
+
+
+
+
              </div>
          </div>
      </section>
  </div>
+
+
+
+
+
+
+
 
 
  <script>
