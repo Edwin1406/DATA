@@ -227,6 +227,44 @@ class DiseñoController
     // }
 
 
+     public static function eliminarDiseno(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            echo json_encode(['error' => 'No autorizado']);
+            return;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id = $_POST['id'] ?? null;
+            if(!$id){
+                echo json_encode(['error' => 'ID no proporcionado']);
+                return;
+            }
+
+            $diseno = Diseno::find($id);
+            if(!$diseno){
+                echo json_encode(['error' => 'Diseño no encontrado']);
+                return;
+            }
+
+            $resultado = $diseno->eliminar();
+            if($resultado){
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['error' => 'No se pudo eliminar el diseño']);
+            }
+        }
+     }
+
+
+
+
+
+
+
+
+
+
 
 
 
