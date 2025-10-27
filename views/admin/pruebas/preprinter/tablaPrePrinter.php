@@ -112,7 +112,7 @@
                              <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
                              <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
-                                <th class="fs-6" style="min-width: 80px;">Linea</th>
+                             <th class="fs-6" style="min-width: 80px;">Linea</th>
                              <th class="fs-6" style="min-width: 60px;">Tiempo Cambio Medida </th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
