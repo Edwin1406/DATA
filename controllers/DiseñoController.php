@@ -203,28 +203,28 @@ class DiseñoController
 
 
 
-    public static function eliminarDiseno()
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
+    // public static function eliminarDiseno()
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //     }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
-            $diseno = Diseno::find($id);
-            if ($diseno) {
-                $resultado = $diseno->eliminar();
-                if ($resultado) {
-                    header('Location: /admin/diseno/tablaDiseno?eliminado=3');
-                } else {
-                    header('Location: /admin/diseno/tablaDiseno?error=1');
-                }
-            } else {
-                header('Location: /admin/diseno/tablaDiseno?error=1');
-            }
-        }
-    }
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         $id = $_POST['id'];
+    //         $diseno = Diseno::find($id);
+    //         if ($diseno) {
+    //             $resultado = $diseno->eliminar();
+    //             if ($resultado) {
+    //                 header('Location: /admin/diseno/tablaDiseno?eliminado=3');
+    //             } else {
+    //                 header('Location: /admin/diseno/tablaDiseno?error=1');
+    //             }
+    //         } else {
+    //             header('Location: /admin/diseno/tablaDiseno?error=1');
+    //         }
+    //     }
+    // }
 
 
 
