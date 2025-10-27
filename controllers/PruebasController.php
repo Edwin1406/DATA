@@ -454,7 +454,7 @@ class PruebasController
             // sanitizar id
             $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
-            $preprinter = VenFlexo::find($id);
+            $preprinter = Ventas::find($id);
 
             $detalleventa = DetalleVenta::wherenuevo('id_venta', $id);
 
