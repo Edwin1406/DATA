@@ -227,40 +227,35 @@ class DiseñoController
     // }
 
 
-     public static function eliminarDiseno(){
+ 
+
+ public static function eliminarDiseno()
+    {
         session_start();
-        if(!isset($_SESSION['email'])){
-            echo json_encode(['error' => 'No autorizado']);
-            return;
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
         }
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $id = $_POST['id'] ?? null;
-            if(!$id){
-                echo json_encode(['error' => 'ID no proporcionado']);
-                return;
-            }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            // sanitizar id
+            $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
             $diseno = Diseno::find($id);
-            if(!$diseno){
-                echo json_encode(['error' => 'Diseño no encontrado']);
-                return;
-            }
 
-            $resultado = $diseno->eliminar();
-            if($resultado){
-                echo json_encode(['success' => true]);
+            if ($diseno) {
+                $diseno->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Registro de diseño eliminado con éxito']);
+                exit;
             } else {
-                echo json_encode(['error' => 'No se pudo eliminar el diseño']);
+                // Si no se encuentra el registro de diseño
+                echo json_encode(['success' => false, 'message' => 'Registro de diseño no encontrado']);
+                exit;
             }
         }
-     }
-
-
-
-
-
-
+    }
 
 
 
