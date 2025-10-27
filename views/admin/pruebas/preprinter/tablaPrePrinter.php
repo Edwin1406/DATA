@@ -112,6 +112,7 @@
                              <th class="fs-6" style="min-width: 80px;">Consumo Papel</th>
                              <th class="fs-6" style="min-width: 80px;">N° Láminas</th>
                              <th class="fs-6" style="min-width: 80px;">Turno</th>
+                                <th class="fs-6" style="min-width: 80px;">Linea</th>
                              <th class="fs-6" style="min-width: 60px;">Tiempo Cambio Medida </th>
 
                              <th class="fs-6" style="min-width: 100px;">Acciones</th>
@@ -121,12 +122,13 @@
                      <tbody>
                          <?php foreach ($preprinter as $preprinte): ?>
                              <tr>
-                                 <td><?= $preprint->id ?></td>
-                                 <td><?= $preprint->fecha ?></td>
-                                 <td><?= $preprint->consumo_papel ?></td>
-                                 <td><?= $preprint->n_unidades ?></td>
-                                 <td><?= $preprint->turno ?></td>
-                                 <td><?= $preprint->tiempo_cambio_medida ?></td>
+                                 <td><?= $preprinte->id ?></td>
+                                 <td><?= $preprinte->fecha ?></td>
+                                 <td><?= $preprinte->consumo_papel ?></td>
+                                 <td><?= $preprinte->n_unidades ?></td>
+                                 <td><?= $preprinte->turno ?></td>
+                                 <td><?= $preprinte->linea ?></td>
+                                 <td><?= $preprinte->tiempo_cambio_medida ?></td>
 
 
                                  <td>
