@@ -855,33 +855,33 @@ class PruebasController
 
 
     // tabla de preprinter
-    // public static function tablaPrePrinter(Router $router)
-    // {
-    //     session_start();
-    //     if (!isset($_SESSION['email'])) {
-    //         header('Location: /');
-    //     }
-    //     // NOMBRE DE LA PERSONA LOGEADA
-    //     $nombre = $_SESSION['nombre'];
-    //     $email = $_SESSION['email'];
+    public static function tablaPrePrinter(Router $router)
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            header('Location: /');
+        }
+        // NOMBRE DE LA PERSONA LOGEADA
+        $nombre = $_SESSION['nombre'];
+        $email = $_SESSION['email'];
 
-    //     // Obtener los diseños de la base de datos
-    //     $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
-    //     // debuguear($preprinter);
-    //     // $preprinter = Ventas::all();
+        // Obtener los diseños de la base de datos
+        $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
+        // debuguear($preprinter);
+        // $preprinter = Ventas::all();
 
 
-    //     // debuguear($preprinter);
+        // debuguear($preprinter);
 
-    //     // Renderizar la vista de la tabla de diseños
-    //     $router->render('admin/pruebas/preprinter/tablaPrePrinter', [
-    //         'titulo' => 'PREPRINTER - Tabla de Producción',
-    //         'subtitulo' => 'PrePrinter',
-    //         'nombre' => $nombre,
-    //         'email' => $email,
-    //         'preprinter' => $preprinter
-    //     ]);
-    // }
+        // Renderizar la vista de la tabla de diseños
+        $router->render('admin/pruebas/preprinter/tablaPrePrinter', [
+            'titulo' => 'PREPRINTER - Tabla de Producción',
+            'subtitulo' => 'PrePrinter',
+            'nombre' => $nombre,
+            'email' => $email,
+            'preprinter' => $preprinter
+        ]);
+    }
 
 
 
@@ -1256,31 +1256,8 @@ class PruebasController
         ]);
     }
 
-    // TABLA DE PREPRINTER
 
-    public static function tablaPreprinter(Router $router)
-    {
-        session_start();
-        if (!isset($_SESSION['email'])) {
-            header('Location: /');
-        }
-        // NOMBRE DE LA PERSONA LOGEADA
-        $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-
-   
-        // $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
-        $produccioduccionPreprinter = ProduccionDiaria::all();
-        // Renderizar la vista de la tabla de diseños
-        $router->render('admin/pruebas/preprinter/tablaPreprinter', [
-            'titulo' => 'PREPRINTER - Tabla de Producción',
-            'subtitulo' => 'Preprinter',
-            'nombre' => $nombre,
-            'email' => $email,
-            // 'preprinter' => $preprinter,
-            'produccioduccionPreprinter' => $produccioduccionPreprinter
-        ]);
-    }
+  
 
 
     // TABLA DE DOBLADO
