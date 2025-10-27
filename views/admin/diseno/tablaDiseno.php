@@ -179,10 +179,7 @@
                                      <?php if ($email !== 'ventas@megaecuador.com') { ?>
                                          <div class="d-flex gap-1">
                                              <a href="/admin/diseno/editarDiseno?id=<?= $diseno->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                             <!-- <form action="/admin/eliminarDiseno" method="POST">
-                                                 <input type="hidden" name="id" value="<?= $diseno->id ?>">
-                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                             </form> -->
+                                           
 
                                              <button class="btn btn-danger btn-sm eliminar-btn"
                                                  data-id="<?= $diseno->id ?>">Eliminar</button>
