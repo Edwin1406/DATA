@@ -854,6 +854,37 @@ class PruebasController
     }
 
 
+    // tabla de preprinter
+    // public static function tablaPrePrinter(Router $router)
+    // {
+    //     session_start();
+    //     if (!isset($_SESSION['email'])) {
+    //         header('Location: /');
+    //     }
+    //     // NOMBRE DE LA PERSONA LOGEADA
+    //     $nombre = $_SESSION['nombre'];
+    //     $email = $_SESSION['email'];
+
+    //     // Obtener los diseños de la base de datos
+    //     $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
+    //     // debuguear($preprinter);
+    //     // $preprinter = Ventas::all();
+
+
+    //     // debuguear($preprinter);
+
+    //     // Renderizar la vista de la tabla de diseños
+    //     $router->render('admin/pruebas/preprinter/tablaPrePrinter', [
+    //         'titulo' => 'PREPRINTER - Tabla de Producción',
+    //         'subtitulo' => 'PrePrinter',
+    //         'nombre' => $nombre,
+    //         'email' => $email,
+    //         'preprinter' => $preprinter
+    //     ]);
+    // }
+
+
+
 
     // editar pruebas
     public static function editarPruebas(Router $router)
