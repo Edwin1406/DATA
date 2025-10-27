@@ -119,25 +119,23 @@
                      </thead>
 
                      <tbody>
-                         <?php foreach ($flexografica as $flexo): ?>
+                         <?php foreach ($preprinter as $preprinte): ?>
                              <tr>
-                                 <td><?= $flexo->id ?></td>
-                                 <td><?= $flexo->fecha ?></td>
-                                 <td><?= $flexo->consumo_papel ?></td>
-                                 <td><?= $flexo->n_unidades ?></td>
-                                 <td><?= $flexo->turno ?></td>
-                                 <td><?= $flexo->tiempo_cambio_medida ?></td>
+                                 <td><?= $preprint->id ?></td>
+                                 <td><?= $preprint->fecha ?></td>
+                                 <td><?= $preprint->consumo_papel ?></td>
+                                 <td><?= $preprint->n_unidades ?></td>
+                                 <td><?= $preprint->turno ?></td>
+                                 <td><?= $preprint->tiempo_cambio_medida ?></td>
 
 
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarFlexo?id=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $flexo->id ?>" class="btn btn-primary btn-sm">Desperdicios</a>
+                                         <a href="/admin/pruebas/editarPrePrinter?id=<?= $preprint->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $preprint->id ?>" class="btn btn-primary btn-sm">Desperdicios</a>
                                          <button class="btn btn-danger btn-sm eliminar-btn"
-                                             data-id="<?= $flexo->id ?>">Eliminar</button>
-
-
+                                             data-id="<?= $preprint->id ?>">Eliminar</button>
                                      </div>
 
 
@@ -183,7 +181,7 @@
                              const formData = new FormData();
                              formData.append('id', id);
 
-                             fetch('/admin/eliminarFlexo', {
+                             fetch('/admin/eliminarPrePrinter', {
                                      method: 'POST',
                                      body: formData
                                  })
