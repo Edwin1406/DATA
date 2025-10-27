@@ -252,12 +252,6 @@
                          });
                      });
                  </script>
-
-
-
-
-
-
              </div>
          </div>
      </section>
