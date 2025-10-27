@@ -944,7 +944,7 @@ class PruebasController
         $email = $_SESSION['email'];
 
         // Obtener los diseños de la base de datos
-        $preprinter = Ventas::wherenuevo('linea', 'PREPRINTER');
+        $preprinter = Ventas::wherenuevo('linea', 'PRE-PRINTER');
         // debuguear($preprinter);
         // $preprinter = Ventas::all();
 
