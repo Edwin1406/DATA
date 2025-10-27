@@ -419,6 +419,14 @@ $router->post('/admin/eliminarCarrito', [PruebasController::class, 'eliminarCarr
 // eliminarFlexo
 $router->post('/admin/eliminarFlexo', [PruebasController::class, 'eliminarFlexo']);
 
+// eliminarPrePrinter
+$router->post('/admin/eliminarPrePrinter', [PruebasController::class, 'eliminarPrePrinter']);
+
+// eliminarMicro
+$router->post('/admin/eliminarMicro', [PruebasController::class, 'eliminarMicro']);
+
+
+
 // eliminarDoblado
 $router->post('/admin/eliminarDoblado', [PruebasController::class, 'eliminarDoblado']);
 

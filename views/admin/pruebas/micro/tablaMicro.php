@@ -162,15 +162,15 @@
                                                     : ($registroExistente->id ?? null);
                                                 ?>
 
-                                                <!--  -->
+                                             <!--  -->
 
 
-                                                <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
-                                                    class="btn btn-secondary btn-sm">
-                                                    -
-                                                </a>
-                                                <?php else: ?>
-                                                    <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">+</a>
+                                             <a href="/admin/diaria/editarproduccion_diariaMicro?id=<?= htmlspecialchars($idRegistro) ?>"
+                                                 class="btn btn-secondary btn-sm">
+                                                 -
+                                             </a>
+                                         <?php else: ?>
+                                             <a href="/admin/diaria/produccion_diariaMicro?id_micro=<?= $microS->id ?>" class="btn btn-primary btn-sm">+</a>
                                          <?php endif; ?>
 
 
@@ -178,7 +178,8 @@
 
                                          <form action="/admin/eliminarMicro" method="POST">
                                              <input type="hidden" name="id" value="<?= $microS->id ?>">
-                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                             <button class="btn btn-danger btn-sm eliminar-btn"
+                                                 data-id="<?= $microS->id ?>">Eliminar</button>
                                          </form>
                                      </div>
 
@@ -191,6 +192,70 @@
                          <?php endforeach; ?>
                      </tbody>
                  </table>
+
+                 <!-- Asegúrate de tener cargado SweetAlert2 y que esta etiqueta esté FUERA del foreach -->
+                 <script>
+                     // Delegación de eventos para evitar añadir listeners por fila
+                     document.getElementById('table1').addEventListener('click', function(e) {
+                         const btn = e.target.closest('.eliminar-btn');
+                         if (!btn) return;
+
+                         const id = btn.getAttribute('data-id');
+                         if (!id) {
+                             Swal.fire('Error', 'No se encontró el ID del registro.', 'error');
+                             return;
+                         }
+
+                         Swal.fire({
+                             // CARGAR EL ID
+
+                             title: '¿Estás seguro ID : ' + id + ' de eliminar este registro?',
+                             text: '¡Esta acción no se puede deshacer!',
+                             icon: 'warning',
+                             showCancelButton: true,
+                             confirmButtonText: 'Sí, eliminar',
+                             cancelButtonText: 'Cancelar',
+                             reverseButtons: true
+                         }).then((result) => {
+                             if (!result.isConfirmed) return;
+
+                             const formData = new FormData();
+                             formData.append('id', id);
+
+                             fetch('/admin/eliminarMicro', {
+                                     method: 'POST',
+                                     body: formData
+                                 })
+                                 .then(async (response) => {
+                                     // Intenta parsear JSON; si no es JSON, forzamos error para que caiga al catch
+                                     try {
+                                         return await response.json();
+                                     } catch (err) {
+                                         throw new Error('Respuesta no JSON');
+                                     }
+                                 })
+                                 .then((data) => {
+                                     if (data && data.success) {
+                                         const row = document.getElementById('row_' + id);
+                                         if (row) row.remove();
+                                         Swal.fire('Eliminado', 'El registro fue eliminado.', 'success');
+                                     } else {
+                                         Swal.fire('Error', (data && data.message) || 'No se pudo eliminar.', 'error');
+                                     }
+                                 })
+                                 .catch((err) => {
+                                     Swal.fire('Error', 'Hubo un error al procesar la solicitud.', 'error');
+                                     console.error(err);
+                                 });
+                         });
+                     });
+                 </script>
+
+
+
+
+
+
              </div>
          </div>
      </section>

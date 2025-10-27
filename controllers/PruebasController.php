@@ -440,6 +440,84 @@ class PruebasController
 
 
 
+// ELIMINAR PREPRINTER
+    public static function eliminarPrePrinter()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            // sanitizar id
+            $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+            $preprinter = VenFlexo::find($id);
+
+            $detalleventa = DetalleVenta::wherenuevo('id_venta', $id);
+
+            if ($preprinter) {
+                foreach ($detalleventa as $detalle) {
+                    $detalle->eliminar();
+                }
+                $preprinter->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Registro de preprinter eliminado con éxito']);
+                exit;
+            } else {
+                // Si no se encuentra el registro de preprinter
+                echo json_encode(['success' => false, 'message' => 'Registro de preprinter no encontrado']);
+                exit;
+            }
+        } else {
+            // Método incorrecto
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            exit;
+        }
+    }
+
+
+    // ELIMINAR MICRO
+    public static function eliminarMicro()
+    {
+        session_start();
+        if (!isset($_SESSION['email'])) {
+            echo json_encode(['success' => false, 'message' => 'No autorizado']);
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            // sanitizar id
+            $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+            $micro = Ventas::find($id);
+
+            $detalleventa = DetalleVenta::wherenuevo('id_venta', $id);
+
+            if ($micro) {
+                foreach ($detalleventa as $detalle) {
+                    $detalle->eliminar();
+                }
+                $micro->eliminar();
+                // Respuesta en formato JSON para AJAX
+                echo json_encode(['success' => true, 'message' => 'Registro de micro eliminado con éxito']);
+                exit;
+            } else {
+                // Si no se encuentra el registro de micro
+                echo json_encode(['success' => false, 'message' => 'Registro de micro no encontrado']);
+                exit;
+            }
+        } else {
+            // Método incorrecto
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            exit;
+        }
+    }
+
+
 
 
 
