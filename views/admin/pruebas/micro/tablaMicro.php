@@ -174,13 +174,11 @@
                                          <?php endif; ?>
 
 
+                                         <button class="btn btn-danger btn-sm eliminar-btn"
+                                             data-id="<?= $microS->id ?>">Eliminar</button>
 
 
-                                         <form action="/admin/eliminarMicro" method="POST">
-                                             <input type="hidden" name="id" value="<?= $microS->id ?>">
-                                             <button class="btn btn-danger btn-sm eliminar-btn"
-                                                 data-id="<?= $microS->id ?>">Eliminar</button>
-                                         </form>
+                                         
                                      </div>
 
 
