@@ -134,10 +134,10 @@
                                  <td>
 
                                      <div class="d-flex gap-1">
-                                         <a href="/admin/pruebas/editarPrePrinter?id=<?= $preprint->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                         <!-- <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $preprint->id ?>" class="btn btn-primary btn-sm">Desperdicios</a> -->
+                                         <a href="/admin/pruebas/editarPrePrinter?id=<?= $preprinte->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                         <!-- <a href="/admin/pruebas/crearDesperdicios?id_venta=<?= $preprinte->id ?>" class="btn btn-primary btn-sm">Desperdicios</a> -->
                                          <button class="btn btn-danger btn-sm eliminar-btn"
-                                             data-id="<?= $preprint->id ?>">Eliminar</button>
+                                             data-id="<?= $preprinte->id ?>">Eliminar</button>
                                      </div>
 
 
