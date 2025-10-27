@@ -125,7 +125,7 @@
                                  <td><?= $preprinte->id ?></td>
                                  <td><?= $preprinte->fecha ?></td>
                                  <td><?= $preprinte->consumo_papel ?></td>
-                                 <td><?= $preprinte->n_unidades ?></td>
+                                 <td><?= $preprinte->n_laminas ?></td>
                                  <td><?= $preprinte->turno ?></td>
                                  <td><?= $preprinte->linea ?></td>
                                  <td><?= $preprinte->tiempo_cambio_medida ?></td>
