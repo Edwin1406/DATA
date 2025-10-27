@@ -193,6 +193,9 @@
                                          const row = document.getElementById('row_' + id);
                                          if (row) row.remove();
                                          Swal.fire('Eliminado', 'El registro fue eliminado.', 'success');
+                                          setTimeout(() => {
+                                             location.reload(); // Recargar la página para ver los cambios
+                                         }, 2000);
                                      } else {
                                          Swal.fire('Error', (data && data.message) || 'No se pudo eliminar.', 'error');
                                      }
