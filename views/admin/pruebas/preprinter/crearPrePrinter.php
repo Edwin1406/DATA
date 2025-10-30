@@ -104,7 +104,7 @@
                                                 <option value="" disabled <?php echo !isset($turno) ? 'selected' : ''; ?>>Seleccione un caso</option>
 
                                                 <!-- CONTROLABLES -->
-                                                <option value="INICIO DE CORRIDA">Inicio de Corrida</option>
+                                                <option value="CUADRE DE MAQUINA">Cuadre de Máquina</option>
                                                 <option value="APROBACION DE COLOR">Aprobación de Color</option>
                                                 <option value="EMPALME">Empalme</option>
                                                 <option value="FALTA TINTA">Falta Tinta</option>
